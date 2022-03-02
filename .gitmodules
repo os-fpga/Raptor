@@ -1,0 +1,12 @@
+[submodule "yosys_rs"]
+	path = yosys_rs
+	url = git@github.com:RapidSilicon/yosys_rs.git
+[submodule "verific_rs"]
+	path = verific_rs
+	url = git@github.com:RapidSilicon/verific_rs.git
+[submodule "OpenFPGA_RS"]
+	path = OpenFPGA_RS
+	url = git@github.com:RapidSilicon/OpenFPGA_RS.git
+[submodule "tcl"]
+	path = tcl
+	url = git@github.com:RapidSilicon/tcl.git
