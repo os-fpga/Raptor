@@ -10,3 +10,8 @@
 [submodule "yosys_verific_rs"]
 	path = yosys_verific_rs
 	url = git@github.com:RapidSilicon/yosys_verific_rs.git
+
+[submodule "FOEDAG_rs"]
+	path = FOEDAG_rs
+	url = https://github.com/RapidSilicon/FOEDAG_rs.git
+
