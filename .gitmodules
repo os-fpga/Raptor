@@ -10,3 +10,6 @@
 [submodule "tcl"]
 	path = tcl
 	url = git@github.com:RapidSilicon/tcl.git
+[submodule "FOEDAG_rs"]
+	path = FOEDAG_rs
+	url = https://github.com/RapidSilicon/FOEDAG_rs.git
