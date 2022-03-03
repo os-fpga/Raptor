@@ -1,0 +1,581 @@
+name: 'main'
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  linux-gcc:
+    name: ${{ matrix.mode }}
+
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        mode:
+        - test
+        - regression
+        - coverage
+        - install
+        - valgrind
+    env:
+      MODE: ${{ matrix.mode }}
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install dependencies
+      run: |
+        bash .github/workflows/install_ubuntu_dependencies_build.sh
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1
+      with:
+        key: linux-${{ matrix.mode }}
+
+    - name: Configure shell
+      run: |
+        echo 'CC=gcc-9' >> $GITHUB_ENV
+        echo 'CXX=g++-9' >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+
+    - name: Show shell configuration
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which ninja && ninja --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        which $CC && $CC --version
+        which $CXX && $CXX --version
+
+    - name: Test
+      if: matrix.mode == 'test'
+      run: |
+        make debug test/unittest-d
+        make release test/batch
+        make test/gui
+
+    - name: Regression
+      if: matrix.mode == 'regression'
+      run: |
+        make regression
+
+    - name: Coverage
+      if: matrix.mode == 'coverage'
+      run: |
+        make debug coverage-build/raptor_gui.coverage
+
+    - name: Valgrind
+      if: matrix.mode == 'valgrind'
+      run: |
+        make debug
+        make test/valgrind
+
+    - name: Install Test
+      if: matrix.mode == 'install'
+      run: |
+        make release
+        make install
+        make clean   # make sure we only see installation artifacts
+        make test_install
+
+    - name: Archive regression artifacts
+      if: matrix.mode == 'regression' && always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: raptor_gui-linux-gcc-regression
+        path: |
+          ${{ github.workspace }}/build/test/
+          ${{ github.workspace }}/build/tests/
+
+# Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
+  centos7-gcc:
+    name:  ${{ matrix.mode }}
+
+    runs-on: ubuntu-latest
+    container:
+      image: centos:7
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        mode:
+        - test
+
+    env:
+      MODE: ${{ matrix.mode }}
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+    - name: Checkout code
+      uses: actions/checkout@v1
+      with:
+        submodules: true
+
+    - name: Download workflow artifact
+      if: matrix.mode == 'test'
+      uses: dawidd6/action-download-artifact@v2.17.0
+      with:
+        workflow: main.yml
+        repo: ${{ github.repository }}
+
+    - name: Install dependencies and build QT
+      run: |
+        bash .github/workflows/install_centos_dependencies_build.sh
+
+    - name: Prepare QT build artifacts
+      if: matrix.mode == 'test'
+      run: |
+        mkdir build
+        tar czvfp buildqt5-centos7-gcc.tgz buildqt5
+
+    - name: Archive QT build artifacts
+      if: matrix.mode == 'test'
+      uses: actions/upload-artifact@v2
+      with:
+        name: buildqt5-centos7-gcc
+        path: buildqt5-centos7-gcc.tgz
+
+    - name: Show shell configuration
+      run: |
+        env
+        source /opt/rh/devtoolset-9/enable
+        which gcc 
+        which g++ 
+
+    - name: Configure shell
+      run: |
+        source /opt/rh/devtoolset-9/enable
+        echo 'CC=/opt/rh/devtoolset-9/root/usr/bin/gcc' >> $GITHUB_ENV
+        echo 'CXX=/opt/rh/devtoolset-9/root/usr/bin/g++' >> $GITHUB_ENV
+        echo 'PATH=/usr/local/Qt-5.15.0/bin:/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+
+    - name: Test
+      if: matrix.mode == 'test'
+      run: |
+        make debug test/unittest-d
+        make release test/batch
+        make test/gui
+        make regression
+
+# Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
+  msys2-gcc:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: msys2 {0}
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+# Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.9
+      with:
+        cmake-version: '3.21.3'
+
+    - name: Configure Git
+      run: git config --global core.autocrlf input
+      shell: bash
+
+    - name: Git pull
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install core dependencies
+      run: choco install -y swig --side-by-side --version=3.0.12
+      shell: powershell
+
+    - name: Setup Msys2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MSYS
+        update: true
+        install:  gcc make cmake ninja python python-devel git diffutils autoconf
+        release: false
+      env:
+        MSYS2_PATH_TYPE: inherit
+    
+# Install Qt
+    - shell: msys2 {0}
+      run: |
+        pacman --noconfirm -S zlib
+        pacman --noconfirm -S zlib-devel
+        pacman --noconfirm -S mingw-w64-x86_64-qt5
+        # Static version pacman --noconfirm -Syu mingw-w64-x86_64-qt5-static
+        find . -name qt5-config.cmake
+        find . -name Qt5Config.cmake
+        find /mingw64 -name qt5-config.cmake
+        find /mingw64 -name Qt5Config.cmake
+        find C:/msys64/ -name qt5-config.cmake
+        find C:/msys64/ -name Qt5Config.cmake
+        
+    - name: Configure shell environment variables
+      run: |
+        export SWIG_DIR=/c/ProgramData/chocolatey/lib/swig/tools/install/swigwin-3.0.12
+        export Qt5_Dir=/mingw64/lib/cmake/Qt5/
+        # Static version: export Qt5_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
+        export Qt5_DIR=$Qt5_Dir
+        export CWD=`pwd`
+        echo "Qt5_DIR=$Qt5_DIR" >> $GITHUB_ENV
+        echo "SWIG_DIR=$SWIG_DIR" >> $GITHUB_ENV
+        echo 'CMAKE_GENERATOR=Ninja' >> $GITHUB_ENV
+        echo 'CC=gcc' >> $GITHUB_ENV
+        echo 'CXX=g++' >> $GITHUB_ENV
+        echo 'NO_TCMALLOC=On' >> $GITHUB_ENV
+        echo "PREFIX=$CWD/install" >> $GITHUB_ENV
+
+        echo "$Qt5_DIR" >> $GITHUB_PATH
+        echo "$SWIG_DIR" >> $GITHUB_PATH
+
+    - name: Show shell configuration
+      run: |
+        export PATH=$SWIG_DIR:$PATH
+        env
+        where git && git --version
+        where cmake && cmake --version
+        where make && make --version
+        where swig && swig -version
+        where python && python --version
+        where ninja && ninja --version
+        where tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        where $CC && $CC --version
+        where $CXX && $CXX --version
+
+    - name: Build
+      run: |
+        export PATH=$SWIG_DIR:$PATH
+        export Qt5_Dir=/mingw64/lib/cmake/Qt5/
+        # export Qt5_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
+        export Qt5_DIR=$Qt5_Dir
+        export PATH=$Qt5_DIR:$PATH
+        make lib-only
+# There are Qt linkage issues, so build only the libs for now        
+#        make VERBOSE=1 release
+#        make debug 
+#        make install
+
+    - name: Test
+      run: |
+        export PATH=$SWIG_DIR:$PATH
+        export Qt5_Dir=/mingw64/lib/cmake/Qt5/
+        # export Qt5_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
+        export Qt5_DIR=$Qt5_Dir
+        export PATH=$Qt5_DIR:$PATH
+# There Qt are linkage issues, so build only the libs for now        
+#        make test_install
+#        make test/unittest
+#        make regression
+
+  windows-msvc:
+    runs-on: windows-2022
+
+    defaults:
+      run:
+        shell: cmd
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+# Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.9
+      with:
+        cmake-version: '3.21.3'
+    - name: Use cmake
+      run: cmake --version
+
+    - name: Install Core Dependencies
+      run: |
+        choco install -y make
+        choco install -y swig --side-by-side --version=3.0.12
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+        architecture: x64
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
+
+    - run: git config --global core.autocrlf input
+      shell: bash
+
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Build & Test
+      run: |
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+
+        set CMAKE_GENERATOR=Ninja
+        set CC=cl
+        set CXX=cl
+        set NO_TCMALLOC=On
+        set PREFIX=%GITHUB_WORKSPACE%\install
+        set CPU_CORES=%NUMBER_OF_PROCESSORS%
+
+        set MAKE_DIR=C:\make\bin
+        #set TCL_DIR=%PROGRAMFILES%\Git\mingw64\bin
+        set SWIG_DIR=%PROGRMDATA%\chocolatey\lib\swig\tools\install\swigwin-3.0.12
+        set PATH=%pythonLocation%;%SWIG_DIR%;%MAKE_DIR%;%PATH%
+        #set PATH=%pythonLocation%;%SWIG_DIR%;%MAKE_DIR%;%TCL_DIR%;%PATH%
+
+        set
+        where cmake && cmake --version
+        where make && make --version
+        where swig && swig -version
+        where python && python --version
+        where ninja && ninja --version
+
+        make release
+        if %errorlevel% neq 0 exit /b %errorlevel%
+        make install
+        if %errorlevel% neq 0 exit /b %errorlevel%
+        make test/unittest
+        if %errorlevel% neq 0 exit /b %errorlevel%
+        make test_install
+        if %errorlevel% neq 0 exit /b %errorlevel%
+        make regression
+        if %errorlevel% neq 0 exit /b %errorlevel%
+        make test/batch
+
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: raptor_gui-windows-msvc
+        path: ${{ github.workspace }}/install
+
+    - name: Archive regression artifacts
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: raptor_gui-windows-msvc-regression
+        path: |
+          ${{ github.workspace }}/build/test/
+          ${{ github.workspace }}/build/tests/
+
+  macos-gcc:
+    runs-on: macos-latest
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install dependencies
+      uses: jurplel/install-qt-action@v2
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1
+      with:
+        key: macos-gcc
+
+    - name: Configure shell
+      run: |
+        echo 'CC=gcc-9' >> $GITHUB_ENV
+        echo 'CXX=g++-9' >> $GITHUB_ENV
+        echo "PATH=$(brew --prefix)/opt/ccache/libexec:$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
+
+    - name: Show shell configuration
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        which $CC && $CC --version
+        which $CXX && $CXX --version
+
+    - name: Build
+      run: |
+        make release
+        make install
+
+    - name: Unit tests
+      run: |
+        make test_install
+
+    - name: Regression tests
+      run: |
+        make regression
+
+  macos-clang:
+    runs-on: macos-latest
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      uses: jurplel/install-qt-action@v2
+
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1
+      with:
+        key: macos-clang
+
+    - name: Configure shell
+      run: |
+        echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
+        echo "PATH=$(brew --prefix)/opt/ccache/libexec:$PATH" >> $GITHUB_ENV
+
+    - name: Install XQuartz on macOS
+      run: brew install xquartz --cask
+
+    - name: Show shell configuration
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+
+    - name: Build
+      run: |
+        make release
+        make install
+
+    - name: Unit tests
+      run: |
+        make test_install
+        make test/unittest
+        make XVFB="" debug test/gui_mac
+
+    - name: Regression tests
+      run: |
+        make regression
+
+  CodeFormatting:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get install clang-format
+        clang-format --version
+
+    - name: Run formatting style check
+      run: ./.github/bin/run-clang-format.sh
+
+  ClangTidy:
+    runs-on: ubuntu-20.04
+    if: ${{github.event_name == 'pull_request'}}
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.8.0
+      with:
+        access_token: ${{ github.token }}
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update -qq
+        sudo apt -qq -y install clang-tidy-12 \
+                                g++-9 tclsh  default-jre cmake \
+                                uuid-dev build-essential xorg \
+                                qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev xvfb
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1
+      with:
+        key: clang-tidy-codegen
+
+    - name: Configure shell
+      run: |
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+
+    - name: Prepare source
+      run: |
+        make run-cmake-release
+        ln -s build/compile_commands.json .
+
+    - name: Run clang tidy
+      run: |
+        ./.github/bin/run-clang-tidy.sh
