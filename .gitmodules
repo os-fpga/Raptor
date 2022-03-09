@@ -13,5 +13,5 @@
 
 [submodule "FOEDAG_rs"]
 	path = FOEDAG_rs
-	url = https://github.com/RapidSilicon/FOEDAG_rs.git
+	url = git@github.com:RapidSilicon/FOEDAG_rs.git
 
