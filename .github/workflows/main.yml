@@ -44,6 +44,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
           ${{ secrets.SSH_PRIVATE_KEY_TCL }}
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
 
     - name: Checkout code
       uses: actions/checkout@v2
