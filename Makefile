@@ -69,20 +69,8 @@ coverage-build/html: raptor_gui-build/raptor_gui.coverage
 test/regression: run-cmake-release
 
 test/valgrind: run-cmake-debug
-#	valgrind --tool=memcheck --log-file=valgrind.log dbuild/bin/raptor_gui --noqt --script tests/TestBatch/hello.tcl ; 
-#	grep "ERROR SUMMARY: 0" valgrind.log
-#	$(XVFB) valgrind --tool=memcheck --log-file=valgrind_gui.log dbuild/bin/raptor_gui --replay tests/TestGui/gui_start_stop.tcl;
-#	grep "ERROR SUMMARY: 0" valgrind_gui.log 
-#	$(XVFB) valgrind --tool=memcheck --log-file=valgrind_gui.log dbuild/bin/newproject --replay tests/TestGui/gui_new_project.tcl
-#	grep "ERROR SUMMARY: 0" valgrind_gui.log
-#	$(XVFB) valgrind --tool=memcheck --log-file=valgrind_gui.log dbuild/bin/projnavigator --replay tests/TestGui/gui_project_navigator.tcl
-#	grep "ERROR SUMMARY: 0" valgrind_gui.log
-#	$(XVFB) valgrind --tool=memcheck --log-file=valgrind_gui.log dbuild/bin/texteditor --replay tests/TestGui/gui_text_editor.tcl
-#	grep "ERROR SUMMARY: 0" valgrind_gui.log
-#	$(XVFB) valgrind --tool=memcheck --log-file=valgrind_gui.log dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
-#	grep "ERROR SUMMARY: 0" valgrind_gui.log
-#	$(XVFB) valgrind --tool=memcheck --log-file=valgrind_gui.log dbuild/bin/console_test --replay tests/TestGui/gui_console.tcl
-#	grep "ERROR SUMMARY: 0" valgrind_gui.log
+	$(XVFB) valgrind --tool=memcheck --log-file=valgrind.log ./dbuild/FOEDAG_rs/bin/raptor_gui --replay tests/TestGui/gui_foedag.tcl
+	grep "ERROR SUMMARY: 0" valgrind.log
 
 
 test: test/unittest test/regression
@@ -113,13 +101,7 @@ test_install:
 	cmake --build tests/TestInstall/build -j $(CPU_CORES)
 
 test/gui: run-cmake-debug
-#	$(XVFB) ./dbuild/bin/console_test --replay tests/TestGui/gui_console.tcl
-#	$(XVFB) ./dbuild/bin/console_test --replay tests/TestGui/gui_console_negative_test.tcl && exit 1 || (echo "PASSED: Caught negative test")
-#	$(XVFB) ./dbuild/bin/raptor_gui --replay tests/TestGui/gui_start_stop.tcl
-#	$(XVFB) ./dbuild/bin/newproject --replay tests/TestGui/gui_new_project.tcl
-#	$(XVFB) ./dbuild/bin/projnavigator --replay tests/TestGui/gui_project_navigator.tcl
-#	$(XVFB) ./dbuild/bin/texteditor --replay tests/TestGui/gui_text_editor.tcl
-#	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
+	$(XVFB) ./dbuild/FOEDAG_rs/bin/raptor_gui --replay tests/TestGui/gui_foedag.tcl
 
 test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/raptor_gui --replay tests/TestGui/gui_start_stop.tcl
