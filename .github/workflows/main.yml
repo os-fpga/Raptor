@@ -47,6 +47,9 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
 
     - name: Install dependencies
       run: |
