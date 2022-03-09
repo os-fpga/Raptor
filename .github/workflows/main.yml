@@ -45,6 +45,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TCL }}
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
           ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
 
     - name: Checkout code
       uses: actions/checkout@v2
