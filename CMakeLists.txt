@@ -302,13 +302,13 @@ install(
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor)
 
 install (
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/lib/${TCL_STATIC_LIB}
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${TCL_STATIC_LIB}
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)
 install (
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/lib/${TCL_STUBB_LIB}
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${TCL_STUBB_LIB}
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)
 install (
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/lib/${ZLIB_STATIC_LIB}
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${ZLIB_STATIC_LIB}
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)  
   
   
@@ -327,9 +327,9 @@ if (WIN32 AND $<CONFIG:Debug>)
 endif()
 
 install(
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/include/tcl.h
-        ${CMAKE_CURRENT_BINARY_DIR}/include/tclDecls.h
-        ${CMAKE_CURRENT_BINARY_DIR}/include/tclPlatDecls.h
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tcl.h
+        ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclDecls.h
+        ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclPlatDecls.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor/include)
 
 #install(
@@ -338,18 +338,6 @@ install(
 #  DESTINATION cmake)
 include(CMakePackageConfigHelpers)
 
-# generate the config file that is includes the exports
-#configure_package_config_file(
-#  ${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
-#  "${CMAKE_CURRENT_BINARY_DIR}/RaptorConfig.cmake"
-#  INSTALL_DESTINATION cmake
-#  NO_SET_AND_CHECK_MACRO
-#  NO_CHECK_REQUIRED_COMPONENTS_MACRO)
-
-# install the configuration file
-install(
-  FILES ${CMAKE_CURRENT_BINARY_DIR}/RaptorConfig.cmake
-  DESTINATION cmake)
 
 add_custom_target(raptor_link_target ALL
                   COMMAND ${CMAKE_COMMAND} -E create_symlink
