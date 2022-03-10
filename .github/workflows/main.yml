@@ -48,15 +48,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
-          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNT }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
 
     - name: Checkout code
       uses: actions/checkout@v2
       with:
         submodules: recursive
         fetch-depth: 0
-
-        
 
     - name: Install dependencies
       run: |
