@@ -150,8 +150,22 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+
+
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       with:
         submodules: true
 
@@ -514,6 +528,19 @@ jobs:
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+
 
     - uses: actions/checkout@v2
       with:
@@ -597,6 +624,19 @@ jobs:
       uses: styfle/cancel-workflow-action@0.8.0
       with:
         access_token: ${{ github.token }}
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+
 
     - name: Checkout code
       uses: actions/checkout@v2
