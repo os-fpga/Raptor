@@ -47,6 +47,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNT }}
 
     - name: Checkout code
       uses: actions/checkout@v2
