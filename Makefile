@@ -97,8 +97,8 @@ install: release
 	cmake --install build
 
 test_install:
-	raptor_gui --noqt --script tests/TestBatch/test_compiler_mt.tcl
-	raptor_gui --noqt --script tests/TestBatch/test_compiler_batch.tcl
+	$(PREFIX)/bin/raptor_gui --noqt --script tests/TestBatch/test_compiler_mt.tcl
+	$(PREFIX)/bin/raptor_gui --noqt --script tests/TestBatch/test_compiler_batch.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/FOEDAG_rs/bin/raptor_gui --replay tests/TestGui/gui_foedag.tcl
