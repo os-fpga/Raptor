@@ -97,8 +97,8 @@ install: release
 	cmake --install build
 
 test_install:
-	cmake -DCMAKE_BUILD_TYPE=Release -DINSTALL_DIR=$(PREFIX) -S tests/TestInstall -B tests/TestInstall/build
-	cmake --build tests/TestInstall/build -j $(CPU_CORES)
+	raptor_gui --noqt --script tests/TestBatch/test_compiler_mt.tcl
+	raptor_gui --noqt --script tests/TestBatch/test_compiler_batch.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/FOEDAG_rs/bin/raptor_gui --replay tests/TestGui/gui_foedag.tcl
@@ -113,7 +113,7 @@ test/gui_mac: run-cmake-debug
 
 test/batch: run-cmake-release
 	./dbuild/FOEDAG_rs/bin/raptor_gui --noqt --script tests/TestBatch/test_compiler_mt.tcl
-	./dbuild/FOEDAG_rs/bin/raptor_gui --script tests/TestBatch/test_compiler_batch.tcl
+	./dbuild/FOEDAG_rs/bin/raptor_gui --noqt --script tests/TestBatch/test_compiler_batch.tcl
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
