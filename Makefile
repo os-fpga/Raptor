@@ -96,6 +96,18 @@ clean:
 install: release
 	cmake --install build
 
+test_install_mac:
+	find /Users/runner/work/Raptor/ -name "*QtWidgets*" -print
+	otool -L $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtWidgets.framework/Versions/5/QtWidgets /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtWidgets.framework/QtWidgets $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtCore.framework/Versions/5/QtCore /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtCore.framework/QtCore $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtGui.framework/Versions/5/QtGui /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtGui.framework/QtGui $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtXml.framework/Versions/5/QtXml /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtXml.framework/QtXml $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtQuick.framework/Versions/5/QtQuick /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtQuick.framework/QtQuick $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtQmlModels.framework/Versions/5/QtQmlModels /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtQmlModels.framework/QtQmlModels $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtQml.framework/Versions/5/QtQml /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtQml.framework/QtQml $(PREFIX)/bin/raptor_gui
+	install_name_tool -change @rpath/QtNetwork.framework/Versions/5/QtNetwork /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtNetwork.framework/QtNetwork $(PREFIX)/bin/raptor_gui
+
 test_install:
 	$(PREFIX)/bin/raptor_gui --noqt --script tests/TestBatch/test_compiler_mt.tcl
 	$(PREFIX)/bin/raptor_gui --noqt --script tests/TestBatch/test_compiler_batch.tcl
