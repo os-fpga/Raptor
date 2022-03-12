@@ -536,6 +536,7 @@ jobs:
 
     - name: Unit tests
       run: |
+        make test_install_mac
         make test_install
 
     - name: Regression tests
@@ -608,6 +609,7 @@ jobs:
 
     - name: Unit tests
       run: |
+        make test_install_mac
         make test_install
         make test/unittest
         make XVFB="" debug test/gui_mac
