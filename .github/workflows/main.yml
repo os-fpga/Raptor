@@ -148,7 +148,8 @@ jobs:
         yum install -y centos-release-scl
         yum install -y devtoolset-9
         yum install -y devtoolset-9-toolchain
-        yum install -y git222
+        yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+        yum install -y git2u-all
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.5.4
       with: 
