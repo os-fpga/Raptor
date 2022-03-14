@@ -145,10 +145,13 @@ jobs:
     - name: Install ssh-agent
       run: |
         yum install -y openssh-server openssh-clients
+        yum-config-manager --enable rhel-server-rhscl-7-rpms
+        yum install -y https://repo.ius.io/ius-release-el7.rpm
         yum install -y centos-release-scl
         yum install -y devtoolset-9
         yum install -y devtoolset-9-toolchain
-        yum install -y git2u-all
+        yum install -y git222
+
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.5.4
       with: 
