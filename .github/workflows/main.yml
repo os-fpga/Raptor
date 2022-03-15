@@ -181,14 +181,14 @@ jobs:
         submodules: recursive
         fetch-depth: 0
 
-#    - name: Download workflow artifact
-#      if: matrix.mode == 'test'
-#      uses: dawidd6/action-download-artifact@v2.17.0
-#      with:
-#        workflow: main.yml
-#        repo: ${{ github.repository }}
-#        commit: ${{github.event.pull_request.head.sha}}
-#        workflow_conclusion: success
+    - name: Download workflow artifact
+      if: matrix.mode == 'test'
+      uses: dawidd6/action-download-artifact@v2.17.0
+      with:
+        workflow: main.yml
+        repo: ${{ github.repository }}
+        commit: ${{github.event.pull_request.head.sha}}
+        workflow_conclusion: success
 
     - name: Install dependencies and build QT
       run: |
