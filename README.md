@@ -16,5 +16,6 @@ INSTALL Instructions:
   make debug
   make test
   make install
+  make test_install
 ```
     
