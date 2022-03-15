@@ -152,7 +152,7 @@ jobs:
       with:
         access_token: ${{ github.token }}
         
-     - name: Install ssh-agent
+    - name: Install ssh-agent
       run: |
         yum install -y openssh-server openssh-clients
         yum-config-manager --enable rhel-server-rhscl-7-rpms
