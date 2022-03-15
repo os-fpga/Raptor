@@ -152,14 +152,15 @@ jobs:
       with:
         access_token: ${{ github.token }}
         
-    - name: Install ssh-agent
+     - name: Install ssh-agent
       run: |
         yum install -y openssh-server openssh-clients
+        yum-config-manager --enable rhel-server-rhscl-7-rpms
+        yum install -y https://repo.ius.io/ius-release-el7.rpm
         yum install -y centos-release-scl
         yum install -y devtoolset-9
         yum install -y devtoolset-9-toolchain
-        yum install -y git
-
+        yum install -y git222
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.5.4
       with: 
@@ -174,11 +175,11 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       with:
-        submodules: true
+        submodules: recursive
+        fetch-depth: 0
 
     - name: Download workflow artifact
       if: matrix.mode == 'test'
