@@ -49,6 +49,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
     - name: Checkout code
       uses: actions/checkout@v2
       with:
@@ -166,6 +167,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - name: Checkout code
       uses: actions/checkout@v2
