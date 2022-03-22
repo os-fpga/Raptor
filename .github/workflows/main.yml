@@ -659,6 +659,22 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
+
     - name: Checkout code
       uses: actions/checkout@v2
       with:
