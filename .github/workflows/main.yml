@@ -184,14 +184,18 @@ jobs:
         submodules: recursive
         fetch-depth: 0
 
-#    - name: Download workflow artifact
-#      if: matrix.mode == 'test'
-#      uses: dawidd6/action-download-artifact@v2.17.0
-#      with:
-#        workflow: main.yml
-#        repo: ${{ github.repository }}
-#        commit: ${{github.event.pull_request.head.sha}}
-#        workflow_conclusion: success
+    - name: Download workflow artifact
+      if: matrix.mode == 'test'
+      uses: dawidd6/action-download-artifact@v2.17.0
+      with:
+        workflow: main.yml
+        name: buildqt5-centos7-gcc
+        check_artifacts: true
+        search_artifacts: true
+        github_token: ${{ secrets.SSH_PRIVATE_KEY_RAPTOR }}
+        repo: ${{ github.repository }}
+        run_id: 5639604041
+        workflow_conclusion: success
 
     - name: Install dependencies and build QT
       run: |
