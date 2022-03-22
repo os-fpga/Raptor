@@ -223,6 +223,7 @@ jobs:
         make regression
 # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
+    if: ${{ false }}  # disable for now
     runs-on: windows-2022
     defaults:
       run:
@@ -348,6 +349,7 @@ jobs:
 #        make regression
 
   windows-msvc:
+    if: ${{ false }}  # disable for now
     runs-on: windows-2022
 
     defaults:
