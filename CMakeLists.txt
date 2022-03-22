@@ -192,11 +192,11 @@ if(MSVC)
 
   # Do not add zlib library, it is imported above
 
-  set_target_properties(foedag PROPERTIES
+  set_target_properties(raptor PROPERTIES
     COMPILE_OPTIONS "$<$<CONFIG:Debug>:/MTd>$<$<CONFIG:Release>:/MT>"
   )
-  target_link_libraries(foedag-bin PUBLIC Netapi32)
-  target_link_libraries(foedag  PUBLIC Netapi32)
+  target_link_libraries(raptor-bin PUBLIC Netapi32)
+  target_link_libraries(raptor  PUBLIC Netapi32)
 
 else()
   add_library(zlib STATIC IMPORTED)
