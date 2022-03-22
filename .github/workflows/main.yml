@@ -49,6 +49,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -175,6 +176,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
+
     - name: Checkout code
       uses: actions/checkout@v2
       with:
@@ -232,6 +235,7 @@ jobs:
 
 # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
+    if: ${{ false }}  # disable for now
     runs-on: windows-2022
     defaults:
       run:
@@ -268,6 +272,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - name: Git pull
       uses: actions/checkout@v2
@@ -361,6 +366,7 @@ jobs:
 #        make regression
 
   windows-msvc:
+    if: ${{ false }}  # disable for now
     runs-on: windows-2022
 
     defaults:
@@ -413,6 +419,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
       with:
@@ -498,6 +505,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
       with:
@@ -575,6 +583,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
       with:
@@ -647,6 +656,22 @@ jobs:
       uses: styfle/cancel-workflow-action@0.8.0
       with:
         access_token: ${{ github.token }}
+
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - name: Checkout code
       uses: actions/checkout@v2
