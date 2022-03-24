@@ -193,8 +193,8 @@ jobs:
         check_artifacts: true
         search_artifacts: true
         github_token: ${{ secrets.QT_DOWNLOAD }}
-        repo: ${{ github.repository }}
-        run_id: 5639604041
+        #repo: ${{ github.repository }}
+        #run_id: 5639604041
         workflow_conclusion: success
         
 #    - name: Download workflow artifact
