@@ -192,7 +192,7 @@ jobs:
         name: buildqt5-centos7-gcc
         check_artifacts: true
         search_artifacts: true
-        github_token: ${{ secrets.SSH_PRIVATE_KEY_RAPTOR }}
+        github_token: ${{ secrets.QT_DOWNLOAD }}
         repo: ${{ github.repository }}
         run_id: 5639604041
         workflow_conclusion: success
