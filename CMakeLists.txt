@@ -248,6 +248,18 @@ if(NOT NO_TCMALLOC)
   endif()
 endif()
 
+if(NOT NO_TCMALLOC)
+  find_library(TCMALLOC_LIBRARY NAMES tcmalloc)
+  if(TCMALLOC_LIBRARY)
+    set(TCMALLOC_COMPILE_OPTIONS
+        "-fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free"
+    )
+  endif()
+endif()
+
+set(CMAKE_CXX_FLAGS
+    "${CMAKE_CXX_FLAGS} ${TCMALLOC_COMPILE_OPTIONS} ${MY_CXX_WARNING_FLAGS}  -std=c++11 -pthread")
+
 if (UNIX)
   target_link_libraries(raptor PRIVATE dl)
   target_link_libraries(raptor PRIVATE util)
