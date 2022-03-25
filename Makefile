@@ -141,7 +141,8 @@ doc:
 	cd -
 
 uninstall:
-	$(RM) -r $(PREFIX)/bin/raptor_gui
-	$(RM) -r $(PREFIX)/lib/raptor_gui
-	$(RM) -r $(PREFIX)/include/raptor_gui
+	$(RM) -r $(PREFIX)/bin/raptor
+	$(RM) -r $(PREFIX)/lib/raptor
+	$(RM) -r $(PREFIX)/include/raptor
+	$(RM) -r $(PREFIX)/share/raptor
 

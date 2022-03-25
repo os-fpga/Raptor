@@ -1,0 +1,9 @@
+<device_list>
+    <device name="Gemini1" series="Gemini" family="RSGem" package="SBG484" pin_count="238" speedgrade="1" core_voltage="1.1V">
+        <resource type="io" num="200"/>
+        <resource type="lut" num="8000"/>
+        <resource type="ff" num="16000"/>
+        <resource type="bram" num="48"/>
+    </device>
+ </device_list>
+ 
