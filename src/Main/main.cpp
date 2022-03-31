@@ -3,12 +3,12 @@
   Authorized use only
 */
 
+#include "Compiler/CompilerOpenFPGA.h"
 #include "Main/CommandLine.h"
 #include "Main/Foedag.h"
 #include "Main/ToolContext.h"
 #include "MainWindow/Session.h"
 #include "MainWindow/main_window.h"
-#include "Compiler/CompilerOpenFPGA.h"
 
 namespace RS {
 
@@ -33,7 +33,8 @@ int main(int argc, char** argv) {
   FOEDAG::CommandLine* cmd = new FOEDAG::CommandLine(argc, argv);
   cmd->processArgs();
 
-  FOEDAG::GUI_TYPE guiType = FOEDAG::Foedag::getGuiType(cmd->WithQt(), cmd->WithQml());
+  FOEDAG::GUI_TYPE guiType =
+      FOEDAG::Foedag::getGuiType(cmd->WithQt(), cmd->WithQml());
 
   FOEDAG::ToolContext* context =
       new FOEDAG::ToolContext(ToolName, Company, ExecutableName);
@@ -43,9 +44,9 @@ int main(int argc, char** argv) {
     compiler = new FOEDAG::CompilerOpenFPGA();
   else
     compiler = new FOEDAG::Compiler();
-  
-  FOEDAG::Foedag* foedag = new FOEDAG::Foedag(cmd, RS::mainWindowBuilder,
-                                              RS::registerAllCommands, compiler, context);
+
+  FOEDAG::Foedag* foedag = new FOEDAG::Foedag(
+      cmd, RS::mainWindowBuilder, RS::registerAllCommands, compiler, context);
 
   return foedag->init(guiType);
 }
