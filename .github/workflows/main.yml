@@ -520,6 +520,8 @@ jobs:
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
+      with:
+        setup-python: false
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1
@@ -574,7 +576,9 @@ jobs:
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
-
+      with:
+        setup-python: false
+        
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.5.4
       with: 

@@ -3,6 +3,7 @@
   Authorized use only
 */
 
+#include "Compiler/CompilerOpenFPGA.h"
 #include "Main/CommandLine.h"
 #include "Main/Foedag.h"
 #include "Main/ToolContext.h"
@@ -15,9 +16,8 @@ namespace RS {
 #define ToolName "Raptor"
 #define ExecutableName "raptor"
 
-QWidget* mainWindowBuilder(FOEDAG::CommandLine* cmd,
-                           FOEDAG::TclInterpreter* interp) {
-  FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{interp};
+QWidget* mainWindowBuilder(FOEDAG::Session* session) {
+  FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{session};
   mainW->MainWindowTitle(std::string(Company) + " " + std::string(ToolName));
   return mainW;
 }
@@ -28,24 +28,25 @@ void registerAllCommands(QWidget* widget, FOEDAG::Session* session) {
 
 }  // namespace RS
 
-FOEDAG::GUI_TYPE getGuiType(const bool& withQt, const bool& withQml) {
-  if (!withQt) return FOEDAG::GUI_TYPE::GT_NONE;
-  if (withQml)
-    return FOEDAG::GUI_TYPE::GT_QML;
-  else
-    return FOEDAG::GUI_TYPE::GT_WIDGET;
-}
-
 int main(int argc, char** argv) {
   Q_INIT_RESOURCE(main_window_resource);
   FOEDAG::CommandLine* cmd = new FOEDAG::CommandLine(argc, argv);
   cmd->processArgs();
 
-  FOEDAG::GUI_TYPE guiType = getGuiType(cmd->WithQt(), cmd->WithQml());
+  FOEDAG::GUI_TYPE guiType =
+      FOEDAG::Foedag::getGuiType(cmd->WithQt(), cmd->WithQml());
+
   FOEDAG::ToolContext* context =
       new FOEDAG::ToolContext(ToolName, Company, ExecutableName);
-  FOEDAG::Foedag* foedag = new FOEDAG::Foedag(cmd, RS::mainWindowBuilder,
-                                              RS::registerAllCommands, context);
+
+  FOEDAG::Compiler* compiler = nullptr;
+  if (cmd->CompilerName() == "openfpga")
+    compiler = new FOEDAG::CompilerOpenFPGA();
+  else
+    compiler = new FOEDAG::Compiler();
+
+  FOEDAG::Foedag* foedag = new FOEDAG::Foedag(
+      cmd, RS::mainWindowBuilder, RS::registerAllCommands, compiler, context);
 
   return foedag->init(guiType);
 }
