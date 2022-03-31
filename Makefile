@@ -115,6 +115,14 @@ test_install:
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_foedag.tcl
 
+test/openfpga: run-cmake-release
+	yosys -version
+	./build/bin/raptor --batch --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+
+test/openfpga_gui: run-cmake-release
+	yosys -version
+	./build/bin/raptor --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+
 test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_start_stop.tcl
 # Tests hanging on mac
