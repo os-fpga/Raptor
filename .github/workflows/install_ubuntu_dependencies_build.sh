@@ -3,6 +3,7 @@ sudo apt-get update -qq
 sudo apt install -y \
   g++-9 \
   tclsh \
+  tcl-dev \
   cmake \
   build-essential \
   swig \
