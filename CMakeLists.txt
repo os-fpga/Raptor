@@ -24,6 +24,7 @@ option(
 project(RAPTOR)
 
 add_subdirectory(FOEDAG_rs)
+add_subdirectory(yosys_verific_rs)
 #add_subdirectory(OpenFPGA_RS)
 
 
