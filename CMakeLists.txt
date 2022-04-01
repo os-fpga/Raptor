@@ -22,6 +22,7 @@ option(
   On)
 
 project(RAPTOR)
+set(RAPTOR ON)
 
 add_subdirectory(FOEDAG_rs)
 add_subdirectory(yosys_verific_rs)
