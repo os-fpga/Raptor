@@ -6,7 +6,6 @@ on:
 
 jobs:
   linux-gcc:
-    if: ${{ false }}  # disable for now
     name: ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -130,7 +129,6 @@ jobs:
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
-    if: ${{ false }}  # disable for now
     name:  ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -500,7 +498,6 @@ jobs:
         python-version: 3.8
 
     - name: ssh-agent
-      if: ${{ false }}  # disable for now
       uses: webfactory/ssh-agent@v0.5.4
       with: 
         ssh-private-key: |
@@ -517,6 +514,9 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
@@ -552,19 +552,16 @@ jobs:
         which -a bison && bison --version
 
     - name: Build
-      if: ${{ false }}  # disable for now
       run: |
         make release
         make install
 
     - name: Unit tests
-      if: ${{ false }}  # disable for now
       run: |
         make test_install_mac
         make test_install
 
     - name: Regression tests
-      if: ${{ false }}  # disable for now
       run: |
         make regression
 
@@ -588,7 +585,6 @@ jobs:
         setup-python: false
         
     - name: ssh-agent
-      if: ${{ false }}  # disable for now
       uses: webfactory/ssh-agent@v0.5.4
       with: 
         ssh-private-key: |
@@ -605,6 +601,9 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1
@@ -634,13 +633,11 @@ jobs:
         which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
 
     - name: Build
-      if: ${{ false }}  # disable for now
       run: |
         make release
         make install
 
     - name: Unit tests
-      if: ${{ false }}  # disable for now
       run: |
         make test_install_mac
         make test_install
@@ -648,12 +645,10 @@ jobs:
         make XVFB="" debug test/gui_mac
 
     - name: Regression tests
-      if: ${{ false }}  # disable for now
       run: |
         make regression
 
   CodeFormatting:
-    if: ${{ false }}  # disable for now
     runs-on: ubuntu-20.04
 
     steps:
