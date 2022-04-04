@@ -22,10 +22,11 @@ option(
   On)
 
 project(RAPTOR)
+set(RAPTOR ON)
 
 add_subdirectory(FOEDAG_rs)
-#add_subdirectory(OpenFPGA_RS)
-
+add_subdirectory(yosys_verific_rs)
+add_subdirectory(OpenFPGA_RS)
 
 # Check system 
 message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
