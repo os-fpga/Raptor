@@ -517,10 +517,6 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
-      if: ${{ false }}  # disable for now
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
@@ -609,10 +605,6 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
-      if: ${{ false }}  # disable for now
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1

@@ -1,6 +1,5 @@
 # Install required dependencies for Mac OS systems
-brew install qt5 \
-    bison \
+brew install bison \
     flex \
     gawk \
     libffi \
