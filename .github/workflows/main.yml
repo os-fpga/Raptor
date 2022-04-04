@@ -90,8 +90,8 @@ jobs:
     - name: Test
       if: matrix.mode == 'test'
       run: |
-#       Disable until VPR Unit test pass      
-#       make debug test/unittest-d
+        # Disable until VPR Unit test pass      
+        # make debug test/unittest-d
         make release test/batch
         make test/gui
 
@@ -235,8 +235,8 @@ jobs:
     - name: Test
       if: matrix.mode == 'test'
       run: |
-#       Disable until VPR Unit test pass
-#       make debug test/unittest-d
+        # Disable until VPR Unit test pass
+        # make debug test/unittest-d
         make release test/batch
         make test/gui
         make regression
