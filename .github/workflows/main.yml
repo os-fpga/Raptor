@@ -500,6 +500,7 @@ jobs:
         python-version: 3.8
 
     - name: ssh-agent
+      if: ${{ false }}  # disable for now
       uses: webfactory/ssh-agent@v0.5.4
       with: 
         ssh-private-key: |
@@ -516,6 +517,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
+      if: ${{ false }}  # disable for now
       with:
         submodules: recursive
         fetch-depth: 0
@@ -529,6 +531,10 @@ jobs:
       uses: hendrikmuhs/ccache-action@v1
       with:
         key: macos-gcc
+
+    - name: Install other dependencies
+      run: |
+        bash .github/workflows/install_macos_dependencies_build.sh
 
     - name: Configure shell
       run: |
@@ -586,6 +592,7 @@ jobs:
         setup-python: false
         
     - name: ssh-agent
+      if: ${{ false }}  # disable for now
       uses: webfactory/ssh-agent@v0.5.4
       with: 
         ssh-private-key: |
@@ -602,6 +609,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
 
     - uses: actions/checkout@v2
+      if: ${{ false }}  # disable for now
       with:
         submodules: recursive
         fetch-depth: 0
@@ -611,10 +619,14 @@ jobs:
       with:
         key: macos-clang
 
+    - name: Install other dependencies
+      run: |
+        bash .github/workflows/install_macos_dependencies_build.sh
+
     - name: Configure shell
       run: |
         echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
-        echo "PATH=$(brew --prefix)/opt/ccache/libexec:$PATH" >> $GITHUB_ENV
+        echo "PATH=$(brew --prefix)/opt/ccache/libexec:$(brew --prefix bison)/bin:$PATH" >> $GITHUB_ENV
 
     - name: Install XQuartz on macOS
       run: brew install xquartz --cask
