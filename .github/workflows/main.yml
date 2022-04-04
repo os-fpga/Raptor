@@ -6,6 +6,7 @@ on:
 
 jobs:
   linux-gcc:
+    if: ${{ false }}  # disable for now
     name: ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -129,6 +130,7 @@ jobs:
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
+    if: ${{ false }}  # disable for now
     name:  ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -649,6 +651,7 @@ jobs:
         make regression
 
   CodeFormatting:
+    if: ${{ false }}  # disable for now
     runs-on: ubuntu-20.04
 
     steps:
