@@ -6,7 +6,8 @@ brew install bison \
     pkg-config \
     bash \
     readline \
-    ninja
+    ninja \
+    wget
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/qt@5/lib"
 export CPPFLAGS="-I/usr/local/opt/qt@5/include"
