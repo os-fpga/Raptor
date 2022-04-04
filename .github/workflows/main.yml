@@ -669,7 +669,6 @@ jobs:
 
   ClangTidy:
     runs-on: ubuntu-20.04
-    if: ${{ false }}  # disable for now
     if: ${{github.event_name == 'pull_request'}}
 
     steps:
