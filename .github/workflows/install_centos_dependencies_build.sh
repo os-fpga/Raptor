@@ -15,7 +15,7 @@ yum install -y tcl
 yum install -y tcl-dev
 yum install -y make
 yum install -y flex
-yom install -y bison
+yum install -y bison
 yum install -y swig
 yum install -y which
 yum install -y google-perftools
