@@ -558,6 +558,12 @@ jobs:
         make release
         make install
 
+    - name: Upload build dir
+      uses: actions/upload-artifact@v2
+      with:
+        name: build_dir
+        path: build
+
     - name: Unit tests
       run: |
         make test_install_mac
@@ -568,6 +574,7 @@ jobs:
         make regression
 
   macos-clang:
+    if: ${{ false }}  # disable for now
     runs-on: macos-latest
 
     steps:
