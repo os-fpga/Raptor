@@ -557,6 +557,7 @@ jobs:
       run: |
         make release
         make install
+      continue-on-error: true
 
     - name: Upload build dir
       uses: actions/upload-artifact@v2
@@ -565,11 +566,13 @@ jobs:
         path: build
 
     - name: Unit tests
+      if: ${{ false }}
       run: |
         make test_install_mac
         make test_install
 
     - name: Regression tests
+      if: ${{ false }}
       run: |
         make regression
 
