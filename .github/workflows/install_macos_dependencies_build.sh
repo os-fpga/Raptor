@@ -8,8 +8,7 @@ brew install bison \
     readline \
     ninja \
     wget \
-    coreutils \
-    gcc 
+    coreutils
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/qt@5/lib"
 export CPPFLAGS="-I/usr/local/opt/qt@5/include"
