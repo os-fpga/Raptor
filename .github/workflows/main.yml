@@ -6,6 +6,7 @@ on:
 
 jobs:
   linux-gcc:
+    if: ${{ false }}
     name: ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -131,6 +132,7 @@ jobs:
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
+    if: ${{ false }}
     name:  ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -538,11 +540,10 @@ jobs:
 
     - name: Configure shell
       run: |
-        echo 'CC=gcc-9' >> $GITHUB_ENV
-        echo 'CXX=g++-9' >> $GITHUB_ENV
         echo "/usr/local/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
         echo "$(brew --prefix bison)/bin" >> $GITHUB_PATH
         echo "$(brew --prefix)/opt/ccache/libexec" >> $GITHUB_PATH
+        echo "$(brew --prefix gcc)/bin" >> $GITHUB_PATH
         echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
 
     - name: Show shell configuration
@@ -581,6 +582,7 @@ jobs:
         make regression
 
   macos-clang:
+    if: ${{ false }}
     runs-on: macos-latest
 
     steps:
