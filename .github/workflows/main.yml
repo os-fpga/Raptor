@@ -6,7 +6,6 @@ on:
 
 jobs:
   linux-gcc:
-    if: ${{ false }}  # disable for now
     name: ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -132,7 +131,6 @@ jobs:
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
-    if: ${{ false }}  # disable for now
     name:  ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -562,8 +560,8 @@ jobs:
 
     - name: Build
       run: |
-#        make release
-#        make install
+        make release
+        make install
 
     - name: Upload build dir
       uses: actions/upload-artifact@v2
@@ -572,18 +570,17 @@ jobs:
         path: build
 
     - name: Unit tests
-      if: ${{ false }}
+#      if: ${{ false }}
       run: |
-#        make test_install_mac
-#        make test_install
+        make test_install_mac
+        make test_install
 
     - name: Regression tests
-      if: ${{ false }}
+#      if: ${{ false }}
       run: |
-#        make regression
+        make regression
 
   macos-clang:
-    if: ${{ false }}  # disable for now
     runs-on: macos-latest
 
     steps:
@@ -635,7 +632,9 @@ jobs:
     - name: Configure shell
       run: |
         echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
-        echo "PATH=$(brew --prefix)/opt/ccache/libexec:$(brew --prefix bison)/bin:$PATH" >> $GITHUB_ENV
+        echo "/usr/local/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
+        echo "$(brew --prefix bison)/bin" >> $GITHUB_PATH
+        echo "$(brew --prefix)/opt/ccache/libexec" >> $GITHUB_PATH
 
     - name: Install XQuartz on macOS
       run: brew install xquartz --cask
@@ -652,22 +651,21 @@ jobs:
 
     - name: Build
       run: |
-#        make release
-#        make install
+        make release
+        make install
 
     - name: Unit tests
       run: |
-#        make test_install_mac
-#        make test_install
-#        make test/unittest
-#        make XVFB="" debug test/gui_mac
+        make test_install_mac
+        make test_install
+        make test/unittest
+        make XVFB="" debug test/gui_mac
 
     - name: Regression tests
       run: |
-#        make regression
+        make regression
 
   CodeFormatting:
-    if: ${{ false }}  # disable for now
     runs-on: ubuntu-20.04
 
     steps:

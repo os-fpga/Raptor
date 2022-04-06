@@ -33,9 +33,6 @@ yum install -y autoconf
 wget https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm
 rpm -Uvh epel-release*rpm
 yum install -y tcllib
-yum install -y bison
-yum install -y flex
-yum install -y readline-devel
 yum install -y gawk
 yum install -y tcl-devel
 yum install -y libffi-devel
