@@ -503,8 +503,239 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: check gcc
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
+
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install dependencies
+      uses: jurplel/install-qt-action@v2
+      with:
+        setup-python: false
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1
+      with:
+        key: macos-gcc
+
+    - name: Install other dependencies
       run: |
-        brew install gcc
-        which gcc && gcc --version
-        which g++ && g++ --version
+        bash .github/workflows/install_macos_dependencies_build.sh
+
+    - name: Configure shell
+      run: |
+        echo 'CC=/usr/bin/gcc' >> $GITHUB_ENV
+        echo 'CXX=/usr/bin/g++' >> $GITHUB_ENV
+        echo "/usr/local/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
+        echo "$(brew --prefix bison)/bin" >> $GITHUB_PATH
+        echo "$(brew --prefix)/opt/ccache/libexec" >> $GITHUB_PATH
+        echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
+
+    - name: Show shell configuration
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        which $CC && $CC --version
+        which $CXX && $CXX --version
+        which bison && bison --version
+        which install && install --version
+
+    - name: Build
+      run: |
+        make release
+        make install
+
+    - name: Unit tests
+#      if: ${{ false }}
+      run: |
+        make test_install_mac
+        make test_install
+
+    - name: Regression tests
+#      if: ${{ false }}
+      run: |
+        make regression
+
+  macos-clang:
+    if: ${{ false }}
+    runs-on: macos-latest
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      uses: jurplel/install-qt-action@v2
+      with:
+        setup-python: false
+        
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
+
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1
+      with:
+        key: macos-clang
+
+    - name: Install other dependencies
+      run: |
+        bash .github/workflows/install_macos_dependencies_build.sh
+
+    - name: Configure shell
+      run: |
+        echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
+        echo "/usr/local/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
+        echo "$(brew --prefix bison)/bin" >> $GITHUB_PATH
+        echo "$(brew --prefix)/opt/ccache/libexec" >> $GITHUB_PATH
+
+    - name: Install XQuartz on macOS
+      run: brew install xquartz --cask
+
+    - name: Show shell configuration
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which -a bison && bison --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+
+    - name: Build
+      run: |
+        make release
+        make install
+
+    - name: Unit tests
+      run: |
+        make test_install_mac
+        make test_install
+        make test/unittest
+        make XVFB="" debug test/gui_mac
+
+    - name: Regression tests
+      run: |
+        make regression
+
+  CodeFormatting:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get install clang-format
+        clang-format --version
+
+    - name: Run formatting style check
+      run: ./.github/bin/run-clang-format.sh
+
+  ClangTidy:
+    runs-on: ubuntu-20.04
+    if: ${{github.event_name == 'pull_request'}}
+
+    steps:
+
+    - name: Cancel previous
+      uses: styfle/cancel-workflow-action@0.8.0
+      with:
+        access_token: ${{ github.token }}
+
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.5.4
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update -qq
+        sudo apt -qq -y install clang-tidy-12 \
+                                g++-9 tclsh  default-jre cmake \
+                                uuid-dev build-essential xorg \
+                                qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev xvfb
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1
+      with:
+        key: clang-tidy-codegen
+
+    - name: Configure shell
+      run: |
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+
+    - name: Prepare source
+      run: |
+        make run-cmake-release
+        ln -s build/compile_commands.json .
+
+    - name: Run clang tidy
+      run: |
+        ./.github/bin/run-clang-tidy.sh
