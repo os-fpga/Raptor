@@ -20,7 +20,6 @@ sudo apt install -y \
   flex \
   libreadline-dev \
   gawk \
-  tcl-dev \
   libffi-dev \
   git \
   graphviz \
