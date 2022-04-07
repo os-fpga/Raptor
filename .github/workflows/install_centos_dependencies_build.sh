@@ -30,6 +30,24 @@ yum install -y mesa-libGL-devel
 yum install -y libxcb libxcb-devel xcb-util xcb-util-devel libxkbcommon-devel libxkbcommon-x11-devel
 yum install -y xcb-util-image-devel xcb-util-keysyms-devel xcb-util-renderutil-devel xcb-util-wm-devel
 yum install -y autoconf
+wget https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm
+rpm -Uvh epel-release*rpm
+yum install -y tcllib
+yum install -y gawk
+yum install -y tcl-devel
+yum install -y libffi-devel
+yum install -y git
+yum install -y graphviz
+yum install -y pkgconfig
+yum install -y python3
+yum install -y boost-system
+yum install -y boost-python
+yum install -y boost-filesystem
+yum install -y zlib-devel
+yum install http://repo.okay.com.mx/centos/7/x86_64/release/okay-release-1-1.noarch.rpm
+yum install -y ninja-build
+yum install -y wget
+
 
 ln -s $PWD/cmake-3.15.7-Linux-x86_64/bin/ctest /usr/bin/ctest
 echo 'QMAKE_CC=/opt/rh/devtoolset-9/root/usr/bin/gcc' >> $GITHUB_ENV
