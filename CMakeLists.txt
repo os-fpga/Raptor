@@ -26,7 +26,9 @@ set(RAPTOR ON)
 
 add_subdirectory(FOEDAG_rs)
 add_subdirectory(yosys_verific_rs)
-add_subdirectory(OpenFPGA_RS)
+if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
+    add_subdirectory(OpenFPGA_RS)
+endif()
 
 # Check system 
 message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
