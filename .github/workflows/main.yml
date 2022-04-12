@@ -72,7 +72,7 @@ jobs:
         echo 'CXX=g++-9' >> $GITHUB_ENV
         echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
         echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
-        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG" -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON'" >> $GITHUB_ENV
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
 
     - name: Show shell configuration
@@ -88,7 +88,8 @@ jobs:
         which $CXX && $CXX --version
 
     - name: Test
-      if: matrix.mode == 'test'
+      if: ${{ false }}  # disable for now
+      #if: matrix.mode == 'test'
       run: |
         # Disable until VPR Unit test pass      
         # make debug test/unittest-d
@@ -97,17 +98,20 @@ jobs:
         make test/gui
 
     - name: Regression
-      if: matrix.mode == 'regression'
+      if: ${{ false }}  # disable for now
+      #if: matrix.mode == 'regression'
       run: |
         make regression
 
     - name: Coverage
-      if: matrix.mode == 'coverage'
+      if: ${{ false }}  # disable for now
+      #if: matrix.mode == 'coverage'
       run: |
         make debug coverage-build/raptor_gui.coverage
 
     - name: Valgrind
-      if: matrix.mode == 'valgrind'
+      if: ${{ false }}  # disable for now
+      #if: matrix.mode == 'valgrind'
       run: |
         make debug
         make test/valgrind
@@ -121,7 +125,16 @@ jobs:
         make test_install
 
     - name: Archive regression artifacts
-      if: matrix.mode == 'regression' && always()
+      if: matrix.mode == 'install'
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: |
+          ${{ github.workspace }}/build
+
+    - name: Archive regression artifacts
+      if: ${{ false }}  # disable for now
+      #if: matrix.mode == 'regression' && always()
       uses: actions/upload-artifact@v2
       with:
         name: raptor_gui-linux-gcc-regression
@@ -131,6 +144,7 @@ jobs:
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
+    if: ${{ false }}  # disable for now
     name:  ${{ matrix.mode }}
 
     runs-on: ubuntu-latest
@@ -488,6 +502,7 @@ jobs:
           ${{ github.workspace }}/build/tests/
 
   macos-gcc:
+    if: ${{ false }}  # disable for now
     runs-on: macos-latest
 
     steps:
@@ -573,6 +588,7 @@ jobs:
         make regression
 
   macos-clang:
+    if: ${{ false }}  # disable for now
     runs-on: macos-latest
 
     steps:
