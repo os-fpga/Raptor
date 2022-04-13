@@ -18,8 +18,15 @@
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 batch {
+  ipgenerate
   synth
-  globp
+  packing
+    globp
+    place
+    route
+    sta
+    power
+    bitstream
 }
 
 after 22000 {set CONT 0}
