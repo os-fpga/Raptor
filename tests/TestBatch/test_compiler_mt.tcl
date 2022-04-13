@@ -20,6 +20,7 @@
 synthesize
 after 3000 {puts "STOP"; flush stdout ; stop} 
 after 5000 {synthesize}
+after 16000 {packing}
 after 17000 {global_placement}
 after 28000 {set CONT 0}
 set CONT 1 
