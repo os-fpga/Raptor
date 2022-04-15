@@ -109,18 +109,17 @@ test_install_mac:
 	install_name_tool -change @rpath/QtNetwork.framework/Versions/5/QtNetwork /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtNetwork.framework/QtNetwork $(PREFIX)/bin/raptor
 
 test_install:
-	$(PREFIX)/bin/raptor --noqt --script tests/TestBatch/test_compiler_mt.tcl
-	$(PREFIX)/bin/raptor --noqt --script tests/TestBatch/test_compiler_batch.tcl
+	$(PREFIX)/bin/raptor --batch --script tests/TestBatch/test_compiler_mt.tcl
+	$(PREFIX)/bin/raptor --batch --script tests/TestBatch/test_compiler_batch.tcl
+	$(PREFIX)/bin/raptor --batch --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_foedag.tcl
 
 test/openfpga: run-cmake-release
-	yosys -version
 	./build/bin/raptor --batch --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
 
 test/openfpga_gui: run-cmake-release
-	yosys -version
 	./build/bin/raptor --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
 
 test/gui_mac: run-cmake-debug
@@ -132,8 +131,9 @@ test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
 
 test/batch: run-cmake-release
-	./dbuild/bin/raptor --noqt --script tests/TestBatch/test_compiler_mt.tcl
-	./dbuild/bin/raptor --noqt --script tests/TestBatch/test_compiler_batch.tcl
+#	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+	./build/bin/raptor --batch --script tests/TestBatch/test_compiler_mt.tcl
+	./build/bin/raptor --batch --script tests/TestBatch/test_compiler_batch.tcl
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
