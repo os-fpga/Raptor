@@ -131,7 +131,7 @@ test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
 
 test/batch: run-cmake-release
-	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+#	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
 	./build/bin/raptor --batch --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --batch --script tests/TestBatch/test_compiler_batch.tcl
 
