@@ -31,6 +31,9 @@ if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
     add_subdirectory(OpenFPGA_RS)
 endif()
 
+# Require swig 3
+find_package(SWIG 3.0 REQUIRED)
+
 # Check system 
 message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
 
