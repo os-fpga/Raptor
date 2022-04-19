@@ -17,7 +17,7 @@ yum install -y make
 yum install -y flex
 yum install -y bison
 yum install -y readline-devel
-yum install -y swig
+yum install -y swig3
 yum install -y which
 yum install -y google-perftools
 yum install -y gperftools gperftools-devel
