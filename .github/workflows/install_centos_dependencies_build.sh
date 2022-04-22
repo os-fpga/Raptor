@@ -12,7 +12,6 @@ yum install -y devtoolset-9-toolchain
 yum install -y devtoolset-9-gcc-c++
 scl enable devtoolset-9 bash
 yum install -y tcl
-yum install -y tcl-dev
 yum install -y make
 yum install -y flex
 yum install -y bison
@@ -39,7 +38,6 @@ yum install -y libffi-devel
 yum install -y git
 yum install -y graphviz
 yum install -y pkgconfig
-yum install -y python3
 yum install -y boost-system
 yum install -y boost-python
 yum install -y boost-filesystem
