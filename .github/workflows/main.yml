@@ -72,6 +72,7 @@ jobs:
         echo 'CXX=g++-9' >> $GITHUB_ENV
         echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
         echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
         echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
 
@@ -230,6 +231,7 @@ jobs:
         echo 'CXX=/opt/rh/devtoolset-9/root/usr/bin/g++' >> $GITHUB_ENV
         echo 'PATH=/usr/local/Qt-5.15.0/bin:/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
         echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
         echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
 
@@ -544,6 +546,7 @@ jobs:
         echo "$(brew --prefix bison)/bin" >> $GITHUB_PATH
         echo "$(brew --prefix)/opt/ccache/libexec" >> $GITHUB_PATH
         echo 'PREFIX=${GITHUB_WORKSPACE}/install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
 
     - name: Show shell configuration
       run: |
@@ -627,6 +630,7 @@ jobs:
         echo "/usr/local/opt/coreutils/libexec/gnubin" >> $GITHUB_PATH
         echo "$(brew --prefix bison)/bin" >> $GITHUB_PATH
         echo "$(brew --prefix)/opt/ccache/libexec" >> $GITHUB_PATH
+        echo "$PREFIX" >> $GITHUB_PATH
 
     - name: Install XQuartz on macOS
       run: brew install xquartz --cask
