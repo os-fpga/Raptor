@@ -135,11 +135,11 @@ target_include_directories(raptor PRIVATE
 target_include_directories(raptor PUBLIC $<INSTALL_INTERFACE:include/raptor>)
 
 if(MSVC)
-  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${QRC_MAIN_WINDOW})
+  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp  ${PROJECT_SOURCE_DIR}/FOEDAG_rs/src/Compiler/CompilerRS.cpp ${QRC_MAIN_WINDOW})
   set_property(TARGET raptor-bin PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   set_property(TARGET raptor-bin PROPERTY COMPILER_FLAGS /DSTATIC_BUILD)
 else()
-  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${QRC_MAIN_WINDOW})
+  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${PROJECT_SOURCE_DIR}/FOEDAG_rs/src/Compiler/CompilerRS.cpp ${QRC_MAIN_WINDOW})
 endif()
 set_target_properties(raptor-bin PROPERTIES OUTPUT_NAME raptor)
 

@@ -28,12 +28,20 @@ RULE_MESSAGES ?= on
 
 release: run-cmake-release
 	cmake --build build -j $(CPU_CORES)
+	cp -f ./yosys_verific_rs/yosys/install/bin/yosys build/bin/yosys
+	cp -f ./yosys_verific_rs/yosys/install/bin/abc build/bin/abc
+	cp -f ./yosys_verific_rs/yosys/install/bin/de build/bin/de
+	@[ -f ./OpenFPGA_RS/vpr/vpr ] && cp -f ./OpenFPGA_RS/vpr/vpr dbuild/bin/vpr || true
 
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
 
 debug: run-cmake-debug
 	cmake --build dbuild -j $(CPU_CORES)
+	cp -f ./yosys_verific_rs/yosys/debug-install/bin/yosys dbuild/bin/yosys
+	cp -f ./yosys_verific_rs/yosys/debug-install/bin/abc dbuild/bin/abc
+	cp -f ./yosys_verific_rs/yosys/debug-install/bin/de dbuild/bin/de
+	@[ -f ./OpenFPGA_RS/vpr/vpr ] && cp -f ./OpenFPGA_RS/vpr/vpr dbuild/bin/vpr || true
 
 run-cmake-release:
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
@@ -69,7 +77,7 @@ coverage-build/html: raptor_gui-build/raptor_gui.coverage
 test/regression: run-cmake-release
 
 test/valgrind: run-cmake-debug
-	$(XVFB) valgrind --tool=memcheck --log-file=valgrind.log ./dbuild/bin/raptor --replay tests/TestGui/gui_foedag.tcl
+	$(XVFB) valgrind --tool=memcheck --log-file=valgrind.log ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	grep "ERROR SUMMARY: 0" valgrind.log
 
 
@@ -109,18 +117,19 @@ test_install_mac:
 	install_name_tool -change @rpath/QtNetwork.framework/Versions/5/QtNetwork /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtNetwork.framework/QtNetwork $(PREFIX)/bin/raptor
 
 test_install:
-	$(PREFIX)/bin/raptor --batch --script tests/TestBatch/test_compiler_mt.tcl
-	$(PREFIX)/bin/raptor --batch --script tests/TestBatch/test_compiler_batch.tcl
-	$(PREFIX)/bin/raptor --batch --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+	$(PREFIX)/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
+	$(PREFIX)/bin/raptor --batch --compiler dummy --script tests/TestBatch/test_compiler_mt.tcl
+	$(PREFIX)/bin/raptor --batch --compiler dummy --script tests/TestBatch/test_compiler_batch.tcl
+#	$(PREFIX)/bin/raptor --batch --script tests/Testcases/raygentop/raygentop.tcl
 
 test/gui: run-cmake-debug
-	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_foedag.tcl
+	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 
 test/openfpga: run-cmake-release
-	./build/bin/raptor --batch --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
 
 test/openfpga_gui: run-cmake-release
-	./build/bin/raptor --compiler openfpga --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+	./build/bin/raptor --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
 
 test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_start_stop.tcl
@@ -131,9 +140,9 @@ test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
 
 test/batch: run-cmake-release
-#	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
-	./build/bin/raptor --batch --script tests/TestBatch/test_compiler_mt.tcl
-	./build/bin/raptor --batch --script tests/TestBatch/test_compiler_batch.tcl
+	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
+	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_mt.tcl
+	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_batch.tcl
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
