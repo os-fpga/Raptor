@@ -3,7 +3,7 @@
   Authorized use only
 */
 
-#include "Compiler/CompilerOpenFPGA.h"
+#include "Compiler/CompilerRS.h"
 #include "Main/CommandLine.h"
 #include "Main/Foedag.h"
 #include "Main/ToolContext.h"
@@ -40,13 +40,22 @@ int main(int argc, char** argv) {
       new FOEDAG::ToolContext(ToolName, Company, ExecutableName);
 
   FOEDAG::Compiler* compiler = nullptr;
-  if (cmd->CompilerName() == "openfpga")
-    compiler = new FOEDAG::CompilerOpenFPGA();
-  else
+  FOEDAG::CompilerRS* opcompiler = nullptr;
+  if (cmd->CompilerName() == "dummy") {
     compiler = new FOEDAG::Compiler();
+  } else {
+    opcompiler = new FOEDAG::CompilerRS();
+    compiler = opcompiler;
+    compiler->SetUseVerific(true);
+  }
 
   FOEDAG::Foedag* foedag = new FOEDAG::Foedag(
       cmd, RS::mainWindowBuilder, RS::registerAllCommands, compiler, context);
 
+  if (opcompiler) {
+    const std::string& binpath = foedag->Context()->BinaryPath().string();
+    opcompiler->YosysExecPath(binpath + "/yosys");
+    opcompiler->VprExecPath(binpath + "/vpr");
+  }
   return foedag->init(guiType);
 }
