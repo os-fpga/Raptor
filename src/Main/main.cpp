@@ -7,6 +7,7 @@
 #include "Main/CommandLine.h"
 #include "Main/Foedag.h"
 #include "Main/ToolContext.h"
+#include "Main/Settings.h"
 #include "MainWindow/Session.h"
 #include "MainWindow/main_window.h"
 
@@ -39,6 +40,8 @@ int main(int argc, char** argv) {
   FOEDAG::ToolContext* context =
       new FOEDAG::ToolContext(ToolName, Company, ExecutableName);
 
+  FOEDAG::Settings* settings = new FOEDAG::Settings();
+
   FOEDAG::Compiler* compiler = nullptr;
   FOEDAG::CompilerRS* opcompiler = nullptr;
   if (cmd->CompilerName() == "dummy") {
@@ -50,7 +53,7 @@ int main(int argc, char** argv) {
   }
 
   FOEDAG::Foedag* foedag = new FOEDAG::Foedag(
-      cmd, RS::mainWindowBuilder, RS::registerAllCommands, compiler, context);
+      cmd, RS::mainWindowBuilder, RS::registerAllCommands, compiler, settings, context);
 
   if (opcompiler) {
     const std::string& binpath = foedag->Context()->BinaryPath().string();
