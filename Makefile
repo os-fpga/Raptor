@@ -31,7 +31,7 @@ release: run-cmake-release
 	cp -f ./yosys_verific_rs/yosys/install/bin/yosys build/bin/yosys
 	cp -f ./yosys_verific_rs/yosys/install/bin/abc build/bin/abc
 	cp -f ./yosys_verific_rs/yosys/install/bin/de build/bin/de
-	@[ -f ./OpenFPGA_RS/vpr/vpr ] && cp -f ./OpenFPGA_RS/vpr/vpr dbuild/bin/vpr || true
+	@[ -f ./OpenFPGA_RS/vpr/vpr ] && cp -f ./OpenFPGA_RS/vpr/vpr build/bin/vpr || true
 
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
@@ -118,18 +118,16 @@ test_install_mac:
 
 test_install:
 	$(PREFIX)/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
-	$(PREFIX)/bin/raptor --batch --compiler dummy --script tests/TestBatch/test_compiler_mt.tcl
-	$(PREFIX)/bin/raptor --batch --compiler dummy --script tests/TestBatch/test_compiler_batch.tcl
-#	$(PREFIX)/bin/raptor --batch --script tests/Testcases/raygentop/raygentop.tcl
+	$(PREFIX)/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 
 test/openfpga: run-cmake-release
-	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 
 test/openfpga_gui: run-cmake-release
-	./build/bin/raptor --script FOEDAG_rs/FOEDAG/tests/Testcases/raygentop/raygentop.tcl
+	./build/bin/raptor --script FOEDAG_rs/FOEDAG/tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 
 test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_start_stop.tcl
@@ -141,6 +139,7 @@ test/gui_mac: run-cmake-debug
 
 test/batch: run-cmake-release
 	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
+	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_batch.tcl
 
