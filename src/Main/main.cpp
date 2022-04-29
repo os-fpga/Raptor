@@ -6,8 +6,8 @@
 #include "Compiler/CompilerRS.h"
 #include "Main/CommandLine.h"
 #include "Main/Foedag.h"
-#include "Main/ToolContext.h"
 #include "Main/Settings.h"
+#include "Main/ToolContext.h"
 #include "MainWindow/Session.h"
 #include "MainWindow/main_window.h"
 
@@ -52,8 +52,9 @@ int main(int argc, char** argv) {
     compiler->SetUseVerific(true);
   }
 
-  FOEDAG::Foedag* foedag = new FOEDAG::Foedag(
-      cmd, RS::mainWindowBuilder, RS::registerAllCommands, compiler, settings, context);
+  FOEDAG::Foedag* foedag =
+      new FOEDAG::Foedag(cmd, RS::mainWindowBuilder, RS::registerAllCommands,
+                         compiler, settings, context);
 
   if (opcompiler) {
     const std::string& binpath = foedag->Context()->BinaryPath().string();
