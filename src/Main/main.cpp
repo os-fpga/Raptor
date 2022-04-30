@@ -57,9 +57,14 @@ int main(int argc, char** argv) {
                          compiler, settings, context);
 
   if (opcompiler) {
-    const std::string& binpath = foedag->Context()->BinaryPath().string();
-    opcompiler->YosysExecPath(binpath + "/yosys");
-    opcompiler->VprExecPath(binpath + "/vpr");
+    std::filesystem::path binpath = foedag->Context()->BinaryPath();
+    std::filesystem::path datapath = foedag->Context()->DataPath();
+    std::filesystem::path yosysPath = binpath / "yosys";
+    std::filesystem::path vprPath = binpath / "vpr";
+    std::filesystem::path archPath = datapath / "arch" / "gemini.xml";
+    opcompiler->YosysExecPath(yosysPath);
+    opcompiler->VprExecPath(vprPath);
+    opcompiler->ArchitectureFile(archPath);
   }
   return foedag->init(guiType);
 }
