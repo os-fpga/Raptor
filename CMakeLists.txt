@@ -392,6 +392,8 @@ install(
 
 install(
     FILES etc/device.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
+install(
+      FILES FOEDAG_rs/tests/Arch/gemini.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/arch/)
 
 #install(
 #  EXPORT Raptor
@@ -406,6 +408,10 @@ add_custom_target(raptor_link_target ALL
 
 add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/arch/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/etc/device.xml        
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/)
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/FOEDAG_rs/tests/Arch/gemini.xml        
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/arch/)
