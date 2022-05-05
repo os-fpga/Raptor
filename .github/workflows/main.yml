@@ -93,7 +93,7 @@ jobs:
       run: |
         # Disable until VPR Unit test pass      
         # make debug test/unittest-d
-        make debug
+        make debug test
         make release test/batch
         make test/gui
 
