@@ -118,7 +118,8 @@ test_install_mac:
 
 test_install:
 	$(PREFIX)/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
-	$(PREFIX)/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt.tcl
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl

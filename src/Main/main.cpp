@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
     std::filesystem::path datapath = foedag->Context()->DataPath();
     std::filesystem::path yosysPath = binpath / "yosys";
     std::filesystem::path vprPath = binpath / "vpr";
-    std::filesystem::path archPath = datapath / "arch" / "gemini.xml";
+    std::filesystem::path archPath = datapath / "Arch" / "gemini.xml";
     opcompiler->YosysExecPath(yosysPath);
     opcompiler->VprExecPath(vprPath);
     opcompiler->ArchitectureFile(archPath);
