@@ -2483,7 +2483,5 @@
       <col type="bram"  startx="6" starty="1" repeatx="6"  priority="40"/>  
     </fixed_layout>
 
-
-
   </layout> 
 </architecture> 

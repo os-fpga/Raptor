@@ -393,11 +393,13 @@ install(
 install(
     FILES etc/device.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
-      FILES tests/Arch/gemini.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
+    DIRECTORY tests/Arch/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
 install(
       FILES tests/Arch/k6_frac_N10_tileable_40nm.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_fpga/)
+install(
+      DIRECTORY tests/Testcases/aes_decrypt_gate/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_gate/)
 
 #install(
 #  EXPORT Raptor
@@ -415,14 +417,17 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
       COMMAND ${CMAKE_COMMAND} -E copy 
+          ${CMAKE_CURRENT_BINARY_DIR}/OpenFPGA_RS/openfpga
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/etc/device.xml        
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/tests/Arch/k6_frac_N10_tileable_40nm.xml
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Arch
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/tests/Arch/gemini.xml
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga/*
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/)
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_gate
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/)
