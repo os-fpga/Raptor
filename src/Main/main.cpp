@@ -61,10 +61,24 @@ int main(int argc, char** argv) {
     std::filesystem::path datapath = foedag->Context()->DataPath();
     std::filesystem::path yosysPath = binpath / "yosys";
     std::filesystem::path vprPath = binpath / "vpr";
-    std::filesystem::path archPath = datapath / "arch" / "gemini.xml";
+    std::filesystem::path openFpgaPath = binpath / "openfpga";
+    std::filesystem::path archPath = datapath / "Arch" / "gemini.xml";
+    std::filesystem::path openFpgaArchPath =
+        datapath / "Arch" / "gemini_openfpga.xml";
+    std::filesystem::path bitstreamSettingPath =
+        datapath / "Arch" / "bitstream_annotation.xml";
+    std::filesystem::path simSettingPath =
+        datapath / "Arch" / "fixed_sim_openfpga.xml";
+    std::filesystem::path repackConstraintPath =
+        datapath / "Arch" / "repack_design_constraint.xml";
     opcompiler->YosysExecPath(yosysPath);
     opcompiler->VprExecPath(vprPath);
+    opcompiler->OpenFpgaExecPath(openFpgaPath);
     opcompiler->ArchitectureFile(archPath);
+    opcompiler->OpenFpgaArchitectureFile(openFpgaArchPath);
+    opcompiler->OpenFpgaBitstreamSettingFile(bitstreamSettingPath);
+    opcompiler->OpenFpgaSimSettingFile(simSettingPath);
+    opcompiler->OpenFpgaRepackConstraintsFile(repackConstraintPath);
   }
   return foedag->init(guiType);
 }

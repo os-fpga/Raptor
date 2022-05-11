@@ -32,6 +32,7 @@ release: run-cmake-release
 	cp -f ./yosys_verific_rs/yosys/install/bin/abc build/bin/abc
 	cp -f ./yosys_verific_rs/yosys/install/bin/de build/bin/de
 	@[ -f ./OpenFPGA_RS/vpr/vpr ] && cp -f ./OpenFPGA_RS/vpr/vpr build/bin/vpr || true
+	@[ -f ./OpenFPGA_RS/openfpga/openfpga ] && cp -f ./OpenFPGA_RS/openfpga/openfpga build/bin/openfpga || true
 
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
@@ -42,6 +43,7 @@ debug: run-cmake-debug
 	cp -f ./yosys_verific_rs/yosys/debug-install/bin/abc dbuild/bin/abc
 	cp -f ./yosys_verific_rs/yosys/debug-install/bin/de dbuild/bin/de
 	@[ -f ./OpenFPGA_RS/vpr/vpr ] && cp -f ./OpenFPGA_RS/vpr/vpr dbuild/bin/vpr || true
+	@[ -f ./OpenFPGA_RS/openfpga/openfpga ] && cp -f ./OpenFPGA_RS/openfpga/openfpga dbuild/bin/openfpga || true
 
 run-cmake-release:
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
@@ -118,7 +120,9 @@ test_install_mac:
 
 test_install:
 	$(PREFIX)/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
-	$(PREFIX)/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt.tcl
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_gate/aes_decrypt_gate.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
