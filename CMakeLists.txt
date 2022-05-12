@@ -234,9 +234,9 @@ add_dependencies(raptor de)
 if (WIN OR APPLE)
 else ()
   # Guaranties all the executables are built before final copy in build directory 
-  add_dependencies(raptor-bin libopenfpga)
-  add_dependencies(raptor-bin openfpga) 
-  add_dependencies(raptor-bin vpr)
+  add_dependencies(raptor libopenfpga)
+  add_dependencies(raptor openfpga) 
+  add_dependencies(raptor vpr)
 endif()
 
 if (APPLE)
@@ -423,7 +423,7 @@ add_custom_target(raptor_link_target ALL
                   COMMAND ${CMAKE_COMMAND} -E create_symlink
                   build/compile_commands.json ../compile_commands.json)
 
-add_custom_command(TARGET raptor-bin POST_BUILD
+add_custom_command(TARGET raptor POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
@@ -439,6 +439,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_gate
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/
+      COMMAND echo "Copying Yosys, ABC, DE in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/install/bin/yosys        
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
@@ -451,7 +452,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
 
 if (WIN OR APPLE)
 else ()
-  add_custom_command(TARGET raptor-bin POST_BUILD
+  add_custom_command(TARGET raptor POST_BUILD
       COMMAND echo "Copying VPR and OpenFPGA in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
