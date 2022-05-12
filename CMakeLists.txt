@@ -227,6 +227,10 @@ add_custom_command(TARGET raptor POST_BUILD
 
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
+add_dependencies(raptor yosys)
+add_dependencies(raptor abc)
+add_dependencies(raptor de)
+add_dependencies(raptor vpr)
 
 if (WIN OR APPLE)
 else ()
