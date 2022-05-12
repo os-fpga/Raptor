@@ -228,6 +228,11 @@ add_custom_command(TARGET raptor POST_BUILD
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
 
+# Guaranties all the executables are built before final copy in build directory
+add_dependencies(raptor-bin libopenfpga)
+add_dependencies(raptor-bin openfpga)
+add_dependencies(raptor-bin vpr)
+
 if (APPLE)
   # In macOS, it is necessary to add the correct @rpath to the executable for
   # finding python dynamic libraries ref: https://gitlab.kitware.com/cmake/cmake/-/issues/21293
@@ -430,4 +435,26 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_gate
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/)
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/install/bin/yosys        
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/install/bin/abc        
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/install/bin/de    
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+
+if (WIN OR APPLE)
+else ()
+  add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/openfpga/openfpga
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+     )
+endif()
