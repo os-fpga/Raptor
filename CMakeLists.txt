@@ -230,7 +230,6 @@ add_dependencies(raptor raptor_gui)
 add_dependencies(raptor yosys)
 add_dependencies(raptor abc)
 add_dependencies(raptor de)
-add_dependencies(raptor vpr)
 
 if (WIN OR APPLE)
 else ()
