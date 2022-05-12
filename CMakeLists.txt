@@ -228,10 +228,13 @@ add_custom_command(TARGET raptor POST_BUILD
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
 
-# Guaranties all the executables are built before final copy in build directory
-add_dependencies(raptor-bin libopenfpga)
-add_dependencies(raptor-bin openfpga)
-add_dependencies(raptor-bin vpr)
+if (WIN OR APPLE)
+else ()
+  # Guaranties all the executables are built before final copy in build directory 
+  add_dependencies(raptor-bin libopenfpga)
+  add_dependencies(raptor-bin openfpga) 
+  add_dependencies(raptor-bin vpr)
+endif()
 
 if (APPLE)
   # In macOS, it is necessary to add the correct @rpath to the executable for
