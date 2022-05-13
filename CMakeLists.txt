@@ -227,6 +227,17 @@ add_custom_command(TARGET raptor POST_BUILD
 
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
+add_dependencies(raptor-bin yosys)
+add_dependencies(raptor-bin abc)
+add_dependencies(raptor-bin de)
+
+if (WIN OR APPLE)
+else ()
+  # Guaranties all the executables are built before final copy in build directory 
+  add_dependencies(raptor-bin libopenfpga)
+  add_dependencies(raptor-bin openfpga) 
+  add_dependencies(raptor-bin vpr)
+endif()
 
 if (APPLE)
   # In macOS, it is necessary to add the correct @rpath to the executable for
@@ -412,13 +423,13 @@ add_custom_target(raptor_link_target ALL
                   COMMAND ${CMAKE_COMMAND} -E create_symlink
                   build/compile_commands.json ../compile_commands.json)
 
+set(YOSYS_BUILD_PATH "$<$<CONFIG:Debug>:debug-install>$<$<CONFIG:Release>:install>") 
+
 add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying arch and example files in share dir" 
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${CMAKE_CURRENT_BINARY_DIR}/OpenFPGA_RS/openfpga
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/etc/device.xml        
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
@@ -430,4 +441,27 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_gate
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/)
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/
+      COMMAND echo "Copying Yosys, ABC, DE in bin dir"     
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc        
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de    
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+
+if (WIN OR APPLE)
+else ()
+  add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/openfpga/openfpga
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+     )
+endif()
