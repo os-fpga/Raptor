@@ -88,14 +88,11 @@ jobs:
         which $CC && $CC --version
         which $CXX && $CXX --version
 
-    - name: Test
+    - name: Test Release
       if: matrix.mode == 'test'
       run: |
-        make debug test/unittest-d
-        # Yosys doesn't separate debug and release builds, thus intermediate clean is required
-        cd yosys_verific_rs && make clean && cd -
+        make release test
         make release test/batch
-        make test/gui
 
     - name: Regression
       if: matrix.mode == 'regression'
@@ -107,11 +104,13 @@ jobs:
       run: |
         make debug coverage-build/raptor_gui.coverage
 
-    - name: Valgrind
+    - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
       run: |
         make debug
-        make test/valgrind
+        make debug test/unittest-d
+        make debug test/gui
+        make debug test/valgrind
 
     - name: Install Test
       if: matrix.mode == 'install'
