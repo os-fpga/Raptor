@@ -31,6 +31,20 @@ if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
     add_subdirectory(OpenFPGA_RS)
 endif()
 
+# Raptor version
+set(VERSION_MAJOR 0)
+set(VERSION_MINOR 0)
+set(VERSION_PATCH 4)
+
+execute_process(COMMAND git rev-parse --short HEAD
+  COMMAND tr -d '\n'
+  OUTPUT_VARIABLE GIT_HASH
+  ERROR_VARIABLE GIT_HASH_ERR
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
+message(STATUS "GIT_HASH = ${GIT_HASH}")
+configure_file(raptor_version.h.in ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/foedag_version.h)
+
 # Require swig 3
 find_package(SWIG 3.0 REQUIRED)
 
