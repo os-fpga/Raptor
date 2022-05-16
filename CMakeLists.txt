@@ -411,6 +411,8 @@ install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_fpga/)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_gate/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_gate/)
+install(
+      DIRECTORY tests/Testcases/sasc_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/sasc_testcase/)
 
 #install(
 #  EXPORT Raptor
@@ -430,6 +432,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/etc/device.xml        
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
@@ -442,6 +445,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_gate
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Testcases/sasc_testcase
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
       COMMAND echo "Copying Yosys, ABC, DE in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
