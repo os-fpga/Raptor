@@ -1,0 +1,4 @@
+#define STR_VALUE(arg)      #arg
+#define TO_C_STR(str)       STR_VALUE(str)
+#define FOEDAG_VERSION      @VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@ 
+#define FOEDAG_GIT_HASH     @GIT_HASH@

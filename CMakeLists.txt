@@ -31,6 +31,20 @@ if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
     add_subdirectory(OpenFPGA_RS)
 endif()
 
+# Raptor version
+set(VERSION_MAJOR 0)
+set(VERSION_MINOR 0)
+set(VERSION_PATCH 4)
+
+execute_process(COMMAND git rev-parse --short HEAD
+  COMMAND tr -d '\n'
+  OUTPUT_VARIABLE GIT_HASH
+  ERROR_VARIABLE GIT_HASH_ERR
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
+message(STATUS "GIT_HASH = ${GIT_HASH}")
+configure_file(raptor_version.h.in ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/foedag_version.h)
+
 # Require swig 3
 find_package(SWIG 3.0 REQUIRED)
 
@@ -411,6 +425,8 @@ install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_fpga/)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_gate/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_gate/)
+install(
+      DIRECTORY tests/Testcases/sasc_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/sasc_testcase/)
 
 #install(
 #  EXPORT Raptor
@@ -430,6 +446,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/etc/device.xml        
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
@@ -442,6 +459,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_gate
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_gate/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Testcases/sasc_testcase
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
       COMMAND echo "Copying Yosys, ABC, DE in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        

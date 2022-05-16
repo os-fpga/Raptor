@@ -113,6 +113,7 @@ test_install:
 	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt.tcl
 	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
 	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_gate/aes_decrypt_gate.tcl
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/sasc_testcase/raptor.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
@@ -143,6 +144,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
 	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_batch.tcl
+	./build/bin/raptor --script tests/Testcases/sasc_testcase/raptor.tcl --batch
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
