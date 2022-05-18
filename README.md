@@ -1,7 +1,8 @@
 # Raptor
 RapidSilicon complete Software solution
 
-OS Support: Centos7, Ubuntu 20.04, Ubuntu 21.04
+Current OS Support: Centos7, Ubuntu 20.04, Ubuntu 21.04
+Planned OS Support: MacOS, Windows
 
 INSTALL Instructions:
 
