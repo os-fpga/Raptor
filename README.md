@@ -1,6 +1,8 @@
 # Raptor
 RapidSilicon complete Software solution
 
+OS Support: Centos7, Ubuntu 20.04, Ubuntu 21.04
+
 INSTALL Instructions:
 
  * [`Ubuntu dependencies`](.github/workflows/install_ubuntu_dependencies_build.sh)
