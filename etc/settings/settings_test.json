@@ -1,0 +1,112 @@
+{
+    "Tasks": {
+        "Synthesis": {
+            "synth_dropdown_ex": {
+                "label": "Dropdown Example",
+                "widgetType": "dropdown",
+                "options": [
+                    "option1",
+                    "option2",
+                    "option3"
+                ],
+                "default": "option3"
+            },
+            "synth_input_ex_1": {
+                "label": "Text Input Example",
+                "widgetType": "input",
+                "default": "some synthesis related text"
+            },
+            "synth_input_ex_2": {
+                "widgetType": "input",
+                "default": "input field w/o a label provided"
+            }
+        },
+        "Placement": {
+            "placement_double_spinbox_ex": {
+                "label": "Double Spinbox Example",
+                "widgetType": "DoubleSpinbox",
+                "minVal": 2.4,
+                "maxVal": 11.4,
+                "stepVal": 1.1,
+                "default": 2.5
+            },
+            "placement_int_spinbox_ex": {
+                "label": "Int Spinbox Example",
+                "widgetType": "Spinbox",
+                "minVal": 2.4,
+                "maxVal": 11.4,
+                "stepVal": 1.1,
+                "default": 2.5
+            },
+            "placement_radiobuttons_vert_ex": {
+                "label": "Radio Button Example (vertical/default)",
+                "widgetType": "radiobuttons",
+                "options": [
+                    "b1",
+                    "b2",
+                    "b3"
+                ],
+                "default": "b2"
+            },
+            "placement_radiobuttons_horiz_ex": {
+                "label": "Radio Button Example (horizontal)",
+                "widgetType": "radiobuttons",
+                "options": [
+                    "b1",
+                    "b2",
+                    "b3"
+                ],
+                "layout": "horizontal",
+                "default": "b2"
+            },
+            "placement_checkbox_ex": {
+                "label": "Checkbox Example",
+                "text": "Checkbox Text",
+                "widgetType": "checkbox",
+                "default": "unchecked"
+            },
+            "placement_dropdown_ex": {
+                "label": "Dropdown Example",
+                "widgetType": "dropdown",
+                "options": [
+                    "option1",
+                    "option2",
+                    "option3"
+                ],
+                "default": "option2"
+            },
+            "placement_input_ex_1": {
+                "label": "Text Input Example",
+                "widgetType": "input",
+                "default": "some text"
+            },
+            "placement_input_ex_2": {
+                "widgetType": "input",
+                "default": "input field w/o a label provided"
+            }
+        },
+        "Routing": {
+            "routing_dropdown_ex": {
+                "label": "Dropdown Example",
+                "widgetType": "dropdown",
+                "options": [
+                    "option1",
+                    "option2",
+                    "option3"
+                ],
+                "default": "option1"
+            },
+            "routing_radiobuttons_horiz_ex": {
+                "label": "Radio Button Example (horizontal)",
+                "widgetType": "radiobuttons",
+                "options": [
+                    "b1",
+                    "b2",
+                    "b3"
+                ],
+                "layout": "horizontal",
+                "default": "b1"
+            }
+        }
+    }
+}

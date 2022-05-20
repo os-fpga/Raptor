@@ -418,6 +418,8 @@ install(
 install(
     FILES etc/device.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
+    FILES etc/settings/settings_test.json DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/settings/)
+install(
     DIRECTORY tests/Arch/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
 install(
       FILES tests/Arch/k6_frac_N10_tileable_40nm.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
@@ -444,12 +446,16 @@ set(YOSYS_BUILD_PATH "$<$<CONFIG:Debug>:debug-install>$<$<CONFIG:Release>:instal
 add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Copying arch and example files in share dir" 
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/etc/device.xml        
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/etc/settings/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Arch
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
