@@ -1,17 +1,17 @@
 <device_list>
-    <device name="Gemini1" series="Gemini" family="RSGem" package="SBG484" pin_count="238" speedgrade="1" core_voltage="1.1V">
+    <device name="GEMINI" series="Gemini" family="RSGem" package="SBG484" pin_count="238" speedgrade="1" core_voltage="1.1V">
         <resource type="io" num="200"/>
         <resource type="lut" num="8000"/>
         <resource type="ff" num="16000"/>
         <resource type="bram" num="47"/>
         <resource type="dsp" num="48"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
-        <internal type="openfpga_arch" file="gemini_openfpga.xml"/>
+        <internal type="openfpga_arch" file="gemini/gemini_openfpga.xml"/>
         <internal type="bitstream_settings" file="gemini/bitstream_annotation.xml"/>
         <internal type="sim_settings" file="gemini/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="gemini/repack_design_constraint.xml"/>
-        <internal type="pinmap_xml" file="gemini/"/>
-        <internal type="pinmap_csv" file="gemini/"/>
+        <internal type="pinmap_xml" file=""/>
+        <internal type="pinmap_csv" file=""/>
     </device>
     <device name="MPW1" series="Gemini" family="TestChip" package="SBG484" pin_count="44" speedgrade="1" core_voltage="1.1V">
         <resource type="io" num="44"/>
