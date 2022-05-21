@@ -416,9 +416,7 @@ install(
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor/include)
 
 install(
-    FILES etc/device.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
-install(
-    FILES etc/settings/settings_test.json DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/settings/)
+    DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
     DIRECTORY tests/Arch/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
 install(
@@ -450,12 +448,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/etc/device.xml        
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${PROJECT_SOURCE_DIR}/etc/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/etc/settings/
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Arch
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
