@@ -147,6 +147,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_batch.tcl
 	./build/bin/raptor --script tests/Testcases/sasc_testcase/raptor.tcl --batch
 	./build/bin/raptor --script tests/Testcases/sasc_testcase/raptor_target.tcl --batch 
+	./build/bin/raptor --script tests/Testcases/and2_testcase/raptor.tcl --batch
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
