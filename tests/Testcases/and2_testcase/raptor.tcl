@@ -9,8 +9,6 @@ set_top_module and2
 add_constraint_file constraints.sdc
 
 # Compilation
-synthesis_type QL
-synth_options -no_dsp -no_adder -no_bram
 synthesize
 
 packing

@@ -12,6 +12,11 @@
         <internal type="repack_settings" file="gemini/repack_design_constraint.xml"/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pinmap_csv" file=""/>
+        <internal type="plugin_lib" name="synth-rs"/>
+        <internal type="plugin_func" name="synth_rs"/>
+        <internal type="technology" name="genesis"/>
+        <internal type="synth_type" name="RS"/>
+        <internal type="synth_opts" name=""/>
     </device>
     <device name="MPW1" series="Gemini" family="TestChip" package="SBG484" pin_count="44" speedgrade="1" core_voltage="1.1V">
         <resource type="io" num="44"/>
@@ -26,6 +31,11 @@
         <internal type="repack_settings" file="mpw1/repack_design_constraint.xml"/>
         <internal type="pinmap_xml" file="mpw1/pinmap_qlf_k6n10_tsmc22.xml"/>
         <internal type="pinmap_csv" file="mpw1/pinmap_qlf_k6n10_tsmc22.csv"/>
+        <internal type="plugin_lib" name="ql-qlf"/>
+        <internal type="plugin_func" name="synth_ql"/>
+        <internal type="technology" name="qlf_k6n10f"/>
+        <internal type="synth_type" name="QL"/>
+        <internal type="synth_opts" name="-no_dsp -no_bram -no_adder"/>
     </device>
  </device_list>
  
