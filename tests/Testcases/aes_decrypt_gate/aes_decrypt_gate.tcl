@@ -1,4 +1,5 @@
 # Gate level netlist input
+target_device GEMINI
 create_design AES_DECRYPT_GATE
 read_netlist aes_decrypt.blif
 add_constraint_file aes_decrypt_gate.sdc
