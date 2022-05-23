@@ -28,7 +28,7 @@ Log in to Fremont/Arbutus server:
 Run VPN with NetExtender
 Run NX and connect server: nx01.rapid.local
 Run pre-build Raptor 
-ssh -X sim01, or ssh sim02
+ssh -X sim01, or ssh -X sim02
 module load raptor/build_env
 module load raptor/latest
 raptor ...
@@ -40,5 +40,5 @@ ssh sw01
 mkdir YOUR_WORK_DIR
 cd YOUR_WORK_DIR
 module load raptor/build_env
-make ...
+Follow above instructions described in "BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE" to clone and build your raptor
 ```
