@@ -22,7 +22,7 @@ BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE:
   make test_install
 ```
     
-NIGHTLY BUILDS:
+NIGHTLY BUILD ACCESS:
 ```
 Log in to Fremont/Arbutus server:
 Run VPN with NetExtender
