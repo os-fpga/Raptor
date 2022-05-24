@@ -9,15 +9,9 @@ set_top_module and2
 add_constraint_file constraints.sdc
 
 # Compilation
-synthesize
-
+synthesize delay
 packing
-
-# Remove on when pin_c exec is available in build, then turn on in .sdc
-pnr_options --fix_pins ./pinmap.place
-
 place
-
 route
 sta
 bitstream force
