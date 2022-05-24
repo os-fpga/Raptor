@@ -477,9 +477,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de    
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c
           ${CMAKE_CURRENT_BINARY_DIR}/bin/)
 
 if (WIN OR APPLE)
@@ -492,5 +489,8 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/openfpga/openfpga
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/    
      )
 endif()
