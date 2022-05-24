@@ -14,6 +14,7 @@ BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE:
 
 ```
   git clone https://github.com/RapidSilicon/Raptor.git
+  cd Raptor
   git submodule update --init --recursive
   make
   make debug
