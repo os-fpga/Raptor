@@ -13,7 +13,9 @@ synthesize
 
 packing
 
+# Remove on when pin_c exec is available in build, then turn on in .sdc
 pnr_options --fix_pins ./pinmap.place
+
 place
 
 route
