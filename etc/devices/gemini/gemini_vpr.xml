@@ -176,7 +176,7 @@
         <port name="sc_out"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2">
+    <model name="RS_DSP2">
       <input_ports>
         <!-- Tara : COMMENT -->
         <port name="a" combinational_sink_ports="z"/>
@@ -201,7 +201,7 @@
         <port name="dly_b"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULT">
+    <model name="RS_DSP2_MULT">
       <input_ports>
         <port name="a" combinational_sink_ports="z"/>
         <port name="b" combinational_sink_ports="z"/>
@@ -215,7 +215,7 @@
         <port name="z"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULT_REGIN">
+    <model name="RS_DSP2_MULT_REGIN">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -230,7 +230,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULT_REGOUT">
+    <model name="RS_DSP2_MULT_REGOUT">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -245,7 +245,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULT_REGIN_REGOUT">
+    <model name="RS_DSP2_MULT_REGIN_REGOUT">
       <input_ports>
         <port name="a" clock="clk" combinational_sink_ports="z"/>
         <port name="b" clock="clk" combinational_sink_ports="z"/>
@@ -260,7 +260,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULTADD">
+    <model name="RS_DSP2_MULTADD">
       <input_ports>
         <port name="a" combinational_sink_ports="z"/>
         <port name="b" combinational_sink_ports="z"/>
@@ -275,7 +275,7 @@
         <port name="z"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULTADD_REGIN">
+    <model name="RS_DSP2_MULTADD_REGIN">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -293,7 +293,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULTADD_REGOUT">
+    <model name="RS_DSP2_MULTADD_REGOUT">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -311,7 +311,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULTADD_REGIN_REGOUT">
+    <model name="RS_DSP2_MULTADD_REGIN_REGOUT">
       <input_ports>
         <port name="a" clock="clk" combinational_sink_ports="z"/>
         <port name="b" clock="clk" combinational_sink_ports="z"/>
@@ -329,7 +329,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULTACC">
+    <model name="RS_DSP2_MULTACC">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -346,25 +346,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULTACC_REGIN">
-      <input_ports>
-        <port name="a" clock="clk"/>
-        <port name="b" clock="clk"/>
-        <port name="subtract" clock="clk"/>
-        <port name="feedback" clock="clk"/>
-        <port name="load_acc" clock="clk"/>
-        <port name="unsigned_a"/>
-        <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
-        <port name="clk" is_clock="1"/>
-      </input_ports>
-      <output_ports>
-        <port name="z" clock="clk"/>
-      </output_ports>
-    </model>
-    <model name="QL_DSP2_MULTACC_REGOUT">
+    <model name="RS_DSP2_MULTACC_REGIN">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -382,7 +364,25 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="QL_DSP2_MULTACC_REGIN_REGOUT">
+    <model name="RS_DSP2_MULTACC_REGOUT">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="f_mode"/>
+        <port name="output_select"/>
+        <port name="register_inputs"/>
+        <port name="clk" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP2_MULTACC_REGIN_REGOUT">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -2047,7 +2047,7 @@
       </interconnect>
     </pb_type>
 
-    <!-- Define QL_DSP begin -->
+    <!-- Define RS_DSP begin -->
     <pb_type name="dsp">
       <input  name="a_i" num_pins="20" equivalent="none"/>
       <input  name="acc_fir_i" num_pins="6" equivalent="none"/>
@@ -2145,7 +2145,7 @@
       </mode>
 
       <mode name="dsp" disable_packing="false">
-        <pb_type name="QL_DSP2" blif_model=".subckt QL_DSP2" num_pb="1">
+        <pb_type name="RS_DSP2" blif_model=".subckt RS_DSP2" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="acc_fir" num_pins="6"/>
           <input  name="b" num_pins="18"/>
@@ -2164,45 +2164,45 @@
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
           <output  name="dly_b" num_pins="18"/>
-	  <delay_constant max="3500e-12" in_port="QL_DSP2.a" out_port="QL_DSP2.z"/>
-	  <delay_constant max="3500e-12" in_port="QL_DSP2.acc_fir" out_port="QL_DSP2.z"/>
-	  <delay_constant max="3500e-12" in_port="QL_DSP2.b" out_port="QL_DSP2.z"/>
-          <T_setup value="500e-12"     port="QL_DSP2.load_acc" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.reset" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.feedback" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.unsigned_a" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.unsigned_b" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.f_mode" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.output_select" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.saturate_enable" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.shift_right" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.round" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.subtract" clock="clk"/>
-          <T_setup value="500e-12"     port="QL_DSP2.register_inputs" clock="clk"/>
+	  <delay_constant max="3500e-12" in_port="RS_DSP2.a" out_port="RS_DSP2.z"/>
+	  <delay_constant max="3500e-12" in_port="RS_DSP2.acc_fir" out_port="RS_DSP2.z"/>
+	  <delay_constant max="3500e-12" in_port="RS_DSP2.b" out_port="RS_DSP2.z"/>
+          <T_setup value="500e-12"     port="RS_DSP2.load_acc" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.reset" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.feedback" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.unsigned_a" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.unsigned_b" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.f_mode" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.output_select" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.saturate_enable" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.shift_right" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.round" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.subtract" clock="clk"/>
+          <T_setup value="500e-12"     port="RS_DSP2.register_inputs" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2.a"/>
-          <direct name="direct2" input="dsp.acc_fir_i" output="QL_DSP2.acc_fir"/>
-          <direct name="direct3" input="dsp.b_i" output="QL_DSP2.b"/>
-          <complete name="dsp-clk" input="dsp.clk" output="QL_DSP2.clk"/>
-          <direct name="direct5" input="dsp.lreset" output="QL_DSP2.reset"/>
-          <direct name="direct6" input="QL_DSP2.z" output="dsp.z_o"/>
-          <direct name="direct7" input="QL_DSP2.dly_b" output="dsp.dly_b_o"/>
-          <direct name="direct8" input="dsp.load_acc" output="QL_DSP2.load_acc"/>
-          <direct name="direct9" input="dsp.feedback" output="QL_DSP2.feedback"/>
-          <direct name="direct10" input="dsp.unsigned_a" output="QL_DSP2.unsigned_a"/>
-          <direct name="direct11" input="dsp.unsigned_b" output="QL_DSP2.unsigned_b"/>
-          <direct name="direct12" input="dsp.f_mode" output="QL_DSP2.f_mode"/>
-          <direct name="direct13" input="dsp.output_select" output="QL_DSP2.output_select"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="QL_DSP2.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="QL_DSP2.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="QL_DSP2.round"/>
-          <direct name="direct17" input="dsp.subtract" output="QL_DSP2.subtract"/>
-          <direct name="direct18" input="dsp.register_inputs" output="QL_DSP2.register_inputs"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2.a"/>
+          <direct name="direct2" input="dsp.acc_fir_i" output="RS_DSP2.acc_fir"/>
+          <direct name="direct3" input="dsp.b_i" output="RS_DSP2.b"/>
+          <complete name="dsp-clk" input="dsp.clk" output="RS_DSP2.clk"/>
+          <direct name="direct5" input="dsp.lreset" output="RS_DSP2.reset"/>
+          <direct name="direct6" input="RS_DSP2.z" output="dsp.z_o"/>
+          <direct name="direct7" input="RS_DSP2.dly_b" output="dsp.dly_b_o"/>
+          <direct name="direct8" input="dsp.load_acc" output="RS_DSP2.load_acc"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP2.feedback"/>
+          <direct name="direct10" input="dsp.unsigned_a" output="RS_DSP2.unsigned_a"/>
+          <direct name="direct11" input="dsp.unsigned_b" output="RS_DSP2.unsigned_b"/>
+          <direct name="direct12" input="dsp.f_mode" output="RS_DSP2.f_mode"/>
+          <direct name="direct13" input="dsp.output_select" output="RS_DSP2.output_select"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP2.round"/>
+          <direct name="direct17" input="dsp.subtract" output="RS_DSP2.subtract"/>
+          <direct name="direct18" input="dsp.register_inputs" output="RS_DSP2.register_inputs"/>
         </interconnect>
       </mode>
       <mode name="MULT" disable_packing="false">
-        <pb_type name="QL_DSP2_MULT" blif_model=".subckt QL_DSP2_MULT" num_pb="1">
+        <pb_type name="RS_DSP2_MULT" blif_model=".subckt RS_DSP2_MULT" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="unsigned_a" num_pins="1"/>
@@ -2211,22 +2211,22 @@
           <input  name="output_select" num_pins="3"/>
           <input  name="register_inputs" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <delay_constant max="3.5e-09" min="3.5e-09" in_port="QL_DSP2_MULT.a" out_port="QL_DSP2_MULT.z"/>
-          <delay_constant max="3.5e-09" min="3.5e-09" in_port="QL_DSP2_MULT.b" out_port="QL_DSP2_MULT.z"/>
+          <delay_constant max="3.5e-09" min="3.5e-09" in_port="RS_DSP2_MULT.a" out_port="RS_DSP2_MULT.z"/>
+          <delay_constant max="3.5e-09" min="3.5e-09" in_port="RS_DSP2_MULT.b" out_port="RS_DSP2_MULT.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULT.b"/>
-          <direct name="direct3" input="QL_DSP2_MULT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULT.register_inputs"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT.b"/>
+          <direct name="direct3" input="RS_DSP2_MULT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT.register_inputs"/>
         </interconnect>
       </mode>
       <mode name="MULT_REGIN" disable_packing="false">
-        <pb_type name="QL_DSP2_MULT_REGIN" blif_model=".subckt QL_DSP2_MULT_REGIN" num_pb="1">
+        <pb_type name="RS_DSP2_MULT_REGIN" blif_model=".subckt RS_DSP2_MULT_REGIN" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="unsigned_a" num_pins="1"/>
@@ -2236,24 +2236,24 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULT_REGIN.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULT_REGIN.b" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULT_REGIN.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULT_REGIN.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULT_REGIN.b" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULT_REGIN.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULT_REGIN.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULT_REGIN.b"/>
-          <direct name="direct3" input="QL_DSP2_MULT_REGIN.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULT_REGIN.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULT_REGIN.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULT_REGIN.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULT_REGIN.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULT_REGIN.register_inputs"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULT_REGIN.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT_REGIN.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT_REGIN.b"/>
+          <direct name="direct3" input="RS_DSP2_MULT_REGIN.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT_REGIN.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT_REGIN.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT_REGIN.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT_REGIN.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT_REGIN.register_inputs"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULT_REGIN.clk"/>
         </interconnect>
       </mode>
       <mode name="MULT_REGOUT" disable_packing="false">
-        <pb_type name="QL_DSP2_MULT_REGOUT" blif_model=".subckt QL_DSP2_MULT_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP2_MULT_REGOUT" blif_model=".subckt RS_DSP2_MULT_REGOUT" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="unsigned_a" num_pins="1"/>
@@ -2263,24 +2263,24 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULT_REGOUT.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULT_REGOUT.b" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULT_REGOUT.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULT_REGOUT.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULT_REGOUT.b" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULT_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULT_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULT_REGOUT.b"/>
-          <direct name="direct3" input="QL_DSP2_MULT_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULT_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULT_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULT_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULT_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULT_REGOUT.register_inputs"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULT_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP2_MULT_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT_REGOUT.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT_REGOUT.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT_REGOUT.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT_REGOUT.register_inputs"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULT_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULT_REGIN_REGOUT" disable_packing="false">
-        <pb_type name="QL_DSP2_MULT_REGIN_REGOUT" blif_model=".subckt QL_DSP2_MULT_REGIN_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP2_MULT_REGIN_REGOUT" blif_model=".subckt RS_DSP2_MULT_REGIN_REGOUT" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="unsigned_a" num_pins="1"/>
@@ -2290,29 +2290,29 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULT_REGIN_REGOUT.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULT_REGIN_REGOUT.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULT_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULT_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULT_REGIN_REGOUT.a" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULT_REGIN_REGOUT.b" clock="clk"/>
-          <delay_constant max="0.0" in_port="QL_DSP2_MULT_REGIN_REGOUT.a" out_port="QL_DSP2_MULT_REGIN_REGOUT.z"/>
-          <delay_constant max="0.0" in_port="QL_DSP2_MULT_REGIN_REGOUT.b" out_port="QL_DSP2_MULT_REGIN_REGOUT.z"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULT_REGIN_REGOUT.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULT_REGIN_REGOUT.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULT_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULT_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULT_REGIN_REGOUT.a" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULT_REGIN_REGOUT.b" clock="clk"/>
+          <delay_constant max="0.0" in_port="RS_DSP2_MULT_REGIN_REGOUT.a" out_port="RS_DSP2_MULT_REGIN_REGOUT.z"/>
+          <delay_constant max="0.0" in_port="RS_DSP2_MULT_REGIN_REGOUT.b" out_port="RS_DSP2_MULT_REGIN_REGOUT.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULT_REGIN_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULT_REGIN_REGOUT.b"/>
-          <direct name="direct3" input="QL_DSP2_MULT_REGIN_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULT_REGIN_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULT_REGIN_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULT_REGIN_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULT_REGIN_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULT_REGIN_REGOUT.register_inputs"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULT_REGIN_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT_REGIN_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT_REGIN_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP2_MULT_REGIN_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT_REGIN_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT_REGIN_REGOUT.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT_REGIN_REGOUT.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT_REGIN_REGOUT.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT_REGIN_REGOUT.register_inputs"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULT_REGIN_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTADD" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTADD" blif_model=".subckt QL_DSP2_MULTADD" num_pb="1">
+        <pb_type name="RS_DSP2_MULTADD" blif_model=".subckt RS_DSP2_MULTADD" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="subtract" num_pins="1"/>
@@ -2322,24 +2322,24 @@
           <input  name="output_select" num_pins="3"/>
           <input  name="register_inputs" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <delay_constant max="3.5e-09" min="3.5e-09" in_port="QL_DSP2_MULTADD.a" out_port="QL_DSP2_MULTADD.z"/>
-          <delay_constant max="3.5e-09" min="3.5e-09" in_port="QL_DSP2_MULTADD.b" out_port="QL_DSP2_MULTADD.z"/>
-          <delay_constant max="3.5e-09" min="3.5e-09" in_port="QL_DSP2_MULTADD.subtract" out_port="QL_DSP2_MULTADD.z"/>
+          <delay_constant max="3.5e-09" min="3.5e-09" in_port="RS_DSP2_MULTADD.a" out_port="RS_DSP2_MULTADD.z"/>
+          <delay_constant max="3.5e-09" min="3.5e-09" in_port="RS_DSP2_MULTADD.b" out_port="RS_DSP2_MULTADD.z"/>
+          <delay_constant max="3.5e-09" min="3.5e-09" in_port="RS_DSP2_MULTADD.subtract" out_port="RS_DSP2_MULTADD.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTADD.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTADD.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTADD.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTADD.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTADD.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTADD.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTADD.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTADD.register_inputs"/>
-          <direct name="direct9" input="dsp.subtract" output="QL_DSP2_MULTADD.subtract"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTADD.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD.register_inputs"/>
+          <direct name="direct9" input="dsp.subtract" output="RS_DSP2_MULTADD.subtract"/>
         </interconnect>
       </mode>
       <mode name="MULTADD_REGIN" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTADD_REGIN" blif_model=".subckt QL_DSP2_MULTADD_REGIN" num_pb="1">
+        <pb_type name="RS_DSP2_MULTADD_REGIN" blif_model=".subckt RS_DSP2_MULTADD_REGIN" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="feedback" num_pins="3"/>
@@ -2352,30 +2352,30 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN.subtract" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN.feedback" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN.load_acc" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTADD_REGIN.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN.subtract" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN.feedback" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN.load_acc" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTADD_REGIN.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTADD_REGIN.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTADD_REGIN.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTADD_REGIN.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTADD_REGIN.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTADD_REGIN.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTADD_REGIN.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTADD_REGIN.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTADD_REGIN.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="QL_DSP2_MULTADD_REGIN.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="QL_DSP2_MULTADD_REGIN.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="QL_DSP2_MULTADD_REGIN.load_acc"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULTADD_REGIN.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD_REGIN.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD_REGIN.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTADD_REGIN.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD_REGIN.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD_REGIN.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD_REGIN.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD_REGIN.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD_REGIN.register_inputs"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTADD_REGIN.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTADD_REGIN.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTADD_REGIN.load_acc"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTADD_REGIN.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTADD_REGOUT" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTADD_REGOUT" blif_model=".subckt QL_DSP2_MULTADD_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP2_MULTADD_REGOUT" blif_model=".subckt RS_DSP2_MULTADD_REGOUT" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="feedback" num_pins="3"/>
@@ -2388,30 +2388,30 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGOUT.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGOUT.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGOUT.subtract" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGOUT.feedback" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGOUT.load_acc" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTADD_REGOUT.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGOUT.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGOUT.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGOUT.subtract" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGOUT.feedback" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGOUT.load_acc" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTADD_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTADD_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTADD_REGOUT.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTADD_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTADD_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTADD_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTADD_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTADD_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTADD_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="QL_DSP2_MULTADD_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="QL_DSP2_MULTADD_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="QL_DSP2_MULTADD_REGOUT.load_acc"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULTADD_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTADD_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD_REGOUT.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD_REGOUT.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD_REGOUT.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD_REGOUT.register_inputs"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTADD_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTADD_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTADD_REGOUT.load_acc"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTADD_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTADD_REGIN_REGOUT" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTADD_REGIN_REGOUT" blif_model=".subckt QL_DSP2_MULTADD_REGIN_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP2_MULTADD_REGIN_REGOUT" blif_model=".subckt RS_DSP2_MULTADD_REGIN_REGOUT" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="feedback" num_pins="3"/>
@@ -2424,37 +2424,37 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN_REGOUT.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN_REGOUT.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN_REGOUT.feedback" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTADD_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTADD_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTADD_REGIN_REGOUT.a" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTADD_REGIN_REGOUT.b" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
-          <delay_constant max="0.0" in_port="QL_DSP2_MULTADD_REGIN_REGOUT.a" out_port="QL_DSP2_MULTADD_REGIN_REGOUT.z"/>
-          <delay_constant max="0.0" in_port="QL_DSP2_MULTADD_REGIN_REGOUT.b" out_port="QL_DSP2_MULTADD_REGIN_REGOUT.z"/>
-          <delay_constant max="0.0" in_port="QL_DSP2_MULTADD_REGIN_REGOUT.subtract" out_port="QL_DSP2_MULTADD_REGIN_REGOUT.z"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN_REGOUT.feedback" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+          <delay_constant max="0.0" in_port="RS_DSP2_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP2_MULTADD_REGIN_REGOUT.z"/>
+          <delay_constant max="0.0" in_port="RS_DSP2_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP2_MULTADD_REGIN_REGOUT.z"/>
+          <delay_constant max="0.0" in_port="RS_DSP2_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP2_MULTADD_REGIN_REGOUT.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTADD_REGIN_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTADD_REGIN_REGOUT.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTADD_REGIN_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTADD_REGIN_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTADD_REGIN_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTADD_REGIN_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTADD_REGIN_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTADD_REGIN_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="QL_DSP2_MULTADD_REGIN_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="QL_DSP2_MULTADD_REGIN_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="QL_DSP2_MULTADD_REGIN_REGOUT.load_acc"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULTADD_REGIN_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD_REGIN_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD_REGIN_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTADD_REGIN_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD_REGIN_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD_REGIN_REGOUT.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD_REGIN_REGOUT.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD_REGIN_REGOUT.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD_REGIN_REGOUT.register_inputs"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTADD_REGIN_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTADD_REGIN_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTADD_REGIN_REGOUT.load_acc"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTADD_REGIN_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTACC" blif_model=".subckt QL_DSP2_MULTACC" num_pb="1">
+        <pb_type name="RS_DSP2_MULTACC" blif_model=".subckt RS_DSP2_MULTACC" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="feedback" num_pins="3"/>
@@ -2466,28 +2466,28 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC.feedback" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC.subtract" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTACC.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC.feedback" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC.subtract" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTACC.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTACC.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTACC.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTACC.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTACC.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTACC.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTACC.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTACC.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTACC.register_inputs"/>
-          <direct name="direct9" input="dsp.subtract" output="QL_DSP2_MULTACC.subtract"/>
-          <direct name="direct10" input="dsp.feedback" output="QL_DSP2_MULTACC.feedback"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULTACC.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTACC.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC.register_inputs"/>
+          <direct name="direct9" input="dsp.subtract" output="RS_DSP2_MULTACC.subtract"/>
+          <direct name="direct10" input="dsp.feedback" output="RS_DSP2_MULTACC.feedback"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC_REGIN" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTACC_REGIN" blif_model=".subckt QL_DSP2_MULTACC_REGIN" num_pb="1">
+        <pb_type name="RS_DSP2_MULTACC_REGIN" blif_model=".subckt RS_DSP2_MULTACC_REGIN" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="feedback" num_pins="3"/>
@@ -2500,30 +2500,30 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN.subtract" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN.feedback" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN.load_acc" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTACC_REGIN.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN.subtract" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN.feedback" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN.load_acc" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTACC_REGIN.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTACC_REGIN.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTACC_REGIN.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTACC_REGIN.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTACC_REGIN.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTACC_REGIN.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTACC_REGIN.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTACC_REGIN.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTACC_REGIN.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="QL_DSP2_MULTACC_REGIN.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="QL_DSP2_MULTACC_REGIN.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="QL_DSP2_MULTACC_REGIN.load_acc"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULTACC_REGIN.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC_REGIN.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC_REGIN.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTACC_REGIN.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC_REGIN.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC_REGIN.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC_REGIN.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC_REGIN.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC_REGIN.register_inputs"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTACC_REGIN.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTACC_REGIN.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTACC_REGIN.load_acc"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC_REGIN.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC_REGOUT" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTACC_REGOUT" blif_model=".subckt QL_DSP2_MULTACC_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP2_MULTACC_REGOUT" blif_model=".subckt RS_DSP2_MULTACC_REGOUT" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="feedback" num_pins="3"/>
@@ -2536,30 +2536,30 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGOUT.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGOUT.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGOUT.feedback" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGOUT.subtract" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGOUT.load_acc" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTACC_REGOUT.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGOUT.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGOUT.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGOUT.feedback" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGOUT.subtract" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGOUT.load_acc" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTACC_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTACC_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTACC_REGOUT.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTACC_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTACC_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTACC_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTACC_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTACC_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTACC_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="QL_DSP2_MULTACC_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="QL_DSP2_MULTACC_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="QL_DSP2_MULTACC_REGOUT.load_acc"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULTACC_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTACC_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC_REGOUT.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC_REGOUT.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC_REGOUT.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC_REGOUT.register_inputs"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTACC_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTACC_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTACC_REGOUT.load_acc"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC_REGIN_REGOUT" disable_packing="false">
-        <pb_type name="QL_DSP2_MULTACC_REGIN_REGOUT" blif_model=".subckt QL_DSP2_MULTACC_REGIN_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP2_MULTACC_REGIN_REGOUT" blif_model=".subckt RS_DSP2_MULTACC_REGIN_REGOUT" num_pb="1">
           <input  name="a" num_pins="20"/>
           <input  name="b" num_pins="18"/>
           <input  name="feedback" num_pins="3"/>
@@ -2572,30 +2572,30 @@
           <input  name="register_inputs" num_pins="1"/>
           <clock  name="clk" num_pins="1"/>
           <output  name="z" num_pins="38"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN_REGOUT.a" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN_REGOUT.b" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN_REGOUT.subtract" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN_REGOUT.feedback" clock="clk"/>
-          <T_setup value="5e-10"     port="QL_DSP2_MULTACC_REGIN_REGOUT.load_acc" clock="clk"/>
-          <T_clock_to_Q max="5e-10"  port="QL_DSP2_MULTACC_REGIN_REGOUT.z" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN_REGOUT.a" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN_REGOUT.b" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN_REGOUT.subtract" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN_REGOUT.feedback" clock="clk"/>
+          <T_setup value="5e-10"     port="RS_DSP2_MULTACC_REGIN_REGOUT.load_acc" clock="clk"/>
+          <T_clock_to_Q max="5e-10"  port="RS_DSP2_MULTACC_REGIN_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="QL_DSP2_MULTACC_REGIN_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="QL_DSP2_MULTACC_REGIN_REGOUT.b"/>
-          <direct name="direct3" input="QL_DSP2_MULTACC_REGIN_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="QL_DSP2_MULTACC_REGIN_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="QL_DSP2_MULTACC_REGIN_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="QL_DSP2_MULTACC_REGIN_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="QL_DSP2_MULTACC_REGIN_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="QL_DSP2_MULTACC_REGIN_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="QL_DSP2_MULTACC_REGIN_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="QL_DSP2_MULTACC_REGIN_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="QL_DSP2_MULTACC_REGIN_REGOUT.load_acc"/>
-          <complete name="clk" input="dsp.clk" output="QL_DSP2_MULTACC_REGIN_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC_REGIN_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC_REGIN_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP2_MULTACC_REGIN_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC_REGIN_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC_REGIN_REGOUT.unsigned_b"/>
+          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC_REGIN_REGOUT.f_mode"/>
+          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC_REGIN_REGOUT.output_select"/>
+          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC_REGIN_REGOUT.register_inputs"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTACC_REGIN_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTACC_REGIN_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTACC_REGIN_REGOUT.load_acc"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC_REGIN_REGOUT.clk"/>
         </interconnect>
       </mode>
     </pb_type>
-    <!-- Define QL_BRAM begin -->
+    <!-- Define RS_BRAM begin -->
     <pb_type name="bram">
       <input  name="WDATA_A1_i"  num_pins="18"/>
       <input  name="WDATA_A2_i"  num_pins="18"/>
