@@ -34,7 +34,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
-set(VERSION_PATCH 8)
+set(VERSION_PATCH 9)
 
 execute_process(COMMAND git rev-parse --short HEAD
   COMMAND tr -d '\n'
@@ -427,6 +427,8 @@ install(
       DIRECTORY tests/Testcases/aes_decrypt_gate/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_gate/)
 install(
       DIRECTORY tests/Testcases/sasc_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/sasc_testcase/)
+install(
+      DIRECTORY tests/Testcases/and2_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/and2_testcase/)
 
 #install(
 #  EXPORT Raptor
@@ -463,6 +465,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/sasc_testcase
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Testcases/and2_testcase
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/and2_testcase/    
       COMMAND echo "Copying Yosys, ABC, DE in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
@@ -484,5 +489,8 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/openfpga/openfpga
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/    
      )
 endif()
