@@ -482,7 +482,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
 if (WIN OR APPLE)
 else ()
   install(
-      FILES ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c  DESTINATION ${CMAKE_INSTALL_BINDIR})
+      FILES ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c  DESTINATION ${CMAKE_INSTALL_BINDIR} PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE )
 
   add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Copying VPR and OpenFPGA in bin dir"
