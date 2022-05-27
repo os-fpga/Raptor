@@ -429,6 +429,8 @@ install(
       DIRECTORY tests/Testcases/sasc_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/sasc_testcase/)
 install(
       DIRECTORY tests/Testcases/and2_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/and2_testcase/)
+install(
+      DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/counter/)
 
 #install(
 #  EXPORT Raptor
