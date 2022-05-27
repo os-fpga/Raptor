@@ -163,7 +163,9 @@ jobs:
         yum install -y centos-release-scl
         yum install -y devtoolset-9
         yum install -y devtoolset-9-toolchain
-        yum install -y git222
+        yum remove -y git*
+        yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+        yum install -y git
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.5.4
       with: 
