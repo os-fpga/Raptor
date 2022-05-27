@@ -1,6 +1,6 @@
-module counter (clk, reset, result);
+module counter (clock0, reset, result);
 
-	input [3:0] clk;
+	input clock0;
 	input reset;
 	output [7:0] result;
 
@@ -10,7 +10,7 @@ module counter (clk, reset, result);
       result <= 0;
     end
 
-	always @(posedge clk[0] or posedge reset)
+	always @(posedge clock0 or posedge reset)
 	begin
 		if (reset) 
 			result = 0;		
