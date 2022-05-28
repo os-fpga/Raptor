@@ -91,7 +91,7 @@ jobs:
     - name: Test Release
       if: matrix.mode == 'test'
       run: |
-        make release test
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
 
     - name: Regression
@@ -115,7 +115,7 @@ jobs:
     - name: Install Test
       if: matrix.mode == 'install'
       run: |
-        make release
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         make install
         make clean   # make sure we only see installation artifacts
         make test_install
@@ -242,7 +242,7 @@ jobs:
         make debug test/unittest-d
         # Yosys doesn't separate debug and release builds, thus intermediate clean is required
         cd yosys_verific_rs && make clean && cd -
-        make release test/batch
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
         make test/gui
         make regression
 
@@ -463,7 +463,7 @@ jobs:
         where python && python --version
         where ninja && ninja --version
 
-        make release
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         if %errorlevel% neq 0 exit /b %errorlevel%
         make install
         if %errorlevel% neq 0 exit /b %errorlevel%
@@ -564,7 +564,7 @@ jobs:
 
     - name: Build
       run: |
-        make release
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         make install
 
     - name: Unit tests
@@ -647,7 +647,7 @@ jobs:
 
     - name: Build
       run: |
-        make release
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         make install
 
     - name: Unit tests
