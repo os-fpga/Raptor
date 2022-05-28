@@ -564,7 +564,7 @@ jobs:
 
     - name: Build
       run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make release
         make install
 
     - name: Unit tests
@@ -647,7 +647,7 @@ jobs:
 
     - name: Build
       run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make release
         make install
 
     - name: Unit tests
