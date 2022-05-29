@@ -12,4 +12,4 @@ packing
 place
 route
 sta
-bitstream force
+bitstream
