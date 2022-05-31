@@ -25,9 +25,11 @@ project(RAPTOR)
 set(RAPTOR ON)
 
 add_subdirectory(FOEDAG_rs)
+if (APPLE)
+    option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
+endif()
 add_subdirectory(yosys_verific_rs)
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
-    set(BUILD_YOSYS_PLUGINS ON) # Build yosys-plugins for OpenFPGA tests
     add_subdirectory(OpenFPGA_RS)
 endif()
 
