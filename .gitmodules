@@ -9,3 +9,6 @@
 [submodule "FOEDAG_rs"]
 	path = FOEDAG_rs
 	url = git@github.com:RapidSilicon/FOEDAG_rs.git
+[submodule "tests/Jira_Testcase"]
+	path = tests/Jira_Testcase
+	url = https://github.com/RapidSilicon/Jira_Testcase
