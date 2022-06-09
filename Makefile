@@ -110,12 +110,12 @@ test_install_mac:
 	$(PREFIX)/bin/raptor --compiler dummy --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
 
 test_install:
-	$(PREFIX)/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
-	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt.tcl
-	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
-	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/aes_decrypt_gate/aes_decrypt_gate.tcl
-	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/sasc_testcase/raptor.tcl
-	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/examples/sasc_testcase/raptor_target.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/aes_decrypt_gate/aes_decrypt_gate.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/sasc_testcase/raptor.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/sasc_testcase/raptor_target.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
@@ -141,16 +141,16 @@ test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
 
 test/batch: run-cmake-release
-	./build/bin/raptor --batch --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
-	./build/bin/raptor --batch --script tests/Jira_Testcase/GEMINIEDA_99/raptor.tcl
-	./build/bin/raptor --batch --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
-	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
-	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
-	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_mt.tcl
-	./build/bin/raptor --compiler dummy --batch --script tests/TestBatch/test_compiler_batch.tcl
-	./build/bin/raptor --script tests/Testcases/sasc_testcase/raptor.tcl --batch
-	./build/bin/raptor --script tests/Testcases/sasc_testcase/raptor_target.tcl --batch 
-	./build/bin/raptor --script tests/Testcases/and2_testcase/raptor.tcl --batch
+	./build/bin/raptor --batch --mute --script FOEDAG_rs/FOEDAG/tests/Testcases/trivial/test.tcl
+	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_99/raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
+	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_mt.tcl
+	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_batch.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/sasc_testcase/raptor.tcl 
+	./build/bin/raptor --batch --mute --script tests/Testcases/sasc_testcase/raptor_target.tcl 
+	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase/raptor.tcl 
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
