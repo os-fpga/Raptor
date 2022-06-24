@@ -6,6 +6,7 @@
         <resource type="bram" num="47"/>
         <resource type="dsp" num="48"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
+        <internal type="device_size" name="78x66"/>
         <internal type="openfpga_arch" file="gemini/gemini_openfpga.xml"/>
         <internal type="bitstream_settings" file="gemini/bitstream_annotation.xml"/>
         <internal type="sim_settings" file="gemini/fixed_sim_openfpga.xml"/>
