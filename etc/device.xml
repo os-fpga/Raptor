@@ -17,6 +17,7 @@
         <internal type="technology" name="genesis"/>
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
+        <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>
     <device name="MPW1" series="Gemini" family="TestChip" package="SBG484" pin_count="44" speedgrade="1" core_voltage="1.1V">
         <resource type="io" num="44"/>
