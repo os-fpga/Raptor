@@ -4,6 +4,10 @@ RapidSilicon complete Software solution
 Raptor is a classic RTL 2 Bitstream FPGA compiler.
 It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
+INSTALLATION
+
+See [`Install Raptor`](INSTALL.md)
+
 LICENSING
 
 Raptor uses the FlexLM License manager, please setup the license file:
