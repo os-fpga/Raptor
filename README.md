@@ -1,45 +1,98 @@
 # Raptor
 RapidSilicon complete Software solution
 
- * Current OS Support: Centos7, Ubuntu 20.04, Ubuntu 21.04
- * Planned OS Support: MacOS, Windows
+Raptor is a classic RTL 2 Bitstream FPGA compiler.
+It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
-BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE:
+INSTALLATION
 
- * [`Ubuntu dependencies`](.github/workflows/install_ubuntu_dependencies_build.sh)
- * [`Centos dependencies`](.github/workflows/install_centos_dependencies_build.sh)
- * [`MacOS dependencies`](.github/workflows/install_macos_dependencies_build.sh)
- * [`Windows Msys2 dependencies`](.github/workflows/main.yml)
- * [`Windows MSVC dependencies`](.github/workflows/main.yml)
+See [`Install Raptor`](INSTALL.md)
+
+LICENSING
+
+Raptor uses the FlexLM License manager, please setup the license file:
+setenv LM_LICENSE_FILE <path to license file or lmgrd IP address>
+
+
+RAPTOR OPTIONS
 
 ```
-  git clone https://github.com/RapidSilicon/Raptor.git
-  cd Raptor
-  git submodule update --init --recursive
-  make
-  make debug
-  make test
-  make install
-  make test_install
-```
-    
-NIGHTLY BUILD ACCESS:
-```
-Log in to Fremont/Arbutus server:
-Run VPN with NetExtender
-Run NX and connect server: nx01.rapid.local
-Run pre-build Raptor 
-ssh -X sim01, or ssh -X sim02
-module load raptor/build_env
-module load raptor/latest
-raptor ...
+raptor --help
+-----------------------------------
+--- Rapid Silicon RAPTOR HELP  ----
+-----------------------------------
+Options:
+   --help           : This help
+   --version        : Version
+   --batch          : Tcl only, no GUI
+   --script <script>: Execute a Tcl script
+   --mute           : mutes stdout in batch mode
+Tcl commands:
+   help                       : This help
+   create_design <name>       : Creates a design with <name> name
+   target_device <name>       : Targets a device with <name> name (MPW1, GEMINI)
+   add_design_file <file>... <type> (-VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008 (.vhd default), -V_1995, 
+                                     -V_2001 (.v default), -SV_2005, -SV_2009, -SV_2012, -SV_2017 (.sv default)) 
+   read_netlist <file>        : Read a netlist (.blif/.eblif) instead of an RTL design (Skip Synthesis)
+   add_include_path <path1>...: As in +incdir+
+   add_library_path <path1>...: As in +libdir+
+   add_library_ext <.v> <.sv> ...: As in +libext+
+   set_macro <name>=<value>...: As in -D<macro>=<value>
+   set_top_module <top>       : Sets the top module
+   add_constraint_file <file> : Sets SDC + location constraints
+                                Constraints: set_pin_loc, set_region_loc, all SDC commands
+   ipgenerate ?clean?         : IP generation
+   verific_parser <on/off>    : Turns on/off Verific Parser
+   synthesis_type Yosys/QL/RS : Selects Synthesis type
+   custom_synth_script <file> : Uses a custom Yosys templatized script
+   synth_options <option list>: RS-Yosys Plugin Options. The following defaults exist:
+                              :   -effort high
+                              :   -fsm_encoding binary if optimization == area else onehot
+                              :   -carry auto
+     -effort <level>          : Optimization effort level (high, medium, low)
+     -fsm_encoding <encoding> : FSM encoding:
+       binary                 : Compact encoding - using minimum of registers to cover the N states
+       onehot                 : One hot encoding - using N registers for N states
+     -carry <mode>            : Carry logic inference mode:
+       all                    : Infer as much as possible
+       auto                   : Infer carries based on internal heuristics
+       none                   : Do not infer carries
+     -no_dsp                  : Do not use DSP blocks to implement multipliers and associated logic
+     -no_bram                 : Do not use Block RAM to implement memory components
+     -fast                    : Perform the fastest synthesis. Don't expect good QoR.
+   synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed, none)
+   pnr_options <option list>  : VPR options
+   set_channel_width <int>    : VPR Routing channel setting
+   architecture <vpr_file.xml> ?<openfpga_file.xml>?
+                              : Uses the architecture file and optional openfpga arch file (For bitstream generation)
+   custom_openfpga_script <file> : Uses a custom OpenFPGA templatized script
+   bitstream_config_files -bitstream <bitstream_setting.xml> -sim <sim_setting.xml> -repack <repack_setting.xml>
+                              : Uses alternate bitstream generation configuration files
+   set_device_size XxY        : Device fabric size selection
+   packing ?clean?            : Packing
+   global_placement ?clean?   : Analytical placer
+   place ?clean?              : Detailed placer
+   route ?clean?              : Router
+   sta ?clean?                : Statistical Timing Analysis
+   power ?clean?              : Power estimator
+   bitstream ?force? ?clean?  : Bitstream generation
+----------------------------------
 ```
 
-BUILD RAPTOR ON THE FREMONT SERVER:
-```
-ssh sw01
-mkdir YOUR_WORK_DIR
-cd YOUR_WORK_DIR
-module load raptor/build_env
-Follow above instructions described in "BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE" to clone and build your raptor
-```
+RAPTOR EXAMPLE DESIGNS
+
+Example designs are installed with Raptor under:
+
+<install_path>/share/raptor/examples (ie: /usr/local/share/raptor/examples)
+
+To run one of the examples, cd into any local user directory and run:
+
+raptor --script /usr/local/share/raptor/examples/and2_testcase/raptor.tcl (GUI mode)
+or
+raptor --batch --script /usr/local/share/raptor/examples/and2_testcase/raptor.tcl (Batch mode)
+
+A project directory gets created with all the artefacts generated by Raptor.
+
+A log file gets created too: raptor.log with all the compilation steps logs agregated.
+
+
