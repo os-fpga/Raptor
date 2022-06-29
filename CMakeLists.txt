@@ -420,10 +420,6 @@ install(
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
-    DIRECTORY tests/Arch/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
-install(
-      FILES tests/Arch/k6_frac_N10_tileable_40nm.xml DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/Arch/)
-install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_fpga/)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_gate/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_gate/)
@@ -451,15 +447,11 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Copying arch and example files in share dir" 
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/etc/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Arch
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/Arch/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
