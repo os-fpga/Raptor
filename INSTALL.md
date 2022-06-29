@@ -4,7 +4,9 @@ RapidSilicon complete Software solution
  * Current OS Support: Centos7, Ubuntu 20.04, Ubuntu 21.04
  * Planned OS Support: MacOS, Windows
 
-BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE:
+3 ways to get access to Raptor:
+
+ 1) BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE:
 
  * [`Ubuntu dependencies`](.github/workflows/install_ubuntu_dependencies_build.sh)
  * [`Centos dependencies`](.github/workflows/install_centos_dependencies_build.sh)
@@ -34,7 +36,7 @@ BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE:
   make test_install
 ```
     
-NIGHTLY BUILD ACCESS:
+ 2) NIGHTLY BUILD ACCESS:
 ```
 Log in to Fremont/Arbutus server:
 Run VPN with NetExtender
@@ -46,9 +48,9 @@ module load raptor/latest
 raptor ...
 ```
 
-BUILD RAPTOR ON THE FREMONT SERVER:
+ 3) BUILD RAPTOR ON THE FREMONT SERVER:
 ```
-ssh sw01
+ssh sw01, sw03
 mkdir YOUR_WORK_DIR
 cd YOUR_WORK_DIR
 module load raptor/build_env
