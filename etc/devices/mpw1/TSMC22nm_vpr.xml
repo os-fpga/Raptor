@@ -443,7 +443,7 @@
     <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="0.412e-9" mux_trans_size="1.222260" buf_size="auto"/>
     <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="0.287e-9" mux_trans_size="2.630740" buf_size="27.645901"/>
     <switch type="mux" name="L2_mux" R="0." Cin=".77e-15" Cout="0." Tdel="0.500e-9" mux_trans_size="2.630740" buf_size="27.645901"/>
-    <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="0.400e-9" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="0.943e-9" mux_trans_size="2.630740" buf_size="27.645901"/>
   </switchlist>
   <segmentlist>
     <!-- GIVE a specific name for the segment! OpenFPGA appreciate that! -->
@@ -518,17 +518,17 @@
               <delay_constant max="0.120e-9" min="0.085e-9" in_port="ff[0:0].Q" out_port="pad.outpad"/>
             </mux>
             <mux name="mux2" input="pad.inpad ff[1:1].Q" output="iopad.a2f_o">
-              <delay_constant max="0.220e-9" min="0.120e-9" in_port="pad.inpad" out_port="iopad.a2f_o"/>
-              <delay_constant max="0.120e-9" min="0.060e-9" in_port="ff[1:1].Q" out_port="iopad.a2f_o"/>
+              <delay_constant max="0.429e-9" min="0.166e-9" in_port="pad.inpad" out_port="iopad.a2f_o"/>
+              <delay_constant max="0.306e-9" min="0.096e-9" in_port="ff[1:1].Q" out_port="iopad.a2f_o"/>
             </mux>
           </interconnect>
         </pb_type>
         <interconnect>
 	  <complete name="clks" input="io.clk" output="iopad.clk">
-            <delay_constant max="3.660e-9" min="3.225e-9" in_port="io.clk[0]" out_port="iopad.clk"/>
-            <delay_constant max="3.615e-9" min="3.120e-9" in_port="io.clk[1]" out_port="iopad.clk"/>
-            <delay_constant max="3.510e-9" min="3.025e-9" in_port="io.clk[2]" out_port="iopad.clk"/>
-            <delay_constant max="3.495e-9" min="2.870e-9" in_port="io.clk[3]" out_port="iopad.clk"/>
+            <delay_constant max="0.732e-9" min="0.645e-9" in_port="io.clk[0]" out_port="iopad.clk"/>
+            <delay_constant max="0.723e-9" min="0.624e-9" in_port="io.clk[1]" out_port="iopad.clk"/>
+            <delay_constant max="0.702e-9" min="0.605e-9" in_port="io.clk[2]" out_port="iopad.clk"/>
+            <delay_constant max="0.699e-9" min="0.574e-9" in_port="io.clk[3]" out_port="iopad.clk"/>
           </complete>
           <direct name="direct3" input="io.f2a_i" output="iopad.f2a_i"/>
           <direct name="direct4" input="iopad.a2f_o" output="io.a2f_o"/>
@@ -623,10 +623,10 @@
         <interconnect>
 	  <complete name="io_output-reset" input="io.reset" output="io_output.reset"/>
           <complete name="io_output-clk" input="io.clk" output="io_output.clk">
-            <delay_constant max="3.660e-9" min="3.225e-9" in_port="io.clk[0]" out_port="io_output.clk"/>
-            <delay_constant max="3.615e-9" min="3.120e-9" in_port="io.clk[1]" out_port="io_output.clk"/>
-            <delay_constant max="3.510e-9" min="3.025e-9" in_port="io.clk[2]" out_port="io_output.clk"/>
-            <delay_constant max="3.495e-9" min="2.870e-9" in_port="io.clk[3]" out_port="io_output.clk"/>
+            <delay_constant max="0.731e-9" min="0.646e-9" in_port="io.clk[0]" out_port="io_output.clk"/>
+            <delay_constant max="0.716e-9" min="0.624e-9" in_port="io.clk[1]" out_port="io_output.clk"/>
+            <delay_constant max="0.701e-9" min="0.605e-9" in_port="io.clk[2]" out_port="io_output.clk"/>
+            <delay_constant max="0.698e-9" min="0.574e-9" in_port="io.clk[3]" out_port="io_output.clk"/>
           </complete>
           <direct name="io_output-f2a_i" input="io.f2a_i" output="io_output.f2a_i"/>
         </interconnect>
@@ -706,8 +706,8 @@
               <pack_pattern name="pack-IREGN" in_port="inpad.inpad" out_port="ff.D"/>
             </direct>
             <mux name="mux2" input="inpad.inpad ff.Q" output="io_input.a2f_o">
-              <delay_constant max="0.220e-9" min="0.120e-9" in_port="inpad.inpad" out_port="io_input.a2f_o"/>
-              <delay_constant max="0.120e-9" min="0.060e-9" in_port="ff.Q" out_port="io_input.a2f_o"/>
+              <delay_constant max="0.429e-9" min="0.166e-9" in_port="inpad.inpad" out_port="io_input.a2f_o"/>
+              <delay_constant max="0.306e-9" min="0.096e-9" in_port="ff.Q" out_port="io_input.a2f_o"/>
             </mux>
           </interconnect>
         </pb_type>
@@ -715,10 +715,10 @@
           <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o"/>
 	  <complete name="io_input-reset" input="io.reset" output="io_input.reset"/>
           <complete name="io_input-clk" input="io.clk" output="io_input.clk">
-            <delay_constant max="3.660e-9" min="3.225e-9" in_port="io.clk[0]" out_port="io_input.clk"/>
-            <delay_constant max="3.615e-9" min="3.120e-9" in_port="io.clk[1]" out_port="io_input.clk"/>
-            <delay_constant max="3.510e-9" min="3.025e-9" in_port="io.clk[2]" out_port="io_input.clk"/>
-            <delay_constant max="3.495e-9" min="2.870e-9" in_port="io.clk[3]" out_port="io_input.clk"/>
+            <delay_constant max="0.732e-9" min="0.645e-9" in_port="io.clk[0]" out_port="io_input.clk"/>
+            <delay_constant max="0.723e-9" min="0.625e-9" in_port="io.clk[1]" out_port="io_input.clk"/>
+            <delay_constant max="0.702e-9" min="0.605e-9" in_port="io.clk[2]" out_port="io_input.clk"/>
+            <delay_constant max="0.699e-9" min="0.579e-9" in_port="io.clk[3]" out_port="io_input.clk"/>
           </complete>
         </interconnect>
       </mode>
@@ -965,12 +965,12 @@
               <direct name="direct_frac_out1" input="frac_logic.out[0]" output="ff_phy[0].D"/>
               <direct name="direct_frac_out2" input="frac_logic.out[1]" output="ff_phy[1].D"/>
 	      <mux name="mux2" input="frac_logic.out[0] ff_phy[0].Q" output="fabric.out[0]">
-                <delay_constant max="0.100e-9" min="0.090e-9" in_port="frac_logic.out[0]" out_port="fabric.out[0]"/>
-                <delay_constant max="0.100e-9" min="0.090e-9" in_port="ff_phy[0].Q" out_port="fabric.out[0]"/>
+                <delay_constant max="0.557e-9" min="0.190e-9" in_port="frac_logic.out[0]" out_port="fabric.out[0]"/>
+                <delay_constant max="0.538e-9" min="0.207e-9" in_port="ff_phy[0].Q" out_port="fabric.out[0]"/>
               </mux>
 	      <mux name="mux3" input="frac_logic.out[1] ff_phy[1].Q" output="fabric.out[1]">
-                <delay_constant max="0.100e-9" min="0.090e-9" in_port="frac_logic.out[1]" out_port="fabric.out[1]"/>
-                <delay_constant max="0.100e-9" min="0.090e-9" in_port="ff_phy[1].Q" out_port="fabric.out[1]"/>
+                <delay_constant max="0.557e-9" min="0.190e-9" in_port="frac_logic.out[1]" out_port="fabric.out[1]"/>
+                <delay_constant max="0.563e-9" min="0.227e-9" in_port="ff_phy[1].Q" out_port="fabric.out[1]"/>
               </mux>
 	    </interconnect>
           </pb_type>
@@ -1573,31 +1573,31 @@
       </pb_type>
       <interconnect>
         <complete name="crossbar0" input="clb.I0 clb.I3 fle[1:0].out fle[3:2].out fle[8:8].out" output="fle[9:0].in[0]">
-          <delay_constant max="0.300e-9" in_port="clb.I0 clb.I3" out_port="fle[9:0].in[0]" />
-          <delay_constant max="0.410e-9" in_port="fle[1:0].out fle[3:2].out fle[8:8].out"  out_port="fle[9:0].in[0]" />
+          <delay_constant max="0.508e-9" in_port="clb.I0 clb.I3" out_port="fle[9:0].in[0]" />
+          <delay_constant max="0.707e-9" in_port="fle[1:0].out fle[3:2].out fle[8:8].out"  out_port="fle[9:0].in[0]" />
         </complete>
         <complete name="crossbar1" input="clb.I1 clb.I2 fle[3:2].out fle[5:4].out fle[9:9].out" output="fle[9:0].in[1]">
-          <delay_constant max="0.300e-9" in_port="clb.I1 clb.I2" out_port="fle[9:0].in[1]" />
-          <delay_constant max="0.410e-9" in_port="fle[3:2].out fle[5:4].out fle[9:9].out"  out_port="fle[9:0].in[1]" />
+          <delay_constant max="0.508e-9" in_port="clb.I1 clb.I2" out_port="fle[9:0].in[1]" />
+          <delay_constant max="0.707e-9" in_port="fle[3:2].out fle[5:4].out fle[9:9].out"  out_port="fle[9:0].in[1]" />
         </complete>
         <complete name="crossbar2" input="clb.I0 clb.I2 fle[5:4].out fle[7:6].out fle[8:8].out" output="fle[9:0].in[2]">
-          <delay_constant max="0.300e-9" in_port="clb.I0 clb.I2" out_port="fle[9:0].in[2]" />
-          <delay_constant max="0.410e-9" in_port="fle[5:4].out fle[7:6].out fle[8:8].out"  out_port="fle[9:0].in[2]" />
+          <delay_constant max="0.508e-9" in_port="clb.I0 clb.I2" out_port="fle[9:0].in[2]" />
+          <delay_constant max="0.707e-9" in_port="fle[5:4].out fle[7:6].out fle[8:8].out"  out_port="fle[9:0].in[2]" />
         </complete>
         <complete name="crossbar3" input="clb.I1 clb.I3" output="fle[9:0].in[3]">
-          <delay_constant max="0.300e-9" in_port="clb.I1 clb.I3" out_port="fle[9:0].in[3]" />
+          <delay_constant max="0.508e-9" in_port="clb.I1 clb.I3" out_port="fle[9:0].in[3]" />
         </complete>
         <complete name="crossbar4" input="clb.I0 clb.I3" output="fle[9:0].in[4]">
-          <delay_constant max="0.300e-9" in_port="clb.I0 clb.I3" out_port="fle[9:0].in[4]" />
+          <delay_constant max="0.508e-9" in_port="clb.I0 clb.I3" out_port="fle[9:0].in[4]" />
         </complete>
         <complete name="crossbar5" input="clb.I1 clb.I2" output="fle[9:0].in[5]">
-          <delay_constant max="0.300e-9" in_port="clb.I1 clb.I2" out_port="fle[9:0].in[5]" />
+          <delay_constant max="0.508e-9" in_port="clb.I1 clb.I2" out_port="fle[9:0].in[5]" />
         </complete>
         <complete name="clks" input="clb.clk" output="fle[9:0].clk">
-          <delay_constant max="3.255e-9" min="2.995e-9" in_port="clb.clk[0]" out_port="fle[9:0].clk"/>
-          <delay_constant max="3.250e-9" min="2.860e-9" in_port="clb.clk[1]" out_port="fle[9:0].clk"/>
-          <delay_constant max="3.085e-9" min="2.775e-9" in_port="clb.clk[2]" out_port="fle[9:0].clk"/>
-          <delay_constant max="3.080e-9" min="2.620e-9" in_port="clb.clk[3]" out_port="fle[9:0].clk"/>
+          <delay_constant max="0.651e-9" min="0.599e-9" in_port="clb.clk[0]" out_port="fle[9:0].clk"/>
+          <delay_constant max="0.650e-9" min="0.572e-9" in_port="clb.clk[1]" out_port="fle[9:0].clk"/>
+          <delay_constant max="0.617e-9" min="0.555e-9" in_port="clb.clk[2]" out_port="fle[9:0].clk"/>
+          <delay_constant max="0.616e-9" min="0.524e-9" in_port="clb.clk[3]" out_port="fle[9:0].clk"/>
         </complete>
         <complete name="set" input="clb.set" output="fle[9:0].set">
           <delay_constant max="0.257e-9" min="0.171e-9" in_port="clb.set" out_port="fle[9:0].set"/>
