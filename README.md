@@ -1,20 +1,19 @@
 # Raptor
-RapidSilicon complete Software solution
+Rapid Silicon complete Software solution
 
 Raptor is a classic RTL 2 Bitstream FPGA compiler.
 It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
-INSTALLATION
+## INSTALLATION
 
 See [`Install Raptor`](INSTALL.md)
 
-LICENSING
+## LICENSING
 
 Raptor uses the FlexLM License manager, please setup the license file:
-setenv LM_LICENSE_FILE <path to license file or lmgrd IP address>
+```setenv LM_LICENSE_FILE <path to license file or lmgrd IP address>```
 
-
-RAPTOR OPTIONS
+## RAPTOR OPTIONS
 
 ```
 raptor --help
@@ -79,7 +78,7 @@ Tcl commands:
 ----------------------------------
 ```
 
-RAPTOR EXAMPLE DESIGNS
+## RAPTOR EXAMPLE DESIGNS
 
 ```
 Example designs are installed with Raptor under:
