@@ -57,7 +57,8 @@ int main(int argc, char** argv) {
       new FOEDAG::Foedag(cmd, RS::mainWindowBuilder, RS::registerAllCommands,
                          compiler, settings, context);
 
-  std::filesystem::path litexpath = FOEDAG::FileUtils::locateExecFile("litex_sim");
+  std::filesystem::path litexpath =
+      FOEDAG::FileUtils::locateExecFile("litex_sim");
   if (opcompiler) {
     std::filesystem::path binpath = foedag->Context()->BinaryPath();
     std::filesystem::path datapath = foedag->Context()->DataPath();
