@@ -4,6 +4,11 @@
 
 cmake_minimum_required(VERSION 3.15)
 
+if (PRODUCTION_BUILD)
+  message("Production Build type set to ON")
+  set (PRODUCTION_BUILD_FLAG "-DPRODUCTION_BUILD=1")
+endif(PRODUCTION_BUILD)
+
 # Detect build type, fallback to release and throw a warning if use didn't
 # specify any
 if(NOT CMAKE_BUILD_TYPE)
@@ -36,7 +41,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 9)
+set(VERSION_PATCH 10)
 
 execute_process(COMMAND git rev-parse --short HEAD
   COMMAND tr -d '\n'
@@ -121,10 +126,10 @@ else()
   endif()
 
   set(CMAKE_CXX_FLAGS_DEBUG
-      "${CMAKE_CXX_FLAGS_DEBUG} ${TCMALLOC_COMPILE_OPTIONS} -Werror -Wall -O0 -g ${MSYS_COMPILE_OPTIONS} ${MY_CXX_WARNING_FLAGS} ${MEM_SANITIZER_FLAGS}"
+      "${CMAKE_CXX_FLAGS_DEBUG} ${TCMALLOC_COMPILE_OPTIONS} -Werror -Wall -O0 -g ${MSYS_COMPILE_OPTIONS} ${MY_CXX_WARNING_FLAGS} ${MEM_SANITIZER_FLAGS} ${PRODUCTION_BUILD_FLAG}"
   )
   set(CMAKE_CXX_FLAGS_RELEASE
-      "${CMAKE_CXX_FLAGS_RELEASE} ${TCMALLOC_COMPILE_OPTIONS} -Werror -Wall -O3 ${MSYS_COMPILE_OPTIONS} -DNDEBUG ${MY_CXX_WARNING_FLAGS}"
+      "${CMAKE_CXX_FLAGS_RELEASE} ${TCMALLOC_COMPILE_OPTIONS} -Werror -Wall -O3 ${MSYS_COMPILE_OPTIONS} -DNDEBUG ${MY_CXX_WARNING_FLAGS} ${PRODUCTION_BUILD_FLAG}"
   )
 endif()
 
