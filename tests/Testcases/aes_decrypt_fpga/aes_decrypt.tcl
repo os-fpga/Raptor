@@ -6,7 +6,7 @@ add_design_file aes_decrypt128.sv aes_decrypt256.sv  gfmul.sv InvMixCol_slice.sv
 add_design_file generic_muxfx.v
 add_constraint_file aes_decrypt.sdc
 synth_options -effort high
-synthesize
+synthesize delay
 packing
 place
 route
