@@ -41,7 +41,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 11)
+set(VERSION_PATCH 12)
 
 execute_process(COMMAND git rev-parse --short HEAD
   COMMAND tr -d '\n'
