@@ -20,6 +20,7 @@
         <internal type="technology" name="genesis"/>
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
+        <internal type="bitstream_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>
     <device name="MPW1" series="Gemini" family="TestChip" package="SBG484" pin_count="44" speedgrade="1" core_voltage="1.1V">
@@ -39,6 +40,7 @@
         <internal type="plugin_func" name="synth_ql"/>
         <internal type="technology" name="qlf_k6n10f"/>
         <internal type="synth_type" name="QL"/>
+        <internal type="bitstream_enabled" num="true"/>
         <internal type="synth_opts" name="-no_dsp -no_bram -no_adder"/>
     </device>
  </device_list>
