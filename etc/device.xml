@@ -14,7 +14,7 @@
         <internal type="sim_settings" file="gemini/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="gemini/repack_design_constraint.xml"/>
         <internal type="pinmap_xml" file=""/>
-        <internal type="pinmap_csv" file=""/>
+        <internal type="pinmap_csv" file="gemini/Gemini_Pin_Table.csv"/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis"/>
