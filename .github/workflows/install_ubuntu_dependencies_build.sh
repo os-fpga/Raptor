@@ -30,6 +30,8 @@ sudo apt install -y \
   libboost-python-dev \
   libboost-filesystem-dev \
   zlib1g-dev \
+  automake \
+  autoconf \
   ninja-build 
   
 sudo ln -sf /usr/bin/g++-9 /usr/bin/g++
