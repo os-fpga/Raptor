@@ -43,7 +43,8 @@ set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
 set(VERSION_PATCH 13)
 
-execute_process(COMMAND git rev-parse --short HEAD
+execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMAND git rev-parse --short HEAD
   COMMAND tr -d '\n'
   OUTPUT_VARIABLE GIT_HASH
   ERROR_VARIABLE GIT_HASH_ERR
