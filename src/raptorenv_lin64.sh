@@ -6,4 +6,4 @@ RETURN_PATH=`pwd`
 SCRIPT_PATH=`dirname $BASH_SOURCE`
 RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
 
-source $RAPTOR_PATH/.raptorenv64.sh
+source $RAPTOR_PATH/.raptorenv_lin64.sh
