@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!-- Version 4 schema -->
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:fnp="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    elementFormDefault="qualified">
+
+  <xsd:include schemaLocation="../Version4/M2_NonEmptyString.xsd" />
+    <xsd:complexType name="OperatingSystemType">
+            <xsd:sequence>
+                <xsd:element name="Info" type="fnp:NonEmptyString" />
+            </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PlatformType">
+            <xsd:sequence>
+                <xsd:element name="PlatformTypeName" type="fnp:NonEmptyString" />
+                <xsd:element name="OperatingSystem" type="OperatingSystemType" />
+            </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

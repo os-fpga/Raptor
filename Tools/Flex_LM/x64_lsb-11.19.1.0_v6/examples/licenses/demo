@@ -1,0 +1,19 @@
+	#The following demo line has these properties:
+
+	#	It expires on 1-jan-2030
+	#	It's uncounted, and therefore requires no server (no 
+	#	lmgrd needed)
+	#	It will run on any node.
+
+FEATURE f1 demo 1.000 01-jan-2030 uncounted HOSTID=DEMO SIGN=0
+
+
+        #	The next demo line is just like the first, but will not 
+        #	expire.  This is ONLY useful if your application gets the 
+        #	CONFIG * struct for this FEATURE line, and determines that 
+        #	it's a DEMO type HOSTID, and uses this fact to limit the 
+        #	behavior of the application to "demonstration" functions 
+        #	only.  
+
+
+FEATURE f2 demo 1.000 01-jan-0 uncounted HOSTID=DEMO SIGN=0

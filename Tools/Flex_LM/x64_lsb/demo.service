@@ -1,0 +1,22 @@
+[Unit]
+Description= lmgrd is the licensing module server.
+
+#
+# Example startup script for the license server daemon.
+# On Latest Linux systems this file would go in the /etc/systemd/system  directory (make
+# sure it's marked executable after copying it there), and then the command:
+#
+#       systemctl enable demo.service
+#
+# can be used to tell the system to run it on startup.
+#
+
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+
+ExecStart=/opt/FNPlm/lmgrd_path/demo.sh
+
+[Install]
+WantedBy=multi-user.target

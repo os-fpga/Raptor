@@ -1,0 +1,27 @@
+SERVER this_host any 
+DAEMON demo 
+	# The purpose of this file is to illustrate optional extensions to
+	#	a license file.
+
+	#	Floating, unexpiring, counted
+	#	FEATURE name: 	f1
+	#	VERSION:	1.000
+	#	Expiration:	never 
+	#	Users:		9 concurrent users
+	#	LINGER
+
+FEATURE f1 demo 1.000 permanent 9 SIGN=0
+
+	#	Floating, expiring, counted
+	#	FEATURE name: 	f1
+	#	VERSION:	1.000
+	#	Expiration:	1-jan-2030 
+	#	Users:		9 concurrent users
+
+FEATURE f2 demo 1.000 01-jan-2030 9 SIGN=0
+
+
+	#	Floating, expiring, counted, Incremental
+	#Same as previous, but will ADD 9 users to an existing file.
+
+INCREMENT f2 demo 1.000 01-jan-2030 9 SIGN=0

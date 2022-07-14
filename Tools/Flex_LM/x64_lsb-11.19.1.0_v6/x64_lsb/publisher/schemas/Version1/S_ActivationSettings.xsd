@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema 
+targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" 
+xmlns="http://www.macrovision.com/fnp/2004/11/activation" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation"
+elementFormDefault="qualified">
+	
+	<!-- Root element -->
+	<xsd:element name="ActivationSettings">
+		<xsd:complexType>
+			<xsd:sequence>
+			<xsd:element name="Secure" type="SecureType"/>
+			<xsd:element name="Seeds" type="SeedsType"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+    
+    <xsd:simpleType name="EightCharHexStringType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0123456789abcdefABCDEF]*"/>
+			<xsd:length value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="SeedsType">
+		<xsd:sequence>
+		    <xsd:element name="Seed" type="EightCharHexStringType" minOccurs="8" maxOccurs="8"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SecureType">
+		<xsd:sequence>
+            <xsd:element name="PublisherId" type="xsd:positiveInteger"/>
+            <xsd:element name="VendorName" type="xsd:string"/>
+            <xsd:element name="Hash" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+		
+</xsd:schema>

@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!-- Version 2 schema -->
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" xmlns="http://www.macrovision.com/fnp/2004/11/activation"
+    xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:include schemaLocation="M1_Dictionary.xsd" />
+    <xsd:include schemaLocation="M6_ParameterHeaderType.xsd" />
+    <xsd:element name="CreateRepairResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Header" type="fnp:HeaderType" />
+                <xsd:element name="ResponseData" type="ResponseDataType" minOccurs="0" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="ResponseDataType">
+        <xsd:sequence>
+            <xsd:element name="VendorDictionary" type="fnp:Dictionary" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

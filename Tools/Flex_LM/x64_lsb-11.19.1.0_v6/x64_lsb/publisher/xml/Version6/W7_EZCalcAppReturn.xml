@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CreateCompositeResponse xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A">
+  <Header>
+    <VersionNumber>6</VersionNumber>
+  </Header>
+
+  <RequesterVerification>		
+  	<UniqueMachineNumbers>
+		<FromRequest>yes</FromRequest>
+	</UniqueMachineNumbers>
+  </RequesterVerification>
+
+	<ResponseData>
+    <ResponseActions>
+      <ResponseDelete>
+        <FulfillmentId>FIL-EZCALC-ACCT1</FulfillmentId>
+        <TrustedId>1</TrustedId>
+      </ResponseDelete>
+		</ResponseActions>
+
+		<FLEXnetDictionary>
+			<Entries>
+				<Entry>
+					<Key>COMMENT</Key>
+					<Value>Return license rights from an end-user machine.</Value>
+				</Entry>
+			</Entries>
+		</FLEXnetDictionary>
+
+	</ResponseData>
+
+</CreateCompositeResponse>

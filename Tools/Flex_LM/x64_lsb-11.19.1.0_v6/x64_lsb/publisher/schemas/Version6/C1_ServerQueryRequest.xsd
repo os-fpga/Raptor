@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A" 
+            xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:fnp="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A" 
+            elementFormDefault="qualified">
+  <xsd:include schemaLocation="../Version4/M1_Dictionary.xsd"/>
+  <xsd:include schemaLocation="../Version4/M2_NonEmptyString.xsd"/>
+  <xsd:include schemaLocation="../Version4/M4_TrustedHostInformationType.xsd" />
+  <xsd:include schemaLocation="../Version6/M8_ServerQueryTypes.xsd" />
+  <!-- Root element -->
+  <xsd:element name="Request">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="RequestHeader" type="typeRequestHeader" />
+        <xsd:element name="RequestData" type="typeServerQueryRequestData" />
+        <xsd:element name="Hash" type="fnp:NonEmptyString" />
+        <xsd:element name="HashVersion" type="xsd:positiveInteger" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:simpleType name="typeRestrictionRequestType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SERVERQUERY" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="typeRequestHeader">
+    <xsd:sequence>
+      <xsd:element name="VersionNumber" type="xsd:positiveInteger" />
+      <xsd:element name="RequestType" type="typeRestrictionRequestType" />
+      <xsd:element name="PublisherId" type="xsd:positiveInteger" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="typeServerQueryRequestData">
+    <xsd:sequence>
+      <xsd:element name="OriginData" type="typeOriginData" />
+      <xsd:element name="QueryData" type="groupQueryDataRequest" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="typeQueryData">
+    <xsd:sequence>
+      <xsd:element name="QueryData" type="groupQueryDataRequest" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="groupQueryDataRequest">
+    <xsd:choice>
+      <xsd:element name="QueryEntitlements" type="typeQueryEntitlementsData" />
+      <xsd:element name="QueryFullEntitlement" type="typeQueryFullEntitlementData" />
+      <xsd:element name="QueryFRCountSummary" type="typeQueryFRCountSummaryData" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="typeOriginData">
+    <xsd:sequence>
+      <xsd:element name="ClientVersion" type="fnp:NonEmptyString" />
+      <xsd:element name="ConfigData" type="ConfigDataType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConfigDataType">
+    <xsd:sequence>
+      <xsd:element name="IsServer" type="xsd:boolean" />
+      <xsd:element name="TrustedHostInformation" type="fnp:TrustedHostInformationType" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
