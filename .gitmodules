@@ -12,6 +12,3 @@
 [submodule "tests/Jira_Testcase"]
 	path = tests/Jira_Testcase
 	url = git@github.com:RapidSilicon/Jira_Testcase.git
-[submodule "litex_rs"]
-	path = litex_rs
-	url = git@github.com:RapidSilicon/litex_rs.git
