@@ -20,7 +20,10 @@ namespace RS {
 
 QWidget* mainWindowBuilder(FOEDAG::Session* session) {
   FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{session};
-  mainW->MainWindowTitle(std::string(Company) + " " + std::string(ToolName));
+  auto info = mainW->Info();
+  info.name = QString("%1 %2").arg(Company, ToolName);
+  info.url = "https://github.com/RapidSilicon/Raptor/commit/";
+  mainW->Info(info);
   return mainW;
 }
 
@@ -56,9 +59,6 @@ int main(int argc, char** argv) {
   FOEDAG::Foedag* foedag =
       new FOEDAG::Foedag(cmd, RS::mainWindowBuilder, RS::registerAllCommands,
                          compiler, settings, context);
-
-  std::filesystem::path litexpath =
-      FOEDAG::FileUtils::locateExecFile("litex_sim");
   if (opcompiler) {
     std::filesystem::path binpath = foedag->Context()->BinaryPath();
     std::filesystem::path datapath = foedag->Context()->DataPath();
@@ -88,6 +88,5 @@ int main(int argc, char** argv) {
     opcompiler->OpenFpgaRepackConstraintsFile(repackConstraintPath);
     opcompiler->PinConvExecPath(pinConvPath);
   }
-  compiler->BuildLiteXIPCatalog(litexpath);
   return foedag->init(guiType);
 }
