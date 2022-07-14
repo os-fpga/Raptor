@@ -46,7 +46,7 @@ yum install -y zlib-devel
 yum install http://repo.okay.com.mx/centos/7/x86_64/release/okay-release-1-1.noarch.rpm
 yum install -y ninja-build
 yum install -y wget
-yum install -y openssl openssl-lib
+yum install -y openssl openssl-libs
 
 ln -s $PWD/cmake-3.15.7-Linux-x86_64/bin/ctest /usr/bin/ctest
 echo 'QMAKE_CC=/opt/rh/devtoolset-9/root/usr/bin/gcc' >> $GITHUB_ENV
