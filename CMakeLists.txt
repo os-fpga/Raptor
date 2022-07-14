@@ -4,9 +4,12 @@
 
 cmake_minimum_required(VERSION 3.15)
 
+set (BUILD_TYPE_STRING Engineering)
 if (PRODUCTION_BUILD)
   message("Production Build type set to ON")
   set (PRODUCTION_BUILD_FLAG "-DPRODUCTION_BUILD=1")
+  add_definitions(-DPRODUCTION_BUILD)
+  set (BUILD_TYPE_STRING Production)
 endif(PRODUCTION_BUILD)
 
 # Detect build type, fallback to release and throw a warning if use didn't
@@ -41,7 +44,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 13)
+set(VERSION_PATCH 16)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
