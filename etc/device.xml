@@ -1,8 +1,8 @@
 <device_list>
     <device name="GEMINI" series="Gemini" family="RSGem" package="SBG484" pin_count="540" speedgrade="1" core_voltage="0.8V">
         <resource type="io" num="450"/>
-        <resource type="lut" num="3432"/>
-        <resource type="ff" num="6864"/>
+        <resource type="lut" num="34320"/>
+        <resource type="ff" num="68640"/>
         <resource type="bram" num="143"/>
         <resource type="dsp" num="286"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
