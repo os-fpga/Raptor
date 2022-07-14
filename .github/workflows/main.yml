@@ -51,6 +51,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -183,6 +184,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -289,6 +291,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
 
     - name: Git pull
       uses: actions/checkout@v2
@@ -437,6 +440,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
 
     - uses: actions/checkout@v2
       with:
@@ -524,6 +528,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
 
     - uses: actions/checkout@v2
       with:
@@ -615,6 +620,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
 
     - uses: actions/checkout@v2
       with:
@@ -711,6 +717,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
 
     - name: Checkout code
       uses: actions/checkout@v2
