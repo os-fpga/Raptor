@@ -32,7 +32,8 @@ sudo apt install -y \
   zlib1g-dev \
   automake \
   autoconf \
-  ninja-build 
+  ninja-build \
+  libssl-dev
   
 sudo ln -sf /usr/bin/g++-9 /usr/bin/g++
 sudo ln -sf /usr/bin/gcc-9 /usr/bin/gcc
