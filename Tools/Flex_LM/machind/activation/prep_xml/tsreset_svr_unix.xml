@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+        <activationsettings path="ActivationSettings/publisher.xml" isserver="true"/>
+        <certificate path="." hostverify="2" peerverify="true" />
+        <items installpath="." runtimeloadname="tsreset_svr_libFNP.so" >
+                <item path="tsreset_svr" />
+        </items>
+        <preferences>
+                <verbose level="0" />
+                <debuggable value="true" />
+                <stripwarnings value="false" />
+        </preferences>
+</config>

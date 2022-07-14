@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<CreateResponseCode xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<ResponseData>
+<ResponseType>REPAIR</ResponseType>
+<ResponseItems>
+<Item>
+<Name>SCI_REPAIR_SCOPE</Name>
+<Value>0</Value>
+</Item>
+</ResponseItems>
+</ResponseData>
+</CreateResponseCode>

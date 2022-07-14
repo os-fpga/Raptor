@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Response xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<ResponseHeader>
+<VersionNumber>1</VersionNumber>
+<ResponseType>CLIENT_CONFIG</ResponseType>
+<RequestSequenceNumber>99</RequestSequenceNumber>
+<RequestHash>X</RequestHash>
+</ResponseHeader>
+<ResponseData>
+<ConfigData>
+<ClientConfig>
+<Id>1</Id>
+<Revision>X1.0</Revision>
+<RevisionType>SRV</RevisionType>
+<Data>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</Data>
+<Signature>SIG_1</Signature>			
+</ClientConfig>
+</ConfigData>
+<ConfigData>
+<ClientConfig>
+<Id>9</Id>
+<Revision>X1.0</Revision>
+<RevisionType>SRV</RevisionType>
+<Data>YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY</Data>
+<Signature>SIG_3</Signature>			
+</ClientConfig>
+</ConfigData>
+</ResponseData>
+<Signature>SIG_5</Signature>
+<SignatureVersion>1</SignatureVersion>
+</Response>

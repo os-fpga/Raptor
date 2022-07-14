@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!-- Version 2 schema -->
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" xmlns="http://www.macrovision.com/fnp/2004/11/activation"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation"
+    elementFormDefault="qualified">
+    <xsd:include schemaLocation="M1_Dictionary.xsd" />
+    <xsd:include schemaLocation="I_FulfillmentRecord.xsd" />
+    <xsd:include schemaLocation="M2_NonEmptyString.xsd" />
+    <xsd:include schemaLocation="M3_EnterpriseDataType.xsd" />
+    <xsd:include schemaLocation="M4_TrustedHostInformationType.xsd" />
+    <xsd:include schemaLocation="M5_VersionNumberType.xsd" />
+    <xsd:element name="Request">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="RequestHeader" type="RequestHeaderType" />
+                <xsd:element name="RequestData" type="RequestDataType" />
+                <xsd:element name="Hash" type="fnp:NonEmptyString" />
+                <xsd:element name="HashVersion" type="xsd:positiveInteger" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:simpleType name="RequestTypeRestriction">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="RETURN" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="RequestHeaderType">
+        <xsd:sequence>
+            <xsd:element name="VersionNumber" type="fnp:VersionNumberType" />
+            <xsd:element name="RequestType" type="RequestTypeRestriction" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="RequestDataType">
+        <xsd:sequence>
+            <xsd:element name="EntitlementData" type="EntitlementDataType" />
+            <xsd:element name="OriginData" type="OriginDataType" />
+            <xsd:element name="EnterpriseData" type="fnp:EnterpriseDataType" minOccurs="0" />
+            <xsd:element name="ReturnData" type="ReturnDataType" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ReturnDataType">
+        <xsd:sequence>
+            <xsd:element name="FulfillmentRecordUniqueId" type="fnp:NonEmptyString" />
+            <xsd:element ref="fnp:FulfillmentRecord" />
+            <xsd:element name="OriginalMachineIdentifier" type="fnp:NonEmptyString" />
+            <xsd:element name="VendorDictionary" type="fnp:Dictionary" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="EntitlementDataType">
+        <xsd:sequence>
+            <xsd:element name="EntitlementId" type="fnp:NonEmptyString" />
+            <xsd:element name="ProductId" type="fnp:NonEmptyString" />
+            <xsd:element name="PublisherId" type="xsd:positiveInteger" />
+            <xsd:element name="SuiteId" type="fnp:NonEmptyString" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OriginDataType">
+        <xsd:sequence>
+            <xsd:element name="ClientVersion" type="fnp:NonEmptyString" />
+            <xsd:element name="ConfigData" type="ConfigDataType" />
+            <xsd:element name="SequenceNumber" type="xsd:positiveInteger" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ConfigDataType">
+        <xsd:sequence>
+            <xsd:element name="IsServer" type="xsd:boolean" />
+            <xsd:element name="TrustedHostInformation" type="fnp:TrustedHostInformationType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
