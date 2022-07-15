@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!-- Version 3 schema -->
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" xmlns="http://www.macrovision.com/fnp/2004/11/activation"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation"
+    elementFormDefault="qualified">
+    <xsd:include schemaLocation="M5_ParameterHeaderType.xsd" />
+    <xsd:complexType name="HeaderType">
+        <xsd:sequence>
+            <xsd:element name="VersionNumber" type="fnp:VersionNumberType" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

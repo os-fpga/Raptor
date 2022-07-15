@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CreateCompositeResponse xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A">
+  <Header>
+    <VersionNumber>6</VersionNumber>
+  </Header>
+
+  <RequesterVerification>
+    <UniqueMachineNumbers>
+      <FromRequest>yes</FromRequest>
+    </UniqueMachineNumbers>
+  </RequesterVerification>
+
+  <ResponseData>
+    <ResponseActions>
+
+      <ResponseActivateDeny>
+        <RightsId>
+          <Type>1</Type>
+          <Value>ReclaimReset</Value>
+        </RightsId>
+        <Reason>The reason</Reason>
+      </ResponseActivateDeny>
+    
+  </ResponseActions>
+
+		<FLEXnetDictionary>
+			<Entries>
+				<Entry>
+					<Key>COMMENT</Key>
+					<Value>Activation Borrow Reclaim Reset Deny</Value>
+				</Entry>
+			</Entries>
+		</FLEXnetDictionary>
+
+	</ResponseData>
+
+</CreateCompositeResponse>

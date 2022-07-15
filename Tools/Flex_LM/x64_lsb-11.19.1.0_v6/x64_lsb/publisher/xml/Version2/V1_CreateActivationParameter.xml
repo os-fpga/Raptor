@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CreateActivation xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<Header>
+<VersionNumber>2</VersionNumber>
+</Header>
+<EntitlementData>
+<EntitlementId>URALOWD-12345678</EntitlementId>
+<ProductId>PRODUCT-1</ProductId>
+<SuiteId>SUITE-1</SuiteId>
+</EntitlementData>
+<EnterpriseData>
+<username>BOB</username>
+<hostname>CHAOS</hostname>
+</EnterpriseData>
+<PublisherData>
+<PublisherDictionary>
+<Entries>
+<Entry>
+<Key>ID</Key>
+<Value>1</Value>
+</Entry>
+<Entry>
+<Key>FOO</Key>
+<Value>BAR</Value>
+</Entry>
+</Entries>
+</PublisherDictionary>
+<VendorDictionary>
+<Entries>
+<Entry>
+<Key>VendorID1</Key>
+<Value>1</Value>
+</Entry>
+<Entry>
+<Key>VendorID2</Key>
+<Value>SOME DATA</Value>
+</Entry>
+</Entries>
+</VendorDictionary>
+</PublisherData>
+</CreateActivation>

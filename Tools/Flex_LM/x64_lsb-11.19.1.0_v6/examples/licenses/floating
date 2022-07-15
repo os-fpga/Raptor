@@ -1,0 +1,34 @@
+	#	Users can change "this_host" to the real hostname, but
+	#	they cannot change the hostid (ANY).  In practice, 
+	#	you'll probably want to use a real hostid
+
+
+SERVER	this_host ANY 
+
+	#Put your DAEMON name here.  
+
+DAEMON	demo
+
+	##########################  FEATURE LINES  ############################
+
+	#Floating, unexpiring, counted
+	#FEATURE name: 	f1
+	#VERSION:	1.000
+	#Expiration:	never 
+	#Users:		4 concurrent users
+
+FEATURE f1 demo 1.000 permanent 4 SIGN=0
+
+	#Floating, expiring, counted
+	#FEATURE name: 	f1
+	#VERSION:	1.000
+	#Expiration:	1-jan-2030
+	#Users:		4 concurrent users
+
+FEATURE f2 demo 1.000 01-jan-2030 4 SIGN=0
+
+
+	#Floating, expiring, counted, Incremental
+	#	Same as previous, but will ADD 1 user to an existing file.
+
+INCREMENT f2 demo 1.000 01-jan-2030 1 SIGN=0
