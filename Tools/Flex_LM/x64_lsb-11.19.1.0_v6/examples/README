@@ -1,0 +1,34 @@
+		FlexNet Licensing Examples			
+
+This directory contains several sub-directories with example 
+license files and code.  
+
+ 
+    activation    - Examples to perform activations against client or server trusted storage. Using legacy (single action) 
+					or composite transactions,and demonstrates the use of response generation API for XML based transactions.
+    
+    advanced      - Contains examples related to:
+					
+					License installer, License in Buffer, overdraft usage, checkout filter, Bulk checkout.
+                 
+    composite     - Composite Hostid source examples.
+    
+	ezcalc        - Example files to demonstrate license rights held in trusted storage.
+
+    licenses      - Example licenses, useful for lmcrypt.
+    
+    sdt           - Example to illustrate the use of Secure Data Types in License File-Based licensing
+
+    vendor_hostid - Example of vendor-defined hostid code.
+        
+These examples are intended to provide instruction in the 
+use of various FlexNet Licensing features. They may be unsupported and
+may not exist in future FlexNet Licensing toolkits.
+While we have made every effort to insure that these examples are 
+correct, they are not intended to be release-quality debugged 
+products. 
+
+For developers new to FlexNet Licensing, please read:
+	-Getting Started with the FlexNet Licensing Toolkit, Chapters 1 and 2  
+	-Programming and Reference Guide, Chapters 1-5
+

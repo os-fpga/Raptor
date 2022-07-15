@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Request xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<RequestHeader>
+<VersionNumber>1</VersionNumber>
+<RequestType>SHORT_CODE_ACTIVATION</RequestType>
+</RequestHeader>
+<RequestData>
+<ProductData>
+<ConfigId>1</ConfigId>
+</ProductData>
+<RequestCodeData>
+<RequestCode>12123123123132123123</RequestCode>
+<ShortCodeAlias>1</ShortCodeAlias>
+</RequestCodeData>
+</RequestData>
+</Request>

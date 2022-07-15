@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CreateCompositeResponse xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A">
+  <Header>
+    <VersionNumber>6</VersionNumber>
+  </Header>
+
+  <RequesterVerification>		
+  	<UniqueMachineNumbers>
+		<FromRequest>yes</FromRequest>
+	</UniqueMachineNumbers>
+  </RequesterVerification>
+
+	<ResponseData>
+    <ResponseActions>
+
+			<ResponseConfig>
+				<ConfigData>
+					<PublisherId>256</PublisherId>
+					<ServerConfig>
+						<Id>1</Id>
+						<Revision>DefaultOne</Revision>
+						<RevisionType>SRV</RevisionType>
+						<Data>04FC9BB5B7043C8609650E3F9351346555FFC5900E8E579774617239ED127B30CA9DE1A2B24A9811D28B71D43C2778F778AA3B574AF6C03A4E8EE28580EFC67BA7E18F7D30819A7D5B74A5C56D683D10F23A0C8065DF5DF1FA25FC4041A11E2C5995B5750EE6CD3D313F51E37015AF35139CD8BD492D8CBFF4597D103F907946F1805C413DFB2A57721029C5CD8112DBD5509CF3166A0BF60F9BF0335961D9D8DE7EBA8F7D3D2B9BC2639A77B2BE3454BACD544872D5B4F34E8789E9FD8E687C72BD9C91D2E34E50C96CBD61438455738A5DD9BFFB92E5E38D2155B3A5092ED00A50D3B50D52B07B5FDF5CD912EAC7BF39AC2CF4925694CFB836A51D7222EBE846DAC125502E36B5FD17372C0B9748EB8B545D4037B070DAC9805C8F35237BAF06EC4348D037CF6F94D0564F913B872075CD34BBCE9219</Data>
+					</ServerConfig>
+					<ClientConfig>
+						<Id>1</Id>
+						<Revision>DefaultOne</Revision>
+						<RevisionType>SRV</RevisionType>
+						<Data>8E53FE2AD9680446F8D64C42B5AF3E73753BEBCDDBA8A52323A6352C4517CE1572043CD529B90FB413AD0D5F34E0B178B453FBFCC7F5A0399A2A8EDCAE5D55EC90FBB81A716B45D85DF3C82AB95F0086EC9B04E951E25F4540AA1923C6299315CCFEEF36BEB614B6A17B3B83CC593D0CA045E46071824B7FC44E239DBA5EE4D4F88DB5CFF3426BC14E250EDCBE7D8E3328DDD385D8B1B294B7D37668FACF6D12AA9091DE10777D10561B836C641F391E01E709EA1987B7505AAADA98004E0B73E2B5820F68ABB268C62C52829521BEB85AB77A13E8A33A258B232963275D5FFAC5D858A305266577DF42BEF1E92637CD7D6DCF19D7B8665D41FA8E4973FA2064</Data>
+						<Signature>01D56B46AB337FA979FAC74C6BC8CEAE591D9D099346717CE906FD13D8D61E1BC3D9B03DFF2E508AF06D78FA3A3F88231336B7B7AE82B45C63667B0F</Signature>
+					</ClientConfig>
+					<Signature>155E7515D011057B6864C615311A300AE7D7CFC8A682E572F8104B5822841224A42B0C873380F4C882E6AA120A34DDBFB24370CF374B0D70C3B5CDFE</Signature>
+				</ConfigData>
+			</ResponseConfig>
+
+			<ResponseCreate>
+				<TrustedId>1</TrustedId>
+				<FulfillmentRecord>
+					<FulfillmentRecordHeader>
+						<VersionNumber>1</VersionNumber>
+					</FulfillmentRecordHeader>
+					<FulfillmentRecordData>
+						<FulfillmentId>FidSvrEx1C</FulfillmentId>
+						<FulfillmentDictionary>
+							<Entries>
+								<Entry>
+									<Key>fulfillmentType</Key>
+									<Value>6</Value>
+								</Entry>
+								<Entry>
+									<Key>expiry</Key>
+									<Value>16-Nov-2023</Value>
+								</Entry>
+								<Entry>
+									<Key>ProductId</Key>
+									<Value>ProductC</Value>
+								</Entry>
+								<Entry>
+									<Key>EntitlementId</Key>
+									<Value>MySvrEx1ProductCRights</Value>
+								</Entry>
+								<Entry>
+									<Key>serverHostID</Key>
+									<Value>INTERNET=0.0.0.0</Value>
+								</Entry>
+								<Entry>
+									<Key>servOrLocal</Key>
+									<Value>1</Value>
+								</Entry>								
+								<Entry>
+									<Key>availHyb</Key>
+									<Value>50</Value>
+								</Entry>
+								<Entry>
+									<Key>features</Key>
+									<Value>
+										INCREMENT SvrEx1F1C demo 1.0 31-dec-2030 1 TS_OK SIGN="0049 377D F03F \
+										6B78 F4A6 DA63 EB30 9900 C7FB 4735 22FB 7686 D89E A5D6 79BC"
+									</Value>
+								</Entry>
+							</Entries>
+						</FulfillmentDictionary>
+					</FulfillmentRecordData>
+				</FulfillmentRecord>
+			</ResponseCreate>
+
+			<ResponseCreate>
+				<TrustedId>1</TrustedId>
+				<FulfillmentRecord>
+					<FulfillmentRecordHeader>
+						<VersionNumber>1</VersionNumber>
+					</FulfillmentRecordHeader>
+					<FulfillmentRecordData>
+						<FulfillmentId>FidSvrEx1D</FulfillmentId>
+						<FulfillmentDictionary>
+							<Entries>
+								<Entry>
+									<Key>fulfillmentType</Key>
+									<Value>6</Value>
+								</Entry>
+								<Entry>
+									<Key>expiry</Key>
+									<Value>16-Nov-2023</Value>
+								</Entry>
+								<Entry>
+									<Key>ProductId</Key>
+									<Value>ProductD</Value>
+								</Entry>
+								<Entry>
+									<Key>EntitlementId</Key>
+									<Value>MySvrEx1ProductDRights</Value>
+								</Entry>
+								<Entry>
+									<Key>serverHostID</Key>
+									<Value>ANY</Value>
+								</Entry>
+								<Entry>
+									<Key>servOrLocal</Key>
+									<Value>1</Value>
+								</Entry>
+								<Entry>
+									<Key>availHyb</Key>
+									<Value>50</Value>
+								</Entry>
+								<Entry>
+									<Key>features</Key>
+									<Value>
+										INCREMENT SvrEx1F1D demo 1.0 31-dec-2030 1 TS_OK SIGN="000A 1595 1334 \
+										7472 4DED 2BA9 DD60 A100 B6D4 538D 6BC5 CD04 FC96 2639 2254"
+									</Value>
+								</Entry>
+							</Entries>
+						</FulfillmentDictionary>
+					</FulfillmentRecordData>
+				</FulfillmentRecord>
+			</ResponseCreate>
+
+		</ResponseActions>		
+
+    <FLEXnetDictionary>
+      <Entries>
+        <Entry>
+          <Key>COMMENT</Key>
+          <Value>SvrEx1 - multiple activate</Value>
+        </Entry>
+      </Entries>
+    </FLEXnetDictionary>
+
+  </ResponseData>
+
+</CreateCompositeResponse>

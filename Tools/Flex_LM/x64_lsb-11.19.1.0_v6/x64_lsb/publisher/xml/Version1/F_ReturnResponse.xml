@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Response xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<ResponseHeader>
+<VersionNumber>1</VersionNumber>
+<ResponseType>RETURN</ResponseType>
+<RequestSequenceNumber>99</RequestSequenceNumber>
+<RequestHash>X</RequestHash>
+</ResponseHeader>
+<ResponseData>
+<TrustedHostInformation>
+<TrustedId>1</TrustedId>
+<Revision>X1.0</Revision>
+<RevisionType>SRV</RevisionType>
+<MachineIdentifier>1111111111111</MachineIdentifier>
+<Status>OK</Status>
+</TrustedHostInformation>
+<ReturnItem>
+<FulfillmentRecordUniqueId>1.190191.0.1</FulfillmentRecordUniqueId>
+</ReturnItem>
+</ResponseData>
+<Signature>SIG_1</Signature>
+<SignatureVersion>1</SignatureVersion>
+</Response>
