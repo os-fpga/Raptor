@@ -437,7 +437,7 @@ install(
 install(
       DIRECTORY tests/Testcases/and2_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/and2_testcase/)
 install(
-      DIRECTORY tests/Testcases/and2_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/and2_gemini/)      
+      DIRECTORY tests/Testcases/and2_gemini/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/and2_gemini/)
 install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/counter/)
 install(
