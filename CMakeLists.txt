@@ -44,7 +44,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 16)
+set(VERSION_PATCH 17)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -440,6 +440,8 @@ install(
       DIRECTORY tests/Testcases/and2_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/and2_gemini/)      
 install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/counter/)
+install(
+      DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/ip_gen_axis_conv/)      
 install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 
