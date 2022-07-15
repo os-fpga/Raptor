@@ -7,7 +7,8 @@ map<License_Manager::LicensedProductName, string> License_Manager::licensedProdu
     {License_Manager::LicensedProductName::OPENFPGA_RS, "openfpga_rs"},
     {License_Manager::LicensedProductName::YOSYS_RS, "yosys_rs"},
     {License_Manager::LicensedProductName::YOSYS_RS_PLUGIN, "yosys_rs_plugin"},
-    {License_Manager::LicensedProductName::DE, "de"}
+    {License_Manager::LicensedProductName::DE, "de"},
+    {License_Manager::LicensedProductName::GEMINI_RS, "GEMINI_RS"}
 };
 
 map<License_Manager::LicensedProductName, int> License_Manager::licenseDebitsPerProduct = {
@@ -15,7 +16,8 @@ map<License_Manager::LicensedProductName, int> License_Manager::licenseDebitsPer
     {License_Manager::LicensedProductName::OPENFPGA_RS, 1},
     {License_Manager::LicensedProductName::YOSYS_RS, 1},
     {License_Manager::LicensedProductName::YOSYS_RS_PLUGIN, 1},
-    {License_Manager::LicensedProductName::DE, 1}
+    {License_Manager::LicensedProductName::DE, 1},
+    {License_Manager::LicensedProductName::GEMINI_RS, 1}
 };
 
 License_Manager::License_Manager() {

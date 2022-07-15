@@ -38,7 +38,8 @@ public:
         OPENFPGA_RS,
 	YOSYS_RS,
 	YOSYS_RS_PLUGIN,
-	DE
+	DE,
+        GEMINI_RS
     };
 
     struct LicenseFatalException : public exception {
