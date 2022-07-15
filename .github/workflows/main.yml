@@ -60,14 +60,15 @@ jobs:
         submodules: recursive
         fetch-depth: 0
 
-    - name: Install dependencies
-      run: |
-        bash .github/workflows/install_ubuntu_dependencies_build.sh
-
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1
       with:
         key: linux-${{ matrix.mode }}
+
+    - name: Install dependencies
+      run: |
+        bash .github/workflows/install_ubuntu_dependencies_build.sh
+        bash .github/workflows/install_litex_ubuntu.sh
 
     - name: Configure shell
       run: |
