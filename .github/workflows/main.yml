@@ -121,7 +121,6 @@ jobs:
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         make install
-        ldd /tmp/raptor_gui-install/bin/pin_c
         make clean   # make sure we only see installation artifacts
         make test_install
 
