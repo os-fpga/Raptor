@@ -165,8 +165,34 @@ doc:
 	cd -
 
 uninstall:
+	$(RM) -r $(PREFIX)/bin/abc
+	$(RM) -r $(PREFIX)/bin/ace
+	$(RM) -r $(PREFIX)/bin/blifparse_test
+	$(RM) -r $(PREFIX)/bin/de
+	$(RM) -r $(PREFIX)/bin/openfpga
+	$(RM) -r $(PREFIX)/bin/libvpr.so
+	$(RM) -r $(PREFIX)/bin/pin_c
 	$(RM) -r $(PREFIX)/bin/raptor
+	$(RM) -r $(PREFIX)/bin/read_arch
+	$(RM) -r $(PREFIX)/bin/rtl_number
+	$(RM) -r $(PREFIX)/bin/sdcparse_test
+	$(RM) -r $(PREFIX)/bin/test_log
+	$(RM) -r $(PREFIX)/bin/vpr
+	$(RM) -r $(PREFIX)/bin/yosys*
+	$(RM) -r $(PREFIX)/bin/libarchfpga.a
+	$(RM) -r $(PREFIX)/bin/libblifparse.a
+	$(RM) -r $(PREFIX)/bin/liblog.a
+	$(RM) -r $(PREFIX)/bin/libopenfpga.a
+	$(RM) -r $(PREFIX)/bin/libpugiutil.a
+	$(RM) -r $(PREFIX)/bin/libpugixml.a
+	$(RM) -r $(PREFIX)/bin/librtlnumber.a
+	$(RM) -r $(PREFIX)/bin/libsdcparse.a
+	$(RM) -r $(PREFIX)/bin/libvtrutil.a
 	$(RM) -r $(PREFIX)/lib/raptor
+	$(RM) -r $(PREFIX)/lib/abc
+	$(RM) -r $(PREFIX)/lib/libvpr.so
+	$(RM) -r $(PREFIX)/lib/libvprst.a	
 	$(RM) -r $(PREFIX)/include/raptor
 	$(RM) -r $(PREFIX)/share/raptor
+	$(RM) -r $(PREFIX)/share/yosys
 
