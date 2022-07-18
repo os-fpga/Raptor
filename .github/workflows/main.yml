@@ -21,6 +21,7 @@ jobs:
 #        - coverage
         - install
         - valgrind
+        - production
     env:
       MODE: ${{ matrix.mode }}
 
@@ -107,6 +108,12 @@ jobs:
       if: matrix.mode == 'coverage'
       run: |
         make debug coverage-build/raptor_gui.coverage
+
+    - name: Production
+      if: matrix.mode == 'production'
+      run: |
+        make release PRODUCTION_BUILD=1
+        ./build/bin/raptor --version
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
