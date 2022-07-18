@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CommsTargetHttp xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+    <ServerName>leda</ServerName>
+    <ServerPage>/london_1_1_1/londonsrv.dll</ServerPage>
+    <UseSSL>true</UseSSL>
+    <UseFormUrlEncoding>true</UseFormUrlEncoding>
+    <Timeout>10000</Timeout>
+</CommsTargetHttp>

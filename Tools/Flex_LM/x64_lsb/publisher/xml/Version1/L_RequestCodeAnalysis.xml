@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<RequestAnalysis xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<VersionNumber>1</VersionNumber>
+<RequestCodeData>
+<RequestItems>
+<Item>
+<Key>REQUEST_TYPE</Key>
+<Value>0</Value>
+</Item>
+<Item>
+<Key>TSSN</Key>
+<Value>12345678901234567890</Value>
+</Item>
+<Item>
+<Key>DOODLE</Key>
+<Value>0xDEFDEFDE</Value>
+</Item>
+</RequestItems>
+</RequestCodeData>
+</RequestAnalysis>

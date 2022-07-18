@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ActivationSettings xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+	<Secure>
+		<PublisherId>1</PublisherId>
+		<VendorName>VENDOR-1</VendorName>
+		<Hash>89891</Hash>
+	</Secure>
+	<Seeds>
+		<Seed>ABCD1234</Seed>
+		<Seed>BCD12345</Seed>
+		<Seed>CD123456</Seed>
+		<Seed>D1234567</Seed>
+        <Seed>ABCD1234</Seed>
+		<Seed>BCD12345</Seed>
+		<Seed>CD123456</Seed>
+		<Seed>D1234567</Seed>
+	</Seeds>
+</ActivationSettings>
+

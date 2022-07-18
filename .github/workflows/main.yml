@@ -21,6 +21,7 @@ jobs:
 #        - coverage
         - install
         - valgrind
+        - production
     env:
       MODE: ${{ matrix.mode }}
 
@@ -51,6 +52,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -61,6 +64,7 @@ jobs:
     - name: Install dependencies
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
+        bash .github/workflows/install_litex_ubuntu.sh
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1
@@ -104,6 +108,12 @@ jobs:
       if: matrix.mode == 'coverage'
       run: |
         make debug coverage-build/raptor_gui.coverage
+
+    - name: Production
+      if: matrix.mode == 'production'
+      run: |
+        make release PRODUCTION_BUILD=1
+        ./build/bin/raptor --version
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
@@ -167,6 +177,7 @@ jobs:
         yum remove -y git*
         yum install -y https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
         yum install -y git
+
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.5.4
       with: 
@@ -183,6 +194,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -206,6 +219,7 @@ jobs:
     - name: Install dependencies and build QT
       run: |
         bash .github/workflows/install_centos_dependencies_build.sh
+        bash .github/workflows/install_litex_centos.sh
 
     - name: Prepare QT build artifacts
       if: matrix.mode == 'test'
@@ -289,6 +303,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
 
     - name: Git pull
       uses: actions/checkout@v2
@@ -437,6 +453,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
 
     - uses: actions/checkout@v2
       with:
@@ -524,6 +542,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
 
     - uses: actions/checkout@v2
       with:
@@ -615,6 +635,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
 
     - uses: actions/checkout@v2
       with:
@@ -711,6 +733,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
           ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
 
     - name: Checkout code
       uses: actions/checkout@v2

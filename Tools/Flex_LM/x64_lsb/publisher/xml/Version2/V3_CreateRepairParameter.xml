@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CreateRepair xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<Header>
+<VersionNumber>2</VersionNumber>
+</Header>
+<EnterpriseData>
+<username>BOB</username>
+<hostname>CHAOS</hostname>
+</EnterpriseData>
+<RepairItem>
+<FulfillmentRecordUniqueId>1.190191.0.1</FulfillmentRecordUniqueId>
+<VendorDictionary>
+<Entries>
+<Entry>
+<Key>VendorID1</Key>
+<Value>1</Value>
+</Entry>
+<Entry>
+<Key>VendorID2</Key>
+<Value>SOME DATA</Value>
+</Entry>
+</Entries>
+</VendorDictionary>
+</RepairItem>
+</CreateRepair>

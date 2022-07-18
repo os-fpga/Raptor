@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<!-- Version 5 schema -->
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:fnp="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    elementFormDefault="qualified">
+
+  <xsd:include schemaLocation="../Version4/I_FulfillmentRecord.xsd" />
+  <xsd:include schemaLocation="../Version4/M2_NonEmptyString.xsd" />
+  <xsd:include schemaLocation="../Version4/M4_TrustedHostInformationType.xsd" />
+  <xsd:include schemaLocation="../Version6/M5_VersionNumberType.xsd" />
+  <xsd:include schemaLocation="../Version5/W7_CreateCompositeResponseParameter.xsd" />
+
+  <xsd:element name="Response">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ResponseHeader" type="typeResponseHeader" />
+        <xsd:group ref="fnp:groupCreateCompositeResponseParameterData" />
+        <xsd:element name="SignatureData" type="typeSignatureData" />
+				<xsd:element name="SignatureVersion" type="xsd:positiveInteger" />
+			</xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:simpleType name="restrictionResponseType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="COMPOSITE" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="typeResponseHeader">
+    <xsd:sequence>
+      <xsd:element name="VersionNumber" type="fnp:typeVersion5or6" />
+      <xsd:element name="VersionBase" type="fnp:typeVersion5or6" />
+      <xsd:element name="ResponseType" type="restrictionResponseType" />
+      <xsd:element name="RequestSequenceNumber" type="xsd:positiveInteger" />
+      <xsd:element name="RequestHash" type="fnp:NonEmptyString" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="typeSignatureData">
+    <xsd:sequence>
+      <xsd:group ref="groupSectionSignature" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="groupSectionSignature">
+    <xsd:choice>
+      <xsd:element name="CommonSection" type="typeCommonSectionSignature" />
+      <xsd:element name="TrustedSection" type="typeTrustedSectionSignature" />
+    </xsd:choice>
+  </xsd:group>
+
+  <xsd:complexType name="typeTrustedSectionSignature">
+    <xsd:sequence>
+      <xsd:element name="TrustedId" type="fnp:TrustedIdType" />
+      <xsd:element name="Signature" type="fnp:NonEmptyString" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="typeCommonSectionSignature">
+    <xsd:sequence>
+      <xsd:element name="Signature" type="fnp:NonEmptyString" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>
