@@ -14,3 +14,8 @@ ipgenerate
 set_top_module use_ip
 add_design_file rs_ips/conv32_16.v use_ip.v
 synth delay
+packing
+place
+route
+sta
+

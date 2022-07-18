@@ -1,7 +1,6 @@
 create_design sasc
 # Device setup
-target_device MPW1
-set_device_size 16x16
+target_device GEMINI
 # Design setup
 add_design_file -V_2001 ./rtl/timescale.v ./rtl/sasc_brg.v ./rtl/sasc_fifo4.v ./rtl/sasc.v
 set_top_module sasc
