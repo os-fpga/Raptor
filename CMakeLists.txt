@@ -32,8 +32,12 @@ option(
 project(RAPTOR)
 set(RAPTOR ON)
 
+if (PRODUCTION_BUILD)
+  get_filename_component(FLEX_LM_SRC_DIR "Tools/Flex_LM"
+        REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+  add_subdirectory("Tools/Flex_LM")
+endif()  
 add_subdirectory(FOEDAG_rs)
-add_subdirectory(Tools/Flex_LM/)
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
 endif()
@@ -174,6 +178,11 @@ else()
   add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${QRC_MAIN_WINDOW})
 endif()
 set_target_properties(raptor-bin PROPERTIES OUTPUT_NAME raptor)
+if (PRODUCTION_BUILD)
+  add_dependencies(raptor-bin rs_licenseManager)
+  target_include_directories(raptor-bin PUBLIC ${FLEX_LM_SRC_DIR})
+  target_link_libraries(raptor-bin PUBLIC rs_licenseManager)
+endif()
 
 if (PRODUCTION_BUILD)
   add_dependencies(raptor-bin rs_licenseManager)
