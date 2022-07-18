@@ -32,6 +32,11 @@ option(
 project(RAPTOR)
 set(RAPTOR ON)
 
+if (PRODUCTION_BUILD)
+  get_filename_component(FLEX_LM_SRC_DIR "Tools/Flex_LM"
+        REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+  add_subdirectory("Tools/Flex_LM")
+endif()  
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
@@ -40,11 +45,6 @@ add_subdirectory(yosys_verific_rs)
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
     add_subdirectory(OpenFPGA_RS)
 endif()
-if (PRODUCTION_BUILD)
-  get_filename_component(FLEX_LM_SRC_DIR "Tools/Flex_LM"
-        REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-  add_subdirectory("Tools/Flex_LM")
-endif()  
 
 # Raptor version
 set(VERSION_MAJOR 0)
