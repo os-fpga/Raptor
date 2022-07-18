@@ -33,6 +33,7 @@ project(RAPTOR)
 set(RAPTOR ON)
 
 add_subdirectory(FOEDAG_rs)
+add_subdirectory(Tools/Flex_LM/)
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
 endif()
@@ -44,7 +45,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 20)
+set(VERSION_PATCH 21)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -166,15 +167,22 @@ target_include_directories(raptor PRIVATE
 target_include_directories(raptor PUBLIC $<INSTALL_INTERFACE:include/raptor>)
 
 if(MSVC)
-  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp  ${PROJECT_SOURCE_DIR}/FOEDAG_rs/src/Compiler/CompilerRS.cpp ${QRC_MAIN_WINDOW})
+  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${QRC_MAIN_WINDOW})
   set_property(TARGET raptor-bin PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   set_property(TARGET raptor-bin PROPERTY COMPILER_FLAGS /DSTATIC_BUILD)
 else()
-  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${PROJECT_SOURCE_DIR}/FOEDAG_rs/src/Compiler/CompilerRS.cpp ${QRC_MAIN_WINDOW})
+  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${QRC_MAIN_WINDOW})
 endif()
 set_target_properties(raptor-bin PROPERTIES OUTPUT_NAME raptor)
 
+if (PRODUCTION_BUILD)
+  add_dependencies(raptor-bin rs_licenseManager)
+  link_libraries(raptor-bin rs_licenseManager)
+  link_libraries(raptor rs_licenseManager)
+endif()
 
+link_libraries(raptor-bin raptor_gui)
+link_libraries(raptor raptor_gui)
 
 if (MSVC)
   message("WINDOWS MODE")
@@ -287,7 +295,7 @@ if(MSVC OR WIN32)
   set_target_properties(raptor-bin PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 endif()
 
-target_link_libraries(raptor-bin PUBLIC raptor foedag  )
+target_link_libraries(raptor-bin PUBLIC raptor raptor_gui foedag  )
 target_link_libraries(raptor PUBLIC  Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml Qt5::Quick)
 
 if(NOT NO_TCMALLOC)
