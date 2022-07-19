@@ -14,7 +14,7 @@ else
 fi
 
 if [ -n "${LD_LIBRARY_PATH}" ]; then
-	export LD_LIBRARY_PATH=$RAPTOR_PATH/external_libs/qt_5_15_lib:$RAPTOR_PATH/external_libs/gcc_9_lib:$LD_LIBRARY_PATH=$RAPTOR_PATH/lib64:$LD_LIBRARY_PATH=$RAPTOR_PATH/lib:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=$RAPTOR_PATH/external_libs/qt_5_15_lib:$RAPTOR_PATH/external_libs/gcc_9_lib:$LD_LIBRARY_PATH=$RAPTOR_PATH/lib64:$RAPTOR_PATH/lib:$LD_LIBRARY_PATH
 else
-	export LD_LIBRARY_PATH=$RAPTOR_PATH/external_libs/qt_5_15_lib:$RAPTOR_PATH/external_libs/gcc_9_lib:$LD_LIBRARY_PATH=$RAPTOR_PATH/lib64:$LD_LIBRARY_PATH=$RAPTOR_PATH/lib
+	export LD_LIBRARY_PATH=$RAPTOR_PATH/external_libs/qt_5_15_lib:$RAPTOR_PATH/external_libs/gcc_9_lib:$LD_LIBRARY_PATH=$RAPTOR_PATH/lib64:$RAPTOR_PATH/lib
 fi
