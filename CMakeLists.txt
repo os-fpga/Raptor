@@ -461,6 +461,15 @@ install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/ip_gen_axis_conv/)      
 install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
+install(
+      FILES src/raptorenv_lin64.sh
+	    src/.raptorenv_lin64.sh
+      DESTINATION  ${CMAKE_INSTALL_BINDIR}/..
+      PERMISSIONS
+      OWNER_READ OWNER_EXECUTE OWNER_WRITE
+      GROUP_READ GROUP_EXECUTE
+      WORLD_READ WORLD_EXECUTE
+      )	
 
 #install(
 #  EXPORT Raptor
