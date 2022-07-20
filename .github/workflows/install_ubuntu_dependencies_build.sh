@@ -13,7 +13,7 @@ sudo apt install -y \
   lcov \
   valgrind \
   xorg \
-  qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev \
+  qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools \
   xvfb \
   tcllib \
   bison \
@@ -34,7 +34,8 @@ sudo apt install -y \
   autoconf \
   ninja-build \
   libssl-dev
-  
+# qtdeclarative5-dev
+
 sudo ln -sf /usr/bin/g++-9 /usr/bin/g++
 sudo ln -sf /usr/bin/gcc-9 /usr/bin/gcc
 sudo ln -sf /usr/bin/gcov-9 /usr/bin/gcov
