@@ -1,8 +1,10 @@
-# Raptor
+# Raptor Preview Release
+
 Rapid Silicon complete Software solution
 
-Raptor is a classic RTL 2 Bitstream FPGA compiler.
+Raptor is a classic RTL (User design + IPs) 2 Bitstream FPGA compiler.
 It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
+The initial focus of this release is batch mode or GUI mode driven from a Tcl script.
 
 ## INSTALLATION
 
@@ -26,16 +28,16 @@ Options:
    --batch          : Tcl only, no GUI
    --script <script>: Execute a Tcl script
    --mute           : mutes stdout in batch mode
-Tcl commands:
+Tcl commands (Available in GUI or Batch console or Batch script):
    help                       : This help
    create_design <name>       : Creates a design with <name> name
    target_device <name>       : Targets a device with <name> name (MPW1, GEMINI)
    add_design_file <file>... <type> (-VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008 (.vhd default), -V_1995, 
                                      -V_2001 (.v default), -SV_2005, -SV_2009, -SV_2012, -SV_2017 (.sv default)) 
    read_netlist <file>        : Read a netlist (.blif/.eblif) instead of an RTL design (Skip Synthesis)
-   add_include_path <path1>...: As in +incdir+
-   add_library_path <path1>...: As in +libdir+
-   add_library_ext <.v> <.sv> ...: As in +libext+
+   add_include_path <path1>...: As in +incdir+    (Not applicable to VHDL)
+   add_library_path <path1>...: As in +libdir+    (Not applicable to VHDL)
+   add_library_ext <.v> <.sv> ...: As in +libext+ (Not applicable to VHDL)
    set_macro <name>=<value>...: As in -D<macro>=<value>
    set_top_module <top>       : Sets the top module
    add_constraint_file <file> : Sets SDC + location constraints
@@ -125,3 +127,37 @@ sasc_testcase    : a FIFO design targeting the GEMINI device
                     raptor --script /usr/local/share/raptor/examples/sasc_testcase/raptor.tcl
 ```
 
+## User design
+
+### Pin Table
+
+```
+The GEMINI device pin table is located here: share/raptor/etc/devices/gemini/Gemini_Pin_Table.csv
+
+Users can select the pins "Bump/Pin Name" which are marked in the "Usable" column with a "Y"
+and use them in the .sdc file with the command "set_pin_loc"
+
+```
+
+### Synthesis considerations
+
+```
+Each call to the "add_design_file" creates a separate Compilation Unit (In the Verilog sense),
+the files in that call share the same macro definition space.
+
+Verilog and VHDL files cannot be mixed in the same "add_design_file" call.
+
+VHDL Libraries are not supported at this time, only individual .vhdl file compilation is.
+
+```
+
+### SDC considerations
+
+```
+
+A .sdc file (Tcl file with special handling of square brackets[]) can be provided using the "add_constraint_file" command.
+The file and contain classic SDC commands, Tcl scripting and set_pin_loc commands.
+SDC are honored by the Placement and STA stages.
+Synthesis will preserve with best effort the names of the signals referenced in the contraints in order for the Placement and STA to find them in the netlist.
+
+```
