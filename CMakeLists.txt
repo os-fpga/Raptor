@@ -49,7 +49,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 23)
+set(VERSION_PATCH 24)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -68,15 +68,16 @@ find_package(SWIG 3.0 REQUIRED)
 message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
 
 # Find Qt packages and error out if not found
-find_package(Qt5 COMPONENTS Core Gui Widgets Quick Xml REQUIRED)
+#find_package(Qt5 COMPONENTS Core Gui Widgets Quick Xml REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Widgets Xml REQUIRED)
 if (NOT Qt5Widgets_FOUND)
     message(STATUS "Failed to find Qt5Widgets required (on debian/ubuntu try 'sudo apt install qt5-default')")
 elseif (NOT Qt5Gui_FOUND)
     message(STATUS "Failed to find Qt5Gui required (on debian/ubuntu try 'sudo apt install qt5-default')")
 elseif (NOT Qt5Core_FOUND)
     message(STATUS "Failed to find Qt5Core required (on debian/ubuntu try 'sudo apt install qt5-default')")
-elseif (NOT Qt5Quick_FOUND)
-    message(STATUS "Failed to find Qt5Core required (on debian/ubuntu try 'sudo apt install libkf5qqc2desktopstyle-dev')")
+#elseif (NOT Qt5Quick_FOUND)
+#    message(STATUS "Failed to find Qt5Core required (on debian/ubuntu try 'sudo apt install libkf5qqc2desktopstyle-dev')")
 else()
     set(CMAKE_AUTOMOC ON)
     set(CMAKE_AUTOUIC ON)
@@ -305,7 +306,8 @@ if(MSVC OR WIN32)
 endif()
 
 target_link_libraries(raptor-bin PUBLIC raptor raptor_gui foedag  )
-target_link_libraries(raptor PUBLIC  Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml Qt5::Quick)
+#target_link_libraries(raptor PUBLIC  Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml Qt5::Quick)
+target_link_libraries(raptor PUBLIC  Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Xml)
 
 if(NOT NO_TCMALLOC)
   find_library(TCMALLOC_LIBRARY NAMES tcmalloc)
