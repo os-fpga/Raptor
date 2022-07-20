@@ -135,7 +135,9 @@ sasc_testcase    : a FIFO design targeting the GEMINI device
 The GEMINI device pin table is located here: share/raptor/etc/devices/gemini/Gemini_Pin_Table.csv
 
 Users can select the pins "Bump/Pin Name" which are marked in the "Usable" column with a "Y"
-and use them in the .sdc file with the command "set_pin_loc"
+and use them in the .sdc file with the command "set_pin_loc".
+
+If not set, pin locations will be randomly assigned to a legal locations (Per Pin Table) which might not be optimal for placement.
 
 ```
 
