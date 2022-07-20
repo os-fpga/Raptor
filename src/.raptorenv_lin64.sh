@@ -18,3 +18,9 @@ if [ -n "${LD_LIBRARY_PATH}" ]; then
 else
 	export LD_LIBRARY_PATH=$RAPTOR_PATH/external_libs/qt_5_15_lib:$RAPTOR_PATH/external_libs/gcc_9_lib:$RAPTOR_PATH/lib64:$RAPTOR_PATH/lib:$RAPTOR_PATH/bin
 fi
+
+if [ -n "${TCL_LIBRARY}" ]; then
+	export TCL_LIBRARY=$RAPTOR_PATH/share/raptor/tcl8.6.12/library/:$TCL_LIBRARY
+else
+	export TCL_LIBRARY=$RAPTOR_PATH/share/raptor/tcl8.6.12/library/
+fi

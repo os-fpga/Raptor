@@ -49,7 +49,7 @@ endif()
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 24)
+set(VERSION_PATCH 25)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -463,6 +463,8 @@ install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/ip_gen_axis_conv/)      
 install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
+install(
+      DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
 install(
       FILES src/raptorenv_lin64.sh
 	    src/.raptorenv_lin64.sh
