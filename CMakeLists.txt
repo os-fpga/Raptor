@@ -48,8 +48,8 @@ endif()
 
 # Raptor version
 set(VERSION_MAJOR 0)
-set(VERSION_MINOR 1)
-set(VERSION_PATCH 25)
+set(VERSION_MINOR 2)
+set(VERSION_PATCH 0)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
