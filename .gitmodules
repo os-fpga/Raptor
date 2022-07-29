@@ -15,3 +15,6 @@
 [submodule "litex_rs"]
 	path = litex_rs
 	url = git@github.com:RapidSilicon/litex_rs.git
+[submodule "EmbeddedCommon"]
+	path = EmbeddedCommon
+	url = https://github.com/RapidSilicon/EmbeddedCommon.git
