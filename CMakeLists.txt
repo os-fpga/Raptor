@@ -46,7 +46,7 @@ if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
     add_subdirectory(OpenFPGA_RS)
 endif()
 
-add_subdirectory(litex_rs)
+#add_subdirectory(litex_rs)
 
 # Raptor version
 set(VERSION_MAJOR 0)
