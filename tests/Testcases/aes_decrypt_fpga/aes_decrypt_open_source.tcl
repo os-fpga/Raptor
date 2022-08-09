@@ -1,6 +1,6 @@
 create_design AES_DECRYPT_OPEN_SOURCE
 set_top_module decrypt
-architecture ../../Arch/k6_frac_N10_tileable_40nm.xml
+architecture ../../Arch/k6_frac_N10_tileable_40nm.xml ../../Arch/k6_N10_40nm_openfpga.xml
 set_device_size 76x76
 verific_parser off
 synthesis_type Yosys
