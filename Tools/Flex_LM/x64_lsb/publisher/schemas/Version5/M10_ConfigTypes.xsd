@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<!-- Version 5 schema -->
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:fnp="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A"
+    elementFormDefault="qualified">
+
+  <xsd:include schemaLocation="../Version4/M2_NonEmptyString.xsd" />
+  <xsd:include schemaLocation="../Version4/M7_TrustedIdType.xsd"/>
+
+  <!-- Names referenced by other schemas -->
+
+  <xsd:group name="groupResponseConfigData">
+    <xsd:sequence>
+      <xsd:element name="ConfigData" type="typeResponseConfigData" />
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="groupAsrConfig">
+    <xsd:sequence>
+      <xsd:element name="ConfigData" type="typeAsrConfig" />
+    </xsd:sequence>
+  </xsd:group>
+
+  <!-- End of names referenced by other schemas -->
+
+  <xsd:complexType name="typeResponseConfigData">
+    <xsd:sequence>
+      <xsd:element name="PublisherId" type="xsd:positiveInteger" />
+      <xsd:choice>
+        <xsd:group ref="groupServerAndClientConfig" />
+        <xsd:group ref="groupClientConfig" />
+      </xsd:choice>
+    </xsd:sequence>
+  </xsd:complexType >
+
+  <xsd:group name="groupServerAndClientConfig">
+    <xsd:sequence>
+      <xsd:group ref="groupServerConfig" />
+      <xsd:group ref="groupClientConfig" />
+      <xsd:element name="Signature" type="fnp:NonEmptyString" />
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="groupServerConfig">
+    <xsd:sequence>
+      <xsd:element name="ServerConfig" type="typeServerConfig" />
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="groupClientConfig">
+    <xsd:sequence>
+      <xsd:element name="ClientConfig" type="typeClientConfig" />
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="typeServerConfig">
+    <xsd:sequence>
+      <xsd:group ref="groupCommonConfig" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="typeClientConfig">
+    <xsd:sequence>
+      <xsd:group ref="groupCommonConfig" />
+      <xsd:element name="Signature" type="fnp:NonEmptyString" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="groupCommonConfig">
+    <xsd:sequence>
+      <xsd:element name="Id" type="TrustedIdType" />
+      <xsd:element name="Revision" type="xsd:string" />
+      <xsd:element name="RevisionType" type="typeServerConfigRevisionType" />
+      <xsd:element name="Data" type="fnp:NonEmptyString" />
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="typeAsrConfig">
+    <xsd:sequence>
+      <xsd:sequence>
+        <xsd:element name="Id" type="TrustedIdType" />
+        <xsd:element name="Revision" type="xsd:string" />
+        <xsd:element name="RevisionType" type="typeAsrConfigRevisionType" />
+        <xsd:element name="Data" type="fnp:NonEmptyString" />
+      </xsd:sequence>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- Types valid for configs sent in a response (by a server) -->
+  <xsd:simpleType name="typeServerConfigRevisionType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SPE"/>
+      <xsd:enumeration value="SRV"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- Types valid for configs embedded in ASRs -->
+  <xsd:simpleType name="typeAsrConfigRevisionType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ASR"/>
+      <xsd:enumeration value="SPE"/>
+      <xsd:enumeration value="SRV"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+        <activationsettings path="ActivationSettings\publisher.xml" isserver="false"/>
+        <certificate path="." hostverify="2" peerverify="true" />
+        <items installpath="." runtimeloadname="tsJavaAcc_libFNP.dll" >
+                <item path="tsJavaAcc.dll" />
+        </items>
+        <preferences>
+                <verbose level="0" />
+                <debuggable value="true" />
+                <stripwarnings value="false" />
+        </preferences>
+</config>

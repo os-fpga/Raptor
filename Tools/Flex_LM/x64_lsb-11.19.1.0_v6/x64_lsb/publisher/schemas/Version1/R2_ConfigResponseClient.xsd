@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema 
+targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" 
+xmlns="http://www.macrovision.com/fnp/2004/11/activation"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation"
+elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="M2_NonEmptyString.xsd"/>
+	<xsd:include schemaLocation="M7_TrustedIdType.xsd"/>
+			
+	<!-- Root element -->
+	<xsd:element name="Response">
+		<xsd:complexType>
+			<xsd:sequence>			
+			<xsd:element name="ResponseHeader" type="ResponseHeaderType"/>
+			<xsd:element name="ResponseData" type="ResponseDataType"/>			
+			<xsd:element name="Signature" type="fnp:NonEmptyString"/>
+			<xsd:element name="SignatureVersion" type="xsd:positiveInteger"/>		
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:simpleType name="ResponseTypeRestriction">
+		<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="CLIENT_CONFIG"/>
+		</xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="RevisionTypeType">
+	    <xsd:restriction base="xsd:string">	        
+	        <xsd:enumeration value="SPE"/>
+	        <xsd:enumeration value="SRV"/>
+	    </xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="ResponseHeaderType">
+		<xsd:sequence>
+		<xsd:element name="VersionNumber" type="xsd:positiveInteger"/>
+		<xsd:element name="ResponseType" type="ResponseTypeRestriction"/>
+		<xsd:element name="RequestSequenceNumber" type="xsd:positiveInteger"/>
+		<xsd:element name="RequestHash" type="fnp:NonEmptyString"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	    
+	<xsd:complexType name="ResponseDataType">
+		<xsd:sequence>
+		<xsd:element name="ConfigData" type="ConfigDataType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ConfigDataType">
+		<xsd:sequence>
+		    <xsd:element name="ClientConfig" type="ClientConfigType"/>
+		</xsd:sequence>		
+	</xsd:complexType>
+
+	<xsd:complexType name="ClientConfigType">
+		<xsd:sequence>
+		<xsd:element name="Id" type="TrustedIdType"/>
+		<xsd:element name="Revision" type="xsd:string"/>
+		<xsd:element name="RevisionType" type="RevisionTypeType"/>
+		<xsd:element name="Data" type="fnp:NonEmptyString"/>		
+		<xsd:element name="Signature" type="fnp:NonEmptyString"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+</xsd:schema>

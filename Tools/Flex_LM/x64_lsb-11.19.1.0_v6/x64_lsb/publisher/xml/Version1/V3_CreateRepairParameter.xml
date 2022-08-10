@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<CreateRepair xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<EnterpriseData>
+<username>BOB</username>
+<hostname>CHAOS</hostname>
+</EnterpriseData>
+<RepairItem>
+<FulfillmentRecordUniqueId>1.190191.0.1</FulfillmentRecordUniqueId>
+</RepairItem>
+</CreateRepair>

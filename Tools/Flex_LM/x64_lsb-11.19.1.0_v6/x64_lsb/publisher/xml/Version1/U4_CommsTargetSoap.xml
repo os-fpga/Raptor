@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CommsTargetSoap xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+    <URI>http://localhost:10000</URI>
+</CommsTargetSoap>

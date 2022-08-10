@@ -9,3 +9,18 @@
 [submodule "FOEDAG_rs"]
 	path = FOEDAG_rs
 	url = git@github.com:RapidSilicon/FOEDAG_rs.git
+[submodule "tests/Jira_Testcase"]
+	path = tests/Jira_Testcase
+	url = git@github.com:RapidSilicon/Jira_Testcase.git
+[submodule "litex_rs"]
+	path = litex_rs
+	url = git@github.com:RapidSilicon/litex_rs.git
+[submodule "EmbeddedCommon"]
+	path = EmbeddedCommon
+	url = https://github.com/RapidSilicon/EmbeddedCommon.git
+[submodule "u-boot-rapidsi"]
+	path = u-boot-rapidsi
+	url = https://github.com/RapidSilicon/u-boot-rapidsi.git
+[submodule "zephyr-rapidsi"]
+	path = zephyr-rapidsi
+	url = https://github.com/RapidSilicon/zephyr-rapidsi.git

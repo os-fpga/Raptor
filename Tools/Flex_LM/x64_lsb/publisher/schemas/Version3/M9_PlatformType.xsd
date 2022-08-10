@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!-- Version 3 schema -->
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" xmlns="http://www.macrovision.com/fnp/2004/11/activation"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation"
+    elementFormDefault="qualified">
+    <xsd:include schemaLocation="M2_NonEmptyString.xsd" />
+    <xsd:complexType name="OperatingSystemType">
+            <xsd:sequence>
+                <xsd:element name="Info" type="fnp:NonEmptyString" />
+            </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PlatformType">
+            <xsd:sequence>
+                <xsd:element name="PlatformTypeName" type="fnp:NonEmptyString" />
+                <xsd:element name="OperatingSystem" type="OperatingSystemType" />
+            </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

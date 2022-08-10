@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema 
+targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" 
+xmlns="http://www.macrovision.com/fnp/2004/11/activation"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation"
+elementFormDefault="qualified">
+	
+	<xsd:include schemaLocation="I_FulfillmentRecord.xsd"/>
+	<xsd:include schemaLocation="M2_NonEmptyString.xsd"/>
+	<xsd:include schemaLocation="M3_EnterpriseDataType.xsd"/>
+		
+	<!-- Root element -->
+	<xsd:element name="CreateReturn">
+		<xsd:complexType>
+			<xsd:sequence>
+			<xsd:element name="EntitlementData" type="EntitlementDataType"/>
+			<xsd:element name="EnterpriseData" type="fnp:EnterpriseDataType" minOccurs="0"/>
+			<xsd:element name="ReturnData" type="ReturnDataType"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="ReturnDataType">
+		<xsd:sequence>
+		    <xsd:element name="FulfillmentRecordUniqueId" type="fnp:NonEmptyString"/>
+			<xsd:element ref="fnp:FulfillmentRecord"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="EntitlementDataType">
+		<xsd:sequence>
+		<xsd:element name="EntitlementId" type="fnp:NonEmptyString"/>
+		<xsd:element name="ProductId" type="fnp:NonEmptyString"/>
+		<xsd:element name="SuiteId" type="fnp:NonEmptyString" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+		
+</xsd:schema>

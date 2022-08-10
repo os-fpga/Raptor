@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Response xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+    <ResponseHeader>
+        <VersionNumber>1</VersionNumber>
+        <ResponseType>FAILURE</ResponseType>
+        <RequestSequenceNumber>99</RequestSequenceNumber>
+        <RequestHash>X</RequestHash>
+    </ResponseHeader>
+    <ResponseData>
+        <ResponseReason>ERROR</ResponseReason>
+        <ErrorCode>E99</ErrorCode>
+    </ResponseData>
+    <Signature>DFF56A9B93C9DECCCE7DED26BEA54A4515579B50</Signature>
+    <SignatureVersion>1</SignatureVersion>
+</Response>

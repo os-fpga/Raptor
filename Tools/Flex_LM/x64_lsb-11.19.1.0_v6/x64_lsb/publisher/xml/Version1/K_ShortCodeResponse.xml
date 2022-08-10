@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Response xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<ResponseHeader>
+<VersionNumber>1</VersionNumber>
+<ResponseType>SHORT_CODE_ACTIVATION</ResponseType>
+<Status>SUCCESS</Status>
+</ResponseHeader>
+<ResponseData>
+<ConfigId>1</ConfigId>
+<ResponseCode>989944939349583498983</ResponseCode>
+</ResponseData>
+</Response>
