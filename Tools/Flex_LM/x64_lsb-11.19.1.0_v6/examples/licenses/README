@@ -1,0 +1,7 @@
+The sample licenses in this directory can be used with the lmcrypt 
+command to generate valid licenses for you to ship to your customers.  
+Simply modify the license, changing the FEATURE name, vendor daemon 
+name, etc., to correct values for your product and your customer, and 
+then type:
+
+	% lmcrypt file

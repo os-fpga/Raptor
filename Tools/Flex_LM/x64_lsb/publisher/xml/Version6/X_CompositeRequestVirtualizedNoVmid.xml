@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Request xmlns="FLEXnetPublisher_01EFFF13-92D7-469e-B7CC-35E13C2E8D4A">
+	<RequestHeader>
+		<VersionNumber>6</VersionNumber>
+		<VersionBase>6</VersionBase>
+		<RequestType>COMPOSITE</RequestType>
+		<PublisherId>256</PublisherId>
+	</RequestHeader>
+	<RequestData>
+		<OriginData>
+<ClientVersion>11.10.0</ClientVersion><ConfigData><IsServer>0</IsServer><TrustedHostInformation><TrustedId>1</TrustedId><Revision>DefaultOne</Revision><RevisionType>SRV</RevisionType><MachineIdentifier>AA5CB0CA34D07F21840B17959932F928B3F96851</MachineIdentifier><Status>OK</Status></TrustedHostInformation></ConfigData>
+<Platform>
+<PlatformTypeName>i86_n3</PlatformTypeName>
+<OperatingSystem><Info>none</Info></OperatingSystem>
+</Platform>
+<Virtualization><Host><Family>FAMILY</Family><Name>NAME</Name></Host></Virtualization><UniqueMachineNumbers>
+<UniqueMachineNumber><Type>1</Type><Value>0499736EEED9A2BDC61540729764499A61C12509</Value></UniqueMachineNumber>
+<UniqueMachineNumber><Type>2</Type><Value>1923E5C32FF27009EFC351F5477F77F62234740C</Value></UniqueMachineNumber>
+<UniqueMachineNumber><Type>3</Type><Value></Value></UniqueMachineNumber>
+</UniqueMachineNumbers>
+<SequenceNumber>5</SequenceNumber>
+			<TrustedStorageSerialNumber>640A11A73C6573D1D5AAE17055B99AACADFF44DEBD30F050B359576596E62D82</TrustedStorageSerialNumber>
+			<Generated>2011-04-19T10:34:23+01:00</Generated>
+			<RequesterReference></RequesterReference>
+		</OriginData>
+<ExistingFulfillments>		<ExistingFulfillment>
+		<FulfillmentId>FidAppEx1</FulfillmentId>
+		<FulfillmentType>6</FulfillmentType>
+		<Trust>
+			<IsTrusted>true</IsTrusted>
+		</Trust>
+		<IsEnabled>true</IsEnabled>
+		<TrustedId>1</TrustedId>
+		</ExistingFulfillment>
+</ExistingFulfillments>		<RequestParameters>		</RequestParameters>
+	</RequestData>
+<Hash>ACBF5362FF576D7398E8D0F41C11DC0155C47B5F</Hash>
+<HashVersion>1</HashVersion>
+</Request>

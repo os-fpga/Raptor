@@ -10,16 +10,20 @@
 #include "Main/ToolContext.h"
 #include "MainWindow/Session.h"
 #include "MainWindow/main_window.h"
+#include "Utils/FileUtils.h"
 
 namespace RS {
 
-#define Company "RapidSilicon"
+#define Company "Rapid Silicon"
 #define ToolName "Raptor"
 #define ExecutableName "raptor"
 
 QWidget* mainWindowBuilder(FOEDAG::Session* session) {
   FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{session};
-  mainW->MainWindowTitle(std::string(Company) + " " + std::string(ToolName));
+  auto info = mainW->Info();
+  info.name = QString("%1 %2").arg(Company, ToolName);
+  info.url = "https://github.com/RapidSilicon/Raptor/commit/";
+  mainW->Info(info);
   return mainW;
 }
 
@@ -55,7 +59,6 @@ int main(int argc, char** argv) {
   FOEDAG::Foedag* foedag =
       new FOEDAG::Foedag(cmd, RS::mainWindowBuilder, RS::registerAllCommands,
                          compiler, settings, context);
-
   if (opcompiler) {
     std::filesystem::path binpath = foedag->Context()->BinaryPath();
     std::filesystem::path datapath = foedag->Context()->DataPath();

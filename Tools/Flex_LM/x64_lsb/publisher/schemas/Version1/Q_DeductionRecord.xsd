@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema 
+targetNamespace="http://www.macrovision.com/fnp/2004/11/activation" 
+xmlns="http://www.macrovision.com/fnp/2004/11/activation"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:fnp="http://www.macrovision.com/fnp/2004/11/activation"
+elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="M1_Dictionary.xsd"/>
+
+	<!-- Root element -->
+	<xsd:element name="DeductionRecord">
+		<xsd:complexType>
+			<xsd:sequence>			
+				<xsd:element name="DeductionRecordHeader" type="DeductionRecordHeaderType"/>
+				<xsd:element name="DeductionRecordData" type="DeductionRecordDataType"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="DeductionRecordHeaderType">
+		<xsd:sequence>
+			<xsd:element name="VersionNumber" type="xsd:positiveInteger"/>
+		</xsd:sequence>
+	</xsd:complexType>	
+	
+	<xsd:complexType name="DeductionRecordDataType">
+		<xsd:sequence>
+			<xsd:element name="DeductionDictionary" type="fnp:Dictionary" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>	
+	
+</xsd:schema>

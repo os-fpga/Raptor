@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<!--
+	**************************************************************************************************
+	* Copyright (c) 1997-2016, 2018 Flexera. All Rights Reserved.  
+	**************************************************************************************************
+    -->
+<xsd:schema targetNamespace="http://www.macrovision.com/fnp/2004/11/trusted" xmlns="http://www.macrovision.com/fnp/2004/11/trusted"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	
+	<xsd:include schemaLocation="M7_TrustedIdType.xsd"/>
+	
+	<!-- Root element -->
+	<xsd:element name="SecureKeyInformation">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="PublisherId" type="xsd:positiveInteger" />
+				<xsd:element name="KeyInformation" type="KeyInformationType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:simpleType name="RevisionTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ASR" />
+			<xsd:enumeration value="SPE" />
+			<xsd:enumeration value="SRV" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="KeysRequiredType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Long_1" />
+			<xsd:enumeration value="Short_1" />
+			<xsd:enumeration value="Short_2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="KeyInformationType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="TrustedIdType" />
+			<xsd:element name="Revision" type="NonEmptyString" />
+			<xsd:element name="RevisionType" type="RevisionTypeType" />
+			<xsd:element name="KeyDataItems" type="KeyDataItemsListType" />			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="KeyDataItemType">
+		<xsd:sequence>
+			<xsd:element name="Type" type="KeysRequiredType" />
+			<xsd:element name="KeyData" type="NonEmptyString" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="KeyDataItemsListType">
+		<xsd:sequence>
+			<xsd:element name="KeyDataItem" type="KeyDataItemType" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="NonEmptyString">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Config xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<Comms>
+<Implementation>
+<Servers>
+</Servers>
+<ID>1</ID>
+<Signature>01e9f192282a239dde16f1eff6117e3ed7f23138dad0dc470da56ad3d19e1a22c9c9b93aecad9d0accd0093ff9fb8807d4817f61bbb13edd4caa0a47</Signature>
+</Implementation>
+<Implementation>
+<Servers>
+</Servers>
+<ID>2</ID>
+<Signature>19defc7d2ac61b4db3b70c4628d226c24516f6a2d4b30593b9372bd4ae0811fdd4badfc3312a54ff727386eb5e3c3b0d8b6254ce322a9c86400d9faa</Signature>
+</Implementation>
+</Comms>
+<Signature>00506692dfb22052818fe62d2168dd97358c15741011449093e827c049591e64e5fc6b7181930f1cf2185d30fd6d5a2291be6cc839ac92db3e9e9b3d</Signature>
+</Config>

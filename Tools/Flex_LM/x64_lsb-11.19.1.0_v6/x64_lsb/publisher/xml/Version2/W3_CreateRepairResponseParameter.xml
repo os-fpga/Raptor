@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CreateRepairResponse xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<Header>
+<VersionNumber>2</VersionNumber>
+</Header>
+<ResponseData>
+<VendorDictionary>
+<Entries>
+<Entry>
+<Key>VendorResponseValue1</Key>
+<Value>1</Value>
+</Entry>
+<Entry>
+<Key>VendorResponseValue2</Key>
+<Value>SOME DATA</Value>
+</Entry>
+</Entries>
+</VendorDictionary>
+</ResponseData>
+</CreateRepairResponse>

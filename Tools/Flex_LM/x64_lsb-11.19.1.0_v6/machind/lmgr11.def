@@ -1,0 +1,188 @@
+;/**************************************************************************************************
+;* Copyright (c) 1997-2016, 2018, 2020 Flexera. All Rights Reserved.
+;**************************************************************************************************/
+
+LIBRARY   LMGR11
+HEAPSIZE  8192
+EXPORTS
+
+        lc_auth_data            @32
+        lc_checkin              @33
+        lc_checkout             @34
+        lc_ck_feats             @35
+        lc_daemon               @36
+        lc_disconn              @37
+        lc_display              @38
+        lc_errstring            @39
+        lc_feat_list            @40
+        lc_feat_set             @41
+
+        lc_free_job             @43
+        lc_get_attr             @44
+        lc_get_config           @45
+        lc_get_feats            @46
+        lc_get_redir            @47
+        lc_gethostid            @48
+        lc_getid_type           @49
+        lc_hostname             @50
+        lc_idle                 @51
+        lc_init                 @52
+        lc_isadmin              @53
+        lc_lic_where            @54
+        lc_log                  @55
+        lc_master_list          @56
+        lc_next_conf            @57
+        lc_perror               @59
+        lc_remove               @60
+        lc_set_attr             @61
+        lc_shutdown             @62
+        lc_status               @63
+        lc_test_conf            @64
+        lc_userlist             @65
+        lc_username             @66
+        lc_vsend                @67
+        lc_first_job            @68
+        lc_next_job             @69
+        lc_sleep                @70
+        lc_hosttype             @71
+        lc_get_errno            @72
+        lc_removeh              @73
+        lc_set_errno            @74
+        lc_xstrcmp              @75
+        lc_timer                @77
+        lc_crypt                @78
+        lc_baddate              @79
+        lc_cryptstr             @80
+        lc_get_ascii_date	@81
+        lc_date_to_time		@82
+
+        lc_errtext              @95;
+        la_reread               @96;
+        lc_hostid               @97;
+        lc_chk_conf             @181
+        lc_free_hostid          @182
+        lc_copy_hostid          @185
+        lc_expire_days          @186
+        lc_heartbeat            @188
+        lp_checkin              @189
+        lp_checkout             @190
+        lp_errstring            @191
+				l_new_hostid            @194
+				lp_heartbeat            @195
+        lc_free_mem                     @213
+        lp_perror                       @215
+        lp_warning                      @216
+        lp_pwarn                        @217
+        lc_free_lmgrd_stat              @225
+        lc_check_key                    @229
+        la_parse_daemon                 @230
+        lc_cleanup                      @243
+        lc_set_registry                 @244
+        lc_convert                      @245
+        lc_err_info                     @248
+        lc_new_job                      @249
+        lc_tpmstatusget                 @255
+        lc_diagnostics_start            @256
+        lc_diagnostics_end              @257
+        lc_txn_create                   @271
+        lc_txn_destroy                  @272
+        lc_txn_create_checkout          @273
+        lc_txn_entry                    @274
+        lc_txn_entry_status             @275
+        lc_txn_send                     @276
+        lc_txn_set_attr                 @277
+        lc_txn_get_attr                 @278
+				
+;				l_pubkey_verify			@253
+;				l_x77_buf			@254
+;
+;       WINNT specific startup routine.
+;
+
+        LP_SETUP                        @300
+        LP_CHECKOUT                     @301
+        LP_CHECKIN                      @302
+        LP_HEARTBEAT                    @303
+        LP_ERRSTRING                    @304
+        LC_CRYPTSTR                     @305
+        LC_HOSTID                       @306
+        COM_LC_CRYPTSTR                 @307
+        COM_LC_HOSTID                   @308
+
+	lc_init_simple_composite        @408
+	lc_borrow_return                @409
+	l_n36_buf				@410
+	Java_com_macrovision_flexlm_HostId_lGetNativeHostId	@450
+	l_ActMsgCreateHandle		@451
+	l_ActMsgFreeHandle		@452
+	l_ActMsgGetLastError		@453
+	l_ActMsgSendAndReceive		@454
+
+
+;    
+;   Fulfillment Status Library API
+;
+    la_createStatusSpecifier        @460
+    la_statSpecSetDetail            @461
+    la_statSpecSetFulfillmentId     @462
+    la_statSpecSetProductId         @463
+    la_statSpecSetEntitlementId     @464
+    la_statSpecSetFeatureName       @465
+    la_getFulfillmentStatus         @466
+    la_statGetNumFulfillments       @467
+    la_statSelectFirstFulfillment   @468
+    la_statSelectNextFulfillment    @469
+    la_statSelectPrevFulfillment    @470
+    la_statSelectLastFulfillment    @471
+    la_statSelectNthFulfillment     @472
+    la_statGetFulfillmentVersion    @473
+    la_statGetFulfillmentId         @474
+    la_statGetEntitlementId         @475
+    la_statGetProductId             @476
+    la_statGetSuiteId               @477
+    la_statGetExpirationDate        @478
+    la_statGetOriginalExpirationDate    @479
+    la_statGetFulfillmentChain      @480
+    la_statGetHops                  @481
+    la_statGetAvailableCounts       @482
+    la_statGetMaximumCounts         @483
+    la_statGetMaximumOverdraftDuration  @484
+    la_statGetFeatureLines          @485
+    la_statGetNumDeductions         @486
+    la_statSelectFirstDeduction     @487
+    la_statSelectNextDeduction      @488
+    la_statSelectPrevDeduction      @489
+    la_statSelectLastDeduction      @490
+    la_statSelectNthDeduction       @491
+    la_statGetDeductionDestinationFulfillId     @492
+    la_statGetDeductionSystemName   @493
+    la_statGetDeductionCounts       @494
+    la_statGetDeductionExpirationDate   @495
+    la_freeStatusSpecifier          @496
+    la_freeFulfillmentStatus        @497
+    
+;	Activation functions
+	lc_flexinit				@600
+	lc_flexinit_property_handle_set		@601
+	lc_flexinit_property_handle_create	@602
+	lc_flexinit_property_handle_free	@603
+	lc_flexinit_cleanup			@604
+	lc_flexinit_property_handle_get		@605
+
+;    
+;   Wrapper functions for Flexible API functions
+;
+	checkout                     @701
+	checkin                      @702
+	heartbeat                    @703
+	errstring	                @704
+	l_perror	                @705
+	new_job                     @706
+	free_job                      @707
+    
+    
+    
+
+        DllMain                         @500
+        
+        
