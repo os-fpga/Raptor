@@ -24,3 +24,6 @@
 [submodule "zephyr-rapidsi"]
 	path = zephyr-rapidsi
 	url = https://github.com/RapidSilicon/zephyr-rapidsi.git
+[submodule "IP_Catalog"]
+	path = IP_Catalog
+	url = git@github.com:RapidSilicon/IP_Catalog.git
