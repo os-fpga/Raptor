@@ -24,3 +24,9 @@ if [ -n "${TCL_LIBRARY}" ]; then
 else
 	export TCL_LIBRARY=$RAPTOR_PATH/share/raptor/tcl8.6.12/library/
 fi
+
+if [ -n "${PYTHONPATH}" ]; then
+	export PYTHONPATH=$RAPTOR_PATH/share/litex_rs/:$PYTHONPATH/$RAPTOR_PATH/share/IP_Catalog/:$PYTHONPATH
+else
+	export PYTHONPATH=$RAPTOR_PATH/share/litex_rs/:$RAPTOR_PATH/share/IP_Catalog/
+fi
