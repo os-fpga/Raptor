@@ -1,3 +1,4 @@
+target_device GEMINI
 create_design AES_DECRYPT_OPEN_SOURCE
 set_top_module decrypt
 architecture ../../Arch/k6_frac_N10_tileable_40nm.xml
