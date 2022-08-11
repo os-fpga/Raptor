@@ -1,6 +1,0 @@
-Once set, the values for LM_SEED1-3 must be kept secret 
-and *never* change.
-
-#define LM_SEED1 0x9364d378
-#define LM_SEED2 0x0b7bea73
-#define LM_SEED3 0x1bf89622

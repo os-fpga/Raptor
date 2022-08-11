@@ -33,10 +33,13 @@ project(RAPTOR)
 set(RAPTOR ON)
 
 if (PRODUCTION_BUILD)
-  get_filename_component(FLEX_LM_SRC_DIR "Tools/Flex_LM"
+  get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-  add_subdirectory("Tools/Flex_LM")
+  add_subdirectory("Raptor_Tools/Flex_LM")
 endif()  
+get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
+    REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+message("VERIFIC_HOME: ${VERIFIC_HOME}")
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
