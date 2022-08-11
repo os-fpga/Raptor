@@ -54,6 +54,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -196,6 +197,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -305,6 +307,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Git pull
       uses: actions/checkout@v2
@@ -455,6 +458,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - uses: actions/checkout@v2
       with:
@@ -544,6 +548,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - uses: actions/checkout@v2
       with:
@@ -637,6 +642,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - uses: actions/checkout@v2
       with:
@@ -735,6 +741,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Checkout code
       uses: actions/checkout@v2
