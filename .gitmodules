@@ -24,3 +24,6 @@
 [submodule "zephyr-rapidsi"]
 	path = zephyr-rapidsi
 	url = https://github.com/RapidSilicon/zephyr-rapidsi.git
+[submodule "Raptor_Tools"]
+	path = Raptor_Tools
+	url = git@github.com:RapidSilicon/Raptor_Tools.git
