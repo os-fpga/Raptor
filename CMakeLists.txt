@@ -69,12 +69,12 @@ find_package(Git QUIET)
 
 function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE)
     foreach(SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
-        if (NOT EXISTS "${WORK_DIR}/${SUBMODULE}/README.md")
+        file(GLOB README ${WORK_DIR}/${SUBMODULE}/README*)
+        if (NOT EXISTS "${README}")
             execute_process(
                 COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
                 WORKING_DIRECTORY ${WORK_DIR}
                 RESULT_VARIABLE GIT_SUBMOD_RESULT
-                COMMAND_ECHO STDOUT
                 )
             if  (NOT GIT_SUBMOD_RESULT EQUAL "0") 
                 message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
