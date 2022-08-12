@@ -50,16 +50,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install dependencies
       run: |
@@ -192,16 +189,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
         
     - name: Download workflow artifact
       if: matrix.mode == 'test'
@@ -301,16 +295,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - name: Git pull
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install core dependencies
       run: choco install -y swig --side-by-side --version=3.0.12
@@ -451,15 +442,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - uses: actions/checkout@v2
       with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Build & Test
       run: |
@@ -540,15 +529,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - uses: actions/checkout@v2
       with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
@@ -633,15 +620,12 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1
@@ -731,16 +715,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install Dependencies
       run: |
