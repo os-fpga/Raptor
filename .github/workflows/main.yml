@@ -448,7 +448,6 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - uses: actions/checkout@v2
-      with:
 
     - name: Build & Test
       run: |
@@ -535,7 +534,6 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
 
     - uses: actions/checkout@v2
-      with:
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
