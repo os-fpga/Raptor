@@ -157,10 +157,8 @@ lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
 
 checkout-subsystems:
-	git submodule update --init --recursive Raptor_Tools EmbeddedCommon litex_rs u-boot-rapidsi zephyr-rapidsi
-	git submodule update --init FOEDAG_rs OpenFPGA_RS yosys_verific_rs
-	cd FOEDAG_rs && git submodule update --init --recursive FOEDAG
-	cd yosys_verific_rs && git submodule update --init --recursive RTL_Benchmark logic_synthesis-rs yosys yosys-plugins yosys-rs-plugin
+	git -c submodule."Raptor_Tools".update=none submodule update --init --recursive
+	git submodule update Raptor_Tools/
 
 format:
 	.github/bin/run-clang-format.sh
