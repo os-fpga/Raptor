@@ -32,6 +32,64 @@ option(
 project(RAPTOR)
 set(RAPTOR ON)
 
+list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
+  tests/Jira_Testcase
+  litex_rs
+  EmbeddedCommon
+  u-boot-rapidsi
+  zephyr-rapidsi
+  Raptor_Tools
+  )
+
+list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
+  OpenFPGA_RS
+  yosys_verific_rs
+  FOEDAG_rs
+  )
+
+list(APPEND YOSYS_VERIFIC_RS_RECURSIVE_SUBSYTEMS
+  yosys
+  yosys-plugins
+  yosys-rs-plugin
+  )
+
+list(APPEND YOSYS_VERIFIC_RS_NON_RECURSIVE_SUBSYTEMS
+  logic_synthesis-rs
+  )
+
+list(APPEND LOGIC_SYNTHESIS_RS_RECURSIVE_SUBSYTEMS
+  abc-rs
+  )
+
+list(APPEND FOEDAG_RS_RECURSIVE_SUBSYTEMS
+  FOEDAG
+  )
+
+find_package(Git QUIET)
+
+function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE)
+    foreach(SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
+        if (NOT EXISTS "${WORK_DIR}/${SUBMODULE}/README.md")
+            execute_process(
+                COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
+                WORKING_DIRECTORY ${WORK_DIR}
+                RESULT_VARIABLE GIT_SUBMOD_RESULT
+                COMMAND_ECHO STDOUT
+                )
+            if  (NOT GIT_SUBMOD_RESULT EQUAL "0") 
+                message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
+            endif()
+        endif()
+    endforeach()
+endfunction(checkout_subsystems)
+
+checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive")
+checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "")
+checkout_subsystems(YOSYS_VERIFIC_RS_RECURSIVE_SUBSYTEMS "${CMAKE_CURRENT_SOURCE_DIR}/yosys_verific_rs" "--recursive")
+checkout_subsystems(YOSYS_VERIFIC_RS_NON_RECURSIVE_SUBSYTEMS "${CMAKE_CURRENT_SOURCE_DIR}/yosys_verific_rs" "")
+checkout_subsystems(LOGIC_SYNTHESIS_RS_RECURSIVE_SUBSYTEMS "${CMAKE_CURRENT_SOURCE_DIR}/yosys_verific_rs/logic_synthesis-rs" "--recursive")
+checkout_subsystems(FOEDAG_RS_RECURSIVE_SUBSYTEMS "${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs" "--recursive")
+
 if (PRODUCTION_BUILD)
   get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")

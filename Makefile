@@ -156,10 +156,6 @@ test/batch: run-cmake-release
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
 
-checkout-subsystems:
-	git -c submodule."Raptor_Tools".update=none submodule update --init --recursive
-	git submodule update Raptor_Tools/
-
 format:
 	.github/bin/run-clang-format.sh
 
