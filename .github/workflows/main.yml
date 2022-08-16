@@ -246,6 +246,11 @@ jobs:
         echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
 
+    - name: Configure git
+      if: matrix.mode == 'test'
+      run: |
+        git config --global --add safe.directory $GITHUB_WORKSPACE
+
     - name: Test
       if: matrix.mode == 'test'
       run: |
