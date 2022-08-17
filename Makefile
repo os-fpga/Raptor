@@ -48,15 +48,15 @@ run-cmake-coverage:
 	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DMY_CXX_WARNING_FLAGS="--coverage" $(ADDITIONAL_CMAKE_OPTIONS) -S . -B coverage-build
 
 test/unittest: run-cmake-release
-	cmake --build build --target UnitTests -j $(CPU_CORES)
+	cmake --build build --target unittest -j $(CPU_CORES)
 	pushd build && ctest --output-on-failure && popd
 
 test/unittest-d: run-cmake-debug
-	cmake --build dbuild --target UnitTests -j $(CPU_CORES)
+	cmake --build dbuild --target unittest -j $(CPU_CORES)
 	pushd dbuild && ctest --output-on-failure && popd
 
 test/unittest-coverage: run-cmake-coverage
-	cmake --build coverage-build --target UnitTests -j $(CPU_CORES)
+	cmake --build coverage-build --target unittest -j $(CPU_CORES)
 	pushd coverage-build && ctest --output-on-failure && popd
 
 coverage-build/raptor_gui.coverage: test/unittest-coverage
