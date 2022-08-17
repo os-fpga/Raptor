@@ -39,6 +39,7 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   u-boot-rapidsi
   zephyr-rapidsi
   Raptor_Tools
+  IP_Catalog
   )
 
 list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
