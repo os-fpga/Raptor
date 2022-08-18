@@ -66,10 +66,6 @@ int main(int argc, char** argv) {
     std::filesystem::path vprPath = binpath / "vpr";
     std::filesystem::path openFpgaPath = binpath / "openfpga";
     std::filesystem::path pinConvPath = binpath / "pin_c";
-    std::filesystem::path archPath =
-        datapath / "etc" / "devices" / "gemini" / "gemini_vpr.xml";
-    std::filesystem::path openFpgaArchPath =
-        datapath / "etc" / "devices" / "gemini" / "gemini_openfpga.xml";
     std::filesystem::path bitstreamSettingPath =
         datapath / "etc" / "devices" / "gemini" / "bitstream_annotation.xml";
     std::filesystem::path simSettingPath =
@@ -81,8 +77,6 @@ int main(int argc, char** argv) {
     opcompiler->YosysExecPath(yosysPath);
     opcompiler->VprExecPath(vprPath);
     opcompiler->OpenFpgaExecPath(openFpgaPath);
-    opcompiler->ArchitectureFile(archPath);
-    opcompiler->OpenFpgaArchitectureFile(openFpgaArchPath);
     opcompiler->OpenFpgaBitstreamSettingFile(bitstreamSettingPath);
     opcompiler->OpenFpgaSimSettingFile(simSettingPath);
     opcompiler->OpenFpgaRepackConstraintsFile(repackConstraintPath);
