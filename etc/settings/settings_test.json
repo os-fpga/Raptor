@@ -217,11 +217,26 @@
             }
         },
         "Placement": {
+            "pin_selection_radiobtn": {
+                "label": "Pin Location Assign Method:",
+                "widgetType": "radiobuttons",
+                "options": [
+                    "Random",
+                    "In Define Order"
+                ],
+                "optionsLookup":[
+                    "random",
+                    "in_define_order"
+                ],
+                "layout": "horizontal",
+                "arg": "pin_assign_method"
+            },
             "_META_": {
-                "hidden": true,
-                "isSetting": true
-            }
-        },
+                "hidden": false,
+                "isSetting": true,
+                "tclArgKey": "Tasks_placement"
+                }
+            },
         "Routing": {
             "_META_": {
                 "hidden": true,
