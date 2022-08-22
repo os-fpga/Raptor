@@ -43,6 +43,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    add_constraint_file <file> : Sets SDC + location constraints
                                 Constraints: set_pin_loc, all SDC Standard commands
    set_pin_loc <design_io_name> <device_io_name> : Constraints pin location (Use in constraint file)
+   keep <signal list> OR all_signals : Keeps the list of signals or all signals through Synthesis unchanged (unoptimized in certain cases)
    add_litex_ip_catalog <directory> : Browses directory for LiteX IP generators, adds the IP(s) to the IP Catalog
    ip_catalog ?<ip_name>?     : Lists all available IPs, and their parameters if <ip_name> is given 
    ip_configure <IP_NAME> -mod_name <name> -out_file <filename> -version <ver_name> -P<param>="<value>"...
