@@ -258,7 +258,7 @@ jobs:
       run: |
         make debug test/unittest-d
         # Yosys doesn't separate debug and release builds, thus intermediate clean is required
-        cd yosys_verific_rs && make clean && cd -
+        cd dbuild && make clean_yosys_verific_rs && make verific_clean && cd -
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
         make test/gui
         make regression
