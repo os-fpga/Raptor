@@ -51,24 +51,24 @@ list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
 find_package(Git QUIET)
 
 if (NOT UPDATE_SUBMODULES)
-    set(UPDATE_SUBMODULES OFF)
+  set(UPDATE_SUBMODULES OFF)
 endif()
 
 function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE)
-    foreach(SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
-        file(GLOB README ${WORK_DIR}/${SUBMODULE}/README*)
-        if (NOT EXISTS "${README}" OR ${UPDATE})
-            message("Updating ${SUBMODULE} submodule...")
-            execute_process(
-                COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
-                WORKING_DIRECTORY ${WORK_DIR}
-                RESULT_VARIABLE GIT_SUBMOD_RESULT
-                )
-            if  (NOT GIT_SUBMOD_RESULT EQUAL "0") 
-                message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
-            endif()
-        endif()
-    endforeach()
+  foreach(SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
+    file(GLOB README ${WORK_DIR}/${SUBMODULE}/README*)
+    if (NOT EXISTS "${README}" OR ${UPDATE})
+      message("Updating ${SUBMODULE} submodule...")
+      execute_process(
+        COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
+        WORKING_DIRECTORY ${WORK_DIR}
+        RESULT_VARIABLE GIT_SUBMOD_RESULT
+        )
+      if  (NOT GIT_SUBMOD_RESULT EQUAL "0") 
+        message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
+      endif()
+    endif()
+  endforeach()
 endfunction(checkout_subsystems)
 
 checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES})
@@ -82,6 +82,9 @@ endif()
 get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
     REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 message("VERIFIC_HOME: ${VERIFIC_HOME}")
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+  add_subdirectory(${VERIFIC_HOME})
+endif()
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
