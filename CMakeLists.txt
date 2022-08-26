@@ -524,13 +524,23 @@ install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
 install(
       FILES src/raptorenv_lin64.sh
-	    src/.raptorenv_lin64.sh
+      src/.raptorenv_lin64.sh
       DESTINATION  ${CMAKE_INSTALL_BINDIR}/..
       PERMISSIONS
       OWNER_READ OWNER_EXECUTE OWNER_WRITE
       GROUP_READ GROUP_EXECUTE
       WORLD_READ WORLD_EXECUTE
-      )	
+      )
+install(
+      FILES Raptor_Tools/Flex_LM/x64_lsb/lmutil
+      Raptor_Tools/Flex_LM/x64_lsb/lmgrd
+      Raptor_Tools/Flex_LM/x64_lsb/rapidsil
+      DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/Flex_LM
+      PERMISSIONS
+      OWNER_READ OWNER_EXECUTE OWNER_WRITE
+      GROUP_READ GROUP_EXECUTE
+      WORLD_READ WORLD_EXECUTE
+      )
 
 #install(
 #  EXPORT Raptor
