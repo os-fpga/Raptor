@@ -50,17 +50,14 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install dependencies
       run: |
@@ -193,17 +190,14 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
         
     - name: Download workflow artifact
       if: matrix.mode == 'test'
@@ -254,12 +248,19 @@ jobs:
         echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
 
+    - name: Configure git
+      if: matrix.mode == 'test'
+      run: |
+        git config --global --add safe.directory $GITHUB_WORKSPACE
+
     - name: Test
       if: matrix.mode == 'test'
       run: |
         make debug test/unittest-d
         # Yosys doesn't separate debug and release builds, thus intermediate clean is required
-        cd yosys_verific_rs && make clean && cd -
+        cd dbuild && make clean_yosys_verific_rs && make verific_clean && cd -
+        # make verific_clean removes precompilled libraries so we need to bring them back.
+        cd Raptor_Tools/verific_rs && git checkout . && cd -
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
         make test/gui
         make regression
@@ -303,17 +304,14 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Git pull
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install core dependencies
       run: choco install -y swig --side-by-side --version=3.0.12
@@ -454,16 +452,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Build & Test
       run: |
@@ -544,16 +539,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v2
@@ -638,16 +630,13 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1
@@ -737,17 +726,14 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
           ${{ secrets.SSH_PRIVATE_KEY_ABC }}
           ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-          ${{ secrets.SSH_PRIVATE_KEY_LSORACLE }}
           ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
           ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
 
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        submodules: recursive
-        fetch-depth: 0
 
     - name: Install Dependencies
       run: |
