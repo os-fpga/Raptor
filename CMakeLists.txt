@@ -32,11 +32,59 @@ option(
 project(RAPTOR)
 set(RAPTOR ON)
 
+list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
+  tests/Jira_Testcase
+  litex_rs
+  EmbeddedCommon
+  u-boot-rapidsi
+  zephyr-rapidsi
+  Raptor_Tools
+  IP_Catalog
+  )
+
+list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
+  OpenFPGA_RS
+  yosys_verific_rs
+  FOEDAG_rs
+  )
+
+find_package(Git QUIET)
+
+if (NOT UPDATE_SUBMODULES)
+  set(UPDATE_SUBMODULES OFF)
+endif()
+
+function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE)
+  foreach(SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
+    file(GLOB README ${WORK_DIR}/${SUBMODULE}/README*)
+    if (NOT EXISTS "${README}" OR ${UPDATE})
+      message("Updating ${SUBMODULE} submodule...")
+      execute_process(
+        COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
+        WORKING_DIRECTORY ${WORK_DIR}
+        RESULT_VARIABLE GIT_SUBMOD_RESULT
+        )
+      if  (NOT GIT_SUBMOD_RESULT EQUAL "0") 
+        message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
+      endif()
+    endif()
+  endforeach()
+endfunction(checkout_subsystems)
+
+checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES})
+checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES})
+
 if (PRODUCTION_BUILD)
-  get_filename_component(FLEX_LM_SRC_DIR "Tools/Flex_LM"
+  get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-  add_subdirectory("Tools/Flex_LM")
+  add_subdirectory("Raptor_Tools/Flex_LM")
 endif()  
+get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
+    REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+message("VERIFIC_HOME: ${VERIFIC_HOME}")
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+  add_subdirectory(${VERIFIC_HOME})
+endif()
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
@@ -476,13 +524,23 @@ install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
 install(
       FILES src/raptorenv_lin64.sh
-	    src/.raptorenv_lin64.sh
+      src/.raptorenv_lin64.sh
       DESTINATION  ${CMAKE_INSTALL_BINDIR}/..
       PERMISSIONS
       OWNER_READ OWNER_EXECUTE OWNER_WRITE
       GROUP_READ GROUP_EXECUTE
       WORLD_READ WORLD_EXECUTE
-      )	
+      )
+install(
+      FILES Raptor_Tools/Flex_LM/x64_lsb/lmutil
+      Raptor_Tools/Flex_LM/x64_lsb/lmgrd
+      Raptor_Tools/Flex_LM/x64_lsb/rapidsil
+      DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/Flex_LM
+      PERMISSIONS
+      OWNER_READ OWNER_EXECUTE OWNER_WRITE
+      GROUP_READ GROUP_EXECUTE
+      WORLD_READ WORLD_EXECUTE
+      )
 
 #install(
 #  EXPORT Raptor

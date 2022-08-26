@@ -27,12 +27,17 @@
 
   git clone https://github.com/RapidSilicon/Raptor.git
   cd Raptor
-  git submodule update --init --recursive
   make
   make debug
   make test
   make install
   make test_install
+
+  Note: If you would like to update your local repository and build, then run the following commands.
+
+  cd Raptor
+  git pull
+  make UPDATE_SUBMODULES=ON
 ```
     
  2) NIGHTLY BUILD ACCESS:
@@ -49,7 +54,7 @@ raptor ...
 ```
 
  3) BUILD RAPTOR ON THE FREMONT SERVER:
- The instructions detail how to build Raptor from source code but on an IT-managed Linux host.  First, follow the instructions below to configure the build environment.  Thenm follow instructions described in "BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE" to clone and build Raptor.
+ The instructions detail how to build Raptor from source code but on an IT-managed Linux host.  First, follow the instructions below to configure the build environment.  Then follow instructions described in "BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE" to clone and build Raptor.
 ```
 ssh sw01, sw03
 mkdir YOUR_WORK_DIR
