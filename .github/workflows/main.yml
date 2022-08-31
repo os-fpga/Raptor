@@ -254,6 +254,7 @@ jobs:
         git config --global --add safe.directory $GITHUB_WORKSPACE
 
     - name: Test
+      id: reg_ok
       if: matrix.mode == 'test'
       run: |
         make debug test/unittest-d
@@ -264,6 +265,38 @@ jobs:
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
         make test/gui
         make regression
+        echo "::set-output name=exit_code::$?"
+
+    - name: Create Tar Exe
+      id: packing_ok
+      if: steps.build.outputs.exit_code == 0
+      run: |
+        mkdir /opt/instl_dir
+        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
+        export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.0/lib:$LD_LIBRARY_PATH
+        bash ./Raptor_Tools/Create_Raptor_Artifact/create_release.sh -c -p -w /opt/instl_dir
+        echo "::set-output name=exit_code::$?"
+
+    - name: Check FTP server status
+      if: steps.build.outputs.exit_code == 0
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.FTP_IP }}
+        username: ${{ secrets.FTP_USER }}
+        key: ${{ secrets.FTP_KEY }}
+        port: ${{ secrets.PORT }}
+        script: whoami
+
+    - name: Upload
+      uses: Creepios/sftp-action@v1.0.3
+      with:
+        host: ${{ secrets.FTP_IP }}
+        port: 22
+        username: ${{ secrets.FTP_USER }}
+        ssh_private_key: ${{ secrets.FTP_KEY }}
+        localPath: 'Raptor_Tools/Install_Raptor_Artifact/*.tar.gz'
+        remotePath: '/home/rsbuilder/Raptor'
+       
 
 # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
