@@ -517,7 +517,9 @@ install(
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/ip_gen_axis_conv/)
 install(
-        DIRECTORY IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)      
+        DIRECTORY IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)    
+install(
+        DIRECTORY litex_rs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})      
 install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
@@ -566,7 +568,10 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/IP_Catalog/    
-          ${CMAKE_CURRENT_BINARY_DIR}/IP_Catalog/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${PROJECT_SOURCE_DIR}/litex_rs/    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/litex_rs
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
