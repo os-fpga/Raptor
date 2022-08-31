@@ -503,6 +503,8 @@ install(
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
+    DIRECTORY FOEDAG_rs/etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
+install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_fpga/)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_gate/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/aes_decrypt_gate/)
@@ -565,6 +567,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${PROJECT_SOURCE_DIR}/etc/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${PROJECT_SOURCE_DIR}/FOEDAG_rs/etc/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/IP_Catalog/    
           ${CMAKE_CURRENT_BINARY_DIR}/IP_Catalog/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
