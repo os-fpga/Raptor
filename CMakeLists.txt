@@ -537,7 +537,7 @@ install(
       FILES Raptor_Tools/Flex_LM/x64_lsb/lmutil
       Raptor_Tools/Flex_LM/x64_lsb/lmgrd
       Raptor_Tools/Flex_LM/x64_lsb/rapidsil
-      DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/Flex_LM
+      DESTINATION  ${CMAKE_INSTALL_BINDIR}/Flex_LM
       PERMISSIONS
       OWNER_READ OWNER_EXECUTE OWNER_WRITE
       GROUP_READ GROUP_EXECUTE
