@@ -113,8 +113,7 @@ jobs:
         make release PRODUCTION_BUILD=1
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
-        ./build/bin/Flex_LM/lmgrd -c ./.github/bin/.raptor.lic -l lic.log
-        cat lic.log
+        export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         make release test/batch
 
 
