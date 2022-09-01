@@ -273,6 +273,7 @@ jobs:
       run: |
         mkdir /opt/instl_dir
         make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
+        scl enable devtoolset-9 bash
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.0/lib:$LD_LIBRARY_PATH
         bash ./Raptor_Tools/Create_Raptor_Artifact/create_release.sh -c -p -w /opt/instl_dir
         echo "::set-output name=exit_code::$?"
@@ -284,14 +285,14 @@ jobs:
         host: ${{ secrets.FTP_IP }}
         username: ${{ secrets.FTP_USER }}
         key: ${{ secrets.FTP_KEY }}
-        port: ${{ secrets.PORT }}
+        port: ${{ secrets.FTP_PORT }}
         script: whoami
 
     - name: Upload
       uses: Creepios/sftp-action@v1.0.3
       with:
         host: ${{ secrets.FTP_IP }}
-        port: 22
+        port: ${{ secrets.FTP_PORT }}
         username: ${{ secrets.FTP_USER }}
         ssh_private_key: ${{ secrets.FTP_KEY }}
         localPath: 'Raptor_Tools/Install_Raptor_Artifact/*.tar.gz'
