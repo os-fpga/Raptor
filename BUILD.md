@@ -33,11 +33,14 @@
   make install
   make test_install
 
-  Note: If you would like to update your local repository and build, then run the following commands.
+To update and build your local repository run the following commands.
 
   cd Raptor
   git pull
   make UPDATE_SUBMODULES=ON
+
+Note 1: During the build all required submodules would be updated. 
+Note 2: The Raptor_Tools submodule would be left uninitialized in all Raptor submodules.
 ```
     
  2) NIGHTLY BUILD ACCESS:
