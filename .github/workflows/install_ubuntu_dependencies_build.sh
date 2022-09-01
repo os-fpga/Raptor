@@ -36,6 +36,8 @@ sudo apt install -y \
   libssl-dev
 # qtdeclarative5-dev
 
+sudo apt -y install lsb-core
+
 sudo ln -sf /usr/bin/g++-9 /usr/bin/g++
 sudo ln -sf /usr/bin/gcc-9 /usr/bin/gcc
 sudo ln -sf /usr/bin/gcov-9 /usr/bin/gcov

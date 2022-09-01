@@ -537,7 +537,7 @@ install(
       FILES Raptor_Tools/Flex_LM/x64_lsb/lmutil
       Raptor_Tools/Flex_LM/x64_lsb/lmgrd
       Raptor_Tools/Flex_LM/x64_lsb/rapidsil
-      DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/Flex_LM
+      DESTINATION  ${CMAKE_INSTALL_BINDIR}/Flex_LM
       PERMISSIONS
       OWNER_READ OWNER_EXECUTE OWNER_WRITE
       GROUP_READ GROUP_EXECUTE
@@ -563,6 +563,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/etc/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
@@ -596,7 +597,16 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de    
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil    
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+          COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmgrd    
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil    
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM)
 
 if (WIN OR APPLE)
 else ()
