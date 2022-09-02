@@ -298,7 +298,7 @@ jobs:
         host: ${{ secrets.FTP_IP }}
         port: ${{ secrets.FTP_PORT }}
         username: ${{ secrets.FTP_USER }}
-        ssh_private_key: ${{ secrets.FTP_KEY }}
+        privateKey: ${{ secrets.FTP_KEY }}
         localPath: 'Raptor_Tools/Install_Raptor_Artifact/*.tar.gz'
         remotePath: '/home/rsbuilder/Raptor'
        
