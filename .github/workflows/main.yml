@@ -262,17 +262,18 @@ jobs:
       if: matrix.mode == 'test'
       run: |
         make debug test/unittest-d
+        # Yosys doesn't separate debug and release builds, thus intermediate clean is required
+        # cd dbuild && make clean_yosys_verific_rs && make verific_clean && cd -
+        # make verific_clean removes precompilled libraries so we need to bring them back.
+        # cd Raptor_Tools/verific_rs && git checkout . && cd -
+        make test/gui
+
 
     - name: Regression
       id: reg_ok
       if: matrix.mode == 'regression'
       run: |
-        # Yosys doesn't separate debug and release builds, thus intermediate clean is required
-        cd dbuild && make clean_yosys_verific_rs && make verific_clean && cd -
-        # make verific_clean removes precompilled libraries so we need to bring them back.
-        cd Raptor_Tools/verific_rs && git checkout . && cd -
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
-        make test/gui
         make regression
         echo "::set-output name=exit_code::$?"
 
