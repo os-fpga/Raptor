@@ -278,8 +278,7 @@ jobs:
 
     - name: Create Tar Exe
       id: packing_ok
-      if: matrix.mode == 'regression'
-      if: steps.reg_ok.outputs.exit_code == 0
+      if: matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0
       run: |
         mkdir /opt/instl_dir
         make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
@@ -288,8 +287,7 @@ jobs:
         echo "::set-output name=exit_code::$?"
 
     - name: Check FTP server status
-      if: matrix.mode == 'regression'
-      if: steps.packing_ok.outputs.exit_code == 0
+      if: matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.FTP_IP }}
