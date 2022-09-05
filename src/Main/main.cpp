@@ -62,6 +62,7 @@ int main(int argc, char** argv) {
   if (opcompiler) {
     std::filesystem::path binpath = foedag->Context()->BinaryPath();
     std::filesystem::path datapath = foedag->Context()->DataPath();
+    std::filesystem::path analyzePath = binpath / "analyze";
     std::filesystem::path yosysPath = binpath / "yosys";
     std::filesystem::path vprPath = binpath / "vpr";
     std::filesystem::path openFpgaPath = binpath / "openfpga";
@@ -73,7 +74,7 @@ int main(int argc, char** argv) {
     std::filesystem::path repackConstraintPath = datapath / "etc" / "devices" /
                                                  "gemini" /
                                                  "repack_design_constraint.xml";
-
+    opcompiler->AnalyzeExecPath(analyzePath);
     opcompiler->YosysExecPath(yosysPath);
     opcompiler->VprExecPath(vprPath);
     opcompiler->OpenFpgaExecPath(openFpgaPath);
