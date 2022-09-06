@@ -158,6 +158,7 @@ jobs:
       matrix:
         mode:
         - test
+        - regression
 
     env:
       MODE: ${{ matrix.mode }}
@@ -205,7 +206,7 @@ jobs:
       uses: actions/checkout@v2
         
     - name: Download workflow artifact
-      if: matrix.mode == 'test'
+      if: matrix.mode == 'test' || matrix.mode =='regression'
       uses: dawidd6/action-download-artifact@v2.17.0
       with:
         workflow: main.yml
@@ -229,7 +230,7 @@ jobs:
         tar czvfp buildqt5-centos7-gcc.tgz buildqt5
 
     - name: Archive QT build artifacts
-      if: matrix.mode == 'test'
+      if: matrix.mode == 'test' 
       uses: actions/upload-artifact@v2
       with:
         name: buildqt5-centos7-gcc
@@ -254,7 +255,6 @@ jobs:
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
 
     - name: Configure git
-      if: matrix.mode == 'test'
       run: |
         git config --global --add safe.directory $GITHUB_WORKSPACE
 
@@ -263,12 +263,51 @@ jobs:
       run: |
         make debug test/unittest-d
         # Yosys doesn't separate debug and release builds, thus intermediate clean is required
-        cd dbuild && make clean_yosys_verific_rs && make verific_clean && cd -
+        # cd dbuild && make clean_yosys_verific_rs && make verific_clean && cd -
         # make verific_clean removes precompilled libraries so we need to bring them back.
-        cd Raptor_Tools/verific_rs && git checkout . && cd -
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
+        # cd Raptor_Tools/verific_rs && git checkout . && cd -
         make test/gui
+
+
+    - name: Regression
+      id: reg_ok
+      if: matrix.mode == 'regression'
+      run: |
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
         make regression
+        echo "::set-output name=exit_code::$?"
+
+    - name: Create Tar Exe
+      id: packing_ok
+      if: matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0
+      run: |
+        mkdir /opt/instl_dir
+        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
+        export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.0/lib:$LD_LIBRARY_PATH
+        bash ./Raptor_Tools/Create_Raptor_Artifact/create_release.sh -c -p -w /opt/instl_dir
+        echo "::set-output name=exit_code::$?"
+
+    - name: Check FTP server status
+      if: matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.FTP_IP }}
+        username: ${{ secrets.FTP_USER }}
+        key: ${{ secrets.FTP_KEY }}
+        port: ${{ secrets.FTP_PORT }}
+        script: whoami
+
+    - name: Deploy
+      if: matrix.mode == 'regression'
+      uses: appleboy/scp-action@master
+      with:
+         host: ${{ secrets.FTP_IP }}
+         username: ${{ secrets.FTP_USER }}
+         key: ${{ secrets.FTP_KEY }}
+         port: ${{ secrets.FTP_PORT }}
+         source: "./Raptor_Tools/Install_Raptor_Artifact/*.tar.gz"
+         target: "/home/rsbuilder/Raptor"
+       
 
 # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
