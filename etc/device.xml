@@ -43,5 +43,29 @@
         <internal type="bitstream_enabled" num="true"/>
         <internal type="synth_opts" name="-no_dsp -no_bram -no_adder"/>
     </device>
+    <device name="GEMINI_TEST_DSP" series="Gemini" family="RSGem" package="SBG484" pin_count="540" speedgrade="1" core_voltage="0.8V">
+        <resource type="io" num="450"/>
+        <resource type="lut" num="34320"/>
+        <resource type="ff" num="68640"/>
+        <resource type="bram" num="143"/>
+        <resource type="dsp" num="286"/>
+        <internal type="vpr_arch" file="gemini_test_dsp/gemini_vpr.xml"/>
+        <internal type="device_size" name="78x66"/>]
+        <internal type="lut_size" num="6"/>
+        <internal type="channel_width" num="180"/>
+        <internal type="openfpga_arch" file="gemini_test_dsp/gemini_openfpga.xml"/>
+        <internal type="bitstream_settings" file="gemini_test_dsp/bitstream_annotation.xml"/>
+        <internal type="sim_settings" file="gemini_test_dsp/fixed_sim_openfpga.xml"/>
+        <internal type="repack_settings" file="gemini_test_dsp/repack_design_constraint.xml"/>
+        <internal type="pinmap_xml" file=""/>
+        <internal type="pinmap_csv" file="gemini_test_dsp/Gemini_Pin_Table.csv"/>
+        <internal type="plugin_lib" name="synth-rs"/>
+        <internal type="plugin_func" name="synth_rs"/>
+        <internal type="technology" name="genesis"/>
+        <internal type="synth_type" name="RS"/>
+        <internal type="synth_opts" name=""/>
+        <internal type="bitstream_enabled" num="false"/>
+        <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
+    </device>
  </device_list>
  
