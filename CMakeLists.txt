@@ -596,9 +596,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
-          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze 
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc        
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
@@ -619,6 +616,10 @@ else ()
   install(
       FILES ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/libvpr.so  DESTINATION ${CMAKE_INSTALL_BINDIR} PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE )
   add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying Analyze in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze 
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND echo "Copying VPR and OpenFPGA in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
