@@ -5,7 +5,7 @@ set_top_module and2
 add_constraint_file constraints.sdc
 
 # Device target
-target_device GEMINI_TEST_DSP
+target_device GEMINI
 # Compilation
 analyze
 synthesize delay
