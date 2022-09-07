@@ -153,6 +153,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
+	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
 
 lib-only: run-cmake-release
