@@ -153,6 +153,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
+	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
