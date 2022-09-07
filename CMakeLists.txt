@@ -107,7 +107,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 7)
+set(VERSION_PATCH 8)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -594,6 +594,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Copying Yosys, ABC, DE in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze 
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc        
