@@ -620,6 +620,10 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze 
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND echo "Copying vhdl_packages in share dir"
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages 
+          ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages
       COMMAND echo "Copying VPR and OpenFPGA in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
