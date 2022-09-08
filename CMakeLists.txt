@@ -107,7 +107,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 7)
+set(VERSION_PATCH 8)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -616,6 +616,14 @@ else ()
   install(
       FILES ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/libvpr.so  DESTINATION ${CMAKE_INSTALL_BINDIR} PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE )
   add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying Analyze in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze 
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND echo "Copying vhdl_packages in share dir"
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages 
+          ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages
       COMMAND echo "Copying VPR and OpenFPGA in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
