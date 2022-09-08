@@ -1,0 +1,40 @@
+ 
+vpr /nfs_scratch/scratch/eda/behzad/bs/Raptor/build/share/raptor/etc/devices/mpw1/TSMC22nm_vpr.xml and2_post_synth.blif --clock_modeling ideal --device 4x4 --net_file and2_post_synth.net --place_file and2_post_synth.place --route_file and2_post_synth.route --route_chan_width 180 --sdc_file and2_openfpga.sdc --absorb_buffer_luts off --constant_net_method route --circuit_format blif --analysis 
+
+# Read OpenFPGA architecture definition
+read_openfpga_arch -f /nfs_scratch/scratch/eda/behzad/bs/Raptor/build/share/raptor/etc/devices/mpw1/TSMC22nm_openfpga.xml
+
+# Read OpenFPGA simulation settings
+read_openfpga_simulation_setting -f /nfs_scratch/scratch/eda/behzad/bs/Raptor/build/share/raptor/etc/devices/mpw1/fixed_sim_openfpga.xml
+
+read_openfpga_bitstream_setting -f /nfs_scratch/scratch/eda/behzad/bs/Raptor/build/share/raptor/etc/devices/mpw1/bitstream_annotation_empty.xml
+
+# Annotate the OpenFPGA architecture to VPR data base
+# to debug use --verbose options
+link_openfpga_arch --sort_gsb_chan_node_in_edges 
+
+# Apply fix-up to clustering nets based on routing results
+pb_pin_fixup --verbose
+
+# Apply fix-up to Look-Up Table truth tables based on packing results
+lut_truth_table_fixup
+
+# Build the module graph
+#  - Enabled compression on routing architecture modules
+#  - Enable pin duplication on grid modules
+build_fabric --compress_routing --duplicate_grid_pin 
+
+# Repack the netlist to physical pbs
+# This must be done before bitstream generator and testbench generation
+# Strongly recommend it is done after all the fix-up have been applied
+repack --design_constraints /nfs_scratch/scratch/eda/behzad/bs/Raptor/build/share/raptor/etc/devices/mpw1/repack_design_constraint.xml
+
+build_architecture_bitstream
+
+build_fabric_bitstream
+write_fabric_bitstream --format plain_text --file fabric_bitstream.bit
+write_io_mapping -f PinMapping.xml
+
+# Finish and exit OpenFPGA
+exit
+

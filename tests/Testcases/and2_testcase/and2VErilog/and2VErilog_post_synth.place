@@ -1,0 +1,9 @@
+Netlist_File: and2VErilog_post_synth.net Netlist_ID: SHA256:0ad9dcbce18912e664a5586513cafa3344f56d2db2fb64469552015eefb5b47b
+Array size: 6 x 6 logic blocks
+
+#block name	x	y	subblk	block number
+#----------	--	--	------	------------
+c		1	4	0	#0
+out:c		1	5	8	#1
+a		1	5	0	#2
+b		1	5	4	#3

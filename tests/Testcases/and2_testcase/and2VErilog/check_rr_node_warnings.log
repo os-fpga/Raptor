@@ -1,0 +1,1640 @@
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 201 type: OPIN location: (1,0) pin: 5 pin_name: io_bottom[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 203 type: OPIN location: (1,0) pin: 15 pin_name: io_bottom[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 205 type: OPIN location: (1,0) pin: 25 pin_name: io_bottom[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 207 type: OPIN location: (1,0) pin: 35 pin_name: io_bottom[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 209 type: OPIN location: (1,0) pin: 45 pin_name: io_bottom[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 211 type: OPIN location: (1,0) pin: 55 pin_name: io_bottom[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 213 type: OPIN location: (1,0) pin: 65 pin_name: io_bottom[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 215 type: OPIN location: (1,0) pin: 75 pin_name: io_bottom[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 217 type: OPIN location: (1,0) pin: 85 pin_name: io_bottom[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 219 type: OPIN location: (1,0) pin: 95 pin_name: io_bottom[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 221 type: OPIN location: (1,0) pin: 105 pin_name: io_bottom[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 223 type: OPIN location: (1,0) pin: 115 pin_name: io_bottom[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 225 type: OPIN location: (1,0) pin: 125 pin_name: io_bottom[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 227 type: OPIN location: (1,0) pin: 135 pin_name: io_bottom[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 229 type: OPIN location: (1,0) pin: 145 pin_name: io_bottom[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 231 type: OPIN location: (1,0) pin: 155 pin_name: io_bottom[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 233 type: OPIN location: (1,0) pin: 165 pin_name: io_bottom[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 235 type: OPIN location: (1,0) pin: 175 pin_name: io_bottom[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 237 type: OPIN location: (1,0) pin: 185 pin_name: io_bottom[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 239 type: OPIN location: (1,0) pin: 195 pin_name: io_bottom[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 601 type: OPIN location: (2,0) pin: 5 pin_name: io_bottom[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 603 type: OPIN location: (2,0) pin: 15 pin_name: io_bottom[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 605 type: OPIN location: (2,0) pin: 25 pin_name: io_bottom[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 607 type: OPIN location: (2,0) pin: 35 pin_name: io_bottom[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 609 type: OPIN location: (2,0) pin: 45 pin_name: io_bottom[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 611 type: OPIN location: (2,0) pin: 55 pin_name: io_bottom[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 613 type: OPIN location: (2,0) pin: 65 pin_name: io_bottom[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 615 type: OPIN location: (2,0) pin: 75 pin_name: io_bottom[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 617 type: OPIN location: (2,0) pin: 85 pin_name: io_bottom[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 619 type: OPIN location: (2,0) pin: 95 pin_name: io_bottom[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 621 type: OPIN location: (2,0) pin: 105 pin_name: io_bottom[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 623 type: OPIN location: (2,0) pin: 115 pin_name: io_bottom[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 625 type: OPIN location: (2,0) pin: 125 pin_name: io_bottom[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 627 type: OPIN location: (2,0) pin: 135 pin_name: io_bottom[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 629 type: OPIN location: (2,0) pin: 145 pin_name: io_bottom[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 631 type: OPIN location: (2,0) pin: 155 pin_name: io_bottom[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 633 type: OPIN location: (2,0) pin: 165 pin_name: io_bottom[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 635 type: OPIN location: (2,0) pin: 175 pin_name: io_bottom[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 637 type: OPIN location: (2,0) pin: 185 pin_name: io_bottom[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 639 type: OPIN location: (2,0) pin: 195 pin_name: io_bottom[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1001 type: OPIN location: (3,0) pin: 5 pin_name: io_bottom[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1003 type: OPIN location: (3,0) pin: 15 pin_name: io_bottom[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1005 type: OPIN location: (3,0) pin: 25 pin_name: io_bottom[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1007 type: OPIN location: (3,0) pin: 35 pin_name: io_bottom[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1009 type: OPIN location: (3,0) pin: 45 pin_name: io_bottom[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1011 type: OPIN location: (3,0) pin: 55 pin_name: io_bottom[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1013 type: OPIN location: (3,0) pin: 65 pin_name: io_bottom[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1015 type: OPIN location: (3,0) pin: 75 pin_name: io_bottom[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1017 type: OPIN location: (3,0) pin: 85 pin_name: io_bottom[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1019 type: OPIN location: (3,0) pin: 95 pin_name: io_bottom[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1021 type: OPIN location: (3,0) pin: 105 pin_name: io_bottom[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1023 type: OPIN location: (3,0) pin: 115 pin_name: io_bottom[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1025 type: OPIN location: (3,0) pin: 125 pin_name: io_bottom[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1027 type: OPIN location: (3,0) pin: 135 pin_name: io_bottom[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1029 type: OPIN location: (3,0) pin: 145 pin_name: io_bottom[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1031 type: OPIN location: (3,0) pin: 155 pin_name: io_bottom[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1033 type: OPIN location: (3,0) pin: 165 pin_name: io_bottom[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1035 type: OPIN location: (3,0) pin: 175 pin_name: io_bottom[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1037 type: OPIN location: (3,0) pin: 185 pin_name: io_bottom[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1039 type: OPIN location: (3,0) pin: 195 pin_name: io_bottom[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1401 type: OPIN location: (4,0) pin: 5 pin_name: io_bottom[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1403 type: OPIN location: (4,0) pin: 15 pin_name: io_bottom[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1405 type: OPIN location: (4,0) pin: 25 pin_name: io_bottom[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1407 type: OPIN location: (4,0) pin: 35 pin_name: io_bottom[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1409 type: OPIN location: (4,0) pin: 45 pin_name: io_bottom[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1411 type: OPIN location: (4,0) pin: 55 pin_name: io_bottom[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1413 type: OPIN location: (4,0) pin: 65 pin_name: io_bottom[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1415 type: OPIN location: (4,0) pin: 75 pin_name: io_bottom[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1417 type: OPIN location: (4,0) pin: 85 pin_name: io_bottom[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1419 type: OPIN location: (4,0) pin: 95 pin_name: io_bottom[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1421 type: OPIN location: (4,0) pin: 105 pin_name: io_bottom[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1423 type: OPIN location: (4,0) pin: 115 pin_name: io_bottom[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1425 type: OPIN location: (4,0) pin: 125 pin_name: io_bottom[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1427 type: OPIN location: (4,0) pin: 135 pin_name: io_bottom[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1429 type: OPIN location: (4,0) pin: 145 pin_name: io_bottom[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1431 type: OPIN location: (4,0) pin: 155 pin_name: io_bottom[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1433 type: OPIN location: (4,0) pin: 165 pin_name: io_bottom[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1435 type: OPIN location: (4,0) pin: 175 pin_name: io_bottom[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1437 type: OPIN location: (4,0) pin: 185 pin_name: io_bottom[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1439 type: OPIN location: (4,0) pin: 195 pin_name: io_bottom[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1801 type: OPIN location: (0,1) pin: 5 pin_name: io_left[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1803 type: OPIN location: (0,1) pin: 15 pin_name: io_left[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1805 type: OPIN location: (0,1) pin: 25 pin_name: io_left[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1807 type: OPIN location: (0,1) pin: 35 pin_name: io_left[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1809 type: OPIN location: (0,1) pin: 45 pin_name: io_left[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1811 type: OPIN location: (0,1) pin: 55 pin_name: io_left[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1813 type: OPIN location: (0,1) pin: 65 pin_name: io_left[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1815 type: OPIN location: (0,1) pin: 75 pin_name: io_left[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1817 type: OPIN location: (0,1) pin: 85 pin_name: io_left[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1819 type: OPIN location: (0,1) pin: 95 pin_name: io_left[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1821 type: OPIN location: (0,1) pin: 105 pin_name: io_left[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1823 type: OPIN location: (0,1) pin: 115 pin_name: io_left[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1825 type: OPIN location: (0,1) pin: 125 pin_name: io_left[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1827 type: OPIN location: (0,1) pin: 135 pin_name: io_left[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1829 type: OPIN location: (0,1) pin: 145 pin_name: io_left[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1831 type: OPIN location: (0,1) pin: 155 pin_name: io_left[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1833 type: OPIN location: (0,1) pin: 165 pin_name: io_left[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1835 type: OPIN location: (0,1) pin: 175 pin_name: io_left[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1837 type: OPIN location: (0,1) pin: 185 pin_name: io_left[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 1839 type: OPIN location: (0,1) pin: 195 pin_name: io_left[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2060 type: OPIN location: (1,1) pin: 69 pin_name: clb.sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2061 type: OPIN location: (1,1) pin: 70 pin_name: clb.cout[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2176 type: OPIN location: (2,1) pin: 69 pin_name: clb.sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2177 type: OPIN location: (2,1) pin: 70 pin_name: clb.cout[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2292 type: OPIN location: (3,1) pin: 69 pin_name: clb.sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2293 type: OPIN location: (3,1) pin: 70 pin_name: clb.cout[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2408 type: OPIN location: (4,1) pin: 69 pin_name: clb.sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2409 type: OPIN location: (4,1) pin: 70 pin_name: clb.cout[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2665 type: OPIN location: (5,1) pin: 5 pin_name: io_right[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2667 type: OPIN location: (5,1) pin: 15 pin_name: io_right[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2669 type: OPIN location: (5,1) pin: 25 pin_name: io_right[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2671 type: OPIN location: (5,1) pin: 35 pin_name: io_right[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2673 type: OPIN location: (5,1) pin: 45 pin_name: io_right[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2675 type: OPIN location: (5,1) pin: 55 pin_name: io_right[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2677 type: OPIN location: (5,1) pin: 65 pin_name: io_right[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2679 type: OPIN location: (5,1) pin: 75 pin_name: io_right[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2681 type: OPIN location: (5,1) pin: 85 pin_name: io_right[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2683 type: OPIN location: (5,1) pin: 95 pin_name: io_right[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2685 type: OPIN location: (5,1) pin: 105 pin_name: io_right[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2687 type: OPIN location: (5,1) pin: 115 pin_name: io_right[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2689 type: OPIN location: (5,1) pin: 125 pin_name: io_right[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2691 type: OPIN location: (5,1) pin: 135 pin_name: io_right[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2693 type: OPIN location: (5,1) pin: 145 pin_name: io_right[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2695 type: OPIN location: (5,1) pin: 155 pin_name: io_right[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2697 type: OPIN location: (5,1) pin: 165 pin_name: io_right[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2699 type: OPIN location: (5,1) pin: 175 pin_name: io_right[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2701 type: OPIN location: (5,1) pin: 185 pin_name: io_right[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 2703 type: OPIN location: (5,1) pin: 195 pin_name: io_right[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3065 type: OPIN location: (0,2) pin: 5 pin_name: io_left[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3067 type: OPIN location: (0,2) pin: 15 pin_name: io_left[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3069 type: OPIN location: (0,2) pin: 25 pin_name: io_left[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3071 type: OPIN location: (0,2) pin: 35 pin_name: io_left[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3073 type: OPIN location: (0,2) pin: 45 pin_name: io_left[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3075 type: OPIN location: (0,2) pin: 55 pin_name: io_left[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3077 type: OPIN location: (0,2) pin: 65 pin_name: io_left[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3079 type: OPIN location: (0,2) pin: 75 pin_name: io_left[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3081 type: OPIN location: (0,2) pin: 85 pin_name: io_left[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3083 type: OPIN location: (0,2) pin: 95 pin_name: io_left[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3085 type: OPIN location: (0,2) pin: 105 pin_name: io_left[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3087 type: OPIN location: (0,2) pin: 115 pin_name: io_left[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3089 type: OPIN location: (0,2) pin: 125 pin_name: io_left[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3091 type: OPIN location: (0,2) pin: 135 pin_name: io_left[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3093 type: OPIN location: (0,2) pin: 145 pin_name: io_left[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3095 type: OPIN location: (0,2) pin: 155 pin_name: io_left[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3097 type: OPIN location: (0,2) pin: 165 pin_name: io_left[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3099 type: OPIN location: (0,2) pin: 175 pin_name: io_left[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3101 type: OPIN location: (0,2) pin: 185 pin_name: io_left[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3103 type: OPIN location: (0,2) pin: 195 pin_name: io_left[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3929 type: OPIN location: (5,2) pin: 5 pin_name: io_right[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3931 type: OPIN location: (5,2) pin: 15 pin_name: io_right[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3933 type: OPIN location: (5,2) pin: 25 pin_name: io_right[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3935 type: OPIN location: (5,2) pin: 35 pin_name: io_right[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3937 type: OPIN location: (5,2) pin: 45 pin_name: io_right[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3939 type: OPIN location: (5,2) pin: 55 pin_name: io_right[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3941 type: OPIN location: (5,2) pin: 65 pin_name: io_right[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3943 type: OPIN location: (5,2) pin: 75 pin_name: io_right[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3945 type: OPIN location: (5,2) pin: 85 pin_name: io_right[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3947 type: OPIN location: (5,2) pin: 95 pin_name: io_right[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3949 type: OPIN location: (5,2) pin: 105 pin_name: io_right[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3951 type: OPIN location: (5,2) pin: 115 pin_name: io_right[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3953 type: OPIN location: (5,2) pin: 125 pin_name: io_right[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3955 type: OPIN location: (5,2) pin: 135 pin_name: io_right[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3957 type: OPIN location: (5,2) pin: 145 pin_name: io_right[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3959 type: OPIN location: (5,2) pin: 155 pin_name: io_right[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3961 type: OPIN location: (5,2) pin: 165 pin_name: io_right[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3963 type: OPIN location: (5,2) pin: 175 pin_name: io_right[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3965 type: OPIN location: (5,2) pin: 185 pin_name: io_right[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 3967 type: OPIN location: (5,2) pin: 195 pin_name: io_right[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4329 type: OPIN location: (0,3) pin: 5 pin_name: io_left[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4331 type: OPIN location: (0,3) pin: 15 pin_name: io_left[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4333 type: OPIN location: (0,3) pin: 25 pin_name: io_left[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4335 type: OPIN location: (0,3) pin: 35 pin_name: io_left[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4337 type: OPIN location: (0,3) pin: 45 pin_name: io_left[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4339 type: OPIN location: (0,3) pin: 55 pin_name: io_left[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4341 type: OPIN location: (0,3) pin: 65 pin_name: io_left[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4343 type: OPIN location: (0,3) pin: 75 pin_name: io_left[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4345 type: OPIN location: (0,3) pin: 85 pin_name: io_left[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4347 type: OPIN location: (0,3) pin: 95 pin_name: io_left[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4349 type: OPIN location: (0,3) pin: 105 pin_name: io_left[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4351 type: OPIN location: (0,3) pin: 115 pin_name: io_left[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4353 type: OPIN location: (0,3) pin: 125 pin_name: io_left[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4355 type: OPIN location: (0,3) pin: 135 pin_name: io_left[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4357 type: OPIN location: (0,3) pin: 145 pin_name: io_left[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4359 type: OPIN location: (0,3) pin: 155 pin_name: io_left[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4361 type: OPIN location: (0,3) pin: 165 pin_name: io_left[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4363 type: OPIN location: (0,3) pin: 175 pin_name: io_left[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4365 type: OPIN location: (0,3) pin: 185 pin_name: io_left[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 4367 type: OPIN location: (0,3) pin: 195 pin_name: io_left[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5193 type: OPIN location: (5,3) pin: 5 pin_name: io_right[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5195 type: OPIN location: (5,3) pin: 15 pin_name: io_right[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5197 type: OPIN location: (5,3) pin: 25 pin_name: io_right[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5199 type: OPIN location: (5,3) pin: 35 pin_name: io_right[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5201 type: OPIN location: (5,3) pin: 45 pin_name: io_right[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5203 type: OPIN location: (5,3) pin: 55 pin_name: io_right[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5205 type: OPIN location: (5,3) pin: 65 pin_name: io_right[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5207 type: OPIN location: (5,3) pin: 75 pin_name: io_right[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5209 type: OPIN location: (5,3) pin: 85 pin_name: io_right[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5211 type: OPIN location: (5,3) pin: 95 pin_name: io_right[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5213 type: OPIN location: (5,3) pin: 105 pin_name: io_right[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5215 type: OPIN location: (5,3) pin: 115 pin_name: io_right[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5217 type: OPIN location: (5,3) pin: 125 pin_name: io_right[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5219 type: OPIN location: (5,3) pin: 135 pin_name: io_right[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5221 type: OPIN location: (5,3) pin: 145 pin_name: io_right[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5223 type: OPIN location: (5,3) pin: 155 pin_name: io_right[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5225 type: OPIN location: (5,3) pin: 165 pin_name: io_right[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5227 type: OPIN location: (5,3) pin: 175 pin_name: io_right[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5229 type: OPIN location: (5,3) pin: 185 pin_name: io_right[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5231 type: OPIN location: (5,3) pin: 195 pin_name: io_right[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5593 type: OPIN location: (0,4) pin: 5 pin_name: io_left[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5595 type: OPIN location: (0,4) pin: 15 pin_name: io_left[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5597 type: OPIN location: (0,4) pin: 25 pin_name: io_left[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5599 type: OPIN location: (0,4) pin: 35 pin_name: io_left[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5601 type: OPIN location: (0,4) pin: 45 pin_name: io_left[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5603 type: OPIN location: (0,4) pin: 55 pin_name: io_left[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5605 type: OPIN location: (0,4) pin: 65 pin_name: io_left[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5607 type: OPIN location: (0,4) pin: 75 pin_name: io_left[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5609 type: OPIN location: (0,4) pin: 85 pin_name: io_left[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5611 type: OPIN location: (0,4) pin: 95 pin_name: io_left[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5613 type: OPIN location: (0,4) pin: 105 pin_name: io_left[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5615 type: OPIN location: (0,4) pin: 115 pin_name: io_left[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5617 type: OPIN location: (0,4) pin: 125 pin_name: io_left[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5619 type: OPIN location: (0,4) pin: 135 pin_name: io_left[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5621 type: OPIN location: (0,4) pin: 145 pin_name: io_left[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5623 type: OPIN location: (0,4) pin: 155 pin_name: io_left[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5625 type: OPIN location: (0,4) pin: 165 pin_name: io_left[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5627 type: OPIN location: (0,4) pin: 175 pin_name: io_left[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5629 type: OPIN location: (0,4) pin: 185 pin_name: io_left[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 5631 type: OPIN location: (0,4) pin: 195 pin_name: io_left[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6457 type: OPIN location: (5,4) pin: 5 pin_name: io_right[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6459 type: OPIN location: (5,4) pin: 15 pin_name: io_right[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6461 type: OPIN location: (5,4) pin: 25 pin_name: io_right[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6463 type: OPIN location: (5,4) pin: 35 pin_name: io_right[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6465 type: OPIN location: (5,4) pin: 45 pin_name: io_right[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6467 type: OPIN location: (5,4) pin: 55 pin_name: io_right[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6469 type: OPIN location: (5,4) pin: 65 pin_name: io_right[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6471 type: OPIN location: (5,4) pin: 75 pin_name: io_right[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6473 type: OPIN location: (5,4) pin: 85 pin_name: io_right[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6475 type: OPIN location: (5,4) pin: 95 pin_name: io_right[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6477 type: OPIN location: (5,4) pin: 105 pin_name: io_right[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6479 type: OPIN location: (5,4) pin: 115 pin_name: io_right[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6481 type: OPIN location: (5,4) pin: 125 pin_name: io_right[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6483 type: OPIN location: (5,4) pin: 135 pin_name: io_right[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6485 type: OPIN location: (5,4) pin: 145 pin_name: io_right[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6487 type: OPIN location: (5,4) pin: 155 pin_name: io_right[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6489 type: OPIN location: (5,4) pin: 165 pin_name: io_right[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6491 type: OPIN location: (5,4) pin: 175 pin_name: io_right[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6493 type: OPIN location: (5,4) pin: 185 pin_name: io_right[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6495 type: OPIN location: (5,4) pin: 195 pin_name: io_right[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6857 type: OPIN location: (1,5) pin: 5 pin_name: io_top[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6859 type: OPIN location: (1,5) pin: 15 pin_name: io_top[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6861 type: OPIN location: (1,5) pin: 25 pin_name: io_top[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6863 type: OPIN location: (1,5) pin: 35 pin_name: io_top[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6865 type: OPIN location: (1,5) pin: 45 pin_name: io_top[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6867 type: OPIN location: (1,5) pin: 55 pin_name: io_top[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6869 type: OPIN location: (1,5) pin: 65 pin_name: io_top[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6871 type: OPIN location: (1,5) pin: 75 pin_name: io_top[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6873 type: OPIN location: (1,5) pin: 85 pin_name: io_top[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6875 type: OPIN location: (1,5) pin: 95 pin_name: io_top[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6877 type: OPIN location: (1,5) pin: 105 pin_name: io_top[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6879 type: OPIN location: (1,5) pin: 115 pin_name: io_top[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6881 type: OPIN location: (1,5) pin: 125 pin_name: io_top[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6883 type: OPIN location: (1,5) pin: 135 pin_name: io_top[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6885 type: OPIN location: (1,5) pin: 145 pin_name: io_top[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6887 type: OPIN location: (1,5) pin: 155 pin_name: io_top[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6889 type: OPIN location: (1,5) pin: 165 pin_name: io_top[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6891 type: OPIN location: (1,5) pin: 175 pin_name: io_top[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6893 type: OPIN location: (1,5) pin: 185 pin_name: io_top[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 6895 type: OPIN location: (1,5) pin: 195 pin_name: io_top[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7257 type: OPIN location: (2,5) pin: 5 pin_name: io_top[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7259 type: OPIN location: (2,5) pin: 15 pin_name: io_top[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7261 type: OPIN location: (2,5) pin: 25 pin_name: io_top[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7263 type: OPIN location: (2,5) pin: 35 pin_name: io_top[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7265 type: OPIN location: (2,5) pin: 45 pin_name: io_top[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7267 type: OPIN location: (2,5) pin: 55 pin_name: io_top[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7269 type: OPIN location: (2,5) pin: 65 pin_name: io_top[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7271 type: OPIN location: (2,5) pin: 75 pin_name: io_top[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7273 type: OPIN location: (2,5) pin: 85 pin_name: io_top[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7275 type: OPIN location: (2,5) pin: 95 pin_name: io_top[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7277 type: OPIN location: (2,5) pin: 105 pin_name: io_top[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7279 type: OPIN location: (2,5) pin: 115 pin_name: io_top[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7281 type: OPIN location: (2,5) pin: 125 pin_name: io_top[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7283 type: OPIN location: (2,5) pin: 135 pin_name: io_top[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7285 type: OPIN location: (2,5) pin: 145 pin_name: io_top[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7287 type: OPIN location: (2,5) pin: 155 pin_name: io_top[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7289 type: OPIN location: (2,5) pin: 165 pin_name: io_top[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7291 type: OPIN location: (2,5) pin: 175 pin_name: io_top[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7293 type: OPIN location: (2,5) pin: 185 pin_name: io_top[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7295 type: OPIN location: (2,5) pin: 195 pin_name: io_top[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7657 type: OPIN location: (3,5) pin: 5 pin_name: io_top[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7659 type: OPIN location: (3,5) pin: 15 pin_name: io_top[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7661 type: OPIN location: (3,5) pin: 25 pin_name: io_top[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7663 type: OPIN location: (3,5) pin: 35 pin_name: io_top[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7665 type: OPIN location: (3,5) pin: 45 pin_name: io_top[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7667 type: OPIN location: (3,5) pin: 55 pin_name: io_top[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7669 type: OPIN location: (3,5) pin: 65 pin_name: io_top[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7671 type: OPIN location: (3,5) pin: 75 pin_name: io_top[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7673 type: OPIN location: (3,5) pin: 85 pin_name: io_top[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7675 type: OPIN location: (3,5) pin: 95 pin_name: io_top[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7677 type: OPIN location: (3,5) pin: 105 pin_name: io_top[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7679 type: OPIN location: (3,5) pin: 115 pin_name: io_top[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7681 type: OPIN location: (3,5) pin: 125 pin_name: io_top[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7683 type: OPIN location: (3,5) pin: 135 pin_name: io_top[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7685 type: OPIN location: (3,5) pin: 145 pin_name: io_top[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7687 type: OPIN location: (3,5) pin: 155 pin_name: io_top[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7689 type: OPIN location: (3,5) pin: 165 pin_name: io_top[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7691 type: OPIN location: (3,5) pin: 175 pin_name: io_top[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7693 type: OPIN location: (3,5) pin: 185 pin_name: io_top[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 7695 type: OPIN location: (3,5) pin: 195 pin_name: io_top[19].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8057 type: OPIN location: (4,5) pin: 5 pin_name: io_top[0].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8059 type: OPIN location: (4,5) pin: 15 pin_name: io_top[1].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8061 type: OPIN location: (4,5) pin: 25 pin_name: io_top[2].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8063 type: OPIN location: (4,5) pin: 35 pin_name: io_top[3].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8065 type: OPIN location: (4,5) pin: 45 pin_name: io_top[4].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8067 type: OPIN location: (4,5) pin: 55 pin_name: io_top[5].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8069 type: OPIN location: (4,5) pin: 65 pin_name: io_top[6].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8071 type: OPIN location: (4,5) pin: 75 pin_name: io_top[7].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8073 type: OPIN location: (4,5) pin: 85 pin_name: io_top[8].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8075 type: OPIN location: (4,5) pin: 95 pin_name: io_top[9].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8077 type: OPIN location: (4,5) pin: 105 pin_name: io_top[10].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8079 type: OPIN location: (4,5) pin: 115 pin_name: io_top[11].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8081 type: OPIN location: (4,5) pin: 125 pin_name: io_top[12].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8083 type: OPIN location: (4,5) pin: 135 pin_name: io_top[13].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8085 type: OPIN location: (4,5) pin: 145 pin_name: io_top[14].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8087 type: OPIN location: (4,5) pin: 155 pin_name: io_top[15].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8089 type: OPIN location: (4,5) pin: 165 pin_name: io_top[16].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8091 type: OPIN location: (4,5) pin: 175 pin_name: io_top[17].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8093 type: OPIN location: (4,5) pin: 185 pin_name: io_top[18].sc_out[0] capacity: 1 has no out-going edges.
+
+Warning:
+	file: /nfs_scratch/scratch/eda/behzad/bs/Raptor/OpenFPGA_RS/vpr/src/route/check_rr_graph.cpp
+	line: 430
+	message: in check_rr_node: RR node: 8095 type: OPIN location: (4,5) pin: 195 pin_name: io_top[19].sc_out[0] capacity: 1 has no out-going edges.
+

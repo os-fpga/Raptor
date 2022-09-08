@@ -1,0 +1,35 @@
+Placement_File: and2VErilog_post_synth.place Placement_ID: SHA256:ce361a65bb2af704fba8138acf4b49d1c81968f47e1e83aea8ff3d6166e90fef
+Array size: 6 x 6 logic blocks.
+
+Routing:
+
+Net 0 (a)
+
+Node:	6656	SOURCE (1,5)  Pad: 4  Switch: 0
+Node:	6856	  OPIN (1,5)  Pad: 4  Switch: 2
+Node:	9840	 CHANX (1,4)  Track: 0  Switch: 3
+Node:	11027	 CHANY (1,4)  Track: 179  Switch: 1
+Node:	5883	  IPIN (1,4)  Pin: 15   clb.I1[5] Switch: 0
+Node:	5816	  SINK (1,4)  Class: 1  Switch: -1
+
+
+Net 1 (b)
+
+Node:	6664	SOURCE (1,5)  Pad: 44  Switch: 0
+Node:	6864	  OPIN (1,5)  Pad: 44  Switch: 2
+Node:	9848	 CHANX (1,4)  Track: 8  Switch: 2
+Node:	10963	 CHANY (1,4)  Track: 7  Switch: 3
+Node:	9601	 CHANX (1,3)  Track: 157  Switch: 1
+Node:	5900	  IPIN (1,4)  Pin: 32   clb.I3[2] Switch: 0
+Node:	5818	  SINK (1,4)  Class: 3  Switch: -1
+
+
+Net 2 (c)
+
+Node:	5811	SOURCE (1,4)  Class: 32  Switch: 0
+Node:	5851	  OPIN (1,4)  Pin: 68   clb.O[19] Switch: 3
+Node:	9498	 CHANX (1,3) to (3,3)  Track: (54,56,58)  Switch: 2
+Node:	10970	 CHANY (1,4)  Track: 14  Switch: 2
+Node:	9857	 CHANX (1,4)  Track: 17  Switch: 1
+Node:	6960	  IPIN (1,5)  Pad: 80  Switch: 0
+Node:	6760	  SINK (1,5)  Pad: 80  Switch: -1

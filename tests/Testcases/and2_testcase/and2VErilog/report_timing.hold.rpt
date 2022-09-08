@@ -1,0 +1,33 @@
+#Timing report of worst 1 path(s)
+# Unit scale: 1e-09 seconds
+# Output precision: 3
+
+#Path 1
+Startpoint: a.inpad[0] (.input clocked by clk)
+Endpoint  : out:c.outpad[0] (.output clocked by clk)
+Path Type : hold
+
+Point                                                             Incr      Path
+--------------------------------------------------------------------------------
+clock clk (rise edge)                                            0.000     0.000
+clock source latency                                             0.000     0.000
+input external delay                                             1.000     1.000
+a.inpad[0] (.input)                                              0.000     1.000
+c.in[1] (.names)                                                 1.808     2.808
+c.out[0] (.names)                                                0.141     2.949
+out:c.outpad[0] (.output)                                        2.442     5.391
+data arrival time                                                          5.391
+
+clock clk (rise edge)                                            0.000     0.000
+clock source latency                                             0.000     0.000
+clock uncertainty                                                0.000     0.000
+output external delay                                           -1.000    -1.000
+data required time                                                        -1.000
+--------------------------------------------------------------------------------
+data required time                                                         1.000
+data arrival time                                                          5.391
+--------------------------------------------------------------------------------
+slack (MET)                                                                6.391
+
+
+#End of timing report
