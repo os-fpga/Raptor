@@ -1,5 +1,0 @@
-#Block Name x   y   z    pcf_line
-#----- --  --  -    ----
-a       1   5  0  # set_io a pad_fpga_io[18]
-b       1   5  4  # set_io b pad_fpga_io[19]
-out:c   1   5  8  # set_io c pad_fpga_io[20]
