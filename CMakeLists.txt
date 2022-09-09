@@ -595,6 +595,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/and2_gemini/          
       COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/OpenSTA/app/sta        
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
@@ -602,9 +605,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de    
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/OpenSTA/app/sta        
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil    
