@@ -236,6 +236,10 @@ jobs:
         name: buildqt5-centos7-gcc
         path: buildqt5-centos7-gcc.tgz
 
+    - name: Remove QT tar file.
+      run: |
+        rm -rf buildqt5-centos7-gcc.tgz
+
     - name: Show shell configuration
       run: |
         env
