@@ -1,9 +1,0 @@
-Netlist_File: and2_post_synth.net Netlist_ID: SHA256:dfe336cc38123a1acd06fc9da15de290a9b087f3ed88f36fd9db31f70473007c
-Array size: 6 x 6 logic blocks
-
-#block name	x	y	subblk	block number
-#----------	--	--	------	------------
-c		1	4	0	#0
-out:c		1	5	8	#1
-a		1	5	0	#2
-b		1	5	4	#3
