@@ -11,7 +11,8 @@ file copy -force $script_path/and2.v $tempFile
 
 add_design_file $tempFile
 set_top_module and2
-synthesize clean # cleanup before test
+# cleanup before test
+synthesize clean
 synthesize
 
 file copy -force $projName/incr_comp_post_synth.blif $projName/incr_comp_post_synth.blif1
