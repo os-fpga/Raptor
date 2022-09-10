@@ -88,6 +88,8 @@ endif()
 get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 
+add_subdirectory("Raptor_Tools/OpenSTA")
+
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
@@ -331,6 +333,7 @@ add_dependencies(raptor raptor_gui)
 add_dependencies(raptor-bin yosys)
 add_dependencies(raptor-bin abc)
 add_dependencies(raptor-bin de)
+add_dependencies(raptor-bin sta)
 
 if (WIN OR APPLE)
 else ()
@@ -591,7 +594,10 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/and2_gemini
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/and2_gemini/          
-      COMMAND echo "Copying Yosys, ABC, DE in bin dir"     
+      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
+      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/OpenSTA/app/sta        
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
