@@ -15,39 +15,39 @@
 namespace RS {
 
 #define Company "Rapid Silicon"
-#define ToolName "Raptor"
+#define ToolName "Raptor Design Suite"
 #define ExecutableName "raptor"
 
-QWidget* mainWindowBuilder(FOEDAG::Session* session) {
-  FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{session};
+QWidget *mainWindowBuilder(FOEDAG::Session *session) {
+  FOEDAG::MainWindow *mainW = new FOEDAG::MainWindow{session};
   auto info = mainW->Info();
-  info.name = QString("%1 %2").arg(Company, ToolName);
+  info.name = QString("%1").arg(ToolName);
   info.url = "https://github.com/RapidSilicon/Raptor/commit/";
   mainW->Info(info);
   return mainW;
 }
 
-void registerAllCommands(QWidget* widget, FOEDAG::Session* session) {
+void registerAllCommands(QWidget *widget, FOEDAG::Session *session) {
   registerAllFoedagCommands(widget, session);
 }
 
 }  // namespace RS
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
   Q_INIT_RESOURCE(main_window_resource);
-  FOEDAG::CommandLine* cmd = new FOEDAG::CommandLine(argc, argv);
+  FOEDAG::CommandLine *cmd = new FOEDAG::CommandLine(argc, argv);
   cmd->processArgs();
 
   FOEDAG::GUI_TYPE guiType =
       FOEDAG::Foedag::getGuiType(cmd->WithQt(), cmd->WithQml());
 
-  FOEDAG::ToolContext* context =
+  FOEDAG::ToolContext *context =
       new FOEDAG::ToolContext(ToolName, Company, ExecutableName);
 
-  FOEDAG::Settings* settings = new FOEDAG::Settings();
+  FOEDAG::Settings *settings = new FOEDAG::Settings();
 
-  FOEDAG::Compiler* compiler = nullptr;
-  FOEDAG::CompilerRS* opcompiler = nullptr;
+  FOEDAG::Compiler *compiler = nullptr;
+  FOEDAG::CompilerRS *opcompiler = nullptr;
   if (cmd->CompilerName() == "dummy") {
     compiler = new FOEDAG::Compiler();
   } else {
@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
     compiler->SetUseVerific(true);
   }
 
-  FOEDAG::Foedag* foedag =
+  FOEDAG::Foedag *foedag =
       new FOEDAG::Foedag(cmd, RS::mainWindowBuilder, RS::registerAllCommands,
                          compiler, settings, context);
   if (opcompiler) {
