@@ -15,13 +15,13 @@
 namespace RS {
 
 #define Company "Rapid Silicon"
-#define ToolName "Raptor"
+#define ToolName "Raptor Design Suite"
 #define ExecutableName "raptor"
 
 QWidget* mainWindowBuilder(FOEDAG::Session* session) {
   FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{session};
   auto info = mainW->Info();
-  info.name = QString("%1 %2").arg(Company, ToolName);
+  info.name = QString("%1").arg(ToolName);
   info.url = "https://github.com/RapidSilicon/Raptor/commit/";
   mainW->Info(info);
   return mainW;
