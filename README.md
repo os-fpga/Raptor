@@ -32,8 +32,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    help                       : This help
    create_design <name>       : Creates a design with <name> name
    target_device <name>       : Targets a device with <name> name (MPW1, GEMINI)
-   add_design_file <file>... <type> (-VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008 (.vhd default), -V_1995, 
+   add_design_file <file>... (-work, -L) <libName> <type> (-VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008 (.vhd default), -V_1995, 
                                      -V_2001 (.v default), -SV_2005, -SV_2009, -SV_2012, -SV_2017 (.sv default)) 
+         -work <libName> specifies alternate library used to compile, default is work
+         -L <libName>... specifies libraries needed to compile the set of files, default is work
    read_netlist <file>        : Read a netlist (.blif/.eblif) instead of an RTL design (Skip Synthesis)
    add_include_path <path1>...: As in +incdir+    (Not applicable to VHDL)
    add_library_path <path1>...: As in +libdir+    (Not applicable to VHDL)
@@ -74,8 +76,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        early                  : Perform early extraction
        late                   : Perform late extraction
      -cec                     : Dump verilog after key phases and use internal equivalence checking (ABC based)
+   analyze ?clean?            : Analyzes the RTL design, generates top-level, pin and hierarchy information
    synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed, none)
    pnr_options <option list>  : VPR options
+   pnr_netlist_lang <blif, verilog> : Chooses vpr input netlist format
    set_channel_width <int>    : VPR Routing channel setting
    architecture <vpr_file.xml> ?<openfpga_file.xml>?
                               : Uses the architecture file and optional openfpga arch file (For bitstream generation)
@@ -89,7 +93,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    route ?clean?              : Router
    sta ?clean?                : Statistical Timing Analysis
    power ?clean?              : Power estimator
-   bitstream ?clean?          : Bitstream generation
+   bitstream ?force? ?clean?  : Bitstream generation
 ----------------------------------
 ```
 
