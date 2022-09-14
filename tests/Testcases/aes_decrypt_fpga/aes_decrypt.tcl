@@ -9,6 +9,7 @@ add_constraint_file aes_decrypt.sdc
 synth_options -effort high
 analyze
 synthesize area
+pnr_netlist_lang verilog
 packing
 place
 route
