@@ -268,6 +268,7 @@
       <port type="sram" prefix="sram" size="64"/>
       <port type="sram" prefix="mode" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="00"/>
     </circuit_model>
+     <!--
     <circuit_model type="sram" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="./SRC/CustomModules/rs_sram.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
@@ -279,6 +280,26 @@
       <port type="output" prefix="out" size="1"/>
       <port type="output" prefix="outb" size="1"/>
     </circuit_model>
+-->
+
+
+       <!-- RAJ begin rs_memory_bank => scan chain -->
+<circuit_model type="ccff" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="./SRC/CustomModules/rs_ccff.v">
+       <design_technology type="cmos"/>
+       <input_buffer exist="false"/>
+       <output_buffer exist="false"/>
+  <port type="input" prefix="D" size="1"/>
+  <port type="input" prefix="SD" size="1"/>
+  <port type="input" prefix="SE" size="1" is_global="true"/>
+  <port type="input" prefix="RN" size="1" is_global="true"/>
+  <port type="output" prefix="Q" size="1"/>
+  <port type="clock" prefix="CK" size="1" is_global="true" is_prog="true" is_clock="true"/>
+</circuit_model>
+       <!-- RAJ end rs_memory_bank => scan chain -->
+
+
+
+    
     <circuit_model type="iopad" name="RS_PREIO" prefix="RS_PREIO" is_default="true" verilog_netlist="./SRC/CustomModules/rs_preio.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false" circuit_model_name="BUFFD1BWP16P90CPD"/>
@@ -428,12 +449,21 @@
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE_i" size="1" is_global="true" default_val="0"/>
     </circuit_model>
   </circuit_library>
+<!--    
   <configuration_protocol>
     <organization type="rs_memory_bank" circuit_model_name="RS_CCFF" num_regions="1">
       <bl protocol="shift_register" circuit_model_name="RS_BLSR"/>
       <wl protocol="shift_register" circuit_model_name="RS_WLSR"/>
     </organization>
+    </configuration_protocol>
+    /-->
+ <configuration_protocol>
+    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="1">
+      <!--bl protocol="shift_register" circuit_model_name="RS_BLSR"/-->
+      <!--wl protocol="shift_register" circuit_model_name="RS_WLSR"/-->
+    </organization>
   </configuration_protocol>
+
   <connection_block>
     <switch name="ipin_cblock" circuit_model_name="mux_tree_tapbuf"/>
   </connection_block>
