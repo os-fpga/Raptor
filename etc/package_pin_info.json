@@ -1,0 +1,94 @@
+{
+  "table" : [
+    {
+      "name" : "Name",
+      "description" : "Intra-die name of pin",
+      "colmumnid" : 0,
+      "visible" : true
+    },
+    {
+      "name" : "Available",
+      "description" : "How many pins are in the group",
+      "colmumnid" : 1,
+      "visible" : true
+    },
+    {
+      "name" : "Ports",
+      "description" : "User defined ports",
+      "colmumnid" : 2,
+      "visible" : true
+    },
+    {
+      "name" : "Ref clock",
+      "description" : "Clock name referenced by pin",
+      "colmumnid" : 3,
+      "visible" : true
+    },
+    {
+      "name" : "Bank",
+      "description" : "IO bank name",
+      "colmumnid" : 4,
+      "visible" : true
+    },
+    {
+      "name" : "ALT",
+      "description" : "Alternative function of pin",
+      "colmumnid" : 5,
+      "visible" : true
+    },
+    {
+      "name" : "Debug mode",
+      "description" : "Available debug mode of pin",
+      "colmumnid" : 6,
+      "visible" : true
+    },
+    {
+      "name" : "Scan mode",
+      "description" : "Available scan mode of pin",
+      "colmumnid" : 7,
+      "visible" : true
+    },
+    {
+      "name" : "Mbist mode",
+      "description" : "Memory test mode of pin",
+      "colmumnid" : 8,
+      "visible" : true
+    },
+    {
+      "name" : "Type",
+      "description" : "Pin type",
+      "colmumnid" : 9,
+      "visible" : true
+    },
+    {
+      "name" : "Dir",
+      "description" : "Input/output direction of pin",
+      "colmumnid" : 10,
+      "visible" : true
+    },
+    {
+      "name" : "Voltage",
+      "description" : "Pin operating voltage",
+      "colmumnid" : 11,
+      "visible" : true
+    },
+    {
+      "name" : "Power Pad",
+      "description" : "Power pad of pin",
+      "colmumnid" : 12,
+      "visible" : true
+    },
+    {
+      "name" : "Description",
+      "description" : "Pin description for further reference",
+      "colmumnid" : 13,
+      "visible" : true
+    },
+    {
+      "name" : "Voltage2",
+      "description" : "Secondary operating voltage if available",
+      "colmumnid" : 14,
+      "visible" : true
+    }
+  ]
+}
