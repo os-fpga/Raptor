@@ -8,6 +8,7 @@ add_design_file generic_muxfx.v wrapper.v
 add_constraint_file aes_decrypt.sdc
 synth_options -effort high
 analyze
+message_severity VERI-1209 IGNORE
 synthesize area
 pnr_netlist_lang verilog
 packing

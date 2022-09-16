@@ -32,10 +32,11 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    help                       : This help
    create_design <name>       : Creates a design with <name> name
    target_device <name>       : Targets a device with <name> name (MPW1, GEMINI)
-   add_design_file <file>... (-work, -L) <libName> <type> (-VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008 (.vhd default), -V_1995, 
-                                     -V_2001 (.v default), -SV_2005, -SV_2009, -SV_2012, -SV_2017 (.sv default)) 
-         -work <libName> specifies alternate library used to compile, default is work
-         -L <libName>... specifies libraries needed to compile the set of files, default is work
+   add_design_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
+              Each invocation of the command compiles the file list into a compilation unit 
+                       <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017> 
+              -work <libName> : Compiles the compilation unit into library <libName>, default is "work"
+              -L <libName>    : Import the library <libName> needed to compile the compilation unit, default is "work"
    read_netlist <file>        : Read a netlist (.blif/.eblif) instead of an RTL design (Skip Synthesis)
    add_include_path <path1>...: As in +incdir+    (Not applicable to VHDL)
    add_library_path <path1>...: As in +libdir+    (Not applicable to VHDL)
@@ -51,6 +52,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    ip_configure <IP_NAME> -mod_name <name> -out_file <filename> -version <ver_name> -P<param>="<value>"...
                               : Configures an IP <IP_NAME> and generates the corresponding file with module name
    ipgenerate ?clean?         : Generates all IP instances set by ip_configure
+   message_severity <message_id> <ERROR/WARNING/INFO/IGNORE> : Upgrade/downgrade RTL compilation message severity
    verific_parser <on/off>    : Turns on/off Verific Parser
    synthesis_type Yosys/QL/RS : Selects Synthesis type
    custom_synth_script <file> : Uses a custom Yosys templatized script
@@ -95,6 +97,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    power ?clean?              : Power estimator
    bitstream ?force? ?clean?  : Bitstream generation
 ----------------------------------
+
 ```
 
 ## RAPTOR EXAMPLE DESIGNS
