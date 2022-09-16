@@ -155,6 +155,8 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
+	./build/bin/raptor --batch --mute --script tests/Testcases/ip_gen_axis_conv/raptor.tcl 
+
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)

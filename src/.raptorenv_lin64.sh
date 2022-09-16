@@ -26,7 +26,7 @@ else
 fi
 
 if [ -n "${PYTHONPATH}" ]; then
-	export PYTHONPATH=$RAPTOR_PATH/share/litex_rs/:$PYTHONPATH/$RAPTOR_PATH/share/raptor/IP_Catalog/:$PYTHONPATH
+	export PYTHONPATH=$RAPTOR_PATH/share/litex_rs/:$PYTHONPATH/$RAPTOR_PATH/share/raptor/IP_Catalog/:$PYTHONPATH/$RAPTOR_PATH/share/lib/python3.8/site-packages/:$PYTHONPATH/$RAPTOR_PATH/share/lib/python3./site-packages/:$PYTHONPATH
 else
-	export PYTHONPATH=$RAPTOR_PATH/share/litex_rs/:$RAPTOR_PATH/share/raptor/IP_Catalog/
+	export PYTHONPATH=$RAPTOR_PATH/share/litex_rs/:$RAPTOR_PATH/share/raptor/IP_Catalog/:/$RAPTOR_PATH/share/lib/python3.8/site-packages/:/$RAPTOR_PATH/share/lib/python3./site-packages/
 fi
