@@ -159,7 +159,7 @@ test/batch: run-cmake-release
 	echo "Python path here"
 	./build/bin/raptor --batch --mute --script IP_Catalog/RapidSilicon/IP/axi_dpram/v1_0/raptor.tcl 
 	./build/bin/raptor --batch --mute --script IP_Catalog/RapidSilicon/IP/axi_fifo/v1_0//raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/ip_gen_axis_conv/raptor.tcl 
+#	./build/bin/raptor --batch --mute --script tests/Testcases/ip_gen_axis_conv/raptor.tcl 
 
 
 lib-only: run-cmake-release
