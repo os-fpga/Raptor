@@ -63,8 +63,6 @@ jobs:
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
         bash .github/workflows/install_litex_ubuntu.sh
-        echo 'PYTHONPATH=/home/runner/work/Raptor/Raptor/migen/:/home/runner/work/Raptor/Raptor/litex/'"$PYTHONPATH" >> $GITHUB_ENV
-        echo $GITHUB_ENV
 
 
     - name: Use ccache
@@ -103,6 +101,8 @@ jobs:
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
+        echo 'PYTHONPATH=/home/runner/work/Raptor/Raptor/migen/:/home/runner/work/Raptor/Raptor/litex/'"$PYTHONPATH" >> $GITHUB_ENV
+        echo $GITHUB_ENV
         make regression
 
     - name: Coverage
@@ -113,6 +113,8 @@ jobs:
     - name: Production
       if: matrix.mode == 'production'
       run: |
+        echo 'PYTHONPATH=/home/runner/work/Raptor/Raptor/migen/:/home/runner/work/Raptor/Raptor/litex/'"$PYTHONPATH" >> $GITHUB_ENV
+        echo $GITHUB_ENV
         make release PRODUCTION_BUILD=1
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
@@ -132,6 +134,8 @@ jobs:
     - name: Install Test
       if: matrix.mode == 'install'
       run: |
+        echo 'PYTHONPATH=/home/runner/work/Raptor/Raptor/migen/:/home/runner/work/Raptor/Raptor/litex/'"$PYTHONPATH" >> $GITHUB_ENV
+        echo $GITHUB_ENV
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         make install
         make clean   # make sure we only see installation artifacts
