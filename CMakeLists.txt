@@ -40,6 +40,7 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   zephyr-rapidsi
   Raptor_Tools
   IP_Catalog
+  QEMU_RS
   )
 
 list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
@@ -104,6 +105,7 @@ endif()
 
 add_subdirectory(litex_rs)
 add_subdirectory(IP_Catalog)
+add_subdirectory(QEMU_RS)
 
 
 # Raptor version
@@ -527,6 +529,8 @@ install(
 install(
         DIRECTORY litex_rs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})      
 install(
+        DIRECTORY QEMU_RS DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})   
+install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
@@ -579,6 +583,9 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/litex_rs/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/litex_rs
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${PROJECT_SOURCE_DIR}/QEMU_RS/    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/QEMU_RS
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
