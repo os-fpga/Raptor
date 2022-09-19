@@ -16,5 +16,5 @@ place
 route
 sta
 power
-bitstream
+#bitstream
 puts "done!"
