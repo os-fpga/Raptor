@@ -46,6 +46,7 @@ yum install -y zlib-devel
 yum install http://repo.okay.com.mx/centos/7/x86_64/release/okay-release-1-1.noarch.rpm
 yum install -y ninja-build
 yum install -y wget
+yum install gtk3-devel
 yum install -y openssl-devel
 
 ln -s $PWD/cmake-3.15.7-Linux-x86_64/bin/ctest /usr/bin/ctest
