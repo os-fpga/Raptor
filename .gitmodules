@@ -30,3 +30,6 @@
 [submodule "IP_Catalog"]
 	path = IP_Catalog
 	url = git@github.com:RapidSilicon/IP_Catalog.git
+[submodule "QEMU_RS"]
+	path = QEMU_RS
+	url = git@github.com:RapidSilicon/QEMU_RS.git
