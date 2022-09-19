@@ -32,6 +32,7 @@ sudo apt install -y \
   zlib1g-dev \
   automake \
   autoconf \
+  libgtk-3-dev \
   ninja-build \
   libssl-dev
 # qtdeclarative5-dev
