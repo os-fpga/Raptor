@@ -277,7 +277,7 @@ jobs:
 
     - name: Create Tar Exe
       id: packing_ok
-      if: matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0
+      if: matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && ${{github.ref == 'refs/heads/main'}}
       run: |
         mkdir /opt/instl_dir
         make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
@@ -286,7 +286,7 @@ jobs:
         echo "::set-output name=exit_code::$?"
 
     - name: Check FTP server status
-      if: matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0
+      if: matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 && ${{github.ref == 'refs/heads/main'}}
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.FTP_IP }}
@@ -296,7 +296,7 @@ jobs:
         script: whoami
 
     - name: Deploy
-      if: matrix.mode == 'regression'
+      if: matrix.mode == 'regression' && ${{github.ref == 'refs/heads/main'}}
       uses: appleboy/scp-action@master
       with:
          host: ${{ secrets.FTP_IP }}
