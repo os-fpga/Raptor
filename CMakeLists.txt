@@ -506,6 +506,16 @@ install(
         ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclPlatDecls.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor/include)
 
+
+
+install(
+    DIRECTORY build/ip_dependencies DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/../)
+
+install(
+  DIRECTORY litex DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/../ip_dependencies)
+
+install(
+  DIRECTORY migen DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/../ip_dependencies)
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
