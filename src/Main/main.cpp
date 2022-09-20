@@ -22,7 +22,7 @@ QWidget* mainWindowBuilder(FOEDAG::Session* session) {
   FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{session};
   auto info = mainW->Info();
   info.name = QString("%1").arg(ToolName);
-  info.url = "https://github.com/RapidSilicon/Raptor/commit/";
+  info.url.clear();
   mainW->Info(info);
   return mainW;
 }
