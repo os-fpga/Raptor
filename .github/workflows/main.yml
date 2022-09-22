@@ -282,7 +282,7 @@ jobs:
         mkdir /opt/instl_dir
         make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.0/lib:$LD_LIBRARY_PATH
-        bash ./Raptor_Tools/Create_Raptor_Artifact/create_release.sh -v 2022.03 -c -p -w /opt/instl_dir
+        bash ./Raptor_Tools/Create_Raptor_Artifact/create_release.sh -v 2022.10 -c -p -w /opt/instl_dir
         echo "::set-output name=exit_code::$?"
 
     - name: Check FTP server status
