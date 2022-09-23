@@ -303,7 +303,7 @@ jobs:
          username: ${{ secrets.FTP_USER }}
          key: ${{ secrets.FTP_KEY }}
          port: ${{ secrets.FTP_PORT }}
-         source: "./Raptor_Tools/Install_Raptor_Artifact/*.tar.gz"
+         source: "./Raptor_Tools/upload/*"
          target: "/home/rsbuilder/Raptor"
        
 
