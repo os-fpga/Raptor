@@ -8,6 +8,7 @@
 #include "Main/Foedag.h"
 #include "Main/Settings.h"
 #include "Main/ToolContext.h"
+#include "Main/WidgetFactory.h"
 #include "MainWindow/Session.h"
 #include "MainWindow/main_window.h"
 #include "Utils/FileUtils.h"
@@ -54,6 +55,9 @@ int main(int argc, char** argv) {
     opcompiler = new FOEDAG::CompilerRS();
     compiler = opcompiler;
     compiler->SetUseVerific(true);
+    FOEDAG::addTclArgFns("CompilerRs_Synthesis",
+                         {FOEDAG::TclArgs_setRsSynthesisOptions,
+                          FOEDAG::TclArgs_getRsSynthesisOptions});
   }
 
   FOEDAG::Foedag* foedag =
