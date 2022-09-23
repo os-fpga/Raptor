@@ -185,12 +185,12 @@
                 "widgetType": "dropdown",
                 "options": [
                     "All",
-                    "No Const",
+                    "Auto",
                     "None"
                 ],
                 "optionsLookup": [
                     "all",
-                    "no_const",
+                    "auto",
                     "none"
                 ],
                 "arg": "carry"
@@ -213,7 +213,7 @@
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
-                "tclArgKey": "Tasks_Synthesis"
+                "tclArgKey": "CompilerRs_Synthesis"
             }
         },
         "Placement": {
@@ -224,7 +224,7 @@
                     "Random",
                     "In Define Order"
                 ],
-                "optionsLookup":[
+                "optionsLookup": [
                     "random",
                     "in_define_order"
                 ],
@@ -235,8 +235,8 @@
                 "hidden": false,
                 "isSetting": true,
                 "tclArgKey": "Tasks_placement"
-                }
-            },
+            }
+        },
         "Routing": {
             "_META_": {
                 "hidden": true,
