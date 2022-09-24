@@ -1,0 +1,1119 @@
+<?xml version="1.0"?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM DO NOT EDIT
+////////////////////////////////////////////////////////////////////////////////
+-->
+<!-- Architecture annotation for OpenFPGA framework
+     This annotation supports the k6_N10_40nm.xml
+     - General purpose logic block
+       - K = 6, N = 10, I = 40
+       - Single mode
+     - Routing architecture
+       - L = 4, fc_in = 0.15, fc_out = 0.1
+  -->
+<openfpga_architecture>
+  <technology_library>
+    <device_library>
+      <device_model name="logic" type="transistor">
+        <lib type="industry" corner="TOP_TT" ref="M" path="${OPENFPGA_PATH}/openfpga_flow/tech/PTM_45nm/45nm.pm"/>
+        <design vdd="0.9" pn_ratio="2"/>
+        <pmos name="pch" chan_length="40e-9" min_width="140e-9" variation="logic_transistor_var"/>
+        <nmos name="nch" chan_length="40e-9" min_width="140e-9" variation="logic_transistor_var"/>
+      </device_model>
+      <device_model name="io" type="transistor">
+        <lib type="academia" ref="M" path="${OPENFPGA_PATH}/openfpga_flow/tech/PTM_45nm/45nm.pm"/>
+        <design vdd="2.5" pn_ratio="3"/>
+        <pmos name="pch_25" chan_length="270e-9" min_width="320e-9" variation="io_transistor_var"/>
+        <nmos name="nch_25" chan_length="270e-9" min_width="320e-9" variation="io_transistor_var"/>
+      </device_model>
+    </device_library>
+    <variation_library>
+      <variation name="logic_transistor_var" abs_deviation="0.1" num_sigma="3"/>
+      <variation name="io_transistor_var" abs_deviation="0.1" num_sigma="3"/>
+    </variation_library>
+  </technology_library>
+  <circuit_library>
+    <circuit_model type="hard_logic" name="byp_reg18" prefix="byp_reg18" verilog_netlist="./SRC/CustomModules/byp_reg18.v">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="clock" prefix="clk" size="1"/>
+      <port type="input" prefix="d" size="18"/>
+      <port type="output" prefix="q" size="18"/>
+      <port type="input" prefix="reset" size="1"/>
+      <port type="input" prefix="sr" size="1"/>
+      <port type="input" prefix="en" size="1"/>
+      <port type="sram" prefix="mode" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="00"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="clock_inverter" prefix="clock_inverter" verilog_netlist="./SRC/CustomModules/clock_inverter.v">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="a" size="1"/>
+      <port type="output" prefix="z" size="1"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="inverter" prefix="inverter" verilog_netlist="./SRC/CustomModules/inverter.v">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="a" size="1"/>
+      <port type="output" prefix="z" size="1"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="logic0" prefix="logic0" verilog_netlist="./SRC/CustomModules/logic0.v">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="output" prefix="logic0" size="1"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="logic1" prefix="logic1" verilog_netlist="./SRC/CustomModules/logic1.v">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="output" prefix="logic1" size="1"/>
+    </circuit_model>
+    <circuit_model type="inv_buf" name="${INV_X1}" prefix="${INV_X1}" is_default="true" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="inverter" size="1"/>
+      <device_technology device_model_name="logic"/>
+      <port type="input" prefix="in" lib_name="${INV_in}" size="1"/>
+      <port type="output" prefix="out" lib_name="${INV_out}" size="1"/>
+      <delay_matrix type="rise" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="inv_buf" name="${BUF_X1}" prefix="${BUF_X1}" is_default="false" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="buffer" size="1"/>
+      <device_technology device_model_name="logic"/>
+      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
+      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <delay_matrix type="rise" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="inv_buf" name="${BUF_X2}" prefix="${BUF_X2}" is_default="false" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="buffer" size="1"/>
+      <device_technology device_model_name="logic"/>
+      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
+      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <delay_matrix type="rise" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="inv_buf" name="${BUF_X4}" prefix="${BUF_X4}" is_default="false" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="buffer" size="1"/>
+      <device_technology device_model_name="logic"/>
+      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
+      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <delay_matrix type="rise" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="inv_buf" name="${BUF_X12}" prefix="${BUF_X12}" is_default="false" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="buffer" size="1"/>
+      <device_technology device_model_name="logic"/>
+      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
+      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <delay_matrix type="rise" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="inv_buf" name="${BUF_X16}" prefix="${BUF_X16}" is_default="false" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="buffer" size="1"/>
+      <device_technology device_model_name="logic"/>
+      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
+      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <delay_matrix type="rise" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="inv_buf" name="${INV_X2}" prefix="${INV_X2}" is_default="false" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="buffer" size="1"/>
+      <device_technology device_model_name="logic"/>
+      <port type="input" prefix="in" lib_name="${INV_in}" size="1"/>
+      <port type="output" prefix="out" lib_name="${INV_out}" size="1"/>
+      <delay_matrix type="rise" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="in" out_port="out">
+        10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="gate" name="${MUX_X1}" prefix="${MUX_X1}" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="MUX2"/>
+      <device_technology device_model_name="logic"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="a" lib_name="${MUX_a}" size="1"/>
+      <port type="input" prefix="b" lib_name="${MUX_b}" size="1"/>
+      <port type="input" prefix="s" lib_name="${MUX_s}" size="1"/>
+      <port type="output" prefix="out" lib_name="${MUX_o}" size="1"/>
+    </circuit_model>
+    <circuit_model type="gate" name="${OR2_X1}" prefix="${OR2_X1}" is_default="true" verilog_netlist="${SC_LIB}">
+      <design_technology type="cmos" topology="OR"/>
+      <device_technology device_model_name="logic"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="a" lib_name="${OR2_a}" size="1"/>
+      <port type="input" prefix="b" lib_name="${OR2_b}" size="1"/>
+      <port type="output" prefix="out" lib_name="${OR2_out}" size="1"/>
+      <delay_matrix type="rise" in_port="a b" out_port="out">
+        10e-12 10e-12
+      </delay_matrix>
+      <delay_matrix type="fall" in_port="a b" out_port="out">
+        10e-12 10e-12
+      </delay_matrix>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="RS_XOR_MUX2" prefix="RS_XOR_MUX2" verilog_netlist="${CM_RS_XOR_MUX2}">
+      <design_technology type="cmos"/>
+      <device_technology device_model_name="logic"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="p" lib_name="P" size="1"/>
+      <port type="input" prefix="g" lib_name="G" size="1"/>
+      <port type="input" prefix="cin" lib_name="CI" size="1"/>
+      <port type="output" prefix="sumout" lib_name="SUMOUT" size="1"/>
+      <port type="output" prefix="cout" lib_name="CO" size="1"/>
+    </circuit_model>
+    <circuit_model type="chan_wire" name="chan_segment" prefix="track_seg" is_default="true">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <wire_param model_type="pi" R="101" C="22.5e-15" num_level="1"/>
+    </circuit_model>
+    <circuit_model type="wire" name="direct_interc" prefix="direct_interc" is_default="true">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <wire_param model_type="pi" R="0" C="0" num_level="1"/>
+      <!-- model_type could be T, res_val cap_val should be defined -->
+    </circuit_model>
+    <circuit_model type="mux" name="mux_1level_io" prefix="mux_1level_io" dump_structural_verilog="true">
+      <design_technology type="cmos" structure="tree" add_const_input="false"/>
+      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X4}"/>
+      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <port type="sram" prefix="sram" size="1"/>
+    </circuit_model>
+    <circuit_model type="mux" name="mux_1level_fabric" prefix="mux_1level_fabric" dump_structural_verilog="true">
+      <design_technology type="cmos" structure="tree" add_const_input="false"/>
+      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X16}"/>
+      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <port type="sram" prefix="sram" size="1"/>
+    </circuit_model>
+    <circuit_model type="mux" name="mux_tree" prefix="mux_tree" is_default="true" dump_structural_verilog="true">
+      <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X4}"/>
+      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <port type="sram" prefix="sram" size="1"/>
+    </circuit_model>
+    <circuit_model type="mux" name="mux_tree_tapbuf" prefix="mux_tree_tapbuf" dump_structural_verilog="true">
+      <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
+      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X12}"/>
+      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <port type="sram" prefix="sram" size="1"/>
+    </circuit_model>
+    <circuit_model type="mux" name="mux_tree_tapbuf_L1SB" prefix="mux_tree_tapbuf_L1SB" dump_structural_verilog="true">
+      <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
+      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X12}"/>
+      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <port type="sram" prefix="sram" size="1"/>
+    </circuit_model>
+    <circuit_model type="mux" name="mux_tree_tapbuf_L4SB" prefix="mux_tree_tapbuf_L4SB" dump_structural_verilog="true">
+      <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
+      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X12}"/>
+      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <port type="sram" prefix="sram" size="1"/>
+    </circuit_model>
+    <circuit_model type="ff" name="RS_IOFF" prefix="RS_IOFF" is_default="true" verilog_netlist="${CM_RS_IOFF}">
+      <design_technology type="cmos"/>
+      <input_buffer exist="true" circuit_model_name="${INV_X1}"/>
+      <output_buffer exist="true" circuit_model_name="${INV_X1}"/>
+      <port type="input" prefix="D" lib_name="D" size="1"/>
+      <port type="input" prefix="SI" lib_name="SI" size="1"/>
+      <port type="input" prefix="reset" lib_name="R" size="1" default_val="1"/>
+      <port type="input" prefix="test_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="output" prefix="Q" lib_name="Q" size="1"/>
+      <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
+      <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
+      <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
+      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="1"/>
+    </circuit_model>
+    <circuit_model type="ff" name="RS_FF" prefix="RS_FF" verilog_netlist="${CM_RS_FF}">
+      <design_technology type="cmos"/>
+      <input_buffer exist="true" circuit_model_name="${INV_X1}"/>
+      <output_buffer exist="true" circuit_model_name="${INV_X1}"/>
+      <port type="input" prefix="D" lib_name="D" size="1"/>
+      <port type="input" prefix="SI" lib_name="SI" size="1"/>
+      <port type="output" prefix="SO" lib_name="SO" size="1"/>
+      <port type="input" prefix="S" lib_name="S" size="1"/>
+      <port type="input" prefix="R" lib_name="R" size="1"/>
+      <!--port type="input" prefix="SYNC_S" lib_name="SYNC_S" size="1"/-->
+      <!--port type="input" prefix="SYNC_R" lib_name="SYNC_R" size="1"/-->
+      <port type="input" prefix="LAT_R" lib_name="LAT_R" size="1"/>
+      <port type="input" prefix="E" lib_name="E" size="1"/>
+      <port type="input" prefix="test_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="output" prefix="Q" lib_name="Q" size="1"/>
+      <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
+      <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
+      <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
+      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="01"/>
+    </circuit_model>
+    <circuit_model type="lut" name="frac_lut6" prefix="frac_lut6" dump_structural_verilog="true" is_default="true">
+      <design_technology type="cmos" fracturable_lut="true"/>
+      <input_buffer exist="false" circuit_model_name="${BUF_X2}"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X2}"/>
+      <lut_input_inverter exist="true" circuit_model_name="${INV_X2}"/>
+      <lut_input_buffer exist="true" circuit_model_name="${BUF_X2}"/>
+      <lut_intermediate_buffer exist="false" circuit_model_name="${BUF_X2}" location_map="-1-1-"/>
+      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <port type="input" prefix="in" size="6" tri_state_map="----11" circuit_model_name="${OR2_X1}"/>
+      <port type="output" prefix="lut4_out" size="4" lut_frac_level="4" lut_output_mask="0,1,2,3"/>
+      <port type="output" prefix="lut5_out" size="2" lut_frac_level="5" lut_output_mask="0,1"/>
+      <port type="output" prefix="lut6_out" size="1" lut_output_mask="0"/>
+      <port type="sram" prefix="sram" size="64"/>
+      <port type="sram" prefix="mode" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="00"/>
+    </circuit_model>
+    <!--circuit_model type="sram" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="${CM_RS_CCFF}"-->
+    <!--design_technology type="cmos"/-->
+    <!--input_buffer exist="false"/-->
+    <!--output_buffer exist="false"/-->
+    <!--port type="input" prefix="prst" lib_name="prst" size="1" is_global="true" default_val="1"/-->
+    <!--port type="bl" prefix="bl" lib_name="bl" size="1"/-->
+    <!--port type="wl" prefix="wl" lib_name="wlw" size="1"/-->
+    <!--port type="wlr" prefix="wlr" lib_name="wlr" size="1"/-->
+    <!--port type="output" prefix="out" size="1"/-->
+    <!--port type="output" prefix="outb" size="1"/-->
+    <!--/circuit_model-->
+    <!-- RAJ begin rs_memory_bank => scan chain -->
+    <circuit_model type="ccff" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="${CM_RS_CCFF}">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="D" size="1"/>
+      <port type="input" prefix="SD" size="1"/>
+      <port type="input" prefix="SE" size="1" is_global="true"/>
+      <port type="input" prefix="RN" size="1" is_global="true"/>
+      <port type="output" prefix="Q" size="1"/>
+      <port type="clock" prefix="CK" size="1" is_global="true" is_prog="true" is_clock="true"/>
+    </circuit_model>
+    <!-- RAJ end rs_memory_bank => scan chain -->
+    <circuit_model type="iopad" name="RS_PREIO" prefix="RS_PREIO" is_default="true" verilog_netlist="${CM_RS_PREIO}">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false" circuit_model_name="${BUF_X1}"/>
+      <output_buffer exist="true" circuit_model_name="${BUF_X2}"/>
+      <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
+      <port type="input" prefix="A2F" lib_name="SOC_IN" size="1" is_global="true" is_io="true" is_data_io="true"/>
+      <port type="output" prefix="F2A" lib_name="SOC_OUT" size="1" is_global="true" is_io="true" is_data_io="true"/>
+      <port type="output" prefix="F2A_DEF0" lib_name="F2A_DEF0" size="1" is_global="true" is_io="true"/>
+      <port type="output" prefix="F2A_DEF1" lib_name="F2A_DEF1" size="1" is_global="true" is_io="true"/>
+      <port type="output" prefix="F2A_CLK" lib_name="F2A_CLK" size="1" is_global="true" is_io="true"/>
+      <port type="output" prefix="inpad" lib_name="FPGA_IN" size="1"/>
+      <port type="input" prefix="outpad" lib_name="FPGA_OUT" size="1"/>
+      <port type="input" prefix="CFG_DONE" lib_name="CFG_DONE" size="1" is_global="true" default_val="0" is_config_enable="true"/>
+      <port type="sram" prefix="DEF" lib_name="DEF" size="4" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000"/>
+    </circuit_model>
+    <circuit_model type="ccff" name="RS_BLSR" prefix="RS_BLSR" verilog_netlist="${CM_RS_BLSR}" is_default="true">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false" circuit_model_name="${BUF_X1}"/>
+      <output_buffer exist="false" circuit_model_name="${BUF_X1}"/>
+      <port type="input" prefix="srReset" lib_name="R" size="1" is_global="true" default_val="1" is_reset="true" is_prog="true"/>
+      <port type="input" prefix="D" lib_name="D" size="1"/>
+      <port type="input" prefix="BLWEN" lib_name="WEN" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="BLREN" lib_name="REN" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="SE" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="output" prefix="Q" lib_name="SO" size="1"/>
+      <port type="bl" prefix="bl" lib_name="bl" size="1"/>
+      <port type="clock" prefix="BL_CLK" lib_name="CK" size="1" is_global="true" default_val="0" is_prog="true" is_shift_register="true"/>
+    </circuit_model>
+    <circuit_model type="ccff" name="RS_WLSR" prefix="RS_WLSR" verilog_netlist="${CM_RS_WLSR}">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false" circuit_model_name="${BUF_X1}"/>
+      <output_buffer exist="false" circuit_model_name="${BUF_X1}"/>
+      <port type="input" prefix="srReset" lib_name="R" size="1" is_global="true" default_val="1" is_reset="true" is_prog="true"/>
+      <port type="input" prefix="D" lib_name="D" size="1"/>
+      <port type="output" prefix="Q" lib_name="SO" size="1"/>
+      <port type="wl" prefix="wl" lib_name="wl" size="1"/>
+      <port type="wlr" prefix="wlr" lib_name="wlr" size="1"/>
+      <port type="clock" prefix="WLWEN" lib_name="WEN" size="1" is_global="true" default_val="0" is_prog="true"/>
+      <!-- WLWrN type=clock for OpenFPGA TESTBENCH-->
+      <port type="input" prefix="WLREN" lib_name="REN" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="SE" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="clock" prefix="WL_CLK" lib_name="CK" size="1" is_global="true" default_val="0" is_prog="true" is_shift_register="true"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="RS_STD_WRAPPER" prefix="RS_STD_WRAPPER" is_default="true" verilog_netlist="${CM_RS_STDWRAP}">
+      <design_technology type="cmos"/>
+      <device_technology device_model_name="logic"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="RS_CUSTOM_STD" prefix="RS_CUSTOM_STD" verilog_netlist="${CM_RS_CUSSTD}">
+      <design_technology type="cmos"/>
+      <device_technology device_model_name="logic"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="RS_DSP" prefix="RS_DSP" verilog_netlist="${CM_RS_DSP}">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="a_i" size="20"/>
+      <port type="input" prefix="acc_fir_i" size="6"/>
+      <port type="input" prefix="b_i" size="18"/>
+      <port type="output" prefix="z_o" size="38"/>
+      <port type="output" prefix="dly_b_o" size="18"/>
+      <port type="input" prefix="reset" lib_name="greset" size="1"/>
+      <port type="input" prefix="scan_reset" lib_name="scan_reset" size="1"/>
+      <port type="input" prefix="lreset" lib_name="reset" size="1"/>
+      <port type="input" prefix="feedback" lib_name="feedback" size="3"/>
+      <port type="input" prefix="load_acc" lib_name="load_acc" size="1"/>
+      <port type="input" prefix="unsigned_a" lib_name="unsigned_a" size="1"/>
+      <port type="input" prefix="unsigned_b" lib_name="unsigned_b" size="1"/>
+      <port type="input" prefix="output_select" lib_name="output_select" size="3"/>
+      <port type="input" prefix="saturate_enable" lib_name="saturate_enable" size="1"/>
+      <port type="input" prefix="shift_right" lib_name="shift_right" size="6"/>
+      <port type="input" prefix="round" lib_name="round" size="1"/>
+      <port type="input" prefix="subtract" lib_name="subtract" size="1"/>
+      <port type="input" prefix="register_inputs" lib_name="register_inputs" size="1"/>
+      <port type="clock" prefix="clk" lib_name="clock" size="1"/>
+      <port type="input" prefix="sc_in" lib_name="scan_i" size="12"/>
+      <!--3->12-->
+      <port type="input" prefix="test_en" lib_name="scan_en" size="1" is_global="true" default_val="0"/>
+      <port type="output" prefix="sc_out" lib_name="scan_o" size="12"/>
+      <!--3->12-->
+      <port type="clock" prefix="scan_clk" lib_name="scan_clk" size="1" is_global="true" default_val="0" is_prog="true"/>
+      <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
+      <port type="sram" prefix="mode" size="84" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+    </circuit_model>
+    <circuit_model type="hard_logic" name="RS_BRAM" prefix="RS_BRAM" verilog_netlist="${CM_RS_BRAM}">
+      <design_technology type="cmos"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <port type="input" prefix="WEN_A1_i" size="1"/>
+      <port type="input" prefix="WEN_B1_i" size="1"/>
+      <port type="input" prefix="BE_A1_i" size="2"/>
+      <port type="input" prefix="BE_B1_i" size="2"/>
+      <port type="input" prefix="REN_A1_i" size="1"/>
+      <port type="input" prefix="REN_B1_i" size="1"/>
+      <port type="clock" prefix="CLK_A1_i" size="1"/>
+      <port type="clock" prefix="CLK_B1_i" size="1"/>
+      <port type="input" prefix="ADDR_A1_i" size="15"/>
+      <port type="input" prefix="ADDR_B1_i" size="15"/>
+      <port type="input" prefix="WDATA_A1_i" size="18"/>
+      <port type="input" prefix="WDATA_B1_i" size="18"/>
+      <port type="output" prefix="RDATA_A1_o" size="18"/>
+      <port type="output" prefix="RDATA_B1_o" size="18"/>
+      <port type="input" prefix="FLUSH1_i" size="1"/>
+      <port type="input" prefix="WEN_A2_i" size="1"/>
+      <port type="input" prefix="WEN_B2_i" size="1"/>
+      <port type="input" prefix="BE_A2_i" size="2"/>
+      <port type="input" prefix="BE_B2_i" size="2"/>
+      <port type="input" prefix="REN_A2_i" size="1"/>
+      <port type="input" prefix="REN_B2_i" size="1"/>
+      <port type="clock" prefix="CLK_A2_i" size="1"/>
+      <port type="clock" prefix="CLK_B2_i" size="1"/>
+      <port type="input" prefix="ADDR_A2_i" size="14"/>
+      <port type="input" prefix="ADDR_B2_i" size="14"/>
+      <port type="input" prefix="WDATA_A2_i" size="18"/>
+      <port type="input" prefix="WDATA_B2_i" size="18"/>
+      <port type="output" prefix="RDATA_A2_o" size="18"/>
+      <port type="output" prefix="RDATA_B2_o" size="18"/>
+      <port type="input" prefix="FLUSH2_i" size="1"/>
+      <port type="input" prefix="RAM_ID_i" size="20"/>
+      <port type="input" prefix="PL_INIT_i" size="1"/>
+      <port type="input" prefix="PL_ENA_i" size="1"/>
+      <port type="input" prefix="PL_REN_i" size="1"/>
+      <port type="clock" prefix="PL_CLK_i" size="1"/>
+      <port type="input" prefix="PL_WEN_i" size="2"/>
+      <port type="input" prefix="PL_ADDR_i" size="32"/>
+      <port type="input" prefix="PL_DATA_i" size="36"/>
+      <port type="output" prefix="PL_INIT_o" size="1"/>
+      <port type="output" prefix="PL_ENA_o" size="1"/>
+      <port type="output" prefix="PL_REN_o" size="1"/>
+      <port type="output" prefix="PL_CLK_o" size="1"/>
+      <port type="output" prefix="PL_WEN_o" size="2"/>
+      <port type="output" prefix="PL_ADDR_o" size="32"/>
+      <port type="output" prefix="PL_DATA_o" size="36"/>
+      <port type="input" prefix="reset" lib_name="GRESET_i" size="1"/>
+      <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+      <port type="input" prefix="scan_reset" lib_name="SCAN_RESET_i" size="1"/>
+      <port type="input" prefix="sc_in" lib_name="SCAN_i" size="24"/>
+      <!--6->24-->
+      <port type="input" prefix="test_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
+      <port type="output" prefix="sc_out" lib_name="SCAN_o" size="24"/>
+      <!--6->24-->
+      <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK_i" size="1" is_global="true" default_val="0" is_prog="true"/>
+      <port type="input" prefix="scan_mode" lib_name="SCAN_MODE_i" size="1" is_global="true" default_val="0"/>
+    </circuit_model>
+  </circuit_library>
+  <configuration_protocol>
+    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="${CCFF_BANKS}">
+      <!--bl protocol="shift_register" circuit_model_name="RS_BLSR"/-->
+      <!--wl protocol="shift_register" circuit_model_name="RS_WLSR"/-->
+    </organization>
+  </configuration_protocol>
+  <connection_block>
+    <switch name="ipin_cblock" circuit_model_name="mux_tree_tapbuf"/>
+  </connection_block>
+  <switch_block>
+    <switch name="L1_mux" circuit_model_name="mux_tree_tapbuf_L1SB"/>
+    <switch name="L4_mux" circuit_model_name="mux_tree_tapbuf_L4SB"/>
+  </switch_block>
+  <routing_segment>
+    <segment name="L1" circuit_model_name="chan_segment"/>
+    <segment name="L4" circuit_model_name="chan_segment"/>
+  </routing_segment>
+  <direct_connection>
+    <direct name="carry_chain" circuit_model_name="direct_interc"/>
+    <direct name="scff_chain" circuit_model_name="direct_interc"/>
+    <direct name="shift_chain" circuit_model_name="direct_interc"/>
+    <!--direct name="scff_chain" circuit_model_name="direct_interc" type="row" x_dir="positive" y_dir="negative"/-->
+    <!--direct name="scff_chain" circuit_model_name="direct_interc" type="row" x_dir="negative" y_dir="negative"/-->
+    <!--direct name="scff_chain" circuit_model_name="direct_interc" type="column" x_dir="positive" y_dir="positive"/-->
+  </direct_connection>
+  <tile_annotations>
+    <global_port name="clk0" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[0:0]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[0:0]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[0:0]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[0:0]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[0:0]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[0:0]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[0:0]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk1" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[1:1]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[1:1]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[1:1]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[1:1]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[1:1]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[1:1]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[1:1]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk2" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[2:2]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[2:2]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[2:2]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[2:2]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[2:2]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[2:2]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[2:2]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk3" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[3:3]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[3:3]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[3:3]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[3:3]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[3:3]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[3:3]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[3:3]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk4" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[4:4]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[4:4]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[4:4]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[4:4]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[4:4]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[4:4]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[4:4]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk5" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[5:5]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[5:5]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[5:5]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[5:5]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[5:5]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[5:5]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[5:5]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk6" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[6:6]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[6:6]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[6:6]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[6:6]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[6:6]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[6:6]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[6:6]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk7" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[7:7]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[7:7]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[7:7]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[7:7]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[7:7]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[7:7]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[7:7]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk8" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[8:8]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[8:8]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[8:8]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[8:8]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[8:8]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[8:8]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[8:8]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk9" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[9:9]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[9:9]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[9:9]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[9:9]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[9:9]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[9:9]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[9:9]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk10" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[10:10]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[10:10]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[10:10]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[10:10]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[10:10]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[10:10]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[10:10]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk11" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[11:11]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[11:11]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[11:11]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[11:11]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[11:11]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[11:11]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[11:11]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk12" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[12:12]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[12:12]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[12:12]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[12:12]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[12:12]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[12:12]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[12:12]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk13" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[13:13]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[13:13]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[13:13]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[13:13]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[13:13]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[13:13]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[13:13]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk14" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[14:14]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[14:14]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[14:14]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[14:14]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[14:14]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[14:14]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[14:14]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="clk15" is_clock="true" default_val="0">
+      <tile name="clb" port="clk[15:15]" x="-1" y="-1"/>
+      <!--4->16-->
+      <tile name="io_top" port="clk[15:15]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[15:15]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[15:15]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[15:15]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[15:15]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[15:15]" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="reset" is_reset="true" default_val="1">
+      <tile name="clb" port="reset" x="-1" y="-1"/>
+      <tile name="io_top" port="reset" x="-1" y="-1"/>
+      <tile name="io_right" port="reset" x="-1" y="-1"/>
+      <tile name="io_bottom" port="reset" x="-1" y="-1"/>
+      <tile name="io_left" port="reset" x="-1" y="-1"/>
+      <tile name="dsp" port="reset" x="-1" y="-1"/>
+      <tile name="bram" port="reset" x="-1" y="-1"/>
+    </global_port>
+    <global_port name="scan_reset" is_reset="true" default_val="1">
+      <tile name="clb" port="scan_reset" x="-1" y="-1"/>
+      <tile name="io_top" port="scan_reset" x="-1" y="-1"/>
+      <tile name="io_right" port="scan_reset" x="-1" y="-1"/>
+      <tile name="io_bottom" port="scan_reset" x="-1" y="-1"/>
+      <tile name="io_left" port="scan_reset" x="-1" y="-1"/>
+      <tile name="dsp" port="scan_reset" x="-1" y="-1"/>
+      <tile name="bram" port="scan_reset" x="-1" y="-1"/>
+    </global_port>
+  </tile_annotations>
+  <pb_type_annotations>
+    <!-- physical pb_type binding in complex block IO -->
+    <pb_type name="io" physical_mode_name="physical"/>
+    <pb_type name="io[physical].iopad">
+      <interconnect name="mux1" circuit_model_name="mux_1level_io"/>
+      <interconnect name="mux2" circuit_model_name="mux_1level_io"/>
+    </pb_type>
+    <pb_type name="io[physical].iopad.pad" circuit_model_name="RS_PREIO" mode_bits="0000"/>
+    <pb_type name="io[physical].iopad.ff" circuit_model_name="RS_IOFF" mode_bits="1"/>
+    <pb_type name="io[io_input].io_input.inpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="1000"/>
+    <pb_type name="io[io_output].io_output.outpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="0000"/>
+    <pb_type name="io[io_input].io_input.ff[LATCH].LATCH" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="1"/>
+    <pb_type name="io[io_input].io_input.ff[DFF].DFF" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="1">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="io[io_input].io_input.ff[DFFN].DFFN" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="0">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="io[io_output].io_output.ff[LATCH].LATCH" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="0" mode_bits="1"/>
+    <pb_type name="io[io_output].io_output.ff[DFF].DFF" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="0" mode_bits="1">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="io[io_output].io_output.ff[DFFN].DFFN" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="0" mode_bits="0">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <!-- End physical pb_type binding in complex block IO -->
+    <!-- physical pb_type binding in complex block CLB -->
+    <!--pb_type name="clb.fle[physical].fabric.frac_logic">
+      <interconnect name="mux0" circuit_model_name="mux_1level_fabric"/>
+      <interconnect name="mux1" circuit_model_name="mux_1level_fabric"/>
+    </pb_type-->
+    <pb_type name="clb.fle[physical].fabric">
+      <interconnect name="mux2" circuit_model_name="mux_1level_fabric"/>
+      <interconnect name="mux3" circuit_model_name="mux_1level_fabric"/>
+    </pb_type>
+    <!-- physical mode will be the default mode if not specified -->
+    <pb_type name="clb.fle" physical_mode_name="physical"/>
+    <!-- Binding regular FLEs -->
+    <pb_type name="clb.fle[physical].fabric.frac_logic.frac_lut6" circuit_model_name="frac_lut6" mode_bits="00"/>
+    <pb_type name="clb.fle[physical].fabric.frac_logic.adder_carry" circuit_model_name="RS_XOR_MUX2"/>
+    <pb_type name="clb.fle[physical].fabric.ff_phy" circuit_model_name="RS_FF" mode_bits="01"/>
+    <!-- Binding operating pb_types in mode 'n1_lut6' -->
+    <pb_type name="clb.fle[n1_lut6].ble6.lut6" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" mode_bits="00">
+      <port name="in" physical_mode_port="in[0:5]"/>
+      <port name="out" physical_mode_port="lut6_out"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[native_latch].native_latch" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="11"/>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCH].LATCH" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="11">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCHN].LATCHN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="10">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCHSRE].LATCHSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="11">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCHNSRE].LATCHNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="10">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFF].DFF" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="01">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFN].DFFN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="00">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFSRE].DFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="01">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFNSRE].DFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="00">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <!-- TODO: Add a mode bit selecting between sync/async reset. Without it DFFSRE=SDFFSRE and DFFNSRE=SDFFNSRE -->
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[SDFFSRE].SDFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="01">
+      <port name="C" physical_mode_port="clk"/>
+      <port name="R" physical_mode_port="R"/>
+      <port name="S" physical_mode_port="S"/>
+    </pb_type>
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[SDFFNSRE].SDFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="00">
+      <port name="C" physical_mode_port="clk"/>
+      <port name="R" physical_mode_port="R"/>
+      <port name="S" physical_mode_port="S"/>
+    </pb_type>
+    <!-- Binding operating pb_types in mode 'n2_lut5' -->
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.lut5" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" physical_pb_type_index_factor="0.5" mode_bits="01">
+      <port name="in" physical_mode_port="in[0:4]"/>
+      <port name="out" physical_mode_port="lut5_out[0:0]" physical_mode_pin_rotate_offset="1"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[native_latch].native_latch" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="11"/>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCH].LATCH" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="11">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCHN].LATCHN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="10">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCHSRE].LATCHSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="11">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCHNSRE].LATCHNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="10">
+      <port name="G" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFF].DFF" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFN].DFFN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="00">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFSRE].DFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFNSRE].DFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="00">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type>
+    <!-- TODO: Add a mode bit selecting between sync/async reset. Without it DFFSRE=SDFFSRE and DFFNSRE=SDFFNSRE -->
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[SDFFSRE].SDFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
+      <port name="C" physical_mode_port="clk"/>
+      <port name="R" physical_mode_port="R"/>
+      <port name="S" physical_mode_port="S"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[SDFFNSRE].SDFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="00">
+      <port name="C" physical_mode_port="clk"/>
+      <port name="R" physical_mode_port="R"/>
+      <port name="S" physical_mode_port="S"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.adder.lut4" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" physical_pb_type_index_factor="0.25" mode_bits="11">
+      <port name="in" physical_mode_port="in[0:3]"/>
+      <port name="out" physical_mode_port="lut4_out[0:0]" physical_mode_pin_rotate_offset="1"/>
+    </pb_type>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.adder.adder_carry" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.adder_carry"/>
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.ff" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01"/>
+    <!-- Binding operating pb_types in mode 'shift_register' -->
+    <!--pb_type name="clb.fle[shift_register].shift_reg.ff[DFF].DFF" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
+      <port name="C" physical_mode_port="clk"/>
+    </pb_type -->
+    <pb_type name="dsp.dsp_rtl" physical_mode_name="physical"/>
+    <pb_type name="dsp.dsp_rtl[physical].dsp_phy" circuit_model_name="RS_DSP" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+    <pb_type name="dsp.feedback_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.feedback_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.unsigned_a_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.unsigned_a_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.unsigned_b_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.unsigned_b_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.shift_right_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.shift_right_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.saturate_enable_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.saturate_enable_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.round_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.round_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.subtract_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.subtract_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.load_acc_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.load_acc_opt.logic1" circuit_model_name="logic1"/>
+    <pb_type name="dsp.sr_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.sr_opt.sr_inv" circuit_model_name="inverter"/>
+    <pb_type name="dsp.clk_opt.clk_inv" circuit_model_name="clock_inverter"/>
+    <pb_type name="dsp.z_pad" circuit_model_name="logic0"/>
+    <pb_type name="dsp.dsp_rtl[RS_DSP].RS_DSP" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT].RS_DSP_MULT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001111">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGIN].RS_DSP_MULT_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000001">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGOUT].RS_DSP_MULT_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000010">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGIN_REGOUT].RS_DSP_MULT_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000011">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC].RS_DSP_MULTACC" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000100">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGIN].RS_DSP_MULTACC_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000101">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGOUT].RS_DSP_MULTACC_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000110">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGIN_REGOUT].RS_DSP_MULTACC_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000111">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD].RS_DSP_MULTADD" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001000">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGIN].RS_DSP_MULTADD_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001001">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGOUT].RS_DSP_MULTADD_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001010">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGIN_REGOUT].RS_DSP_MULTADD_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001011">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="feedback" physical_mode_port="feedback"/>
+      <port name="load_acc" physical_mode_port="load_acc"/>
+      <port name="unsigned_a" physical_mode_port="unsigned_a"/>
+      <port name="unsigned_b" physical_mode_port="unsigned_b"/>
+      <port name="saturate" physical_mode_port="saturate_enable"/>
+      <port name="shift_right" physical_mode_port="shift_right"/>
+      <port name="round" physical_mode_port="round"/>
+      <port name="subtract" physical_mode_port="subtract"/>
+      <port name="clk" physical_mode_port="clk"/>
+    </pb_type>
+    <pb_type name="bram.bram_rtl" physical_mode_name="physical"/>
+    <pb_type name="bram.bram_rtl[physical].bram_phy" circuit_model_name="RS_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+    <pb_type name="bram.bram_rtl[TDP36K].TDP36K" physical_pb_type_name="bram.bram_rtl[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+      <port name="WDATA_A1" physical_mode_port="WDATA_A1_i"/>
+      <port name="WDATA_A2" physical_mode_port="WDATA_A2_i"/>
+      <port name="RDATA_A1" physical_mode_port="RDATA_A1_o"/>
+      <port name="RDATA_A2" physical_mode_port="RDATA_A2_o"/>
+      <port name="ADDR_A1" physical_mode_port="ADDR_A1_i"/>
+      <port name="ADDR_A2" physical_mode_port="ADDR_A2_i"/>
+      <port name="CLK_A1" physical_mode_port="CLK_A1_i"/>
+      <port name="CLK_A2" physical_mode_port="CLK_A2_i"/>
+      <port name="REN_A1" physical_mode_port="REN_A1_i"/>
+      <port name="REN_A2" physical_mode_port="REN_A2_i"/>
+      <port name="WEN_A1" physical_mode_port="WEN_A1_i"/>
+      <port name="WEN_A2" physical_mode_port="WEN_A2_i"/>
+      <port name="BE_A1" physical_mode_port="BE_A1_i"/>
+      <port name="BE_A2" physical_mode_port="BE_A2_i"/>
+      <port name="FLUSH1" physical_mode_port="FLUSH1_i"/>
+      <port name="WDATA_B1" physical_mode_port="WDATA_B1_i"/>
+      <port name="WDATA_B2" physical_mode_port="WDATA_B2_i"/>
+      <port name="RDATA_B1" physical_mode_port="RDATA_B1_o"/>
+      <port name="RDATA_B2" physical_mode_port="RDATA_B2_o"/>
+      <port name="ADDR_B1" physical_mode_port="ADDR_B1_i"/>
+      <port name="ADDR_B2" physical_mode_port="ADDR_B2_i"/>
+      <port name="CLK_B1" physical_mode_port="CLK_B1_i"/>
+      <port name="CLK_B2" physical_mode_port="CLK_B2_i"/>
+      <port name="REN_B1" physical_mode_port="REN_B1_i"/>
+      <port name="REN_B2" physical_mode_port="REN_B2_i"/>
+      <port name="WEN_B1" physical_mode_port="WEN_B1_i"/>
+      <port name="WEN_B2" physical_mode_port="WEN_B2_i"/>
+      <port name="BE_B1" physical_mode_port="BE_B1_i"/>
+      <port name="BE_B2" physical_mode_port="BE_B2_i"/>
+      <port name="FLUSH2" physical_mode_port="FLUSH2_i"/>
+    </pb_type>
+    <pb_type name="bram[default].en_opt[default].logic0" circuit_model_name="logic0"/>
+    <pb_type name="bram[default].en_opt[default].logic1" circuit_model_name="logic1"/>
+    <pb_type name="bram[default].sr_opt[default].logic0" circuit_model_name="logic0"/>
+    <pb_type name="bram[default].sr_opt[default].sr_inv" circuit_model_name="inverter"/>
+    <pb_type name="bram[default].flush_opt[default].logic0" circuit_model_name="logic0"/>
+    <pb_type name="bram[default].flush_opt[default].logic1" circuit_model_name="logic1"/>
+    <pb_type name="bram[default].clk_opt[default].clk_inv" circuit_model_name="clock_inverter"/>
+    <pb_type name="bram.byp_reg" physical_mode_name="physical"/>
+    <pb_type name="bram.byp_reg[physical].byp_reg_phy" circuit_model_name="byp_reg18" mode_bits="00"/>
+    <pb_type name="bram.byp_reg[BRAM_BYPASS].BRAM_BYPASS" physical_pb_type_name="bram.byp_reg[physical].byp_reg_phy" mode_bits="01"/>
+    <pb_type name="bram.byp_reg[BRAM_REGISTER].BRAM_REGISTER" physical_pb_type_name="bram.byp_reg[physical].byp_reg_phy" mode_bits="00"/>
+    <pb_type name="bram.byp_reg[BRAM_REGISTER_ASYNCSR].BRAM_REGISTER_ASYNCSR" physical_pb_type_name="bram.byp_reg[physical].byp_reg_phy" mode_bits="10"/>
+  </pb_type_annotations>
+</openfpga_architecture>
