@@ -16,13 +16,13 @@
   <technology_library>
     <device_library>
       <device_model name="logic" type="transistor">
-        <lib type="industry" corner="TOP_TT" ref="M" path="${OPENFPGA_PATH}/openfpga_flow/tech/PTM_45nm/45nm.pm"/>
+        <lib type="industry" corner="TOP_TT" ref="M" path="/openfpga_flow/tech/PTM_45nm/45nm.pm"/>
         <design vdd="0.9" pn_ratio="2"/>
         <pmos name="pch" chan_length="40e-9" min_width="140e-9" variation="logic_transistor_var"/>
         <nmos name="nch" chan_length="40e-9" min_width="140e-9" variation="logic_transistor_var"/>
       </device_model>
       <device_model name="io" type="transistor">
-        <lib type="academia" ref="M" path="${OPENFPGA_PATH}/openfpga_flow/tech/PTM_45nm/45nm.pm"/>
+        <lib type="academia" ref="M" path="/openfpga_flow/tech/PTM_45nm/45nm.pm"/>
         <design vdd="2.5" pn_ratio="3"/>
         <pmos name="pch_25" chan_length="270e-9" min_width="320e-9" variation="io_transistor_var"/>
         <nmos name="nch_25" chan_length="270e-9" min_width="320e-9" variation="io_transistor_var"/>
@@ -72,11 +72,11 @@
       <output_buffer exist="false"/>
       <port type="output" prefix="logic1" size="1"/>
     </circuit_model>
-    <circuit_model type="inv_buf" name="${INV_X1}" prefix="${INV_X1}" is_default="true" verilog_netlist="${SC_LIB}">
+    <circuit_model type="inv_buf" name="INVD1BWP7D5T16P96CPD" prefix="INVD1BWP7D5T16P96CPD" is_default="true" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="inverter" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="${INV_in}" size="1"/>
-      <port type="output" prefix="out" lib_name="${INV_out}" size="1"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="ZN" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -84,11 +84,11 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="${BUF_X1}" prefix="${BUF_X1}" is_default="false" verilog_netlist="${SC_LIB}">
+    <circuit_model type="inv_buf" name="BUFFD1BWP7D5T16P96CPD" prefix="BUFFD1BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
-      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -96,11 +96,11 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="${BUF_X2}" prefix="${BUF_X2}" is_default="false" verilog_netlist="${SC_LIB}">
+    <circuit_model type="inv_buf" name="BUFFD2BWP7D5T16P96CPD" prefix="BUFFD2BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
-      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -108,11 +108,11 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="${BUF_X4}" prefix="${BUF_X4}" is_default="false" verilog_netlist="${SC_LIB}">
+    <circuit_model type="inv_buf" name="BUFFD4BWP7D5T16P96CPD" prefix="BUFFD4BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
-      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -120,11 +120,11 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="${BUF_X12}" prefix="${BUF_X12}" is_default="false" verilog_netlist="${SC_LIB}">
+    <circuit_model type="inv_buf" name="BUFFD12BWP7D5T16P96CPD" prefix="BUFFD12BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
-      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -132,11 +132,11 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="${BUF_X16}" prefix="${BUF_X16}" is_default="false" verilog_netlist="${SC_LIB}">
+    <circuit_model type="inv_buf" name="BUFFD16BWP7D5T16P96CPD" prefix="BUFFD16BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="${BUF_in}" size="1"/>
-      <port type="output" prefix="out" lib_name="${BUF_out}" size="1"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -144,11 +144,11 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="${INV_X2}" prefix="${INV_X2}" is_default="false" verilog_netlist="${SC_LIB}">
+    <circuit_model type="inv_buf" name="INVD2BWP7D5T16P96CPD" prefix="INVD2BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="${INV_in}" size="1"/>
-      <port type="output" prefix="out" lib_name="${INV_out}" size="1"/>
+      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="output" prefix="out" lib_name="ZN" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -156,24 +156,24 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="gate" name="${MUX_X1}" prefix="${MUX_X1}" verilog_netlist="${SC_LIB}">
+    <circuit_model type="gate" name="MUX2D1BWP7D5T16P96CPD" prefix="MUX2D1BWP7D5T16P96CPD" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="MUX2"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <port type="input" prefix="a" lib_name="${MUX_a}" size="1"/>
-      <port type="input" prefix="b" lib_name="${MUX_b}" size="1"/>
-      <port type="input" prefix="s" lib_name="${MUX_s}" size="1"/>
-      <port type="output" prefix="out" lib_name="${MUX_o}" size="1"/>
+      <port type="input" prefix="a" lib_name="I1" size="1"/>
+      <port type="input" prefix="b" lib_name="I0" size="1"/>
+      <port type="input" prefix="s" lib_name="S" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
     </circuit_model>
-    <circuit_model type="gate" name="${OR2_X1}" prefix="${OR2_X1}" is_default="true" verilog_netlist="${SC_LIB}">
+    <circuit_model type="gate" name="OR2D1BWP7D5T16P96CPD" prefix="OR2D1BWP7D5T16P96CPD" is_default="true" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
       <design_technology type="cmos" topology="OR"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <port type="input" prefix="a" lib_name="${OR2_a}" size="1"/>
-      <port type="input" prefix="b" lib_name="${OR2_b}" size="1"/>
-      <port type="output" prefix="out" lib_name="${OR2_out}" size="1"/>
+      <port type="input" prefix="a" lib_name="A1" size="1"/>
+      <port type="input" prefix="b" lib_name="A2" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="a b" out_port="out">
         10e-12 10e-12
       </delay_matrix>
@@ -181,7 +181,7 @@
         10e-12 10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="hard_logic" name="RS_XOR_MUX2" prefix="RS_XOR_MUX2" verilog_netlist="${CM_RS_XOR_MUX2}">
+    <circuit_model type="hard_logic" name="RS_XOR_MUX2" prefix="RS_XOR_MUX2" verilog_netlist="./SRC/CustomModules/rs_xor_mux2.v">
       <design_technology type="cmos"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
@@ -211,18 +211,18 @@
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_io" prefix="mux_1level_io" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
-      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X4}"/>
-      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD4BWP7D5T16P96CPD"/>
+      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_fabric" prefix="mux_1level_fabric" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
-      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X16}"/>
-      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD16BWP7D5T16P96CPD"/>
+      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1"/>
@@ -230,43 +230,43 @@
     <circuit_model type="mux" name="mux_tree" prefix="mux_tree" is_default="true" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
       <input_buffer exist="false"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X4}"/>
-      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD4BWP7D5T16P96CPD"/>
+      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf" prefix="mux_tree_tapbuf" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
-      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X12}"/>
-      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD12BWP7D5T16P96CPD"/>
+      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L1SB" prefix="mux_tree_tapbuf_L1SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
-      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X12}"/>
-      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD12BWP7D5T16P96CPD"/>
+      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L4SB" prefix="mux_tree_tapbuf_L4SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="true" const_input_val="1"/>
-      <input_buffer exist="false" circuit_model_name="${INV_X2}"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X12}"/>
-      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
+      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD12BWP7D5T16P96CPD"/>
+      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1"/>
     </circuit_model>
-    <circuit_model type="ff" name="RS_IOFF" prefix="RS_IOFF" is_default="true" verilog_netlist="${CM_RS_IOFF}">
+    <circuit_model type="ff" name="RS_IOFF" prefix="RS_IOFF" is_default="true" verilog_netlist="./SRC/CustomModules/rs_ioff.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="true" circuit_model_name="${INV_X1}"/>
-      <output_buffer exist="true" circuit_model_name="${INV_X1}"/>
+      <input_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="input" prefix="reset" lib_name="R" size="1" default_val="1"/>
@@ -277,10 +277,10 @@
       <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="1"/>
     </circuit_model>
-    <circuit_model type="ff" name="RS_FF" prefix="RS_FF" verilog_netlist="${CM_RS_FF}">
+    <circuit_model type="ff" name="RS_FF" prefix="RS_FF" verilog_netlist="./SRC/CustomModules/rs_ff.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="true" circuit_model_name="${INV_X1}"/>
-      <output_buffer exist="true" circuit_model_name="${INV_X1}"/>
+      <input_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="output" prefix="SO" lib_name="SO" size="1"/>
@@ -299,20 +299,20 @@
     </circuit_model>
     <circuit_model type="lut" name="frac_lut6" prefix="frac_lut6" dump_structural_verilog="true" is_default="true">
       <design_technology type="cmos" fracturable_lut="true"/>
-      <input_buffer exist="false" circuit_model_name="${BUF_X2}"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X2}"/>
-      <lut_input_inverter exist="true" circuit_model_name="${INV_X2}"/>
-      <lut_input_buffer exist="true" circuit_model_name="${BUF_X2}"/>
-      <lut_intermediate_buffer exist="false" circuit_model_name="${BUF_X2}" location_map="-1-1-"/>
-      <pass_gate_logic circuit_model_name="${MUX_X1}"/>
-      <port type="input" prefix="in" size="6" tri_state_map="----11" circuit_model_name="${OR2_X1}"/>
+      <input_buffer exist="false" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
+      <lut_input_inverter exist="true" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
+      <lut_input_buffer exist="true" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
+      <lut_intermediate_buffer exist="false" circuit_model_name="BUFFD2BWP7D5T16P96CPD" location_map="-1-1-"/>
+      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
+      <port type="input" prefix="in" size="6" tri_state_map="----11" circuit_model_name="OR2D1BWP7D5T16P96CPD"/>
       <port type="output" prefix="lut4_out" size="4" lut_frac_level="4" lut_output_mask="0,1,2,3"/>
       <port type="output" prefix="lut5_out" size="2" lut_frac_level="5" lut_output_mask="0,1"/>
       <port type="output" prefix="lut6_out" size="1" lut_output_mask="0"/>
       <port type="sram" prefix="sram" size="64"/>
       <port type="sram" prefix="mode" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="00"/>
     </circuit_model>
-    <!--circuit_model type="sram" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="${CM_RS_CCFF}"-->
+    <!--circuit_model type="sram" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="./SRC/CustomModules/rs_ccff.v"-->
     <!--design_technology type="cmos"/-->
     <!--input_buffer exist="false"/-->
     <!--output_buffer exist="false"/-->
@@ -324,7 +324,7 @@
     <!--port type="output" prefix="outb" size="1"/-->
     <!--/circuit_model-->
     <!-- RAJ begin rs_memory_bank => scan chain -->
-    <circuit_model type="ccff" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="${CM_RS_CCFF}">
+    <circuit_model type="ccff" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="./SRC/CustomModules/rs_ccff.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
@@ -336,10 +336,10 @@
       <port type="clock" prefix="CK" size="1" is_global="true" is_prog="true" is_clock="true"/>
     </circuit_model>
     <!-- RAJ end rs_memory_bank => scan chain -->
-    <circuit_model type="iopad" name="RS_PREIO" prefix="RS_PREIO" is_default="true" verilog_netlist="${CM_RS_PREIO}">
+    <circuit_model type="iopad" name="RS_PREIO" prefix="RS_PREIO" is_default="true" verilog_netlist="./SRC/CustomModules/rs_preio.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="false" circuit_model_name="${BUF_X1}"/>
-      <output_buffer exist="true" circuit_model_name="${BUF_X2}"/>
+      <input_buffer exist="false" circuit_model_name="BUFFD1BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="A2F" lib_name="SOC_IN" size="1" is_global="true" is_io="true" is_data_io="true"/>
       <port type="output" prefix="F2A" lib_name="SOC_OUT" size="1" is_global="true" is_io="true" is_data_io="true"/>
@@ -351,10 +351,10 @@
       <port type="input" prefix="CFG_DONE" lib_name="CFG_DONE" size="1" is_global="true" default_val="0" is_config_enable="true"/>
       <port type="sram" prefix="DEF" lib_name="DEF" size="4" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000"/>
     </circuit_model>
-    <circuit_model type="ccff" name="RS_BLSR" prefix="RS_BLSR" verilog_netlist="${CM_RS_BLSR}" is_default="true">
+    <circuit_model type="ccff" name="RS_BLSR" prefix="RS_BLSR" verilog_netlist="./SRC/CustomModules/rs_blsr.v" is_default="true">
       <design_technology type="cmos"/>
-      <input_buffer exist="false" circuit_model_name="${BUF_X1}"/>
-      <output_buffer exist="false" circuit_model_name="${BUF_X1}"/>
+      <input_buffer exist="false" circuit_model_name="BUFFD1BWP7D5T16P96CPD"/>
+      <output_buffer exist="false" circuit_model_name="BUFFD1BWP7D5T16P96CPD"/>
       <port type="input" prefix="srReset" lib_name="R" size="1" is_global="true" default_val="1" is_reset="true" is_prog="true"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="BLWEN" lib_name="WEN" size="1" is_global="true" default_val="0"/>
@@ -364,10 +364,10 @@
       <port type="bl" prefix="bl" lib_name="bl" size="1"/>
       <port type="clock" prefix="BL_CLK" lib_name="CK" size="1" is_global="true" default_val="0" is_prog="true" is_shift_register="true"/>
     </circuit_model>
-    <circuit_model type="ccff" name="RS_WLSR" prefix="RS_WLSR" verilog_netlist="${CM_RS_WLSR}">
+    <circuit_model type="ccff" name="RS_WLSR" prefix="RS_WLSR" verilog_netlist="./SRC/CustomModules/rs_wlsr.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="false" circuit_model_name="${BUF_X1}"/>
-      <output_buffer exist="false" circuit_model_name="${BUF_X1}"/>
+      <input_buffer exist="false" circuit_model_name="BUFFD1BWP7D5T16P96CPD"/>
+      <output_buffer exist="false" circuit_model_name="BUFFD1BWP7D5T16P96CPD"/>
       <port type="input" prefix="srReset" lib_name="R" size="1" is_global="true" default_val="1" is_reset="true" is_prog="true"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="output" prefix="Q" lib_name="SO" size="1"/>
@@ -379,7 +379,7 @@
       <port type="input" prefix="SE" lib_name="SE" size="1" is_global="true" default_val="0"/>
       <port type="clock" prefix="WL_CLK" lib_name="CK" size="1" is_global="true" default_val="0" is_prog="true" is_shift_register="true"/>
     </circuit_model>
-    <circuit_model type="hard_logic" name="RS_STD_WRAPPER" prefix="RS_STD_WRAPPER" is_default="true" verilog_netlist="${CM_RS_STDWRAP}">
+    <circuit_model type="hard_logic" name="RS_STD_WRAPPER" prefix="RS_STD_WRAPPER" is_default="true" verilog_netlist="./SRC/CustomModules/standard_cell_wrapper.v">
       <design_technology type="cmos"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
@@ -387,7 +387,7 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
     </circuit_model>
-    <circuit_model type="hard_logic" name="RS_CUSTOM_STD" prefix="RS_CUSTOM_STD" verilog_netlist="${CM_RS_CUSSTD}">
+    <circuit_model type="hard_logic" name="RS_CUSTOM_STD" prefix="RS_CUSTOM_STD" verilog_netlist="./SRC/CustomModules/custom_standard_cell.v">
       <design_technology type="cmos"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
@@ -395,7 +395,7 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
     </circuit_model>
-    <circuit_model type="hard_logic" name="RS_DSP" prefix="RS_DSP" verilog_netlist="${CM_RS_DSP}">
+    <circuit_model type="hard_logic" name="RS_DSP" prefix="RS_DSP" verilog_netlist="./SRC/CustomModules/rs_dsp.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
@@ -427,7 +427,7 @@
       <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
       <port type="sram" prefix="mode" size="84" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
     </circuit_model>
-    <circuit_model type="hard_logic" name="RS_BRAM" prefix="RS_BRAM" verilog_netlist="${CM_RS_BRAM}">
+    <circuit_model type="hard_logic" name="RS_BRAM" prefix="RS_BRAM" verilog_netlist="./SRC/CustomModules/rs_bram.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
@@ -489,7 +489,7 @@
     </circuit_model>
   </circuit_library>
   <configuration_protocol>
-    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="${CCFF_BANKS}">
+    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="1">
       <!--bl protocol="shift_register" circuit_model_name="RS_BLSR"/-->
       <!--wl protocol="shift_register" circuit_model_name="RS_WLSR"/-->
     </organization>
