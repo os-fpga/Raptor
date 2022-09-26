@@ -55,6 +55,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -201,6 +202,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -351,6 +353,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
 
     - name: Git pull
       uses: actions/checkout@v2
@@ -499,6 +502,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
 
     - uses: actions/checkout@v2
 
@@ -586,6 +590,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
 
     - uses: actions/checkout@v2
 
@@ -677,6 +682,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
 
     - uses: actions/checkout@v2
 
@@ -773,6 +779,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
 
     - name: Checkout code
       uses: actions/checkout@v2
