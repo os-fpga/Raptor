@@ -52,6 +52,20 @@
         <port name="cout"/>
       </output_ports>
     </model>
+    <model name="reg_ctl">
+      <input_ports>
+        <port name="sr"/>
+        <port name="resetn"/>
+        <port name="scan_resetn"/>
+        <port name="clk" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="rstn"/>
+        <port name="rstn_sync"/>
+        <!--port name="mode_o"/-->
+        <port name="clk_o"/>
+      </output_ports>
+    </model>
     <!-- Flipflop models definition starts -->
     <model name="dff">
       <input_ports>
@@ -77,7 +91,7 @@
         <port name="C" is_clock="1"/>
         <port name="E" clock="C"/>
         <port name="R" clock="C"/>
-        <port name="S" clock="C"/>
+        <!--port name="S" clock="C"/-->
       </input_ports>
       <output_ports>
         <port name="Q" clock="C"/>
@@ -89,7 +103,7 @@
         <port name="C" is_clock="1"/>
         <port name="E" clock="C"/>
         <port name="R" clock="C"/>
-        <port name="S" clock="C"/>
+        <!--port name="S" clock="C"/-->
       </input_ports>
       <output_ports>
         <port name="Q" clock="C"/>
@@ -101,7 +115,7 @@
         <port name="C" is_clock="1"/>
         <port name="E" clock="C"/>
         <port name="R" clock="C"/>
-        <port name="S" clock="C"/>
+        <!--port name="S" clock="C"/-->
       </input_ports>
       <output_ports>
         <port name="Q" clock="C"/>
@@ -113,7 +127,7 @@
         <port name="C" is_clock="1"/>
         <port name="E" clock="C"/>
         <port name="R" clock="C"/>
-        <port name="S" clock="C"/>
+        <!--port name="S" clock="C"/-->
       </input_ports>
       <output_ports>
         <port name="Q" clock="C"/>
@@ -142,7 +156,7 @@
         <port name="G" is_clock="1"/>
         <port name="E" clock="G"/>
         <port name="R" clock="G"/>
-        <port name="S" clock="G"/>
+        <!--port name="S" clock="C"/-->
         <port name="D" clock="G"/>
       </input_ports>
       <output_ports>
@@ -154,7 +168,7 @@
         <port name="G" is_clock="1"/>
         <port name="E" clock="G"/>
         <port name="R" clock="G"/>
-        <port name="S" clock="G"/>
+        <!--port name="S" clock="C"/-->
         <port name="D" clock="G"/>
       </input_ports>
       <output_ports>
@@ -176,10 +190,10 @@
       <input_ports>
         <port name="D" clock="clk"/>
         <port name="SI" clock="clk"/>
-        <port name="S" clock="clk"/>
+        <!--port name="S" clock="clk"/-->
         <port name="R" clock="clk"/>
-        <!--port name="SYNC_S" clock="clk"/-->
-        <!--port name="SYNC_R" clock="clk"/-->
+        <port name="RS" clock="clk"/>
+        <!--port name="MODE_SEL"/-->
         <port name="E" clock="clk"/>
         <port name="clk" is_clock="1"/>
       </input_ports>
@@ -588,7 +602,7 @@
       </output_ports>
     </model>
     <!--bram_phy-->
-    <model name="TDP36K">
+    <model name="RS_TDP36K">
       <input_ports>
         <port name="WDATA_A1" clock="CLK_A1"/>
         <port name="WDATA_A2" clock="CLK_A2"/>
@@ -758,18 +772,105 @@
       <equivalent_sites>
         <site pb_type="clb"/>
       </equivalent_sites>
-      <input name="I0" num_pins="8" equivalent="full"/>
-      <input name="I1" num_pins="8" equivalent="full"/>
-      <input name="I2" num_pins="8" equivalent="full"/>
-      <input name="I3" num_pins="8" equivalent="full"/>
+      <input name="IG31" num_pins="1" equivalent="none"/>
+      <input name="IG30" num_pins="1" equivalent="none"/>
+      <input name="IG29" num_pins="1" equivalent="none"/>
+      <input name="IG28" num_pins="1" equivalent="none"/>
+      <input name="IG27" num_pins="1" equivalent="none"/>
+      <input name="IG26" num_pins="1" equivalent="none"/>
+      <input name="IG25" num_pins="1" equivalent="none"/>
+      <input name="IG24" num_pins="1" equivalent="none"/>
+      <input name="IG23" num_pins="1" equivalent="none"/>
+      <input name="IG22" num_pins="1" equivalent="none"/>
+      <input name="IG21" num_pins="1" equivalent="none"/>
+      <input name="IG20" num_pins="1" equivalent="none"/>
+      <input name="IG19" num_pins="1" equivalent="none"/>
+      <input name="IG18" num_pins="1" equivalent="none"/>
+      <input name="IG17" num_pins="1" equivalent="none"/>
+      <input name="IG16" num_pins="1" equivalent="none"/>
+      <input name="IG15" num_pins="1" equivalent="none"/>
+      <input name="IG14" num_pins="1" equivalent="none"/>
+      <input name="IG13" num_pins="1" equivalent="none"/>
+      <input name="IG12" num_pins="1" equivalent="none"/>
+      <input name="IG11" num_pins="1" equivalent="none"/>
+      <input name="IG10" num_pins="1" equivalent="none"/>
+      <input name="IG9" num_pins="1" equivalent="none"/>
+      <input name="IG8" num_pins="1" equivalent="none"/>
+      <input name="IG7" num_pins="1" equivalent="none"/>
+      <input name="IG6" num_pins="1" equivalent="none"/>
+      <input name="IG5" num_pins="1" equivalent="none"/>
+      <input name="IG4" num_pins="1" equivalent="none"/>
+      <input name="IG3" num_pins="1" equivalent="none"/>
+      <input name="IG2" num_pins="1" equivalent="none"/>
+      <input name="IG1" num_pins="1" equivalent="none"/>
+      <input name="IG0" num_pins="1" equivalent="none"/>
+      <input name="IL31" num_pins="1" equivalent="none"/>
+      <input name="IL30" num_pins="1" equivalent="none"/>
+      <input name="IL29" num_pins="1" equivalent="none"/>
+      <input name="IL28" num_pins="1" equivalent="none"/>
+      <input name="IL27" num_pins="1" equivalent="none"/>
+      <input name="IL26" num_pins="1" equivalent="none"/>
+      <input name="IL25" num_pins="1" equivalent="none"/>
+      <input name="IL24" num_pins="1" equivalent="none"/>
+      <input name="IL23" num_pins="1" equivalent="none"/>
+      <input name="IL22" num_pins="1" equivalent="none"/>
+      <input name="IL21" num_pins="1" equivalent="none"/>
+      <input name="IL20" num_pins="1" equivalent="none"/>
+      <input name="IL19" num_pins="1" equivalent="none"/>
+      <input name="IL18" num_pins="1" equivalent="none"/>
+      <input name="IL17" num_pins="1" equivalent="none"/>
+      <input name="IL16" num_pins="1" equivalent="none"/>
+      <input name="IL15" num_pins="1" equivalent="none"/>
+      <input name="IL14" num_pins="1" equivalent="none"/>
+      <input name="IL13" num_pins="1" equivalent="none"/>
+      <input name="IL12" num_pins="1" equivalent="none"/>
+      <input name="IL11" num_pins="1" equivalent="none"/>
+      <input name="IL10" num_pins="1" equivalent="none"/>
+      <input name="IL9" num_pins="1" equivalent="none"/>
+      <input name="IL8" num_pins="1" equivalent="none"/>
+      <input name="IL7" num_pins="1" equivalent="none"/>
+      <input name="IL6" num_pins="1" equivalent="none"/>
+      <input name="IL5" num_pins="1" equivalent="none"/>
+      <input name="IL4" num_pins="1" equivalent="none"/>
+      <input name="IL3" num_pins="1" equivalent="none"/>
+      <input name="IL2" num_pins="1" equivalent="none"/>
+      <input name="IL1" num_pins="1" equivalent="none"/>
+      <input name="IL0" num_pins="1" equivalent="none"/>
+      <input name="IS5" num_pins="1" equivalent="none"/>
+      <input name="IS4" num_pins="1" equivalent="none"/>
+      <input name="IS3" num_pins="1" equivalent="none"/>
+      <input name="IS2" num_pins="1" equivalent="none"/>
+      <input name="IS1" num_pins="1" equivalent="none"/>
+      <input name="IS0" num_pins="1" equivalent="none"/>
+      <output name="O23" num_pins="1" equivalent="none"/>
+      <output name="O22" num_pins="1" equivalent="none"/>
+      <output name="O21" num_pins="1" equivalent="none"/>
+      <output name="O20" num_pins="1" equivalent="none"/>
+      <output name="O19" num_pins="1" equivalent="none"/>
+      <output name="O18" num_pins="1" equivalent="none"/>
+      <output name="O17" num_pins="1" equivalent="none"/>
+      <output name="O16" num_pins="1" equivalent="none"/>
+      <output name="O15" num_pins="1" equivalent="none"/>
+      <output name="O14" num_pins="1" equivalent="none"/>
+      <output name="O13" num_pins="1" equivalent="none"/>
+      <output name="O12" num_pins="1" equivalent="none"/>
+      <output name="O11" num_pins="1" equivalent="none"/>
+      <output name="O10" num_pins="1" equivalent="none"/>
+      <output name="O9" num_pins="1" equivalent="none"/>
+      <output name="O8" num_pins="1" equivalent="none"/>
+      <output name="O7" num_pins="1" equivalent="none"/>
+      <output name="O6" num_pins="1" equivalent="none"/>
+      <output name="O5" num_pins="1" equivalent="none"/>
+      <output name="O4" num_pins="1" equivalent="none"/>
+      <output name="O3" num_pins="1" equivalent="none"/>
+      <output name="O2" num_pins="1" equivalent="none"/>
+      <output name="O1" num_pins="1" equivalent="none"/>
+      <output name="O0" num_pins="1" equivalent="none"/>
+      <!-- The following are not routable pins. Each later has fc_override fc_val="0" -->
       <input name="sc_in" num_pins="4"/>
       <!-- 1->4 -->
       <input name="cin" num_pins="1"/>
       <!--input name="cin_init" num_pins="1"/-->
-      <input name="sr0" num_pins="1"/>
-      <!-- FIX: make dual function set/reset; temp function= reset (low-true) -->
-      <input name="sr1" num_pins="1"/>
-      <!-- FIX: make dual function set/reset; temp function= set (low-true) -->
       <!--input name="set" num_pins="1"/-->
       <!--input name="lreset" num_pins="1"/-->
       <!-- logical (soft) reset -->
@@ -779,13 +880,6 @@
       <!-- global reset -->
       <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <!--input name="enable" num_pins="1"/-->
-      <input name="en1" num_pins="2"/>
-      <!-- 2 enables for lower 4 FLEs -->
-      <input name="en0" num_pins="2"/>
-      <!-- 2 enables for upper 4 FLEs -->
-      <output name="O" num_pins="16" equivalent="none"/>
-      <output name="Ofast" num_pins="8" equivalent="none"/>
-      <!-- fast LUT6 outputs -->
       <output name="sc_out" num_pins="4"/>
       <!-- 1->4 -->
       <output name="cout" num_pins="1"/>
@@ -815,12 +909,27 @@
         <!-- 2 merged sets/resets -->
         <!-- 2x2-bit enables -->
         <loc side="left"> clb.clk clb.scan_reset clb.reset clb.sc_in</loc>
-        <!--loc side="top">  clb.cin clb.en0 clb.en1 clb.cin_init -->
-        <loc side="top">  clb.cin clb.en0 clb.en1
-                          clb.I0[7:0] clb.I1[7:0] clb.O[7:0] clb.Ofast[7:4]</loc>
+        <!--loc side="top">  clb.cin clb.cin_init -->
+        <loc side="top">  clb.cin
+          clb.IG31 clb.IG30 clb.IG29 clb.IG28 clb.IG27 clb.IG26 clb.IG25 clb.IG24
+          clb.IG23 clb.IG22 clb.IG21 clb.IG20 clb.IG19 clb.IG18 clb.IG17 clb.IG16
+          clb.IL31 clb.IL30 clb.IL29 clb.IL28 clb.IL27 clb.IL26 clb.IL25 clb.IL24
+          clb.IL23 clb.IL22 clb.IL21 clb.IL20 clb.IL19 clb.IL18 clb.IL17 clb.IL16
+                            clb.IS5  clb.IS4  clb.IS3
+          clb.O23  clb.O22  clb.O21  clb.O20  clb.O19  clb.O18  clb.O17  clb.O16
+          clb.O15  clb.O14  clb.O13  clb.O12                                   
+
+        </loc>
         <!--loc side="right">clb.set clb.lreset clb.sync_set clb.sync_reset  -->
-        <loc side="right">clb.sr0 clb.sr1
-                          clb.I2[7:0] clb.I3[7:0] clb.O[15:8] clb.sc_out clb.Ofast[3:0]</loc>
+        <loc side="right"> clb.sc_out
+          clb.IG15 clb.IG14 clb.IG13 clb.IG12 clb.IG11 clb.IG10 clb.IG9  clb.IG8
+          clb.IG7  clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IG1  clb.IG0
+          clb.IL15 clb.IL14 clb.IL13 clb.IL12 clb.IL11 clb.IL10 clb.IL9  clb.IL8
+          clb.IL7  clb.IL6  clb.IL5  clb.IL4  clb.IL3  clb.IL2  clb.IL1  clb.IL0
+                                                       clb.IS2  clb.IS1  clb.IS0
+                                              clb.O11  clb.O10  clb.O9   clb.O8
+          clb.O7   clb.O6   clb.O5   clb.O4   clb.O3   clb.O2   clb.O1   clb.O0
+        </loc>
         <loc side="bottom">clb.cout</loc>
       </pinlocations>
     </tile>
@@ -1408,22 +1517,104 @@
          - crossbar: every local routing MULTiplexer accesses to 50% of the CLB inputs and 25% of the feedback
       -->
     <pb_type name="clb">
-      <input name="I0" num_pins="8" equivalent="full"/>
-      <!--10->8-->
-      <input name="I1" num_pins="8" equivalent="full"/>
-      <!--10->8-->
-      <input name="I2" num_pins="8" equivalent="full"/>
-      <!--10->8-->
-      <input name="I3" num_pins="8" equivalent="full"/>
-      <!--10->8-->
+      <input name="IG31" num_pins="1" equivalent="none"/>
+      <input name="IG30" num_pins="1" equivalent="none"/>
+      <input name="IG29" num_pins="1" equivalent="none"/>
+      <input name="IG28" num_pins="1" equivalent="none"/>
+      <input name="IG27" num_pins="1" equivalent="none"/>
+      <input name="IG26" num_pins="1" equivalent="none"/>
+      <input name="IG25" num_pins="1" equivalent="none"/>
+      <input name="IG24" num_pins="1" equivalent="none"/>
+      <input name="IG23" num_pins="1" equivalent="none"/>
+      <input name="IG22" num_pins="1" equivalent="none"/>
+      <input name="IG21" num_pins="1" equivalent="none"/>
+      <input name="IG20" num_pins="1" equivalent="none"/>
+      <input name="IG19" num_pins="1" equivalent="none"/>
+      <input name="IG18" num_pins="1" equivalent="none"/>
+      <input name="IG17" num_pins="1" equivalent="none"/>
+      <input name="IG16" num_pins="1" equivalent="none"/>
+      <input name="IG15" num_pins="1" equivalent="none"/>
+      <input name="IG14" num_pins="1" equivalent="none"/>
+      <input name="IG13" num_pins="1" equivalent="none"/>
+      <input name="IG12" num_pins="1" equivalent="none"/>
+      <input name="IG11" num_pins="1" equivalent="none"/>
+      <input name="IG10" num_pins="1" equivalent="none"/>
+      <input name="IG9" num_pins="1" equivalent="none"/>
+      <input name="IG8" num_pins="1" equivalent="none"/>
+      <input name="IG7" num_pins="1" equivalent="none"/>
+      <input name="IG6" num_pins="1" equivalent="none"/>
+      <input name="IG5" num_pins="1" equivalent="none"/>
+      <input name="IG4" num_pins="1" equivalent="none"/>
+      <input name="IG3" num_pins="1" equivalent="none"/>
+      <input name="IG2" num_pins="1" equivalent="none"/>
+      <input name="IG1" num_pins="1" equivalent="none"/>
+      <input name="IG0" num_pins="1" equivalent="none"/>
+      <input name="IL31" num_pins="1" equivalent="none"/>
+      <input name="IL30" num_pins="1" equivalent="none"/>
+      <input name="IL29" num_pins="1" equivalent="none"/>
+      <input name="IL28" num_pins="1" equivalent="none"/>
+      <input name="IL27" num_pins="1" equivalent="none"/>
+      <input name="IL26" num_pins="1" equivalent="none"/>
+      <input name="IL25" num_pins="1" equivalent="none"/>
+      <input name="IL24" num_pins="1" equivalent="none"/>
+      <input name="IL23" num_pins="1" equivalent="none"/>
+      <input name="IL22" num_pins="1" equivalent="none"/>
+      <input name="IL21" num_pins="1" equivalent="none"/>
+      <input name="IL20" num_pins="1" equivalent="none"/>
+      <input name="IL19" num_pins="1" equivalent="none"/>
+      <input name="IL18" num_pins="1" equivalent="none"/>
+      <input name="IL17" num_pins="1" equivalent="none"/>
+      <input name="IL16" num_pins="1" equivalent="none"/>
+      <input name="IL15" num_pins="1" equivalent="none"/>
+      <input name="IL14" num_pins="1" equivalent="none"/>
+      <input name="IL13" num_pins="1" equivalent="none"/>
+      <input name="IL12" num_pins="1" equivalent="none"/>
+      <input name="IL11" num_pins="1" equivalent="none"/>
+      <input name="IL10" num_pins="1" equivalent="none"/>
+      <input name="IL9" num_pins="1" equivalent="none"/>
+      <input name="IL8" num_pins="1" equivalent="none"/>
+      <input name="IL7" num_pins="1" equivalent="none"/>
+      <input name="IL6" num_pins="1" equivalent="none"/>
+      <input name="IL5" num_pins="1" equivalent="none"/>
+      <input name="IL4" num_pins="1" equivalent="none"/>
+      <input name="IL3" num_pins="1" equivalent="none"/>
+      <input name="IL2" num_pins="1" equivalent="none"/>
+      <input name="IL1" num_pins="1" equivalent="none"/>
+      <input name="IL0" num_pins="1" equivalent="none"/>
+      <input name="IS5" num_pins="1" equivalent="none"/>
+      <input name="IS4" num_pins="1" equivalent="none"/>
+      <input name="IS3" num_pins="1" equivalent="none"/>
+      <input name="IS2" num_pins="1" equivalent="none"/>
+      <input name="IS1" num_pins="1" equivalent="none"/>
+      <input name="IS0" num_pins="1" equivalent="none"/>
+      <output name="O23" num_pins="1" equivalent="none"/>
+      <output name="O22" num_pins="1" equivalent="none"/>
+      <output name="O21" num_pins="1" equivalent="none"/>
+      <output name="O20" num_pins="1" equivalent="none"/>
+      <output name="O19" num_pins="1" equivalent="none"/>
+      <output name="O18" num_pins="1" equivalent="none"/>
+      <output name="O17" num_pins="1" equivalent="none"/>
+      <output name="O16" num_pins="1" equivalent="none"/>
+      <output name="O15" num_pins="1" equivalent="none"/>
+      <output name="O14" num_pins="1" equivalent="none"/>
+      <output name="O13" num_pins="1" equivalent="none"/>
+      <output name="O12" num_pins="1" equivalent="none"/>
+      <output name="O11" num_pins="1" equivalent="none"/>
+      <output name="O10" num_pins="1" equivalent="none"/>
+      <output name="O9" num_pins="1" equivalent="none"/>
+      <output name="O8" num_pins="1" equivalent="none"/>
+      <output name="O7" num_pins="1" equivalent="none"/>
+      <output name="O6" num_pins="1" equivalent="none"/>
+      <output name="O5" num_pins="1" equivalent="none"/>
+      <output name="O4" num_pins="1" equivalent="none"/>
+      <output name="O3" num_pins="1" equivalent="none"/>
+      <output name="O2" num_pins="1" equivalent="none"/>
+      <output name="O1" num_pins="1" equivalent="none"/>
+      <output name="O0" num_pins="1" equivalent="none"/>
       <input name="sc_in" num_pins="4"/>
       <!--1->4-->
       <input name="cin" num_pins="1"/>
       <!--input name="cin_init" num_pins="1"/-->
-      <input name="sr0" num_pins="1"/>
-      <!-- FIX: implement flexible SR function; temporarily fucntions as (low-true) reset-->
-      <input name="sr1" num_pins="1"/>
-      <!-- FIX: implement flexible SR function; temporarily fucntions as (low-true) set-->
       <!--input name="set" num_pins="1"/>
       <input name="lreset" num_pins="1"/>
       <input name="sync_set" num_pins="1"/>
@@ -1431,32 +1622,37 @@
       <input name="reset" num_pins="1" is_non_clock_global="true"/>
       <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <!--input name="enable" num_pins="1"/-->
-      <input name="en1" num_pins="2"/>
-      <!-- 2 enables for lower 4 FLEs -->
-      <input name="en0" num_pins="2"/>
-      <!-- 2 enables for upper 4 FLEs -->
-      <output name="O" num_pins="16" equivalent="none"/>
-      <!-- 20->16 -->
-      <output name="Ofast" num_pins="8" equivalent="none"/>
       <output name="sc_out" num_pins="4"/>
       <!--1->4-->
       <output name="cout" num_pins="1"/>
       <clock name="clk" num_pins="16"/>
-      <!--4->16-->
+      <!--pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
+        <output name="logic0" num_pins="1"/>
+      </pb_type>
+      <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
+        <output name="logic1" num_pins="1"/>
+      </pb_type-->
+      <pb_type name="reg_ctl" blif_model=".subckt reg_ctl" num_pb="2">
+        <input name="sr" num_pins="1"/>
+        <input name="resetn" num_pins="1"/>
+        <input name="scan_resetn" num_pins="1"/>
+        <clock name="clk" num_pins="1"/>
+        <output name="rstn" num_pins="1"/>
+        <output name="rstn_sync" num_pins="1"/>
+        <!--output name="mode_o" num_pins="1"/-->
+        <output name="clk_o" num_pins="1"/>
+      </pb_type>
       <!-- Describe fracturable logic element -->
       <pb_type name="fle" num_pb="8">
         <input name="in" num_pins="6"/>
         <input name="cin" num_pins="1"/>
         <input name="sc_in" num_pins="2"/>
         <!-- 1->2 -->
-        <input name="set" num_pins="1"/>
-        <!-- FIX: combine into common SR, config as sync/async -->
-        <input name="reset" num_pins="1"/>
-        <!-- FIX: where's the second reset? -->
-        <!--input name="sync_set" num_pins="1"/>
-        <input name="sync_reset" num_pins="1"/-->
+        <input name="rstn" num_pins="1"/>
+        <input name="rstn_sync" num_pins="1"/>
         <input name="enable" num_pins="2"/>
-        <!-- 1->2 -->
+        <!--input name="reg_mode" num_pins="1"/-->
+        <!-- 0:invSR 1:SyncSR 2:invCK 3:Latch -->
         <input name="cascdn_i" num_pins="1"/>
         <input name="cascup_i" num_pins="1"/>
         <output name="cascdn_o" num_pins="1"/>
@@ -1477,22 +1673,15 @@
             <input name="cin" num_pins="1"/>
             <input name="sc_in" num_pins="2"/>
             <!-- 1->2 -->
-            <input name="set" num_pins="1"/>
-            <!-- FIX: combine into common SR, config as sync/async -->
-            <input name="reset" num_pins="1"/>
-            <!-- FIX: where's the second reset? -->
-            <!--input name="sync_set" num_pins="1"/>
-            <input name="sync_reset" num_pins="1"/-->
+            <input name="rstn" num_pins="1"/>
+            <input name="rstn_sync" num_pins="1"/>
             <input name="enable" num_pins="2"/>
+            <!--input name="reg_mode" num_pins="1"/-->
             <!-- 1->2 -->
             <input name="cascdn_i" num_pins="1"/>
-            <!-- cascade -->
             <input name="cascup_i" num_pins="1"/>
-            <!-- cascade -->
             <output name="cascdn_o" num_pins="1"/>
-            <!-- cascade -->
             <output name="cascup_o" num_pins="1"/>
-            <!-- cascade -->
             <output name="fast_o" num_pins="1"/>
             <!-- fast out -->
             <output name="out" num_pins="2"/>
@@ -1506,13 +1695,9 @@
               <output name="cout" num_pins="1"/>
               <output name="out" num_pins="2"/>
               <input name="cascdn_i" num_pins="1"/>
-              <!-- cascade -->
               <input name="cascup_i" num_pins="1"/>
-              <!-- cascade -->
               <output name="cascdn_o" num_pins="1"/>
-              <!-- cascade -->
               <output name="cascup_o" num_pins="1"/>
-              <!-- cascade -->
               <output name="lut6out" num_pins="1"/>
               <!-- fast out -->
               <pb_type name="frac_lut6" blif_model=".subckt frac_lut6" num_pb="1">
@@ -1654,12 +1839,12 @@
                 <direct name="direct10" input="adder_carry[1].cout" output="frac_logic.cout"/>
                 <!-- cout->cin -->
                 <!-- remove; unneeded (but it's faster!) -->
-                <mux name="mux0" input="adder_carry[0].sumout frac_lut6.lut5_out[0] frac_lut6.lut6_out" output="frac_logic.out[0]">
+                <mux name="mux0" input="adder_carry[0].sumout frac_lut6.lut5_out[0] frac_lut6.lut6_out frac_logic.in[5]" output="frac_logic.out[0]">
                   <delay_constant max="1.5e-10" min="1.4e-10" in_port="adder_carry[0].sumout" out_port="frac_logic.out[0]"/>
                   <delay_constant max="1.6e-10" min="1.5e-10" in_port="adder_carry[0].cout" out_port="frac_logic.out[0]"/>
                   <delay_constant max="1.1e-10" min="1e-10" in_port="frac_lut6.lut5_out[0]" out_port="frac_logic.out[0]"/>
                 </mux>
-                <mux name="mux1" input="adder_carry[1].sumout frac_lut6.lut5_out[1] frac_lut6.lut6_out" output="frac_logic.out[1]">
+                <mux name="mux1" input="adder_carry[1].sumout frac_lut6.lut5_out[1] frac_lut6.lut6_out frac_logic.in[5]" output="frac_logic.out[1]">
                   <delay_constant max="1.5e-10" min="1.4e-10" in_port="adder_carry[1].sumout" out_port="frac_logic.out[1]"/>
                   <delay_constant max="1.6e-10" min="1.4e-10" in_port="adder_carry[1].cout" out_port="frac_logic.out[1]"/>
                   <delay_constant max="1.5e-10" min="1.4e-10" in_port="frac_lut6.lut5_out[1]" out_port="frac_logic.out[1]"/>
@@ -1672,19 +1857,19 @@
               <input name="D" num_pins="1"/>
               <input name="SI" num_pins="1"/>
               <output name="SO" num_pins="1"/>
-              <input name="S" num_pins="1"/>
-              <!-- FIX: change to combined SR, config as sync/async;  Note: low-active in dti -->
               <input name="R" num_pins="1"/>
-              <!-- FIX: where's the second reset??  Note: low-active in dti -->
-              <!--input name="SYNC_S" num_pins="1"/-->
-              <!--input name="SYNC_R" num_pins="1"/-->
+              <!-- async rstn -->
+              <input name="RS" num_pins="1"/>
+              <!-- sync rstn -->
               <input name="E" num_pins="1"/>
+              <!--input name="MODE_SEL" num_pins="1"/-->
               <output name="Q" num_pins="1"/>
               <clock name="clk" num_pins="1"/>
               <T_setup value="6.34486e-11" port="ff_phy.D" clock="clk"/>
+              <!--T_setup value="6.34486e-11" port="ff_phy.SE" clock="clk"/-->
               <T_setup value="7.42229e-11" port="ff_phy.SI" clock="clk"/>
               <T_setup value="8.14058e-11" port="ff_phy.E" clock="clk"/>
-              <T_setup value="-6.704e-11" port="ff_phy.S" clock="clk"/>
+              <T_setup value="-6.704e-11" port="ff_phy.RS" clock="clk"/>
               <T_setup value="-8.73915e-11" port="ff_phy.R" clock="clk"/>
               <!--T_setup value="-6.704e-11" port="ff_phy.SYNC_S" clock="clk"/-->
               <!--T_setup value="-8.73915e-11" port="ff_phy.SYNC_R" clock="clk"/-->
@@ -1695,28 +1880,19 @@
             <interconnect>
               <!--fabric (fle)-->
               <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].clk"/>
-              <complete name="direct_reset" input="fabric.reset" output="ff_phy[1:0].R"/>
-              <!-- FIX: Where's the second reset?? -->
-              <complete name="direct_set" input="fabric.set" output="ff_phy[1:0].S"/>
+              <complete name="direct_reset" input="fabric.rstn" output="ff_phy[1:0].R"/>
+              <complete name="direct_sync_reset" input="fabric.rstn_sync" output="ff_phy[1:0].RS"/>
+              <!--complete name="direct_regmode" input="fabric.reg_mode" output="ff_phy[1:0].MODE_SEL"/-->
               <direct name="direct_enable" input="fabric.enable[1:0]" output="ff_phy[1:0].E"/>
-              <!--complete name="direct_sync_reset" input="fabric.sync_reset" output="ff_phy[1:0].SYNC_R"/-->
-              <!--complete name="direct_sync_set" input="fabric.sync_set" output="ff_phy[1:0].SYNC_S"/-->
               <direct name="direct_in" input="fabric.in[5:0]" output="frac_logic.in[5:0]"/>
               <direct name="direct_cin" input="fabric.cin" output="frac_logic.cin"/>
               <direct name="direct_cout" input="frac_logic.cout" output="fabric.cout"/>
               <direct name="fast_lut6_out" input="frac_logic.lut6out" output="fabric.fast_o"/>
               <!-- fast lut output -->
               <direct name="cascup_o" input="frac_logic.cascup_o" output="fabric.cascup_o"/>
-              <!-- cascade -->
               <direct name="cascdn_o" input="frac_logic.cascdn_o" output="fabric.cascdn_o"/>
-              <!-- cascade -->
               <direct name="cascup_i" input="fabric.cascup_i" output="frac_logic.cascup_i"/>
-              <!-- cascade -->
               <direct name="cascdn_i" input="fabric.cascdn_i" output="frac_logic.cascdn_i"/>
-              <!-- cascade -->
-              <!--direct name="direct_fabric_scin" input="fabric.sc_in" output="ff_phy[0].SI"/-->
-              <!--direct name="direct_fabric_sc_chain" input="ff_phy[0].SO" output="ff_phy[1].SI"/-->
-              <!--direct name="direct_fabric_scout" input="ff_phy[1].SO" output="fabric.sc_out"/-->
               <direct name="direct_fabric_scin" input="fabric.sc_in" output="ff_phy[1:0].SI"/>
               <direct name="direct_fabric_scout" input="ff_phy[1:0].SO" output="fabric.sc_out"/>
               <direct name="direct_frac_out1" input="frac_logic.out[0]" output="ff_phy[0].D"/>
@@ -1733,6 +1909,7 @@
           </pb_type>
           <!--fabric (fle)-->
           <interconnect>
+            <!--fle-->
             <direct name="direct1" input="fle.in" output="fabric.in"/>
             <direct name="direct3" input="fle.sc_in" output="fabric.sc_in"/>
             <direct name="direct4" input="fle.cin" output="fabric.cin"/>
@@ -1740,21 +1917,16 @@
             <direct name="direct7" input="fabric.sc_out" output="fle.sc_out"/>
             <direct name="direct8" input="fabric.cout" output="fle.cout"/>
             <direct name="direct9" input="fle.clk" output="fabric.clk"/>
-            <direct name="direct10" input="fle.reset" output="fabric.reset"/>
-            <direct name="direct11" input="fle.set" output="fabric.set"/>
+            <direct name="direct10" input="fle.rstn" output="fabric.rstn"/>
+            <direct name="direct11" input="fle.rstn_sync" output="fabric.rstn_sync"/>
             <direct name="direct12" input="fle.enable" output="fabric.enable"/>
-            <!--direct name="direct13" input="fle.sync_reset" output="fabric.sync_reset"/-->
-            <!--direct name="direct14" input="fle.sync_set" output="fabric.sync_set"/-->
+            <!--direct name="direct13" input="fle.reg_mode" output="fabric.reg_mode"/-->
             <direct name="direct15" input="fabric.fast_o" output="fle.fast_o"/>
             <!-- fast output -->
             <direct name="direct16" input="fabric.cascup_o" output="fle.cascup_o"/>
-            <!-- cascade -->
             <direct name="direct17" input="fabric.cascdn_o" output="fle.cascdn_o"/>
-            <!-- cascade -->
             <direct name="direct18" input="fle.cascup_i" output="fabric.cascup_i"/>
-            <!-- cascade -->
             <direct name="direct19" input="fle.cascdn_i" output="fabric.cascdn_i"/>
-            <!-- cascade -->
           </interconnect>
         </mode>
         <!--physical (FLE)-->
@@ -1763,8 +1935,8 @@
         <mode name="n1_lut6">
           <pb_type name="ble6" num_pb="1">
             <input name="in" num_pins="6"/>
-            <input name="set" num_pins="1"/>
-            <input name="reset" num_pins="1"/>
+            <input name="rstn" num_pins="1"/>
+            <input name="rstn_sync" num_pins="1"/>
             <!--input name="sync_set" num_pins="1"/-->
             <!--input name="sync_reset" num_pins="1"/-->
             <input name="enable" num_pins="2"/>
@@ -1795,8 +1967,8 @@
             <!--REGISTER-->
             <pb_type name="ff" num_pb="1">
               <input name="D" num_pins="1"/>
-              <input name="S" num_pins="1"/>
               <input name="R" num_pins="1"/>
+              <input name="RS" num_pins="1"/>
               <!--input name="SYNC_S" num_pins="1"/-->
               <!--input name="SYNC_R" num_pins="1"/-->
               <input name="E" num_pins="1"/>
@@ -1850,15 +2022,15 @@
               <mode name="DFFSRE">
                 <pb_type name="DFFSRE" num_pb="1" blif_model=".subckt dffsre">
                   <input name="D" num_pins="1"/>
-                  <input name="S" num_pins="1"/>
+                  <!--input name="S" num_pins="1"/-->
                   <input name="R" num_pins="1"/>
                   <input name="E" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
                   <T_setup value="6.34486e-11" port="DFFSRE.D" clock="C"/>
                   <T_hold value="2.87314e-11" port="DFFSRE.D" clock="C"/>
-                  <T_setup value="-6.704e-11" port="DFFSRE.S" clock="C"/>
-                  <T_hold value="8.85886e-11" port="DFFSRE.S" clock="C"/>
+                  <!--T_setup value="-6.704e-11" port="DFFSRE.S" clock="C"/-->
+                  <!--T_hold value="8.85886e-11" port="DFFSRE.S" clock="C"/-->
                   <T_setup value="-8.73915e-11" port="DFFSRE.R" clock="C"/>
                   <T_hold value="1.3408e-10" port="DFFSRE.R" clock="C"/>
                   <T_setup value="8.14058e-11" port="DFFSRE.E" clock="C"/>
@@ -1867,7 +2039,7 @@
                 </pb_type>
                 <interconnect>
                   <direct name="D_to_D" input="ff.D" output="DFFSRE.D"/>
-                  <direct name="S_to_S" input="ff.S" output="DFFSRE.S"/>
+                  <!--direct name="S_to_S" input="ff.S" output="DFFSRE.S"/-->
                   <direct name="R_to_R" input="ff.R" output="DFFSRE.R"/>
                   <direct name="E_to_E" input="ff.E" output="DFFSRE.E"/>
                   <direct name="Q_to_Q" input="DFFSRE.Q" output="ff.Q"/>
@@ -1877,15 +2049,15 @@
               <mode name="DFFNSRE">
                 <pb_type name="DFFNSRE" num_pb="1" blif_model=".subckt dffnsre">
                   <input name="D" num_pins="1"/>
-                  <input name="S" num_pins="1"/>
+                  <!--input name="S" num_pins="1"/-->
                   <input name="R" num_pins="1"/>
                   <input name="E" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
                   <T_setup value="6.34486e-11" port="DFFNSRE.D" clock="C"/>
                   <T_hold value="2.87314e-11" port="DFFNSRE.D" clock="C"/>
-                  <T_setup value="-6.704e-11" port="DFFNSRE.S" clock="C"/>
-                  <T_hold value="8.85886e-11" port="DFFNSRE.S" clock="C"/>
+                  <!--T_setup value="-6.704e-11" port="DFFNSRE.S" clock="C"/-->
+                  <!--T_hold value="8.85886e-11" port="DFFNSRE.S" clock="C"/-->
                   <T_setup value="-8.73915e-11" port="DFFNSRE.R" clock="C"/>
                   <T_hold value="1.3408e-10" port="DFFNSRE.R" clock="C"/>
                   <T_setup value="8.14058e-11" port="DFFNSRE.E" clock="C"/>
@@ -1894,7 +2066,7 @@
                 </pb_type>
                 <interconnect>
                   <direct name="D_to_D" input="ff.D" output="DFFNSRE.D"/>
-                  <direct name="S_to_S" input="ff.S" output="DFFNSRE.S"/>
+                  <!--direct name="S_to_S" input="ff.S" output="DFFNSRE.S"/-->
                   <direct name="R_to_R" input="ff.R" output="DFFNSRE.R"/>
                   <direct name="E_to_E" input="ff.E" output="DFFNSRE.E"/>
                   <direct name="Q_to_Q" input="DFFNSRE.Q" output="ff.Q"/>
@@ -1904,15 +2076,15 @@
               <mode name="SDFFSRE">
                 <pb_type name="SDFFSRE" num_pb="1" blif_model=".subckt sdffsre">
                   <input name="D" num_pins="1"/>
-                  <input name="S" num_pins="1"/>
+                  <!--input name="S" num_pins="1"/-->
                   <input name="R" num_pins="1"/>
                   <input name="E" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
                   <T_setup value="6.34486e-11" port="SDFFSRE.D" clock="C"/>
                   <T_hold value="2.87314e-11" port="SDFFSRE.D" clock="C"/>
-                  <T_setup value="-6.704e-11" port="SDFFSRE.S" clock="C"/>
-                  <T_hold value="8.85886e-11" port="SDFFSRE.S" clock="C"/>
+                  <!--T_setup value="-6.704e-11" port="SDFFSRE.S" clock="C"/-->
+                  <!--T_hold value="8.85886e-11" port="SDFFSRE.S" clock="C"/-->
                   <T_setup value="-8.73915e-11" port="SDFFSRE.R" clock="C"/>
                   <T_hold value="1.3408e-10" port="SDFFSRE.R" clock="C"/>
                   <T_setup value="8.14058e-11" port="SDFFSRE.E" clock="C"/>
@@ -1922,7 +2094,7 @@
                 <interconnect>
                   <direct name="D_to_D" input="ff.D" output="SDFFSRE.D"/>
                   <!--direct name="S_to_S" input="ff.SYNC_S" output="SDFFSRE.S"/-->
-                  <!--direct name="R_to_R" input="ff.SYNC_R" output="SDFFSRE.R"/-->
+                  <direct name="RS_to_R" input="ff.RS" output="SDFFSRE.R"/>
                   <direct name="E_to_E" input="ff.E" output="SDFFSRE.E"/>
                   <direct name="Q_to_Q" input="SDFFSRE.Q" output="ff.Q"/>
                   <direct name="clk_to_C" input="ff.clk" output="SDFFSRE.C"/>
@@ -1931,15 +2103,15 @@
               <mode name="SDFFNSRE">
                 <pb_type name="SDFFNSRE" num_pb="1" blif_model=".subckt sdffnsre">
                   <input name="D" num_pins="1"/>
-                  <input name="S" num_pins="1"/>
+                  <!--input name="S" num_pins="1"/-->
                   <input name="R" num_pins="1"/>
                   <input name="E" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
                   <T_setup value="6.34486e-11" port="SDFFNSRE.D" clock="C"/>
                   <T_hold value="2.87314e-11" port="SDFFNSRE.D" clock="C"/>
-                  <T_setup value="-6.704e-11" port="SDFFNSRE.S" clock="C"/>
-                  <T_hold value="8.85886e-11" port="SDFFNSRE.S" clock="C"/>
+                  <!--T_setup value="-6.704e-11" port="SDFFNSRE.S" clock="C"/-->
+                  <!--T_hold value="8.85886e-11" port="SDFFNSRE.S" clock="C"/-->
                   <T_setup value="-8.73915e-11" port="SDFFNSRE.R" clock="C"/>
                   <T_hold value="1.3408e-10" port="SDFFNSRE.R" clock="C"/>
                   <T_setup value="8.14058e-11" port="SDFFNSRE.E" clock="C"/>
@@ -1949,7 +2121,7 @@
                 <interconnect>
                   <direct name="D_to_D" input="ff.D" output="SDFFNSRE.D"/>
                   <!--direct name="S_to_S" input="ff.SYNC_S" output="SDFFNSRE.S"/-->
-                  <!--direct name="R_to_R" input="ff.SYNC_R" output="SDFFNSRE.R"/-->
+                  <direct name="RS_to_R" input="ff.RS" output="SDFFNSRE.R"/>
                   <direct name="E_to_E" input="ff.E" output="SDFFNSRE.E"/>
                   <direct name="Q_to_Q" input="SDFFNSRE.Q" output="ff.Q"/>
                   <direct name="clk_to_C" input="ff.clk" output="SDFFNSRE.C"/>
@@ -1988,15 +2160,15 @@
               <mode name="LATCHSRE">
                 <pb_type name="LATCHSRE" num_pb="1" blif_model=".subckt latchsre">
                   <input name="D" num_pins="1"/>
-                  <input name="S" num_pins="1"/>
+                  <!--input name="S" num_pins="1"/-->
                   <input name="R" num_pins="1"/>
                   <input name="E" num_pins="1"/>
                   <clock name="G" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <T_setup value="6.34486e-11" port="LATCHSRE.D" clock="G"/>
                   <T_hold value="2.87314e-11" port="LATCHSRE.D" clock="G"/>
-                  <T_setup value="-6.704e-11" port="LATCHSRE.S" clock="G"/>
-                  <T_hold value="8.85886e-11" port="LATCHSRE.S" clock="G"/>
+                  <!--T_setup value="-6.704e-11" port="LATCHSRE.S" clock="G"/-->
+                  <!--T_hold value="8.85886e-11" port="LATCHSRE.S" clock="G"/-->
                   <T_setup value="-8.73915e-11" port="LATCHSRE.R" clock="G"/>
                   <T_hold value="1.3408e-10" port="LATCHSRE.R" clock="G"/>
                   <T_setup value="8.14058e-11" port="LATCHSRE.E" clock="G"/>
@@ -2005,7 +2177,7 @@
                 </pb_type>
                 <interconnect>
                   <direct name="D_to_D" input="ff.D" output="LATCHSRE.D"/>
-                  <direct name="S_to_S" input="ff.S" output="LATCHSRE.S"/>
+                  <!--direct name="S_to_S" input="ff.S" output="LATCHSRE.S"/-->
                   <direct name="R_to_R" input="ff.R" output="LATCHSRE.R"/>
                   <direct name="E_to_E" input="ff.E" output="LATCHSRE.E"/>
                   <direct name="clk_to_G" input="ff.clk" output="LATCHSRE.G"/>
@@ -2015,15 +2187,15 @@
               <mode name="LATCHNSRE">
                 <pb_type name="LATCHNSRE" num_pb="1" blif_model=".subckt latchnsre">
                   <input name="D" num_pins="1"/>
-                  <input name="S" num_pins="1"/>
+                  <!--input name="S" num_pins="1"/-->
                   <input name="R" num_pins="1"/>
                   <input name="E" num_pins="1"/>
                   <clock name="G" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <T_setup value="6.34486e-11" port="LATCHNSRE.D" clock="G"/>
                   <T_hold value="2.87314e-11" port="LATCHNSRE.D" clock="G"/>
-                  <T_setup value="-6.704e-11" port="LATCHNSRE.S" clock="G"/>
-                  <T_hold value="8.85886e-11" port="LATCHNSRE.S" clock="G"/>
+                  <!--T_setup value="-6.704e-11" port="LATCHNSRE.S" clock="G"/-->
+                  <!--T_hold value="8.85886e-11" port="LATCHNSRE.S" clock="G"/-->
                   <T_setup value="-8.73915e-11" port="LATCHNSRE.R" clock="G"/>
                   <T_hold value="1.3408e-10" port="LATCHNSRE.R" clock="G"/>
                   <T_setup value="8.14058e-11" port="LATCHNSRE.E" clock="G"/>
@@ -2032,7 +2204,7 @@
                 </pb_type>
                 <interconnect>
                   <direct name="D_to_D" input="ff.D" output="LATCHNSRE.D"/>
-                  <direct name="S_to_S" input="ff.S" output="LATCHNSRE.S"/>
+                  <!--direct name="S_to_S" input="ff.S" output="LATCHNSRE.S"/-->
                   <direct name="R_to_R" input="ff.R" output="LATCHNSRE.R"/>
                   <direct name="E_to_E" input="ff.E" output="LATCHNSRE.E"/>
                   <direct name="clk_to_G" input="ff.clk" output="LATCHNSRE.G"/>
@@ -2047,8 +2219,8 @@
                 <pack_pattern name="lut6-out" in_port="lut6.out" out_port="ff.D"/>
               </direct>
               <direct name="direct3" input="ble6.clk" output="ff.clk"/>
-              <direct name="direct4" input="ble6.set" output="ff.S"/>
-              <direct name="direct5" input="ble6.reset" output="ff.R"/>
+              <direct name="direct4" input="ble6.rstn" output="ff.R"/>
+              <direct name="direct5" input="ble6.rstn_sync" output="ff.RS"/>
               <complete name="enable" input="ble6.enable" output="ff.E"/>
               <direct name="fast_out" input="lut6.out" output="ble6.fast_o"/>
               <!--direct name="direct7" input="ble6.sync_set" output="ff.SYNC_S"/-->
@@ -2065,8 +2237,8 @@
             <direct name="direct2" input="ble6.out" output="fle.out"/>
             <direct name="direct9" input="ble6.fast_o" output="fle.fast_o"/>
             <direct name="direct3" input="fle.clk" output="ble6.clk"/>
-            <direct name="direct4" input="fle.set" output="ble6.set"/>
-            <direct name="direct5" input="fle.reset" output="ble6.reset"/>
+            <direct name="direct4" input="fle.rstn" output="ble6.rstn"/>
+            <direct name="direct5" input="fle.rstn_sync" output="ble6.rstn_sync"/>
             <direct name="direct6" input="fle.enable" output="ble6.enable"/>
             <!--direct name="direct7" input="fle.sync_set" output="ble6.sync_set"/-->
             <!--direct name="direct8" input="fle.sync_reset" output="ble6.sync_reset"/-->
@@ -2078,8 +2250,8 @@
           <pb_type name="lut5inter" num_pb="1">
             <input name="in" num_pins="5"/>
             <input name="cin" num_pins="1"/>
-            <input name="set" num_pins="1"/>
-            <input name="reset" num_pins="1"/>
+            <input name="rstn" num_pins="1"/>
+            <input name="rstn_sync" num_pins="1"/>
             <!--input name="sync_set" num_pins="1"/>
             <input name="sync_reset" num_pins="1"/-->
             <input name="enable" num_pins="2"/>
@@ -2089,8 +2261,8 @@
             <pb_type name="ble5" num_pb="2">
               <input name="in" num_pins="5"/>
               <input name="cin" num_pins="1"/>
-              <input name="set" num_pins="1"/>
-              <input name="reset" num_pins="1"/>
+              <input name="rstn" num_pins="1"/>
+              <input name="rstn_sync" num_pins="1"/>
               <!--input name="sync_set" num_pins="1"/>
               <input name="sync_reset" num_pins="1"/-->
               <input name="enable" num_pins="1"/>
@@ -2100,9 +2272,8 @@
               <mode name="blut5">
                 <pb_type name="flut5" num_pb="1">
                   <input name="in" num_pins="5"/>
-                  <input name="set" num_pins="1"/>
-                  <input name="reset" num_pins="1"/>
-                  <!-- FIX: where's the other reset? -->
+                  <input name="rstn" num_pins="1"/>
+                  <input name="rstn_sync" num_pins="1"/>
                   <!--input name="sync_set" num_pins="1"/>
                   <input name="sync_reset" num_pins="1"/-->
                   <input name="enable" num_pins="1"/>
@@ -2132,7 +2303,7 @@
                   <!--REGISTER-->
                   <pb_type name="ff" num_pb="1">
                     <input name="D" num_pins="1"/>
-                    <input name="S" num_pins="1"/>
+                    <input name="RS" num_pins="1"/>
                     <input name="R" num_pins="1"/>
                     <!--input name="SYNC_S" num_pins="1"/-->
                     <!--input name="SYNC_R" num_pins="1"/-->
@@ -2190,15 +2361,15 @@
                     <mode name="DFFSRE">
                       <pb_type name="DFFSRE" num_pb="1" blif_model=".subckt dffsre">
                         <input name="D" num_pins="1"/>
-                        <input name="S" num_pins="1"/>
+                        <!--input name="S" num_pins="1"/-->
                         <input name="R" num_pins="1"/>
                         <input name="E" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <clock name="C" num_pins="1"/>
                         <T_setup value="6.34486e-11" port="DFFSRE.D" clock="C"/>
                         <T_hold value="2.87314e-11" port="DFFSRE.D" clock="C"/>
-                        <T_setup value="-6.704e-11" port="DFFSRE.S" clock="C"/>
-                        <T_hold value="8.85886e-11" port="DFFSRE.S" clock="C"/>
+                        <!--T_setup value="-6.704e-11" port="DFFSRE.S" clock="C"/-->
+                        <!--T_hold value="8.85886e-11" port="DFFSRE.S" clock="C"/-->
                         <T_setup value="-8.73915e-11" port="DFFSRE.R" clock="C"/>
                         <T_hold value="1.3408e-10" port="DFFSRE.R" clock="C"/>
                         <T_setup value="8.14058e-11" port="DFFSRE.E" clock="C"/>
@@ -2207,7 +2378,7 @@
                       </pb_type>
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="DFFSRE.D"/>
-                        <direct name="S_to_S" input="ff.S" output="DFFSRE.S"/>
+                        <!--direct name="S_to_S" input="ff.S" output="DFFSRE.S"/-->
                         <direct name="R_to_R" input="ff.R" output="DFFSRE.R"/>
                         <direct name="E_to_E" input="ff.E" output="DFFSRE.E"/>
                         <direct name="Q_to_Q" input="DFFSRE.Q" output="ff.Q"/>
@@ -2218,15 +2389,15 @@
                     <mode name="DFFNSRE">
                       <pb_type name="DFFNSRE" num_pb="1" blif_model=".subckt dffnsre">
                         <input name="D" num_pins="1"/>
-                        <input name="S" num_pins="1"/>
+                        <!--input name="S" num_pins="1"/-->
                         <input name="R" num_pins="1"/>
                         <input name="E" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <clock name="C" num_pins="1"/>
                         <T_setup value="6.34486e-11" port="DFFNSRE.D" clock="C"/>
                         <T_hold value="2.87314e-11" port="DFFNSRE.D" clock="C"/>
-                        <T_setup value="-6.704e-11" port="DFFNSRE.S" clock="C"/>
-                        <T_hold value="8.85886e-11" port="DFFNSRE.S" clock="C"/>
+                        <!--T_setup value="-6.704e-11" port="DFFNSRE.S" clock="C"/-->
+                        <!--T_hold value="8.85886e-11" port="DFFNSRE.S" clock="C"/-->
                         <T_setup value="-8.73915e-11" port="DFFNSRE.R" clock="C"/>
                         <T_hold value="1.3408e-10" port="DFFNSRE.R" clock="C"/>
                         <T_setup value="8.14058e-11" port="DFFNSRE.E" clock="C"/>
@@ -2235,7 +2406,7 @@
                       </pb_type>
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="DFFNSRE.D"/>
-                        <direct name="S_to_S" input="ff.S" output="DFFNSRE.S"/>
+                        <!--direct name="S_to_S" input="ff.S" output="DFFNSRE.S"/-->
                         <direct name="R_to_R" input="ff.R" output="DFFNSRE.R"/>
                         <direct name="E_to_E" input="ff.E" output="DFFNSRE.E"/>
                         <direct name="Q_to_Q" input="DFFNSRE.Q" output="ff.Q"/>
@@ -2246,15 +2417,15 @@
                     <mode name="SDFFSRE">
                       <pb_type name="SDFFSRE" num_pb="1" blif_model=".subckt sdffsre">
                         <input name="D" num_pins="1"/>
-                        <input name="S" num_pins="1"/>
+                        <!--input name="S" num_pins="1"/-->
                         <input name="R" num_pins="1"/>
                         <input name="E" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <clock name="C" num_pins="1"/>
                         <T_setup value="6.34486e-11" port="SDFFSRE.D" clock="C"/>
                         <T_hold value="2.87314e-11" port="SDFFSRE.D" clock="C"/>
-                        <T_setup value="-6.704e-11" port="SDFFSRE.S" clock="C"/>
-                        <T_hold value="8.85886e-11" port="SDFFSRE.S" clock="C"/>
+                        <!--T_setup value="-6.704e-11" port="SDFFSRE.S" clock="C"/-->
+                        <!--T_hold value="8.85886e-11" port="SDFFSRE.S" clock="C"/-->
                         <T_setup value="-8.73915e-11" port="SDFFSRE.R" clock="C"/>
                         <T_hold value="1.3408e-10" port="SDFFSRE.R" clock="C"/>
                         <T_setup value="8.14058e-11" port="SDFFSRE.E" clock="C"/>
@@ -2264,7 +2435,7 @@
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="SDFFSRE.D"/>
                         <!--direct name="S_to_S" input="ff.SYNC_S" output="SDFFSRE.S"/-->
-                        <!--direct name="R_to_R" input="ff.SYNC_R" output="SDFFSRE.R"/-->
+                        <direct name="RS_to_R" input="ff.RS" output="SDFFSRE.R"/>
                         <direct name="E_to_E" input="ff.E" output="SDFFSRE.E"/>
                         <direct name="Q_to_Q" input="SDFFSRE.Q" output="ff.Q"/>
                         <direct name="clk_to_C" input="ff.clk" output="SDFFSRE.C"/>
@@ -2274,15 +2445,15 @@
                     <mode name="SDFFNSRE">
                       <pb_type name="SDFFNSRE" num_pb="1" blif_model=".subckt sdffnsre">
                         <input name="D" num_pins="1"/>
-                        <input name="S" num_pins="1"/>
+                        <!--input name="S" num_pins="1"/-->
                         <input name="R" num_pins="1"/>
                         <input name="E" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <clock name="C" num_pins="1"/>
                         <T_setup value="6.34486e-11" port="SDFFNSRE.D" clock="C"/>
                         <T_hold value="2.87314e-11" port="SDFFNSRE.D" clock="C"/>
-                        <T_setup value="-6.704e-11" port="SDFFNSRE.S" clock="C"/>
-                        <T_hold value="8.85886e-11" port="SDFFNSRE.S" clock="C"/>
+                        <!--T_setup value="-6.704e-11" port="SDFFNSRE.S" clock="C"/-->
+                        <!--T_hold value="8.85886e-11" port="SDFFNSRE.S" clock="C"/-->
                         <T_setup value="-8.73915e-11" port="SDFFNSRE.R" clock="C"/>
                         <T_hold value="1.3408e-10" port="SDFFNSRE.R" clock="C"/>
                         <T_setup value="8.14058e-11" port="SDFFNSRE.E" clock="C"/>
@@ -2292,7 +2463,7 @@
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="SDFFNSRE.D"/>
                         <!--direct name="S_to_S" input="ff.SYNC_S" output="SDFFNSRE.S"/-->
-                        <!--direct name="R_to_R" input="ff.SYNC_R" output="SDFFNSRE.R"/-->
+                        <direct name="RS_to_R" input="ff.RS" output="SDFFNSRE.R"/>
                         <direct name="E_to_E" input="ff.E" output="SDFFNSRE.E"/>
                         <direct name="Q_to_Q" input="SDFFNSRE.Q" output="ff.Q"/>
                         <direct name="clk_to_C" input="ff.clk" output="SDFFNSRE.C"/>
@@ -2334,15 +2505,15 @@
                     <mode name="LATCHSRE">
                       <pb_type name="LATCHSRE" num_pb="1" blif_model=".subckt latchsre">
                         <input name="D" num_pins="1"/>
-                        <input name="S" num_pins="1"/>
+                        <!--input name="S" num_pins="1"/-->
                         <input name="R" num_pins="1"/>
                         <input name="E" num_pins="1"/>
                         <clock name="G" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <T_setup value="6.34486e-11" port="LATCHSRE.D" clock="G"/>
                         <T_hold value="2.87314e-11" port="LATCHSRE.D" clock="G"/>
-                        <T_setup value="-6.704e-11" port="LATCHSRE.S" clock="G"/>
-                        <T_hold value="8.85886e-11" port="LATCHSRE.S" clock="G"/>
+                        <!--T_setup value="-6.704e-11" port="LATCHSRE.S" clock="G"/-->
+                        <!--T_hold value="8.85886e-11" port="LATCHSRE.S" clock="G"/-->
                         <T_setup value="-8.73915e-11" port="LATCHSRE.R" clock="G"/>
                         <T_hold value="1.3408e-10" port="LATCHSRE.R" clock="G"/>
                         <T_setup value="8.14058e-11" port="LATCHSRE.E" clock="G"/>
@@ -2351,7 +2522,7 @@
                       </pb_type>
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="LATCHSRE.D"/>
-                        <direct name="S_to_S" input="ff.S" output="LATCHSRE.S"/>
+                        <!--direct name="S_to_S" input="ff.S" output="LATCHSRE.S"/-->
                         <direct name="R_to_R" input="ff.R" output="LATCHSRE.R"/>
                         <direct name="E_to_E" input="ff.E" output="LATCHSRE.E"/>
                         <direct name="clk_to_G" input="ff.clk" output="LATCHSRE.G"/>
@@ -2362,15 +2533,15 @@
                     <mode name="LATCHNSRE">
                       <pb_type name="LATCHNSRE" num_pb="1" blif_model=".subckt latchnsre">
                         <input name="D" num_pins="1"/>
-                        <input name="S" num_pins="1"/>
+                        <!--input name="S" num_pins="1"/-->
                         <input name="R" num_pins="1"/>
                         <input name="E" num_pins="1"/>
                         <clock name="G" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <T_setup value="6.34486e-11" port="LATCHNSRE.D" clock="G"/>
                         <T_hold value="2.87314e-11" port="LATCHNSRE.D" clock="G"/>
-                        <T_setup value="-6.704e-11" port="LATCHNSRE.S" clock="G"/>
-                        <T_hold value="8.85886e-11" port="LATCHNSRE.S" clock="G"/>
+                        <!--T_setup value="-6.704e-11" port="LATCHNSRE.S" clock="G"/-->
+                        <!--T_hold value="8.85886e-11" port="LATCHNSRE.S" clock="G"/-->
                         <T_setup value="-8.73915e-11" port="LATCHNSRE.R" clock="G"/>
                         <T_hold value="1.3408e-10" port="LATCHNSRE.R" clock="G"/>
                         <T_setup value="8.14058e-11" port="LATCHNSRE.E" clock="G"/>
@@ -2379,7 +2550,7 @@
                       </pb_type>
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="LATCHNSRE.D"/>
-                        <direct name="S_to_S" input="ff.S" output="LATCHNSRE.S"/>
+                        <!--direct name="S_to_S" input="ff.S" output="LATCHNSRE.S"/-->
                         <direct name="R_to_R" input="ff.R" output="LATCHNSRE.R"/>
                         <direct name="E_to_E" input="ff.E" output="LATCHNSRE.E"/>
                         <direct name="clk_to_G" input="ff.clk" output="LATCHNSRE.G"/>
@@ -2395,8 +2566,8 @@
                       <pack_pattern name="lut5-out" in_port="lut5.out" out_port="ff.D"/>
                     </direct>
                     <direct name="direct3" input="flut5.clk" output="ff.clk"/>
-                    <direct name="direct4" input="flut5.set" output="ff.S"/>
-                    <direct name="direct5" input="flut5.reset" output="ff.R"/>
+                    <direct name="direct4" input="flut5.rstn" output="ff.R"/>
+                    <direct name="direct5" input="flut5.rstn_sync" output="ff.RS"/>
                     <direct name="direct6" input="flut5.enable" output="ff.E"/>
                     <!--direct name="direct7" input="flut5.sync_set" output="ff.SYNC_S"/-->
                     <!--direct name="direct8" input="flut5.sync_reset" output="ff.SYNC_R"/-->
@@ -2411,8 +2582,8 @@
                   <direct name="direct1" input="ble5.in" output="flut5.in"/>
                   <direct name="direct2" input="flut5.out" output="ble5.out"/>
                   <direct name="direct3" input="ble5.clk" output="flut5.clk"/>
-                  <direct name="direct4" input="ble5.set" output="flut5.set"/>
-                  <direct name="direct5" input="ble5.reset" output="flut5.reset"/>
+                  <direct name="direct4" input="ble5.rstn" output="flut5.rstn"/>
+                  <direct name="direct5" input="ble5.rstn_sync" output="flut5.rstn_sync"/>
                   <direct name="direct6" input="ble5.enable" output="flut5.enable"/>
                   <!--direct name="direct7" input="ble5.sync_set" output="flut5.sync_set"/>
                   <direct name="direct8" input="ble5.sync_reset" output="flut5.sync_reset"/-->
@@ -2536,8 +2707,8 @@
                 <pack_pattern name="carrychain" in_port="ble5[0:0].cout" out_port="ble5[1:1].cin"/>
                 <delay_constant max="5.1577e-11" min="4.0588e-11" in_port="ble5[0:0].cout" out_port="ble5[1:1].cin"/>
               </direct>
-              <complete name="set" input="lut5inter.set" output="ble5[1:0].set"/>
-              <complete name="reset" input="lut5inter.reset" output="ble5[1:0].reset"/>
+              <complete name="set" input="lut5inter.rstn" output="ble5[1:0].rstn"/>
+              <complete name="reset" input="lut5inter.rstn_sync" output="ble5[1:0].rstn_sync"/>
               <!--complete name="sync_set" input="lut5inter.sync_set" output="ble5[1:0].sync_set"/>
               <complete name="sync_reset" input="lut5inter.sync_reset" output="ble5[1:0].sync_reset"/-->
               <direct name="enable" input="lut5inter.enable[1:0]" output="ble5[1:0].enable"/>
@@ -2553,8 +2724,8 @@
             <direct name="carry_out" input="lut5inter.cout" output="fle.cout">
               <pack_pattern name="carrychain" in_port="lut5inter.cout" out_port="fle.cout"/>
             </direct>
-            <direct name="set" input="fle.set" output="lut5inter.set"/>
-            <direct name="reset" input="fle.reset" output="lut5inter.reset"/>
+            <direct name="set" input="fle.rstn" output="lut5inter.rstn"/>
+            <direct name="reset" input="fle.rstn_sync" output="lut5inter.rstn_sync"/>
             <direct name="enable" input="fle.enable[1:0]" output="lut5inter.enable[1:0]"/>
             <!--direct name="sync_set" input="fle.sync_set" output="lut5inter.sync_set"/>
             <direct name="sync_reset" input="fle.sync_reset" output="lut5inter.sync_reset"/-->
@@ -2624,106 +2795,240 @@
         <!--shift_register-->
       </pb_type>
       <!--CLB ROUTING-->
-      <!--original: -->
-      <!--"crossbar0" input="clb.I0 lb.I3 fle[1:0].out fle[3:2].out fle[8:8].out" output="fle[9:0].in[0]"-->
-      <!--"crossbar1" input="clb.I1 clb.I2 fle[3:2].out fle[5:4].out fle[9:9].out" output="fle[9:0].in[1]"-->
-      <!--"crossbar2" input="clb.I0 clb.I2 fle[5:4].out fle[7:6].out fle[8:8].out" output="fle[9:0].in[2]"-->
-      <!-- Jim's change#1 (feedback distribution; no change in mux sizes, no impact on area): -->
       <interconnect>
-        <!--complete name="crossbar0" input="clb.I0 clb.I3 fle[7:0].out[0]" output="fle[7:0].in[0]"-->
-        <!-- move these to faster pins -->
-        <complete name="crossbar0" input="clb.I0 clb.I3" output="fle[7:0].in[0]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[7:0].in[0]"/>
-          <!--delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[7:0].out[0]" out_port="fle[7:0].in[0]" /-->
+        <!-- this is the same in every tile type: how we connect CB outputs (IPINs) to local routing inputs -->
+        <!-- except that the tile name and the delay parameter names change -->
+        <mux name="II47" input="clb.IG31 clb.IG30 clb.IG29 clb.IG28 clb.IG27 clb.IG1  clb.IL31 clb.IL29 clb.IL27 clb.IL25" output="fle[7].in[5]">
+          <delay_constant in_port="clb.IG31 clb.IG30 clb.IG29 clb.IG28 clb.IG27 clb.IG1  clb.IL31 clb.IL29 clb.IL27 clb.IL25" out_port="fle[7].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II46" input="clb.IG26 clb.IG25 clb.IG24 clb.IG22 clb.IG8  clb.IL30 clb.IL28 clb.IL26 clb.IL24" output="fle[7].in[4]">
+          <delay_constant in_port="clb.IG26 clb.IG25 clb.IG24 clb.IG22 clb.IG8  clb.IL30 clb.IL28 clb.IL26 clb.IL24" out_port="fle[7].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II45" input="clb.IG20 clb.IG19 clb.IG18 clb.IG17 clb.IG0  clb.IL31 clb.IL29 clb.IL27 clb.IL25" output="fle[7].in[3]">
+          <delay_constant in_port="clb.IG20 clb.IG19 clb.IG18 clb.IG17 clb.IG0  clb.IL31 clb.IL29 clb.IL27 clb.IL25" out_port="fle[7].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II44" input="clb.IG16 clb.IG15 clb.IG14 clb.IG13 clb.IG12 clb.IL30 clb.IL28 clb.IL26 clb.IL24" output="fle[7].in[2]">
+          <delay_constant in_port="clb.IG16 clb.IG15 clb.IG14 clb.IG13 clb.IG12 clb.IL30 clb.IL28 clb.IL26 clb.IL24" out_port="fle[7].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II43" input="clb.IG21 clb.IG11 clb.IG10 clb.IG9  clb.IG7  clb.IL31 clb.IL29 clb.IL27 clb.IL25" output="fle[7].in[1]">
+          <delay_constant in_port="clb.IG21 clb.IG11 clb.IG10 clb.IG9  clb.IG7  clb.IL31 clb.IL29 clb.IL27 clb.IL25" out_port="fle[7].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II42" input="clb.IG23 clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL30 clb.IL28 clb.IL26 clb.IL24" output="fle[7].in[0]">
+          <delay_constant in_port="clb.IG23 clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL30 clb.IL28 clb.IL26 clb.IL24" out_port="fle[7].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II41" input="clb.IG26 clb.IG25 clb.IG24 clb.IG23 clb.IG22 clb.IL30 clb.IL28 clb.IL26 clb.IL24" output="fle[6].in[5]">
+          <delay_constant in_port="clb.IG26 clb.IG25 clb.IG24 clb.IG23 clb.IG22 clb.IL30 clb.IL28 clb.IL26 clb.IL24" out_port="fle[6].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II40" input="clb.IG30 clb.IG29 clb.IG28 clb.IG19 clb.IG1  clb.IL31 clb.IL29 clb.IL27 clb.IL25" output="fle[6].in[4]">
+          <delay_constant in_port="clb.IG30 clb.IG29 clb.IG28 clb.IG19 clb.IG1  clb.IL31 clb.IL29 clb.IL27 clb.IL25" out_port="fle[6].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II39" input="clb.IG16 clb.IG15 clb.IG14 clb.IG13 clb.IG12 clb.IL30 clb.IL28 clb.IL26 clb.IL24" output="fle[6].in[3]">
+          <delay_constant in_port="clb.IG16 clb.IG15 clb.IG14 clb.IG13 clb.IG12 clb.IL30 clb.IL28 clb.IL26 clb.IL24" out_port="fle[6].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II38" input="clb.IG31 clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IG0  clb.IL31 clb.IL29 clb.IL27 clb.IL25" output="fle[6].in[2]">
+          <delay_constant in_port="clb.IG31 clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IG0  clb.IL31 clb.IL29 clb.IL27 clb.IL25" out_port="fle[6].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II37" input="clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL30 clb.IL28 clb.IL26 clb.IL24" output="fle[6].in[1]">
+          <delay_constant in_port="clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL30 clb.IL28 clb.IL26 clb.IL24" out_port="fle[6].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II36" input="clb.IG27 clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL31 clb.IL29 clb.IL27 clb.IL25" output="fle[6].in[0]">
+          <delay_constant in_port="clb.IG27 clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL31 clb.IL29 clb.IL27 clb.IL25" out_port="fle[6].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II35" input="clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IG10 clb.IL23 clb.IL21 clb.IL19 clb.IL17" output="fle[5].in[5]">
+          <delay_constant in_port="clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IG10 clb.IL23 clb.IL21 clb.IL19 clb.IL17" out_port="fle[5].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II34" input="clb.IG16 clb.IG14 clb.IG13 clb.IG12 clb.IG6  clb.IL22 clb.IL20 clb.IL18 clb.IL16" output="fle[5].in[4]">
+          <delay_constant in_port="clb.IG16 clb.IG14 clb.IG13 clb.IG12 clb.IG6  clb.IL22 clb.IL20 clb.IL18 clb.IL16" out_port="fle[5].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II33" input="clb.IG30 clb.IG29 clb.IG28 clb.IG27 clb.IG9  clb.IG8  clb.IL23 clb.IL21 clb.IL19 clb.IL17" output="fle[5].in[3]">
+          <delay_constant in_port="clb.IG30 clb.IG29 clb.IG28 clb.IG27 clb.IG9  clb.IG8  clb.IL23 clb.IL21 clb.IL19 clb.IL17" out_port="fle[5].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II32" input="clb.IG26 clb.IG25 clb.IG24 clb.IG23 clb.IG22 clb.IG5  clb.IL22 clb.IL20 clb.IL18 clb.IL16" output="fle[5].in[2]">
+          <delay_constant in_port="clb.IG26 clb.IG25 clb.IG24 clb.IG23 clb.IG22 clb.IG5  clb.IL22 clb.IL20 clb.IL18 clb.IL16" out_port="fle[5].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II31" input="clb.IG11 clb.IG7  clb.IG3  clb.IG1  clb.IG0  clb.IL23 clb.IL21 clb.IL19 clb.IL17" output="fle[5].in[1]">
+          <delay_constant in_port="clb.IG11 clb.IG7  clb.IG3  clb.IG1  clb.IG0  clb.IL23 clb.IL21 clb.IL19 clb.IL17" out_port="fle[5].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II30" input="clb.IG31 clb.IG19 clb.IG15 clb.IG4  clb.IG2  clb.IL22 clb.IL20 clb.IL18 clb.IL16" output="fle[5].in[0]">
+          <delay_constant in_port="clb.IG31 clb.IG19 clb.IG15 clb.IG4  clb.IG2  clb.IL22 clb.IL20 clb.IL18 clb.IL16" out_port="fle[5].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II29" input="clb.IG16 clb.IG14 clb.IG13 clb.IG12 clb.IG6  clb.IG2  clb.IL22 clb.IL20 clb.IL18 clb.IL16" output="fle[4].in[5]">
+          <delay_constant in_port="clb.IG16 clb.IG14 clb.IG13 clb.IG12 clb.IG6  clb.IG2  clb.IL22 clb.IL20 clb.IL18 clb.IL16" out_port="fle[4].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II28" input="clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IG10 clb.IG4  clb.IL23 clb.IL21 clb.IL19 clb.IL17" output="fle[4].in[4]">
+          <delay_constant in_port="clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IG10 clb.IG4  clb.IL23 clb.IL21 clb.IL19 clb.IL17" out_port="fle[4].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II27" input="clb.IG26 clb.IG25 clb.IG24 clb.IG22 clb.IG5  clb.IL22 clb.IL20 clb.IL18 clb.IL16" output="fle[4].in[3]">
+          <delay_constant in_port="clb.IG26 clb.IG25 clb.IG24 clb.IG22 clb.IG5  clb.IL22 clb.IL20 clb.IL18 clb.IL16" out_port="fle[4].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II26" input="clb.IG31 clb.IG30 clb.IG29 clb.IG28 clb.IG9  clb.IL23 clb.IL21 clb.IL19 clb.IL17" output="fle[4].in[2]">
+          <delay_constant in_port="clb.IG31 clb.IG30 clb.IG29 clb.IG28 clb.IG9  clb.IL23 clb.IL21 clb.IL19 clb.IL17" out_port="fle[4].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II25" input="clb.IG27 clb.IG23 clb.IG19 clb.IG15 clb.IG8  clb.IL22 clb.IL20 clb.IL18 clb.IL16" output="fle[4].in[1]">
+          <delay_constant in_port="clb.IG27 clb.IG23 clb.IG19 clb.IG15 clb.IG8  clb.IL22 clb.IL20 clb.IL18 clb.IL16" out_port="fle[4].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II24" input="clb.IG11 clb.IG7  clb.IG3  clb.IG1  clb.IG0  clb.IL23 clb.IL21 clb.IL19 clb.IL17" output="fle[4].in[0]">
+          <delay_constant in_port="clb.IG11 clb.IG7  clb.IG3  clb.IG1  clb.IG0  clb.IL23 clb.IL21 clb.IL19 clb.IL17" out_port="fle[4].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II23" input="clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL15 clb.IL13 clb.IL11 clb.IL9" output="fle[3].in[5]">
+          <delay_constant in_port="clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL15 clb.IL13 clb.IL11 clb.IL9" out_port="fle[3].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II22" input="clb.IG12 clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL14 clb.IL12 clb.IL10 clb.IL8" output="fle[3].in[4]">
+          <delay_constant in_port="clb.IG12 clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL14 clb.IL12 clb.IL10 clb.IL8" out_port="fle[3].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II21" input="clb.IG21 clb.IG19 clb.IG15 clb.IG1  clb.IG0  clb.IL15 clb.IL13 clb.IL11 clb.IL9" output="fle[3].in[3]">
+          <delay_constant in_port="clb.IG21 clb.IG19 clb.IG15 clb.IG1  clb.IG0  clb.IL15 clb.IL13 clb.IL11 clb.IL9" out_port="fle[3].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II20" input="clb.IG27 clb.IG25 clb.IG20 clb.IG18 clb.IG14 clb.IL14 clb.IL12 clb.IL10 clb.IL8" output="fle[3].in[2]">
+          <delay_constant in_port="clb.IG27 clb.IG25 clb.IG20 clb.IG18 clb.IG14 clb.IL14 clb.IL12 clb.IL10 clb.IL8" out_port="fle[3].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II19" input="clb.IG31 clb.IG30 clb.IG29 clb.IG28 clb.IG17 clb.IG16 clb.IL15 clb.IL13 clb.IL11 clb.IL9" output="fle[3].in[1]">
+          <delay_constant in_port="clb.IG31 clb.IG30 clb.IG29 clb.IG28 clb.IG17 clb.IG16 clb.IL15 clb.IL13 clb.IL11 clb.IL9" out_port="fle[3].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II18" input="clb.IG26 clb.IG24 clb.IG23 clb.IG22 clb.IG13 clb.IL14 clb.IL12 clb.IL10 clb.IL8" output="fle[3].in[0]">
+          <delay_constant in_port="clb.IG26 clb.IG24 clb.IG23 clb.IG22 clb.IG13 clb.IL14 clb.IL12 clb.IL10 clb.IL8" out_port="fle[3].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II17" input="clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL14 clb.IL12 clb.IL10 clb.IL8" output="fle[2].in[5]">
+          <delay_constant in_port="clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL14 clb.IL12 clb.IL10 clb.IL8" out_port="fle[2].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II16" input="clb.IG15 clb.IG11 clb.IG9  clb.IG8  clb.IG7  clb.IL15 clb.IL13 clb.IL11 clb.IL9" output="fle[2].in[4]">
+          <delay_constant in_port="clb.IG15 clb.IG11 clb.IG9  clb.IG8  clb.IG7  clb.IL15 clb.IL13 clb.IL11 clb.IL9" out_port="fle[2].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II15" input="clb.IG31 clb.IG27 clb.IG23 clb.IG20 clb.IG18 clb.IG14 clb.IL14 clb.IL12 clb.IL10 clb.IL8" output="fle[2].in[3]">
+          <delay_constant in_port="clb.IG31 clb.IG27 clb.IG23 clb.IG20 clb.IG18 clb.IG14 clb.IL14 clb.IL12 clb.IL10 clb.IL8" out_port="fle[2].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II14" input="clb.IG21 clb.IG19 clb.IG12 clb.IG10 clb.IG1  clb.IG0  clb.IL15 clb.IL13 clb.IL11 clb.IL9" output="fle[2].in[2]">
+          <delay_constant in_port="clb.IG21 clb.IG19 clb.IG12 clb.IG10 clb.IG1  clb.IG0  clb.IL15 clb.IL13 clb.IL11 clb.IL9" out_port="fle[2].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II13" input="clb.IG26 clb.IG25 clb.IG24 clb.IG22 clb.IG13 clb.IL14 clb.IL12 clb.IL10 clb.IL8" output="fle[2].in[1]">
+          <delay_constant in_port="clb.IG26 clb.IG25 clb.IG24 clb.IG22 clb.IG13 clb.IL14 clb.IL12 clb.IL10 clb.IL8" out_port="fle[2].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II12" input="clb.IG30 clb.IG29 clb.IG28 clb.IG17 clb.IG16 clb.IL15 clb.IL13 clb.IL11 clb.IL9" output="fle[2].in[0]">
+          <delay_constant in_port="clb.IG30 clb.IG29 clb.IG28 clb.IG17 clb.IG16 clb.IL15 clb.IL13 clb.IL11 clb.IL9" out_port="fle[2].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II11" input="clb.IG31 clb.IG27 clb.IG16 clb.IG15 clb.IG1  clb.IG0  clb.IL7  clb.IL5  clb.IL3  clb.IL1" output="fle[1].in[5]">
+          <delay_constant in_port="clb.IG31 clb.IG27 clb.IG16 clb.IG15 clb.IG1  clb.IG0  clb.IL7  clb.IL5  clb.IL3  clb.IL1" out_port="fle[1].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II10" input="clb.IG30 clb.IG26 clb.IG23 clb.IG22 clb.IG19 clb.IL6  clb.IL4  clb.IL2  clb.IL0" output="fle[1].in[4]">
+          <delay_constant in_port="clb.IG30 clb.IG26 clb.IG23 clb.IG22 clb.IG19 clb.IL6  clb.IL4  clb.IL2  clb.IL0" out_port="fle[1].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II9" input="clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL7  clb.IL5  clb.IL3  clb.IL1" output="fle[1].in[3]">
+          <delay_constant in_port="clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL7  clb.IL5  clb.IL3  clb.IL1" out_port="fle[1].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II8" input="clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL6  clb.IL4  clb.IL2  clb.IL0" output="fle[1].in[2]">
+          <delay_constant in_port="clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL6  clb.IL4  clb.IL2  clb.IL0" out_port="fle[1].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II7" input="clb.IG29 clb.IG28 clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IL7  clb.IL5  clb.IL3  clb.IL1" output="fle[1].in[1]">
+          <delay_constant in_port="clb.IG29 clb.IG28 clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IL7  clb.IL5  clb.IL3  clb.IL1" out_port="fle[1].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II6" input="clb.IG25 clb.IG24 clb.IG14 clb.IG13 clb.IG12 clb.IL6  clb.IL4  clb.IL2  clb.IL0" output="fle[1].in[0]">
+          <delay_constant in_port="clb.IG25 clb.IG24 clb.IG14 clb.IG13 clb.IG12 clb.IL6  clb.IL4  clb.IL2  clb.IL0" out_port="fle[1].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II5" input="clb.IG30 clb.IG26 clb.IG22 clb.IG19 clb.IG15 clb.IL6  clb.IL4  clb.IL2  clb.IL0" output="fle[0].in[5]">
+          <delay_constant in_port="clb.IG30 clb.IG26 clb.IG22 clb.IG19 clb.IG15 clb.IL6  clb.IL4  clb.IL2  clb.IL0" out_port="fle[0].in[5]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II4" input="clb.IG31 clb.IG27 clb.IG23 clb.IG1  clb.IG0  clb.IL7  clb.IL5  clb.IL3  clb.IL1" output="fle[0].in[4]">
+          <delay_constant in_port="clb.IG31 clb.IG27 clb.IG23 clb.IG1  clb.IG0  clb.IL7  clb.IL5  clb.IL3  clb.IL1" out_port="fle[0].in[4]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II3" input="clb.IG28 clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL6  clb.IL4  clb.IL2  clb.IL0" output="fle[0].in[3]">
+          <delay_constant in_port="clb.IG28 clb.IG6  clb.IG5  clb.IG4  clb.IG3  clb.IG2  clb.IL6  clb.IL4  clb.IL2  clb.IL0" out_port="fle[0].in[3]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II2" input="clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL7  clb.IL5  clb.IL3  clb.IL1" output="fle[0].in[2]">
+          <delay_constant in_port="clb.IG11 clb.IG10 clb.IG9  clb.IG8  clb.IG7  clb.IL7  clb.IL5  clb.IL3  clb.IL1" out_port="fle[0].in[2]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II1" input="clb.IG25 clb.IG24 clb.IG16 clb.IG14 clb.IG13 clb.IG12 clb.IL6  clb.IL4  clb.IL2  clb.IL0" output="fle[0].in[1]">
+          <delay_constant in_port="clb.IG25 clb.IG24 clb.IG16 clb.IG14 clb.IG13 clb.IG12 clb.IL6  clb.IL4  clb.IL2  clb.IL0" out_port="fle[0].in[1]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <mux name="II0" input="clb.IG29 clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IL7  clb.IL5  clb.IL3  clb.IL1" output="fle[0].in[0]">
+          <delay_constant in_port="clb.IG29 clb.IG21 clb.IG20 clb.IG18 clb.IG17 clb.IL7  clb.IL5  clb.IL3  clb.IL1" out_port="fle[0].in[0]" max="2.08e-10" min="1.43e-10"/>
+        </mux>
+        <!-- this is the same in every tile type: how we connect CB outputs (IPINs) to local routing inputs -->
+        <!-- except that the tile name and the delay parameter names change -->
+        <!-- BIGFIX: "complete" should be "mux" but latter doesn't support shorted multiple outputs -->
+        <mux name="SS5" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" output="reg_ctl[0].sr">
+          <delay_constant in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" out_port="reg_ctl[0].sr" max="2.0094e-11" min="2.0079e-11"/>
+        </mux>
+        <mux name="SS4" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" output="reg_ctl[1].sr">
+          <delay_constant in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" out_port="reg_ctl[1].sr" max="2.0094e-11" min="2.0079e-11"/>
+        </mux>
+        <complete name="SS3" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" output="fle[7:4].enable[1]">
+          <delay_constant in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" out_port="fle[7:4].enable[1]" max="1.53965e-10" min="3.8311e-11"/>
         </complete>
-        <complete name="crossbar1" input="clb.I1 clb.I2 fle[7:0].out[1]" output="fle[7:0].in[1]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[7:0].in[1]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[7:0].out[1]" out_port="fle[7:0].in[1]"/>
+        <complete name="SS2" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" output="fle[7:4].enable[0]">
+          <delay_constant in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" out_port="fle[7:4].enable[0]" max="1.53965e-10" min="3.8311e-11"/>
         </complete>
-        <!--complete name="crossbar2a" input="clb.I0 clb.I2 fle[3:0].out" output="fle[7:4].in[2]"-->
-        <complete name="crossbar2" input="clb.I0 clb.I2 fle[7:0].out[0]" output="fle[7:0].in[2]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I2" out_port="fle[7:0].in[2]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[7:0].out[0]" out_port="fle[7:0].in[2]"/>
+        <complete name="SS1" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" output="fle[3:0].enable[1]">
+          <delay_constant in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" out_port="fle[3:0].enable[1]" max="1.53965e-10" min="3.8311e-11"/>
         </complete>
-        <!--complete name="crossbar2b" input="clb.I0 clb.I2 fle[7:4].out" output="fle[3:0].in[2]"-->
-        <!--delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I2" out_port="fle[3:0].in[2]" /-->
-        <!--delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[7:4].out" out_port="fle[3:0].in[2]" /-->
-        <!--/complete-->
-        <!--complete name="crossbar3" input="clb.I1 clb.I3" output="fle[7:0].in[3]"-->
-        <complete name="crossbar3" input="clb.I1 clb.I3 fle[7:0].fast_o" output="fle[7:0].in[3]">
-          <!-- fast output to in3 -->
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I3" out_port="fle[7:0].in[3]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[7:0].fast_o" out_port="fle[7:0].in[3]"/>
+        <complete name="SS0" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" output="fle[3:0].enable[0]">
+          <delay_constant in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0" out_port="fle[3:0].enable[0]" max="1.53965e-10" min="3.8311e-11"/>
         </complete>
-        <complete name="crossbar4" input="clb.I0 clb.I3" output="fle[7:0].in[4]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[7:0].in[4]"/>
+        <!--complete name="SS3" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1"   output="fle[7:4].enable[1]">
+          <delay_constant  in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1" out_port="fle[7:4].enable[1]" max="1.53965e-10" min="3.8311e-11"/>
         </complete>
-        <complete name="crossbar5" input="clb.I1 clb.I2" output="fle[7:0].in[5]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[7:0].in[5]"/>
+        <complete name="SS2" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1"   output="fle[7:4].enable[0]">
+          <delay_constant  in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1" out_port="fle[7:4].enable[0]" max="1.53965e-10" min="3.8311e-11"/>
         </complete>
-        <complete name="clks" input="clb.clk" output="fle[7:0].clk">
-          <!--RESTRUCTURE: one 16:1 for all, move to seam-->
-          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[0]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[1]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="clb.clk[2]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="clb.clk[3]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[4]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[5]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="clb.clk[6]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="clb.clk[7]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[8]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[9]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[10]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[11]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="clb.clk[12]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="clb.clk[13]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[14]" out_port="fle[7:0].clk"/>
-          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[15]" out_port="fle[7:0].clk"/>
+        <complete name="SS1" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1"   output="fle[3:0].enable[1]">
+          <delay_constant  in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1" out_port="fle[3:0].enable[1]" max="1.53965e-10" min="3.8311e-11"/>
         </complete>
-        <!--complete name="set" input="clb.set" output="fle[7:0].set">
-          <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.set" out_port="fle[7:0].set"/>
-        </complete>
-        <complete name="reset" input="clb.lreset" output="fle[7:0].reset">
-          <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.lreset" out_port="fle[7:0].reset"/>
-        </complete>
-        <complete name="sync_set" input="clb.sync_set" output="fle[7:0].sync_set">
-          <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sync_set" out_port="fle[7:0].sync_set"/>
-        </complete>
-        <complete name="sync_reset" input="clb.sync_reset" output="fle[7:0].sync_reset">
-          <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sync_reset" out_port="fle[7:0].sync_reset"/>
+        <complete name="SS0" input="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1"   output="fle[3:0].enable[0]">
+          <delay_constant  in_port="clb.IS5 clb.IS4 clb.IS3 clb.IS2 clb.IS1 clb.IS0 logic0 logic1" out_port="fle[3:0].enable[0]" max="1.53965e-10" min="3.8311e-11"/>
         </complete-->
-        <complete name="sr1" input="clb.sr1" output="fle[7:0].set">
-          <!-- FIX!!: connect to fle[3:0].sr when function implemented -->
-          <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sr1" out_port="fle[7:0].set"/>
+        <complete name="clb_rst" input="clb.reset" output="reg_ctl[1:0].resetn"/>
+        <complete name="scan_rst" input="clb.scan_reset" output="reg_ctl[1:0].scan_resetn"/>
+        <complete name="rst0" input="reg_ctl[0].rstn" output="fle[3:0].rstn"/>
+        <complete name="srst0" input="reg_ctl[0].rstn_sync" output="fle[3:0].rstn_sync"/>
+        <complete name="rst1" input="reg_ctl[1].rstn" output="fle[7:4].rstn"/>
+        <complete name="srst1" input="reg_ctl[1].rstn_sync" output="fle[7:4].rstn_sync"/>
+        <!--complete name="regmode0" input="reg_ctl[0].mode_o"     output="fle[3:0].reg_mode"/>
+        <complete name="regmode1" input="reg_ctl[1].mode_o"     output="fle[7:4].reg_mode"/-->
+        <!-- this would be different for each tile type: how we connect tile guts outputs to routing OPINs-->
+        <direct name="clbouts23" input="fle[7].out[1]" output="clb.O23"/>
+        <direct name="clbouts22" input="fle[7].out[0]" output="clb.O22"/>
+        <direct name="clbouts21" input="fle[7].fast_o" output="clb.O21"/>
+        <direct name="clbouts20" input="fle[6].out[1]" output="clb.O20"/>
+        <direct name="clbouts19" input="fle[6].out[0]" output="clb.O19"/>
+        <direct name="clbouts18" input="fle[6].fast_o" output="clb.O18"/>
+        <direct name="clbouts17" input="fle[5].out[1]" output="clb.O17"/>
+        <direct name="clbouts16" input="fle[5].out[0]" output="clb.O16"/>
+        <direct name="clbouts15" input="fle[5].fast_o" output="clb.O15"/>
+        <direct name="clbouts14" input="fle[4].out[1]" output="clb.O14"/>
+        <direct name="clbouts13" input="fle[4].out[0]" output="clb.O13"/>
+        <direct name="clbouts12" input="fle[4].fast_o" output="clb.O12"/>
+        <direct name="clbouts11" input="fle[3].out[1]" output="clb.O11"/>
+        <direct name="clbouts10" input="fle[3].out[0]" output="clb.O10"/>
+        <direct name="clbouts9" input="fle[3].fast_o" output="clb.O9"/>
+        <direct name="clbouts8" input="fle[2].out[1]" output="clb.O8"/>
+        <direct name="clbouts7" input="fle[2].out[0]" output="clb.O7"/>
+        <direct name="clbouts6" input="fle[2].fast_o" output="clb.O6"/>
+        <direct name="clbouts5" input="fle[1].out[1]" output="clb.O5"/>
+        <direct name="clbouts4" input="fle[1].out[0]" output="clb.O4"/>
+        <direct name="clbouts3" input="fle[1].fast_o" output="clb.O3"/>
+        <direct name="clbouts2" input="fle[0].out[1]" output="clb.O2"/>
+        <direct name="clbouts1" input="fle[0].out[0]" output="clb.O1"/>
+        <direct name="clbouts0" input="fle[0].fast_o" output="clb.O0"/>
+        <complete name="clks" input="clb.clk" output="reg_ctl[1:0].clk">
+          <!--RESTRUCTURE: one 16:1 for all, move to seam-->
+          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[0]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[1]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="clb.clk[2]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="clb.clk[3]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[4]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[5]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="clb.clk[6]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="clb.clk[7]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[8]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[9]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[10]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[11]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="clb.clk[12]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="clb.clk[13]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="clb.clk[14]" out_port="reg_ctl[1:0].clk"/>
+          <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="clb.clk[15]" out_port="reg_ctl[1:0].clk"/>
         </complete>
-        <complete name="sr0" input="clb.sr0" output="fle[7:0].reset">
-          <!-- FIX!!: connect to fle[3:0].sr when function implemented -->
-          <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sr0" out_port="fle[7:0].reset"/>
-        </complete>
-        <complete name="enable00" input="clb.en0[0]" output="fle[3:0].enable[0]">
-          <!-- split enables -->
-          <delay_constant max="1.53965e-10" min="3.8311e-11" in_port="clb.en0[0]" out_port="fle[3:0].enable[0]"/>
-        </complete>
-        <complete name="enable01" input="clb.en0[1]" output="fle[3:0].enable[1]">
-          <!-- split enables -->
-          <delay_constant max="1.53965e-10" min="3.8311e-11" in_port="clb.en0[1]" out_port="fle[3:0].enable[1]"/>
-        </complete>
-        <complete name="enable10" input="clb.en1[0]" output="fle[7:4].enable[0]">
-          <!-- split enables -->
-          <delay_constant max="1.53965e-10" min="3.8311e-11" in_port="clb.en1[0]" out_port="fle[7:4].enable[0]"/>
-        </complete>
-        <complete name="enable11" input="clb.en1[1]" output="fle[7:4].enable[1]">
-          <!-- split enables -->
-          <delay_constant max="1.53965e-10" min="3.8311e-11" in_port="clb.en1[1]" out_port="fle[7:4].enable[1]"/>
-        </complete>
-        <!-- FIX: what happened to global reset ???  -->
-        <!--direct name="clbouts1" input="fle[9:0].out[0:0]" output="clb.O[9:0]"/>
-        <direct name="clbouts2" input="fle[9:0].out[1:1]" output="clb.O[19:10]"/-->
-        <direct name="clbouts1" input="fle[3:0].out[1:0]" output="clb.O[7:0]"/>
-        <!-- reordered -->
-        <direct name="clbouts2" input="fle[7:4].out[1:0]" output="clb.O[15:8]"/>
-        <direct name="clbouts3" input="fle[7:0].fast_o" output="clb.Ofast[7:0]"/>
-        <!-- fast output -->
+        <complete name="clk0" input="reg_ctl[0].clk_o" output="fle[3:0].clk"/>
+        <complete name="clk1" input="reg_ctl[1].clk_o" output="fle[7:4].clk"/>
         <!-- Cascade links -->
         <direct name="casc_dnloop" input="fle[0:0].cascdn_o" output="fle[7:7].cascdn_i">
           <!-- need to correct delay vectors -->
@@ -3794,8 +4099,8 @@
             <direct name="direct_sc_out_o" input="bram_phy.sc_out" output="bram_rtl.sc_out"/>
           </interconnect>
         </mode>
-        <mode name="TDP36K" disable_packing="false">
-          <pb_type name="TDP36K" blif_model=".subckt TDP36K" num_pb="1">
+        <mode name="RS_TDP36K" disable_packing="false">
+          <pb_type name="RS_TDP36K" blif_model=".subckt RS_TDP36K" num_pb="1">
             <input name="WDATA_A1" num_pins="18"/>
             <input name="WDATA_A2" num_pins="18"/>
             <output name="RDATA_A1" num_pins="18"/>
@@ -3826,64 +4131,64 @@
             <input name="BE_B1" num_pins="2"/>
             <input name="BE_B2" num_pins="2"/>
             <input name="FLUSH2" num_pins="1"/>
-            <T_setup value="500e-12" port="TDP36K.WDATA_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="TDP36K.WDATA_A2" clock="CLK_A2"/>
-            <T_clock_to_Q max="500e-12" port="TDP36K.RDATA_A1" clock="CLK_A1"/>
-            <T_clock_to_Q max="500e-12" port="TDP36K.RDATA_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="TDP36K.ADDR_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="TDP36K.ADDR_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="TDP36K.REN_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="TDP36K.REN_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="TDP36K.WEN_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="TDP36K.WEN_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="TDP36K.BE_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="TDP36K.BE_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="TDP36K.FLUSH1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="TDP36K.WDATA_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="TDP36K.WDATA_B2" clock="CLK_B2"/>
-            <T_clock_to_Q max="500e-12" port="TDP36K.RDATA_B1" clock="CLK_B1"/>
-            <T_clock_to_Q max="500e-12" port="TDP36K.RDATA_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="TDP36K.ADDR_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="TDP36K.ADDR_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="TDP36K.REN_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="TDP36K.REN_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="TDP36K.WEN_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="TDP36K.WEN_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="TDP36K.BE_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="TDP36K.BE_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="TDP36K.FLUSH2" clock="CLK_B1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WDATA_A1" clock="CLK_A1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WDATA_A2" clock="CLK_A2"/>
+            <T_clock_to_Q max="500e-12" port="RS_TDP36K.RDATA_A1" clock="CLK_A1"/>
+            <T_clock_to_Q max="500e-12" port="RS_TDP36K.RDATA_A2" clock="CLK_A2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.ADDR_A1" clock="CLK_A1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.ADDR_A2" clock="CLK_A2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.REN_A1" clock="CLK_A1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.REN_A2" clock="CLK_A2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WEN_A1" clock="CLK_A1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WEN_A2" clock="CLK_A2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.BE_A1" clock="CLK_A1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.BE_A2" clock="CLK_A2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.FLUSH1" clock="CLK_A1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WDATA_B1" clock="CLK_B1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WDATA_B2" clock="CLK_B2"/>
+            <T_clock_to_Q max="500e-12" port="RS_TDP36K.RDATA_B1" clock="CLK_B1"/>
+            <T_clock_to_Q max="500e-12" port="RS_TDP36K.RDATA_B2" clock="CLK_B2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.ADDR_B1" clock="CLK_B1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.ADDR_B2" clock="CLK_B2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.REN_B1" clock="CLK_B1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.REN_B2" clock="CLK_B2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WEN_B1" clock="CLK_B1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.WEN_B2" clock="CLK_B2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.BE_B1" clock="CLK_B1"/>
+            <T_setup value="500e-12" port="RS_TDP36K.BE_B2" clock="CLK_B2"/>
+            <T_setup value="500e-12" port="RS_TDP36K.FLUSH2" clock="CLK_B1"/>
           </pb_type>
           <interconnect>
-            <direct name="direct_WDATA_A1_i" input="bram_rtl.WDATA_A1_i" output="TDP36K.WDATA_A1"/>
-            <direct name="direct_WDATA_A2_i" input="bram_rtl.WDATA_A2_i" output="TDP36K.WDATA_A2"/>
-            <direct name="direct_RDATA_A1_o" input="TDP36K.RDATA_A1" output="bram_rtl.RDATA_A1_o"/>
-            <direct name="direct_RDATA_A2_o" input="TDP36K.RDATA_A2" output="bram_rtl.RDATA_A2_o"/>
-            <direct name="direct_ADDR_A1_i" input="bram_rtl.ADDR_A1_i" output="TDP36K.ADDR_A1"/>
-            <direct name="direct_ADDR_A2_i" input="bram_rtl.ADDR_A2_i" output="TDP36K.ADDR_A2"/>
-            <direct name="direct_CLK_A1_c" input="bram_rtl.CLK_A1_i" output="TDP36K.CLK_A1"/>
-            <direct name="direct_CLK_A2_c" input="bram_rtl.CLK_A2_i" output="TDP36K.CLK_A2"/>
-            <direct name="direct_REN_A1_i" input="bram_rtl.REN_A1_i" output="TDP36K.REN_A1"/>
-            <direct name="direct_REN_A2_i" input="bram_rtl.REN_A2_i" output="TDP36K.REN_A2"/>
-            <direct name="direct_WEN_A1_i" input="bram_rtl.WEN_A1_i" output="TDP36K.WEN_A1"/>
-            <direct name="direct_WEN_A2_i" input="bram_rtl.WEN_A2_i" output="TDP36K.WEN_A2"/>
-            <direct name="direct_BE_A1_i" input="bram_rtl.BE_A1_i" output="TDP36K.BE_A1"/>
-            <direct name="direct_BE_A2_i" input="bram_rtl.BE_A2_i" output="TDP36K.BE_A2"/>
-            <direct name="direct_FLUSH1_i" input="bram_rtl.FLUSH1_i" output="TDP36K.FLUSH1"/>
-            <direct name="direct_WDATA_B1_i" input="bram_rtl.WDATA_B1_i" output="TDP36K.WDATA_B1"/>
-            <direct name="direct_WDATA_B2_i" input="bram_rtl.WDATA_B2_i" output="TDP36K.WDATA_B2"/>
-            <direct name="direct_RDATA_B1_o" input="TDP36K.RDATA_B1" output="bram_rtl.RDATA_B1_o"/>
-            <direct name="direct_RDATA_B2_o" input="TDP36K.RDATA_B2" output="bram_rtl.RDATA_B2_o"/>
-            <direct name="direct_ADDR_B1_i" input="bram_rtl.ADDR_B1_i" output="TDP36K.ADDR_B1"/>
-            <direct name="direct_ADDR_B2_i" input="bram_rtl.ADDR_B2_i" output="TDP36K.ADDR_B2"/>
-            <direct name="direct_CLK_B1_c" input="bram_rtl.CLK_B1_i" output="TDP36K.CLK_B1"/>
-            <direct name="direct_CLK_B2_c" input="bram_rtl.CLK_B2_i" output="TDP36K.CLK_B2"/>
-            <direct name="direct_REN_B1_i" input="bram_rtl.REN_B1_i" output="TDP36K.REN_B1"/>
-            <direct name="direct_REN_B2_i" input="bram_rtl.REN_B2_i" output="TDP36K.REN_B2"/>
-            <direct name="direct_WEN_B1_i" input="bram_rtl.WEN_B1_i" output="TDP36K.WEN_B1"/>
-            <direct name="direct_WEN_B2_i" input="bram_rtl.WEN_B2_i" output="TDP36K.WEN_B2"/>
-            <direct name="direct_BE_B1_i" input="bram_rtl.BE_B1_i" output="TDP36K.BE_B1"/>
-            <direct name="direct_BE_B2_i" input="bram_rtl.BE_B2_i" output="TDP36K.BE_B2"/>
-            <direct name="direct_FLUSH2_i" input="bram_rtl.FLUSH2_i" output="TDP36K.FLUSH2"/>
+            <direct name="direct_WDATA_A1_i" input="bram_rtl.WDATA_A1_i" output="RS_TDP36K.WDATA_A1"/>
+            <direct name="direct_WDATA_A2_i" input="bram_rtl.WDATA_A2_i" output="RS_TDP36K.WDATA_A2"/>
+            <direct name="direct_RDATA_A1_o" input="RS_TDP36K.RDATA_A1" output="bram_rtl.RDATA_A1_o"/>
+            <direct name="direct_RDATA_A2_o" input="RS_TDP36K.RDATA_A2" output="bram_rtl.RDATA_A2_o"/>
+            <direct name="direct_ADDR_A1_i" input="bram_rtl.ADDR_A1_i" output="RS_TDP36K.ADDR_A1"/>
+            <direct name="direct_ADDR_A2_i" input="bram_rtl.ADDR_A2_i" output="RS_TDP36K.ADDR_A2"/>
+            <direct name="direct_CLK_A1_c" input="bram_rtl.CLK_A1_i" output="RS_TDP36K.CLK_A1"/>
+            <direct name="direct_CLK_A2_c" input="bram_rtl.CLK_A2_i" output="RS_TDP36K.CLK_A2"/>
+            <direct name="direct_REN_A1_i" input="bram_rtl.REN_A1_i" output="RS_TDP36K.REN_A1"/>
+            <direct name="direct_REN_A2_i" input="bram_rtl.REN_A2_i" output="RS_TDP36K.REN_A2"/>
+            <direct name="direct_WEN_A1_i" input="bram_rtl.WEN_A1_i" output="RS_TDP36K.WEN_A1"/>
+            <direct name="direct_WEN_A2_i" input="bram_rtl.WEN_A2_i" output="RS_TDP36K.WEN_A2"/>
+            <direct name="direct_BE_A1_i" input="bram_rtl.BE_A1_i" output="RS_TDP36K.BE_A1"/>
+            <direct name="direct_BE_A2_i" input="bram_rtl.BE_A2_i" output="RS_TDP36K.BE_A2"/>
+            <direct name="direct_FLUSH1_i" input="bram_rtl.FLUSH1_i" output="RS_TDP36K.FLUSH1"/>
+            <direct name="direct_WDATA_B1_i" input="bram_rtl.WDATA_B1_i" output="RS_TDP36K.WDATA_B1"/>
+            <direct name="direct_WDATA_B2_i" input="bram_rtl.WDATA_B2_i" output="RS_TDP36K.WDATA_B2"/>
+            <direct name="direct_RDATA_B1_o" input="RS_TDP36K.RDATA_B1" output="bram_rtl.RDATA_B1_o"/>
+            <direct name="direct_RDATA_B2_o" input="RS_TDP36K.RDATA_B2" output="bram_rtl.RDATA_B2_o"/>
+            <direct name="direct_ADDR_B1_i" input="bram_rtl.ADDR_B1_i" output="RS_TDP36K.ADDR_B1"/>
+            <direct name="direct_ADDR_B2_i" input="bram_rtl.ADDR_B2_i" output="RS_TDP36K.ADDR_B2"/>
+            <direct name="direct_CLK_B1_c" input="bram_rtl.CLK_B1_i" output="RS_TDP36K.CLK_B1"/>
+            <direct name="direct_CLK_B2_c" input="bram_rtl.CLK_B2_i" output="RS_TDP36K.CLK_B2"/>
+            <direct name="direct_REN_B1_i" input="bram_rtl.REN_B1_i" output="RS_TDP36K.REN_B1"/>
+            <direct name="direct_REN_B2_i" input="bram_rtl.REN_B2_i" output="RS_TDP36K.REN_B2"/>
+            <direct name="direct_WEN_B1_i" input="bram_rtl.WEN_B1_i" output="RS_TDP36K.WEN_B1"/>
+            <direct name="direct_WEN_B2_i" input="bram_rtl.WEN_B2_i" output="RS_TDP36K.WEN_B2"/>
+            <direct name="direct_BE_B1_i" input="bram_rtl.BE_B1_i" output="RS_TDP36K.BE_B1"/>
+            <direct name="direct_BE_B2_i" input="bram_rtl.BE_B2_i" output="RS_TDP36K.BE_B2"/>
+            <direct name="direct_FLUSH2_i" input="bram_rtl.FLUSH2_i" output="RS_TDP36K.FLUSH2"/>
           </interconnect>
         </mode>
       </pb_type>
