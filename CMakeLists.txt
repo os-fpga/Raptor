@@ -90,7 +90,7 @@ REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 get_filename_component(READ_EDIF_SRC_DIR "Raptor_Tools/gatelevel_readers/read_edif"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 
-add_subdirectory("Raptor_Tools/OpenSTA")
+add_subdirectory("Raptor_Tools/psta-rel")
 
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
@@ -111,7 +111,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 13)
+set(VERSION_PATCH 17)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -598,7 +598,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/and2_gemini/          
       COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/OpenSTA/app/sta        
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta        
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
