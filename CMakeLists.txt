@@ -42,11 +42,19 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   IP_Catalog
   )
 
+if (OPENFPGA1.2)
+ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS Backend)
+endif()
+
 list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
-  OpenFPGA_RS
   yosys_verific_rs
   FOEDAG_rs
   )
+  
+if (NOT OPENFPGA1.2)
+  list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS OpenFPGA_RS)
+endif()
+
 
 find_package(Git QUIET)
 
@@ -96,7 +104,14 @@ if (APPLE)
 endif()
 add_subdirectory(yosys_verific_rs)
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
-    add_subdirectory(OpenFPGA_RS)
+    if (OPENFPGA1.2)
+      set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
+      set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
+      set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
+      add_subdirectory(Backend)
+    else()
+      add_subdirectory(OpenFPGA_RS)
+    endif()
 endif()
 
 
@@ -109,7 +124,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 18)
+set(VERSION_PATCH 19)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -334,6 +349,7 @@ add_dependencies(raptor-bin yosys)
 add_dependencies(raptor-bin abc)
 add_dependencies(raptor-bin de)
 add_dependencies(raptor-bin sta)
+add_dependencies(raptor-bin pin_c)
 
 if (WIN OR APPLE)
 else ()
@@ -627,16 +643,32 @@ else ()
       COMMAND echo "Copying vhdl_packages in share dir"
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages 
-          ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages
-      COMMAND echo "Copying VPR and OpenFPGA in bin dir"
-      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages)
+          
+  if (OPENFPGA1.2)
+     add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vpr/vpr
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+   else()
+     add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+        COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
+        COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/openfpga/openfpga
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
+        COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/    
-     )
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+   endif()
+     
 endif()
