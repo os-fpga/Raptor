@@ -39,7 +39,6 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   u-boot-rapidsi
   zephyr-rapidsi
   Raptor_Tools
-  IP_Catalog
   )
 
 if (OPENFPGA1.2)
@@ -49,6 +48,7 @@ endif()
 list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
   yosys_verific_rs
   FOEDAG_rs
+  IP_Catalog
   )
   
 if (NOT OPENFPGA1.2)
@@ -97,6 +97,7 @@ get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 
 add_subdirectory("Raptor_Tools/psta-rel")
+add_subdirectory("Raptor_Tools/python_tools")
 
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
