@@ -41,7 +41,7 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   Raptor_Tools
   )
 
-if (OPENFPGA1.2)
+if (OPENFPGA1.2 OR OPENFPGA11541)
  list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS Backend)
 endif()
 
@@ -110,6 +110,11 @@ if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
       set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
       set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
       add_subdirectory(Backend)
+    elseif(OPENFPGA11541)
+      set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
+      set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
+      set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
+      add_subdirectory(Backend)
     else()
       add_subdirectory(OpenFPGA_RS)
     endif()
@@ -125,7 +130,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 20)
+set(VERSION_PATCH 21)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -654,6 +659,18 @@ else ()
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
         COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+   elseif(OPENFPGA11541)
+     add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/vpr/vpr
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/openfpga/openfpga
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
         COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
