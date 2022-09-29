@@ -433,10 +433,10 @@
       <port type="input" prefix="subtract" lib_name="subtract" size="1"/>
       <!--port type="input" prefix="register_inputs" lib_name="register_inputs" size="1" /-->
       <port type="clock" prefix="clk" lib_name="clock" size="1"/>
-      <port type="input" prefix="sc_in" lib_name="scan_i" size="12"/>
+      <port type="input" prefix="sc_in" lib_name="scan_i" size="10"/>
       <!--3->12-->
       <port type="input" prefix="test_en" lib_name="scan_en" size="1" is_global="true" default_val="0"/>
-      <port type="output" prefix="sc_out" lib_name="scan_o" size="12"/>
+      <port type="output" prefix="sc_out" lib_name="scan_o" size="10"/>
       <!--3->12-->
       <port type="clock" prefix="scan_clk" lib_name="scan_clk" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
@@ -494,10 +494,10 @@
       <port type="input" prefix="reset" lib_name="GRESET_i" size="1"/>
       <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       <port type="input" prefix="scan_reset" lib_name="SCAN_RESET_i" size="1"/>
-      <port type="input" prefix="sc_in" lib_name="SCAN_i" size="24"/>
+      <port type="input" prefix="sc_in" lib_name="SCAN_i" size="28"/>
       <!--6->24-->
       <port type="input" prefix="test_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
-      <port type="output" prefix="sc_out" lib_name="SCAN_o" size="24"/>
+      <port type="output" prefix="sc_out" lib_name="SCAN_o" size="28"/>
       <!--6->24-->
       <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK_i" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE_i" size="1" is_global="true" default_val="0"/>
