@@ -10,7 +10,6 @@ synth_options -effort high
 analyze
 message_severity VERI-1209 IGNORE
 synthesize area
-pnr_netlist_lang verilog
 packing
 place
 route
