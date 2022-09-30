@@ -33,9 +33,12 @@ The Raptor EDA environment requires a Linux-based server or workstation environm
 ### OPERATING SYSTEM DEPENDENCIES
 Raptor requires a select number of host system dependencies, outlined below
 
-| Dependency			| Ubuntu Package		| CentOS Package	|
-|-----------------------|-----------------------|-------------------|
-| Coming Soon			| Coming Soon			| Coming Soon		|
+| Dependency	 | Ubuntu Package		                       | CentOS Package	                 |
+|--------------|-----------------------------------------|---------------------------------|
+| bzip2			   | apt install -y bzip2	                   | yum install -y bzip2	           |
+| libtcmalloc  | apt install -y libgoogle-perftools-dev  | yum install -y gperftools-devel |
+| QT5          | apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev  | yum install -y libxcb libxcb-devel xcb-util xcb-util-devel libxkbcommon-devel libxkbcommon-x11-devel xcb-util-image-devel xcb-util-keysyms-devel xcb-util-renderutil-devel xcb-util-wm-devel |
+| Python3      | apt install -y python3  | yum install -y python3 |
 
 ---- 
 ## DOWNLOAD AND INSTALLATION
