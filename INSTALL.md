@@ -43,7 +43,7 @@ Raptor requires a select number of host system dependencies, outlined below
 ### DOWNLOADING RAPTOR
 Raptor is provided via digital download either from the Rapid Silicon FTP server or from a private lounge web site.  Please reach out to your Rapid Silicon point-of-contact to determine which is appropriate for your use.
 
-Raptor is provided as a TAR archive (.tar or .tar.gz) file.
+Raptor is provided as a TAR archive (.tar.gz) file.
 
 ### VERIFYING THE DOWNLOAD
 Once the download is complete, please verify the integrity of the download by comparing the checksum of the downloaded file against the provided checksum file.
@@ -51,19 +51,35 @@ Once the download is complete, please verify the integrity of the download by co
 `$ md5sum -c <path_to_checsum_file>.md5 <path_to_downloaded_tar_file>`
 
 ### INSTALLING RAPTOR
-Raptor can be installed in two ways:
-1) Manually Extract the tar archive to any location on disk and add this path to the `$PATH` variable in the Linux system
-2) An automated installation helper script is provided here: <path to script repo>.  This repository also optionally provides 
+#### Installing with default options
 
-Example usage of the automated script:
+With default options, you are allowing the Raptor executable to install all the OS pre requisite and install Raptor in default location i.e. /opt
+Providing any other options except `-v or --verbose` will have no effect in this case.
+Go to the directory where you have extracted the Raptor executable after downloading and execute it with SUDO/admin account like below
+
 ```
-Usage: install.sh            [ -h | --help]             show the help
-                             [ -r | --raptor_home  ]    Specify the absolute path of Directory where Raptor will be Installed
-                             [ -i | --install ]         Turn on installion. Required -t/--tar_path and -e/--external_lib
-                             [ -t | --tar_path  ]       Specify the tar file path like /home/user123/Downloads/Raptor_release/Raptor_1.1.0.tar
-                             [ -e | --external_lib ]    Specify the tar file path like /home/user123/Downloads/Raptor_release/external_libs.tar.gz
+./Raptor_x.x.run
 ```
-----
+
+Replace `Raptor_x.x.run` with the version of Raptor executable file you have received.
+
+#### Installing with personal choices
+
+Following command line options available:
+
+* -b | --batch-mode   -> running in interactive mode. Mandatory if you want to use -r or -i option
+* -r | --raptor-home  -> you are giving the absolute path of directory where Raptor will be installed
+* -i | --install-dep  -> Turn on the OS dependecies installation
+* -v | --verbose      -> increase the installer verbosity.
+
+Go to the directory where you have extracted the Raptor exe after downloading and execute it with any or with all above mentioned options like below
+
+```
+./Raptor_x.x.run -- -i -v -r <absolute path where Raptor will be installed>
+``` 
+
+Replace `Raptor_x.x.run` with the version of Raptor exe file you have received.
+
 ## LICENSING
 
 ### OBTAINING A LICENSE
