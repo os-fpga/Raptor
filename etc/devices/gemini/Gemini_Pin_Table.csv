@@ -1,4 +1,4 @@
-Group,Bump/Pin Name,Ball Name,Ball ID,Bump center_x,Bump center_y,Ball center_x,Ball center_y,IO_tile_pin,IO_tile_pin_x,IO_tile_pin_y,IO_tile_pin_z,Usable,Ref clock,Bank,ALT Function,Debug Mode,Scan Mode,Mbist Mode,Type,Direction,Voltage,Power Pad,Discription,Voltage2,Remark
+Group,Bump/Pin Name,Ball Name,Ball ID,Bump center_x,Bump center_y,Ball center_x,Ball center_y,IO_tile_pin,IO_tile_pin_x,IO_tile_pin_y,IO_tile_pin_z,Mode_GPIO,Ref clock,Bank,ALT Function,Debug Mode,Scan Mode,Mbist Mode,Type,Direction,Voltage,Power Pad,Discription,Voltage2,Remark
 System,RST_N,RST_N,,5760,6193,18000,20000,,,,,,sys_clk,,,,,,,Input,1.8V-3.3V,N,Chip Reset,1.8V-3.3V,
 ,XIN,XIN,,5890,6193,19000,20000,,,,,,sys_clk,,,,,,,Input ,1.8V-3.3V,N,Crystal Clock,1.8V-3.3V,
 ,TESTMODE,TESTMODE,,6020,6193,20000,20000,,,,,,sys_clk,,,,,,,Input ,1.8V-3.3V,N,Testmode pin,1.8V-3.3V,
