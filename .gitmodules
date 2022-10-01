@@ -30,3 +30,6 @@
 [submodule "IP_Catalog"]
 	path = IP_Catalog
 	url = git@github.com:RapidSilicon/IP_Catalog.git
+[submodule "Backend"]
+	path = Backend
+	url = git@github.com:RapidSilicon/Backend.git

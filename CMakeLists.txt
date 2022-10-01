@@ -39,14 +39,22 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   u-boot-rapidsi
   zephyr-rapidsi
   Raptor_Tools
-  IP_Catalog
   )
 
+if (OPENFPGA1.2 OR OPENFPGA11541)
+ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS Backend)
+endif()
+
 list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
-  OpenFPGA_RS
   yosys_verific_rs
   FOEDAG_rs
+  IP_Catalog
   )
+  
+if (NOT OPENFPGA1.2)
+  list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS OpenFPGA_RS)
+endif()
+
 
 find_package(Git QUIET)
 
@@ -89,6 +97,7 @@ get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 
 add_subdirectory("Raptor_Tools/psta-rel")
+add_subdirectory("Raptor_Tools/python_tools")
 
 add_subdirectory(FOEDAG_rs)
 if (APPLE)
@@ -96,7 +105,19 @@ if (APPLE)
 endif()
 add_subdirectory(yosys_verific_rs)
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
-    add_subdirectory(OpenFPGA_RS)
+    if (OPENFPGA1.2)
+      set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
+      set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
+      set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
+      add_subdirectory(Backend)
+    elseif(OPENFPGA11541)
+      set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
+      set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
+      set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
+      add_subdirectory(Backend)
+    else()
+      add_subdirectory(OpenFPGA_RS)
+    endif()
 endif()
 
 
@@ -109,7 +130,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 15)
+set(VERSION_PATCH 21)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -341,6 +362,7 @@ else ()
   add_dependencies(raptor-bin libopenfpga)
   add_dependencies(raptor-bin openfpga) 
   add_dependencies(raptor-bin vpr)
+  add_dependencies(raptor-bin pin_c)
 endif()
 
 if (APPLE)
@@ -627,16 +649,44 @@ else ()
       COMMAND echo "Copying vhdl_packages in share dir"
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages 
-          ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages
-      COMMAND echo "Copying VPR and OpenFPGA in bin dir"
-      COMMAND ${CMAKE_COMMAND} -E copy 
+          ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages)
+          
+  if (OPENFPGA1.2)
+     add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vpr/vpr
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+   elseif(OPENFPGA11541)
+     add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/vpr/vpr
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/openfpga/openfpga
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+   else()
+     add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+        COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
+        COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/openfpga/openfpga
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
+        COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/    
-     )
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+   endif()
+     
 endif()
