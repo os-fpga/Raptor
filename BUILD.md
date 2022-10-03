@@ -25,7 +25,7 @@
     Name the key and paste the copied value into the text field
     Save your changes
 
-  git clone https://github.com/RapidSilicon/Raptor.git
+  git clone git@github.com:RapidSilicon/Raptor.git
   cd Raptor
   make
   make debug
