@@ -300,7 +300,6 @@
       <port type="output" prefix="SO" lib_name="SO" size="1"/>
       <port type="input" prefix="RS" lib_name="RS" size="1"/>
       <port type="input" prefix="R" lib_name="R" size="1"/>
-      <!--port type="input" prefix="NC" lib_name="NC" size="1"/-->
       <!--port type="input" prefix="SYNC_S" lib_name="SYNC_S" size="1"/-->
       <!--port type="input" prefix="SYNC_R" lib_name="SYNC_R" size="1"/-->
       <!--port type="input" prefix="LAT_R" lib_name="LAT_R" size="1"/-->
@@ -525,8 +524,6 @@
     <direct name="carry_chain" circuit_model_name="direct_interc"/>
     <direct name="scff_chain" circuit_model_name="direct_interc"/>
     <direct name="shift_chain" circuit_model_name="direct_interc"/>
-    <direct name="cascade_down" circuit_model_name="direct_interc"/>
-    <direct name="cascade_up" circuit_model_name="direct_interc"/>
     <!--direct name="scff_chain" circuit_model_name="direct_interc" type="row" x_dir="positive" y_dir="negative"/-->
     <!--direct name="scff_chain" circuit_model_name="direct_interc" type="row" x_dir="negative" y_dir="negative"/-->
     <!--direct name="scff_chain" circuit_model_name="direct_interc" type="column" x_dir="positive" y_dir="positive"/-->
