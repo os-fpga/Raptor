@@ -22,7 +22,6 @@ jobs:
         - install
         - valgrind
         - production
-        - build_openfpga1_2
     env:
       MODE: ${{ matrix.mode }}
 
@@ -114,17 +113,11 @@ jobs:
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release PRODUCTION_BUILD=1 OPENFPGA1.2=0 OPENFPGA11541=0
+        make release PRODUCTION_BUILD=1
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         make release test/batch
-
-    - name: BuildOpenfpga1_2
-      if: matrix.mode == 'build_openfpga1_2'
-      run: |
-        make release OPENFPGA1.2=1
-        ./build/bin/raptor --version
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
@@ -291,7 +284,7 @@ jobs:
       if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
       run: |
         mkdir /opt/instl_dir
-        make install PRODUCTION_BUILD=1 OPENFPGA1.2=0 OPENFPGA11541=0 PREFIX=/opt/instl_dir
+        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.0/lib:$LD_LIBRARY_PATH
         bash ./Raptor_Tools/Create_Raptor_Artifact/create_release.sh -v 2022.10 -c -p -w /opt/instl_dir
         echo "::set-output name=exit_code::$?"
