@@ -19,7 +19,7 @@ ifeq ($(CPU_CORES),)
 	endif
 endif
 
-# Set OPENFPGA11541 as a default
+# Set OPENFPGA1.2 as the default
 OPENFPGA1.2 ?= 1
 ifeq ($(OPENFPGA11541),1)
 	OPENFPGA1.2 := 0
