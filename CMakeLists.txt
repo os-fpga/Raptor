@@ -51,11 +51,6 @@ list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
   IP_Catalog
   )
   
-if (NOT OPENFPGA1.2)
-  list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS OpenFPGA_RS)
-endif()
-
-
 find_package(Git QUIET)
 
 if (NOT UPDATE_SUBMODULES)
@@ -115,8 +110,6 @@ if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
       set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
       set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
       add_subdirectory(Backend)
-    else()
-      add_subdirectory(OpenFPGA_RS)
     endif()
 endif()
 
@@ -679,18 +672,6 @@ else ()
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
         COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
-   else()
-     add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/vpr/vpr
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/openfpga/openfpga
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/OpenFPGA_RS/pin_constraint/pin_c
           ${CMAKE_CURRENT_BINARY_DIR}/bin/)
    endif()
      
