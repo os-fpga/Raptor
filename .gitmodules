@@ -1,7 +1,3 @@
-[submodule "OpenFPGA_RS"]
-	path = OpenFPGA_RS
-	url = git@github.com:RapidSilicon/OpenFPGA_RS.git
-	
 [submodule "yosys_verific_rs"]
 	path = yosys_verific_rs
 	url = git@github.com:RapidSilicon/yosys_verific_rs.git

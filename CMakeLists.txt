@@ -130,7 +130,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 23)
+set(VERSION_PATCH 24)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -586,21 +586,26 @@ add_custom_target(raptor_link_target ALL
 set(YOSYS_BUILD_PATH "$<$<CONFIG:Debug>:debug-install>$<$<CONFIG:Release>:install>") 
 
 add_custom_command(TARGET raptor-bin POST_BUILD
-      COMMAND echo "Copying arch and example files in share dir" 
+      COMMAND echo "Create dirs in share dir" 
+      COMMAND echo "Create etc dirs in share dir" 
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND echo "Create etc/settings dirs in share dir" 
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/sasc_testcase/
+      COMMAND echo "Create bin/Flex_LM dirs in share dir" 
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+      COMMAND echo "Copying arch and example files in share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/etc/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND echo "Copying IP Catalog in share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/IP_Catalog/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/
+      COMMAND echo "Copying Litex_rs to share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/litex_rs/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/litex_rs
+      COMMAND echo "Copying tests to share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/aes_decrypt_fpga/
