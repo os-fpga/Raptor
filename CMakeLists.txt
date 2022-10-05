@@ -35,9 +35,9 @@ set(RAPTOR ON)
 list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   tests/Jira_Testcase
   litex_rs
-  EmbeddedCommon
-  u-boot-rapidsi
-  zephyr-rapidsi
+  EmbeddedCommon-dev
+  u-boot-rapidsi-dev
+  zephyr-rapidsi-dev
   Raptor_Tools
   )
 
