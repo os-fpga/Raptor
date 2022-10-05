@@ -11,15 +11,6 @@
 [submodule "litex_rs"]
 	path = litex_rs
 	url = git@github.com:RapidSilicon/litex_rs.git
-[submodule "EmbeddedCommon"]
-	path = EmbeddedCommon
-	url = git@github.com:RapidSilicon/EmbeddedCommon.git
-[submodule "u-boot-rapidsi"]
-	path = u-boot-rapidsi
-	url = git@github.com:RapidSilicon/u-boot-rapidsi.git
-[submodule "zephyr-rapidsi"]
-	path = zephyr-rapidsi
-	url = git@github.com:RapidSilicon/zephyr-rapidsi.git
 [submodule "Raptor_Tools"]
 	path = Raptor_Tools
 	url = git@github.com:RapidSilicon/Raptor_Tools.git
