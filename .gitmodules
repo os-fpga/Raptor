@@ -20,3 +20,12 @@
 [submodule "Backend"]
 	path = Backend
 	url = git@github.com:RapidSilicon/Backend.git
+[submodule "zephyr-rapidsi-dev"]
+	path = zephyr-rapidsi-dev
+	url = https://github.com/RapidSilicon/zephyr-rapidsi-dev
+[submodule "u-boot-rapidsi-dev"]
+	path = u-boot-rapidsi-dev
+	url = https://github.com/RapidSilicon/u-boot-rapidsi-dev.git
+[submodule "EmbeddedCommon-dev"]
+	path = EmbeddedCommon-dev
+	url = https://github.com/RapidSilicon/EmbeddedCommon-dev.git
