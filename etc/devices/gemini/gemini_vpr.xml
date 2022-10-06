@@ -1248,7 +1248,7 @@
          <output name="reg_out" num_pins="1"/>   
          <clock name="clk" num_pins="4"/>   
          <!-- Describe fracturable logic element -->   
-         <pb_type name="fle" num_pb="10">    
+         <pb_type name="fle" num_pb="8">    
             <input name="in" num_pins="6"/>    
             <input name="cin" num_pins="1"/>    
             <input name="sc_in" num_pins="1"/>    
@@ -2331,64 +2331,64 @@
 
          </pb_type>   
          <interconnect>    
-            <complete name="crossbar0" input="clb.I0 clb.I3 fle[1:0].out fle[3:2].out fle[8:8].out" output="fle[9:0].in[0]">     
-               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[9:0].in[0]"/>     
-               <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[1:0].out fle[3:2].out fle[8:8].out" out_port="fle[9:0].in[0]"/>     
+            <complete name="crossbar0" input="clb.I0 clb.I3 fle[1:0].out fle[3:2].out " output="fle[7:0].in[0]">     
+               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[7:0].in[0]"/>     
+               <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[1:0].out fle[3:2].out fle[7:7].out" out_port="fle[7:0].in[0]"/>     
             </complete>    
-            <complete name="crossbar1" input="clb.I1 clb.I2 fle[3:2].out fle[5:4].out fle[9:9].out" output="fle[9:0].in[1]">     
-               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[9:0].in[1]"/>     
-               <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[3:2].out fle[5:4].out fle[9:9].out" out_port="fle[9:0].in[1]"/>     
+            <complete name="crossbar1" input="clb.I1 clb.I2 fle[3:2].out fle[5:4].out fle[7:7].out" output="fle[7:0].in[1]">     
+               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[7:0].in[1]"/>     
+               <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[3:2].out fle[5:4].out fle[7:7].out" out_port="fle[7:0].in[1]"/>     
             </complete>    
-            <complete name="crossbar2" input="clb.I0 clb.I2 fle[5:4].out fle[7:6].out fle[8:8].out" output="fle[9:0].in[2]">     
-               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I2" out_port="fle[9:0].in[2]"/>     
-               <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[5:4].out fle[7:6].out fle[8:8].out" out_port="fle[9:0].in[2]"/>     
+            <complete name="crossbar2" input="clb.I0 clb.I2 fle[5:4].out fle[7:6].out" output="fle[7:0].in[2]">     
+               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I2" out_port="fle[7:0].in[2]"/>     
+               <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[5:4].out fle[7:6].out " out_port="fle[7:0].in[2]"/>     
             </complete>    
-            <complete name="crossbar3" input="clb.I1 clb.I3" output="fle[9:0].in[3]">     
-               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I3" out_port="fle[9:0].in[3]"/>     
+            <complete name="crossbar3" input="clb.I1 clb.I3" output="fle[7:0].in[3]">     
+               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I3" out_port="fle[7:0].in[3]"/>     
             </complete>    
-            <complete name="crossbar4" input="clb.I0 clb.I3" output="fle[9:0].in[4]">     
-               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[9:0].in[4]"/>     
+            <complete name="crossbar4" input="clb.I0 clb.I3" output="fle[7:0].in[4]">     
+               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[7:0].in[4]"/>     
             </complete>    
-            <complete name="crossbar5" input="clb.I1 clb.I2" output="fle[9:0].in[5]">     
-               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[9:0].in[5]"/>     
+            <complete name="crossbar5" input="clb.I1 clb.I2" output="fle[7:0].in[5]">     
+               <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[7:0].in[5]"/>     
             </complete>    
-            <complete name="clks" input="clb.clk" output="fle[9:0].clk">     
-               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[0]" out_port="fle[9:0].clk"/>     
-               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[1]" out_port="fle[9:0].clk"/>     
-               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[2]" out_port="fle[9:0].clk"/>     
-               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[3]" out_port="fle[9:0].clk"/>     
+            <complete name="clks" input="clb.clk" output="fle[7:0].clk">     
+               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[0]" out_port="fle[7:0].clk"/>     
+               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[1]" out_port="fle[7:0].clk"/>     
+               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[2]" out_port="fle[7:0].clk"/>     
+               <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[3]" out_port="fle[7:0].clk"/>     
             </complete>    
-            <complete name="set" input="clb.set" output="fle[9:0].set">     
-               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.set" out_port="fle[9:0].set"/>     
+            <complete name="set" input="clb.set" output="fle[7:0].set">     
+               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.set" out_port="fle[7:0].set"/>     
             </complete>    
-            <complete name="reset" input="clb.lreset" output="fle[9:0].reset">     
-               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.lreset" out_port="fle[9:0].reset"/>     
+            <complete name="reset" input="clb.lreset" output="fle[7:0].reset">     
+               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.lreset" out_port="fle[7:0].reset"/>     
             </complete>    
-            <complete name="sync_set" input="clb.sync_set" output="fle[9:0].sync_set">     
-               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sync_set" out_port="fle[9:0].sync_set"/>     
+            <complete name="sync_set" input="clb.sync_set" output="fle[7:0].sync_set">     
+               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sync_set" out_port="fle[7:0].sync_set"/>     
             </complete>    
-            <complete name="sync_reset" input="clb.sync_reset" output="fle[9:0].sync_reset">     
-               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sync_reset" out_port="fle[9:0].sync_reset"/>     
+            <complete name="sync_reset" input="clb.sync_reset" output="fle[7:0].sync_reset">     
+               <delay_constant max="2.0094e-11" min="2.0079e-11" in_port="clb.sync_reset" out_port="fle[7:0].sync_reset"/>     
             </complete>    
-            <complete name="enable" input="clb.enable" output="fle[9:0].enable">     
-               <delay_constant max="1.53965e-10" min="3.8311e-11" in_port="clb.enable" out_port="fle[9:0].enable"/>     
+            <complete name="enable" input="clb.enable" output="fle[7:0].enable">     
+               <delay_constant max="1.53965e-10" min="3.8311e-11" in_port="clb.enable" out_port="fle[7:0].enable"/>     
             </complete>    
 
-            <direct name="clbouts1" input="fle[9:0].out[0:0]" output="clb.O[9:0]"/>    
-            <direct name="clbouts2" input="fle[9:0].out[1:1]" output="clb.O[19:10]"/>    
+            <direct name="clbouts1" input="fle[7:0].out[0:0]" output="clb.O[7:0]"/>    
+            <direct name="clbouts2" input="fle[7:0].out[1:1]" output="clb.O[17:10]"/>    
 
             <!-- Shift register links -->    
             <direct name="shift_reg_in" input="clb.reg_in" output="fle[0:0].reg_in">     
                <pack_pattern name="shiftchain" in_port="clb.reg_in" out_port="fle[0:0].reg_in"/>     
                <delay_constant max="1.99975e-10" min="1.48821e-10" in_port="clb.reg_in" out_port="fle[0:0].reg_in"/>     
             </direct>    
-            <direct name="shift_reg_out" input="fle[9:9].reg_out" output="clb.reg_out">     
-               <pack_pattern name="shiftchain" in_port="fle[9:9].reg_out" out_port="clb.reg_out"/>     
-               <delay_constant max="5.6224e-11" min="4.0243e-11" in_port="fle[9:9].reg_out" out_port="clb.reg_out"/>     
+            <direct name="shift_reg_out" input="fle[7:7].reg_out" output="clb.reg_out">     
+               <pack_pattern name="shiftchain" in_port="fle[7:7].reg_out" out_port="clb.reg_out"/>     
+               <delay_constant max="5.6224e-11" min="4.0243e-11" in_port="fle[7:7].reg_out" out_port="clb.reg_out"/>     
             </direct>    
-            <direct name="shift_reg_link" input="fle[8:0].reg_out" output="fle[9:1].reg_in">     
-               <pack_pattern name="shiftchain" in_port="fle[8:0].reg_out" out_port="fle[9:1].reg_in"/>     
-               <delay_constant max="1.92846e-10" min="1.99619e-10" in_port="fle[8:0].reg_out" out_port="fle[9:1].reg_in"/>     
+            <direct name="shift_reg_link" input="fle[6:0].reg_out" output="fle[7:1].reg_in">     
+               <pack_pattern name="shiftchain" in_port="fle[6:0].reg_out" out_port="fle[7:1].reg_in"/>     
+               <delay_constant max="1.92846e-10" min="1.99619e-10" in_port="fle[6:0].reg_out" out_port="fle[7:1].reg_in"/>     
             </direct>     
 
             <!-- Carry chain links -->    
@@ -2396,19 +2396,19 @@
                <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle[0:0].cin"/>     
                <delay_constant max="1.22461e-10" min="1.00603e-10" in_port="clb.cin" out_port="fle[0:0].cin"/>     
             </complete>    
-            <direct name="carry_out" input="fle[9:9].cout" output="clb.cout">     
-               <pack_pattern name="carrychain" in_port="fle[9:9].cout" out_port="clb.cout"/>     
-               <delay_constant max="5.6224e-11" min="4.0243e-11" in_port="fle[9:9].cout" out_port="clb.cout"/>     
+            <direct name="carry_out" input="fle[7:7].cout" output="clb.cout">     
+               <pack_pattern name="carrychain" in_port="fle[7:7].cout" out_port="clb.cout"/>     
+               <delay_constant max="5.6224e-11" min="4.0243e-11" in_port="fle[7:7].cout" out_port="clb.cout"/>     
             </direct>    
-            <direct name="carry_link" input="fle[8:0].cout" output="fle[9:1].cin">     
-               <pack_pattern name="carrychain" in_port="fle[8:0].cout" out_port="fle[9:1].cin"/>     
-               <delay_constant max="5.1577e-11" min="4.0588e-11" in_port="fle[8:0].cout" out_port="fle[9:1].cin"/>     
+            <direct name="carry_link" input="fle[6:0].cout" output="fle[7:1].cin">     
+               <pack_pattern name="carrychain" in_port="fle[7:0].cout" out_port="fle[7:1].cin"/>     
+               <delay_constant max="5.1577e-11" min="4.0588e-11" in_port="fle[6:0].cout" out_port="fle[7:1].cin"/>     
             </direct>    
 
             <!-- Scan chain links -->    
             <direct name="scff_in" input="clb.sc_in" output="fle[0:0].sc_in"/>    
-            <direct name="scff_out" input="fle[9:9].sc_out" output="clb.sc_out"/>    
-            <direct name="scff_link" input="fle[8:0].sc_out" output="fle[9:1].sc_in"/>    
+            <direct name="scff_out" input="fle[7:7].sc_out" output="clb.sc_out"/>    
+            <direct name="scff_link" input="fle[6:0].sc_out" output="fle[7:1].sc_in"/>    
          </interconnect>   
       </pb_type>  
 
@@ -3440,7 +3440,58 @@
          <col type="bram" startx="35" starty="1" priority="20"/>   
       </fixed_layout>  
 
-    
+     <fixed_layout name="106x77" width="106" height="77">   
+         <!--Full-size Castor array-->   
+         <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->   
+         <row type="io_top" starty="H-1" priority="90"/>   
+         <row type="io_bottom" starty="0" priority="91"/>   
+         <col type="io_right" startx="W-1" priority="92"/>   
+         <col type="io_left" startx="0" priority="93"/>   
+         <corners type="EMPTY" priority="100"/>   
+        <!--  <row type="EMPTY" starty="H-1" priority="101"/>   
+         <col type="EMPTY" startx="W-1" priority="102"/>   
+         <row type="EMPTY" starty="0" priority="103"/>   
+         <col type="EMPTY" startx="0" priority="104"/>   --> 
+         <!--Fill with 'clb'-->   
+         <fill type="clb" priority="10"/>   
+         <!--Overlay with 'dsp'-->   
+         <col type="dsp" startx="3" starty="2" priority="30"/>   
+         <col type="dsp" startx="9" starty="2" priority="30"/>   
+         <col type="dsp" startx="15" starty="2" priority="30"/>   
+         <col type="dsp" startx="21" starty="2" priority="30"/>   
+         <col type="dsp" startx="27" starty="2" priority="30"/>   
+         <col type="dsp" startx="33" starty="2" priority="30"/>   
+         <col type="dsp" startx="39" starty="2" priority="30"/>   
+         <col type="dsp" startx="45" starty="2" priority="30"/>   
+         <col type="dsp" startx="51" starty="2" priority="30"/>   
+         <col type="dsp" startx="57" starty="2" priority="30"/>   
+         <col type="dsp" startx="63" starty="2" priority="30"/>   
+         <col type="dsp" startx="69" starty="2" priority="30"/>   
+         <col type="dsp" startx="75" starty="2" priority="30"/>   
+         <col type="dsp" startx="81" starty="2" priority="30"/>   
+         <col type="dsp" startx="87" starty="2" priority="30"/>   
+         <col type="dsp" startx="93" starty="2" priority="30"/>   
+         <col type="dsp" startx="99" starty="2" priority="30"/>   
+         <!--Overlay with 'bram'-->   
+         <col type="bram" startx="6" starty="2" priority="20"/>   
+         <col type="bram" startx="12" starty="2" priority="20"/>   
+         <col type="bram" startx="18" starty="2" priority="20"/>   
+         <col type="bram" startx="24" starty="2" priority="20"/>   
+         <col type="bram" startx="30" starty="2" priority="20"/>   
+         <col type="bram" startx="36" starty="2" priority="20"/>   
+         <col type="bram" startx="42" starty="2" priority="20"/>   
+         <col type="bram" startx="48" starty="2" priority="20"/>   
+         <col type="bram" startx="54" starty="2" priority="20"/>   
+         <col type="bram" startx="60" starty="2" priority="20"/>   
+         <col type="bram" startx="66" starty="2" priority="20"/>   
+         <col type="bram" startx="72" starty="2" priority="20"/>   
+         <col type="bram" startx="78" starty="2" priority="20"/>   
+         <col type="bram" startx="84" starty="2" priority="20"/>   
+         <col type="bram" startx="90" starty="2" priority="20"/>   
+         <col type="bram" startx="96" starty="2" priority="20"/>   
+         <col type="bram" startx="102" starty="2" priority="20"/>   
+      </fixed_layout>  
+          
       <fixed_layout name="78x66" width="80" height="68">   
          <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->   
          <row type="io_top" starty="H-1" priority="100"/>   
