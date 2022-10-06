@@ -56,6 +56,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -203,6 +204,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -356,6 +358,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
 
     - name: Git pull
       uses: actions/checkout@v2
@@ -505,6 +508,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
 
     - uses: actions/checkout@v2
 
@@ -593,6 +597,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
 
     - uses: actions/checkout@v2
 
@@ -685,6 +690,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
 
     - uses: actions/checkout@v2
 
@@ -782,6 +788,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
 
     - name: Checkout code
       uses: actions/checkout@v2
