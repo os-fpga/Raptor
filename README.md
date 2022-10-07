@@ -44,8 +44,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    set_macro <name>=<value>...: As in -D<macro>=<value>
    set_top_module <top>       : Sets the top module
    add_constraint_file <file> : Sets SDC + location constraints
-                                Constraints: set_pin_loc, all SDC Standard commands
+                                Constraints: set_pin_loc, set_mode, all SDC Standard commands
    set_pin_loc <design_io_name> <device_io_name> : Constraints pin location (Use in constraint file)
+   set_mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint file)
    keep <signal list> OR all_signals : Keeps the list of signals or all signals through Synthesis unchanged (unoptimized in certain cases)
    add_litex_ip_catalog <directory> : Browses directory for LiteX IP generators, adds the IP(s) to the IP Catalog
    ip_catalog ?<ip_name>?     : Lists all available IPs, and their parameters if <ip_name> is given 
@@ -80,6 +81,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      -cec                     : Dump verilog after key phases and use internal equivalence checking (ABC based)
    analyze ?clean?            : Analyzes the RTL design, generates top-level, pin and hierarchy information
    synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed, none)
+   pin_loc_assign_method <Method>: Method choices:
+                                in_define_order(Default), port order pin assignment
+                                random , random pin assignment
+                                free , no automatic pin assignment
    pnr_options <option list>  : VPR options
    pnr_netlist_lang <blif, verilog> : Chooses vpr input netlist format
    set_channel_width <int>    : VPR Routing channel setting
