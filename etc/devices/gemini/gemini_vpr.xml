@@ -3440,7 +3440,7 @@
          <col type="bram" startx="35" starty="1" priority="20"/>   
       </fixed_layout>  
 
-     <fixed_layout name="106x77" width="106" height="77">   
+     <fixed_layout name="106x77" width="108" height="78">   
          <!--Full-size Castor array-->   
          <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->   
          <row type="io_top" starty="H-1" priority="90"/>   
