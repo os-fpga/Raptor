@@ -8,9 +8,6 @@
 [submodule "tests/Jira_Testcase"]
 	path = tests/Jira_Testcase
 	url = git@github.com:RapidSilicon/Jira_Testcase.git
-[submodule "litex_rs"]
-	path = litex_rs
-	url = git@github.com:RapidSilicon/litex_rs.git
 [submodule "EmbeddedCommon"]
 	path = EmbeddedCommon
 	url = git@github.com:RapidSilicon/EmbeddedCommon.git
@@ -29,3 +26,6 @@
 [submodule "Backend"]
 	path = Backend
 	url = git@github.com:RapidSilicon/Backend.git
+[submodule "litex_reference_designs"]
+	path = litex_reference_designs
+	url = git@github.com:RapidSilicon/litex_reference_designs.git
