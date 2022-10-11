@@ -34,7 +34,7 @@ set(RAPTOR ON)
 
 list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   tests/Jira_Testcase
-  litex_rs
+  litex_reference_designs
   EmbeddedCommon
   u-boot-rapidsi
   zephyr-rapidsi
@@ -114,9 +114,9 @@ if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
 endif()
 
 
-#Submodules for Litex_rs and IP_Catalog
+#Submodules for litex_reference_designs and IP_Catalog
 
-add_subdirectory(litex_rs)
+add_subdirectory(litex_reference_designs)
 add_subdirectory(IP_Catalog)
 
 
@@ -538,9 +538,9 @@ install(
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples/ip_gen_axis_conv/)
 install(
-        DIRECTORY IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)    
+        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)    
 install(
-        DIRECTORY litex_rs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})      
+        DIRECTORY litex_reference_designs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})      
 install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
@@ -594,10 +594,11 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/IP_Catalog/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/
-      COMMAND echo "Copying Litex_rs to share dir" 
+      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/Raptor_Tools  
+      COMMAND echo "Copying litex_reference_designs to share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/litex_rs/    
-          ${CMAKE_CURRENT_BINARY_DIR}/share/litex_rs
+          ${PROJECT_SOURCE_DIR}/litex_reference_designs/    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/litex_reference_designs
       COMMAND echo "Copying tests to share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga
