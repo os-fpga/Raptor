@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--                                                   -->
+<!--Copyright (c) 2021-2022 The Open-Source FPGA Foundation.-->
+<Project Version="0.2.27">
+    <Configuration>
+        <Option Name="ID" Val="20221011211004105"/>
+        <Option Name="ActiveSimSet" Val="sim_1"/>
+        <Option Name="Project Type" Val="RTL"/>
+    </Configuration>
+    <CompilerConfig>
+        <Opt Name="LibPath" Val=""/>
+        <Opt Name="IncludePath" Val=""/>
+        <Opt Name="LibExt" Val=""/>
+        <Opt Name="Macro" Val=""/>
+    </CompilerConfig>
+    <IpConfig>
+        <Option Name="InstancePaths" Val=""/>
+        <Option Name="CatalogPaths" Val=""/>
+    </IpConfig>
+    <FileSets>
+        <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="/AES_DECRYPT.srcs/constrs_1">
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/constrs_1/aes_decrypt.sdc"/>
+        </FileSet>
+        <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="/AES_DECRYPT.srcs/sim_1"/>
+        <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="/AES_DECRYPT.srcs/sources_1">
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/aes_decrypt128.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/aes_decrypt256.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/gfmul.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/InvMixCol_slice.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/InvSbox.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/InvSubBytes.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/KeyExpand192.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/KschBuffer.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/Sbox.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/aes_decrypt192.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/decrypt.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/InvAddRoundKey.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/InvMixColumns.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/InvShiftRows.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/KeyExpand128.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/KeyExpand256.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/RotWord.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/SubWord.sv"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/generic_muxfx.v"/>
+            <File Path="$OSRCDIR/AES_DECRYPT.srcs/sources_1/wrapper.v"/>
+            <Group Id="11" Name="unit_0" Files="$OSRCDIR/AES_DECRYPT.srcs/sources_1/aes_decrypt128.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/aes_decrypt256.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/gfmul.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/InvMixCol_slice.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/InvSbox.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/InvSubBytes.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/KeyExpand192.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/KschBuffer.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/Sbox.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/aes_decrypt192.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/decrypt.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/InvAddRoundKey.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/InvMixColumns.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/InvShiftRows.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/KeyExpand128.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/KeyExpand256.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/RotWord.sv $OSRCDIR/AES_DECRYPT.srcs/sources_1/SubWord.sv" LibCommand="" LibName=""/>
+            <Group Id="7" Name="unit_1" Files="/home/work/Work/Raptor/tests/Testcases/aes_decrypt_fpga/generic_muxfx.v /home/work/Work/Raptor/tests/Testcases/aes_decrypt_fpga/wrapper.v" LibCommand="" LibName=""/>
+            <Config>
+                <Option Name="TopModule" Val="wrapper"/>
+                <Option Name="TopModuleLib" Val=""/>
+            </Config>
+        </FileSet>
+    </FileSets>
+    <Runs>
+        <Run Name="imple_1" Type="Implementation" SrcSet="sources_1" ConstrsSet="constrs_1" State="current" SynthRun="synth_1"/>
+        <Run Name="synth_1" Type="Synthesis" SrcSet="sources_1" ConstrsSet="constrs_1" State="current" SynthRun="">
+            <Option Name="Compilation Flow" Val="Classic Flow"/>
+            <Option Name="Device" Val="GEMINI"/>
+            <Option Name="LanguageVersion" Val="SYSTEMVERILOG_2005"/>
+            <Option Name="TargetLanguage" Val="VERILOG"/>
+        </Run>
+    </Runs>
+    <Tasks Version="0.0.0">
+        <Task ID="0" Status="2"/>
+        <Task ID="1" Status="3"/>
+        <Task ID="4" Status="0"/>
+        <Task ID="5" Status="0"/>
+        <Task ID="6" Status="0"/>
+        <Task ID="8" Status="0"/>
+        <Task ID="10" Status="0"/>
+        <Task ID="13" Status="0"/>
+        <Task ID="14" Status="0"/>
+        <Task ID="15" Status="0"/>
+        <Task ID="18" Status="0"/>
+        <Task ID="19" Status="0"/>
+        <Task ID="20" Status="0"/>
+        <Task ID="21" Status="0"/>
+        <Task ID="23" Status="2"/>
+    </Tasks>
+    <Compiler Version="0.0.0" CompilerState="10"/>
+</Project>
