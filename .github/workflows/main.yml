@@ -285,6 +285,7 @@ jobs:
       id: packing_ok
       if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
       run: |
+        source /opt/rh/devtoolset-9/enable
         mkdir /opt/instl_dir
         make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.0/lib:$LD_LIBRARY_PATH
