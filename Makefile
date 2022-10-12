@@ -118,10 +118,10 @@ test_install_mac:
 
 test_install:
 	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/aes_decrypt_gate/aes_decrypt_gate.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/examples/and2_gemini/raptor.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_gate/aes_decrypt_gate.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
