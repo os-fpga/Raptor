@@ -57,6 +57,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -205,6 +207,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -360,6 +364,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
 
     - name: Git pull
       uses: actions/checkout@v2
@@ -510,6 +516,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
 
     - uses: actions/checkout@v2
 
@@ -599,6 +607,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
 
     - uses: actions/checkout@v2
 
@@ -692,6 +702,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
 
     - uses: actions/checkout@v2
 
@@ -790,6 +802,8 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
           ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
 
     - name: Checkout code
       uses: actions/checkout@v2
