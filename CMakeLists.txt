@@ -566,14 +566,7 @@ install(
       GROUP_READ GROUP_EXECUTE
       WORLD_READ WORLD_EXECUTE
       )
-      install(
-      FILES Backend/include/xml_enc/OpenFPGA/in_pugi_xml/vpr_e.bin
-      DESTINATION  ${CMAKE_INSTALL_BINDIR}
-      PERMISSIONS
-      OWNER_READ OWNER_EXECUTE OWNER_WRITE
-      GROUP_READ GROUP_EXECUTE
-      WORLD_READ WORLD_EXECUTE
-      )
+      
 
 #install(
 #  EXPORT Raptor
@@ -669,9 +662,6 @@ else ()
         COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vpr/vpr
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-          COMMAND ${CMAKE_COMMAND} -E copy  
-          ${PROJECT_SOURCE_DIR}/Backend/include/xml_enc/OpenFPGA/in_pugi_xml/vpr_e.bin
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
         COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
@@ -683,9 +673,6 @@ else ()
         COMMAND echo "Copying VPR and OpenFPGA in bin dir"
         COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/vpr/vpr
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-          COMMAND ${CMAKE_COMMAND} -E copy  
-          ${PROJECT_SOURCE_DIR}/Backend/include/xml_enc/OpenFPGA/in_pugi_xml/vpr_e.bin
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
         COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/openfpga/openfpga
