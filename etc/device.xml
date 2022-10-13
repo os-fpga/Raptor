@@ -6,7 +6,7 @@
         <resource type="bram" num="1.12Mbits"/>
         <resource type="dsp" num="312"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
-        <internal type="device_size" name="106x77"/>]
+        <internal type="device_size" name="104x75"/>]
         <internal type="lut_size" num="6"/>
         <internal type="channel_width" num="200"/>
         <internal type="openfpga_arch" file="gemini/gemini_openfpga.xml"/>
@@ -21,7 +21,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
+        <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>
     <device name="MPW1" series="Gemini" family="TestChip" package="SBG484" pin_count="44" speedgrade="1" core_voltage="0.8V">
