@@ -222,11 +222,13 @@
                 "widgetType": "radiobuttons",
                 "options": [
                     "Random",
-                    "In Define Order"
+                    "In Define Order",
+                    "Free"
                 ],
                 "optionsLookup": [
                     "random",
-                    "in_define_order"
+                    "in_define_order",
+                    "free"
                 ],
                 "layout": "horizontal",
                 "arg": "pin_assign_method"
