@@ -123,7 +123,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 30)
+set(VERSION_PATCH 31)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -520,6 +520,7 @@ install(
         ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclDecls.h
         ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclPlatDecls.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor/include)
+
 
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
