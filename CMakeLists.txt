@@ -123,7 +123,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 30)
+set(VERSION_PATCH 31)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -521,6 +521,7 @@ install(
         ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclPlatDecls.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor/include)
 
+
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
@@ -581,18 +582,39 @@ add_custom_target(raptor_link_target ALL
 
 set(YOSYS_BUILD_PATH "$<$<CONFIG:Debug>:debug-install>$<$<CONFIG:Release>:install>") 
 
-add_custom_command(TARGET raptor-bin POST_BUILD
+if (PRODUCTION_BUILD)
+   add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir" 
       COMMAND echo "Create etc dirs in share dir" 
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND echo "Create etc/settings dirs in share dir" 
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
-      COMMAND echo "Create bin/Flex_LM dirs in share dir" 
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
       COMMAND echo "Copying arch and example files in share dir" 
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/etc/    
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/mpw1
+      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_latest
+      COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device-rel.xml
+      ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml)
+else()
+  add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Create dirs in share dir" 
+      COMMAND echo "Create etc dirs in share dir" 
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
+      COMMAND echo "Create etc/settings dirs in share dir" 
+      COMMAND echo "Copying arch and example files in share dir" 
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${PROJECT_SOURCE_DIR}/etc/    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/)
+endif()
+
+
+add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Create dirs in share dir" 
+      COMMAND echo "Create bin/Flex_LM dirs in share dir" 
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM      
       COMMAND echo "Copying IP Catalog in share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/IP_Catalog/    

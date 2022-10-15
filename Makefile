@@ -100,8 +100,16 @@ regression: release
 clean:
 	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build
 
+ifeq ($(PRODUCTION_BUILD),1)
 install: release
 	cmake --install build
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_latest
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
+	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
+else
+install: release
+	cmake --install build
+endif
 
 test_install_mac:
 	find /Users/runner/work/Raptor/ -name "*QtWidgets*" -print
@@ -166,7 +174,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_fifo/v1_0/axis_fifo.tcl
-	
+
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
 
