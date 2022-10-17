@@ -54,7 +54,7 @@ run-cmake-debug:
 run-cmake-coverage:
 	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DMY_CXX_WARNING_FLAGS="--coverage" -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B coverage-build
 
-test/unittest: run-cmake-release
+test/unittest: release
 	cmake --build build --target unittest -j $(CPU_CORES)
 	pushd build && ctest --output-on-failure && popd
 
