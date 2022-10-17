@@ -34,5 +34,22 @@
             <Option Name="TargetLanguage" Val="VERILOG"/>
         </Run>
     </Runs>
+    <Tasks Version="0.0.0">
+        <Task ID="0" Status="0"/>
+        <Task ID="1" Status="2"/>
+        <Task ID="4" Status="0"/>
+        <Task ID="5" Status="0"/>
+        <Task ID="6" Status="0"/>
+        <Task ID="8" Status="0"/>
+        <Task ID="10" Status="0"/>
+        <Task ID="13" Status="0"/>
+        <Task ID="14" Status="0"/>
+        <Task ID="15" Status="0"/>
+        <Task ID="18" Status="0"/>
+        <Task ID="19" Status="0"/>
+        <Task ID="20" Status="0"/>
+        <Task ID="21" Status="0"/>
+        <Task ID="23" Status="0"/>
+    </Tasks>
     <Compiler Version="0.0.0" CompilerState="3"/>
 </Project>
