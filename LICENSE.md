@@ -31,3 +31,8 @@ BSD 3-Clause License
 bzip2 License v1.0.6
 ========================================
 ./licenses/bzip2-1.0.6.txt
+
+GPLv2 (Only) License
+========================================
+./licenses/gpl-2.0-only.txt
+
