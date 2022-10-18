@@ -123,7 +123,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 32)
+set(VERSION_PATCH 33)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -525,6 +525,8 @@ install(
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
+    DIRECTORY licenses/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/licenses/)
+install(
     DIRECTORY examples/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/aes_decrypt_fpga/)
@@ -613,7 +615,10 @@ endif()
 
 add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir" 
-      COMMAND echo "Create bin/Flex_LM dirs in share dir" 
+      COMMAND echo "Create bin/Flex_LM dirs in share dir"
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${PROJECT_SOURCE_DIR}/licenses/    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/licenses/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM      
       COMMAND echo "Copying IP Catalog in share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
