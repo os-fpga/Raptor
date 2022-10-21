@@ -622,9 +622,8 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM      
       COMMAND echo "Copying IP Catalog in share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/IP_Catalog/    
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/Raptor_Tools  
+          ${PROJECT_SOURCE_DIR}/IP_Catalog/rapidsilicon    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/rapidsilicon
       COMMAND echo "Copying litex_reference_designs to share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/litex_reference_designs/    
