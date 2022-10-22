@@ -34,7 +34,6 @@ set(RAPTOR ON)
 
 # Augment VPR with a Verilog reader (Verific based)
 set(ADD_READ_VERILOG_TO_VPR 1)
-set (OPENFPGA1.2 1)
 
 list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   tests/Jira_Testcase
@@ -353,6 +352,7 @@ else ()
   add_dependencies(raptor-bin openfpga) 
   add_dependencies(raptor-bin vpr)
   add_dependencies(raptor-bin pin_c)
+  add_dependencies(raptor-bin stars)
 endif()
 
 if (APPLE)
