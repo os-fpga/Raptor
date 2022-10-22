@@ -665,10 +665,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil    
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-     COMMAND ${CMAKE_COMMAND} -E copy 
-          ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars         
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM)
 
 if (WIN OR APPLE)
 else ()
@@ -692,6 +689,9 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars
         ${CMAKE_CURRENT_BINARY_DIR}/bin/)
      
 endif()
