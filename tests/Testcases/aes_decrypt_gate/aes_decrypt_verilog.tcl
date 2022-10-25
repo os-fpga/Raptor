@@ -1,8 +1,8 @@
 # Gate level netlist input
 create_design AES_DECRYPT_GATE
 target_device GEMINI
-read_netlist aes_decrypt.blif
-pnr_netlist_lang blif
+read_netlist aes_decrypt.v
+pnr_netlist_lang verilog
 add_constraint_file aes_decrypt_gate.sdc
 packing
 place

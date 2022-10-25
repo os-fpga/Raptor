@@ -19,13 +19,6 @@ ifeq ($(CPU_CORES),)
 	endif
 endif
 
-# Set OPENFPGA1.2 as the default
-OPENFPGA1.2 ?= 1
-ifeq ($(OPENFPGA11541),1)
-	OPENFPGA1.2 := 0
-endif
-
-
 PREFIX ?= /usr/local
 ADDITIONAL_CMAKE_OPTIONS ?=
 
@@ -43,18 +36,18 @@ debug: run-cmake-debug
 	cmake --build dbuild -j $(CPU_CORES)
 
 run-cmake-release:
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -DOPENFPGA1.2=$(OPENFPGA1.2) -DOPENFPGA11541=$(OPENFPGA11541) -S . -B build
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
 
 run-cmake-release_no_tcmalloc:
 	cmake -DNO_TCMALLOC=On -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
 
 run-cmake-debug:
-	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DNO_TCMALLOC=On -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -DOPENFPGA1.2=$(OPENFPGA1.2) -DOPENFPGA11541=$(OPENFPGA11541) -S . -B dbuild
+	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DNO_TCMALLOC=On -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B dbuild
 
 run-cmake-coverage:
 	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DMY_CXX_WARNING_FLAGS="--coverage" -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B coverage-build
 
-test/unittest: run-cmake-release
+test/unittest: release
 	cmake --build build --target unittest -j $(CPU_CORES)
 	pushd build && ctest --output-on-failure && popd
 
@@ -129,6 +122,7 @@ test_install:
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_gate.tcl
+#	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_verilog.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_gemini/raptor.tcl
 
 test/gui: run-cmake-debug

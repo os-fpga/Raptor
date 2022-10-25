@@ -61,8 +61,8 @@
         </Run>
     </Runs>
     <Tasks Version="0.0.0">
-        <Task ID="0" Status="2"/>
-        <Task ID="1" Status="3"/>
+        <Task ID="0" Status="0"/>
+        <Task ID="1" Status="0"/>
         <Task ID="4" Status="0"/>
         <Task ID="5" Status="0"/>
         <Task ID="6" Status="0"/>
@@ -75,7 +75,7 @@
         <Task ID="19" Status="0"/>
         <Task ID="20" Status="0"/>
         <Task ID="21" Status="0"/>
-        <Task ID="23" Status="2"/>
+        <Task ID="23" Status="0"/>
     </Tasks>
     <Compiler Version="0.0.0" CompilerState="10"/>
 </Project>

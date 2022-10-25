@@ -32,6 +32,9 @@ option(
 project(RAPTOR)
 set(RAPTOR ON)
 
+# Augment VPR with a Verilog reader (Verific based)
+set(ADD_READ_VERILOG_TO_VPR 1)
+
 list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   tests/Jira_Testcase
   litex_reference_designs
@@ -41,9 +44,7 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   Raptor_Tools
   )
 
-if (OPENFPGA1.2 OR OPENFPGA11541)
- list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS Backend)
-endif()
+list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS Backend)
 
 list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
   yosys_verific_rs
@@ -95,24 +96,19 @@ add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
 
 add_subdirectory(FOEDAG_rs)
+
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
 endif()
-add_subdirectory(yosys_verific_rs)
-if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
-    if (OPENFPGA1.2)
-      set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
-      set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
-      set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
-      add_subdirectory(Backend)
-    elseif(OPENFPGA11541)
-      set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
-      set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
-      set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
-      add_subdirectory(Backend)
-    endif()
-endif()
 
+add_subdirectory(yosys_verific_rs)
+
+if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
+   set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
+   set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
+   set(WITH_ABC OFF CACHE BOOL "Enable building ABC in Verilog-to-Routing" FORCE)
+   add_subdirectory(Backend)
+endif()
 
 #Submodules for litex_reference_designs and IP_Catalog
 
@@ -122,8 +118,8 @@ add_subdirectory(IP_Catalog)
 
 # Raptor version
 set(VERSION_MAJOR 0)
-set(VERSION_MINOR 2)
-set(VERSION_PATCH 31)
+set(VERSION_MINOR 3)
+set(VERSION_PATCH 2)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -356,6 +352,7 @@ else ()
   add_dependencies(raptor-bin openfpga) 
   add_dependencies(raptor-bin vpr)
   add_dependencies(raptor-bin pin_c)
+  add_dependencies(raptor-bin stars)
 endif()
 
 if (APPLE)
@@ -525,6 +522,8 @@ install(
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
+    DIRECTORY licenses/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/licenses/)
+install(
     DIRECTORY examples/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/aes_decrypt_fpga/)
@@ -613,13 +612,15 @@ endif()
 
 add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir" 
-      COMMAND echo "Create bin/Flex_LM dirs in share dir" 
+      COMMAND echo "Create bin/Flex_LM dirs in share dir"
+      COMMAND ${CMAKE_COMMAND} -E copy_directory 
+          ${PROJECT_SOURCE_DIR}/licenses/    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/licenses/
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM      
       COMMAND echo "Copying IP Catalog in share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/IP_Catalog/    
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/Raptor_Tools  
+          ${PROJECT_SOURCE_DIR}/IP_Catalog/rapidsilicon    
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/rapidsilicon
       COMMAND echo "Copying litex_reference_designs to share dir" 
       COMMAND ${CMAKE_COMMAND} -E copy_directory 
           ${PROJECT_SOURCE_DIR}/litex_reference_designs/    
@@ -678,30 +679,19 @@ else ()
           ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages 
           ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages)
           
-  if (OPENFPGA1.2)
-     add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vpr/vpr
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
-   elseif(OPENFPGA11541)
-     add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "Copying VPR and OpenFPGA in bin dir"
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/vpr/vpr
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA11541/openfpga/openfpga
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
-   endif()
+  add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vpr/vpr
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy 
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/)
      
 endif()
