@@ -127,7 +127,7 @@ test_install:
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
-	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_open_project.tcl
+	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_run_project.tcl
 
 test/rs: run-cmake-release
 	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
