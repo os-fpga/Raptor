@@ -1,7 +1,8 @@
 #!/bin/bash
 # Raptor environment setup script - 64-bit Linux
 # Copyright(c) 2022 Rapid Silicon
-# Version 1.0 - Tony McDowell (tony.mcdowell@rapidsilicon.com)
+# All licenses available in $RAPTOR_PATH/share/raptor/licenses
+# Version 1.0
 
 RETURN_PATH=`pwd`
 SCRIPT_PATH=`dirname $BASH_SOURCE`
