@@ -4,6 +4,7 @@
 */
 
 #include "Compiler/CompilerRS.h"
+#include "MPW1Loader.h"
 #include "Main/CommandLine.h"
 #include "Main/Foedag.h"
 #include "Main/Settings.h"
@@ -11,6 +12,7 @@
 #include "Main/WidgetFactory.h"
 #include "MainWindow/Session.h"
 #include "MainWindow/main_window.h"
+#include "PinAssignment/PinAssignmentCreator.h"
 #include "Utils/FileUtils.h"
 
 namespace RS {
@@ -63,6 +65,8 @@ int main(int argc, char** argv) {
   FOEDAG::Foedag* foedag =
       new FOEDAG::Foedag(cmd, RS::mainWindowBuilder, RS::registerAllCommands,
                          compiler, settings, context);
+  FOEDAG::PinAssignmentCreator::RegisterLoader("MPW1",
+                                               new FOEDAG::MPW1Loader{nullptr});
   if (opcompiler) {
     std::filesystem::path binpath = foedag->Context()->BinaryPath();
     std::filesystem::path datapath = foedag->Context()->DataPath();
@@ -71,6 +75,8 @@ int main(int argc, char** argv) {
     std::filesystem::path vprPath = binpath / "vpr";
     std::filesystem::path openFpgaPath = binpath / "openfpga";
     std::filesystem::path pinConvPath = binpath / "pin_c";
+    std::filesystem::path staPath = binpath / "sta";
+    std::filesystem::path starsPath = binpath / "stars";
     std::filesystem::path bitstreamSettingPath =
         datapath / "etc" / "devices" / "gemini" / "bitstream_annotation.xml";
     std::filesystem::path simSettingPath =
@@ -81,6 +87,8 @@ int main(int argc, char** argv) {
     opcompiler->AnalyzeExecPath(analyzePath);
     opcompiler->YosysExecPath(yosysPath);
     opcompiler->VprExecPath(vprPath);
+    opcompiler->StaExecPath(staPath);
+    opcompiler->StarsExecPath(starsPath);
     opcompiler->OpenFpgaExecPath(openFpgaPath);
     opcompiler->OpenFpgaBitstreamSettingFile(bitstreamSettingPath);
     opcompiler->OpenFpgaSimSettingFile(simSettingPath);

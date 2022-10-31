@@ -119,7 +119,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 2)
+set(VERSION_PATCH 5)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -246,7 +246,7 @@ if(MSVC)
   set_property(TARGET raptor-bin PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
   set_property(TARGET raptor-bin PROPERTY COMPILER_FLAGS /DSTATIC_BUILD)
 else()
-  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp ${QRC_MAIN_WINDOW})
+  add_executable(raptor-bin ${PROJECT_SOURCE_DIR}/src/Main/main.cpp src/Main/MPW1Loader.h src/Main/MPW1Loader.cpp ${QRC_MAIN_WINDOW})
 endif()
 set_target_properties(raptor-bin PROPERTIES OUTPUT_NAME raptor)
 if (PRODUCTION_BUILD)

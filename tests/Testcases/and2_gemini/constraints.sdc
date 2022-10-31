@@ -2,13 +2,3 @@
 create_clock -period 2.5 -name clk
 set_input_delay 1 -clock clk [get_ports {*}]
 set_output_delay 1 -clock clk [get_ports {*}]
-
-set_mode Mode_BP_SDR_A_TX Bank_VL_1_19
-set_pin_loc a Bank_VL_1_19
-
-set_mode Mode_BP_SDR_A_TX Bank_VL_1_21
-set_pin_loc b Bank_VL_1_21
-
-set_mode  Mode_BP_SDR_A_TX Bank_VL_1_23
-set_pin_loc c Bank_VL_1_23
-
