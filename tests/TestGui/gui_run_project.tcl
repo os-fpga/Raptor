@@ -19,10 +19,7 @@
 
 
 puts "RUN PROJECT START" ; flush stdout ; gui_start
-puts "AES_DECRYPT RUN" ; flush stdout ; run_project examples/AES_DECRYPT/AES_DECRYPT.ospr
-puts "and2_gemini RUN" ; flush stdout ; run_project examples/and2_gemini/and2_gemini.ospr
 puts "incr_comp RUN" ; flush stdout ; run_project examples/incr_comp/incr_comp.ospr
-puts "sasc_testcase RUN" ; flush stdout ; run_project examples/sasc_testcase/sasc_testcase.ospr
 puts "RUN PROJECT STOP"  ; flush stdout ; gui_stop
 
 
