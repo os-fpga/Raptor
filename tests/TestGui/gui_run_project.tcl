@@ -17,9 +17,20 @@
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+puts "RUNNING PROJECT"
+run_project examples/incr_comp/incr_comp.ospr
+set fp [open "raptor.log" r]
+set file_data [read $fp]
+close $fp
+# Report an error if project run wasn't successful
+set found [regexp "Project run successful!" $file_data]
+if { !$found } {
+     puts "TEST FAILED: incr_comp.ospr run failed."
+     exit 1
+}
 
-puts "RUN PROJECT START" ; flush stdout ; gui_start
-puts "incr_comp RUN" ; flush stdout ; run_project examples/incr_comp/incr_comp.ospr
-puts "RUN PROJECT STOP"  ; flush stdout ; gui_stop
+puts "TEST SUCCEEDED"
+
+exit 0
 
 
