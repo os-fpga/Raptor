@@ -524,7 +524,7 @@ install(
 install(
     DIRECTORY licenses/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/licenses/)
 install(
-    DIRECTORY examples/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)
+    DIRECTORY examples/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples)
 install(
       DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/aes_decrypt_fpga/)
 install(
