@@ -51,7 +51,7 @@ list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
   FOEDAG_rs
   IP_Catalog
   )
-  
+
 find_package(Git QUIET)
 
 if (NOT UPDATE_SUBMODULES)
@@ -68,7 +68,7 @@ function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE)
         WORKING_DIRECTORY ${WORK_DIR}
         RESULT_VARIABLE GIT_SUBMOD_RESULT
         )
-      if  (NOT GIT_SUBMOD_RESULT EQUAL "0") 
+      if  (NOT GIT_SUBMOD_RESULT EQUAL "0")
         message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
       endif()
     endif()
@@ -82,7 +82,7 @@ if (PRODUCTION_BUILD)
   get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
   add_subdirectory("Raptor_Tools/Flex_LM")
-endif()  
+endif()
 get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
     REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 message("VERIFIC_HOME: ${VERIFIC_HOME}")
@@ -90,13 +90,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   execute_process(
 	  COMMAND ${CMAKE_MAKE_PROGRAM} clean
 	  WORKING_DIRECTORY ${VERIFIC_HOME}
-	  COMMAND_ECHO STDOUT
-	  RESULT_VARIABLE GIT_SUBMOD_RESULT
-  )
+      )
 
   add_subdirectory(${VERIFIC_HOME})
 endif()
-
 get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 
@@ -141,7 +138,7 @@ configure_file(raptor_version.h.in ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/
 # Require swig 3
 find_package(SWIG 3.0 REQUIRED)
 
-# Check system 
+# Check system
 message("CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
 
 # Find Qt packages and error out if not found
@@ -235,7 +232,7 @@ set(QRC_MAIN_WINDOW
   FOEDAG_rs/FOEDAG/src/MainWindow/main_window_resource.qrc
 )
 
-set(raptor_SRC  
+set(raptor_SRC
   ${QRC_MAIN_WINDOW}
 )
 
@@ -285,10 +282,10 @@ else()
   set(TCL_STATIC_LIB libtcl8.6.so)
   set(TCL_STUBB_LIB libtclstub8.6.a)
   set(ZLIB_STATIC_LIB libz.a)
-  if(APPLE) 
+  if(APPLE)
     set(TCL_STATIC_LIB libtcl8.6.dylib)
   endif()
-  
+
   link_directories(${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/)
 
   if(CMAKE_SYSTEM_NAME MATCHES "MSYS")
@@ -302,14 +299,14 @@ else()
     message("LINUX MODE")
     get_filename_component(buildDirRelFilePath ${TCL_STATIC_LIB}
                          REALPATH BASE_DIR ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib)
-  
+
     add_library(tcl_static SHARED IMPORTED )
     find_library(tcl_static PATHS ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/)
     set_target_properties(tcl_static PROPERTIES
       IMPORTED_LOCATION ${buildDirRelFilePath} IMPORTED_NO_SONAME ON)
 
   endif()
-  
+
 endif()
 
 add_library(tcl_stubb STATIC IMPORTED )
@@ -336,12 +333,12 @@ if(MSVC)
 else()
   add_library(zlib STATIC IMPORTED)
   set_target_properties(zlib PROPERTIES
-    IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${ZLIB_STATIC_LIB})       
+    IMPORTED_LOCATION ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${ZLIB_STATIC_LIB})
 endif()
 
 # Copy the init.tcl file from source to build directory
 add_custom_command(TARGET raptor POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy 
+  COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/init.tcl
           ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6/init.tcl)
 
@@ -354,9 +351,9 @@ add_dependencies(raptor-bin sta)
 
 if (WIN OR APPLE)
 else ()
-  # Guaranties all the executables are built before final copy in build directory 
+  # Guaranties all the executables are built before final copy in build directory
   add_dependencies(raptor-bin libopenfpga)
-  add_dependencies(raptor-bin openfpga) 
+  add_dependencies(raptor-bin openfpga)
   add_dependencies(raptor-bin vpr)
   add_dependencies(raptor-bin pin_c)
   add_dependencies(raptor-bin stars)
@@ -475,7 +472,7 @@ function(register_gtests)
 endfunction()
 
 register_gtests(
- 
+
 )
 
 if (WIN OR APPLE)
@@ -489,7 +486,7 @@ install(
   TARGETS raptor-bin
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(
-  TARGETS raptor 
+  TARGETS raptor
   EXPORT Raptor
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor)
@@ -502,9 +499,9 @@ install (
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)
 install (
   FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${ZLIB_STATIC_LIB}
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)  
-  
-  
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)
+
+
 if (WIN32 AND $<CONFIG:Debug>)
   if (RAPTOR_WITH_PYTHON)
     install(
@@ -547,9 +544,9 @@ install(
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
 install(
-        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)    
+        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)
 install(
-        DIRECTORY litex_reference_designs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})      
+        DIRECTORY litex_reference_designs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})
 install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
@@ -573,7 +570,7 @@ install(
       GROUP_READ GROUP_EXECUTE
       WORLD_READ WORLD_EXECUTE
       )
-      
+
 
 #install(
 #  EXPORT Raptor
@@ -586,18 +583,18 @@ add_custom_target(raptor_link_target ALL
                   COMMAND ${CMAKE_COMMAND} -E create_symlink
                   build/compile_commands.json ../compile_commands.json)
 
-set(YOSYS_BUILD_PATH "$<$<CONFIG:Debug>:debug-install>$<$<CONFIG:Release>:install>") 
+set(YOSYS_BUILD_PATH "$<$<CONFIG:Debug>:debug-install>$<$<CONFIG:Release>:install>")
 
 if (PRODUCTION_BUILD)
    add_custom_command(TARGET raptor-bin POST_BUILD
-      COMMAND echo "Create dirs in share dir" 
-      COMMAND echo "Create etc dirs in share dir" 
+      COMMAND echo "Create dirs in share dir"
+      COMMAND echo "Create etc dirs in share dir"
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND echo "Create etc/settings dirs in share dir" 
-      COMMAND echo "Copying arch and example files in share dir" 
+      COMMAND echo "Create etc/settings dirs in share dir"
+      COMMAND echo "Copying arch and example files in share dir"
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/etc/    
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/etc/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
       COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/mpw1
       COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_latest
@@ -605,34 +602,34 @@ if (PRODUCTION_BUILD)
       ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml)
 else()
   add_custom_command(TARGET raptor-bin POST_BUILD
-      COMMAND echo "Create dirs in share dir" 
-      COMMAND echo "Create etc dirs in share dir" 
+      COMMAND echo "Create dirs in share dir"
+      COMMAND echo "Create etc dirs in share dir"
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND echo "Create etc/settings dirs in share dir" 
-      COMMAND echo "Copying arch and example files in share dir" 
+      COMMAND echo "Create etc/settings dirs in share dir"
+      COMMAND echo "Copying arch and example files in share dir"
       COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/etc/    
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/etc/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/)
 endif()
 
 
 add_custom_command(TARGET raptor-bin POST_BUILD
-      COMMAND echo "Create dirs in share dir" 
+      COMMAND echo "Create dirs in share dir"
       COMMAND echo "Create bin/Flex_LM dirs in share dir"
-      COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/licenses/    
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/licenses/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/licenses/
-      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM      
-      COMMAND echo "Copying IP Catalog in share dir" 
-      COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/IP_Catalog/rapidsilicon    
+      COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+      COMMAND echo "Copying IP Catalog in share dir"
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/IP_Catalog/rapidsilicon
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog/rapidsilicon
-      COMMAND echo "Copying litex_reference_designs to share dir" 
-      COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${PROJECT_SOURCE_DIR}/litex_reference_designs/    
+      COMMAND echo "Copying litex_reference_designs to share dir"
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/litex_reference_designs/
           ${CMAKE_CURRENT_BINARY_DIR}/share/litex_reference_designs
-      COMMAND echo "Copying tests to share dir" 
+      COMMAND echo "Copying tests to share dir"
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/examples
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/
@@ -650,42 +647,42 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_testcase/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/and2_gemini
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_gemini/          
-      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta        
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_gemini/
+      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys        
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc        
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de    
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil    
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-          COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmgrd    
+          COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmgrd
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil    
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM)
 
 if (WIN OR APPLE)
 else ()
   add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Copying Analyze in bin dir"
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze 
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND echo "Copying vhdl_packages in share dir"
-      COMMAND ${CMAKE_COMMAND} -E copy_directory 
-          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages 
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages
           ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages)
-          
+
   add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Copying VPR and OpenFPGA in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy
@@ -697,8 +694,8 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy
         ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy 
+      COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars
         ${CMAKE_CURRENT_BINARY_DIR}/bin/)
-     
+
 endif()
