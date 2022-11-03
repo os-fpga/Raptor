@@ -87,8 +87,16 @@ get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
     REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 message("VERIFIC_HOME: ${VERIFIC_HOME}")
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+  execute_process(
+	  COMMAND ${CMAKE_MAKE_PROGRAM} clean
+	  WORKING_DIRECTORY ${VERIFIC_HOME}
+	  COMMAND_ECHO STDOUT
+	  RESULT_VARIABLE GIT_SUBMOD_RESULT
+  )
+
   add_subdirectory(${VERIFIC_HOME})
 endif()
+
 get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 
@@ -96,7 +104,6 @@ add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
 
 add_subdirectory(FOEDAG_rs)
-
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
 endif()
