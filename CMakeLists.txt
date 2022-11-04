@@ -94,6 +94,7 @@ REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 
 add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
+add_subdirectory("Raptor_Tools/HDL_simulator")
 
 add_subdirectory(FOEDAG_rs)
 
@@ -540,7 +541,9 @@ install(
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
 install(
-        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)    
+        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)   
+install(
+        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/HDL_simulator DESTINATION  ${CMAKE_INSTALL_BINDIR})
 install(
         DIRECTORY litex_reference_designs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})      
 install(
@@ -643,7 +646,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_testcase/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/and2_gemini
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_gemini/          
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_gemini/         
       COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta        
@@ -660,12 +663,13 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil    
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-          COMMAND ${CMAKE_COMMAND} -E copy 
+      COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmgrd    
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil    
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM)
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+)
 
 if (WIN OR APPLE)
 else ()
