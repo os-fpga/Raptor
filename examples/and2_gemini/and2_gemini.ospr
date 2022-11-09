@@ -16,6 +16,7 @@
     <FileSets>
         <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="/and2_gemini.srcs/constrs_1">
             <File Path="$OSRCDIR/and2_gemini.srcs/constrs_1/constraints.sdc"/>
+            <File Path="$OSRCDIR/and2_gemini.srcs/constrs_1/pin_mapping.pin"/>
         </FileSet>
         <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="/and2_gemini.srcs/sim_1"/>
         <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="/and2_gemini.srcs/sources_1">
