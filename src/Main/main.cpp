@@ -65,8 +65,8 @@ int main(int argc, char** argv) {
   FOEDAG::Foedag* foedag =
       new FOEDAG::Foedag(cmd, RS::mainWindowBuilder, RS::registerAllCommands,
                          compiler, settings, context);
-  FOEDAG::PinAssignmentCreator::RegisterLoader("MPW1",
-                                               new FOEDAG::MPW1Loader{nullptr});
+  //FOEDAG::PinAssignmentCreator::RegisterLoader("MPW1",
+  //                                             new FOEDAG::MPW1Loader{nullptr});
   if (opcompiler) {
     std::filesystem::path binpath = foedag->Context()->BinaryPath();
     std::filesystem::path datapath = foedag->Context()->DataPath();
