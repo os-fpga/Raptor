@@ -39,6 +39,7 @@
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
       <port type="input" prefix="a" size="1"/>
+      <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="z" size="1"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="inverter" prefix="inverter" verilog_netlist="./SRC/CustomModules/inverter.v">
@@ -259,6 +260,7 @@
       <port type="input" prefix="reset" lib_name="RESET" size="1"/>
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
+      <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
       <port type="input" prefix="scan_enable" lib_name="SCAN_ENABLE" size="1" is_global="true" default_val="0"/>
       <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="1"/>
     </circuit_model>
@@ -330,14 +332,12 @@
       <design_technology type="cmos"/>
       <input_buffer exist="false" circuit_model_name="BUFFD1BWP7D5T16P96CPD"/>
       <output_buffer exist="true" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
-      <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
+      <port type="clock" prefix="clk" lib_name="FPGA_CLK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="A2F" lib_name="SOC_IN" size="1" is_global="true" is_io="true" is_data_io="true"/>
       <port type="output" prefix="F2A" lib_name="SOC_OUT" size="1" is_global="true" is_io="true" is_data_io="true"/>
-      <port type="output" prefix="F2A_CLK" lib_name="F2A_CLK" size="1" is_global="true" is_io="true"/>
+      <port type="output" prefix="SOC_CLK" lib_name="SOC_CLK" size="1" is_global="true" is_io="true"/>
       <port type="output" prefix="inpad" lib_name="FPGA_IN" size="1"/>
       <port type="input" prefix="outpad" lib_name="FPGA_OUT" size="1"/>
-      <port type="input" prefix="config_enable" lib_name="CFG_DONE" size="1" is_global="true" default_val="0"/>
-      <port type="sram" prefix="DEF" lib_name="DEF" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="00"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="RS_DSP" prefix="RS_DSP" is_default="true" verilog_netlist="./SRC/CustomModules/rs_dsp.v">
       <design_technology type="cmos"/>
@@ -459,6 +459,8 @@
       <tile name="io_right" port="clk[0:0]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[0:0]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[0:0]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[0:0]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[0:0]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[0:0]" x="-1" y="-1"/>
       <tile name="bram" port="clk[0:0]" x="-1" y="-1"/>
     </global_port>
@@ -468,6 +470,8 @@
       <tile name="io_right" port="clk[1:1]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[1:1]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[1:1]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[1:1]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[1:1]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[1:1]" x="-1" y="-1"/>
       <tile name="bram" port="clk[1:1]" x="-1" y="-1"/>
     </global_port>
@@ -477,6 +481,8 @@
       <tile name="io_right" port="clk[2:2]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[2:2]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[2:2]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[2:2]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[2:2]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[2:2]" x="-1" y="-1"/>
       <tile name="bram" port="clk[2:2]" x="-1" y="-1"/>
     </global_port>
@@ -486,6 +492,8 @@
       <tile name="io_right" port="clk[3:3]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[3:3]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[3:3]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[3:3]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[3:3]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[3:3]" x="-1" y="-1"/>
       <tile name="bram" port="clk[3:3]" x="-1" y="-1"/>
     </global_port>
@@ -495,6 +503,8 @@
       <tile name="io_right" port="clk[4:4]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[4:4]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[4:4]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[4:4]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[4:4]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[4:4]" x="-1" y="-1"/>
       <tile name="bram" port="clk[4:4]" x="-1" y="-1"/>
     </global_port>
@@ -504,6 +514,8 @@
       <tile name="io_right" port="clk[5:5]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[5:5]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[5:5]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[5:5]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[5:5]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[5:5]" x="-1" y="-1"/>
       <tile name="bram" port="clk[5:5]" x="-1" y="-1"/>
     </global_port>
@@ -513,6 +525,8 @@
       <tile name="io_right" port="clk[6:6]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[6:6]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[6:6]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[6:6]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[6:6]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[6:6]" x="-1" y="-1"/>
       <tile name="bram" port="clk[6:6]" x="-1" y="-1"/>
     </global_port>
@@ -522,6 +536,8 @@
       <tile name="io_right" port="clk[7:7]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[7:7]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[7:7]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[7:7]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[7:7]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[7:7]" x="-1" y="-1"/>
       <tile name="bram" port="clk[7:7]" x="-1" y="-1"/>
     </global_port>
@@ -531,6 +547,8 @@
       <tile name="io_right" port="clk[8:8]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[8:8]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[8:8]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[8:8]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[8:8]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[8:8]" x="-1" y="-1"/>
       <tile name="bram" port="clk[8:8]" x="-1" y="-1"/>
     </global_port>
@@ -540,6 +558,8 @@
       <tile name="io_right" port="clk[9:9]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[9:9]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[9:9]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[9:9]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[9:9]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[9:9]" x="-1" y="-1"/>
       <tile name="bram" port="clk[9:9]" x="-1" y="-1"/>
     </global_port>
@@ -549,6 +569,8 @@
       <tile name="io_right" port="clk[10:10]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[10:10]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[10:10]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[10:10]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[10:10]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[10:10]" x="-1" y="-1"/>
       <tile name="bram" port="clk[10:10]" x="-1" y="-1"/>
     </global_port>
@@ -558,6 +580,8 @@
       <tile name="io_right" port="clk[11:11]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[11:11]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[11:11]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[11:11]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[11:11]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[11:11]" x="-1" y="-1"/>
       <tile name="bram" port="clk[11:11]" x="-1" y="-1"/>
     </global_port>
@@ -567,6 +591,8 @@
       <tile name="io_right" port="clk[12:12]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[12:12]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[12:12]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[12:12]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[12:12]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[12:12]" x="-1" y="-1"/>
       <tile name="bram" port="clk[12:12]" x="-1" y="-1"/>
     </global_port>
@@ -576,6 +602,8 @@
       <tile name="io_right" port="clk[13:13]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[13:13]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[13:13]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[13:13]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[13:13]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[13:13]" x="-1" y="-1"/>
       <tile name="bram" port="clk[13:13]" x="-1" y="-1"/>
     </global_port>
@@ -585,6 +613,8 @@
       <tile name="io_right" port="clk[14:14]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[14:14]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[14:14]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[14:14]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[14:14]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[14:14]" x="-1" y="-1"/>
       <tile name="bram" port="clk[14:14]" x="-1" y="-1"/>
     </global_port>
@@ -594,6 +624,8 @@
       <tile name="io_right" port="clk[15:15]" x="-1" y="-1"/>
       <tile name="io_bottom" port="clk[15:15]" x="-1" y="-1"/>
       <tile name="io_left" port="clk[15:15]" x="-1" y="-1"/>
+      <tile name="io_right_top" port="clk[15:15]" x="-1" y="-1"/>
+      <tile name="io_right_bottom" port="clk[15:15]" x="-1" y="-1"/>
       <tile name="dsp" port="clk[15:15]" x="-1" y="-1"/>
       <tile name="bram" port="clk[15:15]" x="-1" y="-1"/>
     </global_port>
@@ -604,7 +636,7 @@
     <!--                 IO block pb_type annotations                          -->
     <!--                                                                       -->
     <pb_type name="io" physical_mode_name="physical"/>
-    <pb_type name="io[physical].iopad.pad" circuit_model_name="RS_PREIO" mode_bits="00"/>
+    <pb_type name="io[physical].iopad.pad" circuit_model_name="RS_PREIO"/>
     <pb_type name="io[physical].iopad.ff" circuit_model_name="RS_IOFF" mode_bits="1"/>
     <pb_type name="io[io_input].io_input.inpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="10"/>
     <pb_type name="io[io_output].io_output.outpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="00"/>
@@ -621,7 +653,7 @@
       <port name="C" physical_mode_port="clk"/>
     </pb_type>
     <pb_type name="io_corner" physical_mode_name="physical"/>
-    <pb_type name="io_corner[physical].iopad.pad" circuit_model_name="RS_PREIO" mode_bits="00"/>
+    <pb_type name="io_corner[physical].iopad.pad" circuit_model_name="RS_PREIO"/>
     <pb_type name="io_corner[physical].iopad.ff" circuit_model_name="RS_IOFF" mode_bits="1"/>
     <pb_type name="io_corner[io_input].io_input.inpad" physical_pb_type_name="io_corner[physical].iopad.pad" mode_bits="10"/>
     <pb_type name="io_corner[io_output].io_output.outpad" physical_pb_type_name="io_corner[physical].iopad.pad" mode_bits="00"/>
