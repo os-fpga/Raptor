@@ -13,6 +13,7 @@
 #include "MainWindow/Session.h"
 #include "MainWindow/main_window.h"
 #include "PinAssignment/PinAssignmentCreator.h"
+#include "Simulation/Simulator.h"
 #include "Utils/FileUtils.h"
 
 namespace RS {
@@ -94,6 +95,9 @@ int main(int argc, char** argv) {
     opcompiler->OpenFpgaSimSettingFile(simSettingPath);
     opcompiler->OpenFpgaRepackConstraintsFile(repackConstraintPath);
     opcompiler->PinConvExecPath(pinConvPath);
+    opcompiler->GetSimulator()->SetSimulatorPath(
+        FOEDAG::Simulator::SimulatorType::Verilator,
+        (binpath / "HDL_simulator" / "verilator" / "bin").string());
   }
   return foedag->init(guiType);
 }
