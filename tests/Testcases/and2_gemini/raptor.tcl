@@ -13,5 +13,5 @@ synthesize delay
 packing
 place
 route
-sta
+sta opensta
 bitstream 
