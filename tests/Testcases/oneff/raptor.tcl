@@ -17,7 +17,6 @@ simulate rtl
 
 synthesize delay
 packing
-pnr_options --gen_post_synthesis_netlist on
 place
 route
 sta

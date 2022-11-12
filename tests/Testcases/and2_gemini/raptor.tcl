@@ -12,7 +12,6 @@ analyze
 synthesize delay
 packing
 place
-pnr_options --gen_post_synthesis_netlist on
 route
 sta
 bitstream 
