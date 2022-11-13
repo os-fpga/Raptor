@@ -7,12 +7,26 @@
 module and2(
   a,
   b,
-  c);
+  c,
+  clk,
+  reset);
 
 input wire a;
 input wire b;
-output wire c;
+input wire clk;
+input wire reset;
+output c;
 
-assign c = a & b;
+wire d;
+reg c;
+
+assign d = a & b;
+
+always@(posedge clk or posedge reset) begin 
+  if (reset)
+    c = 0;
+  else
+    c = d;
+end
 
 endmodule
