@@ -9,7 +9,7 @@ add_simulation_file -SV_2009 syn_tb.v
 add_simulation_file sim_main.cpp
 
 # Device target
-target_device GEMINI
+target_device GEMINI_LATEST
 # Compilation
 analyze
 
