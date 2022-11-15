@@ -63,7 +63,7 @@
         <internal type="pinmap_csv" file="gemini_latest/Gemini_Pin_Table.csv"/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
-        <internal type="technology" name="genesis"/>
+        <internal type="technology" name="genesis2"/>
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>

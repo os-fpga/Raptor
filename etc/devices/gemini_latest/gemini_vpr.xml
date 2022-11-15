@@ -234,7 +234,6 @@
       <input_ports>
         <port name="D" clock="clk"/>
         <port name="SI" clock="clk"/>
-        <port name="reset" clock="clk"/>
         <port name="clk" is_clock="1"/>
       </input_ports>
       <output_ports>
@@ -643,14 +642,10 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top"> io_top[71:14].f2a_i
@@ -661,7 +656,7 @@
         </loc>
           <loc side="left">io_top.sc_in io_top.sc_out
         </loc>
-          <loc side="bottom">io_top.clk  io_top.reset io_top.scan_reset
+          <loc side="bottom">io_top.clk
         </loc>
         </pinlocations>
       </sub_tile>
@@ -678,14 +673,10 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top"> io_right[71:14].f2a_i
@@ -696,7 +687,7 @@
         </loc>
           <loc side="left">io_right.sc_in io_right.sc_out
         </loc>
-          <loc side="bottom">io_right.clk  io_right.reset io_right.scan_reset
+          <loc side="bottom">io_right.clk
         </loc>
         </pinlocations>
       </sub_tile>
@@ -713,14 +704,10 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top"> io_bottom[71:14].f2a_i
@@ -729,7 +716,7 @@
         </loc>
           <loc side="left">io_bottom.sc_in io_bottom.sc_out
         </loc>
-          <loc side="bottom">io_bottom.clk  io_bottom.reset io_bottom.scan_reset
+          <loc side="bottom">io_bottom.clk
           io_bottom[71:24].a2f_o io_bottom[11:0].a2f_o
         </loc>
         </pinlocations>
@@ -747,14 +734,10 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top"> io_left[71:14].f2a_i
@@ -765,7 +748,7 @@
           <loc side="left">io_left.sc_in io_left.sc_out
           io_left[71:24].a2f_o
         </loc>
-          <loc side="bottom">io_left.clk  io_left.reset io_left.scan_reset
+          <loc side="bottom">io_left.clk
         </loc>
         </pinlocations>
       </sub_tile>
@@ -782,14 +765,10 @@
         <output name="a2f_o" num_pins="2"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top">io_right_top[59:14].f2a_i
@@ -799,7 +778,7 @@
         </loc>
           <loc side="left">io_right_top.sc_in io_right_top.sc_out
         </loc>
-          <loc side="bottom">io_right_top.clk  io_right_top.reset io_right_top.scan_reset
+          <loc side="bottom">io_right_top.clk
         </loc>
         </pinlocations>
       </sub_tile>
@@ -816,14 +795,10 @@
         <output name="a2f_o" num_pins="2"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top">io_right_bottom[59:14].f2a_i
@@ -832,7 +807,7 @@
         </loc>
           <loc side="left">io_right_bottom.sc_in io_right_bottom.sc_out
         </loc>
-          <loc side="bottom">io_right_bottom.clk  io_right_bottom.reset io_right_bottom.scan_reset
+          <loc side="bottom">io_right_bottom.clk
           io_right_bottom[59:30].a2f_o
         </loc>
         </pinlocations>
@@ -866,8 +841,8 @@
         <!-- Global control signals -->
         <clock name="clk" num_pins="16"/>
         <!-- Scan chain signals -->
-        <input name="sc_in" num_pins="4"/>
-        <output name="sc_out" num_pins="4"/>
+        <input name="sc_in" num_pins="2"/>
+        <output name="sc_out" num_pins="2"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <!-- CONTROLS SIZE OF CBs and SB -->
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
@@ -1145,12 +1120,9 @@
       <input name="sc_in" num_pins="1"/>
       <!--RESTRUCTURE to 4 scan chains, 5 IOs each-->
       <output name="sc_out" num_pins="1"/>
-      <input name="reset" num_pins="1" is_non_clock_global="true"/>
-      <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <mode name="physical" disable_packing="true">
         <pb_type name="iopad" num_pb="1">
           <input name="sc_in" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <input name="f2a_i" num_pins="1"/>
           <output name="a2f_o" num_pins="1"/>
           <output name="sc_out" num_pins="1"/>
@@ -1159,13 +1131,11 @@
           <pb_type name="ff" blif_model=".subckt io_scff" num_pb="2">
             <input name="D" num_pins="1" port_class="D"/>
             <input name="SI" num_pins="1"/>
-            <input name="reset" num_pins="1"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
             <T_setup value="1.41766e-10" port="ff[0:0].D" clock="clk"/>
             <T_setup value="1.41766e-10" port="ff[1:1].D" clock="clk"/>
             <T_setup value="1.85353e-10" port="ff.SI" clock="clk"/>
-            <T_setup value="1.98957e-10" port="ff.reset" clock="clk"/>
             <T_clock_to_Q max="9.9981e-11" port="ff[0:0].Q" clock="clk"/>
             <T_clock_to_Q max="9.9981e-11" port="ff[1:1].Q" clock="clk"/>
           </pb_type>
@@ -1191,7 +1161,6 @@
             </mux>
             <!--                Control signal connections               -->
             <complete name="io_clk" input="iopad.clk" output="ff.clk"/>
-            <complete name="io_reset" input="iopad.reset" output="ff[1:0].reset"/>
             <direct name="ff[0:0]-DI" input="iopad.sc_in" output="ff[0:0].SI"/>
             <direct name="ff[1:1]-DI" input="ff[0:0].Q" output="ff[1:1].SI"/>
             <direct name="iopad-sc_out" input="ff[1:1].Q" output="iopad.sc_out"/>
@@ -1203,19 +1172,14 @@
           <direct name="direct4" input="iopad.a2f_o" output="io.a2f_o[0:0]"/>
           <direct name="direct6" input="io.sc_in" output="iopad.sc_in"/>
           <direct name="direct7" input="iopad.sc_out" output="io.sc_out"/>
-          <direct name="direct8" input="io.reset" output="iopad.reset">
-            <delay_constant max="2.5e-09" min="2.5e-09" in_port="io.reset" out_port="iopad.reset"/>
-          </direct>
         </interconnect>
       </mode>
       <mode name="io_output">
         <pb_type name="io_output" num_pb="1">
           <clock name="clk" num_pins="1"/>
           <input name="f2a_i" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <pb_type name="ff" num_pb="1">
             <input name="D" num_pins="1"/>
-            <input name="R" num_pins="1"/>
             <output name="Q" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <mode name="DFF" disable_packing="false">
@@ -1254,7 +1218,6 @@
           </pb_type>
           <interconnect>
             <direct name="ff-clk" input="io_output.clk" output="ff.clk"/>
-            <direct name="ff-reset" input="io_output.reset" output="ff.R"/>
             <direct name="ff-D" input="io_output.f2a_i[0]" output="ff.D"/>
             <mux name="mux1" input="io_output.f2a_i[0] ff.Q" output="outpad.outpad">
               <delay_constant max="1.32664e-10" min="7.3674e-11" in_port="io_output.f2a_i[0]" out_port="outpad.outpad"/>
@@ -1263,7 +1226,6 @@
           </interconnect>
         </pb_type>
         <interconnect>
-          <complete name="io_output-reset" input="io.reset" output="io_output.reset"/>
           <complete name="io_output-clk" input="io.clk" output="io_output.clk"/>
           <direct name="io_output-f2a_i" input="io.f2a_i[0]" output="io_output.f2a_i[0]"/>
         </interconnect>
@@ -1272,7 +1234,6 @@
         <pb_type name="io_input" num_pb="1">
           <clock name="clk" num_pins="1"/>
           <output name="a2f_o" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <pb_type name="inpad" blif_model=".input" num_pb="1">
             <output name="inpad" num_pins="1"/>
           </pb_type>
@@ -1280,7 +1241,6 @@
             <input name="D" num_pins="1" port_class="D"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
-            <input name="R" num_pins="1"/>
             <mode name="DFF" disable_packing="false">
               <pb_type name="DFF" blif_model=".subckt dff" num_pb="1">
                 <input name="D" num_pins="1"/>
@@ -1314,7 +1274,6 @@
           </pb_type>
           <interconnect>
             <direct name="ff-clk" input="io_input.clk" output="ff.clk"/>
-            <direct name="ff-reset" input="io_input.reset" output="ff.R"/>
             <direct name="ff-D" input="inpad.inpad" output="ff.D">
               <delay_constant max="6.12765e-10" min="6.1938e-11" in_port="inpad.inpad" out_port="ff.D"/>
             </direct>
@@ -1323,7 +1282,6 @@
         </pb_type>
         <interconnect>
           <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o[0:0]"/>
-          <complete name="io_input-reset" input="io.reset" output="io_input.reset"/>
           <complete name="io_input-clk" input="io.clk" output="io_input.clk"/>
         </interconnect>
       </mode>
@@ -1337,12 +1295,9 @@
       <input name="sc_in" num_pins="1"/>
       <!--RESTRUCTURE to 4 scan chains, 5 IOs each-->
       <output name="sc_out" num_pins="1"/>
-      <input name="reset" num_pins="1" is_non_clock_global="true"/>
-      <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <mode name="physical" disable_packing="true">
         <pb_type name="iopad" num_pb="1">
           <input name="sc_in" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <input name="f2a_i" num_pins="1"/>
           <output name="a2f_o" num_pins="1"/>
           <output name="sc_out" num_pins="1"/>
@@ -1351,13 +1306,11 @@
           <pb_type name="ff" blif_model=".subckt io_scff" num_pb="2">
             <input name="D" num_pins="1" port_class="D"/>
             <input name="SI" num_pins="1"/>
-            <input name="reset" num_pins="1"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
             <T_setup value="1.41766e-10" port="ff[0:0].D" clock="clk"/>
             <T_setup value="1.41766e-10" port="ff[1:1].D" clock="clk"/>
             <T_setup value="1.85353e-10" port="ff.SI" clock="clk"/>
-            <T_setup value="1.98957e-10" port="ff.reset" clock="clk"/>
             <T_clock_to_Q max="9.9981e-11" port="ff[0:0].Q" clock="clk"/>
             <T_clock_to_Q max="9.9981e-11" port="ff[1:1].Q" clock="clk"/>
           </pb_type>
@@ -1383,7 +1336,6 @@
             </mux>
             <!--                Control signal connections               -->
             <complete name="io_clk" input="iopad.clk" output="ff.clk"/>
-            <complete name="io_reset" input="iopad.reset" output="ff[1:0].reset"/>
             <direct name="ff[0:0]-DI" input="iopad.sc_in" output="ff[0:0].SI"/>
             <direct name="ff[1:1]-DI" input="ff[0:0].Q" output="ff[1:1].SI"/>
             <direct name="iopad-sc_out" input="ff[1:1].Q" output="iopad.sc_out"/>
@@ -1396,19 +1348,14 @@
           <direct name="direct4_1" input="iopad.a2f_o" output="io_corner.a2f_o[1:1]"/>
           <direct name="direct6" input="io_corner.sc_in" output="iopad.sc_in"/>
           <direct name="direct7" input="iopad.sc_out" output="io_corner.sc_out"/>
-          <direct name="direct8" input="io_corner.reset" output="iopad.reset">
-            <delay_constant max="2.5e-09" min="2.5e-09" in_port="io_corner.reset" out_port="iopad.reset"/>
-          </direct>
         </interconnect>
       </mode>
       <mode name="io_output">
         <pb_type name="io_output" num_pb="1">
           <clock name="clk" num_pins="1"/>
           <input name="f2a_i" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <pb_type name="ff" num_pb="1">
             <input name="D" num_pins="1"/>
-            <input name="R" num_pins="1"/>
             <output name="Q" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <mode name="DFF" disable_packing="false">
@@ -1447,7 +1394,6 @@
           </pb_type>
           <interconnect>
             <direct name="ff-clk" input="io_output.clk" output="ff.clk"/>
-            <direct name="ff-reset" input="io_output.reset" output="ff.R"/>
             <direct name="ff-D" input="io_output.f2a_i[0]" output="ff.D"/>
             <mux name="mux1" input="io_output.f2a_i[0] ff.Q" output="outpad.outpad">
               <delay_constant max="1.32664e-10" min="7.3674e-11" in_port="io_output.f2a_i[0]" out_port="outpad.outpad"/>
@@ -1456,7 +1402,6 @@
           </interconnect>
         </pb_type>
         <interconnect>
-          <complete name="io_output-reset" input="io_corner.reset" output="io_output.reset"/>
           <complete name="io_output-clk" input="io_corner.clk" output="io_output.clk"/>
           <direct name="io_output-f2a_i" input="io_corner.f2a_i[0]" output="io_output.f2a_i[0]"/>
         </interconnect>
@@ -1465,7 +1410,6 @@
         <pb_type name="io_input" num_pb="1">
           <clock name="clk" num_pins="1"/>
           <output name="a2f_o" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <pb_type name="inpad" blif_model=".input" num_pb="1">
             <output name="inpad" num_pins="1"/>
           </pb_type>
@@ -1473,7 +1417,6 @@
             <input name="D" num_pins="1" port_class="D"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
-            <input name="R" num_pins="1"/>
             <mode name="DFF" disable_packing="false">
               <pb_type name="DFF" blif_model=".subckt dff" num_pb="1">
                 <input name="D" num_pins="1"/>
@@ -1507,7 +1450,6 @@
           </pb_type>
           <interconnect>
             <direct name="ff-clk" input="io_input.clk" output="ff.clk"/>
-            <direct name="ff-reset" input="io_input.reset" output="ff.R"/>
             <direct name="ff-D" input="inpad.inpad" output="ff.D">
               <delay_constant max="6.12765e-10" min="6.1938e-11" in_port="inpad.inpad" out_port="ff.D"/>
             </direct>
@@ -1517,7 +1459,6 @@
         <interconnect>
           <direct name="io-a2f_o" input="io_input.a2f_o" output="io_corner.a2f_o[0:0]"/>
           <direct name="io-a2f_o1" input="io_input.a2f_o" output="io_corner.a2f_o[1:1]"/>
-          <complete name="io_input-reset" input="io_corner.reset" output="io_input.reset"/>
           <complete name="io_input-clk" input="io_corner.clk" output="io_input.clk"/>
         </interconnect>
       </mode>
@@ -1542,8 +1483,8 @@
       <!-- Global control signals -->
       <clock name="clk" num_pins="16"/>
       <!-- Scan chain signals -->
-      <input name="sc_in" num_pins="4"/>
-      <output name="sc_out" num_pins="4"/>
+      <input name="sc_in" num_pins="2"/>
+      <output name="sc_out" num_pins="2"/>
       <pb_type name="fle_wrapper" num_pb="1">
         <input name="II" num_pins="48"/>
         <input name="SS" num_pins="6"/>
@@ -1556,8 +1497,8 @@
         <input name="cascup_i" num_pins="1"/>
         <output name="cascdn_o" num_pins="1"/>
         <output name="cascup_o" num_pins="1"/>
-        <input name="sc_in" num_pins="4"/>
-        <output name="sc_out" num_pins="4"/>
+        <input name="sc_in" num_pins="2"/>
+        <output name="sc_out" num_pins="2"/>
         <pb_type name="comb_block" num_pb="1">
           <input name="II" num_pins="48"/>
           <input name="cin" num_pins="1"/>
@@ -1768,104 +1709,61 @@
               <!-- lut5 logical mode -->
               <!-- Start of lut5_mode logical mode -->
               <mode name="lut5_mode" disable_packing="false">
-                <pb_type name="lut5_wrap" num_pb="1">
-                  <input name="in" num_pins="6"/>
-                  <output name="o5" num_pins="2"/>
-                  <output name="o6" num_pins="1"/>
-                  <pb_type name="lut5" blif_model=".names" num_pb="2" class="lut">
-                    <input name="in" num_pins="5" port_class="lut_in"/>
-                    <output name="out" num_pins="1" port_class="lut_out"/>
-                    <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
-                    2.89413e-10
-                    2.36114e-10
-                    1.86969e-10
-                    1.40959e-10
-                    9.0477e-11
-                </delay_matrix>
-                    <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
-                    2.24236e-10
-                    1.88394e-10
-                    1.53191e-10
-                    1.1799e-10
-                    7.5834e-11
-                </delay_matrix>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="direct_in_o5_up" input="lut5_wrap.in[4:0]" output="lut5[0:0].in"/>
-                    <direct name="direct_in_o5_dn" input="lut5_wrap.in[4:0]" output="lut5[1:1].in"/>
-                    <direct name="direct_out_o5up" input="lut5[0:0].out" output="lut5_wrap.o5[0:0]"/>
-                    <direct name="direct_out_o5dn" input="lut5[1:1].out" output="lut5_wrap.o5[1:1]"/>
-                    <mux name="direct_o6_o5" input="lut5[0:0].out lut5[1:1].out lut5_wrap.in[5:5]" output="lut5_wrap.o6"/>
-                  </interconnect>
+                <pb_type name="lut5" blif_model=".names" num_pb="2" class="lut">
+                  <input name="in" num_pins="5" port_class="lut_in"/>
+                  <output name="out" num_pins="1" port_class="lut_out"/>
+                  <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
+                2.89413e-10
+                2.36114e-10
+                1.86969e-10
+                1.40959e-10
+                9.0477e-11
+            </delay_matrix>
+                  <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
+                2.24236e-10
+                1.88394e-10
+                1.53191e-10
+                1.1799e-10
+                7.5834e-11
+            </delay_matrix>
                 </pb_type>
                 <interconnect>
-                  <direct name="direct_in" input="frac_lut.II" output="lut5_wrap.in"/>
-                  <direct name="direct_out5_up" input="lut5_wrap.o5[0:0]" output="frac_lut.o5_up"/>
-                  <direct name="direct_out5_dn" input="lut5_wrap.o5[1:1]" output="frac_lut.o5_dn"/>
-                  <direct name="direct_out6" input="lut5_wrap.o6" output="frac_lut.o6"/>
+                  <direct name="direct_in_lut4_0" input="frac_lut.II[4:0]" output="lut5[0].in"/>
+                  <direct name="direct_in_lut4_1" input="frac_lut.II[4:0]" output="lut5[1].in"/>
+                  <direct name="direct_out5_up" input="lut5[0:0].out" output="frac_lut.o5_up"/>
+                  <direct name="direct_out5_dn" input="lut5[1:1].out" output="frac_lut.o5_dn"/>
                 </interconnect>
               </mode>
               <!-- End of lut5_mode logical mode -->
               <!-- lut4 logical mode -->
               <!-- Start of lut4_mode logical mode -->
               <mode name="lut4_mode" disable_packing="false">
-                <pb_type name="lut4_wrap" num_pb="1">
-                  <input name="in" num_pins="6"/>
-                  <output name="o4" num_pins="4"/>
-                  <output name="o5" num_pins="2"/>
-                  <output name="o6" num_pins="1"/>
-                  <pb_type name="lut4_wrap_1" num_pb="1">
-                    <input name="in" num_pins="5"/>
-                    <output name="o4" num_pins="4"/>
-                    <output name="o5" num_pins="2"/>
-                    <pb_type name="lut4" blif_model=".names" num_pb="4" class="lut">
-                      <input name="in" num_pins="4" port_class="lut_in"/>
-                      <output name="out" num_pins="1" port_class="lut_out"/>
-                      <delay_matrix type="max" in_port="lut4.in" out_port="lut4.out">
-                        2.89413e-10
-                        2.36114e-10
-                        1.86969e-10
-                        1.40959e-10
-                    </delay_matrix>
-                      <delay_matrix type="min" in_port="lut4.in" out_port="lut4.out">
-                        2.24236e-10
-                        1.88394e-10
-                        1.53191e-10
-                        1.1799e-10
-                    </delay_matrix>
-                    </pb_type>
-                    <interconnect>
-                      <direct name="direct_in_o4_0_up" input="lut4_wrap_1.in[3:0]" output="lut4[0:0].in"/>
-                      <direct name="direct_in_o4_1_up" input="lut4_wrap_1.in[3:0]" output="lut4[1:1].in"/>
-                      <direct name="direct_in_o4_0_dn" input="lut4_wrap_1.in[3:0]" output="lut4[2:2].in"/>
-                      <direct name="direct_in_o4_1_dn" input="lut4_wrap_1.in[3:0]" output="lut4[3:3].in"/>
-                      <direct name="direct_out_o4_0_up" input="lut4[0:0].out" output="lut4_wrap_1.o4[0:0]"/>
-                      <direct name="direct_out_o4_1_up" input="lut4[1:1].out" output="lut4_wrap_1.o4[1:1]"/>
-                      <direct name="direct_out_o4_0_dn" input="lut4[2:2].out" output="lut4_wrap_1.o4[2:2]"/>
-                      <direct name="direct_out_o4_1_dn" input="lut4[3:3].out" output="lut4_wrap_1.o4[3:3]"/>
-                      <mux name="direct_o5_o4_up" input="lut4[0:0].out lut4[1:1].out lut4_wrap_1.in[4:4]" output="lut4_wrap_1.o5[0:0]"/>
-                      <mux name="direct_o5_o4_dn" input="lut4[2:2].out lut4[3:3].out lut4_wrap_1.in[4:4]" output="lut4_wrap_1.o5[1:1]"/>
-                    </interconnect>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="direct_in_o5_up" input="lut4_wrap.in[4:0]" output="lut4_wrap_1.in"/>
-                    <direct name="direct_o4" input="lut4_wrap_1.o4" output="lut4_wrap.o4"/>
-                    <direct name="direct_o5" input="lut4_wrap_1.o5" output="lut4_wrap.o5"/>
-                    <mux name="direct_o6_o4" input="lut4_wrap_1.o5[0:0] lut4_wrap_1.o5[1:1] lut4_wrap.in[5:5]" output="lut4_wrap.o6"/>
-                  </interconnect>
+                <pb_type name="lut4" blif_model=".names" num_pb="4" class="lut">
+                  <input name="in" num_pins="4" port_class="lut_in"/>
+                  <output name="out" num_pins="1" port_class="lut_out"/>
+                  <delay_matrix type="max" in_port="lut4.in" out_port="lut4.out">
+                2.89413e-10
+                2.36114e-10
+                1.86969e-10
+                1.40959e-10
+            </delay_matrix>
+                  <delay_matrix type="min" in_port="lut4.in" out_port="lut4.out">
+                2.24236e-10
+                1.88394e-10
+                1.53191e-10
+                1.1799e-10
+            </delay_matrix>
                 </pb_type>
                 <interconnect>
-                  <direct name="direct_in" input="frac_lut.II" output="lut4_wrap.in"/>
+                  <direct name="direct_in_lut4_0_up" input="frac_lut.II[3:0]" output="lut4[0:0].in"/>
+                  <direct name="direct_in_lut4_1_up" input="frac_lut.II[3:0]" output="lut4[1:1].in"/>
+                  <direct name="direct_in_lut4_0_dn" input="frac_lut.II[3:0]" output="lut4[2:2].in"/>
+                  <direct name="direct_in_lut4_1_dn" input="frac_lut.II[3:0]" output="lut4[3:3].in"/>
                   <!-- LUT4 outputs -->
-                  <direct name="direct_out4_0_up" input="lut4_wrap.o4[0:0]" output="frac_lut.o4_up_1"/>
-                  <direct name="direct_out4_1_up" input="lut4_wrap.o4[1:1]" output="frac_lut.o4_up_2"/>
-                  <direct name="direct_out4_0_dn" input="lut4_wrap.o4[2:2]" output="frac_lut.o4_dn_1"/>
-                  <direct name="direct_out4_1_dn" input="lut4_wrap.o4[3:3]" output="frac_lut.o4_dn_2"/>
-                  <!-- LUT5 outputs -->
-                  <direct name="direct_out5_up" input="lut4_wrap.o5[0:0]" output="frac_lut.o5_up"/>
-                  <direct name="direct_out5_dn" input="lut4_wrap.o5[1:1]" output="frac_lut.o5_dn"/>
-                  <!-- LUT6 outputs -->
-                  <direct name="direct_out6" input="lut4_wrap.o6" output="frac_lut.o6"/>
+                  <direct name="direct_out4_0_up" input="lut4[0:0].out" output="frac_lut.o4_up_1"/>
+                  <direct name="direct_out4_1_up" input="lut4[1:1].out" output="frac_lut.o4_up_2"/>
+                  <direct name="direct_out4_0_dn" input="lut4[2:2].out" output="frac_lut.o4_dn_1"/>
+                  <direct name="direct_out4_1_dn" input="lut4[3:3].out" output="frac_lut.o4_dn_2"/>
                 </interconnect>
               </mode>
               <!-- End of lut4_mode logical mode -->
@@ -2031,8 +1929,8 @@
           <clock name="clock" num_pins="1"/>
           <output name="out_up" num_pins="8"/>
           <output name="out_dn" num_pins="8"/>
-          <input name="sc_in" num_pins="4"/>
-          <output name="sc_out" num_pins="4"/>
+          <input name="sc_in" num_pins="2"/>
+          <output name="sc_out" num_pins="2"/>
           <pb_type name="ff_half" num_pb="2">
             <input name="in" num_pins="8"/>
             <clock name="clock" num_pins="1"/>
@@ -2442,10 +2340,12 @@
           </pb_type>
           <interconnect>
             <!-- Input connection -->
-            <direct name="sc_in_0" input="ff_wrap.sc_in[1:0]" output="ff_half[0].sc_in"/>
-            <direct name="sc_in_1" input="ff_wrap.sc_in[3:2]" output="ff_half[1].sc_in"/>
-            <direct name="sc_out_0" input="ff_half[0].sc_out" output="ff_wrap.sc_out[1:0]"/>
-            <direct name="sc_out_1" input="ff_half[1].sc_out" output="ff_wrap.sc_out[3:2]"/>
+            <direct name="sc_in_0_chain" input="ff_half[0].sc_out[0]" output="ff_half[0].sc_in[1]"/>
+            <direct name="sc_in_1_chain" input="ff_half[1].sc_out[0]" output="ff_half[1].sc_in[1]"/>
+            <direct name="sc_in_0" input="ff_wrap.sc_in[0]" output="ff_half[0].sc_in[0]"/>
+            <direct name="sc_in_1" input="ff_wrap.sc_in[1]" output="ff_half[1].sc_in[0]"/>
+            <direct name="sc_out_0" input="ff_half[0].sc_out[1]" output="ff_wrap.sc_out[0]"/>
+            <direct name="sc_out_1" input="ff_half[1].sc_out[1]" output="ff_wrap.sc_out[1]"/>
             <direct name="odd_input_0" input="ff_wrap.o_up[3:0]" output="ff_half[0].in[3:0]"/>
             <direct name="odd_input_1" input="ff_wrap.o_up[7:4]" output="ff_half[0].in[7:4]"/>
             <direct name="even_input_0" input="ff_wrap.o_dn[3:0]" output="ff_half[1].in[3:0]"/>
@@ -5329,12 +5229,14 @@
       <!--Insert BRAM column(s)-->
       <region type="bram" startx="7" endx="7" starty="2" endy="H-3" priority="30"/>
     </fixed_layout>
-    <fixed_layout name="castor106x77_heterogeneous" width="108" height="79">
+    <fixed_layout name="castor82x68_heterogeneous" width="84" height="70">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
       <row type="io_bottom" starty="1" priority="91"/>
       <col type="io_right" startx="W-2" priority="92"/>
       <col type="io_left" startx="1" priority="93"/>
+      <single type="io_right_top" x="82" y="68" priority="94"/>
+      <single type="io_right_bottom" x="82" y="1" priority="95"/>
       <corners type="EMPTY" priority="100"/>
       <row type="EMPTY" starty="H-1" priority="101"/>
       <col type="EMPTY" startx="W-1" priority="102"/>
