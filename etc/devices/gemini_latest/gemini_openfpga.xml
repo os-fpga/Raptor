@@ -257,7 +257,6 @@
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="input" prefix="global_reset" lib_name="G_RESET" size="1" is_global="true" default_val="0"/>
-      <port type="input" prefix="reset" lib_name="RESET" size="1"/>
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
@@ -424,6 +423,7 @@
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE_i" size="1" is_global="true" default_val="0"/>
       <port type="input" prefix="scan_enable" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
       <port type="input" prefix="global_reset" lib_name="GRESET_i" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="rwm" lib_name="rwm" size="3" is_global="true" default_val="0"/>
     </circuit_model>
   </circuit_library>
   <configuration_protocol>
@@ -636,10 +636,10 @@
     <!--                 IO block pb_type annotations                          -->
     <!--                                                                       -->
     <pb_type name="io" physical_mode_name="physical"/>
-    <pb_type name="io[physical].iopad.pad" circuit_model_name="RS_PREIO"/>
+    <pb_type name="io[physical].iopad.pad" circuit_model_name="RS_PREIO" mode_bits=""/>
     <pb_type name="io[physical].iopad.ff" circuit_model_name="RS_IOFF" mode_bits="1"/>
-    <pb_type name="io[io_input].io_input.inpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="10"/>
-    <pb_type name="io[io_output].io_output.outpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="00"/>
+    <pb_type name="io[io_input].io_input.inpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits=""/>
+    <pb_type name="io[io_output].io_output.outpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits=""/>
     <pb_type name="io[io_input].io_input.ff[DFF].DFF" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="1">
       <port name="C" physical_mode_port="clk"/>
     </pb_type>
@@ -653,10 +653,10 @@
       <port name="C" physical_mode_port="clk"/>
     </pb_type>
     <pb_type name="io_corner" physical_mode_name="physical"/>
-    <pb_type name="io_corner[physical].iopad.pad" circuit_model_name="RS_PREIO"/>
+    <pb_type name="io_corner[physical].iopad.pad" circuit_model_name="RS_PREIO" mode_bits=""/>
     <pb_type name="io_corner[physical].iopad.ff" circuit_model_name="RS_IOFF" mode_bits="1"/>
-    <pb_type name="io_corner[io_input].io_input.inpad" physical_pb_type_name="io_corner[physical].iopad.pad" mode_bits="10"/>
-    <pb_type name="io_corner[io_output].io_output.outpad" physical_pb_type_name="io_corner[physical].iopad.pad" mode_bits="00"/>
+    <pb_type name="io_corner[io_input].io_input.inpad" physical_pb_type_name="io_corner[physical].iopad.pad" mode_bits=""/>
+    <pb_type name="io_corner[io_output].io_output.outpad" physical_pb_type_name="io_corner[physical].iopad.pad" mode_bits=""/>
     <pb_type name="io_corner[io_input].io_input.ff[DFF].DFF" physical_pb_type_name="io_corner[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="1">
       <port name="C" physical_mode_port="clk"/>
     </pb_type>
@@ -683,18 +683,18 @@
     <!-- binding look up table operating modes -->
     <!-- LUT6 -->
     <pb_type name="clb.fle_wrapper.comb_block.lut_block.frac_lut[lut6_mode].lut6" physical_pb_type_name="clb.fle_wrapper.comb_block.lut_block.frac_lut[physical].frac_lut6" mode_bits="11">
-      <port name="in" physical_mode_port="in"/>
+      <port name="in" physical_mode_port="in[0:5]"/>
       <port name="out" physical_mode_port="lut6_out"/>
     </pb_type>
     <!-- LUT5 -->
-    <pb_type name="clb.fle_wrapper.comb_block.lut_block.frac_lut[lut5_mode].lut5_wrap.lut5" physical_pb_type_name="clb.fle_wrapper.comb_block.lut_block.frac_lut[physical].frac_lut6" physical_pb_type_index_factor="0.50" mode_bits="10">
-      <port name="in" physical_mode_port="in[4:0]"/>
-      <port name="out" physical_mode_port="lut6_out"/>
+    <pb_type name="clb.fle_wrapper.comb_block.lut_block.frac_lut[lut5_mode].lut5" physical_pb_type_name="clb.fle_wrapper.comb_block.lut_block.frac_lut[physical].frac_lut6" physical_pb_type_index_factor="0.50" mode_bits="10">
+      <port name="in" physical_mode_port="in[0:4]"/>
+      <port name="out" physical_mode_port="lut5_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
     <!-- LUT4 -->
-    <pb_type name="clb.fle_wrapper.comb_block.lut_block.frac_lut[lut4_mode].lut4_wrap.lut4_wrap_1.lut4" physical_pb_type_name="clb.fle_wrapper.comb_block.lut_block.frac_lut[physical].frac_lut6" physical_pb_type_index_factor="0.25" mode_bits="01">
-      <port name="in" physical_mode_port="in[3:0]"/>
-      <port name="out" physical_mode_port="lut6_out"/>
+    <pb_type name="clb.fle_wrapper.comb_block.lut_block.frac_lut[lut4_mode].lut4" physical_pb_type_name="clb.fle_wrapper.comb_block.lut_block.frac_lut[physical].frac_lut6" physical_pb_type_index_factor="0.25" mode_bits="01">
+      <port name="in" physical_mode_port="in[0:3]"/>
+      <port name="out" physical_mode_port="lut4_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
     <!-- binding adder operating modes -->
     <pb_type name="clb.fle_wrapper.comb_block.fa_2bit_block[fa_2bit_mode].fa_2bit.fa_1bit" physical_pb_type_name="clb.fle_wrapper.comb_block.fa_2bit_block[physical].fa_2bit_phy.fa_1bit" mode_bits="1"/>
