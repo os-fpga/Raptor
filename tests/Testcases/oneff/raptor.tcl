@@ -16,6 +16,9 @@ analyze
 simulate rtl
 
 synthesize delay
+
+# simulate gate
+
 packing
 place
 route

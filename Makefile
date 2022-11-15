@@ -169,7 +169,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_fifo/v1_0/axis_fifo.tcl
-#        ./build/bin/raptor --script tests/Testcases/oneff/raptor.tcl --batch --mute
+	./build/bin/raptor --script tests/Testcases/oneff/raptor.tcl --batch --mute
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
