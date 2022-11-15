@@ -37,7 +37,7 @@ jobs:
         python-version: 3.8
 
     - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
@@ -187,7 +187,7 @@ jobs:
         yum install -y git
 
     - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
@@ -344,7 +344,7 @@ jobs:
       shell: bash
 
     - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
@@ -496,7 +496,7 @@ jobs:
       shell: bash
 
     - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
@@ -587,7 +587,7 @@ jobs:
         python-version: 3.8
 
     - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
@@ -682,7 +682,7 @@ jobs:
         setup-python: false
         
     - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
@@ -782,7 +782,7 @@ jobs:
         access_token: ${{ github.token }}
 
     - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.5.4
+      uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
