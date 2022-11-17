@@ -124,7 +124,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 14)
+set(VERSION_PATCH 15)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -541,6 +541,8 @@ install(
 install(
       DIRECTORY tests/Testcases/and2_gemini/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_gemini/)
 install(
+      DIRECTORY tests/Testcases/oneff/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/oneff/)
+install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter/)
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
@@ -550,6 +552,10 @@ install(
         DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/HDL_simulator DESTINATION  ${CMAKE_INSTALL_BINDIR}
 	USE_SOURCE_PERMISSIONS
 	)
+install(
+        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/envs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}
+        USE_SOURCE_PERMISSIONS
+        )
 install(
         DIRECTORY litex_reference_designs DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR})
 install(
@@ -652,7 +658,10 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_testcase/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/and2_gemini
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_gemini/         
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_gemini/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Testcases/oneff
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/oneff/
       COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta        
@@ -675,6 +684,24 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil    
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
+          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
+          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis/
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis2/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
+          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis2/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
+          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis2/
 )
 
 if (WIN OR APPLE)

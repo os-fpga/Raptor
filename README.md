@@ -19,22 +19,30 @@ Raptor uses the FlexLM License manager, please setup the license file:
 
 ```
 raptor --help
------------------------------------
---- Rapid Silicon RAPTOR HELP  ----
------------------------------------
+-----------------------------------------------
+--- Rapid Silicon Raptor Design Suite help  ---
+-----------------------------------------------
 Options:
    --help           : This help
    --version        : Version
    --batch          : Tcl only, no GUI
    --script <script>: Execute a Tcl script
+   --project <project file>: Open a project
    --mute           : mutes stdout in batch mode
 Tcl commands (Available in GUI or Batch console or Batch script):
    help                       : This help
+   open_project <file>        : Opens a project in the GUI
+   run_project <file>         : Opens and immediately runs the project
    create_design <name>       : Creates a design with <name> name
    target_device <name>       : Targets a device with <name> name (MPW1, GEMINI)
    add_design_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
               Each invocation of the command compiles the file list into a compilation unit 
                        <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017> 
+              -work <libName> : Compiles the compilation unit into library <libName>, default is "work"
+              -L <libName>    : Import the library <libName> needed to compile the compilation unit, default is "work"
+   add_simulation_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
+              Each invocation of the command compiles the file list into a compilation unit 
+                       <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017, -C, -CPP> 
               -work <libName> : Compiles the compilation unit into library <libName>, default is "work"
               -L <libName>    : Import the library <libName> needed to compile the compilation unit, default is "work"
    read_netlist <file>        : Read a netlist (.blif/.eblif) instead of an RTL design (Skip Synthesis)
@@ -47,6 +55,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
                                 Constraints: set_pin_loc, set_mode, all SDC Standard commands
    set_pin_loc <design_io_name> <device_io_name> : Constraints pin location (Use in constraint file)
    set_mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint file)
+   script_path                : Returns the path of the Tcl script passed with --script
    keep <signal list> OR all_signals : Keeps the list of signals or all signals through Synthesis unchanged (unoptimized in certain cases)
    add_litex_ip_catalog <directory> : Browses directory for LiteX IP generators, adds the IP(s) to the IP Catalog
    ip_catalog ?<ip_name>?     : Lists all available IPs, and their parameters if <ip_name> is given 
@@ -86,7 +95,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
                                 random , random pin assignment
                                 free , no automatic pin assignment
    pnr_options <option list>  : VPR options
-   pnr_netlist_lang <blif, verilog> : Chooses vpr input netlist format
+   pnr_netlist_lang <blif, edif, verilog> : Chooses vpr input netlist format
    set_channel_width <int>    : VPR Routing channel setting
    architecture <vpr_file.xml> ?<openfpga_file.xml>?
                               : Uses the architecture file and optional openfpga arch file (For bitstream generation)
@@ -101,7 +110,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    sta ?clean?                : Statistical Timing Analysis
    power ?clean?              : Power estimator
    bitstream ?force? ?clean?  : Bitstream generation
-----------------------------------
+   simulate <level> ?<simulator>? : Simulates the design and testbench
+            <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
+            <simulator> : verilator, vcs, questa, icarus, xcelium
+-----------------------------------------------
 
 ```
 
@@ -125,19 +137,22 @@ A log file gets created too: raptor.log with all the compilation steps logs agre
 Example designs:
 
 and2_gemini       : an AND2 design targeting the GEMINI device
-                    raptor --script /usr/local/share/raptor/examples/and2_gemini/raptor.tcl
+                    raptor --script /usr/local/share/raptor/tcl_examples/and2_gemini/raptor.tcl
+
+oneff             : an async-reset FF design targeting the GEMINI device with Verilator simulation
+                    raptor --script /usr/local/share/raptor/tcl_examples/oneff/raptor.tcl
 
 aes_decrypt_fpga  : an AES decryption design targeting the GEMINI device
-                    raptor --script /usr/local/share/raptor/examples/aes_decrypt_fpga/aes_decrypt.tcl
+                    raptor --script /usr/local/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
 
 ip_gen_axis_conv  : a LiteX IP generation example targeting the GEMINI device (Requires LiteX installed separately)
-                    raptor --script /usr/local/share/raptor/examples/ip_gen_axis_conv/raptor.tcl
+                    raptor --script /usr/local/share/raptor/tcl_examples/ip_gen_axis_conv/raptor.tcl
 
 aes_decrypt_gate  : a gate-level (BLIF) AES decryption design targeting the GEMINI device
-                    raptor --script /usr/local/share/raptor/examples/aes_decrypt_gate/aes_decrypt_gate.tcl
+                    raptor --script /usr/local/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_gate.tcl
 
 sasc_testcase    : a FIFO design targeting the GEMINI device
-                    raptor --script /usr/local/share/raptor/examples/sasc_testcase/raptor.tcl
+                    raptor --script /usr/local/share/raptor/tcl_examples/sasc_testcase/raptor.tcl
 ```
 
 ## User design
