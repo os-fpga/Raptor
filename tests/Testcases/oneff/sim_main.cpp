@@ -1,6 +1,6 @@
 #include "Vsyn_tb.h"
 #include "verilated.h"
-//#include "verilated_vcd_c.h"
+#include "verilated_vcd_c.h"
 
 double sc_time_stamp() {
   return 0;
@@ -10,14 +10,14 @@ int main(int argc, char** argv, char** env) {
   Verilated::commandArgs(argc, argv);
   Vsyn_tb* top = new Vsyn_tb;
   // init trace dump
-  // Verilated::traceEverOn(true);
-  // Verilated::assertOn(true);
-  // VerilatedVcdC* tfp = new VerilatedVcdC;
+  Verilated::traceEverOn(true);
+  Verilated::assertOn(true);
+  VerilatedVcdC* tfp = new VerilatedVcdC;
 
   top->rstn = 0;
   top->clk = 0;
-  //top->trace(tfp, 99);
-  // tfp->open("syn_tb.vcd");
+  top->trace(tfp, 99);
+  tfp->open("syn_tb.vcd");
   
   // run simulation for 20 clock periods
   // Only generate the clock in C,
@@ -26,11 +26,11 @@ int main(int argc, char** argv, char** env) {
     top->rstn = (i >= 2);
     for(int clk = 0; clk < 2; ++clk) {
       top->eval();
-      //tfp->dump((2 * i) + clk);
+      tfp->dump((2 * i) + clk);
       top->clk = !top->clk;
     }
   }
-  // tfp->close();
+  tfp->close();
   delete top;
   exit(0);
 }
