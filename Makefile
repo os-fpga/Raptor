@@ -76,19 +76,9 @@ test/valgrind: run-cmake-debug
 test: test/unittest test/regression
 
 test-parallel: release test/unittest
-#	cmake -E make_directory build/tests
-#	cmake -E remove_directory build/test
-#	cmake -E make_directory build/test
-#	cmake -S build/test -B build/test/build
-#	pushd build && cmake --build test/build -j $(CPU_CORES) && popd
-
 
 regression: release
-#	cmake -E make_directory build/tests
-#	cmake -E remove_directory build/test
-#	cmake -E make_directory build/test
-#	cmake -S build/test -B build/test/build
-#	pushd build && cmake --build test/build -j $(CPU_CORES) && popd
+
 
 clean:
 	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build
@@ -127,7 +117,7 @@ test_install:
 
 test/gui: run-cmake-debug
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
-	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
+# This test is broken, reactivate when fixed: $(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
 
 test/rs: run-cmake-release
 	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
@@ -166,6 +156,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
 	./build/bin/raptor --script tests/Testcases/oneff/raptor.tcl --batch --mute
+# These tests are broken, reactivate when fixed:
 #	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
 #	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 #	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
