@@ -31,3 +31,6 @@ if [ -n "${PYTHONPATH}" ]; then
 else
 	export PYTHONPATH=$RAPTOR_PATH/share/litex_reference_designs/:$RAPTOR_PATH/share/raptor/IP_Catalog/
 fi
+[[ -f "$RAPTOR_PATH/bin/HDL_simulator/setup_sim" ]] && source $RAPTOR_PATH/bin/HDL_simulator/setup_sim
+
+
