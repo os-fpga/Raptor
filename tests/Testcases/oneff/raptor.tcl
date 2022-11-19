@@ -16,15 +16,13 @@ target_device GEMINI_LATEST
 analyze
 
 # RTL Simulation
-simulate rtl
-file rename -force oneff_gemini/syn_tb.vcd oneff_gemini/syn_tb_rtl.vcd
+simulate rtl syn_tb_rtl.fst
 
 # Synthesis
 synthesize delay
 
 # Post-Synthesis gate-level Simulation
-simulate gate
-file rename -force oneff_gemini/syn_tb.vcd oneff_gemini/syn_tb_gate.vcd
+simulate gate syn_tb_gate.fst
 
 # Pack/Place/Route
 packing
@@ -32,11 +30,10 @@ place
 route
 
 # Post-Route Simulation
-simulate pnr
-file rename -force oneff_gemini/syn_tb.vcd oneff_gemini/syn_tb_pnr.vcd
+simulate pnr syn_tb_pnr.fst
 
 # Static Timing Analysis
-sta
+sta opensta
 
 # Bitstream Generation
 bitstream 
