@@ -156,11 +156,10 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
 	./build/bin/raptor --script tests/Testcases/oneff/raptor.tcl --batch --mute
-# These tests are broken, reactivate when fixed:
-#	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
-#	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
-#	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
-#	./build/bin/raptor --batch --mute --script tests/TestIP/axis_fifo/v1_0/axis_fifo.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axis_fifo/v1_0/axis_fifo.tcl
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
