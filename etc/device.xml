@@ -53,7 +53,7 @@
         <internal type="vpr_arch" file="gemini_latest/gemini_vpr.xml"/>
         <internal type="device_size" name="castor10x8_heterogeneous"/>]
         <internal type="lut_size" num="6"/>
-        <internal type="channel_width" num="200"/>
+        <internal type="channel_width" num="192"/>
         <internal type="openfpga_arch" file="gemini_latest/gemini_openfpga.xml"/>
         <internal type="bitstream_settings" file="gemini_latest/bitstream_setting.xml"/>
         <internal type="sim_settings" file="gemini_latest/fixed_sim_openfpga.xml"/>
