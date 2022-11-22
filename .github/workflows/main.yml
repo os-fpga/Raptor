@@ -8,7 +8,7 @@ jobs:
   linux-gcc:
     name: ${{ matrix.mode }}
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     defaults:
       run:
         shell: bash
@@ -151,7 +151,7 @@ jobs:
   centos7-gcc:
     name:  ${{ matrix.mode }}
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     container:
       image: centos:7
     defaults:
