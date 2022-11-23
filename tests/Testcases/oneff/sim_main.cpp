@@ -2,8 +2,12 @@
 
 #include "Vsyn_tb.h"
 #include "verilated.h"
+
+#if VM_TRACE_VCD == 1
 #include "verilated_vcd_c.h"
+#else  
 #include "verilated_fst_c.h"
+#endif
 
 double sc_time_stamp() {
   return 0;
@@ -20,24 +24,17 @@ int main(int argc, char** argv, char** env) {
   } else {
     waveformFile = "syn_tb.fst";
   }
-  bool fstWaveType = true;
-  if (waveformFile.find(".vcd") != std::string::npos) {
-    fstWaveType = false;
-  }
   Verilated::traceEverOn(true);
   Verilated::assertOn(true);
-  VerilatedFstC* tfpFst = nullptr;
-  //VerilatedVcdC* tfpVcd = nullptr;
-  if (fstWaveType) {
-    tfpFst = new VerilatedFstC;
-    top->trace(tfpFst, 99);
-    tfpFst->open(waveformFile.c_str());
-  } else {
-    //tfpVcd = new VerilatedVcdC;
-    // top->trace(tfpVcd, 99);
-    //tfpVcd->open(waveformFile.c_str());
-  }
- 
+
+#if VM_TRACE_FST == 1 
+  VerilatedFstC* tfp = new VerilatedFstC;
+# else 
+  VerilatedVcdC* tfp = new VerilatedVcdC;
+#endif
+  
+  top->trace(tfp, 99);
+  tfp->open(waveformFile.c_str());
   top->rstn = 0;
   top->clk = 0;
   
@@ -48,19 +45,11 @@ int main(int argc, char** argv, char** env) {
     top->rstn = (i >= 2);
     for(int clk = 0; clk < 2; ++clk) {
       top->eval();
-      if (fstWaveType) {
-        tfpFst->dump((2 * i) + clk);
-      } else {
-        //tfpVcd->dump((2 * i) + clk);
-      }
+      tfp->dump((2 * i) + clk);
       top->clk = !top->clk;
     }
   }
-  if (fstWaveType) {
-    tfpFst->close();
-  } else {
-    //tfpVcd->close();
-  }
+  tfp->close();
   delete top;
   exit(0);
 }

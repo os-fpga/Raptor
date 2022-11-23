@@ -110,9 +110,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    sta ?clean?                : Statistical Timing Analysis
    power ?clean?              : Power estimator
    bitstream ?force? ?clean?  : Bitstream generation
-   simulate <level> ?<simulator>? : Simulates the design and testbench
+   simulate <level> ?<simulator>? ?<waveform_file>?: Simulates the design and testbench
             <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
-            <simulator> : verilator, vcs, questa, icarus, xcelium
+            <simulator> : verilator, vcs, questa, icarus, ghdl, xcelium
 -----------------------------------------------
 
 ```
