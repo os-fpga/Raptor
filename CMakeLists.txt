@@ -124,7 +124,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 18)
+set(VERSION_PATCH 19)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -562,6 +562,27 @@ install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
+
+install(
+      DIRECTORY ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
+install(
+      FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
+install(
+      FILES ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
+
+install(
+      DIRECTORY ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
+install(
+      FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
+install(
+      FILES ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
+
 install(
       FILES src/raptorenv_lin64.sh
       src/.raptorenv_lin64.sh
@@ -686,22 +707,22 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
-          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/
-          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis2/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis2/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/sim_models/rapidsilicon/genesis2/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
 )
 
 if (WIN OR APPLE)
