@@ -746,31 +746,14 @@
     <!--                                                                       -->
     <pb_type name="dsp.dsp_rtl" physical_mode_name="physical"/>
     <pb_type name="dsp.dsp_rtl[physical].dsp_phy" circuit_model_name="RS_DSP" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-    <pb_type name="dsp.acc_fir_i_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.acc_fir_i_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.feedback_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.feedback_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.unsigned_a_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.unsigned_a_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.unsigned_b_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.unsigned_b_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.shift_right_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.shift_right_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.saturate_enable_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.saturate_enable_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.round_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.round_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.subtract_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.subtract_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.load_acc_opt.logic0" circuit_model_name="logic0"/>
-    <pb_type name="dsp.load_acc_opt.logic1" circuit_model_name="logic1"/>
-    <pb_type name="dsp.sr_opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.opt.logic0" circuit_model_name="logic0"/>
+    <pb_type name="dsp.opt.logic1" circuit_model_name="logic1"/>
     <pb_type name="dsp.sr_opt.sr_inv" circuit_model_name="inverter"/>
     <pb_type name="dsp.clk_opt.clk_inv" circuit_model_name="clock_inverter"/>
     <pb_type name="dsp.z_pad" circuit_model_name="logic0"/>
     <!-- Specifying clock mux to use -->
     <pb_type name="dsp">
-      <interconnect name="bram_clk_mux" circuit_model_name="mux_tree_clock"/>
+      <interconnect name="dsp_clk_mux" circuit_model_name="mux_tree_clock"/>
     </pb_type>
     <pb_type name="dsp.dsp_rtl[RS_DSP].RS_DSP" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="a" physical_mode_port="a_i"/>
