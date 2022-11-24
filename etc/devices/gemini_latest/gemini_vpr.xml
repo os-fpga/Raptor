@@ -240,9 +240,16 @@
         <port name="Q" clock="clk"/>
       </output_ports>
     </model>
+    <model name="z_pad_tieoff">
+      <input_ports>
+      </input_ports>
+      <output_ports>
+        <port name="logic0"/>
+      </output_ports>
+    </model>
     <model name="clock_inverter">
       <input_ports>
-        <port name="a" combinational_sink_ports="z"/>
+        <port name="a" combinational_sink_ports="z" is_clock="1"/>
       </input_ports>
       <output_ports>
         <port name="z"/>
@@ -3237,9 +3244,9 @@
       </pb_type>
       <!-- dsp_rtl -->
       <!-- OPTIONAL CONSTANT GENERATORS -->
-      <pb_type name="acc_fir_i_opt" num_pb="6">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
+      <pb_type name="opt" num_pb="1">
+        <input name="I" num_pins="21"/>
+        <output name="O" num_pins="21"/>
         <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
           <output name="logic0" num_pins="1"/>
         </pb_type>
@@ -3247,120 +3254,13 @@
           <output name="logic1" num_pins="1"/>
         </pb_type>
         <interconnect>
-          <mux name="opt_const" input="acc_fir_i_opt.I logic0.logic0 logic1.logic1" output="acc_fir_i_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="feedback_opt" num_pb="3">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="feedback_opt.I logic0.logic0 logic1.logic1" output="feedback_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="unsigned_a_opt" num_pb="1">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="unsigned_a_opt.I logic0.logic0 logic1.logic1" output="unsigned_a_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="unsigned_b_opt" num_pb="1">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="unsigned_b_opt.I logic0.logic0 logic1.logic1" output="unsigned_b_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="shift_right_opt" num_pb="6">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="shift_right_opt.I logic0.logic0 logic1.logic1" output="shift_right_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="saturate_enable_opt" num_pb="1">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="saturate_enable_opt.I logic0.logic0 logic1.logic1" output="saturate_enable_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="round_opt" num_pb="1">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="round_opt.I logic0.logic0 logic1.logic1" output="round_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="subtract_opt" num_pb="1">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="subtract_opt.I logic0.logic0 logic1.logic1" output="subtract_opt.O"/>
-        </interconnect>
-      </pb_type>
-      <pb_type name="load_acc_opt" num_pb="1">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
-        <pb_type name="logic1" blif_model=".subckt logic1" num_pb="1">
-          <output name="logic1" num_pins="1"/>
-        </pb_type>
-        <interconnect>
-          <mux name="opt_const" input="load_acc_opt.I logic0.logic0 logic1.logic1" output="load_acc_opt.O"/>
+          <complete name="opt_const" input="opt.I logic0.logic0 logic1.logic1" output="opt.O"/>
         </interconnect>
       </pb_type>
       <!-- OPTIONAL USER RESET -->
       <pb_type name="sr_opt" num_pb="1">
         <input name="I" num_pins="1"/>
         <output name="O" num_pins="1"/>
-        <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
-          <output name="logic0" num_pins="1"/>
-        </pb_type>
         <pb_type name="sr_inv" blif_model=".subckt inverter" num_pb="1">
           <input name="a" num_pins="1"/>
           <output name="z" num_pins="1"/>
@@ -3368,7 +3268,7 @@
         </pb_type>
         <interconnect>
           <direct name="direct1" input="sr_opt.I" output="sr_inv.a"/>
-          <mux name="sr_mux" input="sr_opt.I sr_inv.z logic0.logic0" output="sr_opt.O"/>
+          <mux name="sr_mux" input="sr_opt.I sr_inv.z" output="sr_opt.O"/>
         </interconnect>
       </pb_type>
       <!-- OPTIONAL CLOCK INVERSION -->
@@ -3376,7 +3276,7 @@
         <input name="I" num_pins="1"/>
         <output name="O" num_pins="1"/>
         <pb_type name="clk_inv" blif_model=".subckt clock_inverter" num_pb="1">
-          <input name="a" num_pins="1"/>
+          <clock name="a" num_pins="1"/>
           <output name="z" num_pins="1"/>
           <delay_constant max="100.0e-12" min="100.0e-12" in_port="clk_inv.a" out_port="clk_inv.z"/>
         </pb_type>
@@ -3385,19 +3285,19 @@
           <mux name="clk_mux" input="clk_opt.I clk_inv.z" output="clk_opt.O"/>
         </interconnect>
       </pb_type>
-      <pb_type name="z_pad" blif_model=".subckt logic0" num_pb="16">
+      <pb_type name="z_pad" blif_model=".subckt z_pad_tieoff" num_pb="16">
         <output name="logic0" num_pins="1"/>
       </pb_type>
       <interconnect>
         <!-- tile fabric connections -->
         <!-- normal routable inputs -->
         <!-- 2 47 unused -->
-        <mux name="II_2_46" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="feedback_opt[2].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="feedback_opt[2].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_46" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="opt.I[2]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="opt.I[2]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 45 unused -->
-        <mux name="II_2_44" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="shift_right_opt[5].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " out_port="shift_right_opt[5].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_44" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="opt.I[10]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " out_port="opt.I[10]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 43 unused -->
         <mux name="II_2_42" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="dsp_rtl.a_i[17]" add_const_input="false">
@@ -3408,12 +3308,12 @@
           <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="dsp_rtl.b_i[17]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 39 unused -->
-        <mux name="II_2_38" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="feedback_opt[1].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " out_port="feedback_opt[1].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_38" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="opt.I[1]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " out_port="opt.I[1]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 37 unused -->
-        <mux name="II_2_36" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="shift_right_opt[4].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="shift_right_opt[4].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_36" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="opt.I[9]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="opt.I[9]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 35 unused -->
         <mux name="II_2_34" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="dsp_rtl.a_i[16]" add_const_input="false">
@@ -3424,12 +3324,12 @@
           <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " out_port="dsp_rtl.b_i[16]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 31 unused -->
-        <mux name="II_2_30" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="feedback_opt[0].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="feedback_opt[0].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_30" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="opt.I[0]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="opt.I[0]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 29 unused -->
-        <mux name="II_2_28" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="shift_right_opt[3].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="shift_right_opt[3].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_28" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="opt.I[8]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="opt.I[8]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 27 unused -->
         <mux name="II_2_26" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="dsp_rtl.a_i[15]" add_const_input="false">
@@ -3442,8 +3342,8 @@
         <!-- 2 23 unused -->
         <!-- 2 22 unused -->
         <!-- 2 21 unused -->
-        <mux name="II_2_20" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="shift_right_opt[2].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " out_port="shift_right_opt[2].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_20" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="opt.I[7]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " out_port="opt.I[7]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 19 unused -->
         <mux name="II_2_18" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="dsp_rtl.a_i[14]" add_const_input="false">
@@ -3456,8 +3356,8 @@
         <!-- 2 15 unused -->
         <!-- 2 14 unused -->
         <!-- 2 13 unused -->
-        <mux name="II_2_12" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="shift_right_opt[1].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="shift_right_opt[1].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_12" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="opt.I[6]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="opt.I[6]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 11 unused -->
         <mux name="II_2_10" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="dsp_rtl.a_i[13]" add_const_input="false">
@@ -3470,8 +3370,8 @@
         <!-- 2 7 unused -->
         <!-- 2 6 unused -->
         <!-- 2 5 unused -->
-        <mux name="II_2_4" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="shift_right_opt[0].I" add_const_input="false">
-          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="shift_right_opt[0].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_2_4" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " output="opt.I[5]" add_const_input="false">
+          <delay_constant in_port="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I32[0] dsp.I32[1] dsp.I32[2] dsp.I32[3] dsp.I32[4] dsp.I32[5] dsp.I32[6] dsp.I32[7] dsp.I32[8] dsp.I32[9] dsp.I32[10] dsp.I32[11] " out_port="opt.I[5]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 2 3 unused -->
         <mux name="II_2_2" input="dsp.I02[0] dsp.I02[1] dsp.I02[2] dsp.I02[3] dsp.I02[4] dsp.I02[5] dsp.I02[6] dsp.I02[7] dsp.I02[8] dsp.I02[9] dsp.I02[10] dsp.I02[11] dsp.I22[0] dsp.I22[1] dsp.I22[2] dsp.I22[3] dsp.I22[4] dsp.I22[5] dsp.I22[6] dsp.I22[7] dsp.I22[8] dsp.I22[9] dsp.I22[10] dsp.I22[11] " output="dsp_rtl.a_i[12]" add_const_input="false">
@@ -3484,8 +3384,8 @@
         <!-- 1 47 unused -->
         <!-- 1 46 unused -->
         <!-- 1 45 unused -->
-        <mux name="II_1_44" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " output="acc_fir_i_opt[5].I" add_const_input="false">
-          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " out_port="acc_fir_i_opt[5].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_1_44" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " output="opt.I[20]" add_const_input="false">
+          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " out_port="opt.I[20]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 1 43 unused -->
         <mux name="II_1_42" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="dsp_rtl.a_i[11]" add_const_input="false">
@@ -3498,8 +3398,8 @@
         <!-- 1 39 unused -->
         <!-- 1 38 unused -->
         <!-- 1 37 unused -->
-        <mux name="II_1_36" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="acc_fir_i_opt[4].I" add_const_input="false">
-          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="acc_fir_i_opt[4].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_1_36" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="opt.I[19]" add_const_input="false">
+          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="opt.I[19]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 1 35 unused -->
         <mux name="II_1_34" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="dsp_rtl.a_i[10]" add_const_input="false">
@@ -3512,8 +3412,8 @@
         <!-- 1 31 unused -->
         <!-- 1 30 unused -->
         <!-- 1 29 unused -->
-        <mux name="II_1_28" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="acc_fir_i_opt[3].I" add_const_input="false">
-          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="acc_fir_i_opt[3].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_1_28" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="opt.I[18]" add_const_input="false">
+          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="opt.I[18]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 1 27 unused -->
         <mux name="II_1_26" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " output="dsp_rtl.a_i[9]" add_const_input="false">
@@ -3526,8 +3426,8 @@
         <!-- 1 23 unused -->
         <!-- 1 22 unused -->
         <!-- 1 21 unused -->
-        <mux name="II_1_20" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " output="acc_fir_i_opt[2].I" add_const_input="false">
-          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " out_port="acc_fir_i_opt[2].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_1_20" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " output="opt.I[17]" add_const_input="false">
+          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " out_port="opt.I[17]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 1 19 unused -->
         <mux name="II_1_18" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="dsp_rtl.a_i[8]" add_const_input="false">
@@ -3540,8 +3440,8 @@
         <!-- 1 15 unused -->
         <!-- 1 14 unused -->
         <!-- 1 13 unused -->
-        <mux name="II_1_12" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="acc_fir_i_opt[1].I" add_const_input="false">
-          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="acc_fir_i_opt[1].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_1_12" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="opt.I[16]" add_const_input="false">
+          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="opt.I[16]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 1 11 unused -->
         <mux name="II_1_10" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="dsp_rtl.a_i[7]" add_const_input="false">
@@ -3554,8 +3454,8 @@
         <!-- 1 7 unused -->
         <!-- 1 6 unused -->
         <!-- 1 5 unused -->
-        <mux name="II_1_4" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="acc_fir_i_opt[0].I" add_const_input="false">
-          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="acc_fir_i_opt[0].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_1_4" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " output="opt.I[15]" add_const_input="false">
+          <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="opt.I[15]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 1 3 unused -->
         <mux name="II_1_2" input="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I21[0] dsp.I21[1] dsp.I21[2] dsp.I21[3] dsp.I21[4] dsp.I21[5] dsp.I21[6] dsp.I21[7] dsp.I21[8] dsp.I21[9] dsp.I21[10] dsp.I21[11] " output="dsp_rtl.a_i[6]" add_const_input="false">
@@ -3566,8 +3466,8 @@
           <delay_constant in_port="dsp.I01[0] dsp.I01[1] dsp.I01[2] dsp.I01[3] dsp.I01[4] dsp.I01[5] dsp.I01[6] dsp.I01[7] dsp.I01[8] dsp.I01[9] dsp.I01[10] dsp.I01[11] dsp.I31[0] dsp.I31[1] dsp.I31[2] dsp.I31[3] dsp.I31[4] dsp.I31[5] dsp.I31[6] dsp.I31[7] dsp.I31[8] dsp.I31[9] dsp.I31[10] dsp.I31[11] " out_port="dsp_rtl.b_i[6]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 47 unused -->
-        <mux name="II_0_46" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="load_acc_opt.I" add_const_input="false">
-          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="load_acc_opt.I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_0_46" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="opt.I[14]" add_const_input="false">
+          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="opt.I[14]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 45 unused -->
         <!-- 0 44 unused -->
@@ -3580,8 +3480,8 @@
           <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="dsp_rtl.b_i[5]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 39 unused -->
-        <mux name="II_0_38" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " output="subtract_opt.I" add_const_input="false">
-          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " out_port="subtract_opt.I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_0_38" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " output="opt.I[13]" add_const_input="false">
+          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " out_port="opt.I[13]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 37 unused -->
         <!-- 0 36 unused -->
@@ -3594,8 +3494,8 @@
           <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " out_port="dsp_rtl.b_i[4]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 31 unused -->
-        <mux name="II_0_30" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="round_opt.I" add_const_input="false">
-          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="round_opt.I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_0_30" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="opt.I[12]" add_const_input="false">
+          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="opt.I[12]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 29 unused -->
         <!-- 0 28 unused -->
@@ -3608,8 +3508,8 @@
           <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="dsp_rtl.b_i[3]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 23 unused -->
-        <mux name="II_0_22" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="saturate_enable_opt.I" add_const_input="false">
-          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="saturate_enable_opt.I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_0_22" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="opt.I[11]" add_const_input="false">
+          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="opt.I[11]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 21 unused -->
         <!-- 0 20 unused -->
@@ -3622,8 +3522,8 @@
           <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="dsp_rtl.b_i[2]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 15 unused -->
-        <mux name="II_0_14" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " output="unsigned_b_opt.I" add_const_input="false">
-          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " out_port="unsigned_b_opt.I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_0_14" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " output="opt.I[4]" add_const_input="false">
+          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " out_port="opt.I[4]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 13 unused -->
         <mux name="II_0_12" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="dsp_rtl.a_i[19]" add_const_input="false">
@@ -3638,8 +3538,8 @@
           <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I20[0] dsp.I20[1] dsp.I20[2] dsp.I20[3] dsp.I20[4] dsp.I20[5] dsp.I20[6] dsp.I20[7] dsp.I20[8] dsp.I20[9] dsp.I20[10] dsp.I20[11] " out_port="dsp_rtl.b_i[1]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 7 unused -->
-        <mux name="II_0_6" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="unsigned_a_opt.I" add_const_input="false">
-          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="unsigned_a_opt.I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="II_0_6" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="opt.I[3]" add_const_input="false">
+          <delay_constant in_port="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " out_port="opt.I[3]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <!-- 0 5 unused -->
         <mux name="II_0_4" input="dsp.I00[0] dsp.I00[1] dsp.I00[2] dsp.I00[3] dsp.I00[4] dsp.I00[5] dsp.I00[6] dsp.I00[7] dsp.I00[8] dsp.I00[9] dsp.I00[10] dsp.I00[11] dsp.I30[0] dsp.I30[1] dsp.I30[2] dsp.I30[3] dsp.I30[4] dsp.I30[5] dsp.I30[6] dsp.I30[7] dsp.I30[8] dsp.I30[9] dsp.I30[10] dsp.I30[11] " output="dsp_rtl.a_i[18]" add_const_input="false">
@@ -3732,22 +3632,22 @@
         <direct name="direct_o_0_1" input="dsp_rtl.z_o[0]" output="dsp.O0[1]"/>
         <direct name="direct_o_0_0" input="dsp_rtl.dly_b_o[0]" output="dsp.O0[0]"/>
         <!-- tile non-fabric connections -->
-        <complete name="bram_clk_mux" input="dsp.clk" output="clk_opt.I"/>
+        <complete name="dsp_clk_mux" input="dsp.clk" output="clk_opt.I"/>
         <!-- 16:1 -->
         <direct name="direct_sc_in" input="dsp.sc_in" output="dsp_rtl.sc_in"/>
         <direct name="direct_sc_out" input="dsp_rtl.sc_out" output="dsp.sc_out"/>
         <!-- internal connections -->
         <direct name="direct_lreset" input="sr_opt.O" output="dsp_rtl.lreset"/>
         <direct name="direct_clk" input="clk_opt.O" output="dsp_rtl.clk"/>
-        <direct name="direct0" input="feedback_opt.O" output="dsp_rtl.feedback"/>
-        <direct name="direct1" input="unsigned_a_opt.O" output="dsp_rtl.unsigned_a"/>
-        <direct name="direct2" input="unsigned_b_opt.O" output="dsp_rtl.unsigned_b"/>
-        <direct name="direct3" input="shift_right_opt.O" output="dsp_rtl.shift_right"/>
-        <direct name="direct4" input="saturate_enable_opt.O" output="dsp_rtl.saturate_enable"/>
-        <direct name="direct5" input="round_opt.O" output="dsp_rtl.round"/>
-        <direct name="direct6" input="subtract_opt.O" output="dsp_rtl.subtract"/>
-        <direct name="direct7" input="load_acc_opt.O" output="dsp_rtl.load_acc"/>
-        <direct name="direct8" input="acc_fir_i_opt.O" output="dsp_rtl.acc_fir_i"/>
+        <complete name="direct0" input="opt.O" output="dsp_rtl.feedback"/>
+        <complete name="direct1" input="opt.O" output="dsp_rtl.unsigned_a"/>
+        <complete name="direct2" input="opt.O" output="dsp_rtl.unsigned_b"/>
+        <complete name="direct3" input="opt.O" output="dsp_rtl.shift_right"/>
+        <complete name="direct4" input="opt.O" output="dsp_rtl.saturate_enable"/>
+        <complete name="direct5" input="opt.O" output="dsp_rtl.round"/>
+        <complete name="direct6" input="opt.O" output="dsp_rtl.subtract"/>
+        <complete name="direct7" input="opt.O" output="dsp_rtl.load_acc"/>
+        <complete name="direct8" input="opt.O" output="dsp_rtl.acc_fir_i"/>
       </interconnect>
     </pb_type>
     <!-- dsp -->
@@ -4062,9 +3962,9 @@
         </interconnect>
       </pb_type>
       <!-- OPTIONAL CONSTANT GENERATORS -->
-      <pb_type name="flush_opt" num_pb="2">
-        <input name="I" num_pins="1"/>
-        <output name="O" num_pins="1"/>
+      <pb_type name="flush_opt" num_pb="1">
+        <input name="I" num_pins="2"/>
+        <output name="O" num_pins="2"/>
         <pb_type name="logic0" blif_model=".subckt logic0" num_pb="1">
           <output name="logic0" num_pins="1"/>
         </pb_type>
@@ -4072,7 +3972,7 @@
           <output name="logic1" num_pins="1"/>
         </pb_type>
         <interconnect>
-          <mux name="opt_const" input="flush_opt.I logic0.logic0 logic1.logic1" output="flush_opt.O"/>
+          <complete name="opt_const" input="flush_opt.I logic0.logic0 logic1.logic1" output="flush_opt.O"/>
         </interconnect>
       </pb_type>
       <!-- OPTIONAL CLOCK INVERSION -->
@@ -4080,7 +3980,7 @@
         <input name="I" num_pins="1"/>
         <output name="O" num_pins="1"/>
         <pb_type name="clk_inv" blif_model=".subckt clock_inverter" num_pb="1">
-          <input name="a" num_pins="1"/>
+          <clock name="a" num_pins="1"/>
           <output name="z" num_pins="1"/>
           <delay_constant max="100.0e-12" min="100.0e-12" in_port="clk_inv.a" out_port="clk_inv.z"/>
         </pb_type>
@@ -4724,11 +4624,11 @@
         <mux name="SS_1_3" input="bram.IS1[0] bram.IS1[1] bram.IS1[2] bram.IS1[3] bram.IS1[4] bram.IS1[5] " output="ff_wrap.enable[3]" add_const_input="false">
           <delay_constant in_port="bram.IS1[0] bram.IS1[1] bram.IS1[2] bram.IS1[3] bram.IS1[4] bram.IS1[5] " out_port="ff_wrap.enable[3]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
-        <mux name="SS_2_0" input="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " output="flush_opt[0].I" add_const_input="false">
-          <delay_constant in_port="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " out_port="flush_opt[0].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="SS_2_0" input="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " output="flush_opt.I[0]" add_const_input="false">
+          <delay_constant in_port="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " out_port="flush_opt.I[0]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
-        <mux name="SS_2_1" input="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " output="flush_opt[1].I" add_const_input="false">
-          <delay_constant in_port="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " out_port="flush_opt[1].I" max="2.58858e-10" min="8.2864e-11"/>
+        <mux name="SS_2_1" input="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " output="flush_opt.I[1]" add_const_input="false">
+          <delay_constant in_port="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " out_port="flush_opt.I[1]" max="2.58858e-10" min="8.2864e-11"/>
         </mux>
         <mux name="SS_2_2" input="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " output="bram_rtl.WEN_A1_i" add_const_input="false">
           <delay_constant in_port="bram.IS2[0] bram.IS2[1] bram.IS2[2] bram.IS2[3] bram.IS2[4] bram.IS2[5] " out_port="bram_rtl.WEN_A1_i" max="2.58858e-10" min="8.2864e-11"/>
@@ -5204,16 +5104,16 @@
         <direct name="clk_b1" input="clk_opt[1].O" output="ff_wrap.clock[1]"/>
         <direct name="clk_a2" input="clk_opt[2].O" output="ff_wrap.clock[2]"/>
         <direct name="clk_b2" input="clk_opt[3].O" output="ff_wrap.clock[3]"/>
-        <direct name="reset_a1" input="sr_opt[0].O" output="ff_wrap.reset[0]"/>
-        <direct name="reset_b1" input="sr_opt[1].O" output="ff_wrap.reset[1]"/>
-        <direct name="reset_a2" input="sr_opt[2].O" output="ff_wrap.reset[2]"/>
-        <direct name="reset_b2" input="sr_opt[3].O" output="ff_wrap.reset[3]"/>
+        <mux name="reset_a1" input="sr_opt[0].O sr_opt[1].O sr_opt[2].O sr_opt[3].O" output="ff_wrap.reset[0]" add_const_input="false"/>
+        <mux name="reset_b1" input="sr_opt[0].O sr_opt[1].O sr_opt[2].O sr_opt[3].O" output="ff_wrap.reset[1]" add_const_input="false"/>
+        <mux name="reset_a2" input="sr_opt[0].O sr_opt[1].O sr_opt[2].O sr_opt[3].O" output="ff_wrap.reset[2]" add_const_input="false"/>
+        <mux name="reset_b2" input="sr_opt[0].O sr_opt[1].O sr_opt[2].O sr_opt[3].O" output="ff_wrap.reset[3]" add_const_input="false"/>
         <direct name="direct11a" input="bram_rtl.RDATA_A1_o" output="ff_wrap.rdata_a1"/>
         <direct name="direct12a" input="bram_rtl.RDATA_B1_o" output="ff_wrap.rdata_b1"/>
         <direct name="direct35a" input="bram_rtl.RDATA_A2_o" output="ff_wrap.rdata_a2"/>
         <direct name="direct36a" input="bram_rtl.RDATA_B2_o" output="ff_wrap.rdata_b2"/>
-        <direct name="direct13a" input="flush_opt[0].O" output="bram_rtl.FLUSH1_i"/>
-        <direct name="direct37a" input="flush_opt[1].O" output="bram_rtl.FLUSH2_i"/>
+        <mux name="direct13a" input="flush_opt.O[0] flush_opt.O[1]" output="bram_rtl.FLUSH1_i" add_const_input="false"/>
+        <mux name="direct37a" input="flush_opt.O[0] flush_opt.O[1]" output="bram_rtl.FLUSH2_i" add_const_input="false"/>
       </interconnect>
     </pb_type>
     <!-- bram -->
