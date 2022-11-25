@@ -1551,15 +1551,27 @@
               <input name="cascup_i" num_pins="1"/>
               <output name="cascdn_o" num_pins="1"/>
               <output name="cascup_o" num_pins="1"/>
-              <!-- lut Physical Mode  -->
-              <!-- Start of physical mode of look up table -->
-              <mode name="physical" disable_packing="true">
-                <pb_type name="frac_lut6" num_pb="1" blif_model=".subckt frac_lut6">
-                  <input name="in" num_pins="6"/>
-                  <output name="lut4_out" num_pins="4"/>
-                  <output name="lut5_out" num_pins="2"/>
-                  <output name="lut6_out" num_pins="1"/>
-                  <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[0:0]">
+              <pb_type name="mux_wrap" num_pb="1">
+                <input name="II" num_pins="6"/>
+                <output name="o4_up_1" num_pins="1"/>
+                <output name="o4_up_2" num_pins="1"/>
+                <output name="o4_dn_1" num_pins="1"/>
+                <output name="o4_dn_2" num_pins="1"/>
+                <output name="o5_up" num_pins="1"/>
+                <output name="o5_dn" num_pins="1"/>
+                <output name="o6" num_pins="1"/>
+                <!-- cascade connections -->
+                <output name="cascdn_o" num_pins="1"/>
+                <output name="cascup_o" num_pins="1"/>
+                <!-- lut Physical Mode  -->
+                <!-- Start of physical mode of look up table -->
+                <mode name="physical" disable_packing="true">
+                  <pb_type name="frac_lut6" num_pb="1" blif_model=".subckt frac_lut6">
+                    <input name="in" num_pins="6"/>
+                    <output name="lut4_out" num_pins="4"/>
+                    <output name="lut5_out" num_pins="2"/>
+                    <output name="lut6_out" num_pins="1"/>
+                    <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[0:0]">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1567,7 +1579,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[0:0]">
+                    <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[0:0]">
                 2.89413e-10
                 1.88394e-10
                 1.53191e-10
@@ -1575,7 +1587,7 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                  <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[1:1]">
+                    <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[1:1]">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1583,7 +1595,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[1:1]">
+                    <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[1:1]">
                 2.89413e-10
                 1.88394e-10
                 1.53191e-10
@@ -1591,7 +1603,7 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                  <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[2:2]">
+                    <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[2:2]">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1599,7 +1611,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[2:2]">
+                    <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[2:2]">
                 2.89413e-10
                 1.88394e-10
                 1.53191e-10
@@ -1607,7 +1619,7 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                  <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[3:3]">
+                    <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[3:3]">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1615,7 +1627,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[3:3]">
+                    <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut4_out[3:3]">
                 2.89413e-10
                 1.88394e-10
                 1.53191e-10
@@ -1623,7 +1635,7 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                  <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[0:0]">
+                    <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[0:0]">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1631,7 +1643,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[0:0]">
+                    <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[0:0]">
                 2.89413e-10
                 1.88394e-10
                 1.53191e-10
@@ -1639,7 +1651,7 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                  <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[1:1]">
+                    <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[1:1]">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1647,7 +1659,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[1:1]">
+                    <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut5_out[1:1]">
                 2.89413e-10
                 1.88394e-10
                 1.53191e-10
@@ -1655,7 +1667,7 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                  <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut6_out[0:0]">
+                    <delay_matrix type="max" in_port="frac_lut6.in" out_port="frac_lut6.lut6_out[0:0]">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1663,7 +1675,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut6_out[0:0]">
+                    <delay_matrix type="min" in_port="frac_lut6.in" out_port="frac_lut6.lut6_out[0:0]">
                 2.89413e-10
                 1.88394e-10
                 1.53191e-10
@@ -1671,28 +1683,28 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                </pb_type>
-                <interconnect>
-                  <direct name="direct_in" input="frac_lut.II" output="frac_lut6.in"/>
-                  <mux name="mux_out6" input="frac_lut6.lut6_out frac_lut.cascdn_i frac_lut.cascup_i" output="frac_lut.o6"/>
-                  <direct name="direct_out5_0" input="frac_lut6.lut5_out[0:0]" output="frac_lut.o5_up"/>
-                  <direct name="direct_out5_1" input="frac_lut6.lut5_out[1:1]" output="frac_lut.o5_dn"/>
-                  <direct name="direct_out4_0" input="frac_lut6.lut4_out[0:0]" output="frac_lut.o4_up_1"/>
-                  <direct name="direct_out4_1" input="frac_lut6.lut4_out[1:1]" output="frac_lut.o4_up_2"/>
-                  <direct name="direct_out4_2" input="frac_lut6.lut4_out[2:2]" output="frac_lut.o4_dn_1"/>
-                  <direct name="direct_out4_3" input="frac_lut6.lut4_out[3:3]" output="frac_lut.o4_dn_2"/>
-                  <direct name="direct_cascdn_o" input="frac_lut6.lut6_out" output="frac_lut.cascdn_o"/>
-                  <direct name="direct_cascup_o" input="frac_lut6.lut6_out" output="frac_lut.cascup_o"/>
-                </interconnect>
-              </mode>
-              <!-- End of physical mode of look up table -->
-              <!-- lut6 logical mode -->
-              <!-- Start of lut6_mode logical mode -->
-              <mode name="lut6_mode" disable_packing="false">
-                <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
-                  <input name="in" num_pins="6" port_class="lut_in"/>
-                  <output name="out" num_pins="1" port_class="lut_out"/>
-                  <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
+                  </pb_type>
+                  <interconnect>
+                    <direct name="direct_in" input="mux_wrap.II" output="frac_lut6.in"/>
+                    <direct name="direct_out5_0" input="frac_lut6.lut5_out[0:0]" output="mux_wrap.o5_up"/>
+                    <direct name="direct_out5_1" input="frac_lut6.lut5_out[1:1]" output="mux_wrap.o5_dn"/>
+                    <direct name="direct_out4_0" input="frac_lut6.lut4_out[0:0]" output="mux_wrap.o4_up_1"/>
+                    <direct name="direct_out4_1" input="frac_lut6.lut4_out[1:1]" output="mux_wrap.o4_up_2"/>
+                    <direct name="direct_out4_2" input="frac_lut6.lut4_out[2:2]" output="mux_wrap.o4_dn_1"/>
+                    <direct name="direct_out4_3" input="frac_lut6.lut4_out[3:3]" output="mux_wrap.o4_dn_2"/>
+                    <direct name="direct_cascdn_o" input="frac_lut6.lut6_out" output="mux_wrap.cascdn_o"/>
+                    <direct name="direct_cascup_o" input="frac_lut6.lut6_out" output="mux_wrap.cascup_o"/>
+                    <direct name="direct_lut6_out" input="frac_lut6.lut6_out" output="mux_wrap.o6"/>
+                  </interconnect>
+                </mode>
+                <!-- End of physical mode of look up table -->
+                <!-- lut6 logical mode -->
+                <!-- Start of lut6_mode logical mode -->
+                <mode name="lut6_mode" disable_packing="false">
+                  <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
+                    <input name="in" num_pins="6" port_class="lut_in"/>
+                    <output name="out" num_pins="1" port_class="lut_out"/>
+                    <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
@@ -1700,7 +1712,7 @@
                 9.0477e-11
                 4.2723e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
+                    <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
                 2.24236e-10
                 1.88394e-10
                 1.53191e-10
@@ -1708,74 +1720,90 @@
                 7.5834e-11
                 3.1878e-11
             </delay_matrix>
-                </pb_type>
-                <interconnect>
-                  <direct name="direct_in" input="frac_lut.II" output="lut6.in"/>
-                  <direct name="direct_out6" input="lut6.out" output="frac_lut.o6"/>
-                </interconnect>
-              </mode>
-              <!-- End of lut6_mode logical mode -->
-              <!-- lut5 logical mode -->
-              <!-- Start of lut5_mode logical mode -->
-              <mode name="lut5_mode" disable_packing="false">
-                <pb_type name="lut5" blif_model=".names" num_pb="2" class="lut">
-                  <input name="in" num_pins="5" port_class="lut_in"/>
-                  <output name="out" num_pins="1" port_class="lut_out"/>
-                  <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
+                  </pb_type>
+                  <interconnect>
+                    <direct name="direct_in" input="mux_wrap.II" output="lut6.in"/>
+                    <direct name="direct_out6" input="lut6.out" output="mux_wrap.o6"/>
+                  </interconnect>
+                </mode>
+                <!-- End of lut6_mode logical mode -->
+                <!-- lut5 logical mode -->
+                <!-- Start of lut5_mode logical mode -->
+                <mode name="lut5_mode" disable_packing="false">
+                  <pb_type name="lut5" blif_model=".names" num_pb="2" class="lut">
+                    <input name="in" num_pins="5" port_class="lut_in"/>
+                    <output name="out" num_pins="1" port_class="lut_out"/>
+                    <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
                 1.40959e-10
                 9.0477e-11
             </delay_matrix>
-                  <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
+                    <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
                 2.24236e-10
                 1.88394e-10
                 1.53191e-10
                 1.1799e-10
                 7.5834e-11
             </delay_matrix>
-                </pb_type>
-                <interconnect>
-                  <direct name="direct_in_lut4_0" input="frac_lut.II[4:0]" output="lut5[0].in"/>
-                  <direct name="direct_in_lut4_1" input="frac_lut.II[4:0]" output="lut5[1].in"/>
-                  <direct name="direct_out5_up" input="lut5[0:0].out" output="frac_lut.o5_up"/>
-                  <direct name="direct_out5_dn" input="lut5[1:1].out" output="frac_lut.o5_dn"/>
-                </interconnect>
-              </mode>
-              <!-- End of lut5_mode logical mode -->
-              <!-- lut4 logical mode -->
-              <!-- Start of lut4_mode logical mode -->
-              <mode name="lut4_mode" disable_packing="false">
-                <pb_type name="lut4" blif_model=".names" num_pb="4" class="lut">
-                  <input name="in" num_pins="4" port_class="lut_in"/>
-                  <output name="out" num_pins="1" port_class="lut_out"/>
-                  <delay_matrix type="max" in_port="lut4.in" out_port="lut4.out">
+                  </pb_type>
+                  <interconnect>
+                    <direct name="direct_in_lut4_0" input="mux_wrap.II[4:0]" output="lut5[0].in"/>
+                    <direct name="direct_in_lut4_1" input="mux_wrap.II[4:0]" output="lut5[1].in"/>
+                    <direct name="direct_out5_up" input="lut5[0:0].out" output="mux_wrap.o5_up"/>
+                    <direct name="direct_out5_dn" input="lut5[1:1].out" output="mux_wrap.o5_dn"/>
+                  </interconnect>
+                </mode>
+                <!-- End of lut5_mode logical mode -->
+                <!-- lut4 logical mode -->
+                <!-- Start of lut4_mode logical mode -->
+                <mode name="lut4_mode" disable_packing="false">
+                  <pb_type name="lut4" blif_model=".names" num_pb="4" class="lut">
+                    <input name="in" num_pins="4" port_class="lut_in"/>
+                    <output name="out" num_pins="1" port_class="lut_out"/>
+                    <delay_matrix type="max" in_port="lut4.in" out_port="lut4.out">
                 2.89413e-10
                 2.36114e-10
                 1.86969e-10
                 1.40959e-10
             </delay_matrix>
-                  <delay_matrix type="min" in_port="lut4.in" out_port="lut4.out">
+                    <delay_matrix type="min" in_port="lut4.in" out_port="lut4.out">
                 2.24236e-10
                 1.88394e-10
                 1.53191e-10
                 1.1799e-10
             </delay_matrix>
-                </pb_type>
-                <interconnect>
-                  <direct name="direct_in_lut4_0_up" input="frac_lut.II[3:0]" output="lut4[0:0].in"/>
-                  <direct name="direct_in_lut4_1_up" input="frac_lut.II[3:0]" output="lut4[1:1].in"/>
-                  <direct name="direct_in_lut4_0_dn" input="frac_lut.II[3:0]" output="lut4[2:2].in"/>
-                  <direct name="direct_in_lut4_1_dn" input="frac_lut.II[3:0]" output="lut4[3:3].in"/>
-                  <!-- LUT4 outputs -->
-                  <direct name="direct_out4_0_up" input="lut4[0:0].out" output="frac_lut.o4_up_1"/>
-                  <direct name="direct_out4_1_up" input="lut4[1:1].out" output="frac_lut.o4_up_2"/>
-                  <direct name="direct_out4_0_dn" input="lut4[2:2].out" output="frac_lut.o4_dn_1"/>
-                  <direct name="direct_out4_1_dn" input="lut4[3:3].out" output="frac_lut.o4_dn_2"/>
-                </interconnect>
-              </mode>
-              <!-- End of lut4_mode logical mode -->
+                  </pb_type>
+                  <interconnect>
+                    <direct name="direct_in_lut4_0_up" input="mux_wrap.II[3:0]" output="lut4[0:0].in"/>
+                    <direct name="direct_in_lut4_1_up" input="mux_wrap.II[3:0]" output="lut4[1:1].in"/>
+                    <direct name="direct_in_lut4_0_dn" input="mux_wrap.II[3:0]" output="lut4[2:2].in"/>
+                    <direct name="direct_in_lut4_1_dn" input="mux_wrap.II[3:0]" output="lut4[3:3].in"/>
+                    <!-- LUT4 outputs -->
+                    <direct name="direct_out4_0_up" input="lut4[0:0].out" output="mux_wrap.o4_up_1"/>
+                    <direct name="direct_out4_1_up" input="lut4[1:1].out" output="mux_wrap.o4_up_2"/>
+                    <direct name="direct_out4_0_dn" input="lut4[2:2].out" output="mux_wrap.o4_dn_1"/>
+                    <direct name="direct_out4_1_dn" input="lut4[3:3].out" output="mux_wrap.o4_dn_2"/>
+                  </interconnect>
+                </mode>
+                <!-- End of lut4_mode logical mode -->
+              </pb_type>
+              <interconnect>
+                <!-- inputs -->
+                <direct name="direct_II" input="frac_lut.II[4:0]" output="mux_wrap.II[4:0]"/>
+                <mux name="mux_lut_in5" input="frac_lut.II[5:5] frac_lut.cascdn_i frac_lut.cascup_i" output="mux_wrap.II[5:5]"/>
+                <!-- outputs -->
+                <direct name="direct_o4_up_1" input="mux_wrap.o4_up_1" output="frac_lut.o4_up_1"/>
+                <direct name="direct_o4_up_2" input="mux_wrap.o4_up_2" output="frac_lut.o4_up_2"/>
+                <direct name="direct_o4_dn_1" input="mux_wrap.o4_dn_1" output="frac_lut.o4_dn_1"/>
+                <direct name="direct_o4_dn_2" input="mux_wrap.o4_dn_2" output="frac_lut.o4_dn_2"/>
+                <direct name="direct_o5_up" input="mux_wrap.o5_up" output="frac_lut.o5_up"/>
+                <direct name="direct_o5_dn" input="mux_wrap.o5_dn" output="frac_lut.o5_dn"/>
+                <direct name="direct_o6" input="mux_wrap.o6" output="frac_lut.o6"/>
+                <direct name="direct_cascdn_o" input="mux_wrap.cascdn_o" output="frac_lut.cascdn_o"/>
+                <direct name="direct_cascup_o" input="mux_wrap.cascup_o" output="frac_lut.cascup_o"/>
+              </interconnect>
             </pb_type>
             <interconnect>
               <!-- Input connections -->
