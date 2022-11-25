@@ -108,7 +108,7 @@ test_install_mac:
 	$(PREFIX)/bin/raptor --compiler dummy --batch --script tests/Testcases/trivial/test.tcl
 
 test_install:
-#	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/oneff/raptor.tcl 
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/tcl_examples/oneff/raptor.tcl 
 	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
@@ -156,7 +156,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
-#	./build/bin/raptor --script tests/Testcases/oneff/raptor.tcl --batch --mute
+	./build/bin/raptor --script tests/Testcases/oneff/raptor.tcl --batch
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
