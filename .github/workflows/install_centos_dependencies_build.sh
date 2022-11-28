@@ -6,11 +6,11 @@ curl -C - -O https://cmake.org/files/v3.15/cmake-3.15.7-Linux-x86_64.tar.gz
 tar xzf cmake-3.15.7-Linux-x86_64.tar.gz
 ln -s $PWD/cmake-3.15.7-Linux-x86_64/bin/cmake /usr/bin/cmake
 yum install -y openssh-server openssh-clients
-yum install -y centos-release-scl
-yum install -y devtoolset-9
-yum install -y devtoolset-9-toolchain
-yum install -y devtoolset-9-gcc-c++
-scl enable devtoolset-9 bash
+yum install -y centos-release-scl-rh
+yum install -y devtoolset-11
+yum install -y devtoolset-11-toolchain
+yum install -y devtoolset-11-gcc-c++
+scl enable devtoolset-11 bash
 yum install -y tcl
 yum install -y make
 yum install -y flex
@@ -43,15 +43,15 @@ yum install -y boost-system
 yum install -y boost-python
 yum install -y boost-filesystem
 yum install -y zlib-devel
-yum install http://repo.okay.com.mx/centos/7/x86_64/release/okay-release-1-1.noarch.rpm
+#yum install http://repo.okay.com.mx/centos/7/x86_64/release/okay-release-1-1.noarch.rpm
 yum install -y ninja-build
 yum install -y wget
 yum install -y gtk3-devel
 yum install -y openssl-devel
 
 ln -s $PWD/cmake-3.15.7-Linux-x86_64/bin/ctest /usr/bin/ctest
-echo 'QMAKE_CC=/opt/rh/devtoolset-9/root/usr/bin/gcc' >> $GITHUB_ENV
-echo 'QMAKE_CXX=/opt/rh/devtoolset-9/root/usr/bin/g++' >> $GITHUB_ENV
+echo 'QMAKE_CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV
+echo 'QMAKE_CXX=/opt/rh/devtoolset-11/root/usr/bin/g++' >> $GITHUB_ENV
 echo 'PATH=/usr/local/Qt-5.15.0/bin:/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
 
 if [ -f buildqt5-centos7-gcc.tgz ]
