@@ -1,7 +1,8 @@
 # Install required dependencies for Ubuntu systems
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt-get update -qq
 sudo apt install -y \
-  g++-9 \
+  g++-11 gcc-11 \
   tclsh \
   tcl-dev \
   cmake \
@@ -39,8 +40,8 @@ sudo apt install -y \
 
 sudo apt -y install lsb-core
 
-sudo ln -sf /usr/bin/g++-9 /usr/bin/g++
-sudo ln -sf /usr/bin/gcc-9 /usr/bin/gcc
-sudo ln -sf /usr/bin/gcov-9 /usr/bin/gcov
+sudo ln -sf /usr/bin/g++-11 /usr/bin/g++
+sudo ln -sf /usr/bin/gcc-11 /usr/bin/gcc
+sudo ln -sf /usr/bin/gcov-11 /usr/bin/gcov
 sudo ln -sf /usr/lib/x86_64-linux-gnu/libffi.so.7.1.0 /usr/lib/x86_64-linux-gnu/libffi.so.6
 
