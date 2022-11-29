@@ -1,0 +1,11 @@
+
+set_mode Mode_BP_SDR_A_RX Bank_VL_1_19
+set_pin_loc reset Bank_VL_1_19
+
+
+set_mode  Mode_RATE_4_A_TX Bank_VL_1_23
+set_pin_loc counter[0] Bank_VL_1_23 f2g_tx_out[0]_A
+set_pin_loc counter[1] Bank_VL_1_23 f2g_tx_out[1]_A
+set_pin_loc counter[2] Bank_VL_1_23 f2g_tx_out[2]_A
+set_pin_loc counter[3] Bank_VL_1_23 f2g_tx_out[3]_A
+
