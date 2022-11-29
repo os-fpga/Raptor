@@ -549,7 +549,7 @@ install(
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
 install(
-        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)   
+        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)
 install(
         DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/HDL_simulator DESTINATION  ${CMAKE_INSTALL_BINDIR}
 	USE_SOURCE_PERMISSIONS
@@ -698,7 +698,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/counter_vhdl/
       COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
       COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta        
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys
@@ -712,11 +712,11 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmgrd    
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmgrd
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-      COMMAND ${CMAKE_COMMAND} -E copy 
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil    
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
@@ -737,7 +737,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
       COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/cell_sim_blackbox.v
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/cell_sim_blackbox.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/cell_sim_blackbox.v
