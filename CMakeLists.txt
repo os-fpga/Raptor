@@ -124,7 +124,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 21)
+set(VERSION_PATCH 22)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -545,6 +545,8 @@ install(
 install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter/)
 install(
+      DIRECTORY tests/Testcases/counter_vhdl/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter_vhdl/)      
+install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
 install(
         DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)
@@ -691,8 +693,11 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/oneff
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/oneff/
-      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"
-      COMMAND ${CMAKE_COMMAND} -E copy
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/tests/Testcases/counter_vhdl
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/counter_vhdl/
+      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
+      COMMAND ${CMAKE_COMMAND} -E copy 
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
