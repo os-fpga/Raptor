@@ -1,5 +1,5 @@
 # Gate level netlist input
-create_design AES_DECRYPT_GATE -type post-synth
+create_design AES_DECRYPT_GATE -type gate-level
 target_device GEMINI
 read_netlist aes_decrypt.blif
 pnr_netlist_lang blif
