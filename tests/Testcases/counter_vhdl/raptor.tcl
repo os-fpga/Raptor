@@ -16,7 +16,7 @@ target_device GEMINI
 analyze
 
 # RTL Simulation
-set_simulation_options "ghdl" "simulation" "--stop-time=1000ns"
+simulation_options "ghdl" "simulation" "--stop-time=1000ns"
 simulate "rtl" "ghdl" syn_tb_rtl.fst
 
 # Synthesis

@@ -33,16 +33,17 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    help                       : This help
    open_project <file>        : Opens a project in the GUI
    run_project <file>         : Opens and immediately runs the project
-   create_design <name>       : Creates a design with <name> name
+   create_design <name> ?-type <project type>? : Creates a design with <name> name
+               <project type> : rtl (Default), gate-level
    target_device <name>       : Targets a device with <name> name (MPW1, GEMINI)
    add_design_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
               Each invocation of the command compiles the file list into a compilation unit 
-                       <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017> 
+                       <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -VHDL_2019, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017> 
               -work <libName> : Compiles the compilation unit into library <libName>, default is "work"
               -L <libName>    : Import the library <libName> needed to compile the compilation unit, default is "work"
    add_simulation_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
               Each invocation of the command compiles the file list into a compilation unit 
-                       <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017, -C, -CPP> 
+                       <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -VHDL_2019, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017, -C, -CPP> 
               -work <libName> : Compiles the compilation unit into library <libName>, default is "work"
               -L <libName>    : Import the library <libName> needed to compile the compilation unit, default is "work"
    read_netlist <file>        : Read a netlist (.blif/.eblif) instead of an RTL design (Skip Synthesis)
@@ -107,14 +108,22 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    global_placement ?clean?   : Analytical placer
    place ?clean?              : Detailed placer
    route ?clean?              : Router
-   sta ?clean?                : Statistical Timing Analysis
+   sta ?clean? ?opensta?      : Statistical Timing Analysis with Tatum (Default) or OpenSTA
    power ?clean?              : Power estimator
    bitstream ?force? ?clean?  : Bitstream generation
+   set_top_testbench <module> : Sets the top-level testbench module/entity
+   simulation_options <simulator> <task> <options> : Sets the simulator-specific options for the specified simulator task
+                       <task> : compilation, elaboration, simulation
    simulate <level> ?<simulator>? ?<waveform_file>?: Simulates the design and testbench
-            <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
-            <simulator> : verilator, vcs, questa, icarus, ghdl, xcelium
+                      <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
+                  <simulator> : verilator, ghdl
+   wave_*                     : All wave commands will launch a GTKWave process if one hasn't been launched already. Subsequent commands will be sent to the launched process.
+   wave_cmd ...               : Sends given tcl commands to GTKWave process. See GTKWave docs for gtkwave:: commands.
+   wave_open <filename>       : Load given file in current GTKWave process.
+   wave_refresh               : Reloads the current active wave file
+   wave_show <signal>         : Add the given signal to the GTKWave window and highlight it.
+   wave_time <time>           : Set the current GTKWave view port start time to <time>. Times units can be specified, without a space. Ex: wave_time 100ps.
 -----------------------------------------------
-
 ```
 
 ## RAPTOR EXAMPLE DESIGNS
