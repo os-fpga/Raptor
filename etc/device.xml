@@ -61,11 +61,12 @@
         <internal type="fabric_key" file="gemini_latest/fabric_key.xml"/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pinmap_csv" file="gemini_latest/Gemini_Pin_Table.csv"/>
+        <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis2"/>
         <internal type="synth_type" name="RS"/>
-        <internal type="synth_opts" name=""/>
+        <internal type="synth_opts" name="-carry no"/>
         <internal type="bitstream_enabled" num="false"/>
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
