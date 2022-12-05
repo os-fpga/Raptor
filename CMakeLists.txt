@@ -94,8 +94,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
   add_subdirectory(${VERIFIC_HOME})
 endif()
+
 get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+add_subdirectory(${READ_VERILOG_SRC_DIR})
 
 add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
@@ -545,7 +547,7 @@ install(
 install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter/)
 install(
-      DIRECTORY tests/Testcases/counter_vhdl/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter_vhdl/)      
+      DIRECTORY tests/Testcases/counter_vhdl/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter_vhdl/)
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
 install(
@@ -696,8 +698,8 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/counter_vhdl
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/counter_vhdl/
-      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
-      COMMAND ${CMAKE_COMMAND} -E copy 
+      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
