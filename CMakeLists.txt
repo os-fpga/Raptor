@@ -94,8 +94,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
 
   add_subdirectory(${VERIFIC_HOME})
 endif()
+
 get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+add_subdirectory(${READ_VERILOG_SRC_DIR})
 
 add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
@@ -106,7 +108,10 @@ if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
 endif()
 
-add_subdirectory(yosys_verific_rs)
+if (NOT APPLE)
+    # Disable yosys_verific_rs till EDA-799 is resolved.
+    add_subdirectory(yosys_verific_rs)
+endif()
 
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
    set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
@@ -345,9 +350,11 @@ add_custom_command(TARGET raptor POST_BUILD
 
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
-add_dependencies(raptor-bin yosys)
-add_dependencies(raptor-bin abc)
-add_dependencies(raptor-bin de)
+if (NOT APPLE)
+    add_dependencies(raptor-bin yosys)
+    add_dependencies(raptor-bin abc)
+    add_dependencies(raptor-bin de)
+endif()
 add_dependencies(raptor-bin sta)
 
 if (WIN OR APPLE)
@@ -545,7 +552,7 @@ install(
 install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter/)
 install(
-      DIRECTORY tests/Testcases/counter_vhdl/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter_vhdl/)      
+      DIRECTORY tests/Testcases/counter_vhdl/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter_vhdl/)
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
 install(
@@ -696,18 +703,8 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/counter_vhdl
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/counter_vhdl/
-      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"     
-      COMMAND ${CMAKE_COMMAND} -E copy 
+      COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil
@@ -747,6 +744,16 @@ add_custom_command(TARGET raptor-bin POST_BUILD
 if (WIN OR APPLE)
 else ()
   add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND echo "Copying Analyze in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze
