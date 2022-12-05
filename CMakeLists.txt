@@ -352,9 +352,9 @@ add_custom_command(TARGET raptor POST_BUILD
 add_dependencies(raptor raptor_gui)
 if (NOT APPLE)
     add_dependencies(raptor-bin yosys)
+    add_dependencies(raptor-bin abc)
+    add_dependencies(raptor-bin de)
 endif()
-add_dependencies(raptor-bin abc)
-add_dependencies(raptor-bin de)
 add_dependencies(raptor-bin sta)
 
 if (WIN OR APPLE)
