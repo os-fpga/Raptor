@@ -108,7 +108,10 @@ if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
 endif()
 
-add_subdirectory(yosys_verific_rs)
+if (NOT APPLE)
+    # Disable yosys_verific_rs till EDA-799 is resolved.
+    add_subdirectory(yosys_verific_rs)
+endif()
 
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
    set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
@@ -347,7 +350,9 @@ add_custom_command(TARGET raptor POST_BUILD
 
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
-add_dependencies(raptor-bin yosys)
+if (NOT APPLE)
+    add_dependencies(raptor-bin yosys)
+endif()
 add_dependencies(raptor-bin abc)
 add_dependencies(raptor-bin de)
 add_dependencies(raptor-bin sta)
@@ -698,18 +703,8 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/counter_vhdl
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/counter_vhdl/
-      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil
@@ -749,6 +744,16 @@ add_custom_command(TARGET raptor-bin POST_BUILD
 if (WIN OR APPLE)
 else ()
   add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copying Yosys, ABC, DE, sta in bin dir"
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/yosys
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND echo "Copying Analyze in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze
