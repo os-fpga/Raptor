@@ -6,6 +6,8 @@ add_constraint_file constraints.sdc
 
 # Device target
 target_device GEMINI_LATEST
+set_device_size castor10x8_heterogeneous
+
 # Compilation
 analyze
 synthesize delay
