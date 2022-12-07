@@ -98,6 +98,7 @@ jobs:
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
+        make release test/batch_gen2
 
     - name: Regression
       if: matrix.mode == 'regression'
