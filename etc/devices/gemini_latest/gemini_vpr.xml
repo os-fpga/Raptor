@@ -856,7 +856,7 @@
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cin" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cascdn_i" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="cascup_i" fc_type="frac" fc_val="0"/>
+          <!-- fc_override port_name="cascup_i" fc_type="frac" fc_val="0"/ -->
           <fc_override port_name="cout" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cascdn_o" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cascup_o" fc_type="frac" fc_val="0"/>
@@ -1113,7 +1113,7 @@
   <directlist>
     <direct name="carry_chain" from_pin="clb.cout" to_pin="clb.cin" x_offset="0" y_offset="-1" z_offset="0"/>
     <direct name="cascade_down" from_pin="clb.cascdn_o" to_pin="clb.cascdn_i" x_offset="0" y_offset="-1" z_offset="0"/>
-    <direct name="cascade_up" from_pin="clb.cascup_o" to_pin="clb.cascup_i" x_offset="0" y_offset="1" z_offset="0"/>
+    <!--direct name="cascade_up" from_pin="clb.cascup_o" to_pin="clb.cascup_i" x_offset="0" y_offset="1" z_offset="0"/ -->
   </directlist>
   <complexblocklist>
     <!-- Define I/O pads begin -->
@@ -1700,7 +1700,7 @@
                 <!-- End of physical mode of look up table -->
                 <!-- lut6 logical mode -->
                 <!-- Start of lut6_mode logical mode -->
-                <mode name="lut6_mode" disable_packing="false">
+                <mode name="lut6_mode" disable_packing="true">
                   <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
                     <input name="in" num_pins="6" port_class="lut_in"/>
                     <output name="out" num_pins="1" port_class="lut_out"/>
@@ -1723,7 +1723,7 @@
                   </pb_type>
                   <interconnect>
                     <direct name="direct_in" input="mux_wrap.II" output="lut6.in"/>
-                    <direct name="direct_out6" input="lut6.out" output="mux_wrap.o6"/>
+                    <!-- direct name="direct_out6" input="lut6.out" output="mux_wrap.o6"/ -->
                   </interconnect>
                 </mode>
                 <!-- End of lut6_mode logical mode -->
@@ -1809,7 +1809,7 @@
               <!-- Input connections -->
               <direct name="direct_in" input="lut_block.II" output="frac_lut.II"/>
               <!-- Output connections -->
-              <direct name="direct_out6" input="frac_lut.o6" output="lut_block.o6"/>
+              <!-- direct name="direct_out6" input="frac_lut.o6" output="lut_block.o6"/ -->
               <direct name="direct_out5_0" input="frac_lut.o5_up" output="lut_block.o5_up"/>
               <direct name="direct_out5_1" input="frac_lut.o5_dn" output="lut_block.o5_dn"/>
               <direct name="direct_out4_0" input="frac_lut.o4_up_1" output="lut_block.o4_up_1"/>
