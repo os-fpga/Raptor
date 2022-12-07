@@ -12,7 +12,6 @@ set_top_testbench syn_tb
 
 # Device target
 target_device GEMINI_LATEST
-set_device_size castor10x8_heterogeneous
 
 # Compilation/Simulation
 analyze

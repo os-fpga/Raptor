@@ -428,7 +428,7 @@
     </circuit_model>
   </circuit_library>
   <configuration_protocol>
-    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="10">
+    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="82">
     </organization>
   </configuration_protocol>
   <connection_block>
