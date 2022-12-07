@@ -2,15 +2,15 @@ module counter (clock0, reset, result);
 
 	input clock0;
 	input reset;
-	output [7:0] result;
+	output [8:0] result;
 
-	reg [7:0] result;
+	reg [8:0] result;
 
     initial begin
       result <= 0;
     end
 
-	always @(posedge clock0 or posedge reset)
+	always @(posedge clock0)
 	begin
 		if (reset) 
 			result = 0;		

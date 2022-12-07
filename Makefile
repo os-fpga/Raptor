@@ -159,6 +159,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/counter/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
