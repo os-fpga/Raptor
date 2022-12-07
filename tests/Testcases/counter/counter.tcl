@@ -5,8 +5,7 @@ set_top_module counter
 add_constraint_file constraints.sdc
 
 # Device target
-target_device MPW1
-set_device_size 4x4
+target_device GEMINI_LATEST
 
 # Compilation
 synthesize delay
@@ -14,4 +13,4 @@ packing
 place
 route
 sta
-bitstream force
+bitstream 
