@@ -12,6 +12,6 @@ synthesize delay
 packing
 place
 route
-sta opensta
+sta
 power
 bitstream
