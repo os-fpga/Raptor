@@ -108,10 +108,10 @@ test_install_mac:
 	$(PREFIX)/bin/raptor --compiler dummy --batch --script tests/Testcases/trivial/test.tcl
 
 test_install:
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/oneff/raptor.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/raptor.tcl
+	export GENESIS2_LUT5=ON ; $(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/oneff/raptor.tcl
+	export GENESIS2_LUT5=ON ; $(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
+	export GENESIS2_LUT5=ON ; $(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_gate.tcl
 #	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_verilog.tcl
@@ -147,20 +147,20 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_99/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+	export GENESIS2_LUT5=ON ; ./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_batch.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_latest/raptor.tcl 
+	export GENESIS2_LUT5=ON ; ./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_latest/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
-	./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/counter/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
+	export GENESIS2_LUT5=ON ; ./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
+	export GENESIS2_LUT5=ON ; ./build/bin/raptor --batch --mute --script tests/Testcases/counter/counter.tcl
+	export GENESIS2_LUT5=ON ; ./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
