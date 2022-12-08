@@ -11,7 +11,7 @@ add_simulation_file sim_main.cpp
 set_top_testbench syn_tb
 
 # Device target
-target_device GEMINI_LATEST
+target_device GEMINI_10x8
 
 # Compilation/Simulation
 analyze
