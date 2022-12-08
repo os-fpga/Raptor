@@ -13,6 +13,6 @@ pnr_netlist_lang blif
 packing
 place
 route
-sta
+sta opensta
 power
 bitstream
