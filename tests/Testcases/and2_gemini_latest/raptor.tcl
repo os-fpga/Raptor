@@ -10,6 +10,7 @@ target_device GEMINI_LATEST
 # Compilation
 analyze
 synthesize delay
+pnr_netlist_lang blif
 packing
 place
 route
