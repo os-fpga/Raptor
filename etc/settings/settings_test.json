@@ -244,6 +244,30 @@
                 "hidden": true,
                 "isSetting": true
             }
+        },
+        "Simulate RTL": {
+            "_META_": {
+                "hidden": true,
+                "isSetting": true
+            }
+        },
+        "Simulate Gate": {
+            "_META_": {
+                "hidden": true,
+                "isSetting": true
+            }
+        },
+        "Simulate PNR": {
+            "_META_": {
+                "hidden": true,
+                "isSetting": true
+            }
+        },
+        "Simulate Bitstream": {
+            "_META_": {
+                "hidden": true,
+                "isSetting": true
+            }
         }
     }
 }

@@ -1798,9 +1798,12 @@
                 <direct name="direct_o4_up_2" input="mux_wrap.o4_up_2" output="frac_lut.o4_up_2"/>
                 <direct name="direct_o4_dn_1" input="mux_wrap.o4_dn_1" output="frac_lut.o4_dn_1"/>
                 <direct name="direct_o4_dn_2" input="mux_wrap.o4_dn_2" output="frac_lut.o4_dn_2"/>
-                <mux name="direct_o5_up" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o5_up"/>
-                <mux name="direct_o5_dn" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o5_dn"/>
-                <mux name="direct_o6" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o6"/>
+                
+                <!--mux name="direct_o5_up" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o5_up"/-->
+                <!--mux name="direct_o5_dn" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o5_dn"/-->
+                <!--mux name="direct_o6" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o6"/-->
+                <direct name="direct_o6" input="mux_wrap.o6" output="frac_lut.o6"/>
+                
                 <direct name="direct_cascdn_o" input="mux_wrap.cascdn_o" output="frac_lut.cascdn_o"/>
                 <direct name="direct_cascup_o" input="mux_wrap.cascup_o" output="frac_lut.cascup_o"/>
               </interconnect>
