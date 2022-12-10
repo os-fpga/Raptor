@@ -2,9 +2,9 @@ module counter (clock0, reset, result);
 
 	input clock0;
 	input reset;
-	output [8:0] result;
+	output [31:0] result;
 
-	reg [8:0] result;
+	reg [31:0] result;
 
     initial begin
       result <= 0;
