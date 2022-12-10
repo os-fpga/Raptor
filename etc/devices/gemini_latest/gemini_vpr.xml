@@ -855,8 +855,8 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cin" fc_type="frac" fc_val="0"/>
-          <!-- fc_override port_name="cascdn_i" fc_type="frac" fc_val="0"/ -->
-          <!-- fc_override port_name="cascup_i" fc_type="frac" fc_val="0"/ -->
+          <!-- <fc_override port_name="cascdn_i" fc_type="frac" fc_val="0"/> -->
+          <!-- <fc_override port_name="cascup_i" fc_type="frac" fc_val="0"/> -->
           <fc_override port_name="cout" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cascdn_o" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cascup_o" fc_type="frac" fc_val="0"/>
@@ -1112,8 +1112,8 @@
   </segmentlist>
   <directlist>
     <direct name="carry_chain" from_pin="clb.cout" to_pin="clb.cin" x_offset="0" y_offset="-1" z_offset="0"/>
-    <!-- direct name="cascade_down" from_pin="clb.cascdn_o" to_pin="clb.cascdn_i" x_offset="0" y_offset="-1" z_offset="0"/ -->
-    <!-- direct name="cascade_up" from_pin="clb.cascup_o" to_pin="clb.cascup_i" x_offset="0" y_offset="1" z_offset="0"/ -->
+    <!-- <direct name="cascade_down" from_pin="clb.cascdn_o" to_pin="clb.cascdn_i" x_offset="0" y_offset="-1" z_offset="0"/> -->
+    <!-- <direct name="cascade_up"   from_pin="clb.cascup_o" to_pin="clb.cascup_i" x_offset="0" y_offset="1" z_offset="0"/> -->
   </directlist>
   <complexblocklist>
     <!-- Define I/O pads begin -->
@@ -1798,12 +1798,9 @@
                 <direct name="direct_o4_up_2" input="mux_wrap.o4_up_2" output="frac_lut.o4_up_2"/>
                 <direct name="direct_o4_dn_1" input="mux_wrap.o4_dn_1" output="frac_lut.o4_dn_1"/>
                 <direct name="direct_o4_dn_2" input="mux_wrap.o4_dn_2" output="frac_lut.o4_dn_2"/>
-                
-                <!--mux name="direct_o5_up" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o5_up"/-->
-                <!--mux name="direct_o5_dn" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o5_dn"/-->
-                <!--mux name="direct_o6" input="mux_wrap.o5_up mux_wrap.o5_dn mux_wrap.o6" output="frac_lut.o6"/-->
+                <!-- <direct name="direct_o5_up"     input="mux_wrap.o5_up"      output="frac_lut.o5_up"/> -->
+                <!-- <direct name="direct_o5_dn"     input="mux_wrap.o5_dn"      output="frac_lut.o5_dn"/> -->
                 <direct name="direct_o6" input="mux_wrap.o6" output="frac_lut.o6"/>
-                
                 <direct name="direct_cascdn_o" input="mux_wrap.cascdn_o" output="frac_lut.cascdn_o"/>
                 <direct name="direct_cascup_o" input="mux_wrap.cascup_o" output="frac_lut.cascup_o"/>
               </interconnect>
