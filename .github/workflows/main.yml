@@ -565,6 +565,7 @@ jobs:
           ${{ github.workspace }}/build/tests/
 
   macos-gcc:
+    if: ${{ false }}  # disable till EDA-802 is fixed
     runs-on: macos-latest
 
     steps:
@@ -655,6 +656,7 @@ jobs:
         make regression
 
   macos-clang:
+    if: ${{ false }}  # disable till EDA-802 is fixed
     runs-on: macos-latest
 
     steps:
