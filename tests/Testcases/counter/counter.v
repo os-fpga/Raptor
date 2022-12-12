@@ -1,7 +1,9 @@
-module counter (clock0, reset, result);
+module counter (clock0, reset, result, increment);
 
 	input clock0;
 	input reset;
+        input [31:0] increment;
+   
 	output [31:0] result;
 
 	reg [31:0] result;
@@ -15,6 +17,6 @@ module counter (clock0, reset, result);
 		if (reset) 
 			result = 0;		
 		else 
-			result = result + 1;
+			result = result + increment;
 	end
 endmodule		
