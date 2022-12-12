@@ -1798,8 +1798,8 @@
                 <direct name="direct_o4_up_2" input="mux_wrap.o4_up_2" output="frac_lut.o4_up_2"/>
                 <direct name="direct_o4_dn_1" input="mux_wrap.o4_dn_1" output="frac_lut.o4_dn_1"/>
                 <direct name="direct_o4_dn_2" input="mux_wrap.o4_dn_2" output="frac_lut.o4_dn_2"/>
-                <!--direct name="direct_o5_up" input="mux_wrap.o5_up" output="frac_lut.o5_up"/ -->
-                <!--direct name="direct_o5_dn" input="mux_wrap.o5_dn" output="frac_lut.o5_dn"/ -->
+                <!-- <direct name="direct_o5_up"     input="mux_wrap.o5_up"      output="frac_lut.o5_up"/> -->
+                <!-- <direct name="direct_o5_dn"     input="mux_wrap.o5_dn"      output="frac_lut.o5_dn"/> -->
                 <direct name="direct_o6" input="mux_wrap.o6" output="frac_lut.o6"/>
                 <direct name="direct_cascdn_o" input="mux_wrap.cascdn_o" output="frac_lut.cascdn_o"/>
                 <direct name="direct_cascup_o" input="mux_wrap.cascup_o" output="frac_lut.cascup_o"/>
@@ -1902,15 +1902,9 @@
                 <interconnect>
                   <direct name="direct_p_conn" input="fa_2bit.p" output="fa_1bit.p"/>
                   <direct name="direct_g_conn" input="fa_2bit.g" output="fa_1bit.g"/>
-                  <direct name="carry_chain_start" input="fa_2bit.cin" output="fa_1bit[0:0].cin">
-                    <pack_pattern name="carrychain" in_port="fa_2bit.cin" out_port="fa_1bit[0:0].cin"/>
-                  </direct>
-                  <direct name="carry_chain_mid" input="fa_1bit[0:0].cout" output="fa_1bit[1:1].cin">
-                    <pack_pattern name="carrychain" in_port="fa_1bit[0:0].cout" out_port="fa_1bit[1:1].cin"/>
-                  </direct>
-                  <direct name="carry_chain_end" input="fa_1bit[1:1].cout" output="fa_2bit.cout">
-                    <pack_pattern name="carrychain" in_port="fa_1bit[1:1].cout" out_port="fa_2bit.cout"/>
-                  </direct>
+                  <direct name="carry_chain_start" input="fa_2bit.cin" output="fa_1bit[0:0].cin"/>
+                  <direct name="carry_chain_mid" input="fa_1bit[0:0].cout" output="fa_1bit[1:1].cin"/>
+                  <direct name="carry_chain_end" input="fa_1bit[1:1].cout" output="fa_2bit.cout"/>
                   <direct name="direct_sum_out" input="fa_1bit.sum" output="fa_2bit.sum"/>
                 </interconnect>
               </pb_type>
@@ -1922,15 +1916,9 @@
                 <direct name="fa_sum_conn_up" input="fa_2bit.sum[0:0]" output="fa_2bit_block.sum_up"/>
                 <direct name="fa_sum_conn_dn" input="fa_2bit.sum[1:1]" output="fa_2bit_block.sum_dn"/>
                 <!-- Carry chain connections  -->
-                <direct name="carry_chain_start" input="fa_2bit_block.cin" output="fa_2bit[0:0].cin">
-                  <pack_pattern name="carrychain" in_port="fa_2bit_block.cin" out_port="fa_2bit[0:0].cin"/>
-                </direct>
-                <direct name="carry_chain_mid" input="fa_2bit[0:6].cout" output="fa_2bit[1:7].cin">
-                  <pack_pattern name="carrychain" in_port="fa_2bit[0:6].cout" out_port="fa_2bit[1:7].cin"/>
-                </direct>
-                <direct name="carry_chain_end" input="fa_2bit[7:7].cout" output="fa_2bit_block.cout">
-                  <pack_pattern name="carrychain" in_port="fa_2bit[7:7].cout" out_port="fa_2bit_block.cout"/>
-                </direct>
+                <direct name="carry_chain_start" input="fa_2bit_block.cin" output="fa_2bit[0:0].cin"/>
+                <direct name="carry_chain_mid" input="fa_2bit[0:6].cout" output="fa_2bit[1:7].cin"/>
+                <direct name="carry_chain_end" input="fa_2bit[7:7].cout" output="fa_2bit_block.cout"/>
               </interconnect>
             </mode>
           </pb_type>
@@ -1948,12 +1936,8 @@
             <direct name="direct_cascdn_o" input="lut_block.cascdn_o" output="comb_block.cascdn_o"/>
             <direct name="direct_cascup_o" input="lut_block.cascup_o" output="comb_block.cascup_o"/>
             <!--  Carry related -->
-            <direct name="direct_cin" input="comb_block.cin" output="fa_2bit_block.cin">
-              <pack_pattern name="carrychain" in_port="comb_block.cin" out_port="fa_2bit_block.cin"/>
-            </direct>
-            <direct name="direct_cout" input="fa_2bit_block.cout" output="comb_block.cout">
-              <pack_pattern name="carrychain" in_port="fa_2bit_block.cout" out_port="comb_block.cout"/>
-            </direct>
+            <direct name="direct_cin" input="comb_block.cin" output="fa_2bit_block.cin"/>
+            <direct name="direct_cout" input="fa_2bit_block.cout" output="comb_block.cout"/>
             <direct name="direct_comb_block_o6" input="lut_block.o6" output="comb_block.o6"/>
             <!-- fa_2bit_block to output connections -->
             <mux name="out_mux0_0" input="lut_block.o5_up[0] lut_block.o6[0] fa_2bit_block.sum_up[0]" output="comb_block.out0[0]"/>
@@ -2435,14 +2419,11 @@
           <complete name="reset_mux" input="fle_wrapper.SS" output="ff_wrap.reset"/>
           <complete name="enable_mux" input="fle_wrapper.SS" output="ff_wrap.enable"/>
           <!-- LUT-to-flop connectivity -->
-          <complete name="direct_out0" input="comb_block.out0 comb_block.out1" output="ff_wrap.o_up ff_wrap.o_dn"/>
+          <direct name="direct_out0" input="comb_block.out0" output="ff_wrap.o_up"/>
+          <direct name="direct_out1" input="comb_block.out1" output="ff_wrap.o_dn"/>
           <!-- Carry chain connections -->
-          <direct name="direct_cin" input="fle_wrapper.cin" output="comb_block.cin">
-            <pack_pattern name="carrychain" in_port="fle_wrapper.cin" out_port="comb_block.cin"/>
-          </direct>
-          <direct name="direct_cout" input="comb_block.cout" output="fle_wrapper.cout">
-            <pack_pattern name="carrychain" in_port="comb_block.cout" out_port="fle_wrapper.cout"/>
-          </direct>
+          <direct name="direct_cin" input="fle_wrapper.cin" output="comb_block.cin"/>
+          <direct name="direct_cout" input="comb_block.cout" output="fle_wrapper.cout"/>
           <!-- Cascade connections -->
           <direct name="direct_cascdn_i" input="fle_wrapper.cascdn_i" output="comb_block.cascdn_i"/>
           <direct name="direct_cascup_i" input="fle_wrapper.cascup_i" output="comb_block.cascup_i"/>
@@ -2627,12 +2608,8 @@
         <!-- Clock muxes -->
         <complete name="clock_muxes" input="clb.clk" output="fle_wrapper.clk"/>
         <!-- Carry chain connections -->
-        <direct name="direct_cin" input="clb.cin" output="fle_wrapper.cin"> --&gt;
-        <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle_wrapper.cin"/>
-      </direct>
-        <direct name="direct_cout" input="fle_wrapper.cout" output="clb.cout">
-          <pack_pattern name="carrychain" in_port="fle_wrapper.cout" out_port="clb.cout"/>
-        </direct>
+        <direct name="direct_cin" input="clb.cin" output="fle_wrapper.cin"/>
+        <direct name="direct_cout" input="fle_wrapper.cout" output="clb.cout"/>
         <!-- Cascade connections -->
         <direct name="direct_cascdn_i" input="clb.cascdn_i" output="fle_wrapper.cascdn_i"/>
         <direct name="direct_cascup_i" input="clb.cascup_i" output="fle_wrapper.cascup_i"/>
