@@ -26,7 +26,6 @@ synthesize delay
 simulate gate syn_tb_gate.fst
 
 # Pack/Place/Route
-pnr_netlist_lang blif
 packing
 place
 route
