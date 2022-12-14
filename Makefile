@@ -86,7 +86,7 @@ clean:
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
 	cmake --install build
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_latest
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
 	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
 else
