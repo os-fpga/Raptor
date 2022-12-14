@@ -9,7 +9,6 @@ target_device GEMINI_10x8
 
 # Compilation
 synthesize delay
-pnr_netlist_lang blif
 packing
 place
 route
