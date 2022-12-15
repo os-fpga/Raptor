@@ -86,7 +86,7 @@ clean:
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
 	cmake --install build
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_latest
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_legacy
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
 	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
 else
@@ -145,7 +145,6 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
-	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_99/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
