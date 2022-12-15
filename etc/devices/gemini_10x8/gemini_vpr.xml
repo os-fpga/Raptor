@@ -855,8 +855,8 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cin" fc_type="frac" fc_val="0"/>
-          <!-- <fc_override port_name="cascdn_i" fc_type="frac" fc_val="0"/> -->
-          <!-- <fc_override port_name="cascup_i" fc_type="frac" fc_val="0"/> -->
+          <fc_override port_name="cascdn_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="cascup_i" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cout" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cascdn_o" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cascup_o" fc_type="frac" fc_val="0"/>
@@ -1112,8 +1112,8 @@
   </segmentlist>
   <directlist>
     <direct name="carry_chain" from_pin="clb.cout" to_pin="clb.cin" x_offset="0" y_offset="-1" z_offset="0"/>
-    <!-- <direct name="cascade_down" from_pin="clb.cascdn_o" to_pin="clb.cascdn_i" x_offset="0" y_offset="-1" z_offset="0"/> -->
-    <!-- <direct name="cascade_up"   from_pin="clb.cascup_o" to_pin="clb.cascup_i" x_offset="0" y_offset="1" z_offset="0"/> -->
+    <direct name="cascade_down" from_pin="clb.cascdn_o" to_pin="clb.cascdn_i" x_offset="0" y_offset="-1" z_offset="0"/>
+    <direct name="cascade_up" from_pin="clb.cascup_o" to_pin="clb.cascup_i" x_offset="0" y_offset="1" z_offset="0"/>
   </directlist>
   <complexblocklist>
     <!-- Define I/O pads begin -->
@@ -2629,16 +2629,12 @@
         <complete name="clock_muxes" input="clb.clk" output="fle_wrapper.clk"/>
         <!-- Carry chain connections -->
         <direct name="direct_cin" input="clb.cin" output="fle_wrapper.cin">
-        <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle_wrapper.cin"/>
-      </direct>
+          <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle_wrapper.cin"/>
+        </direct>
         <direct name="direct_cout" input="fle_wrapper.cout" output="clb.cout">
           <pack_pattern name="carrychain" in_port="fle_wrapper.cout" out_port="clb.cout"/>
         </direct>
         <!-- Cascade connections -->
-        <direct name="direct_cascdn_i" input="clb.cascdn_i" output="fle_wrapper.cascdn_i"/>
-        <direct name="direct_cascup_i" input="clb.cascup_i" output="fle_wrapper.cascup_i"/>
-        <direct name="direct_cascdn_o" input="fle_wrapper.cascdn_o" output="clb.cascdn_o"/>
-        <direct name="direct_cascup_o" input="fle_wrapper.cascup_o" output="clb.cascup_o"/>
         <direct name="direct_sc_in" input="clb.sc_in" output="fle_wrapper.sc_in"/>
         <direct name="direct_sc_out" input="fle_wrapper.sc_out" output="clb.sc_out"/>
       </interconnect>
@@ -4063,7 +4059,7 @@
           <output name="out" num_pins="18"/>
           <input name="SI" num_pins="1"/>
           <output name="SO" num_pins="1"/>
-          <mode name="physical">
+          <mode name="physical" disable_packing="true">
             <pb_type name="flop_group" num_pb="1">
               <input name="DIN" num_pins="18"/>
               <input name="RESET" num_pins="1"/>
