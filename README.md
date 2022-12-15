@@ -105,7 +105,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
                               : Uses alternate bitstream generation configuration files
    set_device_size XxY        : Device fabric size selection
    packing ?clean?            : Packing
-   global_placement ?clean?   : Analytical placer
    place ?clean?              : Detailed placer
    route ?clean?              : Router
    sta ?clean? ?opensta?      : Statistical Timing Analysis with Tatum (Default) or OpenSTA
