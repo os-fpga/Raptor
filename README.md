@@ -121,7 +121,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    wave_open <filename>       : Load given file in current GTKWave process.
    wave_refresh               : Reloads the current active wave file
    wave_show <signal>         : Add the given signal to the GTKWave window and highlight it.
-   wave_time <time>           : Set the current GTKWave view port start time to <time>. Times units can be specified, without a space. Ex: wave_time 100ps.
+   wave_time <time>           : Set the primary marker to <time>. Time units can be specified, without a space. Ex: wave_time 100ps.
 -----------------------------------------------
 ```
 
