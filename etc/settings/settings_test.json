@@ -245,6 +245,27 @@
                 "isSetting": true
             }
         },
+        "Timing Analysis": {
+            "engine_radiobtn": {
+                "label": "Timing Engine:",
+                "widgetType": "radiobuttons",
+                "options": [
+                    "Tatum",
+                    "OpenSTA"
+                ],
+                "optionsLookup": [
+                    "tatum",
+                    "opensta"
+                ],
+                "layout": "horizontal",
+                "arg": "_StaOpt_"
+            },
+            "_META_": {
+                "hidden": false,
+                "isSetting": true,
+                "tclArgKey": "Tasks_TimingAnalysis"
+            }
+        },
         "Simulate RTL": {
             "_META_": {
                 "hidden": true,
