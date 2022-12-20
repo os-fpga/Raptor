@@ -32,7 +32,6 @@ set exists [file exists $path/syn_tb_gate.fst]
 if {$exists != 1} { puts "syn_tb_gate.fst does not exists"; exit 1 }
 
 # Pack/Place/Route
-pnr_netlist_lang blif
 packing
 place
 route
