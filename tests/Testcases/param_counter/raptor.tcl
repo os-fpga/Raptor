@@ -3,8 +3,6 @@ create_design param_up_counter
 add_include_path ./rtl
 add_library_path ./rtl
 add_design_file -SV_2009 ./rtl/param_up_counter.v
-add_constraint_file pin_mapping.pin
-add_constraint_file constraints.sdc
 set_top_module param_up_counter
 
 # Testbench
