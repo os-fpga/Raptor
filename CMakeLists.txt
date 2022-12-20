@@ -557,8 +557,6 @@ install(
 install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter/)
 install(
-      DIRECTORY tests/Testcases/param_counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/param_counter/)      
-install(
       DIRECTORY tests/Testcases/counter_vhdl/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter_vhdl/)
 install(
       DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
@@ -712,9 +710,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/Testcases/counter_vhdl
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/counter_vhdl/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/param_counter
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/param_counter/    
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
