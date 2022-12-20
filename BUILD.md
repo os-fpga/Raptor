@@ -41,7 +41,29 @@ To update and build your local repository run the following commands.
 
 Note 1: During the build all required submodules would be updated. 
 Note 2: The Raptor_Tools submodule would be left uninitialized in all Raptor submodules.
+
 ```
+If you would like to record (commit) an update of the submodule then the procedure is as following:
+```
+  cd Raptor
+  git checkout main
+  git pull
+  git submodule update --recursive                  // Note that this command will update all submodules recursively and in case if some submodules are not checked out (cloned) then it will clone them as well.
+  git checkout -b NEW-BRANCH-NAME                   // NEW-BRANCH-NAME is the name of your branch that should be used for merging into main
+  cd SUBMODULE                                      // SUBMODULE is the name of the submodule: ex - yosys_verific_rs
+  git checkout main
+  git pull
+  cd -
+  git add SUBMODULE
+  git commit -m "Updated SUBMODULE."
+  git push --set-upstream origin NEW-BRANCH-NAME
+```
+After the last command you should be able to create Pull Request in Raptor repository.
+
+Note 1: **Always add committing files/submodules explicitly. Do not use** `git commit . -m "MESSAGE"` **or** `git add .` **commands.**
+
+Note 2: Use `git status` command to check your working tree status: what is added for commit, what is modified, what is untracked.
+
     
  2) NIGHTLY BUILD ACCESS:
  The Rapid Silicon build server automatically produces nightly builds of Raptor that can be used quickly for testing.  The instructions below detail how to connect to the automated build server and run Raptor in that environment.
