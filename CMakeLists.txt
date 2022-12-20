@@ -351,7 +351,7 @@ add_custom_command(TARGET raptor POST_BUILD
 add_custom_command(TARGET raptor POST_BUILD
   COMMENT "Extracting gtkwave"
   COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/gtkwave_cmake/gtkwaveTCL.tar.gz
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
@@ -626,7 +626,7 @@ install(
       )
 
 install(
-  DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR})
+  DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
 
 #install(
 #  EXPORT Raptor
