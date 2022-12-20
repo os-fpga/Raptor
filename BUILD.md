@@ -59,7 +59,9 @@ If you would like to record (commit) an update of the submodule then the procedu
   git push --set-upstream origin NEW-BRANCH-NAME
 ```
 After the last command you should be able to create Pull Request in Raptor repository.
+
 Note 1: **Always add committing files/submodules explicitly. Do not use** `git commit . -m "MESSAGE"` **or** `git add .` **commands.**
+
 Note 2: Use `git status` command to check your working tree status: what is added for commit, what is modified, what is untracked.
 
     
