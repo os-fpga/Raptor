@@ -10,7 +10,7 @@ add_simulation_file -VHDL_1993 testbench.vhd
 set_top_testbench tb_counters
 
 # Device target
-target_device GEMINI
+target_device GEMINI_10x8
 
 # Compilation/Simulation
 analyze
@@ -20,10 +20,11 @@ simulation_options "ghdl" "simulation" "--stop-time=1000ns"
 simulate "rtl" "ghdl" syn_tb_rtl.fst
 
 # Synthesis
+pnr_netlist_lang vhdl
 synthesize delay
 
 # Post-Synthesis gate-level Simulation
-#simulate gate ghdl syn_tb_gate.fst
+simulate "gate" "ghdl" syn_tb_gate.fst
 
 # Pack/Place/Route
 packing
