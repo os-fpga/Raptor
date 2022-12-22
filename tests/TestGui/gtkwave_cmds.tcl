@@ -148,7 +148,7 @@ if { [expr { [getSignals] != ""}] } {
     exit 1
 }
 
-# Add a signal
+# Add a signal from the test.vcd file we loaded
 wave_show top.co_sim_sdp_nsplit_ram_1024x36_R4W4.clk
 
 # Ensure top.co_sim_sdp_nsplit_ram_1024x36_R4W4.clk is now displayed
