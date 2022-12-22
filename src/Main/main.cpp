@@ -14,7 +14,6 @@
 #include "MainWindow/main_window.h"
 #include "PinAssignment/PinAssignmentCreator.h"
 #include "Simulation/Simulator.h"
-#include "Utils/FileUtils.h"
 
 namespace RS {
 
@@ -27,6 +26,9 @@ QWidget* mainWindowBuilder(FOEDAG::Session* session) {
   auto info = mainW->Info();
   info.name = QString("%1").arg(ToolName);
   info.url.clear();
+  std::filesystem::path p{".."};
+  p = p / "licenses" / "rs-eula.txt";
+  info.licenseFile = QString::fromStdString(p.string());
   mainW->Info(info);
   return mainW;
 }
