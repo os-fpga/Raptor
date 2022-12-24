@@ -267,55 +267,215 @@
             }
         },
         "Simulate RTL": {
-                "waveform_file": {
+            "waveform_file": {
                 "label": "Waveform file:",
                 "widgetType": "input",
                 "default": "sim_rtl.fst",
                 "arg": "rtl_filepath"
             },
+            "rtl_sim_type": {
+                "label": "Simulator:",
+                "widgetType": "dropdown",
+                "options": [
+                    "Verilator",
+                    "GHDL",
+                    "Icarus",
+                    "VCS",
+                    "Questa",
+                    "Xcelium"
+                ],
+                "optionsLookup": [
+                    "verilator",
+                    "ghdl",
+                    "icarus",
+                    "vcs",
+                    "questa",
+                    "xcelium"
+                ],
+                "default": "verilator",
+                "arg": "rtl_sim_type"
+            },
+            "options_sim": {
+                "label": "Simulation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "sim_rtl_opt"
+            },
+            "options_el": {
+                "label": "Elaboration options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "el_rtl_opt"
+            },
+            "options_com": {
+                "label": "Compilation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "com_rtl_opt"
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
-                "tclArgKey": "Tasks_Simulate"
+                "tclArgKey": "Tasks_Simulate_rtl"
             }
         },
         "Simulate Gate": {
-                "waveform_file": {
+            "waveform_file": {
                 "label": "Waveform file:",
                 "widgetType": "input",
                 "default": "sim_gate.fst",
                 "arg": "gate_filepath"
             },
+            "gate_sim_type": {
+                "label": "Simulator:",
+                "widgetType": "dropdown",
+                "options": [
+                    "Verilator",
+                    "GHDL",
+                    "Icarus",
+                    "VCS",
+                    "Questa",
+                    "Xcelium"
+                ],
+                "optionsLookup": [
+                    "verilator",
+                    "ghdl",
+                    "icarus",
+                    "vcs",
+                    "questa",
+                    "xcelium"
+                ],
+                "default": "verilator",
+                "arg": "gate_sim_type"
+            },
+            "options_sim": {
+                "label": "Simulation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "sim_gate_opt"
+            },
+            "options_el": {
+                "label": "Elaboration options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "el_gate_opt"
+            },
+            "options_com": {
+                "label": "Compilation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "com_gate_opt"
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
-                "tclArgKey": "Tasks_Simulate"
+                "tclArgKey": "Tasks_Simulate_gate"
             }
         },
         "Simulate PNR": {
-                "waveform_file": {
+            "waveform_file": {
                 "label": "Waveform file:",
                 "widgetType": "input",
                 "default": "sim_pnr.fst",
                 "arg": "pnr_filepath"
             },
+            "pnr_sim_type": {
+                "label": "Simulator:",
+                "widgetType": "dropdown",
+                "options": [
+                    "Verilator",
+                    "GHDL",
+                    "Icarus",
+                    "VCS",
+                    "Questa",
+                    "Xcelium"
+                ],
+                "optionsLookup": [
+                    "verilator",
+                    "ghdl",
+                    "icarus",
+                    "vcs",
+                    "questa",
+                    "xcelium"
+                ],
+                "default": "verilator",
+                "arg": "pnr_sim_type"
+            },
+            "options_sim": {
+                "label": "Simulation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "sim_pnr_opt"
+            },
+            "options_el": {
+                "label": "Elaboration options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "el_pnr_opt"
+            },
+            "options_com": {
+                "label": "Compilation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "com_pnr_opt"
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
-                "tclArgKey": "Tasks_Simulate"
+                "tclArgKey": "Tasks_Simulate_pnr"
             }
         },
         "Simulate Bitstream": {
-                "waveform_file": {
+            "waveform_file": {
                 "label": "Waveform file:",
                 "widgetType": "input",
                 "default": "sim_bitstream.fst",
                 "arg": "bitstream_filepath"
             },
+            "bitstream_sim_type": {
+                "label": "Simulator:",
+                "widgetType": "dropdown",
+                "options": [
+                    "Verilator",
+                    "GHDL",
+                    "Icarus",
+                    "VCS",
+                    "Questa",
+                    "Xcelium"
+                ],
+                "optionsLookup": [
+                    "verilator",
+                    "ghdl",
+                    "icarus",
+                    "vcs",
+                    "questa",
+                    "xcelium"
+                ],
+                "default": "verilator",
+                "arg": "bitstream_sim_type"
+            },
+            "options_sim": {
+                "label": "Simulation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "sim_bitstream_opt"
+            },
+            "options_el": {
+                "label": "Elaboration options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "el_bitstream_opt"
+            },
+            "options_com": {
+                "label": "Compilation options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "com_bitstream_opt"
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
-                "tclArgKey": "Tasks_Simulate"
+                "tclArgKey": "Tasks_Simulate_bitstream"
             }
         }
     }
