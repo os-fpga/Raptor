@@ -553,6 +553,8 @@ install(
 install(
       DIRECTORY tests/Testcases/and2_gemini/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_gemini/)
 install(
+      DIRECTORY tests/Testcases/and2_bitstream_sim/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_bitstream_sim/)      
+install(
       DIRECTORY tests/Testcases/oneff/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/oneff/)
 install(
       DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter/)
