@@ -45,16 +45,16 @@ if {$exists != 1} { puts "syn_tb_pnr.fst does not exists"; exit 1 }
 sta opensta
 
 # Bitstream Generation
-bitstream 
+bitstream
 
 # bitstream simulation
-simulate bitstream syn_tb_bitstream.fst
+#simulate bitstream_bd syn_tb_bitstream.fst
 
 #clean all
 simulate rtl clean
 simulate gate clean
 simulate pnr clean
-simulate bitstream clean
+#simulate bitstream_bd clean
 
 # check is files exist
 set exists [file exists $path/syn_tb_rtl.fst]
@@ -64,6 +64,6 @@ if {$exists != 0} { puts "syn_tb_gate.fst exists"; exit 1 }
 set exists [file exists $path/syn_tb_pnr.fst]
 if {$exists != 0} { puts "syn_tb_pnr.fst exists"; exit 1 }
 set exists [file exists $path/syn_tb_bitstream.fst]
-if {$exists != 0} { puts "syn_tb_bitstream.fst exists"; exit 1 }
+#if {$exists != 0} { puts "syn_tb_bitstream.fst exists"; exit 1 }
 
 
