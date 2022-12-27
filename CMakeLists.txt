@@ -129,7 +129,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 37)
+set(VERSION_PATCH 38)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -552,6 +552,8 @@ install(
       DIRECTORY tests/Testcases/and2_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_testcase/)
 install(
       DIRECTORY tests/Testcases/and2_gemini/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_gemini/)
+install(
+      DIRECTORY tests/Testcases/and2_bitstream_sim/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_bitstream_sim/)      
 install(
       DIRECTORY tests/Testcases/oneff/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/oneff/)
 install(
