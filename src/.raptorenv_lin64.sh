@@ -17,7 +17,7 @@ fi
 if [ -n "${LD_LIBRARY_PATH}" ]; then
 	export LD_LIBRARY_PATH=$RAPTOR_PATH/lib64/raptor/lib:$RAPTOR_PATH/lib:$RAPTOR_PATH/lib/raptor/lib:$RAPTOR_PATH/bin/gtkwave/lib:$RAPTOR_PATH/external_libs/qt_5_15_lib/lib:$RAPTOR_PATH/external_libs/gcc_9_lib:$LD_LIBRARY_PATH
 else
-	export LD_LIBRARY_PATH=$RAPTOR_PATH/lib64/raptor/lib:$RAPTOR_PATH/lib:$RAPTOR_PATH/lib/raptor/lib:$RAPTOR_PATH/external_libs/qt_5_15_lib/lib:$RAPTOR_PATH/external_libs/gcc_9_lib
+	export LD_LIBRARY_PATH=$RAPTOR_PATH/lib64/raptor/lib:$RAPTOR_PATH/lib:$RAPTOR_PATH/lib/raptor/lib:$RAPTOR_PATH/bin/gtkwave/lib:$RAPTOR_PATH/external_libs/qt_5_15_lib/lib:$RAPTOR_PATH/external_libs/gcc_9_lib
 fi
 
 if [ -n "${TCL_LIBRARY}" ]; then
