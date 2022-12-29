@@ -195,6 +195,24 @@
                 ],
                 "arg": "carry"
             },
+            "netlist_lang_dropdown": {
+                "label": "Pnr netlist language",
+                "widgetType": "dropdown",
+                "options": [
+                    "Blif",
+                    "Edif",
+                    "Verilog",
+                    "VHDL"
+                ],
+                "optionsLookup": [
+                    "blif",
+                    "edif",
+                    "verilog",
+                    "vhdl"
+                ],
+                "default": "blif",
+                "arg": "netlist_lang"
+            },
             "no_dsp_checkbox": {
                 "label": "No DSP Blocks",
                 "widgetType": "checkbox",
