@@ -630,6 +630,10 @@ install(
 install(
   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
 
+
+install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink  ../../../../bin/gtkwave/bin/lib/tcl8.6/tk8.6   ${CMAKE_INSTALL_PREFIX}/share/raptor/tcl8.6.12/library/tk8.6)")
+
+
 #install(
 #  EXPORT Raptor
 #  FILE Raptor.cmake
