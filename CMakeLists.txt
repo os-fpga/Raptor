@@ -631,9 +631,8 @@ install(
   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
 
 
-install(CODE "if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-          execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6/tk8.6    ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/tk8.6)
-              endif()" )
+INSTALL(CODE "execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6/tk8.6 ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/tk8.6)")
+
 
 #install(
 #  EXPORT Raptor
