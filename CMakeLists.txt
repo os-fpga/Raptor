@@ -99,6 +99,10 @@ get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 add_subdirectory(${READ_VERILOG_SRC_DIR})
 
+get_filename_component(READ_EDIF_SRC_DIR "Raptor_Tools/gatelevel_readers/read_edif"
+REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+add_subdirectory(${READ_EDIF_SRC_DIR})
+
 add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
 add_subdirectory("Raptor_Tools/HDL_simulator")
