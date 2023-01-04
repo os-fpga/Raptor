@@ -69,20 +69,28 @@ Note 2: Use `git status` command to check your working tree status: what is adde
  The Rapid Silicon build server automatically produces nightly builds of Raptor that can be used quickly for testing.  The instructions below detail how to connect to the automated build server and run Raptor in that environment.
 ```
 Log in to Fremont/Arbutus server:
-Run VPN with NetExtender
-Run NX and connect server: nx01.rapid.local
-Run pre-build Raptor 
-ssh -X sim01, or ssh -X sim02
-module load raptor/build_env
-module load raptor/latest
-raptor ...
+  Run VPN with NetExtender
+  Run NX and connect server: nx01.rapid.local
+
+SSH with X forwarding to compute server:
+  ssh -X sim01, or ssh -X sim02, or ssh -X sw01 or ssh -X sw03
+
+Load nightly built raptor:
+module load fpga_tools/raptor/latest
+
+Launch raptor:
+raptor
 ```
 
  3) BUILD RAPTOR ON THE FREMONT SERVER:
  The instructions detail how to build Raptor from source code but on an IT-managed Linux host.  First, follow the instructions below to configure the build environment.  Then follow instructions described in "BUILD YOURSELF Raptor LOCALLY ON YOUR MACHINE" to clone and build Raptor.
 ```
-ssh sw01, sw03
-mkdir YOUR_WORK_DIR
-cd YOUR_WORK_DIR
-module load raptor/build_env
+SSH with X forwarding to compute server:
+  ssh -X sim01, or ssh -X sim02, or ssh -X sw01 or ssh -X sw03
+
+Clone and build the raptor on compute server:
+  Refer to section "1)"
+
+Load build_env raptor:
+module load fpga_tools/raptor/build_env
 ```
