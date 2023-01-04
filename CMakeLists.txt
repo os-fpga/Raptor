@@ -132,7 +132,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 39)
+set(VERSION_PATCH 40)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -632,6 +632,10 @@ install(
 
 install(
   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
+
+
+install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink  ../../../../bin/gtkwave/bin/lib/tcl8.6/tk8.6   ${CMAKE_INSTALL_PREFIX}/share/raptor/tcl8.6.12/library/tk8.6)")
+
 
 #install(
 #  EXPORT Raptor
