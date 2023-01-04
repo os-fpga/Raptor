@@ -210,7 +210,7 @@
                     "verilog",
                     "vhdl"
                 ],
-                "default": "blif",
+                "default": "verilog",
                 "arg": "netlist_lang"
             },
             "no_dsp_checkbox": {
