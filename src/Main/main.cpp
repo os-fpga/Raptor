@@ -103,6 +103,9 @@ int main(int argc, char** argv) {
     opcompiler->GetSimulator()->SetSimulatorPath(
         FOEDAG::Simulator::SimulatorType::GHDL,
         (binpath / "HDL_simulator" / "GHDL" / "bin").string());
+    opcompiler->GetSimulator()->SetSimulatorPath(
+        FOEDAG::Simulator::SimulatorType::Icarus,
+        (binpath / "HDL_simulator" / "iverilog" / "bin").string());
   }
   return foedag->init(guiType);
 }
