@@ -712,33 +712,32 @@
     <!-- binding adder operating modes -->
     <pb_type name="clb.fle_wrapper.comb_block.fa_2bit_block[fa_2bit_mode].fa_2bit.fa_1bit" physical_pb_type_name="clb.fle_wrapper.comb_block.fa_2bit_block[physical].fa_2bit_phy.fa_1bit" mode_bits="1"/>
     <!-- binding flipflop operating modes -->
-    <!--                 posedge_flop_flop_mode                 -->
     <!-- posedge flop modes -->
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[flop_no_reset_no_enable].DFF" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[no_reset_sync_enable].DFFE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[sync_reset_sync_enable].SDFFRE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[async_reset_sync_enable].DFFRE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[sync_reset_no_enable].SDFF" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[async_reset_no_enable].DFFR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <!-- posedge latch modes -->
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_latch_mode].flop_quad[flop_no_reset_no_enable].LATCH" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010">
-      <port name="G" physical_mode_port="C"/>
-    </pb_type>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_latch_mode].flop_quad[async_reset_no_enable].LATCHR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010">
-      <port name="G" physical_mode_port="C"/>
-    </pb_type>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[flop_no_reset_no_enable].DFF" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="01100"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[no_reset_sync_enable].DFFE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="01000"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[sync_reset_sync_enable].SDFFRE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00000"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[async_reset_sync_enable].DFFRE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="10000"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[sync_reset_no_enable].SDFF" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00100"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_flop_mode].flop_quad[async_reset_no_enable].DFFR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="10100"/>
     <!-- negedge flop modes -->
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[flop_no_reset_no_enable].DFFN" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[no_reset_sync_enable].DFFNE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[flop_no_reset_no_enable].DFFN" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="01110"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[no_reset_sync_enable].DFFNE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="01010"/>
     <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[sync_reset_sync_enable].SDFFNRE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[async_reset_sync_enable].DFFNRE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[sync_reset_no_enable].SDFFN" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[async_reset_no_enable].DFFNR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010"/>
-    <!-- negedge latch modes -->
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_latch_mode].flop_quad[flop_no_reset_no_enable].LATCHN" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010">
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[async_reset_sync_enable].DFFNRE" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="10010"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[sync_reset_no_enable].SDFFN" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00110"/>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_flop_mode].flop_quad[async_reset_no_enable].DFFNR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="10110"/>
+    <!-- posedge latch modes -->
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_latch_mode].flop_quad[flop_no_reset_no_enable].LATCH" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00001">
       <port name="G" physical_mode_port="C"/>
     </pb_type>
-    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_latch_mode].flop_quad[async_reset_no_enable].LATCHNR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00010">
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[posedge_flop_latch_mode].flop_quad[async_reset_no_enable].LATCHR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="01001">
+      <port name="G" physical_mode_port="C"/>
+    </pb_type>
+    <!-- negedge latch modes -->
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_latch_mode].flop_quad[flop_no_reset_no_enable].LATCHN" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="00011">
+      <port name="G" physical_mode_port="C"/>
+    </pb_type>
+    <pb_type name="clb.fle_wrapper.ff_wrap.ff_half[negedge_flop_latch_mode].flop_quad[async_reset_no_enable].LATCHNR" physical_pb_type_name="clb.fle_wrapper.ff_wrap.ff_half[physical].flop_quad.MMFF" mode_bits="01011">
       <port name="G" physical_mode_port="C"/>
     </pb_type>
     <!--                                                                       -->
@@ -1024,33 +1023,32 @@
     <pb_type name="bram[default].flush_opt[default].logic1" circuit_model_name="logic1"/>
     <pb_type name="bram[default].clk_opt[default].clk_inv" circuit_model_name="clock_inverter"/>
     <!-- binding flipflop operating modes -->
-    <!--                 posedge_flop_flop_mode                 -->
     <!-- posedge flop modes -->
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[flop_no_reset_no_enable].DFF" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[no_reset_sync_enable].DFFE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[sync_reset_sync_enable].SDFFRE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[async_reset_sync_enable].DFFRE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[sync_reset_no_enable].SDFF" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[async_reset_no_enable].DFFR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <!-- posedge latch modes -->
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_latch_mode].flop_group[flop_no_reset_no_enable].LATCH" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010">
-      <port name="G" physical_mode_port="C"/>
-    </pb_type>
-    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_latch_mode].flop_group[async_reset_no_enable].LATCHR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010">
-      <port name="G" physical_mode_port="C"/>
-    </pb_type>
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[flop_no_reset_no_enable].DFF" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="01100"/>
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[no_reset_sync_enable].DFFE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="01000"/>
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[sync_reset_sync_enable].SDFFRE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00000"/>
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[async_reset_sync_enable].DFFRE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="10000"/>
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[sync_reset_no_enable].SDFF" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00100"/>
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_flop_mode].flop_group[async_reset_no_enable].DFFR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="10100"/>
     <!-- negedge flop modes -->
-    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[flop_no_reset_no_enable].DFFN" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[no_reset_sync_enable].DFFNE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
+    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[flop_no_reset_no_enable].DFFN" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="01110"/>
+    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[no_reset_sync_enable].DFFNE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="01010"/>
     <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[sync_reset_sync_enable].SDFFNRE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[async_reset_sync_enable].DFFNRE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[sync_reset_no_enable].SDFFN" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[async_reset_no_enable].DFFNR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010"/>
-    <!-- negedge latch modes -->
-    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_latch_mode].flop_group[flop_no_reset_no_enable].LATCHN" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010">
+    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[async_reset_sync_enable].DFFNRE" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="10010"/>
+    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[sync_reset_no_enable].SDFFN" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00110"/>
+    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_flop_mode].flop_group[async_reset_no_enable].DFFNR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="10110"/>
+    <!-- posedge latch modes -->
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_latch_mode].flop_group[flop_no_reset_no_enable].LATCH" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00001">
       <port name="G" physical_mode_port="C"/>
     </pb_type>
-    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_latch_mode].flop_group[async_reset_no_enable].LATCHNR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00010">
+    <pb_type name="bram.ff_wrap.ff_group[posedge_flop_latch_mode].flop_group[async_reset_no_enable].LATCHR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="01001">
+      <port name="G" physical_mode_port="C"/>
+    </pb_type>
+    <!-- negedge latch modes -->
+    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_latch_mode].flop_group[flop_no_reset_no_enable].LATCHN" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="00011">
+      <port name="G" physical_mode_port="C"/>
+    </pb_type>
+    <pb_type name="bram.ff_wrap.ff_group[negedge_flop_latch_mode].flop_group[async_reset_no_enable].LATCHNR" physical_pb_type_name="bram.ff_wrap.ff_group[physical].flop_group.MMFF" mode_bits="01011">
       <port name="G" physical_mode_port="C"/>
     </pb_type>
   </pb_type_annotations>
