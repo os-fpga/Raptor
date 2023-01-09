@@ -788,7 +788,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGIN].RS_DSP_MULT_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="100000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGIN].RS_DSP_MULT_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000001">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -805,7 +805,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGOUT].RS_DSP_MULT_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="010000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGOUT].RS_DSP_MULT_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000010">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -822,7 +822,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGIN_REGOUT].RS_DSP_MULT_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="110000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULT_REGIN_REGOUT].RS_DSP_MULT_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000011">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -839,7 +839,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC].RS_DSP_MULTACC" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC].RS_DSP_MULTACC" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001000">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -856,7 +856,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGIN].RS_DSP_MULTACC_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="100100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGIN].RS_DSP_MULTACC_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001001">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -873,7 +873,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGOUT].RS_DSP_MULTACC_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="010100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGOUT].RS_DSP_MULTACC_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001010">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -890,7 +890,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGIN_REGOUT].RS_DSP_MULTACC_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="110100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTACC_REGIN_REGOUT].RS_DSP_MULTACC_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000001011">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -907,7 +907,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD].RS_DSP_MULTADD" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="001000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD].RS_DSP_MULTADD" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000100">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -924,7 +924,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGIN].RS_DSP_MULTADD_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="101000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGIN].RS_DSP_MULTADD_REGIN" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000101">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -941,7 +941,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGOUT].RS_DSP_MULTADD_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="011000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGOUT].RS_DSP_MULTADD_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000110">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -958,7 +958,7 @@
       <port name="subtract" physical_mode_port="subtract"/>
       <port name="clk" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGIN_REGOUT].RS_DSP_MULTADD_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="111000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_rtl[RS_DSP_MULTADD_REGIN_REGOUT].RS_DSP_MULTADD_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_rtl[physical].dsp_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000111">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
