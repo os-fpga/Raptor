@@ -234,6 +234,31 @@
                 "tclArgKey": "CompilerRs_Synthesis"
             }
         },
+        "Packing": {
+	    "netlist_lang_dropdown": {
+		"label": "Pnr netlist language",
+		"widgetType": "dropdown",
+		"options": [
+		    "Blif",
+		    "Edif",
+		    "Verilog",
+		    "VHDL"
+		],
+		"optionsLookup": [
+		    "blif",
+		    "edif",
+		    "verilog",
+		    "vhdl"
+		],
+		"default": "verilog",
+		"arg": "netlist_lang"
+	    },
+            "_META_": {
+                "hidden": false,
+                "isSetting": true,
+                "tclArgKey": "Tasks_packing"
+            }
+        },
         "Placement": {
             "pin_selection_radiobtn": {
                 "label": "Pin Location Assign Method:",
