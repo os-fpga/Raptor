@@ -1,3 +1,5 @@
+[![main](https://github.com/RapidSilicon/Raptor/actions/workflows/main.yml/badge.svg)](https://github.com/RapidSilicon/Raptor/actions/workflows/main.yml)
+
 # Raptor Preview Release
 
 Rapid Silicon complete Software solution
