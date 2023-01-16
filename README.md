@@ -117,7 +117,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
                        <task> : compilation, elaboration, simulation
    simulate <level> ?<simulator>? ?<waveform_file>?: Simulates the design and testbench
                       <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
-                  <simulator> : verilator, ghdl
+                  <simulator> : verilator, ghdl, icarus
    wave_*                     : All wave commands will launch a GTKWave process if one hasn't been launched already. Subsequent commands will be sent to the launched process.
    wave_cmd ...               : Sends given tcl commands to GTKWave process. See GTKWave docs for gtkwave:: commands.
    wave_open <filename>       : Load given file in current GTKWave process.
