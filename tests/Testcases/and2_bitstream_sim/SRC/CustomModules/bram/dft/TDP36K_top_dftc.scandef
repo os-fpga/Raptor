@@ -1,0 +1,755 @@
+VERSION 5.5 ;
+NAMESCASESENSITIVE ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN TDP36K_top ;
+
+SCANCHAINS 44 ;
+
+- ScanChain_0
++ START PIN SCAN_i[0]
++ FLOATING u0/fifo36_ctl/pushtopop1_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop1_reg[11] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[0] ;
+
+- ScanChain_1
++ START PIN SCAN_i[1]
++ FLOATING u0/fifo36_ctl/poptopush1_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush1_reg[12] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[1] ;
+
+- ScanChain_2
++ START PIN SCAN_i[2]
++ FLOATING u0/u2/addr_b_d_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/addr_b_d_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/addr_b_d_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/addr_b_d_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[7] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B2_i_45_45
++ STOP PIN SCAN_o[2] ;
+
+- ScanChain_3
++ START PIN SCAN_i[3]
++ FLOATING u0/u2/addr_a_d_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/addr_a_d_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/addr_a_d_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/addr_a_d_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[7] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A2_i_45_45
++ STOP PIN SCAN_o[3] ;
+
+- ScanChain_4
++ START PIN SCAN_i[4]
++ FLOATING u0/fifo36_ctl/poptopush2_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/poptopush2_reg[12] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[4] ;
+
+- ScanChain_5
++ START PIN SCAN_i[5]
++ FLOATING u0/fifo36_ctl/pushtopop1_reg[12] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[10] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[5] ;
+
+- ScanChain_6
++ START PIN SCAN_i[6]
++ FLOATING u0/fifo36_ctl/u_fifo_push/fmo_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/full_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[10] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[6] ;
+
+- ScanChain_7
++ START PIN SCAN_i[7]
++ FLOATING u0/fifo36_ctl/pushtopop2_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/pushtopop2_reg[12] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/bwl_sel_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/bwl_sel_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/empty_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/epo_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[5] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[7] ;
+
+- ScanChain_8
++ START PIN SCAN_i[8]
++ FLOATING u0/u2/fifo_ctl/pushtopop1_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop1_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[7] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B2_i_45_45
++ STOP PIN SCAN_o[8] ;
+
+- ScanChain_9
++ START PIN SCAN_i[9]
++ FLOATING u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/gcout_reg_reg[12] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/overflow_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/paf_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[8] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[9] ;
+
+- ScanChain_10
++ START PIN SCAN_i[10]
++ FLOATING u0/u2/fifo_ctl/poptopush1_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush1_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[7] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A2_i_45_45
++ STOP PIN SCAN_o[10] ;
+
+- ScanChain_11
++ START PIN SCAN_i[11]
++ FLOATING u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/ff_raddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[5] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[11] ;
+
+- ScanChain_12
++ START PIN SCAN_i[12]
++ FLOATING u0/fifo36_ctl/u_fifo_push/raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/raddr_reg[12] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[8] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[12] ;
+
+- ScanChain_13
++ START PIN SCAN_i[13]
++ FLOATING u0/fifo36_ctl/u_fifo_push/waddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_push/waddr_reg[12] ( IN SI ) ( OUT Q )
+           u0/laddr_a1_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[7] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[13] ;
+
+- ScanChain_14
++ START PIN SCAN_i[14]
++ FLOATING u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/gcout_reg_reg[12] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/pae_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[3] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[14] ;
+
+- ScanChain_15
++ START PIN SCAN_i[15]
++ FLOATING u0/u2/fifo_ctl/pushtopop2_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/pushtopop2_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/bwl_sel_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/empty_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/epo_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B2_i_45_45
++ STOP PIN SCAN_o[15] ;
+
+- ScanChain_16
++ START PIN SCAN_i[16]
++ FLOATING u0/u1/PL_COMP_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[12] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[13] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[14] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[15] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[16] ( IN SI ) ( OUT Q )
+           u0/u1/PL_COMP_reg[17] ( IN SI ) ( OUT Q )
+           u0/u1/PL_REN_d_reg ( IN SI ) ( OUT Q )
+           u0/u1/addr_a_d_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/addr_a_d_reg[1] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[16] ;
+
+- ScanChain_17
++ START PIN SCAN_i[17]
++ FLOATING u0/u2/fifo_ctl/poptopush2_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/poptopush2_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/fmo_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/full_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A2_i_45_45
++ STOP PIN SCAN_o[17] ;
+
+- ScanChain_18
++ START PIN SCAN_i[18]
++ FLOATING u0/fifo36_ctl/u_fifo_pop/raddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/raddr_reg[12] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/underflow_reg ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[1] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[18] ;
+
+- ScanChain_19
++ START PIN SCAN_i[19]
++ FLOATING u0/u1/addr_a_d_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/addr_a_d_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/bist_status_reg[0] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[1] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[2] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[3] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[4] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[5] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[6] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[7] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[8] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[9] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[10] ( IN SI ) ( OUT QN )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[19] ;
+
+- ScanChain_20
++ START PIN SCAN_i[20]
++ FLOATING u0/fifo36_ctl/u_fifo_pop/waddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/fifo36_ctl/u_fifo_pop/waddr_reg[12] ( IN SI ) ( OUT Q )
+           u0/laddr_b1_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[20] ;
+
+- ScanChain_21
++ START PIN SCAN_i[21]
++ FLOATING u0/u1/bist_status_reg[11] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[12] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[13] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[14] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[15] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[16] ( IN SI ) ( OUT QN )
+           u0/u1/bist_status_reg[17] ( IN SI ) ( OUT QN )
+           u0/u1/fifo_ctl/poptopush1_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[21] ;
+
+- ScanChain_22
++ START PIN SCAN_i[22]
++ FLOATING u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/ff_raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B2_i_45_45
++ STOP PIN SCAN_o[22] ;
+
+- ScanChain_23
++ START PIN SCAN_i[23]
++ FLOATING u0/u1/addr_b_d_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/addr_b_d_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/addr_b_d_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/addr_b_d_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[7] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[23] ;
+
+- ScanChain_24
++ START PIN SCAN_i[24]
++ FLOATING u0/u1/fifo_ctl/poptopush1_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush1_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[24] ;
+
+- ScanChain_25
++ START PIN SCAN_i[25]
++ FLOATING u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/gcout_reg_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/overflow_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/paf_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[1] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A2_i_45_45
++ STOP PIN SCAN_o[25] ;
+
+- ScanChain_26
++ START PIN SCAN_i[26]
++ FLOATING u0/u1/fifo_ctl/poptopush2_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/poptopush2_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/fmo_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/full_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[2] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[26] ;
+
+- ScanChain_27
++ START PIN SCAN_i[27]
++ FLOATING u0/u1/fifo_ctl/pushtopop1_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop1_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[7] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[27] ;
+
+- ScanChain_28
++ START PIN SCAN_i[28]
++ FLOATING u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/gcout_reg_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/overflow_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/paf_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[0] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[28] ;
+
+- ScanChain_29
++ START PIN SCAN_i[29]
++ FLOATING u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/gcout_reg_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/pae_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[2] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B2_i_45_45
++ STOP PIN SCAN_o[29] ;
+
+- ScanChain_30
++ START PIN SCAN_i[30]
++ FLOATING u0/u1/fifo_ctl/pushtopop2_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/pushtopop2_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/bwl_sel_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/empty_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/epo_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[30] ;
+
+- ScanChain_31
++ START PIN SCAN_i[31]
++ FLOATING u0/u1/fifo_ctl/u_fifo_push/raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/raddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[0] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[31] ;
+
+- ScanChain_32
++ START PIN SCAN_i[32]
++ FLOATING u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/ff_raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[4] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[32] ;
+
+- ScanChain_33
++ START PIN SCAN_i[33]
++ FLOATING u0/u1/fifo_ctl/u_fifo_push/waddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_push/waddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[0] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[33] ;
+
+- ScanChain_34
++ START PIN SCAN_i[34]
++ FLOATING u0/u2/fifo_ctl/u_fifo_push/raddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/raddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[0] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A2_i_45_45
++ STOP PIN SCAN_o[34] ;
+
+- ScanChain_35
++ START PIN SCAN_i[35]
++ FLOATING u0/u2/PL_COMP_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[12] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[35] ;
+
+- ScanChain_36
++ START PIN SCAN_i[36]
++ FLOATING u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/raddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/underflow_reg ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[0] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B2_i_45_45
++ STOP PIN SCAN_o[36] ;
+
+- ScanChain_37
++ START PIN SCAN_i[37]
++ FLOATING u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/gcout_reg_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/pae_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[0] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[2] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[37] ;
+
+- ScanChain_38
++ START PIN SCAN_i[38]
++ FLOATING u0/u2/PL_COMP_reg[13] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[14] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[15] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[16] ( IN SI ) ( OUT Q )
+           u0/u2/PL_COMP_reg[17] ( IN SI ) ( OUT Q )
+           u0/u2/PL_REN_d_reg ( IN SI ) ( OUT Q )
+           u0/u2/bist_status_reg[0] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[1] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[2] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[3] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[4] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[5] ( IN SI ) ( OUT QN )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[38] ;
+
+- ScanChain_39
++ START PIN SCAN_i[39]
++ FLOATING u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/raddr_reg[11] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/underflow_reg ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[0] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[39] ;
+
+- ScanChain_40
++ START PIN SCAN_i[40]
++ FLOATING u0/u2/bist_status_reg[6] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[7] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[8] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[9] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[10] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[11] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[12] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[13] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[14] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[15] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[16] ( IN SI ) ( OUT QN )
+           u0/u2/bist_status_reg[17] ( IN SI ) ( OUT QN )
++ PARTITION CLK_A1_i_45_45
++ STOP PIN SCAN_o[40] ;
+
+- ScanChain_41
++ START PIN SCAN_i[41]
++ FLOATING u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_pop/waddr_reg[11] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B2_i_45_45
++ STOP PIN SCAN_o[41] ;
+
+- ScanChain_42
++ START PIN SCAN_i[42]
++ FLOATING u0/u2/fifo_ctl/u_fifo_push/waddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u2/fifo_ctl/u_fifo_push/waddr_reg[11] ( IN SI ) ( OUT Q )
++ PARTITION CLK_A2_i_45_45
++ STOP PIN SCAN_o[42] ;
+
+- ScanChain_43
++ START PIN SCAN_i[43]
++ FLOATING u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[1] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[2] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[3] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[4] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[5] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[6] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[7] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[8] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[9] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[10] ( IN SI ) ( OUT Q )
+           u0/u1/fifo_ctl/u_fifo_pop/waddr_reg[11] ( IN SI ) ( OUT Q )
++ PARTITION CLK_B1_i_45_45
++ STOP PIN SCAN_o[43] ;
+
+END SCANCHAINS
+
+END DESIGN

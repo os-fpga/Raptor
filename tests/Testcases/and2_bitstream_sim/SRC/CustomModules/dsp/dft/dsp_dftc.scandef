@@ -1,0 +1,298 @@
+VERSION 5.5 ;
+NAMESCASESENSITIVE ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN dsp ;
+
+SCANCHAINS 20 ;
+
+- ScanChain_0
++ START PIN scan_i[0]
++ FLOATING dsp0/acc_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[1] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[3] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[5] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[6] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[7] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[8] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[9] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[0] ;
+
+- ScanChain_1
++ START PIN scan_i[1]
++ FLOATING dsp0/acc_reg[10] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[11] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[12] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[13] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[14] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[15] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[16] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[17] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[18] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[19] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[1] ;
+
+- ScanChain_2
++ START PIN scan_i[2]
++ FLOATING dsp0/acc_reg[20] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[21] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[22] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[23] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[24] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[25] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[26] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[27] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[28] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[29] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[2] ;
+
+- ScanChain_3
++ START PIN scan_i[3]
++ FLOATING dsp0/acc_reg[30] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[31] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[32] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[33] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[34] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[35] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[36] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[37] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[38] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[39] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[3] ;
+
+- ScanChain_4
++ START PIN scan_i[4]
++ FLOATING dsp0/acc_reg[40] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[41] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[42] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[43] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[44] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[45] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[46] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[47] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[48] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[49] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[4] ;
+
+- ScanChain_5
++ START PIN scan_i[5]
++ FLOATING dsp0/acc_reg[50] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[51] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[52] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[53] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[54] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[55] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[56] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[57] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[58] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[59] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[5] ;
+
+- ScanChain_6
++ START PIN scan_i[6]
++ FLOATING dsp0/acc_reg[60] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[61] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[62] ( IN SI ) ( OUT Q )
+           dsp0/acc_reg[63] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[1] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[3] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[5] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[6] ;
+
+- ScanChain_7
++ START PIN scan_i[7]
++ FLOATING dsp0/dly_b_o_reg[6] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[7] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[8] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[9] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[10] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[11] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[12] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[13] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[14] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[7] ;
+
+- ScanChain_8
++ START PIN scan_i[8]
++ FLOATING dsp0/dly_b_o_reg[15] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[16] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[1] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[3] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[5] ( IN SI ) ( OUT Q )
+           dsp0/dly_b_o_reg[17] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[8] ;
+
+- ScanChain_9
++ START PIN scan_i[9]
++ FLOATING dsp0/r_a_reg[6] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[7] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[8] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[9] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[10] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[11] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[12] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[13] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[14] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[9] ;
+
+- ScanChain_10
++ START PIN scan_i[10]
++ FLOATING dsp0/r_a_reg[15] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[16] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[17] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[18] ( IN SI ) ( OUT Q )
+           dsp0/r_a_reg[19] ( IN SI ) ( OUT Q )
+           dsp0/r_acc_fir_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/r_acc_fir_reg[1] ( IN SI ) ( OUT Q )
+           dsp0/r_acc_fir_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/r_acc_fir_reg[3] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[10] ;
+
+- ScanChain_11
++ START PIN scan_i[11]
++ FLOATING dsp0/r_acc_fir_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/r_acc_fir_reg[5] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[1] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[3] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[5] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[6] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[11] ;
+
+- ScanChain_12
++ START PIN scan_i[12]
++ FLOATING dsp0/r_b_reg[7] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[8] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[9] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[10] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[11] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[12] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[13] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[14] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[15] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[12] ;
+
+- ScanChain_13
++ START PIN scan_i[13]
++ FLOATING dsp0/r_b_reg[16] ( IN SI ) ( OUT Q )
+           dsp0/r_b_reg[17] ( IN SI ) ( OUT Q )
+           dsp0/r_feedback_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/r_feedback_reg[1] ( IN SI ) ( OUT Q )
+           dsp0/r_feedback_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/r_load_acc_reg ( IN SI ) ( OUT Q )
+           dsp0/r_rnd_d1_reg ( IN SI ) ( OUT Q )
+           dsp0/r_rnd_d2_reg ( IN SI ) ( OUT Q )
+           dsp0/r_sat_d1_reg ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[13] ;
+
+- ScanChain_14
++ START PIN scan_i[14]
++ FLOATING dsp0/r_sat_d2_reg ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d1_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d1_reg[1] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d1_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d1_reg[3] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d1_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d1_reg[5] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d2_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d2_reg[1] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[14] ;
+
+- ScanChain_15
++ START PIN scan_i[15]
++ FLOATING dsp0/r_shift_d2_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d2_reg[3] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d2_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/r_shift_d2_reg[5] ( IN SI ) ( OUT Q )
+           dsp0/r_subtract_reg ( IN SI ) ( OUT Q )
+           dsp0/r_unsigned_a_reg ( IN SI ) ( OUT Q )
+           dsp0/r_unsigned_b_reg ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[0] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[1] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[15] ;
+
+- ScanChain_16
++ START PIN scan_i[16]
++ FLOATING dsp0/z1_reg[2] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[3] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[4] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[5] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[6] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[7] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[8] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[9] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[10] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[16] ;
+
+- ScanChain_17
++ START PIN scan_i[17]
++ FLOATING dsp0/z1_reg[11] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[12] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[13] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[14] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[15] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[16] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[17] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[18] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[19] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[17] ;
+
+- ScanChain_18
++ START PIN scan_i[18]
++ FLOATING dsp0/z1_reg[20] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[21] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[22] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[23] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[24] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[25] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[26] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[27] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[28] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[18] ;
+
+- ScanChain_19
++ START PIN scan_i[19]
++ FLOATING dsp0/z1_reg[29] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[30] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[31] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[32] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[33] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[34] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[35] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[36] ( IN SI ) ( OUT Q )
+           dsp0/z1_reg[37] ( IN SI ) ( OUT Q )
++ PARTITION clock_i_45_45
++ STOP PIN scan_o[19] ;
+
+END SCANCHAINS
+
+END DESIGN

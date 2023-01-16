@@ -1,0 +1,1700 @@
+STIL 1.0 {
+    Design 2005;
+}
+Header {
+    Title "Minimal STIL for design `TDP36K_top'";
+    Date "Thu Nov 10 15:42:49 2022";
+    Source "DFT Compiler S-2021.06-SP2";
+}
+Signals {
+    "ADDR_A1_i[0]" In;
+    "ADDR_A1_i[10]" In;
+    "ADDR_A1_i[11]" In;
+    "ADDR_A1_i[12]" In;
+    "ADDR_A1_i[13]" In;
+    "ADDR_A1_i[14]" In;
+    "ADDR_A1_i[1]" In;
+    "ADDR_A1_i[2]" In;
+    "ADDR_A1_i[3]" In;
+    "ADDR_A1_i[4]" In;
+    "ADDR_A1_i[5]" In;
+    "ADDR_A1_i[6]" In;
+    "ADDR_A1_i[7]" In;
+    "ADDR_A1_i[8]" In;
+    "ADDR_A1_i[9]" In;
+    "ADDR_A2_i[0]" In;
+    "ADDR_A2_i[10]" In;
+    "ADDR_A2_i[11]" In;
+    "ADDR_A2_i[12]" In;
+    "ADDR_A2_i[13]" In;
+    "ADDR_A2_i[1]" In;
+    "ADDR_A2_i[2]" In;
+    "ADDR_A2_i[3]" In;
+    "ADDR_A2_i[4]" In;
+    "ADDR_A2_i[5]" In;
+    "ADDR_A2_i[6]" In;
+    "ADDR_A2_i[7]" In;
+    "ADDR_A2_i[8]" In;
+    "ADDR_A2_i[9]" In;
+    "ADDR_B1_i[0]" In;
+    "ADDR_B1_i[10]" In;
+    "ADDR_B1_i[11]" In;
+    "ADDR_B1_i[12]" In;
+    "ADDR_B1_i[13]" In;
+    "ADDR_B1_i[14]" In;
+    "ADDR_B1_i[1]" In;
+    "ADDR_B1_i[2]" In;
+    "ADDR_B1_i[3]" In;
+    "ADDR_B1_i[4]" In;
+    "ADDR_B1_i[5]" In;
+    "ADDR_B1_i[6]" In;
+    "ADDR_B1_i[7]" In;
+    "ADDR_B1_i[8]" In;
+    "ADDR_B1_i[9]" In;
+    "ADDR_B2_i[0]" In;
+    "ADDR_B2_i[10]" In;
+    "ADDR_B2_i[11]" In;
+    "ADDR_B2_i[12]" In;
+    "ADDR_B2_i[13]" In;
+    "ADDR_B2_i[1]" In;
+    "ADDR_B2_i[2]" In;
+    "ADDR_B2_i[3]" In;
+    "ADDR_B2_i[4]" In;
+    "ADDR_B2_i[5]" In;
+    "ADDR_B2_i[6]" In;
+    "ADDR_B2_i[7]" In;
+    "ADDR_B2_i[8]" In;
+    "ADDR_B2_i[9]" In;
+    "BE_A1_i[0]" In;
+    "BE_A1_i[1]" In;
+    "BE_A2_i[0]" In;
+    "BE_A2_i[1]" In;
+    "BE_B1_i[0]" In;
+    "BE_B1_i[1]" In;
+    "BE_B2_i[0]" In;
+    "BE_B2_i[1]" In;
+    "CLK_A1_i" In;
+    "CLK_A2_i" In;
+    "CLK_B1_i" In;
+    "CLK_B2_i" In;
+    "FLUSH1_i" In;
+    "FLUSH2_i" In;
+    "FMODE1_i" In;
+    "FMODE2_i" In;
+    "GRESET_i" In;
+    "PL_ADDR_i[0]" In;
+    "PL_ADDR_i[10]" In;
+    "PL_ADDR_i[11]" In;
+    "PL_ADDR_i[12]" In;
+    "PL_ADDR_i[13]" In;
+    "PL_ADDR_i[14]" In;
+    "PL_ADDR_i[15]" In;
+    "PL_ADDR_i[16]" In;
+    "PL_ADDR_i[17]" In;
+    "PL_ADDR_i[18]" In;
+    "PL_ADDR_i[19]" In;
+    "PL_ADDR_i[1]" In;
+    "PL_ADDR_i[20]" In;
+    "PL_ADDR_i[21]" In;
+    "PL_ADDR_i[22]" In;
+    "PL_ADDR_i[23]" In;
+    "PL_ADDR_i[24]" In;
+    "PL_ADDR_i[25]" In;
+    "PL_ADDR_i[26]" In;
+    "PL_ADDR_i[27]" In;
+    "PL_ADDR_i[28]" In;
+    "PL_ADDR_i[29]" In;
+    "PL_ADDR_i[2]" In;
+    "PL_ADDR_i[30]" In;
+    "PL_ADDR_i[31]" In;
+    "PL_ADDR_i[3]" In;
+    "PL_ADDR_i[4]" In;
+    "PL_ADDR_i[5]" In;
+    "PL_ADDR_i[6]" In;
+    "PL_ADDR_i[7]" In;
+    "PL_ADDR_i[8]" In;
+    "PL_ADDR_i[9]" In;
+    "PL_CLK_i" In;
+    "PL_DATA_i[0]" In;
+    "PL_DATA_i[10]" In;
+    "PL_DATA_i[11]" In;
+    "PL_DATA_i[12]" In;
+    "PL_DATA_i[13]" In;
+    "PL_DATA_i[14]" In;
+    "PL_DATA_i[15]" In;
+    "PL_DATA_i[16]" In;
+    "PL_DATA_i[17]" In;
+    "PL_DATA_i[18]" In;
+    "PL_DATA_i[19]" In;
+    "PL_DATA_i[1]" In;
+    "PL_DATA_i[20]" In;
+    "PL_DATA_i[21]" In;
+    "PL_DATA_i[22]" In;
+    "PL_DATA_i[23]" In;
+    "PL_DATA_i[24]" In;
+    "PL_DATA_i[25]" In;
+    "PL_DATA_i[26]" In;
+    "PL_DATA_i[27]" In;
+    "PL_DATA_i[28]" In;
+    "PL_DATA_i[29]" In;
+    "PL_DATA_i[2]" In;
+    "PL_DATA_i[30]" In;
+    "PL_DATA_i[31]" In;
+    "PL_DATA_i[32]" In;
+    "PL_DATA_i[33]" In;
+    "PL_DATA_i[34]" In;
+    "PL_DATA_i[35]" In;
+    "PL_DATA_i[3]" In;
+    "PL_DATA_i[4]" In;
+    "PL_DATA_i[5]" In;
+    "PL_DATA_i[6]" In;
+    "PL_DATA_i[7]" In;
+    "PL_DATA_i[8]" In;
+    "PL_DATA_i[9]" In;
+    "PL_ENA_i" In;
+    "PL_INIT_i" In;
+    "PL_REN_i" In;
+    "PL_WEN_i[0]" In;
+    "PL_WEN_i[1]" In;
+    "POWERDN1_i" In;
+    "POWERDN2_i" In;
+    "PROTECT1_i" In;
+    "PROTECT2_i" In;
+    "RAM_ID_i[0]" In;
+    "RAM_ID_i[10]" In;
+    "RAM_ID_i[11]" In;
+    "RAM_ID_i[12]" In;
+    "RAM_ID_i[13]" In;
+    "RAM_ID_i[14]" In;
+    "RAM_ID_i[15]" In;
+    "RAM_ID_i[16]" In;
+    "RAM_ID_i[17]" In;
+    "RAM_ID_i[18]" In;
+    "RAM_ID_i[19]" In;
+    "RAM_ID_i[1]" In;
+    "RAM_ID_i[2]" In;
+    "RAM_ID_i[3]" In;
+    "RAM_ID_i[4]" In;
+    "RAM_ID_i[5]" In;
+    "RAM_ID_i[6]" In;
+    "RAM_ID_i[7]" In;
+    "RAM_ID_i[8]" In;
+    "RAM_ID_i[9]" In;
+    "REN_A1_i" In;
+    "REN_A2_i" In;
+    "REN_B1_i" In;
+    "REN_B2_i" In;
+    "RMODE_A1_i[0]" In;
+    "RMODE_A1_i[1]" In;
+    "RMODE_A1_i[2]" In;
+    "RMODE_A2_i[0]" In;
+    "RMODE_A2_i[1]" In;
+    "RMODE_A2_i[2]" In;
+    "RMODE_B1_i[0]" In;
+    "RMODE_B1_i[1]" In;
+    "RMODE_B1_i[2]" In;
+    "RMODE_B2_i[0]" In;
+    "RMODE_B2_i[1]" In;
+    "RMODE_B2_i[2]" In;
+    "SCAN_EN_i" In;
+    "SCAN_MODE_i" In;
+    "SCAN_i[0]" In;
+    "SCAN_i[10]" In;
+    "SCAN_i[11]" In;
+    "SCAN_i[12]" In;
+    "SCAN_i[13]" In;
+    "SCAN_i[14]" In;
+    "SCAN_i[15]" In;
+    "SCAN_i[16]" In;
+    "SCAN_i[17]" In;
+    "SCAN_i[18]" In;
+    "SCAN_i[19]" In;
+    "SCAN_i[1]" In;
+    "SCAN_i[20]" In;
+    "SCAN_i[21]" In;
+    "SCAN_i[22]" In;
+    "SCAN_i[23]" In;
+    "SCAN_i[24]" In;
+    "SCAN_i[25]" In;
+    "SCAN_i[26]" In;
+    "SCAN_i[27]" In;
+    "SCAN_i[28]" In;
+    "SCAN_i[29]" In;
+    "SCAN_i[2]" In;
+    "SCAN_i[30]" In;
+    "SCAN_i[31]" In;
+    "SCAN_i[32]" In;
+    "SCAN_i[33]" In;
+    "SCAN_i[34]" In;
+    "SCAN_i[35]" In;
+    "SCAN_i[36]" In;
+    "SCAN_i[37]" In;
+    "SCAN_i[38]" In;
+    "SCAN_i[39]" In;
+    "SCAN_i[3]" In;
+    "SCAN_i[40]" In;
+    "SCAN_i[41]" In;
+    "SCAN_i[42]" In;
+    "SCAN_i[43]" In;
+    "SCAN_i[4]" In;
+    "SCAN_i[5]" In;
+    "SCAN_i[6]" In;
+    "SCAN_i[7]" In;
+    "SCAN_i[8]" In;
+    "SCAN_i[9]" In;
+    "SLEEP1_i" In;
+    "SLEEP2_i" In;
+    "SPLIT_i" In;
+    "SYNC_FIFO1_i" In;
+    "SYNC_FIFO2_i" In;
+    "UPAE1_i[0]" In;
+    "UPAE1_i[10]" In;
+    "UPAE1_i[11]" In;
+    "UPAE1_i[1]" In;
+    "UPAE1_i[2]" In;
+    "UPAE1_i[3]" In;
+    "UPAE1_i[4]" In;
+    "UPAE1_i[5]" In;
+    "UPAE1_i[6]" In;
+    "UPAE1_i[7]" In;
+    "UPAE1_i[8]" In;
+    "UPAE1_i[9]" In;
+    "UPAE2_i[0]" In;
+    "UPAE2_i[10]" In;
+    "UPAE2_i[1]" In;
+    "UPAE2_i[2]" In;
+    "UPAE2_i[3]" In;
+    "UPAE2_i[4]" In;
+    "UPAE2_i[5]" In;
+    "UPAE2_i[6]" In;
+    "UPAE2_i[7]" In;
+    "UPAE2_i[8]" In;
+    "UPAE2_i[9]" In;
+    "UPAF1_i[0]" In;
+    "UPAF1_i[10]" In;
+    "UPAF1_i[11]" In;
+    "UPAF1_i[1]" In;
+    "UPAF1_i[2]" In;
+    "UPAF1_i[3]" In;
+    "UPAF1_i[4]" In;
+    "UPAF1_i[5]" In;
+    "UPAF1_i[6]" In;
+    "UPAF1_i[7]" In;
+    "UPAF1_i[8]" In;
+    "UPAF1_i[9]" In;
+    "UPAF2_i[0]" In;
+    "UPAF2_i[10]" In;
+    "UPAF2_i[1]" In;
+    "UPAF2_i[2]" In;
+    "UPAF2_i[3]" In;
+    "UPAF2_i[4]" In;
+    "UPAF2_i[5]" In;
+    "UPAF2_i[6]" In;
+    "UPAF2_i[7]" In;
+    "UPAF2_i[8]" In;
+    "UPAF2_i[9]" In;
+    "WDATA_A1_i[0]" In;
+    "WDATA_A1_i[10]" In;
+    "WDATA_A1_i[11]" In;
+    "WDATA_A1_i[12]" In;
+    "WDATA_A1_i[13]" In;
+    "WDATA_A1_i[14]" In;
+    "WDATA_A1_i[15]" In;
+    "WDATA_A1_i[16]" In;
+    "WDATA_A1_i[17]" In;
+    "WDATA_A1_i[1]" In;
+    "WDATA_A1_i[2]" In;
+    "WDATA_A1_i[3]" In;
+    "WDATA_A1_i[4]" In;
+    "WDATA_A1_i[5]" In;
+    "WDATA_A1_i[6]" In;
+    "WDATA_A1_i[7]" In;
+    "WDATA_A1_i[8]" In;
+    "WDATA_A1_i[9]" In;
+    "WDATA_A2_i[0]" In;
+    "WDATA_A2_i[10]" In;
+    "WDATA_A2_i[11]" In;
+    "WDATA_A2_i[12]" In;
+    "WDATA_A2_i[13]" In;
+    "WDATA_A2_i[14]" In;
+    "WDATA_A2_i[15]" In;
+    "WDATA_A2_i[16]" In;
+    "WDATA_A2_i[17]" In;
+    "WDATA_A2_i[1]" In;
+    "WDATA_A2_i[2]" In;
+    "WDATA_A2_i[3]" In;
+    "WDATA_A2_i[4]" In;
+    "WDATA_A2_i[5]" In;
+    "WDATA_A2_i[6]" In;
+    "WDATA_A2_i[7]" In;
+    "WDATA_A2_i[8]" In;
+    "WDATA_A2_i[9]" In;
+    "WDATA_B1_i[0]" In;
+    "WDATA_B1_i[10]" In;
+    "WDATA_B1_i[11]" In;
+    "WDATA_B1_i[12]" In;
+    "WDATA_B1_i[13]" In;
+    "WDATA_B1_i[14]" In;
+    "WDATA_B1_i[15]" In;
+    "WDATA_B1_i[16]" In;
+    "WDATA_B1_i[17]" In;
+    "WDATA_B1_i[1]" In;
+    "WDATA_B1_i[2]" In;
+    "WDATA_B1_i[3]" In;
+    "WDATA_B1_i[4]" In;
+    "WDATA_B1_i[5]" In;
+    "WDATA_B1_i[6]" In;
+    "WDATA_B1_i[7]" In;
+    "WDATA_B1_i[8]" In;
+    "WDATA_B1_i[9]" In;
+    "WDATA_B2_i[0]" In;
+    "WDATA_B2_i[10]" In;
+    "WDATA_B2_i[11]" In;
+    "WDATA_B2_i[12]" In;
+    "WDATA_B2_i[13]" In;
+    "WDATA_B2_i[14]" In;
+    "WDATA_B2_i[15]" In;
+    "WDATA_B2_i[16]" In;
+    "WDATA_B2_i[17]" In;
+    "WDATA_B2_i[1]" In;
+    "WDATA_B2_i[2]" In;
+    "WDATA_B2_i[3]" In;
+    "WDATA_B2_i[4]" In;
+    "WDATA_B2_i[5]" In;
+    "WDATA_B2_i[6]" In;
+    "WDATA_B2_i[7]" In;
+    "WDATA_B2_i[8]" In;
+    "WDATA_B2_i[9]" In;
+    "WEN_A1_i" In;
+    "WEN_A2_i" In;
+    "WEN_B1_i" In;
+    "WEN_B2_i" In;
+    "WMODE_A1_i[0]" In;
+    "WMODE_A1_i[1]" In;
+    "WMODE_A1_i[2]" In;
+    "WMODE_A2_i[0]" In;
+    "WMODE_A2_i[1]" In;
+    "WMODE_A2_i[2]" In;
+    "WMODE_B1_i[0]" In;
+    "WMODE_B1_i[1]" In;
+    "WMODE_B1_i[2]" In;
+    "WMODE_B2_i[0]" In;
+    "WMODE_B2_i[1]" In;
+    "WMODE_B2_i[2]" In;
+    "rwm[0]" In;
+    "rwm[1]" In;
+    "rwm[2]" In;
+    "PL_ADDR_o[0]" Out;
+    "PL_ADDR_o[10]" Out;
+    "PL_ADDR_o[11]" Out;
+    "PL_ADDR_o[12]" Out;
+    "PL_ADDR_o[13]" Out;
+    "PL_ADDR_o[14]" Out;
+    "PL_ADDR_o[15]" Out;
+    "PL_ADDR_o[16]" Out;
+    "PL_ADDR_o[17]" Out;
+    "PL_ADDR_o[18]" Out;
+    "PL_ADDR_o[19]" Out;
+    "PL_ADDR_o[1]" Out;
+    "PL_ADDR_o[20]" Out;
+    "PL_ADDR_o[21]" Out;
+    "PL_ADDR_o[22]" Out;
+    "PL_ADDR_o[23]" Out;
+    "PL_ADDR_o[24]" Out;
+    "PL_ADDR_o[25]" Out;
+    "PL_ADDR_o[26]" Out;
+    "PL_ADDR_o[27]" Out;
+    "PL_ADDR_o[28]" Out;
+    "PL_ADDR_o[29]" Out;
+    "PL_ADDR_o[2]" Out;
+    "PL_ADDR_o[30]" Out;
+    "PL_ADDR_o[31]" Out;
+    "PL_ADDR_o[3]" Out;
+    "PL_ADDR_o[4]" Out;
+    "PL_ADDR_o[5]" Out;
+    "PL_ADDR_o[6]" Out;
+    "PL_ADDR_o[7]" Out;
+    "PL_ADDR_o[8]" Out;
+    "PL_ADDR_o[9]" Out;
+    "PL_CLK_o" Out;
+    "PL_DATA_o[0]" Out;
+    "PL_DATA_o[10]" Out;
+    "PL_DATA_o[11]" Out;
+    "PL_DATA_o[12]" Out;
+    "PL_DATA_o[13]" Out;
+    "PL_DATA_o[14]" Out;
+    "PL_DATA_o[15]" Out;
+    "PL_DATA_o[16]" Out;
+    "PL_DATA_o[17]" Out;
+    "PL_DATA_o[18]" Out;
+    "PL_DATA_o[19]" Out;
+    "PL_DATA_o[1]" Out;
+    "PL_DATA_o[20]" Out;
+    "PL_DATA_o[21]" Out;
+    "PL_DATA_o[22]" Out;
+    "PL_DATA_o[23]" Out;
+    "PL_DATA_o[24]" Out;
+    "PL_DATA_o[25]" Out;
+    "PL_DATA_o[26]" Out;
+    "PL_DATA_o[27]" Out;
+    "PL_DATA_o[28]" Out;
+    "PL_DATA_o[29]" Out;
+    "PL_DATA_o[2]" Out;
+    "PL_DATA_o[30]" Out;
+    "PL_DATA_o[31]" Out;
+    "PL_DATA_o[32]" Out;
+    "PL_DATA_o[33]" Out;
+    "PL_DATA_o[34]" Out;
+    "PL_DATA_o[35]" Out;
+    "PL_DATA_o[3]" Out;
+    "PL_DATA_o[4]" Out;
+    "PL_DATA_o[5]" Out;
+    "PL_DATA_o[6]" Out;
+    "PL_DATA_o[7]" Out;
+    "PL_DATA_o[8]" Out;
+    "PL_DATA_o[9]" Out;
+    "PL_ENA_o" Out;
+    "PL_INIT_o" Out;
+    "PL_REN_o" Out;
+    "PL_WEN_o[0]" Out;
+    "PL_WEN_o[1]" Out;
+    "RDATA_A1_o[0]" Out;
+    "RDATA_A1_o[10]" Out;
+    "RDATA_A1_o[11]" Out;
+    "RDATA_A1_o[12]" Out;
+    "RDATA_A1_o[13]" Out;
+    "RDATA_A1_o[14]" Out;
+    "RDATA_A1_o[15]" Out;
+    "RDATA_A1_o[16]" Out;
+    "RDATA_A1_o[17]" Out;
+    "RDATA_A1_o[1]" Out;
+    "RDATA_A1_o[2]" Out;
+    "RDATA_A1_o[3]" Out;
+    "RDATA_A1_o[4]" Out;
+    "RDATA_A1_o[5]" Out;
+    "RDATA_A1_o[6]" Out;
+    "RDATA_A1_o[7]" Out;
+    "RDATA_A1_o[8]" Out;
+    "RDATA_A1_o[9]" Out;
+    "RDATA_A2_o[0]" Out;
+    "RDATA_A2_o[10]" Out;
+    "RDATA_A2_o[11]" Out;
+    "RDATA_A2_o[12]" Out;
+    "RDATA_A2_o[13]" Out;
+    "RDATA_A2_o[14]" Out;
+    "RDATA_A2_o[15]" Out;
+    "RDATA_A2_o[16]" Out;
+    "RDATA_A2_o[17]" Out;
+    "RDATA_A2_o[1]" Out;
+    "RDATA_A2_o[2]" Out;
+    "RDATA_A2_o[3]" Out;
+    "RDATA_A2_o[4]" Out;
+    "RDATA_A2_o[5]" Out;
+    "RDATA_A2_o[6]" Out;
+    "RDATA_A2_o[7]" Out;
+    "RDATA_A2_o[8]" Out;
+    "RDATA_A2_o[9]" Out;
+    "RDATA_B1_o[0]" Out;
+    "RDATA_B1_o[10]" Out;
+    "RDATA_B1_o[11]" Out;
+    "RDATA_B1_o[12]" Out;
+    "RDATA_B1_o[13]" Out;
+    "RDATA_B1_o[14]" Out;
+    "RDATA_B1_o[15]" Out;
+    "RDATA_B1_o[16]" Out;
+    "RDATA_B1_o[17]" Out;
+    "RDATA_B1_o[1]" Out;
+    "RDATA_B1_o[2]" Out;
+    "RDATA_B1_o[3]" Out;
+    "RDATA_B1_o[4]" Out;
+    "RDATA_B1_o[5]" Out;
+    "RDATA_B1_o[6]" Out;
+    "RDATA_B1_o[7]" Out;
+    "RDATA_B1_o[8]" Out;
+    "RDATA_B1_o[9]" Out;
+    "RDATA_B2_o[0]" Out;
+    "RDATA_B2_o[10]" Out;
+    "RDATA_B2_o[11]" Out;
+    "RDATA_B2_o[12]" Out;
+    "RDATA_B2_o[13]" Out;
+    "RDATA_B2_o[14]" Out;
+    "RDATA_B2_o[15]" Out;
+    "RDATA_B2_o[16]" Out;
+    "RDATA_B2_o[17]" Out;
+    "RDATA_B2_o[1]" Out;
+    "RDATA_B2_o[2]" Out;
+    "RDATA_B2_o[3]" Out;
+    "RDATA_B2_o[4]" Out;
+    "RDATA_B2_o[5]" Out;
+    "RDATA_B2_o[6]" Out;
+    "RDATA_B2_o[7]" Out;
+    "RDATA_B2_o[8]" Out;
+    "RDATA_B2_o[9]" Out;
+    "SCAN_o[0]" Out;
+    "SCAN_o[10]" Out;
+    "SCAN_o[11]" Out;
+    "SCAN_o[12]" Out;
+    "SCAN_o[13]" Out;
+    "SCAN_o[14]" Out;
+    "SCAN_o[15]" Out;
+    "SCAN_o[16]" Out;
+    "SCAN_o[17]" Out;
+    "SCAN_o[18]" Out;
+    "SCAN_o[19]" Out;
+    "SCAN_o[1]" Out;
+    "SCAN_o[20]" Out;
+    "SCAN_o[21]" Out;
+    "SCAN_o[22]" Out;
+    "SCAN_o[23]" Out;
+    "SCAN_o[24]" Out;
+    "SCAN_o[25]" Out;
+    "SCAN_o[26]" Out;
+    "SCAN_o[27]" Out;
+    "SCAN_o[28]" Out;
+    "SCAN_o[29]" Out;
+    "SCAN_o[2]" Out;
+    "SCAN_o[30]" Out;
+    "SCAN_o[31]" Out;
+    "SCAN_o[32]" Out;
+    "SCAN_o[33]" Out;
+    "SCAN_o[34]" Out;
+    "SCAN_o[35]" Out;
+    "SCAN_o[36]" Out;
+    "SCAN_o[37]" Out;
+    "SCAN_o[38]" Out;
+    "SCAN_o[39]" Out;
+    "SCAN_o[3]" Out;
+    "SCAN_o[40]" Out;
+    "SCAN_o[41]" Out;
+    "SCAN_o[42]" Out;
+    "SCAN_o[43]" Out;
+    "SCAN_o[4]" Out;
+    "SCAN_o[5]" Out;
+    "SCAN_o[6]" Out;
+    "SCAN_o[7]" Out;
+    "SCAN_o[8]" Out;
+    "SCAN_o[9]" Out;
+}
+SignalGroups {
+    "_si" = '"SCAN_i[0]" + "SCAN_i[10]" + "SCAN_i[11]" + "SCAN_i[12]" + 
+    "SCAN_i[13]" + "SCAN_i[14]" + "SCAN_i[15]" + "SCAN_i[16]" + "SCAN_i[17]" + 
+    "SCAN_i[18]" + "SCAN_i[19]" + "SCAN_i[1]" + "SCAN_i[20]" + "SCAN_i[21]" + 
+    "SCAN_i[22]" + "SCAN_i[23]" + "SCAN_i[24]" + "SCAN_i[25]" + "SCAN_i[26]" + 
+    "SCAN_i[27]" + "SCAN_i[28]" + "SCAN_i[29]" + "SCAN_i[2]" + "SCAN_i[30]" + 
+    "SCAN_i[31]" + "SCAN_i[32]" + "SCAN_i[33]" + "SCAN_i[34]" + "SCAN_i[35]" + 
+    "SCAN_i[36]" + "SCAN_i[37]" + "SCAN_i[38]" + "SCAN_i[39]" + "SCAN_i[3]" + 
+    "SCAN_i[40]" + "SCAN_i[41]" + "SCAN_i[42]" + "SCAN_i[43]" + "SCAN_i[4]" + 
+    "SCAN_i[5]" + "SCAN_i[6]" + "SCAN_i[7]" + "SCAN_i[8]" + "SCAN_i[9]"' {
+        ScanIn;
+    }
+    "_so" = '"SCAN_o[0]" + "SCAN_o[10]" + "SCAN_o[11]" + "SCAN_o[12]" + 
+    "SCAN_o[13]" + "SCAN_o[14]" + "SCAN_o[15]" + "SCAN_o[16]" + "SCAN_o[17]" + 
+    "SCAN_o[18]" + "SCAN_o[19]" + "SCAN_o[1]" + "SCAN_o[20]" + "SCAN_o[21]" + 
+    "SCAN_o[22]" + "SCAN_o[23]" + "SCAN_o[24]" + "SCAN_o[25]" + "SCAN_o[26]" + 
+    "SCAN_o[27]" + "SCAN_o[28]" + "SCAN_o[29]" + "SCAN_o[2]" + "SCAN_o[30]" + 
+    "SCAN_o[31]" + "SCAN_o[32]" + "SCAN_o[33]" + "SCAN_o[34]" + "SCAN_o[35]" + 
+    "SCAN_o[36]" + "SCAN_o[37]" + "SCAN_o[38]" + "SCAN_o[39]" + "SCAN_o[3]" + 
+    "SCAN_o[40]" + "SCAN_o[41]" + "SCAN_o[42]" + "SCAN_o[43]" + "SCAN_o[4]" + 
+    "SCAN_o[5]" + "SCAN_o[6]" + "SCAN_o[7]" + "SCAN_o[8]" + "SCAN_o[9]"' {
+        ScanOut;
+    }
+    "_clk" = '"CLK_A1_i" + "CLK_A2_i" + "CLK_B1_i" + "CLK_B2_i" + "GRESET_i"';
+    "all_inputs" = '"ADDR_A1_i[0]" + "ADDR_A1_i[10]" + "ADDR_A1_i[11]" + 
+    "ADDR_A1_i[12]" + "ADDR_A1_i[13]" + "ADDR_A1_i[14]" + "ADDR_A1_i[1]" + 
+    "ADDR_A1_i[2]" + "ADDR_A1_i[3]" + "ADDR_A1_i[4]" + "ADDR_A1_i[5]" + 
+    "ADDR_A1_i[6]" + "ADDR_A1_i[7]" + "ADDR_A1_i[8]" + "ADDR_A1_i[9]" + 
+    "ADDR_A2_i[0]" + "ADDR_A2_i[10]" + "ADDR_A2_i[11]" + "ADDR_A2_i[12]" + 
+    "ADDR_A2_i[13]" + "ADDR_A2_i[1]" + "ADDR_A2_i[2]" + "ADDR_A2_i[3]" + 
+    "ADDR_A2_i[4]" + "ADDR_A2_i[5]" + "ADDR_A2_i[6]" + "ADDR_A2_i[7]" + 
+    "ADDR_A2_i[8]" + "ADDR_A2_i[9]" + "ADDR_B1_i[0]" + "ADDR_B1_i[10]" + 
+    "ADDR_B1_i[11]" + "ADDR_B1_i[12]" + "ADDR_B1_i[13]" + "ADDR_B1_i[14]" + 
+    "ADDR_B1_i[1]" + "ADDR_B1_i[2]" + "ADDR_B1_i[3]" + "ADDR_B1_i[4]" + 
+    "ADDR_B1_i[5]" + "ADDR_B1_i[6]" + "ADDR_B1_i[7]" + "ADDR_B1_i[8]" + 
+    "ADDR_B1_i[9]" + "ADDR_B2_i[0]" + "ADDR_B2_i[10]" + "ADDR_B2_i[11]" + 
+    "ADDR_B2_i[12]" + "ADDR_B2_i[13]" + "ADDR_B2_i[1]" + "ADDR_B2_i[2]" + 
+    "ADDR_B2_i[3]" + "ADDR_B2_i[4]" + "ADDR_B2_i[5]" + "ADDR_B2_i[6]" + 
+    "ADDR_B2_i[7]" + "ADDR_B2_i[8]" + "ADDR_B2_i[9]" + "BE_A1_i[0]" + 
+    "BE_A1_i[1]" + "BE_A2_i[0]" + "BE_A2_i[1]" + "BE_B1_i[0]" + "BE_B1_i[1]" + 
+    "BE_B2_i[0]" + "BE_B2_i[1]" + "CLK_A1_i" + "CLK_A2_i" + "CLK_B1_i" + 
+    "CLK_B2_i" + "FLUSH1_i" + "FLUSH2_i" + "FMODE1_i" + "FMODE2_i" + "GRESET_i" 
+    + "PL_ADDR_i[0]" + "PL_ADDR_i[10]" + "PL_ADDR_i[11]" + "PL_ADDR_i[12]" + 
+    "PL_ADDR_i[13]" + "PL_ADDR_i[14]" + "PL_ADDR_i[15]" + "PL_ADDR_i[16]" + 
+    "PL_ADDR_i[17]" + "PL_ADDR_i[18]" + "PL_ADDR_i[19]" + "PL_ADDR_i[1]" + 
+    "PL_ADDR_i[20]" + "PL_ADDR_i[21]" + "PL_ADDR_i[22]" + "PL_ADDR_i[23]" + 
+    "PL_ADDR_i[24]" + "PL_ADDR_i[25]" + "PL_ADDR_i[26]" + "PL_ADDR_i[27]" + 
+    "PL_ADDR_i[28]" + "PL_ADDR_i[29]" + "PL_ADDR_i[2]" + "PL_ADDR_i[30]" + 
+    "PL_ADDR_i[31]" + "PL_ADDR_i[3]" + "PL_ADDR_i[4]" + "PL_ADDR_i[5]" + 
+    "PL_ADDR_i[6]" + "PL_ADDR_i[7]" + "PL_ADDR_i[8]" + "PL_ADDR_i[9]" + 
+    "PL_CLK_i" + "PL_DATA_i[0]" + "PL_DATA_i[10]" + "PL_DATA_i[11]" + 
+    "PL_DATA_i[12]" + "PL_DATA_i[13]" + "PL_DATA_i[14]" + "PL_DATA_i[15]" + 
+    "PL_DATA_i[16]" + "PL_DATA_i[17]" + "PL_DATA_i[18]" + "PL_DATA_i[19]" + 
+    "PL_DATA_i[1]" + "PL_DATA_i[20]" + "PL_DATA_i[21]" + "PL_DATA_i[22]" + 
+    "PL_DATA_i[23]" + "PL_DATA_i[24]" + "PL_DATA_i[25]" + "PL_DATA_i[26]" + 
+    "PL_DATA_i[27]" + "PL_DATA_i[28]" + "PL_DATA_i[29]" + "PL_DATA_i[2]" + 
+    "PL_DATA_i[30]" + "PL_DATA_i[31]" + "PL_DATA_i[32]" + "PL_DATA_i[33]" + 
+    "PL_DATA_i[34]" + "PL_DATA_i[35]" + "PL_DATA_i[3]" + "PL_DATA_i[4]" + 
+    "PL_DATA_i[5]" + "PL_DATA_i[6]" + "PL_DATA_i[7]" + "PL_DATA_i[8]" + 
+    "PL_DATA_i[9]" + "PL_ENA_i" + "PL_INIT_i" + "PL_REN_i" + "PL_WEN_i[0]" + 
+    "PL_WEN_i[1]" + "POWERDN1_i" + "POWERDN2_i" + "PROTECT1_i" + "PROTECT2_i" + 
+    "RAM_ID_i[0]" + "RAM_ID_i[10]" + "RAM_ID_i[11]" + "RAM_ID_i[12]" + 
+    "RAM_ID_i[13]" + "RAM_ID_i[14]" + "RAM_ID_i[15]" + "RAM_ID_i[16]" + 
+    "RAM_ID_i[17]" + "RAM_ID_i[18]" + "RAM_ID_i[19]" + "RAM_ID_i[1]" + 
+    "RAM_ID_i[2]" + "RAM_ID_i[3]" + "RAM_ID_i[4]" + "RAM_ID_i[5]" + 
+    "RAM_ID_i[6]" + "RAM_ID_i[7]" + "RAM_ID_i[8]" + "RAM_ID_i[9]" + "REN_A1_i" + 
+    "REN_A2_i" + "REN_B1_i" + "REN_B2_i" + "RMODE_A1_i[0]" + "RMODE_A1_i[1]" + 
+    "RMODE_A1_i[2]" + "RMODE_A2_i[0]" + "RMODE_A2_i[1]" + "RMODE_A2_i[2]" + 
+    "RMODE_B1_i[0]" + "RMODE_B1_i[1]" + "RMODE_B1_i[2]" + "RMODE_B2_i[0]" + 
+    "RMODE_B2_i[1]" + "RMODE_B2_i[2]" + "SCAN_EN_i" + "SCAN_MODE_i" + 
+    "SCAN_i[0]" + "SCAN_i[10]" + "SCAN_i[11]" + "SCAN_i[12]" + "SCAN_i[13]" + 
+    "SCAN_i[14]" + "SCAN_i[15]" + "SCAN_i[16]" + "SCAN_i[17]" + "SCAN_i[18]" + 
+    "SCAN_i[19]" + "SCAN_i[1]" + "SCAN_i[20]" + "SCAN_i[21]" + "SCAN_i[22]" + 
+    "SCAN_i[23]" + "SCAN_i[24]" + "SCAN_i[25]" + "SCAN_i[26]" + "SCAN_i[27]" + 
+    "SCAN_i[28]" + "SCAN_i[29]" + "SCAN_i[2]" + "SCAN_i[30]" + "SCAN_i[31]" + 
+    "SCAN_i[32]" + "SCAN_i[33]" + "SCAN_i[34]" + "SCAN_i[35]" + "SCAN_i[36]" + 
+    "SCAN_i[37]" + "SCAN_i[38]" + "SCAN_i[39]" + "SCAN_i[3]" + "SCAN_i[40]" + 
+    "SCAN_i[41]" + "SCAN_i[42]" + "SCAN_i[43]" + "SCAN_i[4]" + "SCAN_i[5]" + 
+    "SCAN_i[6]" + "SCAN_i[7]" + "SCAN_i[8]" + "SCAN_i[9]" + "SLEEP1_i" + 
+    "SLEEP2_i" + "SPLIT_i" + "SYNC_FIFO1_i" + "SYNC_FIFO2_i" + "UPAE1_i[0]" + 
+    "UPAE1_i[10]" + "UPAE1_i[11]" + "UPAE1_i[1]" + "UPAE1_i[2]" + "UPAE1_i[3]" + 
+    "UPAE1_i[4]" + "UPAE1_i[5]" + "UPAE1_i[6]" + "UPAE1_i[7]" + "UPAE1_i[8]" + 
+    "UPAE1_i[9]" + "UPAE2_i[0]" + "UPAE2_i[10]" + "UPAE2_i[1]" + "UPAE2_i[2]" + 
+    "UPAE2_i[3]" + "UPAE2_i[4]" + "UPAE2_i[5]" + "UPAE2_i[6]" + "UPAE2_i[7]" + 
+    "UPAE2_i[8]" + "UPAE2_i[9]" + "UPAF1_i[0]" + "UPAF1_i[10]" + "UPAF1_i[11]" + 
+    "UPAF1_i[1]" + "UPAF1_i[2]" + "UPAF1_i[3]" + "UPAF1_i[4]" + "UPAF1_i[5]" + 
+    "UPAF1_i[6]" + "UPAF1_i[7]" + "UPAF1_i[8]" + "UPAF1_i[9]" + "UPAF2_i[0]" + 
+    "UPAF2_i[10]" + "UPAF2_i[1]" + "UPAF2_i[2]" + "UPAF2_i[3]" + "UPAF2_i[4]" + 
+    "UPAF2_i[5]" + "UPAF2_i[6]" + "UPAF2_i[7]" + "UPAF2_i[8]" + "UPAF2_i[9]" + 
+    "WDATA_A1_i[0]" + "WDATA_A1_i[10]" + "WDATA_A1_i[11]" + "WDATA_A1_i[12]" + 
+    "WDATA_A1_i[13]" + "WDATA_A1_i[14]" + "WDATA_A1_i[15]" + "WDATA_A1_i[16]" + 
+    "WDATA_A1_i[17]" + "WDATA_A1_i[1]" + "WDATA_A1_i[2]" + "WDATA_A1_i[3]" + 
+    "WDATA_A1_i[4]" + "WDATA_A1_i[5]" + "WDATA_A1_i[6]" + "WDATA_A1_i[7]" + 
+    "WDATA_A1_i[8]" + "WDATA_A1_i[9]" + "WDATA_A2_i[0]" + "WDATA_A2_i[10]" + 
+    "WDATA_A2_i[11]" + "WDATA_A2_i[12]" + "WDATA_A2_i[13]" + "WDATA_A2_i[14]" + 
+    "WDATA_A2_i[15]" + "WDATA_A2_i[16]" + "WDATA_A2_i[17]" + "WDATA_A2_i[1]" + 
+    "WDATA_A2_i[2]" + "WDATA_A2_i[3]" + "WDATA_A2_i[4]" + "WDATA_A2_i[5]" + 
+    "WDATA_A2_i[6]" + "WDATA_A2_i[7]" + "WDATA_A2_i[8]" + "WDATA_A2_i[9]" + 
+    "WDATA_B1_i[0]" + "WDATA_B1_i[10]" + "WDATA_B1_i[11]" + "WDATA_B1_i[12]" + 
+    "WDATA_B1_i[13]" + "WDATA_B1_i[14]" + "WDATA_B1_i[15]" + "WDATA_B1_i[16]" + 
+    "WDATA_B1_i[17]" + "WDATA_B1_i[1]" + "WDATA_B1_i[2]" + "WDATA_B1_i[3]" + 
+    "WDATA_B1_i[4]" + "WDATA_B1_i[5]" + "WDATA_B1_i[6]" + "WDATA_B1_i[7]" + 
+    "WDATA_B1_i[8]" + "WDATA_B1_i[9]" + "WDATA_B2_i[0]" + "WDATA_B2_i[10]" + 
+    "WDATA_B2_i[11]" + "WDATA_B2_i[12]" + "WDATA_B2_i[13]" + "WDATA_B2_i[14]" + 
+    "WDATA_B2_i[15]" + "WDATA_B2_i[16]" + "WDATA_B2_i[17]" + "WDATA_B2_i[1]" + 
+    "WDATA_B2_i[2]" + "WDATA_B2_i[3]" + "WDATA_B2_i[4]" + "WDATA_B2_i[5]" + 
+    "WDATA_B2_i[6]" + "WDATA_B2_i[7]" + "WDATA_B2_i[8]" + "WDATA_B2_i[9]" + 
+    "WEN_A1_i" + "WEN_A2_i" + "WEN_B1_i" + "WEN_B2_i" + "WMODE_A1_i[0]" + 
+    "WMODE_A1_i[1]" + "WMODE_A1_i[2]" + "WMODE_A2_i[0]" + "WMODE_A2_i[1]" + 
+    "WMODE_A2_i[2]" + "WMODE_B1_i[0]" + "WMODE_B1_i[1]" + "WMODE_B1_i[2]" + 
+    "WMODE_B2_i[0]" + "WMODE_B2_i[1]" + "WMODE_B2_i[2]" + "rwm[0]" + "rwm[1]" + 
+    "rwm[2]"';
+    "all_outputs" = '"PL_ADDR_o[0]" + "PL_ADDR_o[10]" + "PL_ADDR_o[11]" + 
+    "PL_ADDR_o[12]" + "PL_ADDR_o[13]" + "PL_ADDR_o[14]" + "PL_ADDR_o[15]" + 
+    "PL_ADDR_o[16]" + "PL_ADDR_o[17]" + "PL_ADDR_o[18]" + "PL_ADDR_o[19]" + 
+    "PL_ADDR_o[1]" + "PL_ADDR_o[20]" + "PL_ADDR_o[21]" + "PL_ADDR_o[22]" + 
+    "PL_ADDR_o[23]" + "PL_ADDR_o[24]" + "PL_ADDR_o[25]" + "PL_ADDR_o[26]" + 
+    "PL_ADDR_o[27]" + "PL_ADDR_o[28]" + "PL_ADDR_o[29]" + "PL_ADDR_o[2]" + 
+    "PL_ADDR_o[30]" + "PL_ADDR_o[31]" + "PL_ADDR_o[3]" + "PL_ADDR_o[4]" + 
+    "PL_ADDR_o[5]" + "PL_ADDR_o[6]" + "PL_ADDR_o[7]" + "PL_ADDR_o[8]" + 
+    "PL_ADDR_o[9]" + "PL_CLK_o" + "PL_DATA_o[0]" + "PL_DATA_o[10]" + 
+    "PL_DATA_o[11]" + "PL_DATA_o[12]" + "PL_DATA_o[13]" + "PL_DATA_o[14]" + 
+    "PL_DATA_o[15]" + "PL_DATA_o[16]" + "PL_DATA_o[17]" + "PL_DATA_o[18]" + 
+    "PL_DATA_o[19]" + "PL_DATA_o[1]" + "PL_DATA_o[20]" + "PL_DATA_o[21]" + 
+    "PL_DATA_o[22]" + "PL_DATA_o[23]" + "PL_DATA_o[24]" + "PL_DATA_o[25]" + 
+    "PL_DATA_o[26]" + "PL_DATA_o[27]" + "PL_DATA_o[28]" + "PL_DATA_o[29]" + 
+    "PL_DATA_o[2]" + "PL_DATA_o[30]" + "PL_DATA_o[31]" + "PL_DATA_o[32]" + 
+    "PL_DATA_o[33]" + "PL_DATA_o[34]" + "PL_DATA_o[35]" + "PL_DATA_o[3]" + 
+    "PL_DATA_o[4]" + "PL_DATA_o[5]" + "PL_DATA_o[6]" + "PL_DATA_o[7]" + 
+    "PL_DATA_o[8]" + "PL_DATA_o[9]" + "PL_ENA_o" + "PL_INIT_o" + "PL_REN_o" + 
+    "PL_WEN_o[0]" + "PL_WEN_o[1]" + "RDATA_A1_o[0]" + "RDATA_A1_o[10]" + 
+    "RDATA_A1_o[11]" + "RDATA_A1_o[12]" + "RDATA_A1_o[13]" + "RDATA_A1_o[14]" + 
+    "RDATA_A1_o[15]" + "RDATA_A1_o[16]" + "RDATA_A1_o[17]" + "RDATA_A1_o[1]" + 
+    "RDATA_A1_o[2]" + "RDATA_A1_o[3]" + "RDATA_A1_o[4]" + "RDATA_A1_o[5]" + 
+    "RDATA_A1_o[6]" + "RDATA_A1_o[7]" + "RDATA_A1_o[8]" + "RDATA_A1_o[9]" + 
+    "RDATA_A2_o[0]" + "RDATA_A2_o[10]" + "RDATA_A2_o[11]" + "RDATA_A2_o[12]" + 
+    "RDATA_A2_o[13]" + "RDATA_A2_o[14]" + "RDATA_A2_o[15]" + "RDATA_A2_o[16]" + 
+    "RDATA_A2_o[17]" + "RDATA_A2_o[1]" + "RDATA_A2_o[2]" + "RDATA_A2_o[3]" + 
+    "RDATA_A2_o[4]" + "RDATA_A2_o[5]" + "RDATA_A2_o[6]" + "RDATA_A2_o[7]" + 
+    "RDATA_A2_o[8]" + "RDATA_A2_o[9]" + "RDATA_B1_o[0]" + "RDATA_B1_o[10]" + 
+    "RDATA_B1_o[11]" + "RDATA_B1_o[12]" + "RDATA_B1_o[13]" + "RDATA_B1_o[14]" + 
+    "RDATA_B1_o[15]" + "RDATA_B1_o[16]" + "RDATA_B1_o[17]" + "RDATA_B1_o[1]" + 
+    "RDATA_B1_o[2]" + "RDATA_B1_o[3]" + "RDATA_B1_o[4]" + "RDATA_B1_o[5]" + 
+    "RDATA_B1_o[6]" + "RDATA_B1_o[7]" + "RDATA_B1_o[8]" + "RDATA_B1_o[9]" + 
+    "RDATA_B2_o[0]" + "RDATA_B2_o[10]" + "RDATA_B2_o[11]" + "RDATA_B2_o[12]" + 
+    "RDATA_B2_o[13]" + "RDATA_B2_o[14]" + "RDATA_B2_o[15]" + "RDATA_B2_o[16]" + 
+    "RDATA_B2_o[17]" + "RDATA_B2_o[1]" + "RDATA_B2_o[2]" + "RDATA_B2_o[3]" + 
+    "RDATA_B2_o[4]" + "RDATA_B2_o[5]" + "RDATA_B2_o[6]" + "RDATA_B2_o[7]" + 
+    "RDATA_B2_o[8]" + "RDATA_B2_o[9]" + "SCAN_o[0]" + "SCAN_o[10]" + 
+    "SCAN_o[11]" + "SCAN_o[12]" + "SCAN_o[13]" + "SCAN_o[14]" + "SCAN_o[15]" + 
+    "SCAN_o[16]" + "SCAN_o[17]" + "SCAN_o[18]" + "SCAN_o[19]" + "SCAN_o[1]" + 
+    "SCAN_o[20]" + "SCAN_o[21]" + "SCAN_o[22]" + "SCAN_o[23]" + "SCAN_o[24]" + 
+    "SCAN_o[25]" + "SCAN_o[26]" + "SCAN_o[27]" + "SCAN_o[28]" + "SCAN_o[29]" + 
+    "SCAN_o[2]" + "SCAN_o[30]" + "SCAN_o[31]" + "SCAN_o[32]" + "SCAN_o[33]" + 
+    "SCAN_o[34]" + "SCAN_o[35]" + "SCAN_o[36]" + "SCAN_o[37]" + "SCAN_o[38]" + 
+    "SCAN_o[39]" + "SCAN_o[3]" + "SCAN_o[40]" + "SCAN_o[41]" + "SCAN_o[42]" + 
+    "SCAN_o[43]" + "SCAN_o[4]" + "SCAN_o[5]" + "SCAN_o[6]" + "SCAN_o[7]" + 
+    "SCAN_o[8]" + "SCAN_o[9]"';
+    "all_ports" = '"all_inputs" + "all_outputs"';
+    "_pi" = '"ADDR_A1_i[0]" + "ADDR_A1_i[10]" + "ADDR_A1_i[11]" + 
+    "ADDR_A1_i[12]" + "ADDR_A1_i[13]" + "ADDR_A1_i[14]" + "ADDR_A1_i[1]" + 
+    "ADDR_A1_i[2]" + "ADDR_A1_i[3]" + "ADDR_A1_i[4]" + "ADDR_A1_i[5]" + 
+    "ADDR_A1_i[6]" + "ADDR_A1_i[7]" + "ADDR_A1_i[8]" + "ADDR_A1_i[9]" + 
+    "ADDR_A2_i[0]" + "ADDR_A2_i[10]" + "ADDR_A2_i[11]" + "ADDR_A2_i[12]" + 
+    "ADDR_A2_i[13]" + "ADDR_A2_i[1]" + "ADDR_A2_i[2]" + "ADDR_A2_i[3]" + 
+    "ADDR_A2_i[4]" + "ADDR_A2_i[5]" + "ADDR_A2_i[6]" + "ADDR_A2_i[7]" + 
+    "ADDR_A2_i[8]" + "ADDR_A2_i[9]" + "ADDR_B1_i[0]" + "ADDR_B1_i[10]" + 
+    "ADDR_B1_i[11]" + "ADDR_B1_i[12]" + "ADDR_B1_i[13]" + "ADDR_B1_i[14]" + 
+    "ADDR_B1_i[1]" + "ADDR_B1_i[2]" + "ADDR_B1_i[3]" + "ADDR_B1_i[4]" + 
+    "ADDR_B1_i[5]" + "ADDR_B1_i[6]" + "ADDR_B1_i[7]" + "ADDR_B1_i[8]" + 
+    "ADDR_B1_i[9]" + "ADDR_B2_i[0]" + "ADDR_B2_i[10]" + "ADDR_B2_i[11]" + 
+    "ADDR_B2_i[12]" + "ADDR_B2_i[13]" + "ADDR_B2_i[1]" + "ADDR_B2_i[2]" + 
+    "ADDR_B2_i[3]" + "ADDR_B2_i[4]" + "ADDR_B2_i[5]" + "ADDR_B2_i[6]" + 
+    "ADDR_B2_i[7]" + "ADDR_B2_i[8]" + "ADDR_B2_i[9]" + "BE_A1_i[0]" + 
+    "BE_A1_i[1]" + "BE_A2_i[0]" + "BE_A2_i[1]" + "BE_B1_i[0]" + "BE_B1_i[1]" + 
+    "BE_B2_i[0]" + "BE_B2_i[1]" + "CLK_A1_i" + "CLK_A2_i" + "CLK_B1_i" + 
+    "CLK_B2_i" + "FLUSH1_i" + "FLUSH2_i" + "FMODE1_i" + "FMODE2_i" + "GRESET_i" 
+    + "PL_ADDR_i[0]" + "PL_ADDR_i[10]" + "PL_ADDR_i[11]" + "PL_ADDR_i[12]" + 
+    "PL_ADDR_i[13]" + "PL_ADDR_i[14]" + "PL_ADDR_i[15]" + "PL_ADDR_i[16]" + 
+    "PL_ADDR_i[17]" + "PL_ADDR_i[18]" + "PL_ADDR_i[19]" + "PL_ADDR_i[1]" + 
+    "PL_ADDR_i[20]" + "PL_ADDR_i[21]" + "PL_ADDR_i[22]" + "PL_ADDR_i[23]" + 
+    "PL_ADDR_i[24]" + "PL_ADDR_i[25]" + "PL_ADDR_i[26]" + "PL_ADDR_i[27]" + 
+    "PL_ADDR_i[28]" + "PL_ADDR_i[29]" + "PL_ADDR_i[2]" + "PL_ADDR_i[30]" + 
+    "PL_ADDR_i[31]" + "PL_ADDR_i[3]" + "PL_ADDR_i[4]" + "PL_ADDR_i[5]" + 
+    "PL_ADDR_i[6]" + "PL_ADDR_i[7]" + "PL_ADDR_i[8]" + "PL_ADDR_i[9]" + 
+    "PL_CLK_i" + "PL_DATA_i[0]" + "PL_DATA_i[10]" + "PL_DATA_i[11]" + 
+    "PL_DATA_i[12]" + "PL_DATA_i[13]" + "PL_DATA_i[14]" + "PL_DATA_i[15]" + 
+    "PL_DATA_i[16]" + "PL_DATA_i[17]" + "PL_DATA_i[18]" + "PL_DATA_i[19]" + 
+    "PL_DATA_i[1]" + "PL_DATA_i[20]" + "PL_DATA_i[21]" + "PL_DATA_i[22]" + 
+    "PL_DATA_i[23]" + "PL_DATA_i[24]" + "PL_DATA_i[25]" + "PL_DATA_i[26]" + 
+    "PL_DATA_i[27]" + "PL_DATA_i[28]" + "PL_DATA_i[29]" + "PL_DATA_i[2]" + 
+    "PL_DATA_i[30]" + "PL_DATA_i[31]" + "PL_DATA_i[32]" + "PL_DATA_i[33]" + 
+    "PL_DATA_i[34]" + "PL_DATA_i[35]" + "PL_DATA_i[3]" + "PL_DATA_i[4]" + 
+    "PL_DATA_i[5]" + "PL_DATA_i[6]" + "PL_DATA_i[7]" + "PL_DATA_i[8]" + 
+    "PL_DATA_i[9]" + "PL_ENA_i" + "PL_INIT_i" + "PL_REN_i" + "PL_WEN_i[0]" + 
+    "PL_WEN_i[1]" + "POWERDN1_i" + "POWERDN2_i" + "PROTECT1_i" + "PROTECT2_i" + 
+    "RAM_ID_i[0]" + "RAM_ID_i[10]" + "RAM_ID_i[11]" + "RAM_ID_i[12]" + 
+    "RAM_ID_i[13]" + "RAM_ID_i[14]" + "RAM_ID_i[15]" + "RAM_ID_i[16]" + 
+    "RAM_ID_i[17]" + "RAM_ID_i[18]" + "RAM_ID_i[19]" + "RAM_ID_i[1]" + 
+    "RAM_ID_i[2]" + "RAM_ID_i[3]" + "RAM_ID_i[4]" + "RAM_ID_i[5]" + 
+    "RAM_ID_i[6]" + "RAM_ID_i[7]" + "RAM_ID_i[8]" + "RAM_ID_i[9]" + "REN_A1_i" + 
+    "REN_A2_i" + "REN_B1_i" + "REN_B2_i" + "RMODE_A1_i[0]" + "RMODE_A1_i[1]" + 
+    "RMODE_A1_i[2]" + "RMODE_A2_i[0]" + "RMODE_A2_i[1]" + "RMODE_A2_i[2]" + 
+    "RMODE_B1_i[0]" + "RMODE_B1_i[1]" + "RMODE_B1_i[2]" + "RMODE_B2_i[0]" + 
+    "RMODE_B2_i[1]" + "RMODE_B2_i[2]" + "SCAN_EN_i" + "SCAN_MODE_i" + 
+    "SCAN_i[0]" + "SCAN_i[10]" + "SCAN_i[11]" + "SCAN_i[12]" + "SCAN_i[13]" + 
+    "SCAN_i[14]" + "SCAN_i[15]" + "SCAN_i[16]" + "SCAN_i[17]" + "SCAN_i[18]" + 
+    "SCAN_i[19]" + "SCAN_i[1]" + "SCAN_i[20]" + "SCAN_i[21]" + "SCAN_i[22]" + 
+    "SCAN_i[23]" + "SCAN_i[24]" + "SCAN_i[25]" + "SCAN_i[26]" + "SCAN_i[27]" + 
+    "SCAN_i[28]" + "SCAN_i[29]" + "SCAN_i[2]" + "SCAN_i[30]" + "SCAN_i[31]" + 
+    "SCAN_i[32]" + "SCAN_i[33]" + "SCAN_i[34]" + "SCAN_i[35]" + "SCAN_i[36]" + 
+    "SCAN_i[37]" + "SCAN_i[38]" + "SCAN_i[39]" + "SCAN_i[3]" + "SCAN_i[40]" + 
+    "SCAN_i[41]" + "SCAN_i[42]" + "SCAN_i[43]" + "SCAN_i[4]" + "SCAN_i[5]" + 
+    "SCAN_i[6]" + "SCAN_i[7]" + "SCAN_i[8]" + "SCAN_i[9]" + "SLEEP1_i" + 
+    "SLEEP2_i" + "SPLIT_i" + "SYNC_FIFO1_i" + "SYNC_FIFO2_i" + "UPAE1_i[0]" + 
+    "UPAE1_i[10]" + "UPAE1_i[11]" + "UPAE1_i[1]" + "UPAE1_i[2]" + "UPAE1_i[3]" + 
+    "UPAE1_i[4]" + "UPAE1_i[5]" + "UPAE1_i[6]" + "UPAE1_i[7]" + "UPAE1_i[8]" + 
+    "UPAE1_i[9]" + "UPAE2_i[0]" + "UPAE2_i[10]" + "UPAE2_i[1]" + "UPAE2_i[2]" + 
+    "UPAE2_i[3]" + "UPAE2_i[4]" + "UPAE2_i[5]" + "UPAE2_i[6]" + "UPAE2_i[7]" + 
+    "UPAE2_i[8]" + "UPAE2_i[9]" + "UPAF1_i[0]" + "UPAF1_i[10]" + "UPAF1_i[11]" + 
+    "UPAF1_i[1]" + "UPAF1_i[2]" + "UPAF1_i[3]" + "UPAF1_i[4]" + "UPAF1_i[5]" + 
+    "UPAF1_i[6]" + "UPAF1_i[7]" + "UPAF1_i[8]" + "UPAF1_i[9]" + "UPAF2_i[0]" + 
+    "UPAF2_i[10]" + "UPAF2_i[1]" + "UPAF2_i[2]" + "UPAF2_i[3]" + "UPAF2_i[4]" + 
+    "UPAF2_i[5]" + "UPAF2_i[6]" + "UPAF2_i[7]" + "UPAF2_i[8]" + "UPAF2_i[9]" + 
+    "WDATA_A1_i[0]" + "WDATA_A1_i[10]" + "WDATA_A1_i[11]" + "WDATA_A1_i[12]" + 
+    "WDATA_A1_i[13]" + "WDATA_A1_i[14]" + "WDATA_A1_i[15]" + "WDATA_A1_i[16]" + 
+    "WDATA_A1_i[17]" + "WDATA_A1_i[1]" + "WDATA_A1_i[2]" + "WDATA_A1_i[3]" + 
+    "WDATA_A1_i[4]" + "WDATA_A1_i[5]" + "WDATA_A1_i[6]" + "WDATA_A1_i[7]" + 
+    "WDATA_A1_i[8]" + "WDATA_A1_i[9]" + "WDATA_A2_i[0]" + "WDATA_A2_i[10]" + 
+    "WDATA_A2_i[11]" + "WDATA_A2_i[12]" + "WDATA_A2_i[13]" + "WDATA_A2_i[14]" + 
+    "WDATA_A2_i[15]" + "WDATA_A2_i[16]" + "WDATA_A2_i[17]" + "WDATA_A2_i[1]" + 
+    "WDATA_A2_i[2]" + "WDATA_A2_i[3]" + "WDATA_A2_i[4]" + "WDATA_A2_i[5]" + 
+    "WDATA_A2_i[6]" + "WDATA_A2_i[7]" + "WDATA_A2_i[8]" + "WDATA_A2_i[9]" + 
+    "WDATA_B1_i[0]" + "WDATA_B1_i[10]" + "WDATA_B1_i[11]" + "WDATA_B1_i[12]" + 
+    "WDATA_B1_i[13]" + "WDATA_B1_i[14]" + "WDATA_B1_i[15]" + "WDATA_B1_i[16]" + 
+    "WDATA_B1_i[17]" + "WDATA_B1_i[1]" + "WDATA_B1_i[2]" + "WDATA_B1_i[3]" + 
+    "WDATA_B1_i[4]" + "WDATA_B1_i[5]" + "WDATA_B1_i[6]" + "WDATA_B1_i[7]" + 
+    "WDATA_B1_i[8]" + "WDATA_B1_i[9]" + "WDATA_B2_i[0]" + "WDATA_B2_i[10]" + 
+    "WDATA_B2_i[11]" + "WDATA_B2_i[12]" + "WDATA_B2_i[13]" + "WDATA_B2_i[14]" + 
+    "WDATA_B2_i[15]" + "WDATA_B2_i[16]" + "WDATA_B2_i[17]" + "WDATA_B2_i[1]" + 
+    "WDATA_B2_i[2]" + "WDATA_B2_i[3]" + "WDATA_B2_i[4]" + "WDATA_B2_i[5]" + 
+    "WDATA_B2_i[6]" + "WDATA_B2_i[7]" + "WDATA_B2_i[8]" + "WDATA_B2_i[9]" + 
+    "WEN_A1_i" + "WEN_A2_i" + "WEN_B1_i" + "WEN_B2_i" + "WMODE_A1_i[0]" + 
+    "WMODE_A1_i[1]" + "WMODE_A1_i[2]" + "WMODE_A2_i[0]" + "WMODE_A2_i[1]" + 
+    "WMODE_A2_i[2]" + "WMODE_B1_i[0]" + "WMODE_B1_i[1]" + "WMODE_B1_i[2]" + 
+    "WMODE_B2_i[0]" + "WMODE_B2_i[1]" + "WMODE_B2_i[2]" + "rwm[0]" + "rwm[1]" + 
+    "rwm[2]"';
+    "_po" = '"PL_ADDR_o[0]" + "PL_ADDR_o[10]" + "PL_ADDR_o[11]" + 
+    "PL_ADDR_o[12]" + "PL_ADDR_o[13]" + "PL_ADDR_o[14]" + "PL_ADDR_o[15]" + 
+    "PL_ADDR_o[16]" + "PL_ADDR_o[17]" + "PL_ADDR_o[18]" + "PL_ADDR_o[19]" + 
+    "PL_ADDR_o[1]" + "PL_ADDR_o[20]" + "PL_ADDR_o[21]" + "PL_ADDR_o[22]" + 
+    "PL_ADDR_o[23]" + "PL_ADDR_o[24]" + "PL_ADDR_o[25]" + "PL_ADDR_o[26]" + 
+    "PL_ADDR_o[27]" + "PL_ADDR_o[28]" + "PL_ADDR_o[29]" + "PL_ADDR_o[2]" + 
+    "PL_ADDR_o[30]" + "PL_ADDR_o[31]" + "PL_ADDR_o[3]" + "PL_ADDR_o[4]" + 
+    "PL_ADDR_o[5]" + "PL_ADDR_o[6]" + "PL_ADDR_o[7]" + "PL_ADDR_o[8]" + 
+    "PL_ADDR_o[9]" + "PL_CLK_o" + "PL_DATA_o[0]" + "PL_DATA_o[10]" + 
+    "PL_DATA_o[11]" + "PL_DATA_o[12]" + "PL_DATA_o[13]" + "PL_DATA_o[14]" + 
+    "PL_DATA_o[15]" + "PL_DATA_o[16]" + "PL_DATA_o[17]" + "PL_DATA_o[18]" + 
+    "PL_DATA_o[19]" + "PL_DATA_o[1]" + "PL_DATA_o[20]" + "PL_DATA_o[21]" + 
+    "PL_DATA_o[22]" + "PL_DATA_o[23]" + "PL_DATA_o[24]" + "PL_DATA_o[25]" + 
+    "PL_DATA_o[26]" + "PL_DATA_o[27]" + "PL_DATA_o[28]" + "PL_DATA_o[29]" + 
+    "PL_DATA_o[2]" + "PL_DATA_o[30]" + "PL_DATA_o[31]" + "PL_DATA_o[32]" + 
+    "PL_DATA_o[33]" + "PL_DATA_o[34]" + "PL_DATA_o[35]" + "PL_DATA_o[3]" + 
+    "PL_DATA_o[4]" + "PL_DATA_o[5]" + "PL_DATA_o[6]" + "PL_DATA_o[7]" + 
+    "PL_DATA_o[8]" + "PL_DATA_o[9]" + "PL_ENA_o" + "PL_INIT_o" + "PL_REN_o" + 
+    "PL_WEN_o[0]" + "PL_WEN_o[1]" + "RDATA_A1_o[0]" + "RDATA_A1_o[10]" + 
+    "RDATA_A1_o[11]" + "RDATA_A1_o[12]" + "RDATA_A1_o[13]" + "RDATA_A1_o[14]" + 
+    "RDATA_A1_o[15]" + "RDATA_A1_o[16]" + "RDATA_A1_o[17]" + "RDATA_A1_o[1]" + 
+    "RDATA_A1_o[2]" + "RDATA_A1_o[3]" + "RDATA_A1_o[4]" + "RDATA_A1_o[5]" + 
+    "RDATA_A1_o[6]" + "RDATA_A1_o[7]" + "RDATA_A1_o[8]" + "RDATA_A1_o[9]" + 
+    "RDATA_A2_o[0]" + "RDATA_A2_o[10]" + "RDATA_A2_o[11]" + "RDATA_A2_o[12]" + 
+    "RDATA_A2_o[13]" + "RDATA_A2_o[14]" + "RDATA_A2_o[15]" + "RDATA_A2_o[16]" + 
+    "RDATA_A2_o[17]" + "RDATA_A2_o[1]" + "RDATA_A2_o[2]" + "RDATA_A2_o[3]" + 
+    "RDATA_A2_o[4]" + "RDATA_A2_o[5]" + "RDATA_A2_o[6]" + "RDATA_A2_o[7]" + 
+    "RDATA_A2_o[8]" + "RDATA_A2_o[9]" + "RDATA_B1_o[0]" + "RDATA_B1_o[10]" + 
+    "RDATA_B1_o[11]" + "RDATA_B1_o[12]" + "RDATA_B1_o[13]" + "RDATA_B1_o[14]" + 
+    "RDATA_B1_o[15]" + "RDATA_B1_o[16]" + "RDATA_B1_o[17]" + "RDATA_B1_o[1]" + 
+    "RDATA_B1_o[2]" + "RDATA_B1_o[3]" + "RDATA_B1_o[4]" + "RDATA_B1_o[5]" + 
+    "RDATA_B1_o[6]" + "RDATA_B1_o[7]" + "RDATA_B1_o[8]" + "RDATA_B1_o[9]" + 
+    "RDATA_B2_o[0]" + "RDATA_B2_o[10]" + "RDATA_B2_o[11]" + "RDATA_B2_o[12]" + 
+    "RDATA_B2_o[13]" + "RDATA_B2_o[14]" + "RDATA_B2_o[15]" + "RDATA_B2_o[16]" + 
+    "RDATA_B2_o[17]" + "RDATA_B2_o[1]" + "RDATA_B2_o[2]" + "RDATA_B2_o[3]" + 
+    "RDATA_B2_o[4]" + "RDATA_B2_o[5]" + "RDATA_B2_o[6]" + "RDATA_B2_o[7]" + 
+    "RDATA_B2_o[8]" + "RDATA_B2_o[9]" + "SCAN_o[0]" + "SCAN_o[10]" + 
+    "SCAN_o[11]" + "SCAN_o[12]" + "SCAN_o[13]" + "SCAN_o[14]" + "SCAN_o[15]" + 
+    "SCAN_o[16]" + "SCAN_o[17]" + "SCAN_o[18]" + "SCAN_o[19]" + "SCAN_o[1]" + 
+    "SCAN_o[20]" + "SCAN_o[21]" + "SCAN_o[22]" + "SCAN_o[23]" + "SCAN_o[24]" + 
+    "SCAN_o[25]" + "SCAN_o[26]" + "SCAN_o[27]" + "SCAN_o[28]" + "SCAN_o[29]" + 
+    "SCAN_o[2]" + "SCAN_o[30]" + "SCAN_o[31]" + "SCAN_o[32]" + "SCAN_o[33]" + 
+    "SCAN_o[34]" + "SCAN_o[35]" + "SCAN_o[36]" + "SCAN_o[37]" + "SCAN_o[38]" + 
+    "SCAN_o[39]" + "SCAN_o[3]" + "SCAN_o[40]" + "SCAN_o[41]" + "SCAN_o[42]" + 
+    "SCAN_o[43]" + "SCAN_o[4]" + "SCAN_o[5]" + "SCAN_o[6]" + "SCAN_o[7]" + 
+    "SCAN_o[8]" + "SCAN_o[9]"';
+}
+ScanStructures {
+    ScanChain "ScanChain_0" {
+        ScanLength 12;
+        ScanIn "SCAN_i[0]";
+        ScanOut "SCAN_o[0]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_1" {
+        ScanLength 13;
+        ScanIn "SCAN_i[1]";
+        ScanOut "SCAN_o[1]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_2" {
+        ScanLength 12;
+        ScanIn "SCAN_i[2]";
+        ScanOut "SCAN_o[2]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B2_i";
+    }
+    ScanChain "ScanChain_3" {
+        ScanLength 12;
+        ScanIn "SCAN_i[3]";
+        ScanOut "SCAN_o[3]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A2_i";
+    }
+    ScanChain "ScanChain_4" {
+        ScanLength 13;
+        ScanIn "SCAN_i[4]";
+        ScanOut "SCAN_o[4]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_5" {
+        ScanLength 12;
+        ScanIn "SCAN_i[5]";
+        ScanOut "SCAN_o[5]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_6" {
+        ScanLength 13;
+        ScanIn "SCAN_i[6]";
+        ScanOut "SCAN_o[6]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_7" {
+        ScanLength 12;
+        ScanIn "SCAN_i[7]";
+        ScanOut "SCAN_o[7]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_8" {
+        ScanLength 12;
+        ScanIn "SCAN_i[8]";
+        ScanOut "SCAN_o[8]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B2_i";
+    }
+    ScanChain "ScanChain_9" {
+        ScanLength 13;
+        ScanIn "SCAN_i[9]";
+        ScanOut "SCAN_o[9]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_10" {
+        ScanLength 12;
+        ScanIn "SCAN_i[10]";
+        ScanOut "SCAN_o[10]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A2_i";
+    }
+    ScanChain "ScanChain_11" {
+        ScanLength 12;
+        ScanIn "SCAN_i[11]";
+        ScanOut "SCAN_o[11]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_12" {
+        ScanLength 13;
+        ScanIn "SCAN_i[12]";
+        ScanOut "SCAN_o[12]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_13" {
+        ScanLength 13;
+        ScanIn "SCAN_i[13]";
+        ScanOut "SCAN_o[13]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_14" {
+        ScanLength 12;
+        ScanIn "SCAN_i[14]";
+        ScanOut "SCAN_o[14]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_15" {
+        ScanLength 12;
+        ScanIn "SCAN_i[15]";
+        ScanOut "SCAN_o[15]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B2_i";
+    }
+    ScanChain "ScanChain_16" {
+        ScanLength 13;
+        ScanIn "SCAN_i[16]";
+        ScanOut "SCAN_o[16]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_17" {
+        ScanLength 11;
+        ScanIn "SCAN_i[17]";
+        ScanOut "SCAN_o[17]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A2_i";
+    }
+    ScanChain "ScanChain_18" {
+        ScanLength 12;
+        ScanIn "SCAN_i[18]";
+        ScanOut "SCAN_o[18]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_19" {
+        ScanLength 13;
+        ScanIn "SCAN_i[19]";
+        ScanOut "SCAN_o[19]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+        ScanInversion 1;
+    }
+    ScanChain "ScanChain_20" {
+        ScanLength 12;
+        ScanIn "SCAN_i[20]";
+        ScanOut "SCAN_o[20]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_21" {
+        ScanLength 12;
+        ScanIn "SCAN_i[21]";
+        ScanOut "SCAN_o[21]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+        ScanInversion 1;
+    }
+    ScanChain "ScanChain_22" {
+        ScanLength 11;
+        ScanIn "SCAN_i[22]";
+        ScanOut "SCAN_o[22]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B2_i";
+    }
+    ScanChain "ScanChain_23" {
+        ScanLength 12;
+        ScanIn "SCAN_i[23]";
+        ScanOut "SCAN_o[23]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_24" {
+        ScanLength 12;
+        ScanIn "SCAN_i[24]";
+        ScanOut "SCAN_o[24]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_25" {
+        ScanLength 11;
+        ScanIn "SCAN_i[25]";
+        ScanOut "SCAN_o[25]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A2_i";
+    }
+    ScanChain "ScanChain_26" {
+        ScanLength 12;
+        ScanIn "SCAN_i[26]";
+        ScanOut "SCAN_o[26]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_27" {
+        ScanLength 12;
+        ScanIn "SCAN_i[27]";
+        ScanOut "SCAN_o[27]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_28" {
+        ScanLength 12;
+        ScanIn "SCAN_i[28]";
+        ScanOut "SCAN_o[28]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_29" {
+        ScanLength 11;
+        ScanIn "SCAN_i[29]";
+        ScanOut "SCAN_o[29]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B2_i";
+    }
+    ScanChain "ScanChain_30" {
+        ScanLength 12;
+        ScanIn "SCAN_i[30]";
+        ScanOut "SCAN_o[30]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_31" {
+        ScanLength 12;
+        ScanIn "SCAN_i[31]";
+        ScanOut "SCAN_o[31]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_32" {
+        ScanLength 11;
+        ScanIn "SCAN_i[32]";
+        ScanOut "SCAN_o[32]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_33" {
+        ScanLength 12;
+        ScanIn "SCAN_i[33]";
+        ScanOut "SCAN_o[33]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_34" {
+        ScanLength 11;
+        ScanIn "SCAN_i[34]";
+        ScanOut "SCAN_o[34]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A2_i";
+    }
+    ScanChain "ScanChain_35" {
+        ScanLength 12;
+        ScanIn "SCAN_i[35]";
+        ScanOut "SCAN_o[35]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_36" {
+        ScanLength 11;
+        ScanIn "SCAN_i[36]";
+        ScanOut "SCAN_o[36]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B2_i";
+    }
+    ScanChain "ScanChain_37" {
+        ScanLength 11;
+        ScanIn "SCAN_i[37]";
+        ScanOut "SCAN_o[37]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_38" {
+        ScanLength 12;
+        ScanIn "SCAN_i[38]";
+        ScanOut "SCAN_o[38]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_39" {
+        ScanLength 11;
+        ScanIn "SCAN_i[39]";
+        ScanOut "SCAN_o[39]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+    ScanChain "ScanChain_40" {
+        ScanLength 12;
+        ScanIn "SCAN_i[40]";
+        ScanOut "SCAN_o[40]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A1_i";
+    }
+    ScanChain "ScanChain_41" {
+        ScanLength 11;
+        ScanIn "SCAN_i[41]";
+        ScanOut "SCAN_o[41]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B2_i";
+    }
+    ScanChain "ScanChain_42" {
+        ScanLength 11;
+        ScanIn "SCAN_i[42]";
+        ScanOut "SCAN_o[42]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_A2_i";
+    }
+    ScanChain "ScanChain_43" {
+        ScanLength 11;
+        ScanIn "SCAN_i[43]";
+        ScanOut "SCAN_o[43]";
+        ScanEnable "SCAN_EN_i";
+        ScanMasterClock "CLK_B1_i";
+    }
+}
+Timing {
+    WaveformTable "_default_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "CLK_A1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_A2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "GRESET_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_multiclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "CLK_A1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_A2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "GRESET_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "CLK_A1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_A2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "GRESET_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "CLK_A1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_A2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "GRESET_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "CLK_A1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B1_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_A2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "CLK_B2_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "GRESET_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+}
+Procedures {
+    "multiclock_capture" {
+        W "_multiclock_capture_WFT_";
+        C {
+            "all_inputs" = \r66 N 0000NNNN0 \r115 N 1 \r186 N;
+            "all_outputs" = \r190 X;
+        }
+        F {
+            "SCAN_MODE_i" = 1;
+        }
+        V {
+            "_pi" = \r377 #;
+            "_po" = \r190 #;
+        }
+    }
+    "allclock_capture" {
+        W "_allclock_capture_WFT_";
+        C {
+            "all_inputs" = \r66 N 0000NNNN0 \r115 N 1 \r186 N;
+            "all_outputs" = \r190 X;
+        }
+        F {
+            "SCAN_MODE_i" = 1;
+        }
+        V {
+            "_pi" = \r377 #;
+            "_po" = \r190 #;
+        }
+    }
+    "allclock_launch" {
+        W "_allclock_launch_WFT_";
+        C {
+            "all_inputs" = \r66 N 0000NNNN0 \r115 N 1 \r186 N;
+            "all_outputs" = \r190 X;
+        }
+        F {
+            "SCAN_MODE_i" = 1;
+        }
+        V {
+            "_pi" = \r377 #;
+            "_po" = \r190 #;
+        }
+    }
+    "allclock_launch_capture" {
+        W "_allclock_launch_capture_WFT_";
+        C {
+            "all_inputs" = \r66 N 0000NNNN0 \r115 N 1 \r186 N;
+            "all_outputs" = \r190 X;
+        }
+        F {
+            "SCAN_MODE_i" = 1;
+        }
+        V {
+            "_pi" = \r377 #;
+            "_po" = \r190 #;
+        }
+    }
+    "load_unload" {
+        W "_default_WFT_";
+        C {
+            "all_inputs" = \r66 N 0000NNNN0 \r115 N 1 \r186 N;
+            "all_outputs" = \r190 X;
+        }
+        "Internal_scan_pre_shift" : V {
+            "SCAN_EN_i" = 1;
+        }
+        Shift {
+            V {
+                "_clk" = PPPP0;
+                "_si" = \r44 #;
+                "_so" = \r44 #;
+            }
+        }
+    }
+}
+MacroDefs {
+    "test_setup" {
+        W "_default_WFT_";
+        C {
+            "all_inputs" = \r377 N;
+            "all_outputs" = \r190 X;
+        }
+        V {
+            "CLK_A1_i" = 0;
+            "CLK_A2_i" = 0;
+            "CLK_B1_i" = 0;
+            "CLK_B2_i" = 0;
+            "GRESET_i" = 0;
+            "SCAN_MODE_i" = 1;
+        }
+        V {
+        }
+    }
+}
+

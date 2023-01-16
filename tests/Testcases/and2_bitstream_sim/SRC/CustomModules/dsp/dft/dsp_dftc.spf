@@ -1,0 +1,929 @@
+STIL 1.0 {
+    Design 2005;
+}
+Header {
+    Title "Minimal STIL for design `dsp'";
+    Date "Sun Oct 23 19:15:23 2022";
+    Source "DFT Compiler S-2021.06-SP2";
+}
+Signals {
+    "a_i[0]" In;
+    "a_i[10]" In;
+    "a_i[11]" In;
+    "a_i[12]" In;
+    "a_i[13]" In;
+    "a_i[14]" In;
+    "a_i[15]" In;
+    "a_i[16]" In;
+    "a_i[17]" In;
+    "a_i[18]" In;
+    "a_i[19]" In;
+    "a_i[1]" In;
+    "a_i[2]" In;
+    "a_i[3]" In;
+    "a_i[4]" In;
+    "a_i[5]" In;
+    "a_i[6]" In;
+    "a_i[7]" In;
+    "a_i[8]" In;
+    "a_i[9]" In;
+    "acc_fir_i[0]" In;
+    "acc_fir_i[1]" In;
+    "acc_fir_i[2]" In;
+    "acc_fir_i[3]" In;
+    "acc_fir_i[4]" In;
+    "acc_fir_i[5]" In;
+    "b_i[0]" In;
+    "b_i[10]" In;
+    "b_i[11]" In;
+    "b_i[12]" In;
+    "b_i[13]" In;
+    "b_i[14]" In;
+    "b_i[15]" In;
+    "b_i[16]" In;
+    "b_i[17]" In;
+    "b_i[1]" In;
+    "b_i[2]" In;
+    "b_i[3]" In;
+    "b_i[4]" In;
+    "b_i[5]" In;
+    "b_i[6]" In;
+    "b_i[7]" In;
+    "b_i[8]" In;
+    "b_i[9]" In;
+    "clock_i" In;
+    "coef_0_i[0]" In;
+    "coef_0_i[10]" In;
+    "coef_0_i[11]" In;
+    "coef_0_i[12]" In;
+    "coef_0_i[13]" In;
+    "coef_0_i[14]" In;
+    "coef_0_i[15]" In;
+    "coef_0_i[16]" In;
+    "coef_0_i[17]" In;
+    "coef_0_i[18]" In;
+    "coef_0_i[19]" In;
+    "coef_0_i[1]" In;
+    "coef_0_i[2]" In;
+    "coef_0_i[3]" In;
+    "coef_0_i[4]" In;
+    "coef_0_i[5]" In;
+    "coef_0_i[6]" In;
+    "coef_0_i[7]" In;
+    "coef_0_i[8]" In;
+    "coef_0_i[9]" In;
+    "coef_1_i[0]" In;
+    "coef_1_i[10]" In;
+    "coef_1_i[11]" In;
+    "coef_1_i[12]" In;
+    "coef_1_i[13]" In;
+    "coef_1_i[14]" In;
+    "coef_1_i[15]" In;
+    "coef_1_i[16]" In;
+    "coef_1_i[17]" In;
+    "coef_1_i[18]" In;
+    "coef_1_i[19]" In;
+    "coef_1_i[1]" In;
+    "coef_1_i[2]" In;
+    "coef_1_i[3]" In;
+    "coef_1_i[4]" In;
+    "coef_1_i[5]" In;
+    "coef_1_i[6]" In;
+    "coef_1_i[7]" In;
+    "coef_1_i[8]" In;
+    "coef_1_i[9]" In;
+    "coef_2_i[0]" In;
+    "coef_2_i[10]" In;
+    "coef_2_i[11]" In;
+    "coef_2_i[12]" In;
+    "coef_2_i[13]" In;
+    "coef_2_i[14]" In;
+    "coef_2_i[15]" In;
+    "coef_2_i[16]" In;
+    "coef_2_i[17]" In;
+    "coef_2_i[18]" In;
+    "coef_2_i[19]" In;
+    "coef_2_i[1]" In;
+    "coef_2_i[2]" In;
+    "coef_2_i[3]" In;
+    "coef_2_i[4]" In;
+    "coef_2_i[5]" In;
+    "coef_2_i[6]" In;
+    "coef_2_i[7]" In;
+    "coef_2_i[8]" In;
+    "coef_2_i[9]" In;
+    "coef_3_i[0]" In;
+    "coef_3_i[10]" In;
+    "coef_3_i[11]" In;
+    "coef_3_i[12]" In;
+    "coef_3_i[13]" In;
+    "coef_3_i[14]" In;
+    "coef_3_i[15]" In;
+    "coef_3_i[16]" In;
+    "coef_3_i[17]" In;
+    "coef_3_i[18]" In;
+    "coef_3_i[19]" In;
+    "coef_3_i[1]" In;
+    "coef_3_i[2]" In;
+    "coef_3_i[3]" In;
+    "coef_3_i[4]" In;
+    "coef_3_i[5]" In;
+    "coef_3_i[6]" In;
+    "coef_3_i[7]" In;
+    "coef_3_i[8]" In;
+    "coef_3_i[9]" In;
+    "feedback_i[0]" In;
+    "feedback_i[1]" In;
+    "feedback_i[2]" In;
+    "greset_i" In;
+    "load_acc_i" In;
+    "output_select_i[0]" In;
+    "output_select_i[1]" In;
+    "output_select_i[2]" In;
+    "register_inputs_i" In;
+    "reset_i" In;
+    "round_i" In;
+    "saturate_enable_i" In;
+    "scan_en_i" In;
+    "scan_i[0]" In;
+    "scan_i[10]" In;
+    "scan_i[11]" In;
+    "scan_i[12]" In;
+    "scan_i[13]" In;
+    "scan_i[14]" In;
+    "scan_i[15]" In;
+    "scan_i[16]" In;
+    "scan_i[17]" In;
+    "scan_i[18]" In;
+    "scan_i[19]" In;
+    "scan_i[1]" In;
+    "scan_i[2]" In;
+    "scan_i[3]" In;
+    "scan_i[4]" In;
+    "scan_i[5]" In;
+    "scan_i[6]" In;
+    "scan_i[7]" In;
+    "scan_i[8]" In;
+    "scan_i[9]" In;
+    "scan_mode_i" In;
+    "shift_right_i[0]" In;
+    "shift_right_i[1]" In;
+    "shift_right_i[2]" In;
+    "shift_right_i[3]" In;
+    "shift_right_i[4]" In;
+    "shift_right_i[5]" In;
+    "subtract_i" In;
+    "unsigned_a_i" In;
+    "unsigned_b_i" In;
+    "dly_b_o[0]" Out;
+    "dly_b_o[10]" Out;
+    "dly_b_o[11]" Out;
+    "dly_b_o[12]" Out;
+    "dly_b_o[13]" Out;
+    "dly_b_o[14]" Out;
+    "dly_b_o[15]" Out;
+    "dly_b_o[16]" Out;
+    "dly_b_o[17]" Out;
+    "dly_b_o[1]" Out;
+    "dly_b_o[2]" Out;
+    "dly_b_o[3]" Out;
+    "dly_b_o[4]" Out;
+    "dly_b_o[5]" Out;
+    "dly_b_o[6]" Out;
+    "dly_b_o[7]" Out;
+    "dly_b_o[8]" Out;
+    "dly_b_o[9]" Out;
+    "scan_o[0]" Out;
+    "scan_o[10]" Out;
+    "scan_o[11]" Out;
+    "scan_o[12]" Out;
+    "scan_o[13]" Out;
+    "scan_o[14]" Out;
+    "scan_o[15]" Out;
+    "scan_o[16]" Out;
+    "scan_o[17]" Out;
+    "scan_o[18]" Out;
+    "scan_o[19]" Out;
+    "scan_o[1]" Out;
+    "scan_o[2]" Out;
+    "scan_o[3]" Out;
+    "scan_o[4]" Out;
+    "scan_o[5]" Out;
+    "scan_o[6]" Out;
+    "scan_o[7]" Out;
+    "scan_o[8]" Out;
+    "scan_o[9]" Out;
+    "z_o[0]" Out;
+    "z_o[10]" Out;
+    "z_o[11]" Out;
+    "z_o[12]" Out;
+    "z_o[13]" Out;
+    "z_o[14]" Out;
+    "z_o[15]" Out;
+    "z_o[16]" Out;
+    "z_o[17]" Out;
+    "z_o[18]" Out;
+    "z_o[19]" Out;
+    "z_o[1]" Out;
+    "z_o[20]" Out;
+    "z_o[21]" Out;
+    "z_o[22]" Out;
+    "z_o[23]" Out;
+    "z_o[24]" Out;
+    "z_o[25]" Out;
+    "z_o[26]" Out;
+    "z_o[27]" Out;
+    "z_o[28]" Out;
+    "z_o[29]" Out;
+    "z_o[2]" Out;
+    "z_o[30]" Out;
+    "z_o[31]" Out;
+    "z_o[32]" Out;
+    "z_o[33]" Out;
+    "z_o[34]" Out;
+    "z_o[35]" Out;
+    "z_o[36]" Out;
+    "z_o[37]" Out;
+    "z_o[3]" Out;
+    "z_o[4]" Out;
+    "z_o[5]" Out;
+    "z_o[6]" Out;
+    "z_o[7]" Out;
+    "z_o[8]" Out;
+    "z_o[9]" Out;
+}
+SignalGroups {
+    "_si" = '"scan_i[0]" + "scan_i[10]" + "scan_i[11]" + "scan_i[12]" + 
+    "scan_i[13]" + "scan_i[14]" + "scan_i[15]" + "scan_i[16]" + "scan_i[17]" + 
+    "scan_i[18]" + "scan_i[19]" + "scan_i[1]" + "scan_i[2]" + "scan_i[3]" + 
+    "scan_i[4]" + "scan_i[5]" + "scan_i[6]" + "scan_i[7]" + "scan_i[8]" + 
+    "scan_i[9]"' {
+        ScanIn;
+    }
+    "_so" = '"scan_o[0]" + "scan_o[10]" + "scan_o[11]" + "scan_o[12]" + 
+    "scan_o[13]" + "scan_o[14]" + "scan_o[15]" + "scan_o[16]" + "scan_o[17]" + 
+    "scan_o[18]" + "scan_o[19]" + "scan_o[1]" + "scan_o[2]" + "scan_o[3]" + 
+    "scan_o[4]" + "scan_o[5]" + "scan_o[6]" + "scan_o[7]" + "scan_o[8]" + 
+    "scan_o[9]"' {
+        ScanOut;
+    }
+    "_clk" = '"clock_i" + "greset_i"';
+    "all_inputs" = '"a_i[0]" + "a_i[10]" + "a_i[11]" + "a_i[12]" + "a_i[13]" + 
+    "a_i[14]" + "a_i[15]" + "a_i[16]" + "a_i[17]" + "a_i[18]" + "a_i[19]" + 
+    "a_i[1]" + "a_i[2]" + "a_i[3]" + "a_i[4]" + "a_i[5]" + "a_i[6]" + "a_i[7]" + 
+    "a_i[8]" + "a_i[9]" + "acc_fir_i[0]" + "acc_fir_i[1]" + "acc_fir_i[2]" + 
+    "acc_fir_i[3]" + "acc_fir_i[4]" + "acc_fir_i[5]" + "b_i[0]" + "b_i[10]" + 
+    "b_i[11]" + "b_i[12]" + "b_i[13]" + "b_i[14]" + "b_i[15]" + "b_i[16]" + 
+    "b_i[17]" + "b_i[1]" + "b_i[2]" + "b_i[3]" + "b_i[4]" + "b_i[5]" + "b_i[6]" 
+    + "b_i[7]" + "b_i[8]" + "b_i[9]" + "clock_i" + "coef_0_i[0]" + 
+    "coef_0_i[10]" + "coef_0_i[11]" + "coef_0_i[12]" + "coef_0_i[13]" + 
+    "coef_0_i[14]" + "coef_0_i[15]" + "coef_0_i[16]" + "coef_0_i[17]" + 
+    "coef_0_i[18]" + "coef_0_i[19]" + "coef_0_i[1]" + "coef_0_i[2]" + 
+    "coef_0_i[3]" + "coef_0_i[4]" + "coef_0_i[5]" + "coef_0_i[6]" + 
+    "coef_0_i[7]" + "coef_0_i[8]" + "coef_0_i[9]" + "coef_1_i[0]" + 
+    "coef_1_i[10]" + "coef_1_i[11]" + "coef_1_i[12]" + "coef_1_i[13]" + 
+    "coef_1_i[14]" + "coef_1_i[15]" + "coef_1_i[16]" + "coef_1_i[17]" + 
+    "coef_1_i[18]" + "coef_1_i[19]" + "coef_1_i[1]" + "coef_1_i[2]" + 
+    "coef_1_i[3]" + "coef_1_i[4]" + "coef_1_i[5]" + "coef_1_i[6]" + 
+    "coef_1_i[7]" + "coef_1_i[8]" + "coef_1_i[9]" + "coef_2_i[0]" + 
+    "coef_2_i[10]" + "coef_2_i[11]" + "coef_2_i[12]" + "coef_2_i[13]" + 
+    "coef_2_i[14]" + "coef_2_i[15]" + "coef_2_i[16]" + "coef_2_i[17]" + 
+    "coef_2_i[18]" + "coef_2_i[19]" + "coef_2_i[1]" + "coef_2_i[2]" + 
+    "coef_2_i[3]" + "coef_2_i[4]" + "coef_2_i[5]" + "coef_2_i[6]" + 
+    "coef_2_i[7]" + "coef_2_i[8]" + "coef_2_i[9]" + "coef_3_i[0]" + 
+    "coef_3_i[10]" + "coef_3_i[11]" + "coef_3_i[12]" + "coef_3_i[13]" + 
+    "coef_3_i[14]" + "coef_3_i[15]" + "coef_3_i[16]" + "coef_3_i[17]" + 
+    "coef_3_i[18]" + "coef_3_i[19]" + "coef_3_i[1]" + "coef_3_i[2]" + 
+    "coef_3_i[3]" + "coef_3_i[4]" + "coef_3_i[5]" + "coef_3_i[6]" + 
+    "coef_3_i[7]" + "coef_3_i[8]" + "coef_3_i[9]" + "feedback_i[0]" + 
+    "feedback_i[1]" + "feedback_i[2]" + "greset_i" + "load_acc_i" + 
+    "output_select_i[0]" + "output_select_i[1]" + "output_select_i[2]" + 
+    "register_inputs_i" + "reset_i" + "round_i" + "saturate_enable_i" + 
+    "scan_en_i" + "scan_i[0]" + "scan_i[10]" + "scan_i[11]" + "scan_i[12]" + 
+    "scan_i[13]" + "scan_i[14]" + "scan_i[15]" + "scan_i[16]" + "scan_i[17]" + 
+    "scan_i[18]" + "scan_i[19]" + "scan_i[1]" + "scan_i[2]" + "scan_i[3]" + 
+    "scan_i[4]" + "scan_i[5]" + "scan_i[6]" + "scan_i[7]" + "scan_i[8]" + 
+    "scan_i[9]" + "scan_mode_i" + "shift_right_i[0]" + "shift_right_i[1]" + 
+    "shift_right_i[2]" + "shift_right_i[3]" + "shift_right_i[4]" + 
+    "shift_right_i[5]" + "subtract_i" + "unsigned_a_i" + "unsigned_b_i"';
+    "all_outputs" = '"dly_b_o[0]" + "dly_b_o[10]" + "dly_b_o[11]" + 
+    "dly_b_o[12]" + "dly_b_o[13]" + "dly_b_o[14]" + "dly_b_o[15]" + 
+    "dly_b_o[16]" + "dly_b_o[17]" + "dly_b_o[1]" + "dly_b_o[2]" + "dly_b_o[3]" + 
+    "dly_b_o[4]" + "dly_b_o[5]" + "dly_b_o[6]" + "dly_b_o[7]" + "dly_b_o[8]" + 
+    "dly_b_o[9]" + "scan_o[0]" + "scan_o[10]" + "scan_o[11]" + "scan_o[12]" + 
+    "scan_o[13]" + "scan_o[14]" + "scan_o[15]" + "scan_o[16]" + "scan_o[17]" + 
+    "scan_o[18]" + "scan_o[19]" + "scan_o[1]" + "scan_o[2]" + "scan_o[3]" + 
+    "scan_o[4]" + "scan_o[5]" + "scan_o[6]" + "scan_o[7]" + "scan_o[8]" + 
+    "scan_o[9]" + "z_o[0]" + "z_o[10]" + "z_o[11]" + "z_o[12]" + "z_o[13]" + 
+    "z_o[14]" + "z_o[15]" + "z_o[16]" + "z_o[17]" + "z_o[18]" + "z_o[19]" + 
+    "z_o[1]" + "z_o[20]" + "z_o[21]" + "z_o[22]" + "z_o[23]" + "z_o[24]" + 
+    "z_o[25]" + "z_o[26]" + "z_o[27]" + "z_o[28]" + "z_o[29]" + "z_o[2]" + 
+    "z_o[30]" + "z_o[31]" + "z_o[32]" + "z_o[33]" + "z_o[34]" + "z_o[35]" + 
+    "z_o[36]" + "z_o[37]" + "z_o[3]" + "z_o[4]" + "z_o[5]" + "z_o[6]" + "z_o[7]" 
+    + "z_o[8]" + "z_o[9]"';
+    "all_ports" = '"all_inputs" + "all_outputs"';
+    "_pi" = '"a_i[0]" + "a_i[10]" + "a_i[11]" + "a_i[12]" + "a_i[13]" + 
+    "a_i[14]" + "a_i[15]" + "a_i[16]" + "a_i[17]" + "a_i[18]" + "a_i[19]" + 
+    "a_i[1]" + "a_i[2]" + "a_i[3]" + "a_i[4]" + "a_i[5]" + "a_i[6]" + "a_i[7]" + 
+    "a_i[8]" + "a_i[9]" + "acc_fir_i[0]" + "acc_fir_i[1]" + "acc_fir_i[2]" + 
+    "acc_fir_i[3]" + "acc_fir_i[4]" + "acc_fir_i[5]" + "b_i[0]" + "b_i[10]" + 
+    "b_i[11]" + "b_i[12]" + "b_i[13]" + "b_i[14]" + "b_i[15]" + "b_i[16]" + 
+    "b_i[17]" + "b_i[1]" + "b_i[2]" + "b_i[3]" + "b_i[4]" + "b_i[5]" + "b_i[6]" 
+    + "b_i[7]" + "b_i[8]" + "b_i[9]" + "clock_i" + "coef_0_i[0]" + 
+    "coef_0_i[10]" + "coef_0_i[11]" + "coef_0_i[12]" + "coef_0_i[13]" + 
+    "coef_0_i[14]" + "coef_0_i[15]" + "coef_0_i[16]" + "coef_0_i[17]" + 
+    "coef_0_i[18]" + "coef_0_i[19]" + "coef_0_i[1]" + "coef_0_i[2]" + 
+    "coef_0_i[3]" + "coef_0_i[4]" + "coef_0_i[5]" + "coef_0_i[6]" + 
+    "coef_0_i[7]" + "coef_0_i[8]" + "coef_0_i[9]" + "coef_1_i[0]" + 
+    "coef_1_i[10]" + "coef_1_i[11]" + "coef_1_i[12]" + "coef_1_i[13]" + 
+    "coef_1_i[14]" + "coef_1_i[15]" + "coef_1_i[16]" + "coef_1_i[17]" + 
+    "coef_1_i[18]" + "coef_1_i[19]" + "coef_1_i[1]" + "coef_1_i[2]" + 
+    "coef_1_i[3]" + "coef_1_i[4]" + "coef_1_i[5]" + "coef_1_i[6]" + 
+    "coef_1_i[7]" + "coef_1_i[8]" + "coef_1_i[9]" + "coef_2_i[0]" + 
+    "coef_2_i[10]" + "coef_2_i[11]" + "coef_2_i[12]" + "coef_2_i[13]" + 
+    "coef_2_i[14]" + "coef_2_i[15]" + "coef_2_i[16]" + "coef_2_i[17]" + 
+    "coef_2_i[18]" + "coef_2_i[19]" + "coef_2_i[1]" + "coef_2_i[2]" + 
+    "coef_2_i[3]" + "coef_2_i[4]" + "coef_2_i[5]" + "coef_2_i[6]" + 
+    "coef_2_i[7]" + "coef_2_i[8]" + "coef_2_i[9]" + "coef_3_i[0]" + 
+    "coef_3_i[10]" + "coef_3_i[11]" + "coef_3_i[12]" + "coef_3_i[13]" + 
+    "coef_3_i[14]" + "coef_3_i[15]" + "coef_3_i[16]" + "coef_3_i[17]" + 
+    "coef_3_i[18]" + "coef_3_i[19]" + "coef_3_i[1]" + "coef_3_i[2]" + 
+    "coef_3_i[3]" + "coef_3_i[4]" + "coef_3_i[5]" + "coef_3_i[6]" + 
+    "coef_3_i[7]" + "coef_3_i[8]" + "coef_3_i[9]" + "feedback_i[0]" + 
+    "feedback_i[1]" + "feedback_i[2]" + "greset_i" + "load_acc_i" + 
+    "output_select_i[0]" + "output_select_i[1]" + "output_select_i[2]" + 
+    "register_inputs_i" + "reset_i" + "round_i" + "saturate_enable_i" + 
+    "scan_en_i" + "scan_i[0]" + "scan_i[10]" + "scan_i[11]" + "scan_i[12]" + 
+    "scan_i[13]" + "scan_i[14]" + "scan_i[15]" + "scan_i[16]" + "scan_i[17]" + 
+    "scan_i[18]" + "scan_i[19]" + "scan_i[1]" + "scan_i[2]" + "scan_i[3]" + 
+    "scan_i[4]" + "scan_i[5]" + "scan_i[6]" + "scan_i[7]" + "scan_i[8]" + 
+    "scan_i[9]" + "scan_mode_i" + "shift_right_i[0]" + "shift_right_i[1]" + 
+    "shift_right_i[2]" + "shift_right_i[3]" + "shift_right_i[4]" + 
+    "shift_right_i[5]" + "subtract_i" + "unsigned_a_i" + "unsigned_b_i"';
+    "_po" = '"dly_b_o[0]" + "dly_b_o[10]" + "dly_b_o[11]" + "dly_b_o[12]" + 
+    "dly_b_o[13]" + "dly_b_o[14]" + "dly_b_o[15]" + "dly_b_o[16]" + 
+    "dly_b_o[17]" + "dly_b_o[1]" + "dly_b_o[2]" + "dly_b_o[3]" + "dly_b_o[4]" + 
+    "dly_b_o[5]" + "dly_b_o[6]" + "dly_b_o[7]" + "dly_b_o[8]" + "dly_b_o[9]" + 
+    "scan_o[0]" + "scan_o[10]" + "scan_o[11]" + "scan_o[12]" + "scan_o[13]" + 
+    "scan_o[14]" + "scan_o[15]" + "scan_o[16]" + "scan_o[17]" + "scan_o[18]" + 
+    "scan_o[19]" + "scan_o[1]" + "scan_o[2]" + "scan_o[3]" + "scan_o[4]" + 
+    "scan_o[5]" + "scan_o[6]" + "scan_o[7]" + "scan_o[8]" + "scan_o[9]" + 
+    "z_o[0]" + "z_o[10]" + "z_o[11]" + "z_o[12]" + "z_o[13]" + "z_o[14]" + 
+    "z_o[15]" + "z_o[16]" + "z_o[17]" + "z_o[18]" + "z_o[19]" + "z_o[1]" + 
+    "z_o[20]" + "z_o[21]" + "z_o[22]" + "z_o[23]" + "z_o[24]" + "z_o[25]" + 
+    "z_o[26]" + "z_o[27]" + "z_o[28]" + "z_o[29]" + "z_o[2]" + "z_o[30]" + 
+    "z_o[31]" + "z_o[32]" + "z_o[33]" + "z_o[34]" + "z_o[35]" + "z_o[36]" + 
+    "z_o[37]" + "z_o[3]" + "z_o[4]" + "z_o[5]" + "z_o[6]" + "z_o[7]" + "z_o[8]" 
+    + "z_o[9]"';
+}
+ScanStructures {
+    ScanChain "ScanChain_0" {
+        ScanLength 10;
+        ScanIn "scan_i[0]";
+        ScanOut "scan_o[0]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_1" {
+        ScanLength 10;
+        ScanIn "scan_i[1]";
+        ScanOut "scan_o[1]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_2" {
+        ScanLength 10;
+        ScanIn "scan_i[2]";
+        ScanOut "scan_o[2]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_3" {
+        ScanLength 10;
+        ScanIn "scan_i[3]";
+        ScanOut "scan_o[3]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_4" {
+        ScanLength 10;
+        ScanIn "scan_i[4]";
+        ScanOut "scan_o[4]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_5" {
+        ScanLength 10;
+        ScanIn "scan_i[5]";
+        ScanOut "scan_o[5]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_6" {
+        ScanLength 10;
+        ScanIn "scan_i[6]";
+        ScanOut "scan_o[6]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_7" {
+        ScanLength 9;
+        ScanIn "scan_i[7]";
+        ScanOut "scan_o[7]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_8" {
+        ScanLength 9;
+        ScanIn "scan_i[8]";
+        ScanOut "scan_o[8]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_9" {
+        ScanLength 9;
+        ScanIn "scan_i[9]";
+        ScanOut "scan_o[9]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_10" {
+        ScanLength 9;
+        ScanIn "scan_i[10]";
+        ScanOut "scan_o[10]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_11" {
+        ScanLength 9;
+        ScanIn "scan_i[11]";
+        ScanOut "scan_o[11]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_12" {
+        ScanLength 9;
+        ScanIn "scan_i[12]";
+        ScanOut "scan_o[12]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_13" {
+        ScanLength 9;
+        ScanIn "scan_i[13]";
+        ScanOut "scan_o[13]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_14" {
+        ScanLength 9;
+        ScanIn "scan_i[14]";
+        ScanOut "scan_o[14]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_15" {
+        ScanLength 9;
+        ScanIn "scan_i[15]";
+        ScanOut "scan_o[15]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_16" {
+        ScanLength 9;
+        ScanIn "scan_i[16]";
+        ScanOut "scan_o[16]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_17" {
+        ScanLength 9;
+        ScanIn "scan_i[17]";
+        ScanOut "scan_o[17]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_18" {
+        ScanLength 9;
+        ScanIn "scan_i[18]";
+        ScanOut "scan_o[18]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+    ScanChain "ScanChain_19" {
+        ScanLength 9;
+        ScanIn "scan_i[19]";
+        ScanOut "scan_o[19]";
+        ScanEnable "scan_en_i";
+        ScanMasterClock "clock_i";
+    }
+}
+Timing {
+    WaveformTable "_default_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clock_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "greset_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_multiclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clock_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "greset_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clock_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "greset_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clock_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "greset_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clock_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "greset_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+        }
+    }
+}
+Procedures {
+    "multiclock_capture" {
+        W "_multiclock_capture_WFT_";
+        C {
+            "all_inputs" = \r44 N 0 \r83 N 0 \r29 N 1 \r9 N;
+            "all_outputs" = \r76 X;
+        }
+        F {
+            "scan_mode_i" = 1;
+        }
+        V {
+            "_pi" = \r168 #;
+            "_po" = \r76 #;
+        }
+    }
+    "allclock_capture" {
+        W "_allclock_capture_WFT_";
+        C {
+            "all_inputs" = \r44 N 0 \r83 N 0 \r29 N 1 \r9 N;
+            "all_outputs" = \r76 X;
+        }
+        F {
+            "scan_mode_i" = 1;
+        }
+        V {
+            "_pi" = \r168 #;
+            "_po" = \r76 #;
+        }
+    }
+    "allclock_launch" {
+        W "_allclock_launch_WFT_";
+        C {
+            "all_inputs" = \r44 N 0 \r83 N 0 \r29 N 1 \r9 N;
+            "all_outputs" = \r76 X;
+        }
+        F {
+            "scan_mode_i" = 1;
+        }
+        V {
+            "_pi" = \r168 #;
+            "_po" = \r76 #;
+        }
+    }
+    "allclock_launch_capture" {
+        W "_allclock_launch_capture_WFT_";
+        C {
+            "all_inputs" = \r44 N 0 \r83 N 0 \r29 N 1 \r9 N;
+            "all_outputs" = \r76 X;
+        }
+        F {
+            "scan_mode_i" = 1;
+        }
+        V {
+            "_pi" = \r168 #;
+            "_po" = \r76 #;
+        }
+    }
+    "load_unload" {
+        W "_default_WFT_";
+        C {
+            "all_inputs" = \r44 N 0 \r83 N 0 \r29 N 1 \r9 N;
+            "all_outputs" = \r76 X;
+        }
+        "Internal_scan_pre_shift" : V {
+            "scan_en_i" = 1;
+        }
+        Shift {
+            V {
+                "_clk" = P0;
+                "_si" = \r20 #;
+                "_so" = \r20 #;
+            }
+        }
+    }
+}
+MacroDefs {
+    "test_setup" {
+        W "_default_WFT_";
+        C {
+            "all_inputs" = \r168 N;
+            "all_outputs" = \r76 X;
+        }
+        V {
+            "clock_i" = 0;
+            "greset_i" = 0;
+            "scan_mode_i" = 1;
+        }
+        V {
+        }
+    }
+}
+
