@@ -279,7 +279,8 @@ jobs:
 
     - name: Create Tar Exe
       id: packing_ok
-      if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
+      #if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
+      if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 }}"
       run: |
         source /opt/rh/devtoolset-11/enable
         mkdir /opt/instl_dir
