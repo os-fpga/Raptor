@@ -290,6 +290,12 @@ jobs:
         cat /__w/Raptor/Raptor/Raptor_Tools/Create_Raptor_Artifact/build/_CPack_Packages/Linux/IFW/IFWOutput.log
         echo "::set-output name=exit_code::$?"
 
+    - name: open cpack log
+      if: matrix.mode == 'regression' 
+      run: |
+        df -h
+        cat $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact/build/_CPack_Packages/Linux/IFW/IFWOutput.log 
+
     - name: Check FTP server status
       if: "${{ matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
       uses: appleboy/ssh-action@master
