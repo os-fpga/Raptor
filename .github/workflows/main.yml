@@ -291,7 +291,7 @@ jobs:
         echo "::set-output name=exit_code::$?"
 
     - name: open cpack log
-      if: matrix.mode == 'regression' 
+      if: success() || failure()
       run: |
         df -h
         cat $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact/build/_CPack_Packages/Linux/IFW/IFWOutput.log 
