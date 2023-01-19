@@ -284,9 +284,10 @@ jobs:
         source /opt/rh/devtoolset-11/enable
         mkdir /opt/instl_dir
         make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir
+        make clean
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.0/lib:$LD_LIBRARY_PATH
-        bash ./Raptor_Tools/Create_Raptor_Artifact/create_release.sh -v 2022.10 -c -p -w /opt/instl_dir
-        echo "::set-output name=exit_code::$?"
+        cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
+        echo "::set-output name=exit_code::$?" 
 
     - name: Check FTP server status
       if: "${{ matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
