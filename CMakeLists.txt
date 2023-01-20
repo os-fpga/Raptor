@@ -352,11 +352,6 @@ add_custom_command(TARGET raptor POST_BUILD
           ${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/init.tcl
           ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6/init.tcl)
 
-add_custom_command(TARGET raptor POST_BUILD
-  COMMENT "Extracting gtkwave"
-  COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/gtkwave_cmake/gtkwaveTCL.tar.gz
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
-
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
 if (NOT APPLE)
