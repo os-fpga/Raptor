@@ -54,15 +54,15 @@ echo 'QMAKE_CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV
 echo 'QMAKE_CXX=/opt/rh/devtoolset-11/root/usr/bin/g++' >> $GITHUB_ENV
 echo 'PATH=/usr/local/Qt-5.15.0/bin:/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
 
-if [ -f buildqt5-centos7-gcc.tgz ]
+if [ -f bbuildqt5-centos7-gcc.tgz ]
 then
   echo "Found QT build artifact, untarring..."
   tar xvzf buildqt5-centos7-gcc.tgz
 fi
 
 echo "Downloading QT..."
-curl -L http://download.qt.io/official_releases/qt/5.15/5.15.0/single/qt-everywhere-src-5.15.0.tar.xz --output qt-everywhere-src-5.15.0.tar.xz
-tar -xf qt-everywhere-src-5.15.0.tar.xz
+curl -L https://download.qt.io/official_releases/qt/5.15/5.15.4/single/qt-everywhere-opensource-src-5.15.4.tar.xz --output qt-everywhere-src-5.15.4.tar.xz
+tar -xf qt-everywhere-src-5.15.4.tar.xz
 
 if [ -d "buildqt5" ] 
 then
@@ -72,11 +72,15 @@ then
   cd ..
 else
   echo "Building QT..."
+  # work around to make it complie on GCC 11. For reference, see (https://forum.qt.io/topic/139626/unable-to-build-static-version-of-qt-5-15-2/13)
+  sed -i '44i\#include <limits>' qt-everywhere-src-5.15.4/qtbase/src/corelib/text/qbytearraymatcher.h
+  sed -i '52i\#include <limits>' qt-everywhere-src-5.15.4/qtdeclarative/src/qmldebug/qqmlprofilerevent_p.h
+  cat qt-everywhere-src-5.15.4/qtbase/src/corelib/text/qbytearraymatcher.h
   mkdir buildqt5
   cd buildqt5
-  source /opt/rh/devtoolset-9/enable
-  ../qt-everywhere-src-5.15.0/configure -opensource -confirm-license -xcb -xcb-xlib -bundled-xcb-xinput -no-compile-examples -nomake examples
-  make -j 2
+  source /opt/rh/devtoolset-11/enable
+  ../qt-everywhere-src-5.15.4/configure -opensource -confirm-license -xcb -xcb-xlib -bundled-xcb-xinput -no-compile-examples -nomake examples
+  make -j `nproc`
   echo "Installing QT..."
   make install
   cd ..
