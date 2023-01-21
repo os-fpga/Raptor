@@ -87,7 +87,7 @@
         <internal type="repack_settings" file="gemini_10x8/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file="gemini_10x8/fabric_key.xml"/>
         <internal type="pinmap_xml" file=""/>
-        <internal type="pinmap_csv" file="gemini_10x8/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -104,7 +104,7 @@
         <resource type="ff" num="200000"/>
         <resource type="bram" num="1.12Mbits"/>
         <resource type="dsp" num="312"/>
-        <internal type="vpr_arch" file="gemini_4x4/gemini_vpr.xml"/>
+        <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
         <internal type="device_size" name="castor4x4_homogeneous"/>
         <internal type="lut_size" num="6"/>
         <internal type="channel_width" num="192"/>
