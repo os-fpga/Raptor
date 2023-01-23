@@ -1,10 +1,8 @@
+set_mode Mode_BP_SDR_A_RX HP_1_CC_28_14P
+set_pin_loc reg_a HP_1_CC_28_14P
 
-set_mode Mode_BP_SDR_A_RX Bank_VL_1_19
-set_pin_loc reg_a Bank_VL_1_19
+set_mode Mode_BP_SDR_A_RX HP_1_26_13P
+set_pin_loc reg_b HP_1_26_13P
 
-set_mode Mode_BP_SDR_A_RX Bank_VL_1_21
-set_pin_loc reg_b Bank_VL_1_21
-
-set_mode  Mode_BP_SDR_A_TX Bank_VL_1_23
-set_pin_loc Q Bank_VL_1_23
-
+set_mode  Mode_BP_SDR_A_TX HP_1_24_12P
+set_pin_loc Q HP_1_24_12P
