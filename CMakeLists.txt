@@ -133,7 +133,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 3)
-set(VERSION_PATCH 51)
+set(VERSION_PATCH 52)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -351,11 +351,6 @@ add_custom_command(TARGET raptor POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/init.tcl
           ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6/init.tcl)
-
-add_custom_command(TARGET raptor POST_BUILD
-  COMMENT "Extracting gtkwave"
-  COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/gtkwave_cmake/gtkwaveTCL.tar.gz
-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
