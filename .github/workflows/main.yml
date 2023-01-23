@@ -215,8 +215,8 @@ jobs:
         search_artifacts: true
         github_token: ${{ secrets.QT_DOWNLOAD }}
         #repo: ${{ github.repository }}
-        run_number: 2522
-        #workflow_conclusion: success
+        #run_id: 5639604041
+        workflow_conclusion: success
         
     - name: Install dependencies and build QT
       run: |
