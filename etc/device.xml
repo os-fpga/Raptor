@@ -42,6 +42,7 @@
         <internal type="technology" name="qlf_k6n10f"/>
         <internal type="synth_type" name="QL"/>
         <internal type="bitstream_enabled" num="false"/>
+        <internal type="pin_constraint_enabled" num="false"/>
         <internal type="synth_opts" name="-no_dsp -no_bram -no_adder"/>
     </device>
     <device name="GEMINI" series="Gemini" family="Gemini" package="FG676" pin_count="400" speedgrade="1" core_voltage="0.8V">

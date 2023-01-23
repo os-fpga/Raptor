@@ -1,8 +1,12 @@
 
 keep internal
 
-set_pin_loc a Bank_H_1_12
-set_pin_loc b Bank_H_1_14
-set_pin_loc c Bank_H_1_15
-set_pin_loc o Bank_H_1_16
+set_mode Mode_BP_SDR_A_RX HP_1_CC_28_14P
+set_pin_loc a HP_1_CC_28_14P
+
+set_mode Mode_BP_SDR_A_RX HP_1_26_13P
+set_pin_loc b HP_1_26_13P
+
+set_mode  Mode_BP_SDR_A_TX HP_1_24_12P
+set_pin_loc c HP_1_24_12P
 
