@@ -103,7 +103,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    architecture <vpr_file.xml> ?<openfpga_file.xml>?
                               : Uses the architecture file and optional openfpga arch file (For bitstream generation)
    custom_openfpga_script <file> : Uses a custom OpenFPGA templatized script
-   bitstream_config_files -bitstream <bitstream_setting.xml> -sim <sim_setting.xml> -repack <repack_setting.xml>
+   bitstream_config_files -bitstream <bitstream_setting.xml> -sim <sim_setting.xml> -repack <repack_setting.xml> -key <fabric_key.xml>
                               : Uses alternate bitstream generation configuration files
    set_device_size XxY        : Device fabric size selection
    packing ?clean?            : Packing
