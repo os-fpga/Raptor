@@ -216,6 +216,7 @@ jobs:
         github_token: ${{ secrets.QT_DOWNLOAD }}
         #repo: ${{ github.repository }}
         run_number: 2555
+        skip_unpack: true
         #workflow_conclusion: success
         
     - name: Install dependencies and build QT
