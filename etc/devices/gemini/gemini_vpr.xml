@@ -10,7 +10,6 @@
        ODIN II specific config begins
        Describes the types of user-specified netlist blocks (in blif, this corresponds to
        ".model [type_of_block]") that this architecture supports.
-
        Note: Basic LUTs, I/Os, and flip-flops are not included here as there are
        already special structures in blif (.names, .input, .output, and .latch)
        that describe them.
@@ -634,7 +633,6 @@
     <!-- IOs go on the periphery of the FPGA, for consistency,
          make it physically equivalent on all sides so that only one definition of I/Os is needed.
          If I do not make a physically equivalent definition, then I need to define 4 different I/Os, one for each side of the FPGA
-
          Each input of the tile can be driven by 15% of routing tracks
          Each output of the tile can drive 10% of routing tracks
     -->
@@ -1551,6 +1549,7 @@
               <input name="cascup_i" num_pins="1"/>
               <output name="cascdn_o" num_pins="1"/>
               <output name="cascup_o" num_pins="1"/>
+
               <pb_type name="mux_wrap" num_pb="1">
                 <input name="II" num_pins="6"/>
                 <output name="o4_up_1" num_pins="1"/>
@@ -1565,6 +1564,7 @@
                 <output name="cascup_o" num_pins="1"/>
                 <!-- lut Physical Mode  -->
                 <!-- Start of physical mode of look up table -->
+
                 <mode name="physical" disable_packing="true">
                   <pb_type name="frac_lut6" num_pb="1" blif_model=".subckt frac_lut6">
                     <input name="in" num_pins="6"/>
@@ -1698,6 +1698,7 @@
                   </interconnect>
                 </mode>
                 <!-- End of physical mode of look up table -->
+
                 <!-- lut6 logical mode -->
                 <!-- Start of lut6_mode logical mode -->
                 <mode name="lut6_mode" disable_packing="false">
@@ -1727,6 +1728,7 @@
                   </interconnect>
                 </mode>
                 <!-- End of lut6_mode logical mode -->
+
                 <!-- lut5 logical mode -->
                 <!-- Start of lut5_mode logical mode -->
                 <mode name="lut5_mode" disable_packing="false">
@@ -1756,6 +1758,7 @@
                   </interconnect>
                 </mode>
                 <!-- End of lut5_mode logical mode -->
+
                 <!-- lut4 logical mode -->
                 <!-- Start of lut4_mode logical mode -->
                 <mode name="lut4_mode" disable_packing="false">
@@ -1798,8 +1801,8 @@
                 <direct name="direct_o4_up_2" input="mux_wrap.o4_up_2" output="frac_lut.o4_up_2"/>
                 <direct name="direct_o4_dn_1" input="mux_wrap.o4_dn_1" output="frac_lut.o4_dn_1"/>
                 <direct name="direct_o4_dn_2" input="mux_wrap.o4_dn_2" output="frac_lut.o4_dn_2"/>
-                <!-- <direct name="direct_o5_up"     input="mux_wrap.o5_up"      output="frac_lut.o5_up"/> -->
-                <!-- <direct name="direct_o5_dn"     input="mux_wrap.o5_dn"      output="frac_lut.o5_dn"/> -->
+                <direct name="direct_o5_up"     input="mux_wrap.o5_up"      output="frac_lut.o5_up"/> 
+                <direct name="direct_o5_dn"     input="mux_wrap.o5_dn"      output="frac_lut.o5_dn"/> 
                 <direct name="direct_o6" input="mux_wrap.o6" output="frac_lut.o6"/>
                 <direct name="direct_cascdn_o" input="mux_wrap.cascdn_o" output="frac_lut.cascdn_o"/>
                 <direct name="direct_cascup_o" input="mux_wrap.cascup_o" output="frac_lut.cascup_o"/>
@@ -2434,9 +2437,13 @@
           <direct name="clock_mux" input="fle_wrapper.clk" output="ff_wrap.clock"/>
           <complete name="reset_mux" input="fle_wrapper.SS" output="ff_wrap.reset"/>
           <complete name="enable_mux" input="fle_wrapper.SS" output="ff_wrap.enable"/>
+
           <!-- LUT-to-flop connectivity -->
           <direct name="direct_out0" input="comb_block.out0" output="ff_wrap.o_up"/>
+            <pack_pattern name="comb-to-ff-up" in_port="comb_block.out0" out_port="ff_wrap.o_up"/>
           <direct name="direct_out1" input="comb_block.out1" output="ff_wrap.o_dn"/>
+            <pack_pattern name="comb-to-ff-dn" in_port="comb_block.out1" out_port="ff_wrap.o_dn"/>
+
           <!-- Carry chain connections -->
           <direct name="direct_cin" input="fle_wrapper.cin" output="comb_block.cin">
             <pack_pattern name="carrychain" in_port="fle_wrapper.cin" out_port="comb_block.cin"/>
@@ -5381,3 +5388,5 @@
     </fixed_layout>
   </layout>
 </architecture>
+
+
