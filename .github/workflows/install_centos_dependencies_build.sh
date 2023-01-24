@@ -45,7 +45,7 @@ yum install -y boost-filesystem
 yum install -y zlib-devel
 #yum install http://repo.okay.com.mx/centos/7/x86_64/release/okay-release-1-1.noarch.rpm
 yum install -y ninja-build
-yum install -y wget
+yum install -y wget zip unzip
 yum install -y gtk3-devel
 yum install -y openssl-devel
 
@@ -54,9 +54,10 @@ echo 'QMAKE_CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV
 echo 'QMAKE_CXX=/opt/rh/devtoolset-11/root/usr/bin/g++' >> $GITHUB_ENV
 echo 'PATH=/usr/local/Qt-5.15.0/bin:/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
 
-if [ -f buildqt5-centos7-gcc.tgz ]
+if [ -f buildqt5-centos7-gcc.zip ]
 then
   echo "Found QT build artifact, untarring..."
+  unzip buildqt5-centos7-gcc.zip
   tar xvzf buildqt5-centos7-gcc.tgz
 fi
 
