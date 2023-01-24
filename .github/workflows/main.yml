@@ -207,7 +207,7 @@ jobs:
         
     - name: Download workflow artifact
       if: matrix.mode == 'test' || matrix.mode =='regression'
-      uses: dawidd6/action-download-artifact@v2.24.0
+      uses: dawidd6/action-download-artifact@v2.24.3
       with:
         workflow: main.yml
         name: buildqt5-centos7-gcc
@@ -216,6 +216,7 @@ jobs:
         github_token: ${{ secrets.QT_DOWNLOAD }}
         #repo: ${{ github.repository }}
         run_number: 2555
+        skip_unpack: true
         #workflow_conclusion: success
         
     - name: Install dependencies and build QT
