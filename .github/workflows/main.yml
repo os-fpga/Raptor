@@ -282,8 +282,8 @@ jobs:
 
     - name: Create Tar Exe
       id: packing_ok
-      #if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
-      if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 }}"
+      if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
+      #if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 }}"
       run: |
         source /opt/rh/devtoolset-11/enable
         mkdir /opt/instl_dir
@@ -297,12 +297,11 @@ jobs:
       if: success() || failure()
       run: |
         df -h
-        free -hl
-        [ -f /__w/Raptor/Raptor/Raptor_Tools/Create_Raptor_Artifact/build/_CPack_Packages/Linux/IFW/IFWOutput.log ] && cat /__w/Raptor/Raptor/Raptor_Tools/Create_Raptor_Artifact/build/_CPack_Packages/Linux/IFW/IFWOutput.log
+  
 
     - name: Check FTP server status
-      #if: "${{ matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
-      if: "${{ matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 }}"
+      if: "${{ matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
+      #if: "${{ matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 }}"
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.FTP_IP }}
@@ -312,8 +311,8 @@ jobs:
         script: whoami
 
     - name: Deploy
-      #if: "${{ matrix.mode == 'regression' && github.ref == 'refs/heads/main'}}"
-      if: "${{ matrix.mode == 'regression'}}"
+      if: "${{ matrix.mode == 'regression' && github.ref == 'refs/heads/main'}}"
+      #if: "${{ matrix.mode == 'regression'}}"
       uses: appleboy/scp-action@master
       with:
          host: ${{ secrets.FTP_IP }}
