@@ -283,6 +283,7 @@ jobs:
     - name: Create Tar Exe
       id: packing_ok
       if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
+      #uncomment below line and comment above line in case you want to do deployment from any branch, Do this for below 2 steps as well
       #if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 }}"
       run: |
         source /opt/rh/devtoolset-11/enable
