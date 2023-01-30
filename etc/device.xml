@@ -70,11 +70,12 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="synth_opts" name="-no_dsp -no_bram -no_adder"/>
     </device>
-    <device name="GEMINI" series="Gemini" family="Gemini" package="FG676" pin_count="400" speedgrade="1" core_voltage="0.8V">
-        <resource type="io" num="360"/>
+
+    <device name="1GE75" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+        <resource type="io" num="400"/>
         <resource type="lut" num="34848"/>
-        <resource type="ff" num="68k"/>
-        <resource type="bram" num="5.544Mbits"/>
+        <resource type="ff" num="69696"/>
+        <resource type="bram" num="5.5Mbits"/>
         <resource type="dsp" num="154"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
         <internal type="device_size" name="castor82x68_heterogeneous"/>
