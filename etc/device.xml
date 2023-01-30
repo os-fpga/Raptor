@@ -71,7 +71,7 @@
         <internal type="synth_opts" name="-no_dsp -no_bram -no_adder"/>
     </device>
 
-    <device name="1GE75" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+    <device name="GEMINI" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400"/>
         <resource type="lut" num="34848"/>
         <resource type="ff" num="69696"/>
