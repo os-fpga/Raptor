@@ -110,7 +110,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    place ?clean?              : Detailed placer
    route ?clean?              : Router
    sta ?clean? ?opensta?      : Statistical Timing Analysis with Tatum (Default) or OpenSTA
-   power ?clean?              : Power estimator
    bitstream ?force? ?clean?  : Bitstream generation
    set_top_testbench <module> : Sets the top-level testbench module/entity
    simulation_options <simulator> <task> <options> : Sets the simulator-specific options for the specified simulator task
