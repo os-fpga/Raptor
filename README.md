@@ -37,7 +37,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    run_project <file>         : Opens and immediately runs the project
    create_design <name> ?-type <project type>? : Creates a design with <name> name
                <project type> : rtl (Default), gate-level
-   target_device <name>       : Targets a device with <name> name (MPW1, GEMINI)
+   target_device <name>       : Targets a device with <name> name (1GE75)
    add_design_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
               Each invocation of the command compiles the file list into a compilation unit 
                        <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -VHDL_2019, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017> 
