@@ -56,8 +56,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    set_top_module <top>       : Sets the top module
    add_constraint_file <file> : Sets SDC + location constraints
                                 Constraints: set_pin_loc, set_mode, all SDC Standard commands
-   set_pin_loc <design_io_name> <device_io_name> : Constraints pin location (Use in constraint file)
-   set_mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint file)
+   set_pin_loc <design_io_name> <device_io_name> ?<internal_pin_name>?: Constraints pin location (Use in constraint.pin file)
+   set_property mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint.pin file)
    script_path                : Returns the path of the Tcl script passed with --script
    keep <signal list> OR all_signals : Keeps the list of signals or all signals through Synthesis unchanged (unoptimized in certain cases)
    add_litex_ip_catalog <directory> : Browses directory for LiteX IP generators, adds the IP(s) to the IP Catalog
