@@ -1,5 +1,5 @@
 create_design ip_test
-target_device GEMINI
+target_device 1GE75
 add_litex_ip_catalog ip_generators/
 puts "Catalog:"
 foreach ip [ip_catalog] {
