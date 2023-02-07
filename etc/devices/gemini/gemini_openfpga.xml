@@ -67,10 +67,10 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="ZN" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="inv_buf" name="BUFFD1BWP7D5T16P96CPD" prefix="BUFFD1BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
@@ -79,10 +79,10 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="inv_buf" name="BUFFD2BWP7D5T16P96CPD" prefix="BUFFD2BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
@@ -91,10 +91,10 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="inv_buf" name="BUFFD4BWP7D5T16P96CPD" prefix="BUFFD4BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
@@ -103,10 +103,10 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="inv_buf" name="BUFFD12BWP7D5T16P96CPD" prefix="BUFFD12BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
@@ -115,10 +115,10 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="inv_buf" name="BUFFD16BWP7D5T16P96CPD" prefix="BUFFD16BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
@@ -127,10 +127,10 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="inv_buf" name="INVD2BWP7D5T16P96CPD" prefix="INVD2BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
@@ -139,10 +139,10 @@
       <port type="input" prefix="in" lib_name="I" size="1"/>
       <port type="output" prefix="out" lib_name="ZN" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="in" out_port="out">
-        10e-12
+        1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="gate" name="MUX2D1BWP7D5T16P96CPD" prefix="MUX2D1BWP7D5T16P96CPD" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
@@ -174,10 +174,10 @@
       <port type="input" prefix="b" lib_name="A2" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="a b" out_port="out">
-        10e-12 10e-12
+        1e-11 1e-11
       </delay_matrix>
       <delay_matrix type="fall" in_port="a b" out_port="out">
-        10e-12 10e-12
+        1e-11 1e-11
       </delay_matrix>
     </circuit_model>
     <circuit_model type="chan_wire" name="chan_segment" prefix="track_seg" is_default="true">
