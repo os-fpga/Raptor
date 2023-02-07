@@ -195,7 +195,7 @@
         <internal type="repack_settings" file="gemini_4x4/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file="gemini_4x4/fabric_key.xml"/>
         <internal type="pinmap_xml" file=""/>
-        <internal type="pinmap_csv" file="gemini_4x4/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
