@@ -14,13 +14,13 @@ set_top_testbench param_up_counter
 target_device GEMINI_10x8
 
 # RTL Simulation
-simulate rtl counter_rtl.fst
+simulate rtl verilator counter_rtl.fst
 
 # Synthesis
 synthesize delay
 
 # Post-Synthesis gate-level Simulation
-simulate gate counter_gate.fst
+simulate gate verilator counter_gate.fst
 
 # Pack/Place/Route
 packing
@@ -28,7 +28,7 @@ place
 route
 
 # Post-Route Simulation
-simulate pnr counter_pnr.fst
+simulate pnr verilator counter_pnr.fst
 
 # Static Timing Analysis
 sta opensta
