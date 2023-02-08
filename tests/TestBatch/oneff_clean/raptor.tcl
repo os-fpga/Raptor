@@ -17,7 +17,7 @@ target_device GEMINI_10x8
 analyze
 
 # RTL Simulation
-simulate rtl syn_tb_rtl.fst
+simulate rtl verilator syn_tb_rtl.fst
 set path [pwd]/oneff_gemini_clean
 set exists [file exists $path/syn_tb_rtl.fst]
 if {$exists != 1} { puts "syn_tb_rtl.fst does not exists"; exit 1 }
@@ -27,7 +27,7 @@ if {$exists != 1} { puts "syn_tb_rtl.fst does not exists"; exit 1 }
 synthesize delay
 
 # Post-Synthesis gate-level Simulation
-simulate gate syn_tb_gate.fst
+simulate gate verilator syn_tb_gate.fst
 set exists [file exists $path/syn_tb_gate.fst]
 if {$exists != 1} { puts "syn_tb_gate.fst does not exists"; exit 1 }
 
@@ -37,7 +37,7 @@ place
 route
 
 # Post-Route Simulation
-simulate pnr syn_tb_pnr.fst
+simulate pnr verilator syn_tb_pnr.fst
 set exists [file exists $path/syn_tb_pnr.fst]
 if {$exists != 1} { puts "syn_tb_pnr.fst does not exists"; exit 1 }
 
@@ -51,7 +51,7 @@ bitstream
 #simulate bitstream_bd syn_tb_bitstream.fst
 
 #clean all
-simulate rtl clean
+simulate rtl  clean
 simulate gate clean
 simulate pnr clean
 #simulate bitstream_bd clean

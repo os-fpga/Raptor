@@ -329,7 +329,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "verilator",
+                "default": "icarus",
                 "arg": "rtl_sim_type"
             },
             "options_sim": {
@@ -376,7 +376,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "verilator",
+                "default": "icarus",
                 "arg": "gate_sim_type"
             },
             "options_sim": {
@@ -423,7 +423,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "verilator",
+                "default": "icarus",
                 "arg": "pnr_sim_type"
             },
             "options_sim": {
@@ -470,7 +470,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "verilator",
+                "default": "icarus",
                 "arg": "bitstream_sim_type"
             },
             "options_sim": {
