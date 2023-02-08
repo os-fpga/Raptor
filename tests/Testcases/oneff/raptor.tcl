@@ -17,13 +17,13 @@ target_device 1GE75
 analyze
 
 # RTL Simulation
-simulate rtl syn_tb_rtl.fst
+simulate rtl verilator syn_tb_rtl.fst
 
 # Synthesis
 synthesize delay
 
 # Post-Synthesis gate-level Simulation
-simulate gate syn_tb_gate.fst
+simulate gate verilator syn_tb_gate.fst
 
 # Pack/Place/Route
 packing
@@ -31,7 +31,7 @@ place
 route
 
 # Post-Route Simulation
-simulate pnr syn_tb_pnr.fst
+simulate pnr verilator syn_tb_pnr.fst
 
 # Static Timing Analysis
 sta opensta
