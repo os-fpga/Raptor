@@ -158,12 +158,14 @@
                 "options": [
                     "High",
                     "Medium",
-                    "Low"
+                    "Low",
+                    "None"
                 ],
                 "optionsLookup": [
                     "high",
                     "medium",
-                    "low"
+                    "low",
+                    "none"
                 ],
                 "arg": "effort"
             },
@@ -172,11 +174,13 @@
                 "widgetType": "dropdown",
                 "options": [
                     "Binary",
-                    "One Hot"
+                    "One Hot",
+                    "None"
                 ],
                 "optionsLookup": [
                     "binary",
-                    "onehot"
+                    "onehot",
+                    "none"
                 ],
                 "arg": "fsm_encoding"
             },
@@ -193,7 +197,8 @@
                     "auto",
                     "none"
                 ],
-                "arg": "carry"
+                "arg": "carry",
+                "addUnset": true
             },
             "netlist_lang_dropdown": {
                 "label": "Pnr netlist language",
