@@ -1,3 +1,4 @@
+set -e
 # Install required dependencies for CentOS systems
 yum update -y
 yum group install -y "Development Tools" 
