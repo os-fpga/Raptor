@@ -659,6 +659,7 @@ if (PRODUCTION_BUILD)
       COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_legacy
       COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_10x8
       COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_4x4
+      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_compact
       COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device-rel.xml
       ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml)
 else()
