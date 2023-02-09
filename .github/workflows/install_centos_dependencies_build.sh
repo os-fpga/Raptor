@@ -30,7 +30,7 @@ yum install -y xorg-x11-server-Xvfb
 yum install -y mesa-libGL-devel
 yum install -y libxcb libxcb-devel xcb-util xcb-util-devel libxkbcommon-devel libxkbcommon-x11-devel
 yum install -y xcb-util-image-devel xcb-util-keysyms-devel xcb-util-renderutil-devel xcb-util-wm-devel
-yum install -y autoconf
+yum install -y autoconf wget
 wget https://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm
 rpm -Uvh epel-release*rpm
 yum install -y tcllib
@@ -46,7 +46,7 @@ yum install -y boost-filesystem
 yum install -y zlib-devel
 #yum install http://repo.okay.com.mx/centos/7/x86_64/release/okay-release-1-1.noarch.rpm
 yum install -y ninja-build
-yum install -y wget zip unzip
+yum install -y zip unzip
 yum install -y gtk3-devel
 yum install -y openssl-devel
 
