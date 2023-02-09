@@ -1,10 +1,10 @@
 <device_list>
      <device name="1GE75" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
-        <resource type="io" num="400"/>
-        <resource type="lut" num="34848"/>
-        <resource type="ff" num="69696"/>
-        <resource type="bram" num="5.5Mbits"/>
-        <resource type="dsp" num="154"/>
+        <resource type="io" num="400" label="I/O"/>
+        <resource type="lut" num="34848" label="LUT6s"/>
+        <resource type="ff" num="69696" label="FFs"/>
+        <resource type="bram" num="5.5Mbits" label="36K BRAMs"/>
+        <resource type="dsp" num="154" label="DSPs"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
         <internal type="device_size" name="castor82x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
