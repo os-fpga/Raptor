@@ -8,8 +8,5 @@ RETURN_PATH=`pwd`
 SCRIPT_PATH=`dirname $BASH_SOURCE`
 RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
 
-if [ -n "${PATH}" ]; then
-	export PATH=$RAPTOR_PATH/bin:$PATH
-else
-	export PATH=$RAPTOR_PATH/bin
-fi
+[ -f $RAPTOR_PATH/../.raptorenv_lin64.sh ] && source $RAPTOR_PATH/../.raptorenv_lin64.sh
+$RAPTOR_PATH/bin/raptor.exe "$@"
