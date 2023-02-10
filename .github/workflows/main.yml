@@ -117,7 +117,7 @@ jobs:
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
-        make release test/batch
+        ./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'

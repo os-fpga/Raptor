@@ -1,3 +1,4 @@
+set -e
 # Install required dependencies for Ubuntu systems
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt-get update -qq
