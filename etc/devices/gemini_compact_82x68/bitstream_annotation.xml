@@ -1,0 +1,4 @@
+<openfpga_bitstream_setting>
+  <pb_type name="dsp[dsp].RS_DSP2" source="eblif" content=".param MODE_BITS" is_mode_select_bitstream="true" bitstream_offset="0"/>
+  <pb_type name="bram[mem_36K_tdp].mem_36K" source="eblif" content=".param MODE_BITS" is_mode_select_bitstream="true" bitstream_offset="0"/>
+</openfpga_bitstream_setting>
