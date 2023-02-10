@@ -186,6 +186,7 @@ doc:
 
 uninstall:
 	$(RM) -r $(PREFIX)/bin/raptor
+	$(RM) -r $(PREFIX)/bin/raptor.exe
 	$(RM) -r $(PREFIX)/lib/raptor
 	$(RM) -r $(PREFIX)/include/raptor
 	$(RM) -r $(PREFIX)/share/raptor

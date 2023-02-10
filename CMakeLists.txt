@@ -534,6 +534,13 @@ install(
         ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclPlatDecls.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor/include)
 
+install(
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exe
+    DESTINATION ${CMAKE_INSTALL_BINDIR}
+    PERMISSIONS
+    OWNER_READ OWNER_EXECUTE OWNER_WRITE
+    GROUP_READ GROUP_EXECUTE
+    WORLD_READ WORLD_EXECUTE)
 
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
@@ -691,6 +698,7 @@ else()
 endif()
 
 
+
 add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir"
       COMMAND echo "Create bin/Flex_LM dirs in share dir"
@@ -822,5 +830,17 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars
         ${CMAKE_CURRENT_BINARY_DIR}/bin/)
-
+  add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "rename raptor binary as raptor.exe"
+        COMMAND ${CMAKE_COMMAND} -E rename
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exe)
+  add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "copy to_be_raptor_lnx as raptor"
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/src/to_be_raptor_linx
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/src/.raptorenv_lin64.sh
+          ${CMAKE_CURRENT_BINARY_DIR})
 endif()
