@@ -6,7 +6,7 @@ add_constraint_file pin_mapping.pin
 add_constraint_file constraints.sdc
 
 # Device target
-target_device 1GE75
+target_device RS1GE75
 # Compilation
 analyze
 synthesize delay
