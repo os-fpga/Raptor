@@ -9,11 +9,10 @@ set_top_module vex_soc
 synth_options -effort high -carry none
 synthesize delay
 pnr_options --gen_post_synthesis_netlist on
-pnr_netlist_lang blif
 packing
 global_placement
 place
 route
-sta opensta
+sta
 power
 bitstream
