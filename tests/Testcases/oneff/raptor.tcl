@@ -34,7 +34,7 @@ route
 simulate pnr verilator syn_tb_pnr.fst
 
 # Static Timing Analysis
-sta opensta
+sta 
 
 # Bitstream Generation
 bitstream 
