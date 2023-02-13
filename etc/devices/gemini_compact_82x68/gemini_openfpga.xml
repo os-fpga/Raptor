@@ -310,6 +310,18 @@
       <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="sram" prefix="mode" lib_name="MODE_SEL" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="01"/>
     </circuit_model>
+    <circuit_model type="ff" name="GC_FF" prefix="GC_FF" verilog_netlist="./SRC/CustomModules/gc_ff.v">
+      <design_technology type="cmos"/>
+      <input_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
+      <port type="input" prefix="D" lib_name="D" size="1"/>
+      <port type="input" prefix="SI" lib_name="SI" size="1"/>
+      <port type="output" prefix="SO" lib_name="SO" size="1"/>
+      <port type="input" prefix="R" lib_name="R" size="1"/>
+      <port type="input" prefix="E" lib_name="E" size="1"/>
+      <port type="output" prefix="Q" lib_name="Q" size="1"/>
+      <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
+    </circuit_model>
     <circuit_model type="hard_logic" name="QL_DSP" prefix="QL_DSP" is_default="true" verilog_netlist="./SRC/CustomModules/rs_dsp.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
@@ -432,14 +444,14 @@
       <tile name="dsp" port="clk[0:3]" x="-1" y="-1"/>
       <tile name="bram" port="clk[0:3]" x="-1" y="-1"/>
     </global_port>
-    <global_port name="reset" is_reset="true" default_val="1">
-      <tile name="clb" port="reset" x="-1" y="-1"/>
-      <tile name="io_top" port="reset" x="-1" y="-1"/>
-      <tile name="io_right" port="reset" x="-1" y="-1"/>
-      <tile name="io_bottom" port="reset" x="-1" y="-1"/>
-      <tile name="io_left" port="reset" x="-1" y="-1"/>
-      <tile name="dsp" port="reset" x="-1" y="-1"/>
-      <tile name="bram" port="reset" x="-1" y="-1"/>
+    <global_port name="global_reset" is_reset="true" default_val="1">
+      <tile name="clb" port="global_reset" x="-1" y="-1"/>
+      <tile name="io_top" port="global_reset" x="-1" y="-1"/>
+      <tile name="io_right" port="global_reset" x="-1" y="-1"/>
+      <tile name="io_bottom" port="global_reset" x="-1" y="-1"/>
+      <tile name="io_left" port="global_reset" x="-1" y="-1"/>
+      <tile name="dsp" port="global_reset" x="-1" y="-1"/>
+      <tile name="bram" port="global_reset" x="-1" y="-1"/>
     </global_port>
     <global_port name="scan_reset" is_reset="true" default_val="1">
       <tile name="clb" port="scan_reset" x="-1" y="-1"/>
@@ -491,97 +503,29 @@
     <!-- Binding regular FLEs -->
     <pb_type name="clb.fle[physical].fabric.frac_logic.frac_lut6" circuit_model_name="frac_lut6" mode_bits="00"/>
     <pb_type name="clb.fle[physical].fabric.frac_logic.adder_carry" circuit_model_name="QL_XOR_MUX2"/>
-    <pb_type name="clb.fle[physical].fabric.ff_phy" circuit_model_name="QL_FF" mode_bits="01"/>
+    <pb_type name="clb.fle[physical].fabric.ff_phy" circuit_model_name="GC_FF" mode_bits="01"/>
     <!-- Binding operating pb_types in mode 'n1_lut6' -->
     <pb_type name="clb.fle[n1_lut6].ble6.lut6" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" mode_bits="00">
       <port name="in" physical_mode_port="in[0:5]"/>
       <port name="out" physical_mode_port="lut6_out"/>
     </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[native_latch].native_latch" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="11"/>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCH].LATCH" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="11">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCHN].LATCHN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="10">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCHSRE].LATCHSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="11">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[LATCHNSRE].LATCHNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="10">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFF].DFF" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="01">
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1">
       <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFN].DFFN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="00">
-      <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFSRE].DFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="01">
-      <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFNSRE].DFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="00">
-      <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <!-- TODO: Add a mode bit selecting between sync/async reset. Without it DFFSRE=SDFFSRE and DFFNSRE=SDFFNSRE -->
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[SDFFSRE].SDFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="01">
-      <port name="C" physical_mode_port="clk"/>
-      <port name="R" physical_mode_port="SYNC_R"/>
-      <port name="S" physical_mode_port="SYNC_S"/>
-    </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[SDFFNSRE].SDFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1" mode_bits="00">
-      <port name="C" physical_mode_port="clk"/>
-      <port name="R" physical_mode_port="SYNC_R"/>
-      <port name="S" physical_mode_port="SYNC_S"/>
     </pb_type>
     <!-- Binding operating pb_types in mode 'n2_lut5' -->
     <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.lut5" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" physical_pb_type_index_factor="0.5" mode_bits="01">
       <port name="in" physical_mode_port="in[0:4]"/>
       <port name="out" physical_mode_port="lut5_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[native_latch].native_latch" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="11"/>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCH].LATCH" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="11">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCHN].LATCHN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="10">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCHSRE].LATCHSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="11">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[LATCHNSRE].LATCHNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="10">
-      <port name="G" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFF].DFF" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy">
       <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFN].DFFN" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="00">
-      <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFSRE].DFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
-      <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFNSRE].DFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="00">
-      <port name="C" physical_mode_port="clk"/>
-    </pb_type>
-    <!-- TODO: Add a mode bit selecting between sync/async reset. Without it DFFSRE=SDFFSRE and DFFNSRE=SDFFNSRE -->
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[SDFFSRE].SDFFSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
-      <port name="C" physical_mode_port="clk"/>
-      <port name="R" physical_mode_port="SYNC_R"/>
-      <port name="S" physical_mode_port="SYNC_S"/>
-    </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[SDFFNSRE].SDFFNSRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="00">
-      <port name="C" physical_mode_port="clk"/>
-      <port name="R" physical_mode_port="SYNC_R"/>
-      <port name="S" physical_mode_port="SYNC_S"/>
     </pb_type>
     <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.adder.lut4" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" physical_pb_type_index_factor="0.25" mode_bits="11">
       <port name="in" physical_mode_port="in[0:3]"/>
       <port name="out" physical_mode_port="lut4_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
     <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.adder.adder_carry" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.adder_carry"/>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.ff" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01"/>
-    <!-- Binding operating pb_types in mode 'shift_register' -->
-    <pb_type name="clb.fle[shift_register].shift_reg.ff[DFF].DFF" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" mode_bits="01">
+    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy">
       <port name="C" physical_mode_port="clk"/>
     </pb_type>
     <pb_type name="dsp" physical_mode_name="physical"/>
