@@ -150,7 +150,8 @@
                     "mixed",
                     "none"
                 ],
-                "arg": "_SynthOpt_"
+                "arg": "_SynthOpt_",
+                "default":"none" 
             },
             "effort_dropdown": {
                 "label": "Effort",
@@ -167,7 +168,8 @@
                     "low",
                     "none"
                 ],
-                "arg": "effort"
+                "arg": "effort",
+                "default":"high"
             },
             "fsm_encoding_dropdown": {
                 "label": "FSM Encoding",
@@ -182,7 +184,8 @@
                     "onehot",
                     "none"
                 ],
-                "arg": "fsm_encoding"
+                "arg": "fsm_encoding",
+                "default":"onehot"
             },
             "carry_dropdown": {
                 "label": "Carry",
@@ -198,7 +201,8 @@
                     "none"
                 ],
                 "arg": "carry",
-                "addUnset": true
+                "addUnset": true,
+                "default":"auto"
             },
             "netlist_lang_dropdown": {
                 "label": "Pnr netlist language",
