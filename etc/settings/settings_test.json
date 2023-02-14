@@ -159,14 +159,12 @@
                 "options": [
                     "High",
                     "Medium",
-                    "Low",
-                    "None"
+                    "Low"
                 ],
                 "optionsLookup": [
                     "high",
                     "medium",
-                    "low",
-                    "none"
+                    "low"
                 ],
                 "arg": "effort",
                 "default":"high"
@@ -176,13 +174,11 @@
                 "widgetType": "dropdown",
                 "options": [
                     "Binary",
-                    "One Hot",
-                    "None"
+                    "One Hot"
                 ],
                 "optionsLookup": [
                     "binary",
-                    "onehot",
-                    "none"
+                    "onehot"
                 ],
                 "arg": "fsm_encoding",
                 "default":"onehot"
@@ -201,7 +197,6 @@
                     "none"
                 ],
                 "arg": "carry",
-                "addUnset": true,
                 "default":"auto"
             },
             "netlist_lang_dropdown": {
