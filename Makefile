@@ -89,6 +89,7 @@ install: release
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_legacy
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
 	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
+	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
 else
 install: release
 	cmake --install build
