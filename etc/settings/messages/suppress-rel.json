@@ -1,0 +1,10 @@
+{
+  "suppress" : [
+    "unconnected pin in architecture",
+    "transistor to minimum width",
+    "had no out-going switches",
+    "has no fanin",
+    "Found no more sample locations for",
+    ": Model "
+  ]
+}
