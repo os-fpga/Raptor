@@ -1734,18 +1734,18 @@
                     <input name="in" num_pins="5" port_class="lut_in"/>
                     <output name="out" num_pins="1" port_class="lut_out"/>
                     <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
-                2.591e-10
-                3.667e-10
-                2.541e-10
-                3.379e-10
-                1.921e-10
+                1.277e-10
+                2.517e-10
+                1.28e-10
+                2.173e-10
+                6.93e-11
             </delay_matrix>
                     <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
-                1.332e-10
-                1.84e-10
-                1.315e-10
-                1.764e-10
-                9.92e-11
+                6.65e-11
+                1.17e-10
+                6.81e-11
+                1.058e-10
+                2.23e-11
             </delay_matrix>
                   </pb_type>
                   <interconnect>
@@ -1763,16 +1763,16 @@
                     <input name="in" num_pins="4" port_class="lut_in"/>
                     <output name="out" num_pins="1" port_class="lut_out"/>
                     <delay_matrix type="max" in_port="lut4.in" out_port="lut4.out">
-                2.591e-10
-                3.667e-10
-                2.541e-10
-                3.379e-10
+                8.78e-11
+                2.111e-10
+                8.73e-11
+                1.774e-10
             </delay_matrix>
                     <delay_matrix type="min" in_port="lut4.in" out_port="lut4.out">
-                1.332e-10
-                1.84e-10
-                1.315e-10
-                1.764e-10
+                3.66e-11
+                8.71e-11
+                3.83e-11
+                7.56e-11
             </delay_matrix>
                   </pb_type>
                   <interconnect>
@@ -1849,12 +1849,12 @@
                   <input name="cin" num_pins="1"/>
                   <output name="sum" num_pins="1"/>
                   <output name="cout" num_pins="1"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.p" out_port="fa_1bit.sum"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.g" out_port="fa_1bit.sum"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.cin" out_port="fa_1bit.sum"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.p" out_port="fa_1bit.cout"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.g" out_port="fa_1bit.cout"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.cin" out_port="fa_1bit.cout"/>
+                  <delay_constant max="4.938e-10" min="2e-11" in_port="fa_1bit.p" out_port="fa_1bit.sum"/>
+                  <delay_constant max="4.901e-10" min="4.8e-11" in_port="fa_1bit.g" out_port="fa_1bit.sum"/>
+                  <delay_constant max="4.922e-10" min="2.02e-11" in_port="fa_1bit.cin" out_port="fa_1bit.sum"/>
+                  <delay_constant max="4.838e-10" min="1.55e-11" in_port="fa_1bit.p" out_port="fa_1bit.cout"/>
+                  <delay_constant max="4.809e-10" min="2.1e-11" in_port="fa_1bit.g" out_port="fa_1bit.cout"/>
+                  <delay_constant max="4.822e-10" min="4.423e-10" in_port="fa_1bit.cin" out_port="fa_1bit.cout"/>
                 </pb_type>
                 <interconnect>
                   <direct name="direct_p_conn" input="fa_2bit_phy.p" output="fa_1bit.p"/>
@@ -1892,12 +1892,12 @@
                   <input name="cin" num_pins="1"/>
                   <output name="sum" num_pins="1"/>
                   <output name="cout" num_pins="1"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.p" out_port="fa_1bit.sum"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.g" out_port="fa_1bit.sum"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.cin" out_port="fa_1bit.sum"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.p" out_port="fa_1bit.cout"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.g" out_port="fa_1bit.cout"/>
-                  <delay_constant max="1e-10" min="1e-10" in_port="fa_1bit.cin" out_port="fa_1bit.cout"/>
+                  <delay_constant max="4.938e-10" min="2e-11" in_port="fa_1bit.p" out_port="fa_1bit.sum"/>
+                  <delay_constant max="4.901e-10" min="4.8e-11" in_port="fa_1bit.g" out_port="fa_1bit.sum"/>
+                  <delay_constant max="4.922e-10" min="2.02e-11" in_port="fa_1bit.cin" out_port="fa_1bit.sum"/>
+                  <delay_constant max="4.838e-10" min="1.55e-11" in_port="fa_1bit.p" out_port="fa_1bit.cout"/>
+                  <delay_constant max="4.809e-10" min="2.1e-11" in_port="fa_1bit.g" out_port="fa_1bit.cout"/>
+                  <delay_constant max="4.822e-10" min="4.423e-10" in_port="fa_1bit.cin" out_port="fa_1bit.cout"/>
                 </pb_type>
                 <interconnect>
                   <direct name="direct_p_conn" input="fa_2bit.p" output="fa_1bit.p"/>
@@ -2439,7 +2439,6 @@
           <pack_pattern name="comb-to-ff-up" in_port="comb_block.out0" out_port="ff_wrap.o_up"/>
           <direct name="direct_out1" input="comb_block.out1" output="ff_wrap.o_dn"/>
           <pack_pattern name="comb-to-ff-dn" in_port="comb_block.out1" out_port="ff_wrap.o_dn"/>
-
           <!-- Carry chain connections -->
           <direct name="direct_cin" input="fle_wrapper.cin" output="comb_block.cin">
             <pack_pattern name="carrychain" in_port="fle_wrapper.cin" out_port="comb_block.cin"/>
@@ -2802,11 +2801,11 @@
             <input name="unsigned_a" num_pins="1"/>
             <input name="unsigned_b" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <delay_constant max="1e-10" min="1e-10" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
-            <delay_constant max="1e-10" min="1e-10" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
-            <delay_constant max="1e-10" min="1e-10" in_port="RS_DSP_MULT.unsigned_a" out_port="RS_DSP_MULT.z"/>
-            <delay_constant max="1e-10" min="1e-10" in_port="RS_DSP_MULT.unsigned_b" out_port="RS_DSP_MULT.z"/>
-            <delay_constant max="1e-10" min="1e-10" in_port="RS_DSP_MULT.feedback" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="5e-11" min="4e-11" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="5e-11" min="4e-11" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="5e-11" min="4e-11" in_port="RS_DSP_MULT.unsigned_a" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="5e-11" min="4e-11" in_port="RS_DSP_MULT.unsigned_b" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="5e-11" min="5e-11" in_port="RS_DSP_MULT.feedback" out_port="RS_DSP_MULT.z"/>
           </pb_type>
           <interconnect>
             <!-- connect RS_DSP_MULT to dsp_rtl -->
@@ -2828,7 +2827,7 @@
             <input name="unsigned_a" num_pins="1"/>
             <input name="unsigned_b" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULT_REGIN.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULT_REGIN.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGIN.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGIN.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGIN.b" clock="clk"/>
@@ -2858,7 +2857,7 @@
             <input name="unsigned_a" num_pins="1"/>
             <input name="unsigned_b" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULT_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULT_REGOUT.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGOUT.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGOUT.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGOUT.b" clock="clk"/>
@@ -2888,7 +2887,7 @@
             <input name="unsigned_a" num_pins="1"/>
             <input name="unsigned_b" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGIN_REGOUT.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
@@ -2923,7 +2922,7 @@
             <input name="subtract" num_pins="1"/>
             <input name="load_acc" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTACC.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTACC.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC.b" clock="clk"/>
@@ -2968,7 +2967,7 @@
             <input name="subtract" num_pins="1"/>
             <input name="load_acc" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTACC_REGIN.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTACC_REGIN.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGIN.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGIN.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGIN.b" clock="clk"/>
@@ -3013,7 +3012,7 @@
             <input name="subtract" num_pins="1"/>
             <input name="load_acc" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTACC_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTACC_REGOUT.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGOUT.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGOUT.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGOUT.b" clock="clk"/>
@@ -3058,7 +3057,7 @@
             <input name="subtract" num_pins="1"/>
             <input name="load_acc" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.b" clock="clk"/>
@@ -3105,7 +3104,7 @@
             <input name="acc_fir" num_pins="6"/>
             <output name="z" num_pins="38"/>
             <output name="dly_b" num_pins="18"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD.b" clock="clk"/>
@@ -3118,7 +3117,7 @@
             <T_setup value="1e-10" port="RS_DSP_MULTADD.subtract" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD.load_acc" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD.acc_fir" clock="clk"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD.dly_b" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD.dly_b" clock="clk"/>
           </pb_type>
           <interconnect>
             <!-- connect RS_DSP_* to dsp_rtl -->
@@ -3156,7 +3155,7 @@
             <input name="acc_fir" num_pins="6"/>
             <output name="z" num_pins="38"/>
             <output name="dly_b" num_pins="18"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN.b" clock="clk"/>
@@ -3169,7 +3168,7 @@
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN.subtract" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN.load_acc" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN.acc_fir" clock="clk"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD_REGIN.dly_b" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD_REGIN.dly_b" clock="clk"/>
           </pb_type>
           <interconnect>
             <!-- connect RS_DSP_* to dsp_rtl -->
@@ -3207,7 +3206,7 @@
             <input name="acc_fir" num_pins="6"/>
             <output name="z" num_pins="38"/>
             <output name="dly_b" num_pins="18"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGOUT.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGOUT.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGOUT.b" clock="clk"/>
@@ -3220,7 +3219,7 @@
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGOUT.subtract" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGOUT.load_acc" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGOUT.acc_fir" clock="clk"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD_REGOUT.dly_b" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD_REGOUT.dly_b" clock="clk"/>
           </pb_type>
           <interconnect>
             <!-- connect RS_DSP_* to dsp_rtl -->
@@ -3258,7 +3257,7 @@
             <input name="acc_fir" num_pins="6"/>
             <output name="z" num_pins="38"/>
             <output name="dly_b" num_pins="18"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.lreset" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
@@ -3271,7 +3270,7 @@
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
             <T_setup value="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
-            <T_clock_to_Q max="1e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.dly_b" clock="clk"/>
+            <T_clock_to_Q max="6.53908e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.dly_b" clock="clk"/>
           </pb_type>
           <interconnect>
             <!-- connect RS_DSP_* to dsp_rtl -->
