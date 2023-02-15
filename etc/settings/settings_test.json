@@ -151,7 +151,7 @@
                     "none"
                 ],
                 "arg": "_SynthOpt_",
-                "default":"none" 
+                "default":"None" 
             },
             "effort_dropdown": {
                 "label": "Effort",
@@ -167,7 +167,7 @@
                     "low"
                 ],
                 "arg": "effort",
-                "default":"high"
+                "default":"High"
             },
             "fsm_encoding_dropdown": {
                 "label": "FSM Encoding",
@@ -181,7 +181,7 @@
                     "onehot"
                 ],
                 "arg": "fsm_encoding",
-                "default":"onehot"
+                "default":"One Hot"
             },
             "carry_dropdown": {
                 "label": "Carry",
@@ -197,7 +197,7 @@
                     "none"
                 ],
                 "arg": "carry",
-                "default":"auto"
+                "default":"Auto"
             },
             "netlist_lang_dropdown": {
                 "label": "Pnr netlist language",
@@ -214,7 +214,7 @@
                     "verilog",
                     "vhdl"
                 ],
-                "default": "verilog",
+                "default": "Verilog",
                 "arg": "netlist_lang"
             },
             "no_dsp_checkbox": {
@@ -254,7 +254,7 @@
 		    "verilog",
 		    "vhdl"
 		],
-		"default": "verilog",
+		"default": "Verilog",
 		"arg": "netlist_lang"
 	    },
             "_META_": {
@@ -333,7 +333,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "icarus",
+                "default": "Icarus",
                 "arg": "rtl_sim_type"
             },
             "options_sim": {
@@ -380,7 +380,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "icarus",
+                "default": "Icarus",
                 "arg": "gate_sim_type"
             },
             "options_sim": {
@@ -427,7 +427,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "icarus",
+                "default": "Icarus",
                 "arg": "pnr_sim_type"
             },
             "options_sim": {
@@ -474,7 +474,7 @@
                     "ghdl",
                     "icarus"
                 ],
-                "default": "icarus",
+                "default": "Icarus",
                 "arg": "bitstream_sim_type"
             },
             "options_sim": {
