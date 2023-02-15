@@ -46,7 +46,7 @@
         <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
-        <internal type="technology" name="genesis2"/>
+        <internal type="technology" name="genesis3"/>
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
@@ -73,7 +73,7 @@
         <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
-        <internal type="technology" name="genesis2"/>
+        <internal type="technology" name="genesis3"/>
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
