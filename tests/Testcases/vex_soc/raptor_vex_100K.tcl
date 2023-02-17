@@ -14,5 +14,4 @@ global_placement
 place
 route
 sta 
-power
-bitstream
+#bitstream

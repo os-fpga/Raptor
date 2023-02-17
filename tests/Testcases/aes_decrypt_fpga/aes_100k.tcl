@@ -13,5 +13,4 @@ packing
 place
 route
 sta 
-power
-bitstream
+#bitstream
