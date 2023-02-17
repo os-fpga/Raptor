@@ -81,15 +81,15 @@
     </model>
     <model name="scff">
       <input_ports>
-        <port name="D" clock="clk"/>
-        <port name="SI" clock="clk"/>
-        <port name="R" clock="clk"/>
-        <port name="E" clock="clk"/>
-        <port name="clk" is_clock="1"/>
+        <port name="D" clock="C"/>
+        <port name="SI" clock="C"/>
+        <port name="R" clock="C"/>
+        <port name="E" clock="C"/>
+        <port name="C" is_clock="1"/>
       </input_ports>
       <output_ports>
-        <port name="Q" clock="clk"/>
-        <port name="SO" clock="clk"/>
+        <port name="Q" clock="C"/>
+        <port name="SO" clock="C"/>
       </output_ports>
     </model>
     <model name="dsp_phy">
@@ -1315,16 +1315,16 @@
               <input name="R" num_pins="1"/>
               <input name="E" num_pins="1"/>
               <output name="Q" num_pins="1"/>
-              <clock name="clk" num_pins="1"/>
-              <T_setup value="6.34486e-11" port="ff_phy.D" clock="clk"/>
-              <T_setup value="7.42229e-11" port="ff_phy.SI" clock="clk"/>
-              <T_setup value="8.14058e-11" port="ff_phy.E" clock="clk"/>
-              <T_setup value="-8.73915e-11" port="ff_phy.R" clock="clk"/>
-              <T_clock_to_Q max="7.09448e-10" port="ff_phy.Q" clock="clk"/>
-              <T_clock_to_Q max="6.27806e-10" port="ff_phy.SO" clock="clk"/>
+              <clock name="C" num_pins="1"/>
+              <T_setup value="6.34486e-11" port="ff_phy.D" clock="C"/>
+              <T_setup value="7.42229e-11" port="ff_phy.SI" clock="C"/>
+              <T_setup value="8.14058e-11" port="ff_phy.E" clock="C"/>
+              <T_setup value="-8.73915e-11" port="ff_phy.R" clock="C"/>
+              <T_clock_to_Q max="7.09448e-10" port="ff_phy.Q" clock="C"/>
+              <T_clock_to_Q max="6.27806e-10" port="ff_phy.SO" clock="C"/>
             </pb_type>
             <interconnect>
-              <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].clk"/>
+              <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].C"/>
               <complete name="direct_reset" input="fabric.reset" output="ff_phy[1:0].R"/>
               <complete name="direct_enable" input="fabric.enable" output="ff_phy[1:0].E"/>
               <direct name="direct_in" input="fabric.in[5:0]" output="frac_logic.in[5:0]"/>
@@ -2699,174 +2699,6 @@
     </pb_type>
   </complexblocklist>
   <layout tileable="true" through_channel="true">
-    <fixed_layout name="4x4" width="6" height="6">
-      <!--Default to clb-->
-      <fill type="clb" priority="1"/>
-      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
-      <row type="io_top" starty="H-1" priority="10"/>
-      <row type="io_bottom" starty="0" priority="10"/>
-      <col type="io_left" startx="0" priority="10"/>
-      <col type="io_right" startx="W-1" priority="10"/>
-      <!--Overwrite corners with 'EMPTY' blocks-->
-      <corners type="EMPTY" priority="11"/>
-    </fixed_layout>
-    <fixed_layout name="6x6" width="8" height="8">
-      <!--Default to clb-->
-      <fill type="clb" priority="1"/>
-      <!--Insert DSP column(s)-->
-      <col type="dsp" startx="3" starty="1" priority="30"/>
-      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
-      <row type="io_top" starty="H-1" priority="10"/>
-      <row type="io_bottom" starty="0" priority="10"/>
-      <col type="io_left" startx="0" priority="10"/>
-      <col type="io_right" startx="W-1" priority="10"/>
-      <!--Overwrite corners with 'EMPTY' blocks-->
-      <corners type="EMPTY" priority="11"/>
-    </fixed_layout>
-    <fixed_layout name="6x6b" width="8" height="8">
-      <!--Default to clb-->
-      <fill type="clb" priority="1"/>
-      <!--Insert DSP column(s)-->
-      <col type="dsp" startx="4" starty="1" priority="30"/>
-      <!--Insert DSP column(s)-->
-      <col type="bram" startx="2" starty="1" priority="30"/>
-      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
-      <row type="io_top" starty="H-1" priority="10"/>
-      <row type="io_bottom" starty="0" priority="10"/>
-      <col type="io_left" startx="0" priority="10"/>
-      <col type="io_right" startx="W-1" priority="10"/>
-      <!--Overwrite corners with 'EMPTY' blocks-->
-      <corners type="EMPTY" priority="11"/>
-    </fixed_layout>
-    <fixed_layout name="12x12" width="14" height="14">
-      <!--Mini Castor array complete with DSP and BRAM-->
-      <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->
-      <row type="io_top" starty="H-1" priority="100"/>
-      <row type="io_bottom" starty="0" priority="100"/>
-      <col type="io_left" startx="0" priority="100"/>
-      <col type="io_right" startx="W-1" priority="100"/>
-      <corners type="EMPTY" priority="101"/>
-      <!--Fill with 'clb'-->
-      <fill type="clb" priority="10"/>
-      <!--Overlay with 'dsp'-->
-      <col type="dsp" startx="2" starty="1" priority="30"/>
-      <col type="dsp" startx="8" starty="1" priority="30"/>
-      <!--Overlay with 'bram'-->
-      <col type="bram" startx="5" starty="1" priority="20"/>
-      <col type="bram" startx="11" starty="1" priority="20"/>
-    </fixed_layout>
-    <fixed_layout name="36x36" width="38" height="38">
-      <!--Medium array with double BRAM: enough to run aes_decrypt-->
-      <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->
-      <row type="io_top" starty="H-1" priority="100"/>
-      <row type="io_bottom" starty="0" priority="100"/>
-      <col type="io_left" startx="0" priority="100"/>
-      <col type="io_right" startx="W-1" priority="100"/>
-      <corners type="EMPTY" priority="101"/>
-      <!--Fill with 'clb'-->
-      <fill type="clb" priority="10"/>
-      <!--Overlay with 'bram'-->
-      <col type="bram" startx="2" starty="1" priority="20"/>
-      <col type="bram" startx="5" starty="1" priority="20"/>
-      <col type="bram" startx="8" starty="1" priority="20"/>
-      <col type="bram" startx="11" starty="1" priority="20"/>
-      <col type="bram" startx="14" starty="1" priority="20"/>
-      <col type="bram" startx="17" starty="1" priority="20"/>
-      <col type="bram" startx="20" starty="1" priority="20"/>
-      <col type="bram" startx="23" starty="1" priority="20"/>
-      <col type="bram" startx="26" starty="1" priority="20"/>
-      <col type="bram" startx="29" starty="1" priority="20"/>
-      <col type="bram" startx="32" starty="1" priority="20"/>
-      <col type="bram" startx="35" starty="1" priority="20"/>
-    </fixed_layout>
-    <fixed_layout name="104x75" width="106" height="77">
-      <!--Full-size Castor array-->
-      <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->
-      <row type="io_top" starty="H-1" priority="90"/>
-      <row type="io_bottom" starty="0" priority="91"/>
-      <col type="io_right" startx="W-1" priority="92"/>
-      <col type="io_left" startx="0" priority="93"/>
-      <corners type="EMPTY" priority="100"/>
-      <!--  <row type="EMPTY" starty="H-1" priority="101"/>   
-         <col type="EMPTY" startx="W-1" priority="102"/>   
-         <row type="EMPTY" starty="0" priority="103"/>   
-         <col type="EMPTY" startx="0" priority="104"/>   -->
-      <!--Fill with 'clb'-->
-      <fill type="clb" priority="10"/>
-      <!--Overlay with 'dsp'-->
-      <col type="dsp" startx="3" starty="2" priority="30"/>
-      <col type="dsp" startx="9" starty="2" priority="30"/>
-      <col type="dsp" startx="15" starty="2" priority="30"/>
-      <col type="dsp" startx="21" starty="2" priority="30"/>
-      <col type="dsp" startx="27" starty="2" priority="30"/>
-      <col type="dsp" startx="33" starty="2" priority="30"/>
-      <col type="dsp" startx="39" starty="2" priority="30"/>
-      <col type="dsp" startx="45" starty="2" priority="30"/>
-      <col type="dsp" startx="51" starty="2" priority="30"/>
-      <col type="dsp" startx="57" starty="2" priority="30"/>
-      <col type="dsp" startx="63" starty="2" priority="30"/>
-      <col type="dsp" startx="69" starty="2" priority="30"/>
-      <col type="dsp" startx="75" starty="2" priority="30"/>
-      <col type="dsp" startx="81" starty="2" priority="30"/>
-      <col type="dsp" startx="87" starty="2" priority="30"/>
-      <col type="dsp" startx="93" starty="2" priority="30"/>
-      <col type="dsp" startx="99" starty="2" priority="30"/>
-      <!--Overlay with 'bram'-->
-      <col type="bram" startx="6" starty="2" priority="20"/>
-      <col type="bram" startx="12" starty="2" priority="20"/>
-      <col type="bram" startx="18" starty="2" priority="20"/>
-      <col type="bram" startx="24" starty="2" priority="20"/>
-      <col type="bram" startx="30" starty="2" priority="20"/>
-      <col type="bram" startx="36" starty="2" priority="20"/>
-      <col type="bram" startx="42" starty="2" priority="20"/>
-      <col type="bram" startx="48" starty="2" priority="20"/>
-      <col type="bram" startx="54" starty="2" priority="20"/>
-      <col type="bram" startx="60" starty="2" priority="20"/>
-      <col type="bram" startx="66" starty="2" priority="20"/>
-      <col type="bram" startx="72" starty="2" priority="20"/>
-      <col type="bram" startx="78" starty="2" priority="20"/>
-      <col type="bram" startx="84" starty="2" priority="20"/>
-      <col type="bram" startx="90" starty="2" priority="20"/>
-      <col type="bram" startx="96" starty="2" priority="20"/>
-      <col type="bram" startx="102" starty="2" priority="20"/>
-    </fixed_layout>
-    <fixed_layout name="78x66" width="80" height="68">
-      <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->
-      <row type="io_top" starty="H-1" priority="100"/>
-      <row type="io_bottom" starty="0" priority="100"/>
-      <col type="io_left" startx="0" priority="100"/>
-      <col type="io_right" startx="W-1" priority="100"/>
-      <corners type="EMPTY" priority="101"/>
-      <!--Fill with 'clb'-->
-      <fill type="clb" priority="10"/>
-      <!--Overlay with 'dsp'-->
-      <col type="dsp" startx="3" starty="1" priority="30"/>
-      <col type="dsp" startx="9" starty="1" priority="30"/>
-      <col type="dsp" startx="15" starty="1" priority="30"/>
-      <col type="dsp" startx="21" starty="1" priority="30"/>
-      <col type="dsp" startx="27" starty="1" priority="30"/>
-      <col type="dsp" startx="33" starty="1" priority="30"/>
-      <col type="dsp" startx="39" starty="1" priority="30"/>
-      <col type="dsp" startx="45" starty="1" priority="30"/>
-      <col type="dsp" startx="51" starty="1" priority="30"/>
-      <col type="dsp" startx="57" starty="1" priority="30"/>
-      <col type="dsp" startx="63" starty="1" priority="30"/>
-      <col type="dsp" startx="69" starty="1" priority="30"/>
-      <col type="dsp" startx="75" starty="1" priority="30"/>
-      <!--Overlay with 'bram'-->
-      <col type="bram" startx="6" starty="1" priority="40"/>
-      <col type="bram" startx="12" starty="1" priority="40"/>
-      <col type="bram" startx="18" starty="1" priority="40"/>
-      <col type="bram" startx="24" starty="1" priority="40"/>
-      <col type="bram" startx="30" starty="1" priority="40"/>
-      <col type="bram" startx="36" starty="1" priority="40"/>
-      <col type="bram" startx="42" starty="1" priority="40"/>
-      <col type="bram" startx="48" starty="1" priority="40"/>
-      <col type="bram" startx="54" starty="1" priority="40"/>
-      <col type="bram" startx="60" starty="1" priority="40"/>
-      <col type="bram" startx="66" starty="1" priority="40"/>
-      <col type="bram" startx="72" starty="1" priority="40"/>
-    </fixed_layout>
     <fixed_layout name="castor10x8_heterogeneous" width="12" height="10">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
