@@ -81,15 +81,15 @@
     </model>
     <model name="scff">
       <input_ports>
-        <port name="D" clock="clk"/>
-        <port name="SI" clock="clk"/>
-        <port name="R" clock="clk"/>
-        <port name="E" clock="clk"/>
-        <port name="clk" is_clock="1"/>
+        <port name="D" clock="C"/>
+        <port name="SI" clock="C"/>
+        <port name="R" clock="C"/>
+        <port name="E" clock="C"/>
+        <port name="C" is_clock="1"/>
       </input_ports>
       <output_ports>
-        <port name="Q" clock="clk"/>
-        <port name="SO" clock="clk"/>
+        <port name="Q" clock="C"/>
+        <port name="SO" clock="C"/>
       </output_ports>
     </model>
     <model name="dsp_phy">
@@ -511,6 +511,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="bottom">io_top.scan_reset io_top.a2f_o io_top.f2a_i io_top.clk io_top.sc_in io_top.sc_out io_top.global_reset</loc>
@@ -534,6 +535,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="left">io_right.scan_reset io_right.a2f_o io_right.f2a_i io_right.clk io_right.sc_in io_right.sc_out io_right.global_reset</loc>
@@ -557,6 +559,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top">io_bottom.scan_reset io_bottom.a2f_o io_bottom.f2a_i io_bottom.clk io_bottom.sc_in io_bottom.sc_out io_bottom.global_reset</loc>
@@ -580,6 +583,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="right">io_left.scan_reset io_left.a2f_o io_left.f2a_i io_left.clk io_left.sc_in io_left.sc_out io_left.global_reset</loc>
@@ -1315,16 +1319,16 @@
               <input name="R" num_pins="1"/>
               <input name="E" num_pins="1"/>
               <output name="Q" num_pins="1"/>
-              <clock name="clk" num_pins="1"/>
-              <T_setup value="6.34486e-11" port="ff_phy.D" clock="clk"/>
-              <T_setup value="7.42229e-11" port="ff_phy.SI" clock="clk"/>
-              <T_setup value="8.14058e-11" port="ff_phy.E" clock="clk"/>
-              <T_setup value="-8.73915e-11" port="ff_phy.R" clock="clk"/>
-              <T_clock_to_Q max="7.09448e-10" port="ff_phy.Q" clock="clk"/>
-              <T_clock_to_Q max="6.27806e-10" port="ff_phy.SO" clock="clk"/>
+              <clock name="C" num_pins="1"/>
+              <T_setup value="6.34486e-11" port="ff_phy.D" clock="C"/>
+              <T_setup value="7.42229e-11" port="ff_phy.SI" clock="C"/>
+              <T_setup value="8.14058e-11" port="ff_phy.E" clock="C"/>
+              <T_setup value="-8.73915e-11" port="ff_phy.R" clock="C"/>
+              <T_clock_to_Q max="7.09448e-10" port="ff_phy.Q" clock="C"/>
+              <T_clock_to_Q max="6.27806e-10" port="ff_phy.SO" clock="C"/>
             </pb_type>
             <interconnect>
-              <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].clk"/>
+              <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].C"/>
               <complete name="direct_reset" input="fabric.reset" output="ff_phy[1:0].R"/>
               <complete name="direct_enable" input="fabric.enable" output="ff_phy[1:0].E"/>
               <direct name="direct_in" input="fabric.in[5:0]" output="frac_logic.in[5:0]"/>
