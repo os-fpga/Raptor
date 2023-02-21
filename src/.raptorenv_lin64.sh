@@ -28,3 +28,5 @@ fi
 [[ -f "$RAPTOR_PATH/bin/HDL_simulator/setup_sim" ]] && source $RAPTOR_PATH/bin/HDL_simulator/setup_sim
 
 
+export PATH=$RAPTOR_PATH/share/envs/litex/bin:$PATH
+export LIBPYTHON_LOC=$RAPTOR_PATH/share/envs/python3.8/lib/libpython3.8.so.1.0
