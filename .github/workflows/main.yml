@@ -83,19 +83,36 @@ jobs:
         files: "*.xml"
         target_branch: xml_${{ github.event.client_payload.new_tag }}
           
-      - name: Create PR
-        if: ${{ matrix.mode == 'test' && github.event_name == 'repository_dispatch' }}
-        uses: repo-sync/pull-request@v2
-        with:
+    - name: Create PR
+      if: ${{ matrix.mode == 'test' && github.event_name == 'repository_dispatch' }}
+      uses: repo-sync/pull-request@v2
+      with:
           source_branch: xml_${{ github.event.client_payload.new_tag }}                   # branch having xmls files
           destination_branch: "main"                                                      # name of branch on which PR go
           pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main"   # Title of pull request
           pr_body: "An automated PR to checkin New XMLs tag"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
-          pr_label: "auto-pr"                                                             # Comma-separated list (no spaces)
+          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
           pr_allow_empty: true                                                            # Creates pull request even if there are no changes
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: automerge XMLs PR
+      if: ${{ matrix.mode == 'test' && github.event_name == 'repository_dispatch' }}
+      uses: "pascalgn/automerge-action@v0.15.6"
+      env:
+          GITHUB_TOKEN: "${{ secrets.OPENFPGA_CASTOR_XML_MERGE }}"
+          MERGE_LABELS: "openfpga_castor_pd_XMLs"
+          MERGE_REMOVE_LABELS: "openfpga_castor_pd_XMLs"
+          MERGE_METHOD: "merge"
+          MERGE_COMMIT_MESSAGE: "Merge the XMLs version ${{ github.event.client_payload.new_tag }}"
+          MERGE_FORKS: "false"
+          MERGE_RETRIES: "2"
+          MERGE_RETRY_SLEEP: "10000"
+          MERGE_REQUIRED_APPROVALS: "0"
+          MERGE_DELETE_BRANCH: "true"
+          MERGE_ERROR_FAIL: "true"
+
 
     - name: Install dependencies
       run: |
