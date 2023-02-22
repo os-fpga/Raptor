@@ -9,11 +9,22 @@
 <!-- This file just provides the default implementation -->
 <repack_design_constraints>
     <pin_constraint pb_type="clb" pin="clk[0]" net="clock0"/>
+    <pin_constraint pb_type="clb" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[3]" net="OPEN"/>
 
     <pin_constraint pb_type="io" pin="clk[0]" net="clock0"/>
+    <pin_constraint pb_type="io" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[3]" net="OPEN"/>
 
     <pin_constraint pb_type="dsp" pin="clk[0]" net="clock0"/>
+    <pin_constraint pb_type="dsp" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[3]" net="OPEN"/>
 
     <pin_constraint pb_type="bram" pin="clk[0]" net="clock0"/>
-
+    <pin_constraint pb_type="bram" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[3]" net="OPEN"/>
 </repack_design_constraints>
