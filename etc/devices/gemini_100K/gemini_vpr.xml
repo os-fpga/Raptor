@@ -1416,7 +1416,7 @@
                 <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
                 <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
                 <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-                <delay_constant max="4.41213e-10" min="4.04705e-10" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+                <delay_constant max="2.75213e-11" min="2.52905e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
               </pb_type>
               <interconnect>
                 <direct name="direct1" input="frac_logic.in[5:0]" output="frac_lut6.in[5:0]"/>
@@ -2185,7 +2185,7 @@
                       <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
                       <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
                       <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-                      <delay_constant max="4.41213e-10" min="4.04705e-10" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+                      <delay_constant max="2.75213e-11" min="2.52913e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
                     </pb_type>
                     <interconnect>
                       <direct name="direct2" input="adder.in[3:0]" output="lut4[0:0].in[3:0]"/>
