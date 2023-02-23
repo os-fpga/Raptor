@@ -34,11 +34,11 @@
     </variation_library>
   </technology_library>
   <circuit_library>
-    <circuit_model type="inv_buf" name="INVD1BWP7D5T16P96CPD" prefix="INVD1BWP7D5T16P96CPD" is_default="true" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="inv_buf" name="dti_16f_7p5t_90c_invx1" prefix="dti_16f_7p5t_90c_invx1" is_default="true" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="inverter" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="I" size="1"/>
-      <port type="output" prefix="out" lib_name="ZN" size="1"/>
+      <port type="input" prefix="in" lib_name="A" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -46,11 +46,11 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="INVD2BWP7D5T16P96CPD" prefix="INVD2BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="inv_buf" name="dti_16f_7p5t_90c_invx2" prefix="dti_16f_7p5t_90c_invx2" is_default="false" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="I" size="1"/>
-      <port type="output" prefix="out" lib_name="ZN" size="1"/>
+      <port type="input" prefix="in" lib_name="A" size="1"/>
+      <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
       </delay_matrix>
@@ -58,33 +58,33 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="gate" name="MUX2D1BWP7D5T16P96CPD" prefix="MUX2D1BWP7D5T16P96CPD" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="gate" name="dti_16f_7p5t_90c_mux21x1" prefix="dti_16f_7p5t_90c_mux21x1" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="MUX2"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <port type="input" prefix="a" lib_name="I1" size="1"/>
-      <port type="input" prefix="b" lib_name="I0" size="1"/>
+      <port type="input" prefix="a" lib_name="D1" size="1"/>
+      <port type="input" prefix="b" lib_name="D0" size="1"/>
       <port type="input" prefix="s" lib_name="S" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
     </circuit_model>
-    <circuit_model type="gate" name="CKMUX2D1BWP7D5T16P96CPD" prefix="CKMUX2D1BWP7D5T16P96CPD" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="gate" name="dti_16f_7p5t_90c_ckmux21x1" prefix="dti_16f_7p5t_90c_ckmux21x1" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="MUX2"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <port type="input" prefix="a" lib_name="I0" size="1"/>
-      <port type="input" prefix="b" lib_name="I1" size="1"/>
+      <port type="input" prefix="a" lib_name="D0" size="1"/>
+      <port type="input" prefix="b" lib_name="D1" size="1"/>
       <port type="input" prefix="s" lib_name="S" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
     </circuit_model>
-    <circuit_model type="gate" name="OR2D1BWP7D5T16P96CPD" prefix="OR2D1BWP7D5T16P96CPD" is_default="true" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="gate" name="dti_16f_7p5t_90c_or2x1" prefix="dti_16f_7p5t_90c_or2x1" is_default="true" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="OR"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <port type="input" prefix="a" lib_name="A1" size="1"/>
-      <port type="input" prefix="b" lib_name="A2" size="1"/>
+      <port type="input" prefix="a" lib_name="A" size="1"/>
+      <port type="input" prefix="b" lib_name="B" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="a b" out_port="out">
         10e-12 10e-12
@@ -93,10 +93,10 @@
         10e-12 10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="BUFFD1BWP7D5T16P96CPD" prefix="BUFFD1BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="inv_buf" name="dti_16f_7p5t_90c_bufx1" prefix="dti_16f_7p5t_90c_bufx1" is_default="false" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="input" prefix="in" lib_name="A" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
@@ -105,10 +105,10 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="BUFFD2BWP7D5T16P96CPD" prefix="BUFFD2BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="inv_buf" name="dti_16f_7p5t_90c_bufx2" prefix="dti_16f_7p5t_90c_bufx2" is_default="false" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="input" prefix="in" lib_name="A" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
@@ -117,10 +117,10 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="BUFFD4BWP7D5T16P96CPD" prefix="BUFFD4BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="inv_buf" name="dti_16f_7p5t_90c_bufx4" prefix="dti_16f_7p5t_90c_bufx4" is_default="false" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="input" prefix="in" lib_name="A" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
@@ -129,10 +129,10 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="BUFFD12BWP7D5T16P96CPD" prefix="BUFFD12BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="inv_buf" name="dti_16f_7p5t_90c_bufx12" prefix="dti_16f_7p5t_90c_bufx12" is_default="false" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="input" prefix="in" lib_name="A" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
@@ -141,10 +141,10 @@
         10e-12
       </delay_matrix>
     </circuit_model>
-    <circuit_model type="inv_buf" name="BUFFD16BWP7D5T16P96CPD" prefix="BUFFD16BWP7D5T16P96CPD" is_default="false" verilog_netlist="./SRC/sc_verilog/tcbn16ffcllbwp7d5t16p96cpd.v">
+    <circuit_model type="inv_buf" name="dti_16f_7p5t_90c_bufx16" prefix="dti_16f_7p5t_90c_bufx16" is_default="false" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="buffer" size="1"/>
       <device_technology device_model_name="logic"/>
-      <port type="input" prefix="in" lib_name="I" size="1"/>
+      <port type="input" prefix="in" lib_name="A" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
       <delay_matrix type="rise" in_port="in" out_port="out">
         10e-12
@@ -156,66 +156,66 @@
     <circuit_model type="mux" name="mux_tree" prefix="mux_tree" is_default="true" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
       <input_buffer exist="false"/>
-      <output_buffer exist="true" circuit_model_name="BUFFD4BWP7D5T16P96CPD"/>
-      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx4"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf" prefix="mux_tree_tapbuf" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
-      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="BUFFD12BWP7D5T16P96CPD"/>
-      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
+      <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_invx2"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx12"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L1SB" prefix="mux_tree_tapbuf_L1SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
-      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="BUFFD12BWP7D5T16P96CPD"/>
-      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
+      <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_invx2"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx12"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L4SB" prefix="mux_tree_tapbuf_L4SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
-      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="BUFFD12BWP7D5T16P96CPD"/>
-      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
+      <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_invx2"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx12"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_io" prefix="mux_1level_io" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
-      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
-      <output_buffer exist="false" circuit_model_name="BUFFD4BWP7D5T16P96CPD"/>
-      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
+      <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_invx2"/>
+      <output_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx4"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_fabric" prefix="mux_1level_fabric" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
-      <input_buffer exist="false" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
-      <output_buffer exist="false" circuit_model_name="BUFFD16BWP7D5T16P96CPD"/>
-      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
+      <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_invx2"/>
+      <output_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx16"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="lut" name="frac_lut6" prefix="frac_lut6" dump_structural_verilog="true" is_default="true">
       <design_technology type="cmos" fracturable_lut="true"/>
-      <input_buffer exist="false" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
-      <lut_input_inverter exist="true" circuit_model_name="INVD2BWP7D5T16P96CPD"/>
-      <lut_input_buffer exist="true" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
-      <lut_intermediate_buffer exist="false" circuit_model_name="BUFFD2BWP7D5T16P96CPD" location_map="-1-1-"/>
-      <pass_gate_logic circuit_model_name="MUX2D1BWP7D5T16P96CPD"/>
-      <port type="input" prefix="in" size="6" tri_state_map="----11" circuit_model_name="OR2D1BWP7D5T16P96CPD"/>
+      <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx2"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx2"/>
+      <lut_input_inverter exist="true" circuit_model_name="dti_16f_7p5t_90c_invx2"/>
+      <lut_input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx2"/>
+      <lut_intermediate_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx2" location_map="-1-1-"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
+      <port type="input" prefix="in" size="6" tri_state_map="----11" circuit_model_name="dti_16f_7p5t_90c_or2x1"/>
       <port type="output" prefix="lut4_out" size="4" lut_frac_level="4" lut_output_mask="0,1,2,3"/>
       <port type="output" prefix="lut5_out" size="2" lut_frac_level="5" lut_output_mask="0,1"/>
       <port type="output" prefix="lut6_out" size="1" lut_output_mask="0"/>
@@ -252,8 +252,8 @@
     </circuit_model>
     <circuit_model type="iopad" name="QL_PREIO" prefix="QL_PREIO" is_default="true" verilog_netlist="./SRC/CustomModules/rs_preio.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="false" circuit_model_name="BUFFD1BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="BUFFD2BWP7D5T16P96CPD"/>
+      <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx1"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx2"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="A2F" lib_name="SOC_IN" size="1" is_global="true" is_io="true" is_data_io="true"/>
       <port type="output" prefix="F2A" lib_name="SOC_OUT" size="1" is_global="true" is_io="true" is_data_io="true"/>
@@ -267,8 +267,8 @@
     </circuit_model>
     <circuit_model type="ff" name="QL_IOFF" prefix="QL_IOFF" is_default="true" verilog_netlist="./SRC/CustomModules/rs_ioff.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
+      <input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="input" prefix="reset" lib_name="R" size="1" default_val="1"/>
@@ -292,8 +292,8 @@
     </circuit_model>
     <circuit_model type="ff" name="QL_FF" prefix="QL_FF" verilog_netlist="./SRC/CustomModules/ql_ff.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
+      <input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="output" prefix="SO" lib_name="SO" size="1"/>
@@ -312,8 +312,8 @@
     </circuit_model>
     <circuit_model type="ff" name="GC_FF" prefix="GC_FF" verilog_netlist="./SRC/CustomModules/gc_ff.v">
       <design_technology type="cmos"/>
-      <input_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
-      <output_buffer exist="true" circuit_model_name="INVD1BWP7D5T16P96CPD"/>
+      <input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="output" prefix="SO" lib_name="SO" size="1"/>
