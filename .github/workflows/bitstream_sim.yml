@@ -152,7 +152,7 @@ jobs:
         echo "export PYTHONPATH=/var/tmp/spydrnet-physical:/var/tmp/spydrnet" >> LoadTools.sh
         cd k6n8_TSMC16nm_7.5T/FPGA10x8_gemini_compact_pnr
         make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/v1.0.6/gemini_compact_10x8
-        cd $GITHUB_WORKSPACE/openfpga-pd-castor-rs/FPGA82x68_gemini_compact_pnr
+        cd $GITHUB_WORKSPACE/openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA82x68_gemini_compact_pnr
         make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/v1.0.6/gemini_compact_82x68
         cd $GITHUB_WORKSPACE && tar -cvzf netlist_v1.0.6.tar.gz v1.0.6         
         
