@@ -137,7 +137,7 @@ jobs:
         mkdir -p $GITHUB_WORKSPACE/v1.0.6/gemini_compact_10x8
         mkdir -p $GITHUB_WORKSPACE/v1.0.6/gemini_compact_82x68
         OPENFPGA_PATH=$GITHUB_WORKSPACE/Backend/OpenFPGA 
-        apt-get install -y libxml2-utils
+        sudo apt-get install -y libxml2-utils
         python3 -m pip install --upgrade --no-cache-dir pip
         python3 -m pip install mako PyYAML
         cd openfpga-pd-castor-rs
