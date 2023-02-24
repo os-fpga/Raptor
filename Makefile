@@ -145,6 +145,7 @@ test/gui_mac: run-cmake-debug
 
 test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
