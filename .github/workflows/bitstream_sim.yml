@@ -139,7 +139,7 @@ jobs:
         OPENFPGA_PATH=$GITHUB_WORKSPACE/Backend/OpenFPGA 
         sudo apt-get install -y libxml2-utils
         python3 -m pip install --upgrade --no-cache-dir pip
-        python3 -m pip install mako PyYAML
+        python3 -m pip install mako PyYAML envyaml
         cd openfpga-pd-castor-rs
         git clone https://github.com/ganeshgore/spydrnet-physical.git /var/tmp/spydrnet-physical
         git clone https://github.com/ganeshgore/spydrnet.git /var/tmp/spydrnet
