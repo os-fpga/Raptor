@@ -1,0 +1,6 @@
+<pin_constraints>
+  <set_io pin="clk[0]" net="clock0" default_value="1"/>
+  <set_io pin="clk[1]" net="OPEN"/>
+  <set_io pin="clk[2]" net="OPEN"/>
+  <set_io pin="clk[3]" net="OPEN"/>
+</pin_constraints>
