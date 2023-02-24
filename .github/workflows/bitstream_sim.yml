@@ -1,4 +1,4 @@
-name: 'main'
+name: 'DigestXML and Bitstream Simulation'
 
 on:
   push:
