@@ -97,6 +97,11 @@ jobs:
         bash .github/workflows/install_ubuntu_dependencies_build.sh
 #        bash .github/workflows/install_litex_ubuntu.sh
 
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.3
+      with:
+        key: linux-${{ matrix.mode }}
+
     - name: Configure shell
       run: |
         echo 'CC=gcc-11' >> $GITHUB_ENV
@@ -149,13 +154,13 @@ jobs:
         make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/v1.0.6/gemini_compact_10x8
         cd $GITHUB_WORKSPACE/openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA82x68_gemini_compact_pnr
         make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/v1.0.6/gemini_compact_82x68
-        cd $GITHUB_WORKSPACE && tar -cvzf netlist_v1.0.6.tar.gz v1.0.6         
+        cd $GITHUB_WORKSPACE && tar -cvzf v1.0.6.tar.gz v1.0.6         
         
-    - name: Cache Netlist
-      uses: actions/cache@v3.2.6
+    - name: Upload Netlist
+    - uses: actions/upload-artifact@v3
       with:
-        path: ./netlist_v1.0.6.tar.gz
-        key: ${{ github.repository }}_${{ github.run_id }}
+        name: v1.0.6.tar.gz
+        path: v1.0.6.tar.gz
 
   BitStream_Simulation:
     needs: DigestXML_and_build_Raptor 
@@ -166,15 +171,14 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Download Netlist from Cache
-      uses: actions/cache@v3.2.6
+    - name: Download Netlist
+    - uses: actions/download-artifact@v3
       with:
-        path: ./netlist_v1.0.6.tar.gz
-        key: ${{ github.repository }}_${{ github.run_id }}
+        name: v1.0.6.tar.gz
 
     - name: Put Netlist on Server Path
       run: |
-        tar -xvzf netlist_v1.0.6.tar.gz
+        tar -xvzf v1.0.6.tar.gz
         mv -v v1.0.6 /nfs_scratch/scratch/eda/nadeem/netlist_gen
         #ln -s 
     
