@@ -157,7 +157,7 @@ jobs:
         cd $GITHUB_WORKSPACE && tar -cvzf v1.0.6.tar.gz v1.0.6         
         
     - name: Upload Netlist
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: v1.0.6.tar.gz
         path: v1.0.6.tar.gz
