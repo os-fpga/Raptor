@@ -67,6 +67,7 @@
         <internal type="repack_settings" file="gemini_compact_82x68/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file="gemini_compact_82x68/fabric_key.xml"/>
         <internal type="pinmap_xml" file=""/>
+        <internal type="pcf_xml" file="gemini_compact_82x68/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_82x68/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>
@@ -94,6 +95,7 @@
         <internal type="repack_settings" file="gemini_compact_10x8/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file="gemini_compact_10x8/fabric_key.xml"/>
         <internal type="pinmap_xml" file=""/>
+        <internal type="pcf_xml" file="gemini_compact_10x8/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_10x8/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>
@@ -274,6 +276,7 @@
         <internal type="repack_settings" file="gemini_4x4/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file="gemini_4x4/fabric_key.xml"/>
         <internal type="pinmap_xml" file=""/>
+        <internal type="pcf_xml" file="gemini_4x4/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
         <internal type="plugin_lib" name="synth-rs"/>

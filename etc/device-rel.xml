@@ -3,7 +3,7 @@
         <resource type="io" num="400" label="I/O"/>
         <resource type="lut" num="34848" label="LUT6s"/>
         <resource type="ff" num="69696" label="FFs"/>
-        <resource type="bram" num="5.5Mbits" label="36K BRAMs"/>
+        <resource type="bram" num="154" label="36K BRAMs"/>
         <resource type="dsp" num="154" label="DSPs"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
         <internal type="device_size" name="castor82x68_heterogeneous"/>
