@@ -1,7 +1,7 @@
 name: 'Digest XML and Bitstream Simulation'
 
 on:
-  push:
+#  push:
   repository_dispatch:
     types: [digest_latest_Arch]
 
@@ -12,6 +12,9 @@ jobs:
       run:
         shell: bash
     steps:
+    - name: Clean Workspace
+      uses: AutoModality/action-clean@v1
+
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
       with: 
@@ -134,8 +137,8 @@ jobs:
     - name: Setup Netlist Generation Environment
       run: |
         mkdir Backend/OpenFPGA/build && cd Backend/OpenFPGA/build && ln -s ../../../build/bin openfpga && cd -
-        mkdir -p $GITHUB_WORKSPACE/v1.0.6/gemini_compact_10x8
-        mkdir -p $GITHUB_WORKSPACE/v1.0.6/gemini_compact_82x68
+        mkdir -p $GITHUB_WORKSPACE/${{ github.event.client_payload.new_tag }}/gemini_compact_10x8
+        mkdir -p $GITHUB_WORKSPACE/${{ github.event.client_payload.new_tag }}/gemini_compact_82x68
         OPENFPGA_PATH=$GITHUB_WORKSPACE/Backend/OpenFPGA 
         sudo apt-get install -y libxml2-utils
         python3 -m pip install --upgrade --no-cache-dir pip
@@ -151,16 +154,16 @@ jobs:
         echo "export OPENFPGA_PATH=${OPENFPGA_PATH}" >> LoadTools.sh
         echo "export PYTHONPATH=/var/tmp/spydrnet-physical:/var/tmp/spydrnet" >> LoadTools.sh
         cd k6n8_TSMC16nm_7.5T/FPGA10x8_gemini_compact_pnr
-        make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/v1.0.6/gemini_compact_10x8
+        make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/${{ github.event.client_payload.new_tag }}/gemini_compact_10x8
         cd $GITHUB_WORKSPACE/openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA82x68_gemini_compact_pnr
-        make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/v1.0.6/gemini_compact_82x68
-        cd $GITHUB_WORKSPACE && tar -cvzf v1.0.6.tar.gz v1.0.6         
+        make generate_arch MAKO_ARCH=gemini_compact && make run_openfpga && mv fabric_task/run001/k6n8_vpr/top/MIN_ROUTE_CHAN_WIDTH/SRC $GITHUB_WORKSPACE/${{ github.event.client_payload.new_tag }}/gemini_compact_82x68
+        cd $GITHUB_WORKSPACE && tar -cvzf ${{ github.event.client_payload.new_tag }}.tar.gz ${{ github.event.client_payload.new_tag }}         
         
     - name: Upload Netlist
       uses: actions/upload-artifact@v3
       with:
-        name: v1.0.6.tar.gz
-        path: v1.0.6.tar.gz
+        name: ${{ github.event.client_payload.new_tag }}.tar.gz
+        path: ${{ github.event.client_payload.new_tag }}.tar.gz
 
   BitStream_Simulation:
     needs: DigestXML_and_build_Raptor 
@@ -174,11 +177,11 @@ jobs:
     - name: Download Netlist
       uses: actions/download-artifact@v3
       with:
-        name: v1.0.6.tar.gz
+        name: ${{ github.event.client_payload.new_tag }}.tar.gz
 
     - name: Put Netlist on Server Path
       run: |
-        tar -xvzf v1.0.6.tar.gz
-        mv -v v1.0.6 /nfs_scratch/scratch/eda/nadeem/netlist_gen
-        #ln -s 
+        tar -xvzf ${{ github.event.client_payload.new_tag }}.tar.gz
+        mv -v ${{ github.event.client_payload.new_tag }} /cadlib/gemini/TSMC16NMFFC/release/netlist_gemini_compact
+        cd /cadlib/gemini/TSMC16NMFFC/release/netlist_gemini_compact && ln -sf ${{ github.event.client_payload.new_tag }} latest
     
