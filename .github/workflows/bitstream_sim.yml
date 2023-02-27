@@ -172,7 +172,7 @@ jobs:
         fetch-depth: 0
 
     - name: Download Netlist
-    - uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v3
       with:
         name: v1.0.6.tar.gz
 
