@@ -88,8 +88,20 @@ install: release
 	cmake --install build
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_legacy
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_10x8
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_4x4
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_82x68 
 	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
 	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
+ifeq ($(1GE100_BUILD),1)
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini
+	mv $(PREFIX)/share/raptor/etc/devices/gemini_100K $(PREFIX)/share/raptor/etc/devices/gemini
+	mv $(PREFIX)/share/raptor/etc/device-1GE100.xml $(PREFIX)/share/raptor/etc/device.xml
+else
+	$(RM) $(PREFIX)/share/raptor/etc/device-1GE100.xml
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_100K/
+endif
 else
 install: release
 	cmake --install build
@@ -145,12 +157,13 @@ test/gui_mac: run-cmake-debug
 
 test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_100k.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_batch.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase/raptor.tcl 

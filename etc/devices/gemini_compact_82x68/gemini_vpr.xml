@@ -81,15 +81,15 @@
     </model>
     <model name="scff">
       <input_ports>
-        <port name="D" clock="clk"/>
-        <port name="SI" clock="clk"/>
-        <port name="R" clock="clk"/>
-        <port name="E" clock="clk"/>
-        <port name="clk" is_clock="1"/>
+        <port name="D" clock="C"/>
+        <port name="SI" clock="C"/>
+        <port name="R" clock="C"/>
+        <port name="E" clock="C"/>
+        <port name="C" is_clock="1"/>
       </input_ports>
       <output_ports>
-        <port name="Q" clock="clk"/>
-        <port name="SO" clock="clk"/>
+        <port name="Q" clock="C"/>
+        <port name="SO" clock="C"/>
       </output_ports>
     </model>
     <model name="dsp_phy">
@@ -105,13 +105,13 @@
         <port name="feedback" clock="clk"/>
         <port name="unsigned_a" clock="clk"/>
         <port name="unsigned_b" clock="clk"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
+        <!-- <port name="f_mode"/>     -->
+        <!-- <port name="output_select"/>     -->
         <port name="saturate_enable" clock="clk"/>
         <port name="shift_right" clock="clk"/>
         <port name="round" clock="clk"/>
         <port name="subtract" clock="clk"/>
-        <port name="register_inputs"/>
+        <!-- <port name="register_inputs"/>     -->
         <port name="clk" is_clock="1"/>
         <port name="sc_in"/>
       </input_ports>
@@ -121,99 +121,61 @@
         <port name="sc_out"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2">
-      <input_ports>
-        <!-- Tara : COMMENT -->
-        <port name="a" combinational_sink_ports="z"/>
-        <port name="acc_fir" combinational_sink_ports="z"/>
-        <port name="b" combinational_sink_ports="z"/>
-        <port name="load_acc" clock="clk"/>
-        <port name="reset" clock="clk"/>
-        <port name="feedback" clock="clk"/>
-        <port name="unsigned_a" clock="clk"/>
-        <port name="unsigned_b" clock="clk"/>
-        <port name="f_mode" clock="clk"/>
-        <port name="output_select" clock="clk"/>
-        <port name="saturate_enable" clock="clk"/>
-        <port name="shift_right" clock="clk"/>
-        <port name="round" clock="clk"/>
-        <port name="subtract" clock="clk"/>
-        <port name="register_inputs" clock="clk"/>
-        <port name="clk" is_clock="1"/>
-      </input_ports>
-      <output_ports>
-        <port name="z"/>
-        <port name="dly_b"/>
-      </output_ports>
-    </model>
-    <model name="RS_DSP2_MULT">
+    <model name="RS_DSP_MULT">
       <input_ports>
         <port name="a" combinational_sink_ports="z"/>
         <port name="b" combinational_sink_ports="z"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
         <port name="feedback"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
-        <port name="reset"/>
       </input_ports>
       <output_ports>
         <port name="z"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULT_REGIN">
+    <model name="RS_DSP_MULT_REGIN">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
         <port name="feedback" clock="clk"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
       </input_ports>
       <output_ports>
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULT_REGOUT">
+    <model name="RS_DSP_MULT_REGOUT">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
         <port name="feedback" clock="clk"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
       </input_ports>
       <output_ports>
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULT_REGIN_REGOUT">
+    <model name="RS_DSP_MULT_REGIN_REGOUT">
       <input_ports>
         <port name="a" clock="clk" combinational_sink_ports="z"/>
         <port name="b" clock="clk" combinational_sink_ports="z"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
         <port name="feedback" clock="clk"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
       </input_ports>
       <output_ports>
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTADD">
+    <model name="RS_DSP_MULTADD">
       <input_ports>
         <port name="a" combinational_sink_ports="z"/>
         <port name="b" combinational_sink_ports="z"/>
@@ -222,11 +184,8 @@
         <port name="acc_fir" combinational_sink_ports="z"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
         <port name="feedback"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -235,7 +194,7 @@
         <port name="z"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTADD_REGIN">
+    <model name="RS_DSP_MULTADD_REGIN">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -245,11 +204,8 @@
         <port name="acc_fir" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -258,7 +214,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTADD_REGOUT">
+    <model name="RS_DSP_MULTADD_REGOUT">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -268,11 +224,8 @@
         <port name="acc_fir" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -281,7 +234,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTADD_REGIN_REGOUT">
+    <model name="RS_DSP_MULTADD_REGIN_REGOUT">
       <input_ports>
         <port name="a" clock="clk" combinational_sink_ports="z"/>
         <port name="b" clock="clk" combinational_sink_ports="z"/>
@@ -291,11 +244,8 @@
         <port name="acc_fir" clock="clk" combinational_sink_ports="z"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -304,7 +254,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTACC">
+    <model name="RS_DSP_MULTACC">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -313,11 +263,8 @@
         <port name="load_acc" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -326,7 +273,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTACC_REGIN">
+    <model name="RS_DSP_MULTACC_REGIN">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -335,11 +282,8 @@
         <port name="load_acc" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -348,7 +292,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTACC_REGOUT">
+    <model name="RS_DSP_MULTACC_REGOUT">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -357,11 +301,8 @@
         <port name="load_acc" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -370,7 +311,7 @@
         <port name="z" clock="clk"/>
       </output_ports>
     </model>
-    <model name="RS_DSP2_MULTACC_REGIN_REGOUT">
+    <model name="RS_DSP_MULTACC_REGIN_REGOUT">
       <input_ports>
         <port name="a" clock="clk"/>
         <port name="b" clock="clk"/>
@@ -379,11 +320,8 @@
         <port name="load_acc" clock="clk"/>
         <port name="unsigned_a"/>
         <port name="unsigned_b"/>
-        <port name="f_mode"/>
-        <port name="output_select"/>
-        <port name="register_inputs"/>
         <port name="clk" is_clock="1"/>
-        <port name="reset"/>
+        <port name="lreset"/>
         <port name="saturate_enable"/>
         <port name="shift_right"/>
         <port name="round"/>
@@ -447,41 +385,41 @@
         <port name="sc_out"/>
       </output_ports>
     </model>
-    <model name="TDP36K">
+    <model name="RS_TDP36K">
       <input_ports>
-        <port name="WEN_A1_i" clock="CLK_A1_i"/>
-        <port name="WEN_B1_i" clock="CLK_B1_i"/>
-        <port name="BE_A1_i" clock="CLK_A1_i"/>
-        <port name="BE_B1_i" clock="CLK_B1_i"/>
-        <port name="REN_A1_i" clock="CLK_A1_i"/>
-        <port name="REN_B1_i" clock="CLK_B1_i"/>
-        <port name="ADDR_A1_i" clock="CLK_A1_i"/>
-        <port name="ADDR_B1_i" clock="CLK_B1_i"/>
-        <port name="WDATA_A1_i" clock="CLK_A1_i"/>
-        <port name="WDATA_B1_i" clock="CLK_B1_i"/>
-        <port name="CLK_A1_i" is_clock="1"/>
-        <port name="CLK_B1_i" is_clock="1"/>
-        <port name="FLUSH1_i" clock="CLK_A1_i"/>
-        <port name="WEN_A2_i" clock="CLK_A2_i"/>
-        <port name="WEN_B2_i" clock="CLK_B2_i"/>
-        <port name="BE_A2_i" clock="CLK_A2_i"/>
-        <port name="BE_B2_i" clock="CLK_B2_i"/>
-        <port name="REN_A2_i" clock="CLK_A2_i"/>
-        <port name="REN_B2_i" clock="CLK_B2_i"/>
-        <port name="ADDR_A2_i" clock="CLK_A2_i"/>
-        <port name="ADDR_B2_i" clock="CLK_B2_i"/>
-        <port name="WDATA_A2_i" clock="CLK_A2_i"/>
-        <port name="WDATA_B2_i" clock="CLK_B2_i"/>
-        <port name="CLK_A2_i" is_clock="1"/>
-        <port name="CLK_B2_i" is_clock="1"/>
-        <port name="FLUSH2_i" clock="CLK_A2_i"/>
-        <port name="RESET_ni" clock="CLK_A2_i"/>
+        <port name="WEN_A1" clock="CLK_A1"/>
+        <port name="WEN_B1" clock="CLK_B1"/>
+        <port name="BE_A1" clock="CLK_A1"/>
+        <port name="BE_B1" clock="CLK_B1"/>
+        <port name="REN_A1" clock="CLK_A1"/>
+        <port name="REN_B1" clock="CLK_B1"/>
+        <port name="ADDR_A1" clock="CLK_A1"/>
+        <port name="ADDR_B1" clock="CLK_B1"/>
+        <port name="WDATA_A1" clock="CLK_A1"/>
+        <port name="WDATA_B1" clock="CLK_B1"/>
+        <port name="CLK_A1" is_clock="1"/>
+        <port name="CLK_B1" is_clock="1"/>
+        <port name="FLUSH1" clock="CLK_A1"/>
+        <port name="WEN_A2" clock="CLK_A2"/>
+        <port name="WEN_B2" clock="CLK_B2"/>
+        <port name="BE_A2" clock="CLK_A2"/>
+        <port name="BE_B2" clock="CLK_B2"/>
+        <port name="REN_A2" clock="CLK_A2"/>
+        <port name="REN_B2" clock="CLK_B2"/>
+        <port name="ADDR_A2" clock="CLK_A2"/>
+        <port name="ADDR_B2" clock="CLK_B2"/>
+        <port name="WDATA_A2" clock="CLK_A2"/>
+        <port name="WDATA_B2" clock="CLK_B2"/>
+        <port name="CLK_A2" is_clock="1"/>
+        <port name="CLK_B2" is_clock="1"/>
+        <port name="FLUSH2" clock="CLK_A2"/>
+        <!-- <port name="RESET_ni" clock="CLK_A2"/> -->
       </input_ports>
       <output_ports>
-        <port name="RDATA_A1_o" clock="CLK_A1_i"/>
-        <port name="RDATA_B1_o" clock="CLK_B1_i"/>
-        <port name="RDATA_A2_o" clock="CLK_A2_i"/>
-        <port name="RDATA_B2_o" clock="CLK_B2_i"/>
+        <port name="RDATA_A1" clock="CLK_A1"/>
+        <port name="RDATA_B1" clock="CLK_B1"/>
+        <port name="RDATA_A2" clock="CLK_A2"/>
+        <port name="RDATA_B2" clock="CLK_B2"/>
       </output_ports>
     </model>
   </models>
@@ -511,6 +449,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="bottom">io_top.scan_reset io_top.a2f_o io_top.f2a_i io_top.clk io_top.sc_in io_top.sc_out io_top.global_reset</loc>
@@ -534,6 +473,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="left">io_right.scan_reset io_right.a2f_o io_right.f2a_i io_right.clk io_right.sc_in io_right.sc_out io_right.global_reset</loc>
@@ -557,6 +497,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="top">io_bottom.scan_reset io_bottom.a2f_o io_bottom.f2a_i io_bottom.clk io_bottom.sc_in io_bottom.sc_out io_bottom.global_reset</loc>
@@ -580,6 +521,7 @@
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="right">io_left.scan_reset io_left.a2f_o io_left.f2a_i io_left.clk io_left.sc_in io_left.sc_out io_left.global_reset</loc>
@@ -653,13 +595,10 @@
         <input name="feedback" num_pins="3"/>
         <input name="unsigned_a" num_pins="1"/>
         <input name="unsigned_b" num_pins="1"/>
-        <input name="f_mode" num_pins="1"/>
-        <input name="output_select" num_pins="3"/>
         <input name="saturate_enable" num_pins="1"/>
         <input name="shift_right" num_pins="6"/>
         <input name="round" num_pins="1"/>
         <input name="subtract" num_pins="1"/>
-        <input name="register_inputs" num_pins="1"/>
         <clock name="clk" num_pins="4"/>
         <output name="z_o" num_pins="38" equivalent="none"/>
         <output name="dly_b_o" num_pins="18" equivalent="none"/>
@@ -674,14 +613,14 @@
         <pinlocations pattern="custom">
           <loc side="left"/>
           <loc side="top">   dsp.clk dsp.global_reset dsp.sc_in dsp.scan_reset</loc>
-          <loc side="bottom">dsp.sc_out dsp.feedback dsp.output_select dsp.shift_right dsp.lreset dsp.f_mode
+          <loc side="bottom">dsp.sc_out dsp.feedback dsp.shift_right dsp.lreset
                                       dsp.acc_fir_i[0]   dsp.a_i[1:0]                  dsp.z_o[6:0]</loc>
           <loc side="right" yoffset="0">dsp.acc_fir_i[2:1] dsp.a_i[7:2]   dsp.b_i[5:0]   dsp.z_o[15:7]  dsp.dly_b_o[5:0] 
                                       dsp.unsigned_a     dsp.round</loc>
           <loc side="right" yoffset="1">dsp.acc_fir_i[4:3] dsp.a_i[13:8]  dsp.b_i[11:6]  dsp.z_o[26:16] dsp.dly_b_o[11:6] 
                                       dsp.unsigned_b     dsp.subtract</loc>
           <loc side="right" yoffset="2">dsp.acc_fir_i[5]   dsp.a_i[19:14] dsp.b_i[17:12] dsp.z_o[37:27] dsp.dly_b_o[17:12] 
-                                      dsp.saturate_enable dsp.register_inputs dsp.load_acc</loc>
+                                      dsp.saturate_enable dsp.load_acc</loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -1315,16 +1254,16 @@
               <input name="R" num_pins="1"/>
               <input name="E" num_pins="1"/>
               <output name="Q" num_pins="1"/>
-              <clock name="clk" num_pins="1"/>
-              <T_setup value="6.34486e-11" port="ff_phy.D" clock="clk"/>
-              <T_setup value="7.42229e-11" port="ff_phy.SI" clock="clk"/>
-              <T_setup value="8.14058e-11" port="ff_phy.E" clock="clk"/>
-              <T_setup value="-8.73915e-11" port="ff_phy.R" clock="clk"/>
-              <T_clock_to_Q max="7.09448e-10" port="ff_phy.Q" clock="clk"/>
-              <T_clock_to_Q max="6.27806e-10" port="ff_phy.SO" clock="clk"/>
+              <clock name="C" num_pins="1"/>
+              <T_setup value="6.34486e-11" port="ff_phy.D" clock="C"/>
+              <T_setup value="7.42229e-11" port="ff_phy.SI" clock="C"/>
+              <T_setup value="8.14058e-11" port="ff_phy.E" clock="C"/>
+              <T_setup value="-8.73915e-11" port="ff_phy.R" clock="C"/>
+              <T_clock_to_Q max="7.09448e-10" port="ff_phy.Q" clock="C"/>
+              <T_clock_to_Q max="6.27806e-10" port="ff_phy.SO" clock="C"/>
             </pb_type>
             <interconnect>
-              <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].clk"/>
+              <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].C"/>
               <complete name="direct_reset" input="fabric.reset" output="ff_phy[1:0].R"/>
               <complete name="direct_enable" input="fabric.enable" output="ff_phy[1:0].E"/>
               <direct name="direct_in" input="fabric.in[5:0]" output="frac_logic.in[5:0]"/>
@@ -1770,13 +1709,10 @@
       <input name="feedback" num_pins="3"/>
       <input name="unsigned_a" num_pins="1"/>
       <input name="unsigned_b" num_pins="1"/>
-      <input name="f_mode" num_pins="1"/>
-      <input name="output_select" num_pins="3"/>
       <input name="saturate_enable" num_pins="1"/>
       <input name="shift_right" num_pins="6"/>
       <input name="round" num_pins="1"/>
       <input name="subtract" num_pins="1"/>
-      <input name="register_inputs" num_pins="1"/>
       <clock name="clk" num_pins="4"/>
       <output name="z_o" num_pins="38" equivalent="none"/>
       <output name="dly_b_o" num_pins="18" equivalent="none"/>
@@ -1794,13 +1730,10 @@
           <input name="feedback" num_pins="3"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <input name="subtract" num_pins="1"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
           <output name="z_o" num_pins="38"/>
           <output name="dly_b_o" num_pins="18"/>
@@ -1823,9 +1756,6 @@
           <T_setup value="2e-10" port="dsp_phy.subtract" clock="clk"/>
           <!--
           <T_setup value="500e-12"     port="dsp_phy.lreset" clock="clk"/>
-          <T_setup value="500e-12"     port="dsp_phy.f_mode" clock="clk"/>
-          <T_setup value="500e-12"     port="dsp_phy.output_select" clock="clk"/>
-          <T_setup value="500e-12"     port="dsp_phy.register_inputs" clock="clk"/>
 -->
         </pb_type>
         <interconnect>
@@ -1842,205 +1772,119 @@
           <direct name="direct11" input="dsp.feedback" output="dsp_phy.feedback"/>
           <direct name="direct12" input="dsp.unsigned_a" output="dsp_phy.unsigned_a"/>
           <direct name="direct13" input="dsp.unsigned_b" output="dsp_phy.unsigned_b"/>
-          <direct name="direct14" input="dsp.f_mode" output="dsp_phy.f_mode"/>
-          <direct name="direct15" input="dsp.output_select" output="dsp_phy.output_select"/>
           <direct name="direct16" input="dsp.saturate_enable" output="dsp_phy.saturate_enable"/>
           <direct name="direct17" input="dsp.shift_right" output="dsp_phy.shift_right"/>
           <direct name="direct18" input="dsp.round" output="dsp_phy.round"/>
           <direct name="direct19" input="dsp.subtract" output="dsp_phy.subtract"/>
-          <direct name="direct20" input="dsp.register_inputs" output="dsp_phy.register_inputs"/>
           <direct name="direct21" input="dsp.sc_in" output="dsp_phy.sc_in"/>
           <direct name="direct22" input="dsp_phy.sc_out" output="dsp.sc_out"/>
         </interconnect>
       </mode>
-      <mode name="dsp" disable_packing="false">
-        <pb_type name="RS_DSP2" blif_model=".subckt RS_DSP2" num_pb="1">
-          <input name="a" num_pins="20"/>
-          <input name="acc_fir" num_pins="6"/>
-          <input name="b" num_pins="18"/>
-          <input name="load_acc" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
-          <input name="feedback" num_pins="3"/>
-          <input name="unsigned_a" num_pins="1"/>
-          <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="saturate_enable" num_pins="1"/>
-          <input name="shift_right" num_pins="6"/>
-          <input name="round" num_pins="1"/>
-          <input name="subtract" num_pins="1"/>
-          <input name="register_inputs" num_pins="1"/>
-          <clock name="clk" num_pins="1"/>
-          <output name="z" num_pins="38"/>
-          <output name="dly_b" num_pins="18"/>
-          <delay_constant max="3500e-12" in_port="RS_DSP2.a" out_port="RS_DSP2.z"/>
-          <delay_constant max="3500e-12" in_port="RS_DSP2.acc_fir" out_port="RS_DSP2.z"/>
-          <delay_constant max="3500e-12" in_port="RS_DSP2.b" out_port="RS_DSP2.z"/>
-          <T_setup value="500e-12" port="RS_DSP2.load_acc" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.reset" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.feedback" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.unsigned_a" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.unsigned_b" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.f_mode" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.output_select" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.saturate_enable" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.shift_right" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.round" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.subtract" clock="clk"/>
-          <T_setup value="500e-12" port="RS_DSP2.register_inputs" clock="clk"/>
-        </pb_type>
-        <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2.a"/>
-          <direct name="direct2" input="dsp.acc_fir_i" output="RS_DSP2.acc_fir"/>
-          <direct name="direct3" input="dsp.b_i" output="RS_DSP2.b"/>
-          <complete name="dsp-clk" input="dsp.clk" output="RS_DSP2.clk"/>
-          <direct name="direct5" input="dsp.lreset" output="RS_DSP2.reset"/>
-          <direct name="direct6" input="RS_DSP2.z" output="dsp.z_o"/>
-          <direct name="direct7" input="RS_DSP2.dly_b" output="dsp.dly_b_o"/>
-          <direct name="direct8" input="dsp.load_acc" output="RS_DSP2.load_acc"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2.feedback"/>
-          <direct name="direct10" input="dsp.unsigned_a" output="RS_DSP2.unsigned_a"/>
-          <direct name="direct11" input="dsp.unsigned_b" output="RS_DSP2.unsigned_b"/>
-          <direct name="direct12" input="dsp.f_mode" output="RS_DSP2.f_mode"/>
-          <direct name="direct13" input="dsp.output_select" output="RS_DSP2.output_select"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2.round"/>
-          <direct name="direct17" input="dsp.subtract" output="RS_DSP2.subtract"/>
-          <direct name="direct18" input="dsp.register_inputs" output="RS_DSP2.register_inputs"/>
-        </interconnect>
-      </mode>
       <mode name="MULT" disable_packing="false">
-        <pb_type name="RS_DSP2_MULT" blif_model=".subckt RS_DSP2_MULT" num_pb="1">
+        <pb_type name="RS_DSP_MULT" blif_model=".subckt RS_DSP_MULT" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
           <input name="feedback" num_pins="3"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP2_MULT.a" out_port="RS_DSP2_MULT.z"/>
-          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP2_MULT.b" out_port="RS_DSP2_MULT.z"/>
+          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
+          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT.b"/>
-          <direct name="direct3" input="RS_DSP2_MULT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULT.feedback"/>
-          <direct name="direct10" input="dsp.lreset" output="RS_DSP2_MULT.reset"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULT.b"/>
+          <direct name="direct3" input="RS_DSP_MULT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULT.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULT.feedback"/>
         </interconnect>
       </mode>
       <mode name="MULT_REGIN" disable_packing="false">
-        <pb_type name="RS_DSP2_MULT_REGIN" blif_model=".subckt RS_DSP2_MULT_REGIN" num_pb="1">
+        <pb_type name="RS_DSP_MULT_REGIN" blif_model=".subckt RS_DSP_MULT_REGIN" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
           <input name="feedback" num_pins="3"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGIN.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGIN.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGIN.feedback" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULT_REGIN.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGIN.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGIN.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGIN.feedback" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT_REGIN.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT_REGIN.b"/>
-          <direct name="direct3" input="RS_DSP2_MULT_REGIN.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT_REGIN.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT_REGIN.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT_REGIN.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT_REGIN.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT_REGIN.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULT_REGIN.feedback"/>
-          <direct name="direct10" input="dsp.lreset" output="RS_DSP2_MULT_REGIN.reset"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULT_REGIN.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULT_REGIN.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULT_REGIN.b"/>
+          <direct name="direct3" input="RS_DSP_MULT_REGIN.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULT_REGIN.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULT_REGIN.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULT_REGIN.feedback"/>
+          <direct name="direct10" input="dsp.lreset" output="RS_DSP_MULT_REGIN.lreset"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULT_REGIN.clk"/>
         </interconnect>
       </mode>
       <mode name="MULT_REGOUT" disable_packing="false">
-        <pb_type name="RS_DSP2_MULT_REGOUT" blif_model=".subckt RS_DSP2_MULT_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP_MULT_REGOUT" blif_model=".subckt RS_DSP_MULT_REGOUT" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
           <input name="feedback" num_pins="3"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGOUT.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGOUT.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGOUT.feedback" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULT_REGOUT.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGOUT.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGOUT.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGOUT.feedback" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT_REGOUT.b"/>
-          <direct name="direct3" input="RS_DSP2_MULT_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULT_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.lreset" output="RS_DSP2_MULT_REGOUT.reset"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULT_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULT_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULT_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP_MULT_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULT_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULT_REGOUT.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULT_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.lreset" output="RS_DSP_MULT_REGOUT.lreset"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULT_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULT_REGIN_REGOUT" disable_packing="false">
-        <pb_type name="RS_DSP2_MULT_REGIN_REGOUT" blif_model=".subckt RS_DSP2_MULT_REGIN_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP_MULT_REGIN_REGOUT" blif_model=".subckt RS_DSP_MULT_REGIN_REGOUT" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
           <input name="feedback" num_pins="3"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGIN_REGOUT.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGIN_REGOUT.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGIN_REGOUT.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULT_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULT_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULT_REGIN_REGOUT.a" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULT_REGIN_REGOUT.b" clock="clk"/>
-          <delay_constant max="2e-10" in_port="RS_DSP2_MULT_REGIN_REGOUT.a" out_port="RS_DSP2_MULT_REGIN_REGOUT.z"/>
-          <delay_constant max="2e-10" in_port="RS_DSP2_MULT_REGIN_REGOUT.b" out_port="RS_DSP2_MULT_REGIN_REGOUT.z"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
+          <delay_constant max="2e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.a" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
+          <delay_constant max="2e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.b" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULT_REGIN_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULT_REGIN_REGOUT.b"/>
-          <direct name="direct3" input="RS_DSP2_MULT_REGIN_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULT_REGIN_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULT_REGIN_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULT_REGIN_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULT_REGIN_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULT_REGIN_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULT_REGIN_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.lreset" output="RS_DSP2_MULT_REGIN_REGOUT.reset"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULT_REGIN_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULT_REGIN_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULT_REGIN_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP_MULT_REGIN_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULT_REGIN_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULT_REGIN_REGOUT.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULT_REGIN_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.lreset" output="RS_DSP_MULT_REGIN_REGOUT.lreset"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULT_REGIN_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTADD" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTADD" blif_model=".subckt RS_DSP2_MULTADD" num_pb="1">
+        <pb_type name="RS_DSP_MULTADD" blif_model=".subckt RS_DSP_MULTADD" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="subtract" num_pins="1"/>
@@ -2048,41 +1892,35 @@
           <input name="acc_fir" num_pins="6"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
           <input name="feedback" num_pins="3"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP2_MULTADD.a" out_port="RS_DSP2_MULTADD.z"/>
-          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP2_MULTADD.b" out_port="RS_DSP2_MULTADD.z"/>
-          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP2_MULTADD.subtract" out_port="RS_DSP2_MULTADD.z"/>
-          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP2_MULTADD.acc_fir" out_port="RS_DSP2_MULTADD.z"/>
+          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULTADD.a" out_port="RS_DSP_MULTADD.z"/>
+          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULTADD.b" out_port="RS_DSP_MULTADD.z"/>
+          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULTADD.subtract" out_port="RS_DSP_MULTADD.z"/>
+          <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULTADD.acc_fir" out_port="RS_DSP_MULTADD.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTADD.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD.register_inputs"/>
-          <direct name="direct9" input="dsp.subtract" output="RS_DSP2_MULTADD.subtract"/>
-          <direct name="direct10" input="dsp.acc_fir_i" output="RS_DSP2_MULTADD.acc_fir"/>
-          <direct name="direct11" input="dsp.feedback" output="RS_DSP2_MULTADD.feedback"/>
-          <direct name="direct12" input="dsp.load_acc" output="RS_DSP2_MULTADD.load_acc"/>
-          <direct name="direct13" input="dsp.lreset" output="RS_DSP2_MULTADD.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTADD.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTADD.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTADD.round"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTADD.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTADD.b"/>
+          <direct name="direct3" input="RS_DSP_MULTADD.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTADD.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTADD.unsigned_b"/>
+          <direct name="direct9" input="dsp.subtract" output="RS_DSP_MULTADD.subtract"/>
+          <direct name="direct10" input="dsp.acc_fir_i" output="RS_DSP_MULTADD.acc_fir"/>
+          <direct name="direct11" input="dsp.feedback" output="RS_DSP_MULTADD.feedback"/>
+          <direct name="direct12" input="dsp.load_acc" output="RS_DSP_MULTADD.load_acc"/>
+          <direct name="direct13" input="dsp.lreset" output="RS_DSP_MULTADD.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTADD.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTADD.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTADD.round"/>
         </interconnect>
       </mode>
       <mode name="MULTADD_REGIN" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTADD_REGIN" blif_model=".subckt RS_DSP2_MULTADD_REGIN" num_pb="1">
+        <pb_type name="RS_DSP_MULTADD_REGIN" blif_model=".subckt RS_DSP_MULTADD_REGIN" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="feedback" num_pins="3"/>
@@ -2091,45 +1929,39 @@
           <input name="acc_fir" num_pins="6"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN.subtract" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN.load_acc" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN.acc_fir" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTADD_REGIN.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.subtract" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.load_acc" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.acc_fir" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD_REGIN.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD_REGIN.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTADD_REGIN.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD_REGIN.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD_REGIN.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD_REGIN.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD_REGIN.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD_REGIN.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTADD_REGIN.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTADD_REGIN.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTADD_REGIN.load_acc"/>
-          <direct name="direct12" input="dsp.acc_fir_i" output="RS_DSP2_MULTADD_REGIN.acc_fir"/>
-          <direct name="direct13" input="dsp.lreset" output="RS_DSP2_MULTADD_REGIN.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTADD_REGIN.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTADD_REGIN.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTADD_REGIN.round"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTADD_REGIN.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTADD_REGIN.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTADD_REGIN.b"/>
+          <direct name="direct3" input="RS_DSP_MULTADD_REGIN.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTADD_REGIN.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTADD_REGIN.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULTADD_REGIN.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP_MULTADD_REGIN.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP_MULTADD_REGIN.load_acc"/>
+          <direct name="direct12" input="dsp.acc_fir_i" output="RS_DSP_MULTADD_REGIN.acc_fir"/>
+          <direct name="direct13" input="dsp.lreset" output="RS_DSP_MULTADD_REGIN.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTADD_REGIN.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTADD_REGIN.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTADD_REGIN.round"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULTADD_REGIN.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTADD_REGOUT" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTADD_REGOUT" blif_model=".subckt RS_DSP2_MULTADD_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP_MULTADD_REGOUT" blif_model=".subckt RS_DSP_MULTADD_REGOUT" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="feedback" num_pins="3"/>
@@ -2138,45 +1970,39 @@
           <input name="acc_fir" num_pins="6"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGOUT.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGOUT.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGOUT.subtract" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGOUT.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGOUT.load_acc" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGOUT.acc_fir" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTADD_REGOUT.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.subtract" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.load_acc" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.acc_fir" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD_REGOUT.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTADD_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTADD_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTADD_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTADD_REGOUT.load_acc"/>
-          <direct name="direct12" input="dsp.acc_fir_i" output="RS_DSP2_MULTADD_REGOUT.acc_fir"/>
-          <direct name="direct13" input="dsp.lreset" output="RS_DSP2_MULTADD_REGOUT.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTADD_REGOUT.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTADD_REGOUT.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTADD_REGOUT.round"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTADD_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTADD_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTADD_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP_MULTADD_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTADD_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTADD_REGOUT.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULTADD_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP_MULTADD_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP_MULTADD_REGOUT.load_acc"/>
+          <direct name="direct12" input="dsp.acc_fir_i" output="RS_DSP_MULTADD_REGOUT.acc_fir"/>
+          <direct name="direct13" input="dsp.lreset" output="RS_DSP_MULTADD_REGOUT.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTADD_REGOUT.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTADD_REGOUT.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTADD_REGOUT.round"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULTADD_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTADD_REGIN_REGOUT" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTADD_REGIN_REGOUT" blif_model=".subckt RS_DSP2_MULTADD_REGIN_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP_MULTADD_REGIN_REGOUT" blif_model=".subckt RS_DSP_MULTADD_REGIN_REGOUT" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="feedback" num_pins="3"/>
@@ -2185,54 +2011,48 @@
           <input name="acc_fir" num_pins="6"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.z" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.a" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.b" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
-          <delay_constant max="2e-10" in_port="RS_DSP2_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP2_MULTADD_REGIN_REGOUT.z"/>
-          <delay_constant max="2e-10" in_port="RS_DSP2_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP2_MULTADD_REGIN_REGOUT.z"/>
-          <delay_constant max="2e-10" in_port="RS_DSP2_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP2_MULTADD_REGIN_REGOUT.z"/>
-          <delay_constant max="2e-10" in_port="RS_DSP2_MULTADD_REGIN_REGOUT.acc_fir" out_port="RS_DSP2_MULTADD_REGIN_REGOUT.z"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
+          <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+          <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+          <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+          <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTADD_REGIN_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTADD_REGIN_REGOUT.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTADD_REGIN_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTADD_REGIN_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTADD_REGIN_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTADD_REGIN_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTADD_REGIN_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTADD_REGIN_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTADD_REGIN_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTADD_REGIN_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTADD_REGIN_REGOUT.load_acc"/>
-          <direct name="direct12" input="dsp.acc_fir_i" output="RS_DSP2_MULTADD_REGIN_REGOUT.acc_fir"/>
-          <direct name="direct13" input="dsp.lreset" output="RS_DSP2_MULTADD_REGIN_REGOUT.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTADD_REGIN_REGOUT.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTADD_REGIN_REGOUT.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTADD_REGIN_REGOUT.round"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTADD_REGIN_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTADD_REGIN_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTADD_REGIN_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP_MULTADD_REGIN_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTADD_REGIN_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTADD_REGIN_REGOUT.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULTADD_REGIN_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP_MULTADD_REGIN_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP_MULTADD_REGIN_REGOUT.load_acc"/>
+          <direct name="direct12" input="dsp.acc_fir_i" output="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir"/>
+          <direct name="direct13" input="dsp.lreset" output="RS_DSP_MULTADD_REGIN_REGOUT.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTADD_REGIN_REGOUT.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTADD_REGIN_REGOUT.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTADD_REGIN_REGOUT.round"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULTADD_REGIN_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTACC" blif_model=".subckt RS_DSP2_MULTACC" num_pb="1">
+        <pb_type name="RS_DSP_MULTACC" blif_model=".subckt RS_DSP_MULTACC" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="feedback" num_pins="3"/>
@@ -2240,43 +2060,37 @@
           <input name="load_acc" num_pins="1"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC.subtract" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC.load_acc" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTACC.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC.subtract" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC.load_acc" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTACC.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC.register_inputs"/>
-          <direct name="direct9" input="dsp.subtract" output="RS_DSP2_MULTACC.subtract"/>
-          <direct name="direct10" input="dsp.feedback" output="RS_DSP2_MULTACC.feedback"/>
-          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTACC.load_acc"/>
-          <direct name="direct12" input="dsp.lreset" output="RS_DSP2_MULTACC.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTACC.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTACC.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTACC.round"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTACC.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTACC.b"/>
+          <direct name="direct3" input="RS_DSP_MULTACC.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTACC.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTACC.unsigned_b"/>
+          <direct name="direct9" input="dsp.subtract" output="RS_DSP_MULTACC.subtract"/>
+          <direct name="direct10" input="dsp.feedback" output="RS_DSP_MULTACC.feedback"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP_MULTACC.load_acc"/>
+          <direct name="direct12" input="dsp.lreset" output="RS_DSP_MULTACC.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTACC.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTACC.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTACC.round"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULTACC.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC_REGIN" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTACC_REGIN" blif_model=".subckt RS_DSP2_MULTACC_REGIN" num_pb="1">
+        <pb_type name="RS_DSP_MULTACC_REGIN" blif_model=".subckt RS_DSP_MULTACC_REGIN" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="feedback" num_pins="3"/>
@@ -2284,43 +2098,37 @@
           <input name="load_acc" num_pins="1"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN.subtract" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN.load_acc" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTACC_REGIN.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.subtract" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.load_acc" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC_REGIN.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC_REGIN.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC_REGIN.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTACC_REGIN.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC_REGIN.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC_REGIN.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC_REGIN.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC_REGIN.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC_REGIN.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTACC_REGIN.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTACC_REGIN.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTACC_REGIN.load_acc"/>
-          <direct name="direct12" input="dsp.lreset" output="RS_DSP2_MULTACC_REGIN.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTACC_REGIN.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTACC_REGIN.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTACC_REGIN.round"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC_REGIN.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTACC_REGIN.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTACC_REGIN.b"/>
+          <direct name="direct3" input="RS_DSP_MULTACC_REGIN.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTACC_REGIN.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTACC_REGIN.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULTACC_REGIN.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP_MULTACC_REGIN.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP_MULTACC_REGIN.load_acc"/>
+          <direct name="direct12" input="dsp.lreset" output="RS_DSP_MULTACC_REGIN.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTACC_REGIN.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTACC_REGIN.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTACC_REGIN.round"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULTACC_REGIN.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC_REGOUT" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTACC_REGOUT" blif_model=".subckt RS_DSP2_MULTACC_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP_MULTACC_REGOUT" blif_model=".subckt RS_DSP_MULTACC_REGOUT" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="feedback" num_pins="3"/>
@@ -2328,43 +2136,37 @@
           <input name="load_acc" num_pins="1"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGOUT.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGOUT.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGOUT.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGOUT.subtract" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGOUT.load_acc" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTACC_REGOUT.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.subtract" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.load_acc" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC_REGOUT.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTACC_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTACC_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTACC_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTACC_REGOUT.load_acc"/>
-          <direct name="direct12" input="dsp.lreset" output="RS_DSP2_MULTACC_REGOUT.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTACC_REGOUT.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTACC_REGOUT.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTACC_REGOUT.round"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTACC_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTACC_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP_MULTACC_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTACC_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTACC_REGOUT.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULTACC_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP_MULTACC_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP_MULTACC_REGOUT.load_acc"/>
+          <direct name="direct12" input="dsp.lreset" output="RS_DSP_MULTACC_REGOUT.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTACC_REGOUT.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTACC_REGOUT.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTACC_REGOUT.round"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULTACC_REGOUT.clk"/>
         </interconnect>
       </mode>
       <mode name="MULTACC_REGIN_REGOUT" disable_packing="false">
-        <pb_type name="RS_DSP2_MULTACC_REGIN_REGOUT" blif_model=".subckt RS_DSP2_MULTACC_REGIN_REGOUT" num_pb="1">
+        <pb_type name="RS_DSP_MULTACC_REGIN_REGOUT" blif_model=".subckt RS_DSP_MULTACC_REGIN_REGOUT" num_pb="1">
           <input name="a" num_pins="20"/>
           <input name="b" num_pins="18"/>
           <input name="feedback" num_pins="3"/>
@@ -2372,39 +2174,33 @@
           <input name="load_acc" num_pins="1"/>
           <input name="unsigned_a" num_pins="1"/>
           <input name="unsigned_b" num_pins="1"/>
-          <input name="f_mode" num_pins="1"/>
-          <input name="output_select" num_pins="3"/>
-          <input name="register_inputs" num_pins="1"/>
           <clock name="clk" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="lreset" num_pins="1"/>
           <input name="saturate_enable" num_pins="1"/>
           <input name="shift_right" num_pins="6"/>
           <input name="round" num_pins="1"/>
           <output name="z" num_pins="38"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN_REGOUT.a" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN_REGOUT.b" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN_REGOUT.subtract" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN_REGOUT.feedback" clock="clk"/>
-          <T_setup value="2e-10" port="RS_DSP2_MULTACC_REGIN_REGOUT.load_acc" clock="clk"/>
-          <T_clock_to_Q max="2e-10" port="RS_DSP2_MULTACC_REGIN_REGOUT.z" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.a" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.b" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.subtract" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.feedback" clock="clk"/>
+          <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.load_acc" clock="clk"/>
+          <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.z" clock="clk"/>
         </pb_type>
         <interconnect>
-          <direct name="direct1" input="dsp.a_i" output="RS_DSP2_MULTACC_REGIN_REGOUT.a"/>
-          <direct name="direct2" input="dsp.b_i" output="RS_DSP2_MULTACC_REGIN_REGOUT.b"/>
-          <direct name="direct3" input="RS_DSP2_MULTACC_REGIN_REGOUT.z" output="dsp.z_o"/>
-          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP2_MULTACC_REGIN_REGOUT.unsigned_a"/>
-          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP2_MULTACC_REGIN_REGOUT.unsigned_b"/>
-          <direct name="direct6" input="dsp.f_mode" output="RS_DSP2_MULTACC_REGIN_REGOUT.f_mode"/>
-          <direct name="direct7" input="dsp.output_select" output="RS_DSP2_MULTACC_REGIN_REGOUT.output_select"/>
-          <direct name="direct8" input="dsp.register_inputs" output="RS_DSP2_MULTACC_REGIN_REGOUT.register_inputs"/>
-          <direct name="direct9" input="dsp.feedback" output="RS_DSP2_MULTACC_REGIN_REGOUT.feedback"/>
-          <direct name="direct10" input="dsp.subtract" output="RS_DSP2_MULTACC_REGIN_REGOUT.subtract"/>
-          <direct name="direct11" input="dsp.load_acc" output="RS_DSP2_MULTACC_REGIN_REGOUT.load_acc"/>
-          <direct name="direct12" input="dsp.lreset" output="RS_DSP2_MULTACC_REGIN_REGOUT.reset"/>
-          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP2_MULTACC_REGIN_REGOUT.saturate_enable"/>
-          <direct name="direct15" input="dsp.shift_right" output="RS_DSP2_MULTACC_REGIN_REGOUT.shift_right"/>
-          <direct name="direct16" input="dsp.round" output="RS_DSP2_MULTACC_REGIN_REGOUT.round"/>
-          <complete name="clk" input="dsp.clk" output="RS_DSP2_MULTACC_REGIN_REGOUT.clk"/>
+          <direct name="direct1" input="dsp.a_i" output="RS_DSP_MULTACC_REGIN_REGOUT.a"/>
+          <direct name="direct2" input="dsp.b_i" output="RS_DSP_MULTACC_REGIN_REGOUT.b"/>
+          <direct name="direct3" input="RS_DSP_MULTACC_REGIN_REGOUT.z" output="dsp.z_o"/>
+          <direct name="direct4" input="dsp.unsigned_a" output="RS_DSP_MULTACC_REGIN_REGOUT.unsigned_a"/>
+          <direct name="direct5" input="dsp.unsigned_b" output="RS_DSP_MULTACC_REGIN_REGOUT.unsigned_b"/>
+          <direct name="direct9" input="dsp.feedback" output="RS_DSP_MULTACC_REGIN_REGOUT.feedback"/>
+          <direct name="direct10" input="dsp.subtract" output="RS_DSP_MULTACC_REGIN_REGOUT.subtract"/>
+          <direct name="direct11" input="dsp.load_acc" output="RS_DSP_MULTACC_REGIN_REGOUT.load_acc"/>
+          <direct name="direct12" input="dsp.lreset" output="RS_DSP_MULTACC_REGIN_REGOUT.lreset"/>
+          <direct name="direct14" input="dsp.saturate_enable" output="RS_DSP_MULTACC_REGIN_REGOUT.saturate_enable"/>
+          <direct name="direct15" input="dsp.shift_right" output="RS_DSP_MULTACC_REGIN_REGOUT.shift_right"/>
+          <direct name="direct16" input="dsp.round" output="RS_DSP_MULTACC_REGIN_REGOUT.round"/>
+          <complete name="clk" input="dsp.clk" output="RS_DSP_MULTACC_REGIN_REGOUT.clk"/>
         </interconnect>
       </mode>
     </pb_type>
@@ -2594,106 +2390,106 @@
         </interconnect>
       </mode>
       <mode name="mem_36K_tdp">
-        <pb_type blif_model=".subckt TDP36K" name="mem_36K" num_pb="1">
-          <input name="WDATA_A1_i" num_pins="18"/>
-          <input name="WDATA_A2_i" num_pins="18"/>
-          <output name="RDATA_A1_o" num_pins="18"/>
-          <output name="RDATA_A2_o" num_pins="18"/>
-          <input name="ADDR_A1_i" num_pins="15"/>
-          <input name="ADDR_A2_i" num_pins="14"/>
-          <clock name="CLK_A1_i" num_pins="1"/>
-          <clock name="CLK_A2_i" num_pins="1"/>
-          <input name="REN_A1_i" num_pins="1"/>
-          <input name="REN_A2_i" num_pins="1"/>
-          <input name="WEN_A1_i" num_pins="1"/>
-          <input name="WEN_A2_i" num_pins="1"/>
-          <input name="BE_A1_i" num_pins="2"/>
-          <input name="BE_A2_i" num_pins="2"/>
-          <input name="WDATA_B1_i" num_pins="18"/>
-          <input name="WDATA_B2_i" num_pins="18"/>
-          <output name="RDATA_B1_o" num_pins="18"/>
-          <output name="RDATA_B2_o" num_pins="18"/>
-          <input name="ADDR_B1_i" num_pins="15"/>
-          <input name="ADDR_B2_i" num_pins="14"/>
-          <clock name="CLK_B1_i" num_pins="1"/>
-          <clock name="CLK_B2_i" num_pins="1"/>
-          <input name="REN_B1_i" num_pins="1"/>
-          <input name="REN_B2_i" num_pins="1"/>
-          <input name="WEN_B1_i" num_pins="1"/>
-          <input name="WEN_B2_i" num_pins="1"/>
-          <input name="BE_B1_i" num_pins="2"/>
-          <input name="BE_B2_i" num_pins="2"/>
-          <input name="FLUSH1_i" num_pins="1"/>
-          <input name="FLUSH2_i" num_pins="1"/>
-          <input name="RESET_ni" num_pins="1"/>
+        <pb_type blif_model=".subckt RS_TDP36K" name="mem_36K" num_pb="1">
+          <input name="WDATA_A1" num_pins="18"/>
+          <input name="WDATA_A2" num_pins="18"/>
+          <output name="RDATA_A1" num_pins="18"/>
+          <output name="RDATA_A2" num_pins="18"/>
+          <input name="ADDR_A1" num_pins="15"/>
+          <input name="ADDR_A2" num_pins="14"/>
+          <clock name="CLK_A1" num_pins="1"/>
+          <clock name="CLK_A2" num_pins="1"/>
+          <input name="REN_A1" num_pins="1"/>
+          <input name="REN_A2" num_pins="1"/>
+          <input name="WEN_A1" num_pins="1"/>
+          <input name="WEN_A2" num_pins="1"/>
+          <input name="BE_A1" num_pins="2"/>
+          <input name="BE_A2" num_pins="2"/>
+          <input name="WDATA_B1" num_pins="18"/>
+          <input name="WDATA_B2" num_pins="18"/>
+          <output name="RDATA_B1" num_pins="18"/>
+          <output name="RDATA_B2" num_pins="18"/>
+          <input name="ADDR_B1" num_pins="15"/>
+          <input name="ADDR_B2" num_pins="14"/>
+          <clock name="CLK_B1" num_pins="1"/>
+          <clock name="CLK_B2" num_pins="1"/>
+          <input name="REN_B1" num_pins="1"/>
+          <input name="REN_B2" num_pins="1"/>
+          <input name="WEN_B1" num_pins="1"/>
+          <input name="WEN_B2" num_pins="1"/>
+          <input name="BE_B1" num_pins="2"/>
+          <input name="BE_B2" num_pins="2"/>
+          <input name="FLUSH1" num_pins="1"/>
+          <input name="FLUSH2" num_pins="1"/>
+          <!-- <input name="RESET_ni" num_pins="1"/>      -->
           <!-- Delay extracted from standard cell libraries -->
-          <T_setup value="500e-12" port="mem_36K.WEN_A1_i" clock="CLK_A1_i"/>
-          <T_setup value="500e-12" port="mem_36K.WEN_B1_i" clock="CLK_B1_i"/>
-          <T_setup value="500e-12" port="mem_36K.BE_A1_i" clock="CLK_A1_i"/>
-          <T_setup value="500e-12" port="mem_36K.BE_B1_i" clock="CLK_B1_i"/>
-          <T_setup value="500e-12" port="mem_36K.REN_A1_i" clock="CLK_A1_i"/>
-          <T_setup value="500e-12" port="mem_36K.REN_B1_i" clock="CLK_B1_i"/>
-          <T_setup value="500e-12" port="mem_36K.ADDR_A1_i" clock="CLK_A1_i"/>
-          <T_setup value="500e-12" port="mem_36K.ADDR_B1_i" clock="CLK_B1_i"/>
-          <T_setup value="500e-12" port="mem_36K.WDATA_A1_i" clock="CLK_A1_i"/>
-          <T_setup value="500e-12" port="mem_36K.WDATA_B1_i" clock="CLK_B1_i"/>
-          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_A1_o" clock="CLK_A1_i"/>
-          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_B1_o" clock="CLK_B1_i"/>
-          <T_setup value="500e-12" port="mem_36K.WEN_A2_i" clock="CLK_A2_i"/>
-          <T_setup value="500e-12" port="mem_36K.WEN_B2_i" clock="CLK_B2_i"/>
-          <T_setup value="500e-12" port="mem_36K.BE_A2_i" clock="CLK_A2_i"/>
-          <T_setup value="500e-12" port="mem_36K.BE_B2_i" clock="CLK_B2_i"/>
-          <T_setup value="500e-12" port="mem_36K.REN_A2_i" clock="CLK_A2_i"/>
-          <T_setup value="500e-12" port="mem_36K.REN_B2_i" clock="CLK_B2_i"/>
-          <T_setup value="500e-12" port="mem_36K.ADDR_A2_i" clock="CLK_A2_i"/>
-          <T_setup value="500e-12" port="mem_36K.ADDR_B2_i" clock="CLK_B2_i"/>
-          <T_setup value="500e-12" port="mem_36K.WDATA_A2_i" clock="CLK_A2_i"/>
-          <T_setup value="500e-12" port="mem_36K.WDATA_B2_i" clock="CLK_B2_i"/>
-          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_A2_o" clock="CLK_A2_i"/>
-          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_B2_o" clock="CLK_B2_i"/>
-          <T_setup value="500e-12" port="mem_36K.FLUSH1_i" clock="CLK_A1_i"/>
-          <T_setup value="500e-12" port="mem_36K.FLUSH2_i" clock="CLK_A2_i"/>
-          <T_setup value="500e-12" port="mem_36K.RESET_ni" clock="CLK_A2_i"/>
+          <T_setup value="500e-12" port="mem_36K.WEN_A1" clock="CLK_A1"/>
+          <T_setup value="500e-12" port="mem_36K.WEN_B1" clock="CLK_B1"/>
+          <T_setup value="500e-12" port="mem_36K.BE_A1" clock="CLK_A1"/>
+          <T_setup value="500e-12" port="mem_36K.BE_B1" clock="CLK_B1"/>
+          <T_setup value="500e-12" port="mem_36K.REN_A1" clock="CLK_A1"/>
+          <T_setup value="500e-12" port="mem_36K.REN_B1" clock="CLK_B1"/>
+          <T_setup value="500e-12" port="mem_36K.ADDR_A1" clock="CLK_A1"/>
+          <T_setup value="500e-12" port="mem_36K.ADDR_B1" clock="CLK_B1"/>
+          <T_setup value="500e-12" port="mem_36K.WDATA_A1" clock="CLK_A1"/>
+          <T_setup value="500e-12" port="mem_36K.WDATA_B1" clock="CLK_B1"/>
+          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_A1" clock="CLK_A1"/>
+          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_B1" clock="CLK_B1"/>
+          <T_setup value="500e-12" port="mem_36K.WEN_A2" clock="CLK_A2"/>
+          <T_setup value="500e-12" port="mem_36K.WEN_B2" clock="CLK_B2"/>
+          <T_setup value="500e-12" port="mem_36K.BE_A2" clock="CLK_A2"/>
+          <T_setup value="500e-12" port="mem_36K.BE_B2" clock="CLK_B2"/>
+          <T_setup value="500e-12" port="mem_36K.REN_A2" clock="CLK_A2"/>
+          <T_setup value="500e-12" port="mem_36K.REN_B2" clock="CLK_B2"/>
+          <T_setup value="500e-12" port="mem_36K.ADDR_A2" clock="CLK_A2"/>
+          <T_setup value="500e-12" port="mem_36K.ADDR_B2" clock="CLK_B2"/>
+          <T_setup value="500e-12" port="mem_36K.WDATA_A2" clock="CLK_A2"/>
+          <T_setup value="500e-12" port="mem_36K.WDATA_B2" clock="CLK_B2"/>
+          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_A2" clock="CLK_A2"/>
+          <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_B2" clock="CLK_B2"/>
+          <T_setup value="500e-12" port="mem_36K.FLUSH1" clock="CLK_A1"/>
+          <T_setup value="500e-12" port="mem_36K.FLUSH2" clock="CLK_A2"/>
+          <!-- <T_setup value="500e-12" port="mem_36K.RESET_ni" clock="CLK_A2"/>      -->
           <power method="pin-toggle">
-            <port name="CLK_A1_i" energy_per_toggle="17.9e-12"/>
-            <port name="CLK_A2_i" energy_per_toggle="17.9e-12"/>
-            <port name="CLK_B1_i" energy_per_toggle="17.9e-12"/>
-            <port name="CLK_B2_i" energy_per_toggle="17.9e-12"/>
+            <port name="CLK_A1" energy_per_toggle="17.9e-12"/>
+            <port name="CLK_A2" energy_per_toggle="17.9e-12"/>
+            <port name="CLK_B1" energy_per_toggle="17.9e-12"/>
+            <port name="CLK_B2" energy_per_toggle="17.9e-12"/>
             <static_power power_per_instance="0.0"/>
           </power>
         </pb_type>
         <interconnect>
-          <complete name="bram-clk_a1" input="bram.clk" output="mem_36K.CLK_A1_i"/>
-          <complete name="bram-clk_b1" input="bram.clk" output="mem_36K.CLK_B1_i"/>
-          <complete name="bram-clk_a2" input="bram.clk" output="mem_36K.CLK_A2_i"/>
-          <complete name="bram-clk_b2" input="bram.clk" output="mem_36K.CLK_B2_i"/>
-          <direct name="direct1" input="bram.WEN_A1_i" output="mem_36K.WEN_A1_i"/>
-          <direct name="direct2" input="bram.WEN_B1_i" output="mem_36K.WEN_B1_i"/>
-          <direct name="direct1_BE" input="bram.BE_A1_i" output="mem_36K.BE_A1_i"/>
-          <direct name="direct2_BE" input="bram.BE_B1_i" output="mem_36K.BE_B1_i"/>
-          <direct name="direct3" input="bram.REN_A1_i" output="mem_36K.REN_A1_i"/>
-          <direct name="direct4" input="bram.REN_B1_i" output="mem_36K.REN_B1_i"/>
-          <direct name="direct7" input="bram.ADDR_A1_i" output="mem_36K.ADDR_A1_i"/>
-          <direct name="direct8" input="bram.ADDR_B1_i" output="mem_36K.ADDR_B1_i"/>
-          <direct name="direct9" input="bram.WDATA_A1_i" output="mem_36K.WDATA_A1_i"/>
-          <direct name="direct10" input="bram.WDATA_B1_i" output="mem_36K.WDATA_B1_i"/>
-          <direct name="direct11" input="mem_36K.RDATA_A1_o" output="bram.RDATA_A1_o"/>
-          <direct name="direct12" input="mem_36K.RDATA_B1_o" output="bram.RDATA_B1_o"/>
-          <direct name="direct13" input="bram.FLUSH1_i" output="mem_36K.FLUSH1_i"/>
-          <direct name="direct25" input="bram.WEN_A2_i" output="mem_36K.WEN_A2_i"/>
-          <direct name="direct26" input="bram.WEN_B2_i" output="mem_36K.WEN_B2_i"/>
-          <direct name="direct25_BE" input="bram.BE_A2_i" output="mem_36K.BE_A2_i"/>
-          <direct name="direct26_BE" input="bram.BE_B2_i" output="mem_36K.BE_B2_i"/>
-          <direct name="direct27" input="bram.REN_A2_i" output="mem_36K.REN_A2_i"/>
-          <direct name="direct28" input="bram.REN_B2_i" output="mem_36K.REN_B2_i"/>
-          <direct name="direct31" input="bram.ADDR_A2_i" output="mem_36K.ADDR_A2_i"/>
-          <direct name="direct32" input="bram.ADDR_B2_i" output="mem_36K.ADDR_B2_i"/>
-          <direct name="direct33" input="bram.WDATA_A2_i" output="mem_36K.WDATA_A2_i"/>
-          <direct name="direct34" input="bram.WDATA_B2_i" output="mem_36K.WDATA_B2_i"/>
-          <direct name="direct35" input="mem_36K.RDATA_A2_o" output="bram.RDATA_A2_o"/>
-          <direct name="direct36" input="mem_36K.RDATA_B2_o" output="bram.RDATA_B2_o"/>
-          <direct name="direct37" input="bram.FLUSH2_i" output="mem_36K.FLUSH2_i"/>
-          <direct name="direct64" input="bram.global_reset" output="mem_36K.RESET_ni"/>
+          <complete name="bram-clk_a1" input="bram.clk" output="mem_36K.CLK_A1"/>
+          <complete name="bram-clk_b1" input="bram.clk" output="mem_36K.CLK_B1"/>
+          <complete name="bram-clk_a2" input="bram.clk" output="mem_36K.CLK_A2"/>
+          <complete name="bram-clk_b2" input="bram.clk" output="mem_36K.CLK_B2"/>
+          <direct name="direct1" input="bram.WEN_A1_i" output="mem_36K.WEN_A1"/>
+          <direct name="direct2" input="bram.WEN_B1_i" output="mem_36K.WEN_B1"/>
+          <direct name="direct1_BE" input="bram.BE_A1_i" output="mem_36K.BE_A1"/>
+          <direct name="direct2_BE" input="bram.BE_B1_i" output="mem_36K.BE_B1"/>
+          <direct name="direct3" input="bram.REN_A1_i" output="mem_36K.REN_A1"/>
+          <direct name="direct4" input="bram.REN_B1_i" output="mem_36K.REN_B1"/>
+          <direct name="direct7" input="bram.ADDR_A1_i" output="mem_36K.ADDR_A1"/>
+          <direct name="direct8" input="bram.ADDR_B1_i" output="mem_36K.ADDR_B1"/>
+          <direct name="direct9" input="bram.WDATA_A1_i" output="mem_36K.WDATA_A1"/>
+          <direct name="direct10" input="bram.WDATA_B1_i" output="mem_36K.WDATA_B1"/>
+          <direct name="direct11" input="mem_36K.RDATA_A1" output="bram.RDATA_A1_o"/>
+          <direct name="direct12" input="mem_36K.RDATA_B1" output="bram.RDATA_B1_o"/>
+          <direct name="direct13" input="bram.FLUSH1_i" output="mem_36K.FLUSH1"/>
+          <direct name="direct25" input="bram.WEN_A2_i" output="mem_36K.WEN_A2"/>
+          <direct name="direct26" input="bram.WEN_B2_i" output="mem_36K.WEN_B2"/>
+          <direct name="direct25_BE" input="bram.BE_A2_i" output="mem_36K.BE_A2"/>
+          <direct name="direct26_BE" input="bram.BE_B2_i" output="mem_36K.BE_B2"/>
+          <direct name="direct27" input="bram.REN_A2_i" output="mem_36K.REN_A2"/>
+          <direct name="direct28" input="bram.REN_B2_i" output="mem_36K.REN_B2"/>
+          <direct name="direct31" input="bram.ADDR_A2_i" output="mem_36K.ADDR_A2"/>
+          <direct name="direct32" input="bram.ADDR_B2_i" output="mem_36K.ADDR_B2"/>
+          <direct name="direct33" input="bram.WDATA_A2_i" output="mem_36K.WDATA_A2"/>
+          <direct name="direct34" input="bram.WDATA_B2_i" output="mem_36K.WDATA_B2"/>
+          <direct name="direct35" input="mem_36K.RDATA_A2" output="bram.RDATA_A2_o"/>
+          <direct name="direct36" input="mem_36K.RDATA_B2" output="bram.RDATA_B2_o"/>
+          <direct name="direct37" input="bram.FLUSH2_i" output="mem_36K.FLUSH2"/>
+          <!-- <direct name="direct64" input="bram.global_reset" output="mem_36K.RESET_ni"/>      -->
         </interconnect>
       </mode>
     </pb_type>
