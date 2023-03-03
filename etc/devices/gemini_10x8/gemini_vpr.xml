@@ -1992,7 +1992,7 @@
             <output name="out" num_pins="8"/>
             <input name="sc_in" num_pins="2"/>
             <output name="sc_out" num_pins="2"/>
-            <mode name="physical">
+            <mode name="physical" disable_packing="true">
               <pb_type name="flop_quad" num_pb="2">
                 <input name="DIN" num_pins="4"/>
                 <input name="RESET" num_pins="1"/>
