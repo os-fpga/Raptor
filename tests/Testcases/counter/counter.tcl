@@ -9,6 +9,7 @@ target_device GEMINI_10x8
 
 # Compilation
 synthesize delay
+pin_loc_assign_method free
 packing
 place
 route
