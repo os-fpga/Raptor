@@ -354,6 +354,12 @@
                 "default": "",
                 "arg": "com_rtl_opt"
             },
+            "options_run": {
+                "label": "Extra options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "run_rtl_opt"
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
@@ -400,6 +406,12 @@
                 "widgetType": "textedit",
                 "default": "",
                 "arg": "com_gate_opt"
+            },
+            "options_run": {
+                "label": "Extra options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "run_gate_opt"
             },
             "_META_": {
                 "hidden": false,
@@ -448,6 +460,12 @@
                 "default": "",
                 "arg": "com_pnr_opt"
             },
+             "options_run": {
+                "label": "Extra options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "run_pnr_opt"
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
@@ -494,6 +512,12 @@
                 "widgetType": "textedit",
                 "default": "",
                 "arg": "com_bitstream_opt"
+            },
+            "options_run": {
+                "label": "Extra options:",
+                "widgetType": "textedit",
+                "default": "",
+                "arg": "run_bitstream_opt"
             },
             "_META_": {
                 "hidden": false,
