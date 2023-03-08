@@ -537,17 +537,17 @@
         <equivalent_sites>
           <site pb_type="clb"/>
         </equivalent_sites>
-        <input name="I0" num_pins="10" equivalent="full"/>
-        <input name="I1" num_pins="10" equivalent="full"/>
-        <input name="I2" num_pins="10" equivalent="full"/>
-        <input name="I3" num_pins="10" equivalent="full"/>
+        <input name="I00" num_pins="12" equivalent="full"/>
+        <input name="I10" num_pins="12" equivalent="full"/>
+        <input name="I20" num_pins="12" equivalent="full"/>
+        <input name="I30" num_pins="12" equivalent="full"/>
         <input name="IS" num_pins="6" equivalent="full"/>
         <input name="sc_in" num_pins="1"/>
         <input name="cin" num_pins="1"/>
         <input name="cin_trick" num_pins="1"/>
         <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
         <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
-        <output name="O" num_pins="20" equivalent="none"/>
+        <output name="O" num_pins="24" equivalent="none"/>
         <output name="sc_out" num_pins="1"/>
         <output name="cout" num_pins="1"/>
         <clock name="clk" num_pins="4"/>
@@ -573,8 +573,8 @@
         <pinlocations pattern="custom">
           <loc side="left"> clb.clk clb.scan_reset clb.global_reset</loc>
           <loc side="top">  clb.cin clb.sc_in clb.cin_trick
-                          clb.I0[9:0] clb.I1[9:0] clb.O[9:0]</loc>
-          <loc side="right"> clb.I2[9:0] clb.I3[9:0] clb.O[19:10] clb.IS[5:0] </loc>
+                          clb.I00[11:0] clb.I10[11:0] clb.O[11:0]</loc>
+          <loc side="right"> clb.I20[11:0] clb.I30[11:0] clb.O[23:12] clb.IS[5:0] </loc>
           <loc side="bottom">clb.sc_out clb.cout</loc>
         </pinlocations>
       </sub_tile>
@@ -1067,17 +1067,17 @@
          - crossbar: every local routing MULTiplexer accesses to 50% of the CLB inputs and 25% of the feedback
       -->
     <pb_type name="clb">
-      <input name="I0" num_pins="10" equivalent="full"/>
-      <input name="I1" num_pins="10" equivalent="full"/>
-      <input name="I2" num_pins="10" equivalent="full"/>
-      <input name="I3" num_pins="10" equivalent="full"/>
+      <input name="I00" num_pins="12" equivalent="full"/>
+      <input name="I10" num_pins="12" equivalent="full"/>
+      <input name="I20" num_pins="12" equivalent="full"/>
+      <input name="I30" num_pins="12" equivalent="full"/>
       <input name="IS" num_pins="6" equivalent="full"/>
       <input name="sc_in" num_pins="1"/>
       <input name="cin" num_pins="1"/>
       <input name="cin_trick" num_pins="1"/>
       <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
       <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
-      <output name="O" num_pins="20" equivalent="none"/>
+      <output name="O" num_pins="24" equivalent="none"/>
       <output name="sc_out" num_pins="1"/>
       <output name="cout" num_pins="1"/>
       <clock name="clk" num_pins="4"/>
@@ -1089,6 +1089,7 @@
         <input name="reset" num_pins="1"/>
         <input name="enable" num_pins="1"/>
         <output name="out" num_pins="2"/>
+        <output name="o6" num_pins="1"/>
         <output name="cout" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
         <clock name="clk" num_pins="1"/>
@@ -1104,6 +1105,7 @@
             <input name="reset" num_pins="1"/>
             <input name="enable" num_pins="1"/>
             <output name="out" num_pins="2"/>
+            <output name="o6" num_pins="1"/>
             <output name="cout" num_pins="1"/>
             <output name="sc_out" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
@@ -1112,6 +1114,7 @@
               <input name="cin" num_pins="1"/>
               <output name="cout" num_pins="1"/>
               <output name="out" num_pins="2"/>
+              <output name="o6" num_pins="1"/>
               <pb_type name="frac_lut6" blif_model=".subckt frac_lut6" num_pb="1">
                 <input name="in" num_pins="6"/>
                 <output name="lut4_out" num_pins="4"/>
@@ -1230,6 +1233,7 @@
                 <direct name="direct4" input="frac_lut6.lut4_out[1]" output="adder_carry[0].g"/>
                 <direct name="direct6" input="frac_lut6.lut4_out[2]" output="adder_carry[1].p"/>
                 <direct name="direct7" input="frac_lut6.lut4_out[3]" output="adder_carry[1].g"/>
+                <direct name="direct8" input="frac_lut6.lut6_out" output="frac_logic.o6"/>
                 <direct name="direct9" input="adder_carry[0].cout" output="adder_carry[1].cin">
                   <delay_constant max="5.1577e-11" min="4.0588e-11" in_port="adder_carry[0].cout" out_port="adder_carry[1].cin"/>
                 </direct>
@@ -1274,6 +1278,7 @@
               <direct name="direct_fabric_scout" input="ff_phy[1].SO" output="fabric.sc_out"/>
               <direct name="direct_frac_out1" input="frac_logic.out[0]" output="ff_phy[0].D"/>
               <direct name="direct_frac_out2" input="frac_logic.out[1]" output="ff_phy[1].D"/>
+              <direct name="direct_frac_out3" input="frac_logic.o6" output="fabric.o6"/>
               <mux name="mux2" input="frac_logic.out[0] ff_phy[0].Q" output="fabric.out[0]">
                 <delay_constant max="9.6058e-11" min="8.359e-11" in_port="frac_logic.out[0]" out_port="fabric.out[0]"/>
                 <delay_constant max="1.00905e-10" min="8.9674e-11" in_port="ff_phy[0].Q" out_port="fabric.out[0]"/>
@@ -1289,6 +1294,7 @@
             <direct name="direct3" input="fle.sc_in" output="fabric.sc_in"/>
             <direct name="direct4" input="fle.cin" output="fabric.cin"/>
             <direct name="direct5" input="fabric.out" output="fle.out"/>
+            <direct name="direct6" input="fabric.o6" output="fle.o6"/>
             <direct name="direct7" input="fabric.sc_out" output="fle.sc_out"/>
             <direct name="direct8" input="fabric.cout" output="fle.cout"/>
             <direct name="direct9" input="fle.clk" output="fabric.clk"/>
@@ -1303,6 +1309,7 @@
             <input name="reset" num_pins="1"/>
             <input name="enable" num_pins="1"/>
             <output name="out" num_pins="1"/>
+            <output name="o6" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
               <input name="in" num_pins="6" port_class="lut_in"/>
@@ -1360,6 +1367,7 @@
                 <pack_pattern name="lut6-out" in_port="lut6.out" out_port="ff.D"/>
               </direct>
               <direct name="direct3" input="ble6.clk" output="ff.clk"/>
+              <direct name="direct4" input="lut6.out" output="ble6.o6"/>
               <direct name="direct5" input="ble6.reset" output="ff.R"/>
               <direct name="direct6" input="ble6.enable" output="ff.E"/>
               <mux name="mux4" input="lut6.out ff.Q" output="ble6.out">
@@ -1372,6 +1380,7 @@
             <direct name="direct1" input="fle.in" output="ble6.in"/>
             <direct name="direct2" input="ble6.out" output="fle.out[1:1]"/>
             <direct name="direct3" input="fle.clk" output="ble6.clk"/>
+            <direct name="direct4" input="ble6.o6" output="fle.o6"/>
             <direct name="direct5" input="fle.reset" output="ble6.reset"/>
             <direct name="direct6" input="fle.enable" output="ble6.enable"/>
           </interconnect>
@@ -1630,26 +1639,29 @@
         <!-- Define n2_lut5 mode ends -->
       </pb_type>
       <interconnect>
-        <complete name="crossbar0" input="clb.I0 clb.I3 fle[1:0].out fle[3:2].out " output="fle[7:0].in[0]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[7:0].in[0]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[1:0].out fle[3:2].out fle[7:7].out" out_port="fle[7:0].in[0]"/>
+        <complete name="crossbar0" input="clb.I00 clb.I30 fle.o6" output="fle[7:0].in[0]">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[0]"/>
+          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[0]"/>
         </complete>
-        <complete name="crossbar1" input="clb.I1 clb.I2 fle[3:2].out fle[5:4].out fle[7:7].out" output="fle[7:0].in[1]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[7:0].in[1]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[3:2].out fle[5:4].out fle[7:7].out" out_port="fle[7:0].in[1]"/>
+        <complete name="crossbar1" input="clb.I10 clb.I20 fle.o6" output="fle[7:0].in[1]">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[1]"/>
+          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[1]"/>
         </complete>
-        <complete name="crossbar2" input="clb.I0 clb.I2 fle[5:4].out fle[7:6].out" output="fle[7:0].in[2]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I2" out_port="fle[7:0].in[2]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle[5:4].out fle[7:6].out " out_port="fle[7:0].in[2]"/>
+        <complete name="crossbar2" input="clb.I00 clb.I20" output="fle[7:0].in[2]">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I00 clb.I20" out_port="fle[7:0].in[2]"/>
+          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[2]"/>
         </complete>
-        <complete name="crossbar3" input="clb.I1 clb.I3" output="fle[7:0].in[3]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I3" out_port="fle[7:0].in[3]"/>
+        <complete name="crossbar3" input="clb.I10 clb.I30" output="fle[7:0].in[3]">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I10 clb.I30" out_port="fle[7:0].in[3]"/>
+          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[3]"/>
         </complete>
-        <complete name="crossbar4" input="clb.I0 clb.I3" output="fle[7:0].in[4]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I0 clb.I3" out_port="fle[7:0].in[4]"/>
+        <complete name="crossbar4" input="clb.I00 clb.I30" output="fle[7:0].in[4]">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[4]"/>
+          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[4]"/>
         </complete>
-        <complete name="crossbar5" input="clb.I1 clb.I2" output="fle[7:0].in[5]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I1 clb.I2" out_port="fle[7:0].in[5]"/>
+        <complete name="crossbar5" input="clb.I10 clb.I20" output="fle[7:0].in[5]">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[5]"/>
+          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[5]"/>
         </complete>
         <complete name="clks" input="clb.clk" output="fle[7:0].clk">
           <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[0]" out_port="fle[7:0].clk"/>
@@ -1657,26 +1669,15 @@
           <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[2]" out_port="fle[7:0].clk"/>
           <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[3]" out_port="fle[7:0].clk"/>
         </complete>
-        <complete name="crossbar6" input="clb.IS" output="fle[1:0].enable">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle[1:0].enable"/>
+        <complete name="crossbar6" input="clb.IS" output="fle.enable">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle.enable"/>
         </complete>
-        <complete name="crossbar7" input="clb.IS" output="fle[3:2].enable">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle[3:2].enable"/>
+        <complete name="crossbar7" input="clb.IS" output="fle.reset">
+          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle.reset"/>
         </complete>
-        <complete name="crossbar8" input="clb.IS" output="fle[5:4].enable">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle[5:4].enable"/>
-        </complete>
-        <complete name="crossbar9" input="clb.IS" output="fle[7:6].enable">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle[7:6].enable"/>
-        </complete>
-        <complete name="crossbar10" input="clb.IS" output="fle[3:0].reset">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle[3:0].reset"/>
-        </complete>
-        <complete name="crossbar11" input="clb.IS" output="fle[7:4].reset">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS" out_port="fle[7:4].reset"/>
-        </complete>
-        <direct name="clbouts1" input="fle[7:0].out[0:0]" output="clb.O[7:0]"/>
-        <direct name="clbouts2" input="fle[7:0].out[1:1]" output="clb.O[17:10]"/>
+        <direct name="clbouts1" input="fle[7:0].out[0]" output="clb.O[7:0]"/>
+        <direct name="clbouts2" input="fle[7:0].out[1]" output="clb.O[15:8]"/>
+        <direct name="clbouto6" input="fle[7:0].o6" output="clb.O[23:16]"/>
         <!-- Carry chain links -->
         <complete name="carry_in" input="clb.cin clb.cin_trick" output="fle[0:0].cin">
           <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle[0:0].cin"/>

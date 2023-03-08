@@ -45,11 +45,11 @@
 		<key id="40" name="cbx_2__1_" value="5" alias="cbx_9__1_" column="18" row="3"/>
 		<key id="41" name="cby_9__2_" value="0" alias="cby_9__2_" column="19" row="4"/>
 		<key id="42" name="grid_clb" value="30" alias="grid_clb_9__2_" column="18" row="4"/>
-		<key id="43" name="sb_2__1_" value="3" alias="sb_8__1_" column="17" row="3"/>
+		<key id="43" name="sb_2__1_" value="4" alias="sb_8__1_" column="17" row="3"/>
 		<key id="44" name="cbx_2__1_" value="4" alias="cbx_8__1_" column="16" row="3"/>
 		<key id="45" name="cby_2__2_" value="24" alias="cby_8__2_" column="17" row="4"/>
 		<key id="46" name="grid_clb" value="24" alias="grid_clb_8__2_" column="16" row="4"/>
-		<key id="47" name="sb_7__1_" value="0" alias="sb_7__1_" column="15" row="3"/>
+		<key id="47" name="sb_2__1_" value="3" alias="sb_7__1_" column="15" row="3"/>
 		<key id="48" name="cbx_7__1_" value="0" alias="cbx_7__1_" column="14" row="3"/>
 		<key id="49" name="cby_7__2_" value="0" alias="cby_7__2_" column="15" row="4"/>
 		<key id="50" name="grid_bram" value="0" alias="grid_bram_7__2_" column="14" row="4"/>
