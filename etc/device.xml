@@ -74,7 +74,7 @@
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis3"/>
         <internal type="synth_type" name="RS"/>
-        <internal type="synth_opts" name="-no_dsp -no_bram"/>
+        <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
@@ -102,7 +102,7 @@
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis3"/>
         <internal type="synth_type" name="RS"/>
-        <internal type="synth_opts" name="-no_dsp -no_bram"/>
+        <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
