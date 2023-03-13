@@ -160,7 +160,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf" prefix="mux_tree_tapbuf" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -169,7 +169,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L1SB" prefix="mux_tree_tapbuf_L1SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -178,7 +178,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L4SB" prefix="mux_tree_tapbuf_L4SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -187,7 +187,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_io" prefix="mux_1level_io" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -196,7 +196,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_fabric" prefix="mux_1level_fabric" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -205,7 +205,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
     <circuit_model type="lut" name="frac_lut6" prefix="frac_lut6" dump_structural_verilog="true" is_default="true">
       <design_technology type="cmos" fracturable_lut="true"/>
@@ -220,16 +220,18 @@
       <port type="output" prefix="lut5_out" size="2" lut_frac_level="5" lut_output_mask="0,1"/>
       <port type="output" prefix="lut6_out" size="1" lut_output_mask="0"/>
       <port type="sram" prefix="sram" size="64"/>
-      <port type="sram" prefix="mode" size="2" mode_select="true" circuit_model_name="RS_LATCH" default_val="00"/>
+      <port type="sram" prefix="mode" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="00"/>
     </circuit_model>
-    <circuit_model type="sram" name="RS_LATCH" prefix="RS_LATCH" verilog_netlist="./SRC/CustomModules/rs_latch.v">
+    <circuit_model type="ccff" name="RS_CCFF" prefix="RS_CCFF" verilog_netlist="./SRC/CustomModules/rs_ccff.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <port type="bl" prefix="bl" lib_name="bl" size="1"/>
-      <port type="wl" prefix="wl" lib_name="wl" size="1"/>
-      <port type="output" prefix="Q" lib_name="Q" size="1"/>
-      <port type="output" prefix="QN" lib_name="QN" size="1"/>
+      <port type="input" prefix="config_enable" lib_name="CFG_EN" size="1" is_global="true"/>
+      <port type="input" prefix="D" size="1"/>
+      <port type="output" prefix="Q" size="1"/>
+      <port type="output" prefix="MEMB" size="1"/>
+      <port type="output" prefix="MEM" size="1"/>
+      <port type="clock" prefix="prog_clock" lib_name="CK" size="1" is_global="true" is_prog="true" is_clock="true"/>
     </circuit_model>
     <circuit_model type="chan_wire" name="chan_segment" prefix="track_seg" is_default="true">
       <design_technology type="cmos"/>
@@ -261,7 +263,7 @@
       <port type="output" prefix="inpad" lib_name="FPGA_IN" size="1"/>
       <port type="input" prefix="outpad" lib_name="FPGA_OUT" size="1"/>
       <port type="input" prefix="CFG_DONE" lib_name="CFG_DONE" size="1" is_global="true" default_val="0" is_config_enable="true"/>
-      <port type="sram" prefix="DEF" lib_name="DEF" size="4" mode_select="true" circuit_model_name="RS_LATCH" default_val="0000"/>
+      <port type="sram" prefix="DEF" lib_name="DEF" size="4" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000"/>
     </circuit_model>
     <circuit_model type="ff" name="QL_IOFF" prefix="QL_IOFF" is_default="true" verilog_netlist="./SRC/CustomModules/rs_ioff.v">
       <design_technology type="cmos"/>
@@ -275,7 +277,7 @@
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
       <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
-      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_LATCH" default_val="1"/>
+      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="1"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="QL_XOR_MUX2" prefix="QL_XOR_MUX2" verilog_netlist="./SRC/CustomModules/ql_xor_mux2.v">
       <design_technology type="cmos"/>
@@ -306,7 +308,7 @@
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
       <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
-      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="2" mode_select="true" circuit_model_name="RS_LATCH" default_val="01"/>
+      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="01"/>
     </circuit_model>
     <circuit_model type="ff" name="GC_FF" prefix="GC_FF" verilog_netlist="./SRC/CustomModules/gc_ff.v">
       <design_technology type="cmos"/>
@@ -346,7 +348,7 @@
       <port type="output" prefix="sc_out" lib_name="scan_o" size="3"/>
       <port type="clock" prefix="scan_clk" lib_name="scan_clk" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
-      <port type="sram" prefix="mode" size="85" mode_select="true" circuit_model_name="RS_LATCH" default_val="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+      <port type="sram" prefix="mode" size="85" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="QL_BRAM" prefix="QL_BRAM" verilog_netlist="./SRC/CustomModules/rs_bram.v">
       <design_technology type="cmos"/>
@@ -398,7 +400,7 @@
       <port type="output" prefix="PL_ADDR_o" size="32"/>
       <port type="output" prefix="PL_DATA_o" size="36"/>
       <port type="input" prefix="reset" lib_name="GRESET_i" size="1"/>
-      <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_LATCH" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+      <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       <port type="input" prefix="scan_reset" lib_name="SCAN_RESET_i" size="1"/>
       <port type="input" prefix="sc_in" lib_name="SCAN_i" size="6"/>
       <port type="input" prefix="test_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
@@ -408,9 +410,7 @@
     </circuit_model>
   </circuit_library>
   <configuration_protocol>
-    <organization type="ql_memory_bank" circuit_model_name="RS_LATCH">
-      <bl protocol="flatten" num_banks="1"/>
-      <wl protocol="flatten" num_banks="1"/>
+    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="82">
     </organization>
   </configuration_protocol>
   <connection_block>
