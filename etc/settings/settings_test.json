@@ -257,6 +257,18 @@
 		"default": "Verilog",
 		"arg": "netlist_lang"
 	    },
+	    "allow_unrelated_clustering": {
+                "label": "Allow unrelated clustering",
+                "widgetType": "checkbox",
+                "default": "unchecked",
+                "arg": "allow_unrelated_clustering"
+            },
+	    "balance_block_type_utilization": {
+                "label": "Balance block type utilization",
+                "widgetType": "checkbox",
+                "default": "unchecked",
+                "arg": "balance_block_type_utilization"                
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
