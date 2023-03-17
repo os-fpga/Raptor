@@ -1,7 +1,7 @@
 name: 'Fetch and Test XML changes'
 
 on:
-  push:
+#  push:
   repository_dispatch:
     types: [digest_latest_Arch]
 
@@ -48,26 +48,26 @@ jobs:
 
     - name:  checkout tag and copy Arch files
       run: |
-          #echo "payload: ${{ github.event.client_payload.new_tag }}"
+          echo "payload: ${{ github.event.client_payload.new_tag }}"
+          cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
           #cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
-          cd openfpga-pd-castor-rs && git checkout v1.6.30 && cd - && bash .github/copy_arch.sh
 
     - name: Add and Push
       uses: GuillaumeFalourd/git-commit-push@v1.3
       with:
         email: nadeem.yaseen@rapidsilicon.com
         name: nadeemyaseen-rs
-        commit_message: Added XMLs files from v1.6.30
+        commit_message: Added XMLs files from ${{ github.event.client_payload.new_tag }}
         files: "*.xml"
-        target_branch: xml_v1.6.30
+        target_branch: xml_${{ github.event.client_payload.new_tag }}
 
 # if above step pass then create PR.          
     - name: Create PR
       uses: repo-sync/pull-request@v2
       with:
-          source_branch: xml_v1.6.30                   # branch having xmls files
+          source_branch: xml_${{ github.event.client_payload.new_tag }}                   # branch having xmls files
           destination_branch: "main"                                                      # name of branch on which PR go
-          pr_title: "Pulling XMLs v1.6.30 into main"   # Title of pull request
+          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main"   # Title of pull request
           pr_body: "An automated PR to checkin New XMLs tag"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
