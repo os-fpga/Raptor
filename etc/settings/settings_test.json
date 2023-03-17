@@ -268,7 +268,7 @@
               "dense"
           ],
           "widgetType": "dropdown",
-          "default" : "Auto",
+          "default" : "Dense",
           "arg": "clb_packing"
        },
        "_META_": {
