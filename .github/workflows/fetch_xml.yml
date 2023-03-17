@@ -61,6 +61,20 @@ jobs:
         files: "*.xml"
         target_branch: xml_${{ github.event.client_payload.new_tag }}
 
+# if above step pass then create PR.          
+    - name: Create PR
+      uses: repo-sync/pull-request@v2
+      with:
+          source_branch: xml_${{ github.event.client_payload.new_tag }}                   # branch having xmls files
+          destination_branch: "main"                                                      # name of branch on which PR go
+          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main"   # Title of pull request
+          pr_body: "An automated PR to checkin New XMLs tag"                              # Full markdown support, requires pr_title
+          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
+          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
+          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
+          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Install dependencies
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
@@ -99,20 +113,6 @@ jobs:
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
-
-# if above step pass then create PR.          
-    - name: Create PR
-      uses: repo-sync/pull-request@v2
-      with:
-          source_branch: xml_${{ github.event.client_payload.new_tag }}                   # branch having xmls files
-          destination_branch: "main"                                                      # name of branch on which PR go
-          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main"   # Title of pull request
-          pr_body: "An automated PR to checkin New XMLs tag"                              # Full markdown support, requires pr_title
-          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
-          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
-          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
-          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #    - name: automerge XMLs PR
 #      uses: "pascalgn/automerge-action@v0.15.6"
