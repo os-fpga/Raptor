@@ -65,7 +65,7 @@ jobs:
     - name: Create PR
       uses: repo-sync/pull-request@v2
       with:
-          source_branch: xml_v1.6.29                   # branch having xmls files
+          source_branch: xml_v1.6.29                                # branch having xmls files
           destination_branch: "main"                                                      # name of branch on which PR go
           pr_title: "Pulling XMLs v1.6.29 into main. "   # Title of pull request
           pr_body: "An automated PR to checkin New XMLs tag. Click on link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
