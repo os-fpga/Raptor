@@ -57,9 +57,9 @@ jobs:
       with:
         email: nadeem.yaseen@rapidsilicon.com
         name: nadeemyaseen-rs
-        commit_message: Added XMLs files from ${{ github.event.client_payload.new_tag }}
+        commit_message: Added XMLs files from v1.6.29
         files: "*.xml"
-        target_branch: xml_${{ github.event.client_payload.new_tag }}
+        target_branch: xml_v1.6.29
 
     - name: Install dependencies
       run: |
@@ -104,9 +104,9 @@ jobs:
     - name: Create PR
       uses: repo-sync/pull-request@v2
       with:
-          source_branch: xml_${{ github.event.client_payload.new_tag }}                   # branch having xmls files
+          source_branch: xml_v1.6.29                   # branch having xmls files
           destination_branch: "main"                                                      # name of branch on which PR go
-          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main"   # Title of pull request
+          pr_title: "Pulling XMLs v1.6.29 into main"   # Title of pull request
           pr_body: "An automated PR to checkin New XMLs tag"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
