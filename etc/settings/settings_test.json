@@ -256,25 +256,27 @@
 		],
 		"default": "Verilog",
 		"arg": "netlist_lang"
-	    },
-	    "allow_unrelated_clustering": {
-                "label": "Allow unrelated clustering",
-                "widgetType": "checkbox",
-                "default": "unchecked",
-                "arg": "allow_unrelated_clustering"
-            },
-	    "balance_block_type_utilization": {
-                "label": "Balance block type utilization",
-                "widgetType": "checkbox",
-                "default": "unchecked",
-                "arg": "balance_block_type_utilization"                
-            },
-            "_META_": {
-                "hidden": false,
-                "isSetting": true,
-                "tclArgKey": "Tasks_packing"
-            }
-        },
+      },
+      "clb_packing": {
+          "label": "Clb packing",
+          "options": [
+              "Auto",
+              "Dense"
+          ],
+          "optionsLookup": [
+              "auto",
+              "dense"
+          ],
+          "widgetType": "dropdown",
+          "default" : "Auto",
+          "arg": "clb_packing"
+       },
+       "_META_": {
+          "hidden": false,
+          "isSetting": true,
+          "tclArgKey": "Tasks_packing"
+       }
+    },
         "Placement": {
             "pin_selection_radiobtn": {
                 "label": "Pin Location Assign Method:",
