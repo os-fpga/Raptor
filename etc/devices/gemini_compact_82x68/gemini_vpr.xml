@@ -453,7 +453,7 @@
           <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="bottom">io_top.scan_reset io_top.a2f_o io_top.f2a_i io_top.clk io_top.sc_in io_top.sc_out io_top.global_reset</loc>
+          <loc side="right"> io_top.scan_reset io_top.a2f_o io_top.f2a_i io_top.clk io_top.sc_in io_top.sc_out io_top.global_reset </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -477,7 +477,7 @@
           <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="left">io_right.scan_reset io_right.a2f_o io_right.f2a_i io_right.clk io_right.sc_in io_right.sc_out io_right.global_reset</loc>
+          <loc side="right"> io_right.scan_reset io_right.a2f_o io_right.f2a_i io_right.clk io_right.sc_in io_right.sc_out io_right.global_reset </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -501,7 +501,7 @@
           <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top">io_bottom.scan_reset io_bottom.a2f_o io_bottom.f2a_i io_bottom.clk io_bottom.sc_in io_bottom.sc_out io_bottom.global_reset</loc>
+          <loc side="right"> io_bottom.scan_reset io_bottom.a2f_o io_bottom.f2a_i io_bottom.clk io_bottom.sc_in io_bottom.sc_out io_bottom.global_reset </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -525,7 +525,7 @@
           <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="right">io_left.scan_reset io_left.a2f_o io_left.f2a_i io_left.clk io_left.sc_in io_left.sc_out io_left.global_reset</loc>
+          <loc side="right"> io_left.scan_reset io_left.a2f_o io_left.f2a_i io_left.clk io_left.sc_in io_left.sc_out io_left.global_reset </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -545,7 +545,6 @@
         <input name="IS0" num_pins="6" equivalent="full"/>
         <input name="sc_in" num_pins="1"/>
         <input name="cin" num_pins="1"/>
-        <input name="cin_trick" num_pins="1"/>
         <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
         <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <output name="O0" num_pins="24" equivalent="none"/>
@@ -572,11 +571,8 @@
            Top side pins are mainly for direct connections
         -->
         <pinlocations pattern="custom">
-          <loc side="left"> clb.clk clb.scan_reset clb.global_reset</loc>
-          <loc side="top">  clb.cin clb.sc_in clb.cin_trick
-                          clb.I00[11:0] clb.I10[11:0] clb.O0[11:0]</loc>
-          <loc side="right"> clb.I20[11:0] clb.I30[11:0] clb.O0[23:12] clb.IS0[5:0] </loc>
-          <loc side="bottom">clb.sc_out clb.cout</loc>
+          <loc side="right"> clb.clk clb.scan_reset clb.global_reset clb.cin clb.sc_in clb.sc_out clb.cout
+                                clb.I00 clb.I10 clb.I20 clb.I30 clb.IS0 clb.O0 </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -616,15 +612,14 @@
           <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top" yoffset="0"> dsp.clk dsp.sc_in dsp.global_reset dsp.scan_reset </loc>
           <loc side="right" yoffset="0"> dsp.I00 dsp.I10 dsp.I20 dsp.I30 dsp.IS0 dsp.O0 </loc>
           <loc side="right" yoffset="1"> dsp.I01 dsp.I11 dsp.I21 dsp.I31 dsp.IS1 dsp.O1 </loc>
-          <loc side="right" yoffset="2"> dsp.I02 dsp.I12 dsp.I22 dsp.I32 dsp.IS2 dsp.O2 </loc>
-          <loc side="bottom" yoffset="0"> dsp.sc_out </loc>
+          <loc side="right" yoffset="2"> dsp.I02 dsp.I12 dsp.I22 dsp.I32 dsp.IS2 dsp.O2
+                                         dsp.sc_out dsp.clk dsp.sc_in dsp.global_reset dsp.scan_reset </loc>
         </pinlocations>
       </sub_tile>
     </tile>
-    <tile name="bram" height="6" width="1" area="548000">
+    <tile name="bram" height="3" width="1" area="548000">
       <sub_tile name="bram">
         <equivalent_sites>
           <site pb_type="bram"/>
@@ -692,10 +687,10 @@
         <pinlocations pattern="custom">
           <loc side="right" yoffset="0"> bram.I00 bram.I10 bram.I20 bram.I30 bram.IS0 bram.O0 </loc>
           <loc side="right" yoffset="1"> bram.I01 bram.I11 bram.I21 bram.I31 bram.IS1 bram.O1 </loc>
-          <loc side="right" yoffset="2"> bram.I02 bram.I12 bram.I22 bram.I32 bram.IS2 bram.O2 </loc>
-          <loc side="left">  bram.global_reset bram.scan_reset bram.clk bram.RAM_ID_i</loc>
-          <loc side="top">   bram.sc_in bram.PL_INIT_i bram.PL_ENA_i bram.PL_REN_i bram.PL_CLK_i bram.PL_WEN_i bram.PL_ADDR_i bram.PL_DATA_i</loc>
-          <loc side="bottom">bram.sc_out bram.PL_INIT_o bram.PL_ENA_o bram.PL_REN_o bram.PL_CLK_o bram.PL_WEN_o bram.PL_ADDR_o bram.PL_DATA_o</loc>
+          <loc side="right" yoffset="2"> bram.I02 bram.I12 bram.I22 bram.I32 bram.IS2 bram.O2
+                                         bram.global_reset bram.scan_reset bram.clk bram.RAM_ID_i
+                                         bram.sc_in bram.PL_INIT_i bram.PL_ENA_i bram.PL_REN_i bram.PL_CLK_i bram.PL_WEN_i bram.PL_ADDR_i bram.PL_DATA_i
+                                         bram.sc_out bram.PL_INIT_o bram.PL_ENA_o bram.PL_REN_o bram.PL_CLK_o bram.PL_WEN_o bram.PL_ADDR_o bram.PL_DATA_o </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -725,26 +720,26 @@
   <switchlist>
     <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="1.637e-10" mux_trans_size="1.222260" buf_size="auto"/>
     <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.08e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
-    <switch type="mux" name="L2_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
     <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.2e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="L0_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
   </switchlist>
   <segmentlist>
     <!-- GIVE a specific name for the segment! OpenFPGA appreciate that! -->
     <!-- Uni-directional routing architecture using only length-4 wires in routing channels -->
-    <segment name="L1" freq="0.20" length="1" type="unidir" Rmetal="0" Cmetal="0">
+    <segment name="L1" freq="0.10" length="2" type="unidir" Rmetal="0" Cmetal="0">
       <mux name="L1_mux"/>
-      <sb type="pattern">1 1</sb>
-      <cb type="pattern">1</cb>
-    </segment>
-    <!--segment name="L2" freq="0.10" length="2" type="unidir" Rmetal="0" Cmetal="0">
-      <mux name="L2_mux"/>
       <sb type="pattern">1 1 1</sb>
       <cb type="pattern">1 1</cb>
-    </segment-->
-    <segment name="L4" freq="0.80" length="4" type="unidir" Rmetal="0" Cmetal="0">
+    </segment>
+    <segment name="L4" freq="0.25" length="5" type="unidir" Rmetal="0" Cmetal="0">
       <mux name="L4_mux"/>
-      <sb type="pattern">1 1 1 1 1</sb>
-      <cb type="pattern">1 1 1 1</cb>
+      <sb type="pattern">1 1 1 1 1 1</sb>
+      <cb type="pattern">1 1 1 1 1</cb>
+    </segment>
+    <segment name="L0" freq="0.65" length="1" type="unidir" Rmetal="0" Cmetal="0">
+      <mux name="L0_mux"/>
+      <sb type="pattern">1 1</sb>
+      <cb type="pattern">1</cb>
     </segment>
   </segmentlist>
   <directlist>
@@ -1034,7 +1029,6 @@
       <input name="IS0" num_pins="6" equivalent="full"/>
       <input name="sc_in" num_pins="1"/>
       <input name="cin" num_pins="1"/>
-      <input name="cin_trick" num_pins="1"/>
       <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
       <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <output name="O0" num_pins="24" equivalent="none"/>
@@ -1639,7 +1633,7 @@
         <direct name="clbouts2" input="fle[7:0].out[1]" output="clb.O0[15:8]"/>
         <direct name="clbouto6" input="fle[7:0].o6" output="clb.O0[23:16]"/>
         <!-- Carry chain links -->
-        <complete name="carry_in" input="clb.cin clb.cin_trick" output="fle[0:0].cin">
+        <complete name="carry_in" input="clb.cin" output="fle[0:0].cin">
           <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle[0:0].cin"/>
           <delay_constant max="1.22461e-10" min="1.00603e-10" in_port="clb.cin" out_port="fle[0:0].cin"/>
         </complete>
