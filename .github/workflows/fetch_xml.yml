@@ -67,8 +67,8 @@ jobs:
       with:
           source_branch: xml_v1.6.29                   # branch having xmls files
           destination_branch: "main"                                                      # name of branch on which PR go
-          pr_title: "Pulling XMLs v1.6.29 into main. Click on link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"   # Title of pull request
-          pr_body: "An automated PR to checkin New XMLs tag"                              # Full markdown support, requires pr_title
+          pr_title: "Pulling XMLs v1.6.29 into main. "   # Title of pull request
+          pr_body: "An automated PR to checkin New XMLs tag. Click on link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
           pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
