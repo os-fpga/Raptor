@@ -226,8 +226,10 @@
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
+      <port type="input" prefix="config_enable" lib_name="CFG_EN" size="1" is_global="true"/>
       <port type="input" prefix="D" size="1"/>
       <port type="output" prefix="Q" size="1"/>
+      <port type="output" prefix="MEMB" size="1"/>
       <port type="output" prefix="MEM" size="1"/>
       <port type="clock" prefix="prog_clock" lib_name="CK" size="1" is_global="true" is_prog="true" is_clock="true"/>
     </circuit_model>
@@ -269,6 +271,7 @@
       <port type="output" prefix="F2A_CLK" lib_name="F2A_CLK" size="1" is_global="true" is_io="true"/>
       <port type="output" prefix="inpad" lib_name="FPGA_IN" size="1"/>
       <port type="input" prefix="outpad" lib_name="FPGA_OUT" size="1"/>
+      <port type="input" prefix="CFG_DONE" lib_name="CFG_DONE" size="1" is_global="true" default_val="0" is_config_enable="true"/>
       <port type="sram" prefix="DEF" lib_name="DEF" size="4" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000"/>
     </circuit_model>
     <circuit_model type="ff" name="QL_IOFF" prefix="QL_IOFF" is_default="true" verilog_netlist="./SRC/CustomModules/rs_ioff.v">
@@ -324,7 +327,6 @@
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="output" prefix="SO" lib_name="SO" size="1"/>
       <port type="input" prefix="R" lib_name="R" size="1"/>
-      <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
       <port type="input" prefix="E" lib_name="E" size="1"/>
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="C" lib_name="C" size="1" is_global="false" default_val="0"/>
@@ -338,7 +340,7 @@
       <port type="input" prefix="b_i" size="18"/>
       <port type="output" prefix="z_o" size="38"/>
       <port type="output" prefix="dly_b_o" size="18"/>
-      <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
+      <port type="input" prefix="reset" lib_name="greset" size="1"/>
       <port type="input" prefix="scan_reset" lib_name="scan_reset" size="1"/>
       <port type="input" prefix="lreset" lib_name="reset" size="1"/>
       <port type="input" prefix="feedback" lib_name="feedback" size="3"/>
@@ -406,7 +408,7 @@
       <port type="output" prefix="PL_WEN_o" size="2"/>
       <port type="output" prefix="PL_ADDR_o" size="32"/>
       <port type="output" prefix="PL_DATA_o" size="36"/>
-      <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
+      <port type="input" prefix="reset" lib_name="GRESET_i" size="1"/>
       <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       <port type="input" prefix="scan_reset" lib_name="SCAN_RESET_i" size="1"/>
       <port type="input" prefix="sc_in" lib_name="SCAN_i" size="6"/>
@@ -426,12 +428,10 @@
   <switch_block>
     <switch name="L1_mux" circuit_model_name="mux_tree_tapbuf_L1SB"/>
     <switch name="L4_mux" circuit_model_name="mux_tree_tapbuf_L4SB"/>
-    <switch name="L0_mux" circuit_model_name="mux_tree_tapbuf_L1SB"/>
   </switch_block>
   <routing_segment>
     <segment name="L1" circuit_model_name="chan_segment"/>
     <segment name="L4" circuit_model_name="chan_segment"/>
-    <segment name="L0" circuit_model_name="chan_segment"/>
   </routing_segment>
   <direct_connection>
     <direct name="carry_chain" circuit_model_name="direct_interc"/>
@@ -441,15 +441,7 @@
     <!--direct name="scff_chain" circuit_model_name="direct_interc" type="column" x_dir="positive" y_dir="positive"/-->
   </direct_connection>
   <tile_annotations>
-    <global_port name="clk" is_clock="true" default_val="0">
-      <tile name="clb" port="clk[0:3]" x="-1" y="-1"/>
-      <tile name="io_top" port="clk[0:3]" x="-1" y="-1"/>
-      <tile name="io_right" port="clk[0:3]" x="-1" y="-1"/>
-      <tile name="io_bottom" port="clk[0:3]" x="-1" y="-1"/>
-      <tile name="io_left" port="clk[0:3]" x="-1" y="-1"/>
-      <tile name="dsp" port="clk[0:3]" x="-1" y="-1"/>
-      <tile name="bram" port="clk[0:3]" x="-1" y="-1"/>
-    </global_port>
+
   </tile_annotations>
   <pb_type_annotations>
     <!-- physical pb_type binding in complex block IO -->
