@@ -52,7 +52,20 @@ jobs:
           cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
           #cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
 
+    - name: Check changes are XML related
+      id: xml_change
+      run: |
+        xml_diff=`git diff  --name-status -- '*.xml'`
+        echo $xml_diff
+        if [ ! -z "$xml_diff" ]
+        then
+           echo "xml_changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "nothing change in XML files"
+        fi
+
     - name: Add and Push
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
       uses: GuillaumeFalourd/git-commit-push@v1.3
       with:
         email: nadeem.yaseen@rapidsilicon.com
@@ -63,6 +76,7 @@ jobs:
 
 # if above step pass then create PR.          
     - name: Create PR
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
       uses: repo-sync/pull-request@v2
       with:
           source_branch: xml_${{ github.event.client_payload.new_tag }}                                # branch having xmls files
@@ -76,11 +90,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install dependencies
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
 #        bash .github/workflows/install_litex_ubuntu.sh
 
     - name: Use ccache
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
       uses: hendrikmuhs/ccache-action@v1.2.3
       with:
         key: linux-${{ matrix.mode }}
@@ -98,6 +114,7 @@ jobs:
         echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
 
     - name: Show shell configuration
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
       run: |
         env
         which cmake && cmake --version
@@ -110,6 +127,7 @@ jobs:
         which $CXX && $CXX --version
 
     - name: Test Release
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
