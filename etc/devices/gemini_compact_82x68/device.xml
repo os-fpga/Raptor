@@ -1,0 +1,8 @@
+<device_list>
+  <device name="GEMINI_COMPACT_82x68" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+        <internal type="tag_version" name="v1.6.39"/>
+        <!-- internal type="vpr_opts" name="" /-->
+        <!-- internal type="channel_width" num="640" /-->
+     </device>
+</device_list>
+ 
