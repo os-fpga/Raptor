@@ -743,10 +743,10 @@
     <connection_block input_switch_name="ipin_cblock"/>
   </device>
   <switchlist>
-    <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="1.637e-10" mux_trans_size="1.222260" buf_size="auto"/>
-    <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.08e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
-    <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.2e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
-    <switch type="mux" name="L0_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="1.91784e-10" mux_trans_size="1.222260" buf_size="auto"/>
+    <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="9.14e-11" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.784e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="L0_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1e-12" mux_trans_size="2.630740" buf_size="27.645901"/>
   </switchlist>
   <segmentlist>
     <!-- GIVE a specific name for the segment! OpenFPGA appreciate that! -->
@@ -798,12 +798,12 @@
             <input name="reset" num_pins="1"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
-            <T_setup value="5.98572e-11" port="ff[0:0].D" clock="clk"/>
-            <T_setup value="5.98572e-11" port="ff[1:1].D" clock="clk"/>
-            <T_setup value="7.06315e-11" port="ff.SI" clock="clk"/>
-            <T_setup value="5.98572e-12" port="ff.reset" clock="clk"/>
-            <T_clock_to_Q max="6.53908e-10" port="ff[0:0].Q" clock="clk"/>
-            <T_clock_to_Q max="6.52179e-10" port="ff[1:1].Q" clock="clk"/>
+            <T_setup value="5.307e-11" port="ff[0:0].D" clock="clk"/>
+            <T_setup value="5.307e-11" port="ff[1:1].D" clock="clk"/>
+            <T_setup value="5.7279e-11" port="ff.SI" clock="clk"/>
+            <T_setup value="5.47693e-12" port="ff.reset" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[0:0].Q" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[1:1].Q" clock="clk"/>
           </pb_type>
           <pb_type name="pad" blif_model=".subckt io" num_pb="1">
             <clock name="clk" num_pins="1" port_class="clock"/>
@@ -821,28 +821,28 @@
             <direct name="iopad-sc_out" input="ff[1:1].Q" output="iopad.sc_out"/>
             <complete name="complete1" input="iopad.reset" output="ff[1:0].reset"/>
             <mux name="mux1" input="iopad.f2a_i ff[0:0].Q" output="pad.outpad">
-              <delay_constant max="1.17572e-10" min="1.0829e-10" in_port="iopad.f2a_i" out_port="pad.outpad"/>
-              <delay_constant max="1.22454e-10" min="1.10841e-10" in_port="ff[0:0].Q" out_port="pad.outpad"/>
+              <delay_constant max="2.27835e-11" min="1.5738e-11" in_port="iopad.f2a_i" out_port="pad.outpad"/>
+              <delay_constant max="2.2875e-11" min="1.56465e-11" in_port="ff[0:0].Q" out_port="pad.outpad"/>
             </mux>
             <mux name="mux2" input="pad.inpad ff[1:1].Q" output="iopad.a2f_o">
-              <delay_constant max="9.9076e-11" min="7.7936e-11" in_port="pad.inpad" out_port="iopad.a2f_o"/>
-              <delay_constant max="9.7557e-11" min="7.8451e-11" in_port="ff[1:1].Q" out_port="iopad.a2f_o"/>
+              <delay_constant max="5.4351e-11" min="1.9215e-11" in_port="pad.inpad" out_port="iopad.a2f_o"/>
+              <delay_constant max="5.48085e-11" min="1.98555e-11" in_port="ff[1:1].Q" out_port="iopad.a2f_o"/>
             </mux>
           </interconnect>
         </pb_type>
         <interconnect>
           <complete name="clks" input="io.clk" output="iopad.clk">
-            <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="io.clk[0]" out_port="iopad.clk"/>
-            <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="io.clk[1]" out_port="iopad.clk"/>
-            <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="io.clk[2]" out_port="iopad.clk"/>
-            <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="io.clk[3]" out_port="iopad.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[0]" out_port="iopad.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[1]" out_port="iopad.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[2]" out_port="iopad.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[3]" out_port="iopad.clk"/>
           </complete>
           <direct name="direct3" input="io.f2a_i" output="iopad.f2a_i"/>
           <direct name="direct4" input="iopad.a2f_o" output="io.a2f_o"/>
           <direct name="direct6" input="io.sc_in" output="iopad.sc_in"/>
           <direct name="direct7" input="iopad.sc_out" output="io.sc_out"/>
           <direct name="direct8" input="io.global_reset" output="iopad.reset">
-            <delay_constant max="5e-11" min="5e-11" in_port="io.global_reset" out_port="iopad.reset"/>
+            <delay_constant max="4.575e-11" min="4.575e-11" in_port="io.global_reset" out_port="iopad.reset"/>
           </direct>
         </interconnect>
       </mode>
@@ -861,9 +861,9 @@
                 <input name="D" num_pins="1" port_class="D"/>
                 <output name="Q" num_pins="1" port_class="Q"/>
                 <clock name="clk" num_pins="1" port_class="clock"/>
-                <T_setup value="5.98572e-11" port="LATCH.D" clock="clk"/>
-                <T_hold value="2.63372e-11" port="LATCH.D" clock="clk"/>
-                <T_clock_to_Q max="6.53908e-10" port="LATCH.Q" clock="clk"/>
+                <T_setup value="5.307e-11" port="LATCH.D" clock="clk"/>
+                <T_hold value="-4.1664e-11" port="LATCH.D" clock="clk"/>
+                <T_clock_to_Q max="1.4576e-10" port="LATCH.Q" clock="clk"/>
               </pb_type>
               <interconnect>
                 <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q">
@@ -879,9 +879,9 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="5.98572e-11" port="DFF.D" clock="C"/>
-                <T_hold value="2.63372e-11" port="DFF.D" clock="C"/>
-                <T_clock_to_Q max="6.53908e-10" port="DFF.Q" clock="C"/>
+                <T_setup value="5.307e-11" port="DFF.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFF.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFF.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFF.Q" name="DFF-Q" output="ff.Q">
@@ -897,9 +897,9 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="5.98572e-11" port="DFFN.D" clock="C"/>
-                <T_hold value="2.63372e-11" port="DFFN.D" clock="C"/>
-                <T_clock_to_Q max="6.53908e-10" port="DFFN.Q" clock="C"/>
+                <T_setup value="5.307e-11" port="DFFN.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFFN.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFFN.Q" name="DFFN-Q" output="ff.Q">
@@ -922,18 +922,18 @@
               <pack_pattern name="pack-OLATCH" in_port="ff.Q" out_port="outpad.outpad"/>
               <pack_pattern name="pack-OREG" in_port="ff.Q" out_port="outpad.outpad"/>
               <pack_pattern name="pack-OREGN" in_port="ff.Q" out_port="outpad.outpad"/>
-              <delay_constant max="1.17572e-10" min="1.0829e-10" in_port="io_output.f2a_i" out_port="outpad.outpad"/>
-              <delay_constant max="1.22454e-10" min="1.10841e-10" in_port="ff.Q" out_port="outpad.outpad"/>
+              <delay_constant max="2.27835e-11" min="1.5738e-11" in_port="io_output.f2a_i" out_port="outpad.outpad"/>
+              <delay_constant max="2.2875e-11" min="1.56465e-11" in_port="ff.Q" out_port="outpad.outpad"/>
             </mux>
           </interconnect>
         </pb_type>
         <interconnect>
           <complete name="io_output-reset" input="io.global_reset" output="io_output.reset"/>
           <complete name="io_output-clk" input="io.clk" output="io_output.clk">
-            <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="io.clk[0]" out_port="io_output.clk"/>
-            <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="io.clk[1]" out_port="io_output.clk"/>
-            <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="io.clk[2]" out_port="io_output.clk"/>
-            <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="io.clk[3]" out_port="io_output.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[0]" out_port="io_output.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[1]" out_port="io_output.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[2]" out_port="io_output.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[3]" out_port="io_output.clk"/>
           </complete>
           <direct name="io_output-f2a_i" input="io.f2a_i" output="io_output.f2a_i"/>
         </interconnect>
@@ -956,9 +956,9 @@
                 <input name="D" num_pins="1" port_class="D"/>
                 <output name="Q" num_pins="1" port_class="Q"/>
                 <clock name="clk" num_pins="1" port_class="clock"/>
-                <T_setup value="5.98572e-11" port="LATCH.D" clock="clk"/>
-                <T_hold value="2.63372e-11" port="LATCH.D" clock="clk"/>
-                <T_clock_to_Q max="6.52179e-10" port="LATCH.Q" clock="clk"/>
+                <T_setup value="5.307e-11" port="LATCH.D" clock="clk"/>
+                <T_hold value="-4.1664e-11" port="LATCH.D" clock="clk"/>
+                <T_clock_to_Q max="1.4576e-10" port="LATCH.Q" clock="clk"/>
               </pb_type>
               <interconnect>
                 <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q"/>
@@ -973,9 +973,9 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="5.98572e-11" port="DFF.D" clock="C"/>
-                <T_hold value="2.63372e-11" port="DFF.D" clock="C"/>
-                <T_clock_to_Q max="6.52179e-10" port="DFF.Q" clock="C"/>
+                <T_setup value="5.307e-11" port="DFF.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFF.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFF.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFF.Q" name="DFF-Q" output="ff.Q"/>
@@ -990,9 +990,9 @@
                 <input name="D" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="5.98572e-11" port="DFFN.D" clock="C"/>
-                <T_hold value="2.63372e-11" port="DFFN.D" clock="C"/>
-                <T_clock_to_Q max="6.52179e-10" port="DFFN.Q" clock="C"/>
+                <T_setup value="5.307e-11" port="DFFN.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFFN.Q" clock="C"/>
               </pb_type>
               <interconnect>
                 <direct input="DFFN.Q" name="DFFN-Q" output="ff.Q"/>
@@ -1007,14 +1007,14 @@
             <direct name="ff-clk" input="io_input.clk" output="ff.clk"/>
             <direct name="ff-reset" input="io_input.reset" output="ff.R"/>
             <direct name="ff-D" input="inpad.inpad" output="ff.D">
-              <delay_constant max="1.06525e-10" min="1.06189e-10" in_port="inpad.inpad" out_port="ff.D"/>
+              <delay_constant max="3.0927e-11" min="8.5095e-12" in_port="inpad.inpad" out_port="ff.D"/>
               <pack_pattern name="pack-ILATCH" in_port="inpad.inpad" out_port="ff.D"/>
               <pack_pattern name="pack-IREG" in_port="inpad.inpad" out_port="ff.D"/>
               <pack_pattern name="pack-IREGN" in_port="inpad.inpad" out_port="ff.D"/>
             </direct>
             <mux name="mux2" input="inpad.inpad ff.Q" output="io_input.a2f_o">
-              <delay_constant max="9.9076e-11" min="7.7936e-11" in_port="inpad.inpad" out_port="io_input.a2f_o"/>
-              <delay_constant max="9.7557e-11" min="7.8451e-11" in_port="ff.Q" out_port="io_input.a2f_o"/>
+              <delay_constant max="5.4351e-11" min="1.9215e-11" in_port="inpad.inpad" out_port="io_input.a2f_o"/>
+              <delay_constant max="5.48085e-11" min="1.98555e-11" in_port="ff.Q" out_port="io_input.a2f_o"/>
             </mux>
           </interconnect>
         </pb_type>
@@ -1022,10 +1022,10 @@
           <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o"/>
           <complete name="io_input-reset" input="io.global_reset" output="io_input.reset"/>
           <complete name="io_input-clk" input="io.clk" output="io_input.clk">
-            <delay_constant max="5.41094e-10" min="2.49897e-10" in_port="io.clk[0]" out_port="io_input.clk"/>
-            <delay_constant max="5.56619e-10" min="2.51572e-10" in_port="io.clk[1]" out_port="io_input.clk"/>
-            <delay_constant max="5.14103e-10" min="2.15106e-10" in_port="io.clk[2]" out_port="io_input.clk"/>
-            <delay_constant max="5.0259e-10" min="2.14786e-10" in_port="io.clk[3]" out_port="io_input.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[0]" out_port="io_input.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[1]" out_port="io_input.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[2]" out_port="io_input.clk"/>
+            <delay_constant max="1e-12" min="1e-12" in_port="io.clk[3]" out_port="io_input.clk"/>
           </complete>
         </interconnect>
       </mode>
@@ -1100,97 +1100,97 @@
                 <output name="lut5_out" num_pins="2"/>
                 <output name="lut6_out" num_pins="1"/>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
-                  3.2e-10
-                  2.6e-10
-                  2e-10
-                  1.6e-10
-                  1.1e-10
-                  7e-11
-                </delay_matrix>
+                           2.37077e-10
+                           3.35531e-10
+                           2.32502e-10
+                           3.09179e-10
+                           1.75772e-10
+                           1.40727e-10
+                        </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
-                  3e-10
-                  2.4e-10
-                  1.9e-10
-                  1.4e-10
-                  1e-10
-                  6e-11
-                </delay_matrix>
+                           1.21878e-10
+                           1.6836e-10
+                           1.20323e-10
+                           1.61406e-10
+                           9.0768e-11
+                           6.96315e-11
+                        </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
-                  2.8e-10
-                  2.2e-10
-                  1.7e-10
-                  1.2e-10
-                  7e-11
-                </delay_matrix>
+                           1.16846e-10
+                           2.30306e-10
+                           1.1712e-10
+                           1.9883e-10
+                           6.34095e-11
+                        </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
-                  2.6e-10
-                  2e-10
-                  1.5e-10
-                  1.1e-10
-                  6e-11
-                </delay_matrix>
+                           6.08475e-11
+                           1.07055e-10
+                           6.23115e-11
+                           9.6807e-11
+                           2.04045e-11
+                        </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
-                  2.8e-10
-                  2.2e-10
-                  1.7e-10
-                  1.2e-10
-                  7e-11
-                </delay_matrix>
+                           1.16846e-10
+                           2.30306e-10
+                           1.1712e-10
+                           1.9883e-10
+                           6.34095e-11
+                        </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
-                  2.6e-10
-                  2e-10
-                  1.5e-10
-                  1.1e-10
-                  6e-11
-                </delay_matrix>
+                           6.08475e-11
+                           1.07055e-10
+                           6.23115e-11
+                           9.6807e-11
+                           2.04045e-11
+                        </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[0]">
-                  2.4e-10
-                  1.8e-10
-                  1.2e-10
-                  8e-11
-                </delay_matrix>
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[0]">
-                  2.2e-10
-                  1.6e-10
-                  1.1e-10
-                  7e-11
-                </delay_matrix>
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[1]">
-                  2.4e-10
-                  1.8e-10
-                  1.2e-10
-                  8e-11
-                </delay_matrix>
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[1]">
-                  2.2e-10
-                  1.6e-10
-                  1.1e-10
-                  7e-11
-                </delay_matrix>
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[2]">
-                  2.4e-10
-                  1.8e-10
-                  1.2e-10
-                  8e-11
-                </delay_matrix>
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[2]">
-                  2.2e-10
-                  1.6e-10
-                  1.1e-10
-                  7e-11
-                </delay_matrix>
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[3]">
-                  2.4e-10
-                  1.8e-10
-                  1.2e-10
-                  8e-11
-                </delay_matrix>
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[3]">
-                  2.2e-10
-                  1.6e-10
-                  1.1e-10
-                  7e-11
-                </delay_matrix>
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>
               </pb_type>
               <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="2">
                 <input name="p" num_pins="1"/>
@@ -1198,12 +1198,12 @@
                 <input name="cin" num_pins="1"/>
                 <output name="sumout" num_pins="1"/>
                 <output name="cout" num_pins="1"/>
-                <delay_constant max="5e-11" min="4e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
-                <delay_constant max="8.9626e-11" min="8.2339e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
-                <delay_constant max="5e-11" min="3e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
-                <delay_constant max="5e-11" min="3e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
-                <delay_constant max="5e-11" min="3e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-                <delay_constant max="5e-11" min="4e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+                <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
+                <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
+                <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
+                <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
+                <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
+                <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
               </pb_type>
               <interconnect>
                 <direct name="direct1" input="frac_logic.in[5:0]" output="frac_lut6.in[5:0]"/>
@@ -1213,21 +1213,12 @@
                 <direct name="direct6" input="frac_lut6.lut4_out[2]" output="adder_carry[1].p"/>
                 <direct name="direct7" input="frac_lut6.lut4_out[3]" output="adder_carry[1].g"/>
                 <direct name="direct8" input="frac_lut6.lut6_out" output="frac_logic.o6"/>
-                <direct name="direct9" input="adder_carry[0].cout" output="adder_carry[1].cin">
-                  <delay_constant max="5.1577e-11" min="4.0588e-11" in_port="adder_carry[0].cout" out_port="adder_carry[1].cin"/>
-                </direct>
+                <direct name="direct9" input="adder_carry[0].cout" output="adder_carry[1].cin">         
+                                
+                        </direct>
                 <direct name="direct10" input="adder_carry[1].cout" output="frac_logic.cout"/>
-                <mux name="mux0" input="adder_carry[0].sumout adder_carry[0].cout frac_lut6.lut5_out[0]" output="frac_logic.out[0]">
-                  <delay_constant max="1.5e-10" min="1.4e-10" in_port="adder_carry[0].sumout" out_port="frac_logic.out[0]"/>
-                  <delay_constant max="1.6e-10" min="1.5e-10" in_port="adder_carry[0].cout" out_port="frac_logic.out[0]"/>
-                  <delay_constant max="1.1e-10" min="1e-10" in_port="frac_lut6.lut5_out[0]" out_port="frac_logic.out[0]"/>
-                </mux>
-                <mux name="mux1" input="adder_carry[1].sumout adder_carry[1].cout frac_lut6.lut5_out[1] frac_lut6.lut6_out" output="frac_logic.out[1]">
-                  <delay_constant max="1.5e-10" min="1.4e-10" in_port="adder_carry[1].sumout" out_port="frac_logic.out[1]"/>
-                  <delay_constant max="1.6e-10" min="1.4e-10" in_port="adder_carry[1].cout" out_port="frac_logic.out[1]"/>
-                  <delay_constant max="1.5e-10" min="1.4e-10" in_port="frac_lut6.lut5_out[1]" out_port="frac_logic.out[1]"/>
-                  <delay_constant max="1.5e-10" min="1.4e-10" in_port="frac_lut6.lut6_out" out_port="frac_logic.out[1]"/>
-                </mux>
+                <mux name="mux0" input="adder_carry[0].sumout adder_carry[0].cout frac_lut6.lut5_out[0]" output="frac_logic.out[0]"/>
+                <mux name="mux1" input="adder_carry[1].sumout adder_carry[1].cout frac_lut6.lut5_out[1] frac_lut6.lut6_out" output="frac_logic.out[1]"/>
               </interconnect>
             </pb_type>
             <pb_type name="ff_phy" blif_model=".subckt scff" num_pb="2">
@@ -1238,12 +1229,12 @@
               <input name="E" num_pins="1"/>
               <output name="Q" num_pins="1"/>
               <clock name="C" num_pins="1"/>
-              <T_setup value="6.34486e-11" port="ff_phy.D" clock="C"/>
-              <T_setup value="7.42229e-11" port="ff_phy.SI" clock="C"/>
-              <T_setup value="8.14058e-11" port="ff_phy.E" clock="C"/>
-              <T_setup value="-8.73915e-11" port="ff_phy.R" clock="C"/>
-              <T_clock_to_Q max="7.09448e-10" port="ff_phy.Q" clock="C"/>
-              <T_clock_to_Q max="6.27806e-10" port="ff_phy.SO" clock="C"/>
+              <T_setup value="3.15675e-11" port="ff_phy.D" clock="C"/>
+              <T_setup value="3.15675e-11" port="ff_phy.SI" clock="C"/>
+              <T_setup value="3.15675e-11" port="ff_phy.E" clock="C"/>
+              <T_setup value="3.15675e-11" port="ff_phy.R" clock="C"/>
+              <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.Q" clock="C"/>
+              <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.SO" clock="C"/>
             </pb_type>
             <interconnect>
               <complete name="direct_clk" input="fabric.clk" output="ff_phy[1:0].C"/>
@@ -1258,14 +1249,8 @@
               <direct name="direct_frac_out1" input="frac_logic.out[0]" output="ff_phy[0].D"/>
               <direct name="direct_frac_out2" input="frac_logic.out[1]" output="ff_phy[1].D"/>
               <direct name="direct_frac_out3" input="frac_logic.o6" output="fabric.o6"/>
-              <mux name="mux2" input="frac_logic.out[0] ff_phy[0].Q" output="fabric.out[0]">
-                <delay_constant max="9.6058e-11" min="8.359e-11" in_port="frac_logic.out[0]" out_port="fabric.out[0]"/>
-                <delay_constant max="1.00905e-10" min="8.9674e-11" in_port="ff_phy[0].Q" out_port="fabric.out[0]"/>
-              </mux>
-              <mux name="mux3" input="frac_logic.out[1] ff_phy[1].Q" output="fabric.out[1]">
-                <delay_constant max="9.6361e-11" min="8.4919e-11" in_port="frac_logic.out[1]" out_port="fabric.out[1]"/>
-                <delay_constant max="1.42435e-10" min="9.1011e-11" in_port="ff_phy[1].Q" out_port="fabric.out[1]"/>
-              </mux>
+              <mux name="mux2" input="frac_logic.out[0] ff_phy[0].Q" output="fabric.out[0]"/>
+              <mux name="mux3" input="frac_logic.out[1] ff_phy[1].Q" output="fabric.out[1]"/>
             </interconnect>
           </pb_type>
           <interconnect>
@@ -1294,20 +1279,20 @@
               <input name="in" num_pins="6" port_class="lut_in"/>
               <output name="out" num_pins="1" port_class="lut_out"/>
               <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
-                  3.2e-10
-                  2.6e-10
-                  2e-10
-                  1.6e-10
-                  1.1e-10
-                  7e-11
-              </delay_matrix>
+                           2.37077e-10
+                           3.35531e-10
+                           2.32502e-10
+                           3.09179e-10
+                           1.75772e-10
+                           1.40727e-10
+                     </delay_matrix>
               <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
-                  3e-10
-                  2.4e-10
-                  1.9e-10
-                  1.4e-10
-                  1e-10
-                  6e-11
+                        1.21878e-10
+                        1.6836e-10
+                        1.20323e-10
+                        1.61406e-10
+                        9.0768e-11
+                        6.96315e-11
               </delay_matrix>
             </pb_type>
             <pb_type name="ff" num_pb="1">
@@ -1323,13 +1308,13 @@
                   <input name="E" num_pins="1"/>
                   <output name="Q" num_pins="1"/>
                   <clock name="C" num_pins="1"/>
-                  <T_setup value="6.34486e-11" port="DFFRE.D" clock="C"/>
-                  <T_hold value="2.87314e-11" port="DFFRE.D" clock="C"/>
-                  <T_setup value="-8.73915e-11" port="DFFRE.R" clock="C"/>
-                  <T_hold value="1.3408e-10" port="DFFRE.R" clock="C"/>
-                  <T_setup value="8.14058e-11" port="DFFRE.E" clock="C"/>
-                  <T_hold value="1.07743e-11" port="DFFRE.E" clock="C"/>
-                  <T_clock_to_Q min="4.08795e-10" max="7.09448e-10" port="DFFRE.Q" clock="C"/>
+                  <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                  <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                  <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                  <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                  <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                  <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
                 </pb_type>
                 <interconnect>
                   <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
@@ -1349,10 +1334,7 @@
               <direct name="direct4" input="lut6.out" output="ble6.o6"/>
               <direct name="direct5" input="ble6.reset" output="ff.R"/>
               <direct name="direct6" input="ble6.enable" output="ff.E"/>
-              <mux name="mux4" input="lut6.out ff.Q" output="ble6.out">
-                <delay_constant max="1.42435e-10" min="9.1011e-11" in_port="ff.Q" out_port="ble6.out"/>
-                <delay_constant max="1.48513e-10" min="1.42584e-10" in_port="lut6.out" out_port="ble6.out"/>
-              </mux>
+              <mux name="mux4" input="lut6.out ff.Q" output="ble6.out"/>
             </interconnect>
           </pb_type>
           <interconnect>
@@ -1396,19 +1378,19 @@
                     <output name="out" num_pins="1" port_class="lut_out"/>
                     <!-- LUT timing using delay matrix -->
                     <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
-                        2.8e-10
-                        2.2e-10
-                        1.7e-10
-                        1.2e-10
-                        7e-11
-                    </delay_matrix>
+                                 1.16846e-10
+                                 2.30306e-10
+                                 1.1712e-10
+                                 1.9883e-10
+                                 6.34095e-11
+                              </delay_matrix>
                     <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
-                        2.6e-10
-                        2e-10
-                        1.5e-10
-                        1.1e-10
-                        6e-11
-                    </delay_matrix>
+                                 6.08475e-11
+                                 1.07055e-10
+                                 6.23115e-11
+                                 9.6807e-11
+                                 2.04045e-11
+                              </delay_matrix>
                   </pb_type>
                   <pb_type name="ff" num_pb="1">
                     <input name="D" num_pins="1"/>
@@ -1423,13 +1405,13 @@
                         <input name="E" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <clock name="C" num_pins="1"/>
-                        <T_setup value="6.34486e-11" port="DFFRE.D" clock="C"/>
-                        <T_hold value="2.87314e-11" port="DFFRE.D" clock="C"/>
-                        <T_setup value="-8.73915e-11" port="DFFRE.R" clock="C"/>
-                        <T_hold value="1.3408e-10" port="DFFRE.R" clock="C"/>
-                        <T_setup value="8.14058e-11" port="DFFRE.E" clock="C"/>
-                        <T_hold value="1.07743e-11" port="DFFRE.E" clock="C"/>
-                        <T_clock_to_Q min="4.08795e-10" max="7.09448e-10" port="DFFRE.Q" clock="C"/>
+                        <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                        <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                        <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                        <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                        <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                        <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                        <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
                       </pb_type>
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
@@ -1448,10 +1430,7 @@
                     <direct name="direct3" input="flut5.clk" output="ff.clk"/>
                     <direct name="direct5" input="flut5.reset" output="ff.R"/>
                     <direct name="direct6" input="flut5.enable" output="ff.E"/>
-                    <mux name="mux5" input="lut5.out ff.Q" output="flut5.out">
-                      <delay_constant max="1.42314e-10" min="1.42314e-10" in_port="ff.Q" out_port="flut5.out"/>
-                      <delay_constant max="1.48932e-10" min="1.4147e-10" in_port="lut5.out" out_port="flut5.out"/>
-                    </mux>
+                    <mux name="mux5" input="lut5.out ff.Q" output="flut5.out"/>
                   </interconnect>
                 </pb_type>
                 <interconnect>
@@ -1480,17 +1459,17 @@
                       <input name="in" num_pins="4" port_class="lut_in"/>
                       <output name="out" num_pins="1" port_class="lut_out"/>
                       <delay_matrix type="max" in_port="lut4.in" out_port="lut4.out">
-                          2.4e-10
-                          1.8e-10
-                          1.2e-10
-                          8e-11
-                        </delay_matrix>
+                        8.0337e-11
+                        1.93157e-10
+                        7.98795e-11
+                        1.62321e-10
+                     </delay_matrix>
                       <delay_matrix type="min" in_port="lut4.in" out_port="lut4.out">
-                          2.2e-10
-                          1.6e-10
-                          1.1e-10
-                          7e-11
-                        </delay_matrix>
+                        3.3489e-11
+                        7.96965e-11
+                        3.50445e-11
+                        6.9174e-11
+                     </delay_matrix>
                     </pb_type>
                     <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="1">
                       <input name="p" num_pins="1"/>
@@ -1498,12 +1477,12 @@
                       <input name="cin" num_pins="1"/>
                       <output name="sumout" num_pins="1"/>
                       <output name="cout" num_pins="1"/>
-                      <delay_constant max="5e-11" min="4e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
-                      <delay_constant max="8.9626e-11" min="8.2339e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
-                      <delay_constant max="5e-11" min="3e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
-                      <delay_constant max="5e-11" min="3e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
-                      <delay_constant max="5e-11" min="3e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-                      <delay_constant max="5e-11" min="4e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+                      <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
+                      <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
+                      <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
+                      <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
+                      <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
+                      <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
                     </pb_type>
                     <interconnect>
                       <direct name="direct2" input="adder.in[3:0]" output="lut4[0:0].in[3:0]"/>
@@ -1517,10 +1496,7 @@
                         <pack_pattern name="carrychain" in_port="adder_carry.cout" out_port="adder.cout"/>
                       </direct>
                       <!-- CHECK -->
-                      <mux name="mux6" input="adder_carry.sumout adder_carry.cout" output="adder.out">
-                        <delay_constant max="1.51897e-10" min="1.3619e-10" in_port="adder_carry.sumout" out_port="adder.out"/>
-                        <delay_constant max="1.59941e-10" min="1.3733e-10" in_port="adder_carry.cout" out_port="adder.out"/>
-                      </mux>
+                      <mux name="mux6" input="adder_carry.sumout adder_carry.cout" output="adder.out"/>
                     </interconnect>
                   </pb_type>
                   <pb_type name="ff" num_pb="1">
@@ -1536,13 +1512,13 @@
                         <input name="E" num_pins="1"/>
                         <output name="Q" num_pins="1"/>
                         <clock name="C" num_pins="1"/>
-                        <T_setup value="6.34486e-11" port="DFFRE.D" clock="C"/>
-                        <T_hold value="2.87314e-11" port="DFFRE.D" clock="C"/>
-                        <T_setup value="-8.73915e-11" port="DFFRE.R" clock="C"/>
-                        <T_hold value="1.3408e-10" port="DFFRE.R" clock="C"/>
-                        <T_setup value="8.14058e-11" port="DFFRE.E" clock="C"/>
-                        <T_hold value="1.07743e-11" port="DFFRE.E" clock="C"/>
-                        <T_clock_to_Q min="4.08795e-10" max="7.09448e-10" port="DFFRE.Q" clock="C"/>
+                        <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                        <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                        <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                        <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                        <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                        <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                        <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
                       </pb_type>
                       <interconnect>
                         <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
@@ -1567,10 +1543,7 @@
                     <direct name="carry_out" input="adder.cout" output="soft_adder.cout">
                       <pack_pattern name="carrychain" in_port="adder.cout" out_port="soft_adder.cout"/>
                     </direct>
-                    <mux name="mux7" input="adder.out ff.Q" output="soft_adder.out">
-                      <delay_constant max="9.6311e-11" min="8.3582e-11" in_port="adder.out" out_port="soft_adder.out"/>
-                      <delay_constant max="1.42314e-10" min="8.9674e-11" in_port="ff.Q" out_port="soft_adder.out"/>
-                    </mux>
+                    <mux name="mux7" input="adder.out ff.Q" output="soft_adder.out"/>
                   </interconnect>
                 </pb_type>
                 <interconnect>
@@ -1596,7 +1569,6 @@
               </direct>
               <direct name="carry_link" input="ble5[0:0].cout" output="ble5[1:1].cin">
                 <pack_pattern name="carrychain" in_port="ble5[0:0].cout" out_port="ble5[1:1].cin"/>
-                <delay_constant max="5.1577e-11" min="4.0588e-11" in_port="ble5[0:0].cout" out_port="ble5[1:1].cin"/>
               </direct>
               <complete name="reset" input="lut5inter.reset" output="ble5[1:0].reset"/>
               <complete name="enable" input="lut5inter.enable" output="ble5[1:0].enable"/>
@@ -1619,40 +1591,40 @@
       </pb_type>
       <interconnect>
         <complete name="crossbar0" input="clb.I00 clb.I30 fle.o6" output="fle[7:0].in[0]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[0]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[0]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[0]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[0]"/>
         </complete>
         <complete name="crossbar1" input="clb.I10 clb.I20 fle.o6" output="fle[7:0].in[1]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[1]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[1]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[1]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[1]"/>
         </complete>
         <complete name="crossbar2" input="clb.I00 clb.I20" output="fle[7:0].in[2]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I00 clb.I20" out_port="fle[7:0].in[2]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[2]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I20" out_port="fle[7:0].in[2]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[2]"/>
         </complete>
         <complete name="crossbar3" input="clb.I10 clb.I30" output="fle[7:0].in[3]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I10 clb.I30" out_port="fle[7:0].in[3]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[3]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I30" out_port="fle[7:0].in[3]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[3]"/>
         </complete>
         <complete name="crossbar4" input="clb.I00 clb.I30" output="fle[7:0].in[4]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[4]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[4]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[4]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[4]"/>
         </complete>
         <complete name="crossbar5" input="clb.I10 clb.I20" output="fle[7:0].in[5]">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[5]"/>
-          <delay_constant max="2.14e-10" min="1.69e-10" in_port="fle.out" out_port="fle[7:0].in[5]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[5]"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[5]"/>
         </complete>
         <complete name="clks" input="clb.clk" output="fle[7:0].clk">
-          <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[0]" out_port="fle[7:0].clk"/>
-          <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[1]" out_port="fle[7:0].clk"/>
-          <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[2]" out_port="fle[7:0].clk"/>
-          <delay_constant max="2e-09" min="2e-09" in_port="clb.clk[3]" out_port="fle[7:0].clk"/>
+          <delay_constant max="9.15e-13" min="9.15e-13" in_port="clb.clk[0]" out_port="fle[7:0].clk"/>
+          <delay_constant max="9.15e-13" min="9.15e-13" in_port="clb.clk[1]" out_port="fle[7:0].clk"/>
+          <delay_constant max="9.15e-13" min="9.15e-13" in_port="clb.clk[2]" out_port="fle[7:0].clk"/>
+          <delay_constant max="9.15e-13" min="9.15e-13" in_port="clb.clk[3]" out_port="fle[7:0].clk"/>
         </complete>
         <complete name="crossbar6" input="clb.IS0" output="fle.enable">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS0" out_port="fle.enable"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="fle.enable"/>
         </complete>
         <complete name="crossbar7" input="clb.IS0" output="fle.reset">
-          <delay_constant max="2.08e-10" min="1.43e-10" in_port="clb.IS0" out_port="fle.reset"/>
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="fle.reset"/>
         </complete>
         <direct name="clbouts1" input="fle[7:0].out[0]" output="clb.O0[7:0]"/>
         <direct name="clbouts2" input="fle[7:0].out[1]" output="clb.O0[15:8]"/>
@@ -1660,15 +1632,12 @@
         <!-- Carry chain links -->
         <complete name="carry_in" input="clb.cin" output="fle[0:0].cin">
           <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle[0:0].cin"/>
-          <delay_constant max="1.22461e-10" min="1.00603e-10" in_port="clb.cin" out_port="fle[0:0].cin"/>
         </complete>
         <direct name="carry_out" input="fle[7:7].cout" output="clb.cout">
           <pack_pattern name="carrychain" in_port="fle[7:7].cout" out_port="clb.cout"/>
-          <delay_constant max="5.6224e-11" min="4.0243e-11" in_port="fle[7:7].cout" out_port="clb.cout"/>
         </direct>
         <direct name="carry_link" input="fle[6:0].cout" output="fle[7:1].cin">
           <pack_pattern name="carrychain" in_port="fle[7:0].cout" out_port="fle[7:1].cin"/>
-          <delay_constant max="5.1577e-11" min="4.0588e-11" in_port="fle[6:0].cout" out_port="fle[7:1].cin"/>
         </direct>
         <!-- Scan chain links -->
         <direct name="scff_in" input="clb.sc_in" output="fle[0:0].sc_in"/>
@@ -1743,23 +1712,23 @@
             <output name="dly_b_o" num_pins="18"/>
             <output name="sc_out" num_pins="3"/>
             <!--
-	           <delay_constant max="3500e-12" in_port="dsp_phy.a_i" out_port="dsp_phy.z_o"/>
+               <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="dsp_phy.a_i" out_port="dsp_phy.z_o"/>
 	           <delay_constant max="3500e-12" in_port="dsp_phy.acc_fir_i" out_port="dsp_phy.z_o"/>
-	           <delay_constant max="3500e-12" in_port="dsp_phy.b_i" out_port="dsp_phy.z_o"/>
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="dsp_phy.b_i" out_port="dsp_phy.z_o"/>
                -->
-            <T_setup value="2e-10" port="dsp_phy.a_i" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.b_i" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.acc_fir_i" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.load_acc" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.unsigned_a" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.unsigned_b" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.saturate_enable" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.shift_right" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.round" clock="clk"/>
-            <T_setup value="2e-10" port="dsp_phy.subtract" clock="clk"/>
+            <T_setup value="8.80651e-11" port="dsp_phy.a_i" clock="clk"/>
+            <T_setup value="5.4555e-11" port="dsp_phy.b_i" clock="clk"/>
+            <T_setup value="3.90431e-11" port="dsp_phy.acc_fir_i" clock="clk"/>
+            <T_setup value="4.47206e-11" port="dsp_phy.load_acc" clock="clk"/>
+            <T_setup value="4.26719e-11" port="dsp_phy.feedback" clock="clk"/>
+            <T_setup value="3.20506e-11" port="dsp_phy.unsigned_a" clock="clk"/>
+            <T_setup value="3.36144e-11" port="dsp_phy.unsigned_b" clock="clk"/>
+            <T_setup value="4.3565e-11" port="dsp_phy.saturate_enable" clock="clk"/>
+            <T_setup value="7.81392e-11" port="dsp_phy.shift_right" clock="clk"/>
+            <T_setup value="4.52788e-11" port="dsp_phy.round" clock="clk"/>
+            <T_setup value="4.19921e-11" port="dsp_phy.subtract" clock="clk"/>
             <!--
-          <T_setup value="500e-12"     port="dsp_phy.lreset" clock="clk"/>
+               <T_setup value="1.67558e-10" port="dsp_phy.lreset" clock="clk"/>
 -->
           </pb_type>
           <interconnect>
@@ -1792,8 +1761,8 @@
             <input name="unsigned_b" num_pins="1"/>
             <input name="feedback" num_pins="3"/>
             <output name="z" num_pins="38"/>
-            <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
-            <delay_constant max="2e-10" min="2e-10" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT.a"/>
@@ -1814,10 +1783,10 @@
             <input name="lreset" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGIN.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGIN.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGIN.feedback" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULT_REGIN.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULT_REGIN.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULT_REGIN.feedback" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT_REGIN.a"/>
@@ -1840,10 +1809,10 @@
             <input name="lreset" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGOUT.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGOUT.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGOUT.feedback" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGOUT.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULT_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULT_REGOUT.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULT_REGOUT.feedback" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGOUT.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT_REGOUT.a"/>
@@ -1866,15 +1835,15 @@
             <input name="lreset" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
-            <delay_constant max="2e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.a" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
-            <delay_constant max="2e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.b" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULT_REGIN_REGOUT.feedback" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
+            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.a" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.b" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT_REGIN_REGOUT.a"/>
@@ -1903,23 +1872,23 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD.load_acc" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD.acc_fir" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD.a" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD.b" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD.subtract" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD.acc_fir" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTADD.load_acc" clock="clk"/>
+            <T_setup value="3.90431e-11" port="RS_DSP_MULTADD.acc_fir" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.a" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.b" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.subtract" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.acc_fir" clock="clk"/>
             <!--
-               <delay_constant max="2e-10" in_port="RS_DSP_MULTADD.a" out_port="RS_DSP_MULTADD.z"/>     
-               <delay_constant max="2e-10" in_port="RS_DSP_MULTADD.b" out_port="RS_DSP_MULTADD.z"/>     
-               <delay_constant max="2e-10" in_port="RS_DSP_MULTADD.subtract" out_port="RS_DSP_MULTADD.z"/>     
-               <delay_constant max="2e-10" in_port="RS_DSP_MULTADD.acc_fir" out_port="RS_DSP_MULTADD.z"/>     
+               <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULTADD.a" out_port="RS_DSP_MULTADD.z"/>     
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD.b" out_port="RS_DSP_MULTADD.z"/>     
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD.subtract" out_port="RS_DSP_MULTADD.z"/>     
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD.acc_fir" out_port="RS_DSP_MULTADD.z"/>     
                -->
           </pb_type>
           <interconnect>
@@ -1955,13 +1924,13 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.load_acc" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN.acc_fir" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGIN.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGIN.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGIN.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD_REGIN.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTADD_REGIN.load_acc" clock="clk"/>
+            <T_setup value="3.90431e-11" port="RS_DSP_MULTADD_REGIN.acc_fir" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD_REGIN.a"/>
@@ -1996,13 +1965,13 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.load_acc" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGOUT.acc_fir" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGOUT.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD_REGOUT.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTADD_REGOUT.load_acc" clock="clk"/>
+            <T_setup value="3.90431e-11" port="RS_DSP_MULTADD_REGOUT.acc_fir" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD_REGOUT.a"/>
@@ -2037,22 +2006,22 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
-            <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
-            <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
-            <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
-            <delay_constant max="2e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.feedback" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
+            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD_REGIN_REGOUT.a"/>
@@ -2086,12 +2055,12 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC.load_acc" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC.feedback" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC.subtract" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC.a"/>
@@ -2124,12 +2093,12 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN.load_acc" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC_REGIN.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC_REGIN.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC_REGIN.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC_REGIN.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC_REGIN.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC_REGIN.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC_REGIN.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC_REGIN.a"/>
@@ -2162,12 +2131,12 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGOUT.load_acc" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC_REGOUT.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC_REGOUT.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC_REGOUT.feedback" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC_REGOUT.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC_REGOUT.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC_REGOUT.a"/>
@@ -2200,12 +2169,12 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.a" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.b" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.subtract" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.feedback" clock="clk"/>
-            <T_setup value="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.load_acc" clock="clk"/>
-            <T_clock_to_Q max="2e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.z" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.z" clock="clk"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC_REGIN_REGOUT.a"/>
@@ -2408,39 +2377,39 @@
             <input name="scan_reset" num_pins="1"/>
             <input name="sc_in" num_pins="6"/>
             <output name="sc_out" num_pins="6"/>
-            <T_setup value="500e-12" port="bram_phy.WEN_A1_i" clock="CLK_A1_i"/>
-            <T_setup value="500e-12" port="bram_phy.WEN_B1_i" clock="CLK_B1_i"/>
-            <T_setup value="500e-12" port="bram_phy.BE_A1_i" clock="CLK_A1_i"/>
-            <T_setup value="500e-12" port="bram_phy.BE_B1_i" clock="CLK_B1_i"/>
-            <T_setup value="500e-12" port="bram_phy.REN_A1_i" clock="CLK_A1_i"/>
-            <T_setup value="500e-12" port="bram_phy.REN_B1_i" clock="CLK_B1_i"/>
-            <T_setup value="500e-12" port="bram_phy.ADDR_A1_i" clock="CLK_A1_i"/>
-            <T_setup value="500e-12" port="bram_phy.ADDR_B1_i" clock="CLK_B1_i"/>
-            <T_setup value="500e-12" port="bram_phy.WDATA_A1_i" clock="CLK_A1_i"/>
-            <T_setup value="500e-12" port="bram_phy.WDATA_B1_i" clock="CLK_B1_i"/>
-            <T_clock_to_Q max="500e-12" port="bram_phy.RDATA_A1_o" clock="CLK_A1_i"/>
-            <T_clock_to_Q max="500e-12" port="bram_phy.RDATA_B1_o" clock="CLK_B1_i"/>
-            <T_setup value="500e-12" port="bram_phy.WEN_A2_i" clock="CLK_A2_i"/>
-            <T_setup value="500e-12" port="bram_phy.WEN_B2_i" clock="CLK_B2_i"/>
-            <T_setup value="500e-12" port="bram_phy.BE_A2_i" clock="CLK_A2_i"/>
-            <T_setup value="500e-12" port="bram_phy.BE_B2_i" clock="CLK_B2_i"/>
-            <T_setup value="500e-12" port="bram_phy.REN_A2_i" clock="CLK_A2_i"/>
-            <T_setup value="500e-12" port="bram_phy.REN_B2_i" clock="CLK_B2_i"/>
-            <T_setup value="500e-12" port="bram_phy.ADDR_A2_i" clock="CLK_A2_i"/>
-            <T_setup value="500e-12" port="bram_phy.ADDR_B2_i" clock="CLK_B2_i"/>
-            <T_setup value="500e-12" port="bram_phy.WDATA_A2_i" clock="CLK_A2_i"/>
-            <T_setup value="500e-12" port="bram_phy.WDATA_B2_i" clock="CLK_B2_i"/>
-            <T_clock_to_Q max="500e-12" port="bram_phy.RDATA_A2_o" clock="CLK_A2_i"/>
-            <T_clock_to_Q max="500e-12" port="bram_phy.RDATA_B2_o" clock="CLK_B2_i"/>
-            <T_setup value="500e-12" port="bram_phy.RAM_ID_i" clock="PL_CLK_i"/>
-            <T_setup value="500e-12" port="bram_phy.PL_INIT_i" clock="PL_CLK_i"/>
-            <T_setup value="500e-12" port="bram_phy.PL_ENA_i" clock="PL_CLK_i"/>
-            <T_setup value="500e-12" port="bram_phy.PL_REN_i" clock="PL_CLK_i"/>
-            <T_setup value="500e-12" port="bram_phy.PL_WEN_i" clock="PL_CLK_i"/>
-            <T_setup value="500e-12" port="bram_phy.PL_ADDR_i" clock="PL_CLK_i"/>
-            <T_setup value="500e-12" port="bram_phy.PL_DATA_i" clock="PL_CLK_i"/>
-            <T_setup value="500e-12" port="bram_phy.FLUSH1_i" clock="CLK_A1_i"/>
-            <T_setup value="500e-12" port="bram_phy.FLUSH2_i" clock="CLK_A2_i"/>
+            <T_setup value="8.5095e-11" port="bram_phy.WEN_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="6.99975e-11" port="bram_phy.WEN_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="5.71875e-11" port="bram_phy.BE_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="6.12135e-11" port="bram_phy.BE_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="5.3436e-11" port="bram_phy.REN_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="5.64555e-11" port="bram_phy.REN_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="9.85455e-11" port="bram_phy.ADDR_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="7.54875e-11" port="bram_phy.ADDR_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="4.7397e-11" port="bram_phy.WDATA_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="7.1004e-11" port="bram_phy.WDATA_B1_i" clock="CLK_B1_i"/>
+            <T_clock_to_Q min="2.2079e-10" max="3.26289e-10" port="bram_phy.RDATA_A1_o" clock="CLK_A1_i"/>
+            <T_clock_to_Q min="2.16215e-10" max="3.32786e-10" port="bram_phy.RDATA_B1_o" clock="CLK_B1_i"/>
+            <T_setup value="4.9959e-11" port="bram_phy.WEN_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="4.9776e-11" port="bram_phy.WEN_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="5.2704e-11" port="bram_phy.BE_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="5.7462e-11" port="bram_phy.BE_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="5.02335e-11" port="bram_phy.REN_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="6.83505e-11" port="bram_phy.REN_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="6.45075e-11" port="bram_phy.ADDR_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="6.2769e-11" port="bram_phy.ADDR_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="6.8076e-11" port="bram_phy.WDATA_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="8.3448e-11" port="bram_phy.WDATA_B2_i" clock="CLK_B2_i"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.38632e-10" port="bram_phy.RDATA_A2_o" clock="CLK_A2_i"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.03588e-10" port="bram_phy.RDATA_B2_o" clock="CLK_B2_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.RAM_ID_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_INIT_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_ENA_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_REN_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_WEN_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_ADDR_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_DATA_i" clock="PL_CLK_i"/>
+            <T_setup value="4.7031e-11" port="bram_phy.FLUSH1_i" clock="CLK_A1_i"/>
+            <T_setup value="1.67903e-10" port="bram_phy.FLUSH2_i" clock="CLK_A2_i"/>
           </pb_type>
           <interconnect>
             <direct name="bram-clk_a1" input="bram_lr.CLK_A1_i" output="bram_phy.CLK_A1_i"/>
@@ -2528,32 +2497,32 @@
             <input name="FLUSH2" num_pins="1"/>
             <!-- <input name="RESET_ni" num_pins="1"/>      -->
             <!-- Delay extracted from standard cell libraries -->
-            <T_setup value="500e-12" port="mem_36K.WEN_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="mem_36K.WEN_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="mem_36K.BE_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="mem_36K.BE_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="mem_36K.REN_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="mem_36K.REN_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="mem_36K.ADDR_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="mem_36K.ADDR_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="mem_36K.WDATA_A1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="mem_36K.WDATA_B1" clock="CLK_B1"/>
-            <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_A1" clock="CLK_A1"/>
-            <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_B1" clock="CLK_B1"/>
-            <T_setup value="500e-12" port="mem_36K.WEN_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="mem_36K.WEN_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="mem_36K.BE_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="mem_36K.BE_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="mem_36K.REN_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="mem_36K.REN_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="mem_36K.ADDR_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="mem_36K.ADDR_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="mem_36K.WDATA_A2" clock="CLK_A2"/>
-            <T_setup value="500e-12" port="mem_36K.WDATA_B2" clock="CLK_B2"/>
-            <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_A2" clock="CLK_A2"/>
-            <T_clock_to_Q max="500e-12" port="mem_36K.RDATA_B2" clock="CLK_B2"/>
-            <T_setup value="500e-12" port="mem_36K.FLUSH1" clock="CLK_A1"/>
-            <T_setup value="500e-12" port="mem_36K.FLUSH2" clock="CLK_A2"/>
+            <T_setup value="8.5095e-11" port="mem_36K.WEN_A1" clock="CLK_A1"/>
+            <T_setup value="6.99975e-11" port="mem_36K.WEN_B1" clock="CLK_B1"/>
+            <T_setup value="5.71875e-11" port="mem_36K.BE_A1" clock="CLK_A1"/>
+            <T_setup value="6.12135e-11" port="mem_36K.BE_B1" clock="CLK_B1"/>
+            <T_setup value="5.3436e-11" port="mem_36K.REN_A1" clock="CLK_A1"/>
+            <T_setup value="5.64555e-11" port="mem_36K.REN_B1" clock="CLK_B1"/>
+            <T_setup value="9.85455e-11" port="mem_36K.ADDR_A1" clock="CLK_A1"/>
+            <T_setup value="7.54875e-11" port="mem_36K.ADDR_B1" clock="CLK_B1"/>
+            <T_setup value="4.7397e-11" port="mem_36K.WDATA_A1" clock="CLK_A1"/>
+            <T_setup value="7.1004e-11" port="mem_36K.WDATA_B1" clock="CLK_B1"/>
+            <T_clock_to_Q min="2.2079e-10" max="3.26289e-10" port="mem_36K.RDATA_A1" clock="CLK_A1"/>
+            <T_clock_to_Q min="2.16215e-10" max="3.32786e-10" port="mem_36K.RDATA_B1" clock="CLK_B1"/>
+            <T_setup value="4.9959e-11" port="mem_36K.WEN_A2" clock="CLK_A2"/>
+            <T_setup value="4.9776e-11" port="mem_36K.WEN_B2" clock="CLK_B2"/>
+            <T_setup value="5.2704e-11" port="mem_36K.BE_A2" clock="CLK_A2"/>
+            <T_setup value="5.7462e-11" port="mem_36K.BE_B2" clock="CLK_B2"/>
+            <T_setup value="5.02335e-11" port="mem_36K.REN_A2" clock="CLK_A2"/>
+            <T_setup value="6.83505e-11" port="mem_36K.REN_B2" clock="CLK_B2"/>
+            <T_setup value="6.45075e-11" port="mem_36K.ADDR_A2" clock="CLK_A2"/>
+            <T_setup value="6.2769e-11" port="mem_36K.ADDR_B2" clock="CLK_B2"/>
+            <T_setup value="6.8076e-11" port="mem_36K.WDATA_A2" clock="CLK_A2"/>
+            <T_setup value="8.3448e-11" port="mem_36K.WDATA_B2" clock="CLK_B2"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.38632e-10" port="mem_36K.RDATA_A2" clock="CLK_A2"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.03588e-10" port="mem_36K.RDATA_B2" clock="CLK_B2"/>
+            <T_setup value="4.7031e-11" port="mem_36K.FLUSH1" clock="CLK_A1"/>
+            <T_setup value="1.67903e-10" port="mem_36K.FLUSH2" clock="CLK_A2"/>
             <!-- <T_setup value="500e-12" port="mem_36K.RESET_ni" clock="CLK_A2"/>      -->
             <power method="pin-toggle">
               <port name="CLK_A1" energy_per_toggle="17.9e-12"/>
