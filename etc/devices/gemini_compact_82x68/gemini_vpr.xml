@@ -746,7 +746,7 @@
     <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="1.91784e-10" mux_trans_size="1.222260" buf_size="auto"/>
     <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="9.14e-11" mux_trans_size="2.630740" buf_size="27.645901"/>
     <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.784e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
-    <!-- Alain: switch type="mux" name="L0_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1e-12" mux_trans_size="2.630740" buf_size="27.645901"/ -->
+    <switch type="mux" name="L0_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1e-12" mux_trans_size="2.630740" buf_size="27.645901"/>
   </switchlist>
   <segmentlist>
     <!-- GIVE a specific name for the segment! OpenFPGA appreciate that! -->
@@ -761,11 +761,11 @@
       <sb type="pattern">1 1 1 1 1 1</sb>
       <cb type="pattern">1 1 1 1 1</cb>
     </segment>
-    <!-- Alain: segment name="L0" freq="0.65" length="1" type="unidir" Rmetal="0" Cmetal="0">
+    <segment name="L0" freq="0.65" length="1" type="unidir" Rmetal="0" Cmetal="0">
       <mux name="L0_mux"/>
       <sb type="pattern">1 1</sb>
       <cb type="pattern">1</cb>
-    </segment -->
+    </segment>
   </segmentlist>
   <directlist>
     <direct name="carry_chain" from_pin="clb.cout" to_pin="clb.cin" x_offset="0" y_offset="-1" z_offset="0"/>
