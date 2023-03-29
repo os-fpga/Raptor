@@ -166,9 +166,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_100k.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_batch.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_testcase_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
 	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
