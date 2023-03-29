@@ -1049,7 +1049,6 @@
         <input name="reset" num_pins="1"/>
         <input name="enable" num_pins="1"/>
         <output name="out" num_pins="2"/>
-        <output name="o6" num_pins="1"/>
         <output name="cout" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
         <clock name="clk" num_pins="1"/>
@@ -1065,7 +1064,6 @@
             <input name="reset" num_pins="1"/>
             <input name="enable" num_pins="1"/>
             <output name="out" num_pins="2"/>
-            <output name="o6" num_pins="1"/>
             <output name="cout" num_pins="1"/>
             <output name="sc_out" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
@@ -1074,7 +1072,6 @@
               <input name="cin" num_pins="1"/>
               <output name="cout" num_pins="1"/>
               <output name="out" num_pins="2"/>
-              <output name="o6" num_pins="1"/>
               <pb_type name="frac_lut6" blif_model=".subckt frac_lut6" num_pb="1">
                 <input name="in" num_pins="6"/>
                 <output name="lut4_out" num_pins="4"/>
@@ -1193,7 +1190,6 @@
                 <direct name="direct4" input="frac_lut6.lut4_out[1]" output="adder_carry[0].g"/>
                 <direct name="direct6" input="frac_lut6.lut4_out[2]" output="adder_carry[1].p"/>
                 <direct name="direct7" input="frac_lut6.lut4_out[3]" output="adder_carry[1].g"/>
-                <direct name="direct8" input="frac_lut6.lut6_out" output="frac_logic.o6"/>
                 <direct name="direct9" input="adder_carry[0].cout" output="adder_carry[1].cin">         
                                 
                         </direct>
@@ -1229,7 +1225,6 @@
               <direct name="direct_fabric_scout" input="ff_phy[1].SO" output="fabric.sc_out"/>
               <direct name="direct_frac_out1" input="frac_logic.out[0]" output="ff_phy[0].D"/>
               <direct name="direct_frac_out2" input="frac_logic.out[1]" output="ff_phy[1].D"/>
-              <direct name="direct_frac_out3" input="frac_logic.o6" output="fabric.o6"/>
               <mux name="mux2" input="frac_logic.out[0] ff_phy[0].Q" output="fabric.out[0]"/>
               <mux name="mux3" input="frac_logic.out[1] ff_phy[1].Q" output="fabric.out[1]"/>
             </interconnect>
@@ -1239,7 +1234,6 @@
             <direct name="direct3" input="fle.sc_in" output="fabric.sc_in"/>
             <direct name="direct4" input="fle.cin" output="fabric.cin"/>
             <direct name="direct5" input="fabric.out" output="fle.out"/>
-            <direct name="direct6" input="fabric.o6" output="fle.o6"/>
             <direct name="direct7" input="fabric.sc_out" output="fle.sc_out"/>
             <direct name="direct8" input="fabric.cout" output="fle.cout"/>
             <direct name="direct9" input="fle.clk" output="fabric.clk"/>
@@ -1254,7 +1248,6 @@
             <input name="reset" num_pins="1"/>
             <input name="enable" num_pins="1"/>
             <output name="out" num_pins="1"/>
-            <output name="o6" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
               <input name="in" num_pins="6" port_class="lut_in"/>
@@ -1312,7 +1305,6 @@
                 <pack_pattern name="lut6-out" in_port="lut6.out" out_port="ff.D"/>
               </direct>
               <direct name="direct3" input="ble6.clk" output="ff.clk"/>
-              <direct name="direct4" input="lut6.out" output="ble6.o6"/>
               <direct name="direct5" input="ble6.reset" output="ff.R"/>
               <direct name="direct6" input="ble6.enable" output="ff.E"/>
               <mux name="mux4" input="lut6.out ff.Q" output="ble6.out"/>
@@ -1322,7 +1314,6 @@
             <direct name="direct1" input="fle.in" output="ble6.in"/>
             <direct name="direct2" input="ble6.out" output="fle.out[1:1]"/>
             <direct name="direct3" input="fle.clk" output="ble6.clk"/>
-            <direct name="direct4" input="ble6.o6" output="fle.o6"/>
             <direct name="direct5" input="fle.reset" output="ble6.reset"/>
             <direct name="direct6" input="fle.enable" output="ble6.enable"/>
           </interconnect>
@@ -1571,11 +1562,11 @@
         <!-- Define n2_lut5 mode ends -->
       </pb_type>
       <interconnect>
-        <complete name="crossbar0" input="clb.I00 clb.I30 fle.o6" output="fle[7:0].in[0]">
+        <complete name="crossbar0" input="clb.I00 clb.I30" output="fle[7:0].in[0]">
           <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[0]"/>
           <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[0]"/>
         </complete>
-        <complete name="crossbar1" input="clb.I10 clb.I20 fle.o6" output="fle[7:0].in[1]">
+        <complete name="crossbar1" input="clb.I10 clb.I20" output="fle[7:0].in[1]">
           <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[1]"/>
           <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[1]"/>
         </complete>
@@ -1609,7 +1600,6 @@
         </complete>
         <direct name="clbouts1" input="fle[7:0].out[0]" output="clb.O0[7:0]"/>
         <direct name="clbouts2" input="fle[7:0].out[1]" output="clb.O0[15:8]"/>
-        <direct name="clbouto6" input="fle[7:0].o6" output="clb.O0[23:16]"/>
         <!-- Carry chain links -->
         <complete name="carry_in" input="clb.cin" output="fle[0:0].cin">
           <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle[0:0].cin"/>
