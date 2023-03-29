@@ -57,7 +57,7 @@
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
-        <internal type="tag_version" name="v1.6.47"/>
+        <internal type="tag_version" name="v1.6.49"/>
         <internal type="vpr_arch" file="gemini_compact_82x68/gemini_vpr.xml"/>
         <internal type="device_size" name="castor82x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -86,7 +86,7 @@
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
-        <internal type="tag_version" name="v1.6.47"/>
+        <internal type="tag_version" name="v1.6.49"/>
         <internal type="vpr_arch" file="gemini_compact_10x8/gemini_vpr.xml"/>
         <internal type="device_size" name="castor10x8_heterogeneous"/>
         <internal type="lut_size" num="6"/>
