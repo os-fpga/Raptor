@@ -275,14 +275,14 @@
       <design_technology type="cmos"/>
       <input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
       <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
+      <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="input" prefix="reset" lib_name="R" size="1" default_val="1"/>
-      <port type="input" prefix="test_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="scan_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
-      <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="1"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="QL_XOR_MUX2" prefix="QL_XOR_MUX2" verilog_netlist="./SRC/CustomModules/ql_xor_mux2.v">
@@ -309,11 +309,10 @@
       <port type="input" prefix="SYNC_R" lib_name="SYNC_R" size="1"/>
       <port type="input" prefix="LAT_R" lib_name="LAT_R" size="1"/>
       <port type="input" prefix="E" lib_name="E" size="1"/>
-      <port type="input" prefix="test_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="scan_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
-      <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="sram" prefix="mode" lib_name="MODE_SEL" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="01"/>
     </circuit_model>
     <circuit_model type="ff" name="GC_FF" prefix="GC_FF" verilog_netlist="./SRC/CustomModules/gc_ff.v">
@@ -351,9 +350,8 @@
       <port type="input" prefix="subtract" lib_name="subtract" size="1"/>
       <port type="clock" prefix="clk" lib_name="clock" size="1"/>
       <port type="input" prefix="sc_in" lib_name="scan_i" size="3"/>
-      <port type="input" prefix="test_en" lib_name="scan_en" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="scan_en" lib_name="scan_en" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="sc_out" lib_name="scan_o" size="3"/>
-      <port type="clock" prefix="scan_clk" lib_name="scan_clk" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
       <port type="sram" prefix="mode" size="85" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
     </circuit_model>
@@ -410,9 +408,8 @@
       <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       <port type="input" prefix="scan_reset" lib_name="SCAN_RESET_i" size="1"/>
       <port type="input" prefix="sc_in" lib_name="SCAN_i" size="6"/>
-      <port type="input" prefix="test_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="scan_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="sc_out" lib_name="SCAN_o" size="6"/>
-      <port type="clock" prefix="scan_clk" lib_name="SCAN_CLK_i" size="1" is_global="true" default_val="0" is_prog="true"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE_i" size="1" is_global="true" default_val="0"/>
     </circuit_model>
   </circuit_library>

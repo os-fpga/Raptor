@@ -72,7 +72,6 @@
       <input_ports>
         <port name="D" clock="clk"/>
         <port name="SI" clock="clk"/>
-        <port name="reset" clock="clk"/>
         <port name="clk" is_clock="1"/>
       </input_ports>
       <output_ports>
@@ -98,8 +97,6 @@
         <port name="acc_fir_i" clock="clk"/>
         <port name="b_i" clock="clk"/>
         <port name="load_acc" clock="clk"/>
-        <port name="global_resetn"/>
-        <port name="scan_reset"/>
         <port name="lreset"/>
         <port name="feedback" clock="clk"/>
         <port name="unsigned_a" clock="clk"/>
@@ -366,8 +363,6 @@
         <port name="PL_WEN_i" clock="PL_CLK_i"/>
         <port name="PL_ADDR_i" clock="PL_CLK_i"/>
         <port name="PL_DATA_i" clock="PL_CLK_i"/>
-        <port name="global_resetn"/>
-        <port name="scan_reset"/>
         <port name="sc_in"/>
       </input_ports>
       <output_ports>
@@ -442,17 +437,13 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_top.scan_reset io_top.clk io_top.sc_in io_top.global_reset </loc>
+          <loc side="top"> io_top.clk io_top.sc_in </loc>
           <loc side="bottom"> io_top.a2f_o io_top.f2a_i io_top.sc_out </loc>
         </pinlocations>
       </sub_tile>
@@ -467,17 +458,13 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_right.scan_reset io_right.clk io_right.sc_in io_right.global_reset </loc>
+          <loc side="top"> io_right.clk io_right.sc_in </loc>
           <loc side="left"> io_right.a2f_o io_right.f2a_i </loc>
           <loc side="bottom"> io_right.sc_out </loc>
         </pinlocations>
@@ -493,17 +480,13 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_bottom.scan_reset io_bottom.clk io_bottom.sc_in io_bottom.global_reset io_bottom.a2f_o io_bottom.f2a_i </loc>
+          <loc side="top"> io_bottom.clk io_bottom.sc_in io_bottom.a2f_o io_bottom.f2a_i </loc>
           <loc side="bottom"> io_bottom.sc_out </loc>
         </pinlocations>
       </sub_tile>
@@ -518,17 +501,13 @@
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
         <output name="sc_out" num_pins="1"/>
-        <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_left.scan_reset io_left.clk io_left.sc_in io_left.global_reset </loc>
+          <loc side="top"> io_left.clk io_left.sc_in </loc>
           <loc side="right"> io_left.a2f_o io_left.f2a_i </loc>
           <loc side="bottom"> io_left.sc_out </loc>
         </pinlocations>
@@ -550,8 +529,6 @@
         <input name="IS0" num_pins="6" equivalent="full"/>
         <input name="sc_in" num_pins="1"/>
         <input name="cin" num_pins="1"/>
-        <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <output name="O0" num_pins="24" equivalent="none"/>
         <output name="sc_out" num_pins="1"/>
         <output name="cout" num_pins="1"/>
@@ -567,8 +544,6 @@
           <fc_override port_name="cin" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cout" fc_type="frac" fc_val="0"/>
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <!-- Highly recommand to customize pin location when direct connection is used!!! -->
         <!-- To ensure best tileable routing architecture (minimize the number of unique SBs
@@ -576,7 +551,7 @@
            Top side pins are mainly for direct connections
         -->
         <pinlocations pattern="custom">
-          <loc side="top"> clb.clk clb.scan_reset clb.global_reset clb.cin clb.sc_in </loc>
+          <loc side="top"> clb.clk clb.cin clb.sc_in </loc>
           <loc side="right"> clb.I00 clb.I10 clb.IS0[2:0] clb.O0[11:0] </loc>
           <loc side="bottom"> clb.I20 clb.I30 clb.IS0[5:3] clb.O0[23:12] clb.sc_out clb.cout </loc>
         </pinlocations>
@@ -608,14 +583,10 @@
         <clock name="clk" num_pins="4"/>
         <input name="sc_in" num_pins="3"/>
         <output name="sc_out" num_pins="3"/>
-        <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="right" yoffset="0"> dsp.I00 dsp.I10 dsp.IS0[2:0] dsp.O0[11:0] </loc>
@@ -624,7 +595,7 @@
           <loc side="bottom">             dsp.I20 dsp.I30 dsp.IS0[5:3] dsp.O0[23:12]
                                           dsp.I21 dsp.I31 dsp.IS1[5:3] dsp.O1[23:12]
                                           dsp.I22 dsp.I32 dsp.IS2[5:3] dsp.O2[23:12] dsp.sc_out </loc>
-          <loc side="top"> dsp.clk dsp.sc_in dsp.global_reset dsp.scan_reset </loc>
+          <loc side="top"> dsp.clk dsp.sc_in </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -666,14 +637,11 @@
         <output name="PL_WEN_o" num_pins="2"/>
         <output name="PL_ADDR_o" num_pins="32"/>
         <output name="PL_DATA_o" num_pins="36"/>
-        <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-        <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
         <input name="sc_in" num_pins="6"/>
         <output name="sc_out" num_pins="6"/>
         <clock name="clk" num_pins="4"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="global_reset" fc_type="frac" fc_val="0"/>
           <fc_override port_name="RAM_ID_i" fc_type="frac" fc_val="0"/>
           <fc_override port_name="PL_INIT_i" fc_type="frac" fc_val="0"/>
           <fc_override port_name="PL_ENA_i" fc_type="frac" fc_val="0"/>
@@ -691,7 +659,6 @@
           <fc_override port_name="PL_DATA_o" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
-          <fc_override port_name="scan_reset" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="right" yoffset="0"> bram.I00 bram.I10 bram.IS0[2:0] bram.O0[11:0] </loc>
@@ -701,7 +668,7 @@
                               bram.I21 bram.I31 bram.IS1[5:3] bram.O1[23:12] 
                               bram.I22 bram.I32 bram.IS2[5:3] bram.O2[23:12]
                               bram.sc_out bram.PL_INIT_o bram.PL_ENA_o bram.PL_REN_o bram.PL_CLK_o bram.PL_WEN_o bram.PL_ADDR_o bram.PL_DATA_o </loc>
-          <loc side="top">    bram.global_reset bram.scan_reset bram.clk bram.RAM_ID_i
+          <loc side="top">    bram.clk bram.RAM_ID_i
                               bram.sc_in bram.PL_INIT_i bram.PL_ENA_i bram.PL_REN_i bram.PL_CLK_i bram.PL_WEN_i bram.PL_ADDR_i bram.PL_DATA_i </loc>
         </pinlocations>
       </sub_tile>
@@ -763,26 +730,21 @@
       <output name="a2f_o" num_pins="1"/>
       <input name="sc_in" num_pins="1"/>
       <output name="sc_out" num_pins="1"/>
-      <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-      <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <mode name="physical" disable_packing="true">
         <pb_type name="iopad" num_pb="1">
           <clock name="clk" num_pins="1"/>
           <input name="f2a_i" num_pins="1"/>
           <output name="a2f_o" num_pins="1"/>
           <input name="sc_in" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <output name="sc_out" num_pins="1"/>
           <pb_type name="ff" blif_model=".subckt io_scff" num_pb="2">
             <input name="D" num_pins="1" port_class="D"/>
             <input name="SI" num_pins="1"/>
-            <input name="reset" num_pins="1"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
             <T_setup value="5.307e-11" port="ff[0:0].D" clock="clk"/>
             <T_setup value="5.307e-11" port="ff[1:1].D" clock="clk"/>
             <T_setup value="5.7279e-11" port="ff.SI" clock="clk"/>
-            <T_setup value="5.47693e-12" port="ff.reset" clock="clk"/>
             <T_clock_to_Q max="1.4576e-10" port="ff[0:0].Q" clock="clk"/>
             <T_clock_to_Q max="1.4576e-10" port="ff[1:1].Q" clock="clk"/>
           </pb_type>
@@ -800,7 +762,6 @@
             <direct name="ff[0:0]-DI" input="iopad.sc_in" output="ff[0:0].SI"/>
             <direct name="ff[1:1]-DI" input="ff[0:0].Q" output="ff[1:1].SI"/>
             <direct name="iopad-sc_out" input="ff[1:1].Q" output="iopad.sc_out"/>
-            <complete name="complete1" input="iopad.reset" output="ff[1:0].reset"/>
             <mux name="mux1" input="iopad.f2a_i ff[0:0].Q" output="pad.outpad">
               <delay_constant max="2.27835e-11" min="1.5738e-11" in_port="iopad.f2a_i" out_port="pad.outpad"/>
               <delay_constant max="2.2875e-11" min="1.56465e-11" in_port="ff[0:0].Q" out_port="pad.outpad"/>
@@ -822,19 +783,14 @@
           <direct name="direct4" input="iopad.a2f_o" output="io.a2f_o"/>
           <direct name="direct6" input="io.sc_in" output="iopad.sc_in"/>
           <direct name="direct7" input="iopad.sc_out" output="io.sc_out"/>
-          <direct name="direct8" input="io.global_reset" output="iopad.reset">
-            <delay_constant max="4.575e-11" min="4.575e-11" in_port="io.global_reset" out_port="iopad.reset"/>
-          </direct>
         </interconnect>
       </mode>
       <mode name="io_output">
         <pb_type name="io_output" num_pb="1">
           <clock name="clk" num_pins="1"/>
           <input name="f2a_i" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <pb_type name="ff" num_pb="1">
             <input name="D" num_pins="1"/>
-            <input name="R" num_pins="1"/>
             <output name="Q" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
             <mode name="LATCH">
@@ -897,7 +853,6 @@
           </pb_type>
           <interconnect>
             <direct name="ff-clk" input="io_output.clk" output="ff.clk"/>
-            <direct name="ff-reset" input="io_output.reset" output="ff.R"/>
             <direct name="ff-D" input="io_output.f2a_i" output="ff.D"/>
             <mux name="mux1" input="io_output.f2a_i ff.Q" output="outpad.outpad">
               <pack_pattern name="pack-OLATCH" in_port="ff.Q" out_port="outpad.outpad"/>
@@ -909,7 +864,6 @@
           </interconnect>
         </pb_type>
         <interconnect>
-          <complete name="io_output-reset" input="io.global_reset" output="io_output.reset"/>
           <complete name="io_output-clk" input="io.clk" output="io_output.clk">
             <delay_constant max="1e-12" min="1e-12" in_port="io.clk[0]" out_port="io_output.clk"/>
             <delay_constant max="1e-12" min="1e-12" in_port="io.clk[1]" out_port="io_output.clk"/>
@@ -923,7 +877,6 @@
         <pb_type name="io_input" num_pb="1">
           <clock name="clk" num_pins="1"/>
           <output name="a2f_o" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
           <pb_type name="inpad" blif_model=".input" num_pb="1">
             <output name="inpad" num_pins="1"/>
           </pb_type>
@@ -931,7 +884,6 @@
             <input name="D" num_pins="1" port_class="D"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
-            <input name="R" num_pins="1"/>
             <mode name="LATCH">
               <pb_type name="LATCH" blif_model=".latch" num_pb="1" class="flipflop">
                 <input name="D" num_pins="1" port_class="D"/>
@@ -986,7 +938,6 @@
           </pb_type>
           <interconnect>
             <direct name="ff-clk" input="io_input.clk" output="ff.clk"/>
-            <direct name="ff-reset" input="io_input.reset" output="ff.R"/>
             <direct name="ff-D" input="inpad.inpad" output="ff.D">
               <delay_constant max="3.0927e-11" min="8.5095e-12" in_port="inpad.inpad" out_port="ff.D"/>
               <pack_pattern name="pack-ILATCH" in_port="inpad.inpad" out_port="ff.D"/>
@@ -1001,7 +952,6 @@
         </pb_type>
         <interconnect>
           <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o"/>
-          <complete name="io_input-reset" input="io.global_reset" output="io_input.reset"/>
           <complete name="io_input-clk" input="io.clk" output="io_input.clk">
             <delay_constant max="1e-12" min="1e-12" in_port="io.clk[0]" out_port="io_input.clk"/>
             <delay_constant max="1e-12" min="1e-12" in_port="io.clk[1]" out_port="io_input.clk"/>
@@ -1035,8 +985,6 @@
       <input name="IS0" num_pins="6" equivalent="full"/>
       <input name="sc_in" num_pins="1"/>
       <input name="cin" num_pins="1"/>
-      <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-      <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <output name="O0" num_pins="24" equivalent="none"/>
       <output name="sc_out" num_pins="1"/>
       <output name="cout" num_pins="1"/>
@@ -1637,8 +1585,6 @@
       <input name="IS2" num_pins="6" equivalent="full"/>
       <output name="O2" num_pins="24" equivalent="none"/>
       <input name="sc_in" num_pins="3"/>
-      <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-      <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <clock name="clk" num_pins="4"/>
       <output name="sc_out" num_pins="3"/>
       <pb_type name="dsp_lr" num_pb="1">
@@ -1647,8 +1593,6 @@
         <input name="b_i" num_pins="18"/>
         <input name="sc_in" num_pins="3"/>
         <input name="load_acc" num_pins="1"/>
-        <input name="global_resetn" num_pins="1"/>
-        <input name="scan_reset" num_pins="1"/>
         <input name="lreset" num_pins="1"/>
         <input name="feedback" num_pins="3"/>
         <input name="unsigned_a" num_pins="1"/>
@@ -1668,8 +1612,6 @@
             <input name="b_i" num_pins="18"/>
             <input name="sc_in" num_pins="3"/>
             <input name="load_acc" num_pins="1"/>
-            <input name="global_resetn" num_pins="1"/>
-            <input name="scan_reset" num_pins="1"/>
             <input name="lreset" num_pins="1"/>
             <input name="feedback" num_pins="3"/>
             <input name="unsigned_a" num_pins="1"/>
@@ -1710,8 +1652,6 @@
             <direct name="direct5" input="dsp_lr.lreset" output="dsp_phy.lreset"/>
             <direct name="direct6" input="dsp_phy.z_o" output="dsp_lr.z_o"/>
             <direct name="direct7" input="dsp_phy.dly_b_o" output="dsp_lr.dly_b_o"/>
-            <direct name="direct8" input="dsp_lr.global_resetn" output="dsp_phy.global_resetn"/>
-            <direct name="direct9" input="dsp_lr.scan_reset" output="dsp_phy.scan_reset"/>
             <direct name="direct10" input="dsp_lr.load_acc" output="dsp_phy.load_acc"/>
             <direct name="direct11" input="dsp_lr.feedback" output="dsp_phy.feedback"/>
             <direct name="direct12" input="dsp_lr.unsigned_a" output="dsp_phy.unsigned_a"/>
@@ -2242,8 +2182,6 @@
       <output name="PL_WEN_o" num_pins="2"/>
       <output name="PL_ADDR_o" num_pins="32"/>
       <output name="PL_DATA_o" num_pins="36"/>
-      <input name="global_reset" num_pins="1" is_non_clock_global="true"/>
-      <input name="scan_reset" num_pins="1" is_non_clock_global="true"/>
       <input name="sc_in" num_pins="6"/>
       <output name="sc_out" num_pins="6"/>
       <clock name="clk" num_pins="4"/>
@@ -2293,8 +2231,6 @@
         <output name="PL_WEN_o" num_pins="2"/>
         <output name="PL_ADDR_o" num_pins="32"/>
         <output name="PL_DATA_o" num_pins="36"/>
-        <input name="global_resetn" num_pins="1"/>
-        <input name="scan_reset" num_pins="1"/>
         <input name="sc_in" num_pins="6"/>
         <output name="sc_out" num_pins="6"/>
         <mode name="physical" disable_packing="true">
@@ -2344,8 +2280,6 @@
             <output name="PL_WEN_o" num_pins="2"/>
             <output name="PL_ADDR_o" num_pins="32"/>
             <output name="PL_DATA_o" num_pins="36"/>
-            <input name="global_resetn" num_pins="1"/>
-            <input name="scan_reset" num_pins="1"/>
             <input name="sc_in" num_pins="6"/>
             <output name="sc_out" num_pins="6"/>
             <T_setup value="8.5095e-11" port="bram_phy.WEN_A1_i" clock="CLK_A1_i"/>
@@ -2429,9 +2363,7 @@
             <direct name="direct62" input="bram_phy.PL_ADDR_o" output="bram_lr.PL_ADDR_o"/>
             <direct name="direct63" input="bram_phy.PL_DATA_o" output="bram_lr.PL_DATA_o"/>
             <direct name="direct64" input="bram_lr.sc_in" output="bram_phy.sc_in"/>
-            <direct name="direct65" input="bram_lr.scan_reset" output="bram_phy.scan_reset"/>
             <direct name="direct66" input="bram_phy.sc_out" output="bram_lr.sc_out"/>
-            <direct name="direct67" input="bram_lr.global_resetn" output="bram_phy.global_resetn"/>
           </interconnect>
         </mode>
         <mode name="mem_36K_tdp">
