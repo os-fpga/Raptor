@@ -3389,7 +3389,6 @@
       <col type="dsp" startx="14" starty="1" priority="30"/>
       <!--Overlay with 'bram'-->
       <col type="bram" startx="5" starty="1" priority="20"/>
-      <col type="bram" startx="11" starty="1" priority="20"/>
       <col type="bram" startx="17" starty="1" priority="20"/>
     </fixed_layout>
     <fixed_layout name="36x36" width="38" height="38">
