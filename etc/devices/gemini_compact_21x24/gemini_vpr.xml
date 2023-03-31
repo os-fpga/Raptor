@@ -2620,6 +2620,23 @@
       <!--Insert BRAM column(s)-->
       <region type="bram" startx="7" endx="7" starty="2" endy="H-3" priority="30"/>
     </fixed_layout>
+    <fixed_layout name="21x24" width="23" height="26">
+      <!--Mini Castor array complete with DSP and BRAM-->
+      <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->
+      <row type="io_top" starty="H-1" priority="100"/>
+      <row type="io_bottom" starty="0" priority="100"/>
+      <col type="io_left" startx="0" priority="100"/>
+      <col type="io_right" startx="W-1" priority="100"/>
+      <corners type="EMPTY" priority="101"/>
+      <!--Fill with 'clb'-->
+      <fill type="clb" priority="10"/>
+      <!--Overlay with 'dsp'-->
+      <col type="dsp" startx="9" starty="1" priority="30"/>
+      <col type="dsp" startx="13" starty="1" priority="30"/>
+      <!--Overlay with 'bram'-->
+      <col type="bram" startx="5" starty="1" priority="20"/>
+      <col type="bram" startx="17" starty="1" priority="20"/>
+    </fixed_layout>
     <fixed_layout name="castor82x68_heterogeneous" width="84" height="70">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>

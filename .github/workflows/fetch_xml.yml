@@ -1,0 +1,148 @@
+name: 'Fetch and Test XML changes'
+
+on:
+  #push:
+  repository_dispatch:
+    types: [digest_latest_Arch]
+
+jobs:
+  XML_Digest_and_test:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+    steps:
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Checkout openfpga-pd-castor-rs
+      run: |
+          git clone git@github.com:RapidSilicon/openfpga-pd-castor-rs.git
+
+    - name:  checkout tag and copy Arch files
+      run: |
+          echo "payload: ${{ github.event.client_payload.new_tag }}"
+          cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
+          #cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
+
+    - name: Check changes are XML related
+      id: xml_change
+      run: |
+        xml_diff=`git diff  --name-status -- '*.xml'`
+        echo $xml_diff
+        if [ ! -z "$xml_diff" ]
+        then
+           echo "xml_changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "nothing change in XML files"
+        fi
+
+    - name: Add and Push
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      uses: GuillaumeFalourd/git-commit-push@v1.3
+      with:
+        email: nadeem.yaseen@rapidsilicon.com
+        name: nadeemyaseen-rs
+        commit_message: Added XMLs files from ${{ github.event.client_payload.new_tag }}
+        files: "*.xml"
+        target_branch: xml_${{ github.event.client_payload.new_tag }}
+
+# if above step pass then create PR.          
+    - name: Create PR
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      uses: repo-sync/pull-request@v2
+      with:
+          source_branch: xml_${{ github.event.client_payload.new_tag }}                                # branch having xmls files
+          destination_branch: "main"                                                                   # name of branch on which PR go
+          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main. "               # Title of pull request
+          pr_body: "An automated PR to checkin New XMLs tag. Click on link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
+          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
+          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
+          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Install dependencies
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      run: |
+        bash .github/workflows/install_ubuntu_dependencies_build.sh
+#        bash .github/workflows/install_litex_ubuntu.sh
+
+    - name: Use ccache
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      uses: hendrikmuhs/ccache-action@v1.2.3
+      with:
+        key: linux-${{ matrix.mode }}
+
+    - name: Configure shell
+      run: |
+        echo 'CC=gcc-11' >> $GITHUB_ENV
+        echo 'CXX=g++-11' >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
+        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+
+    - name: Show shell configuration
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which ninja && ninja --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        which $CC && $CC --version
+        which $CXX && $CXX --version
+
+    - name: Test Release
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      run: |
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+        make release test/batch
+
+#    - name: automerge XMLs PR
+#      uses: "pascalgn/automerge-action@v0.15.6"
+#      env:
+#          GITHUB_TOKEN: "${{ secrets.OPENFPGA_CASTOR_XML_MERGE }}"
+#          MERGE_LABELS: "openfpga_castor_pd_XMLs"
+#          MERGE_REMOVE_LABELS: "openfpga_castor_pd_XMLs"
+#          MERGE_METHOD: "merge"
+#          MERGE_COMMIT_MESSAGE: "Merge the XMLs version ${{ github.event.client_payload.new_tag }}"
+#          MERGE_FORKS: "false"
+#          MERGE_RETRIES: "2"
+#          MERGE_RETRY_SLEEP: "10000"
+#          MERGE_REQUIRED_APPROVALS: "0"
+#          MERGE_DELETE_BRANCH: "true"
+#          MERGE_ERROR_FAIL: "true"

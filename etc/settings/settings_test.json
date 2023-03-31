@@ -256,13 +256,27 @@
 		],
 		"default": "Verilog",
 		"arg": "netlist_lang"
-	    },
-            "_META_": {
-                "hidden": false,
-                "isSetting": true,
-                "tclArgKey": "Tasks_packing"
-            }
-        },
+      },
+      "clb_packing": {
+          "label": "Clb packing",
+          "options": [
+              "Auto",
+              "Dense"
+          ],
+          "optionsLookup": [
+              "auto",
+              "dense"
+          ],
+          "widgetType": "dropdown",
+          "default" : "Dense",
+          "arg": "clb_packing"
+       },
+       "_META_": {
+          "hidden": false,
+          "isSetting": true,
+          "tclArgKey": "Tasks_packing"
+       }
+    },
         "Placement": {
             "pin_selection_radiobtn": {
                 "label": "Pin Location Assign Method:",
