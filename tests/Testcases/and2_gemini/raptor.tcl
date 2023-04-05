@@ -7,6 +7,7 @@ add_constraint_file constraints.sdc
 
 # Device target
 target_device 1GE100
+#bitstream_config_files -bitstream ""
 # Compilation
 analyze
 synthesize delay
