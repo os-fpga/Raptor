@@ -92,6 +92,7 @@
         <internal type="repack_settings" file="gemini_compact_21x24/repack_design_constraint.xml"/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pinmap_csv" file="gemini_compact_21x24/Gemini_Pin_Table.csv"/>
+        <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis3"/>
@@ -120,7 +121,7 @@
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_82x68/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_82x68/Gemini_Pin_Table.csv"/>
-        <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
+        <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis3"/>
@@ -149,7 +150,7 @@
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_10x8/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_10x8/Gemini_Pin_Table.csv"/>
-        <internal type="pb_pin_fixup" name="pb_pin_fixup"/>
+        <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis3"/>
