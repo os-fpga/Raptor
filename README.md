@@ -48,16 +48,21 @@ Tcl commands (Available in GUI or Batch console or Batch script):
                        <type> : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -VHDL_2019, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017, -C, -CPP> 
               -work <libName> : Compiles the compilation unit into library <libName>, default is "work"
               -L <libName>    : Import the library <libName> needed to compile the compilation unit, default is "work"
+   clear_simulation_files     : Remove all simulation files
    read_netlist <file>        : Read a netlist (.blif/.eblif) instead of an RTL design (Skip Synthesis)
    add_include_path <path1>...: As in +incdir+    (Not applicable to VHDL)
    add_library_path <path1>...: As in +libdir+    (Not applicable to VHDL)
    add_library_ext <.v> <.sv> ...: As in +libext+ (Not applicable to VHDL)
    set_macro <name>=<value>...: As in -D<macro>=<value>
-   set_top_module <top>       : Sets the top module
+   set_top_module <top> ?-work <libName>? : Sets the top module
    add_constraint_file <file> : Sets SDC + location constraints
                                 Constraints: set_pin_loc, set_mode, all SDC Standard commands
-   set_pin_loc <design_io_name> <device_io_name> ?<internal_pin_name>?: Constraints pin location (Use in constraint.pin file)
+   set_pin_loc <design_io_name> <device_io_name> ?<internal_pinname>?: Constraints pin location (Use in constraint.pin file)
    set_property mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint.pin file)
+   set_clock_pin -device_clock <device_clock_name> -design_clock <design_clock_name>
+                              : like gemini has 16 clocks clk[0],clk[1]....,clk[15].
+                                and e.g. user clocks are clk_a, clk_b and want to map clk_a with clk[15]
+                               Constraints : set clocks for repacking constraints (Use in constraint.pin file)
    script_path                : Returns the path of the Tcl script passed with --script
    keep <signal list> OR all_signals : Keeps the list of signals or all signals through Synthesis unchanged (unoptimized in certain cases)
    add_litex_ip_catalog <directory> : Browses directory for LiteX IP generators, adds the IP(s) to the IP Catalog
@@ -83,8 +88,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        all                    : Infer as much as possible
        auto                   : Infer carries based on internal heuristics
        none                   : Do not infer carries
-     -no_dsp                  : Do not use DSP blocks to implement multipliers and associated logic
-     -no_bram                 : Do not use Block RAM to implement memory components
      -fast                    : Perform the fastest synthesis. Don't expect good QoR.
      -no_simplify             : Do not run special simplification algorithms in synthesis. 
      -clke_strategy <strategy>: Clock enable extraction strategy for FFs:
@@ -98,8 +101,16 @@ Tcl commands (Available in GUI or Batch console or Batch script):
                                 random , random pin assignment
                                 free , no automatic pin assignment
    pnr_options <option list>  : VPR options
-   pnr_netlist_lang <blif, edif, verilog> : Chooses vpr input netlist format
+   clb_packing   <directive>  : Performance optimization flags
+                 <directive>  : auto, dense
+                        auto  : CLB packing automatically determined to optimize performance
+                       dense  : Pack logic more densely into CLBs resulting in fewer utilized CLBs however may negatively impact timing
+   pnr_netlist_lang <blif, edif, verilog, vhdl> : Chooses post-synthesis netlist format
    set_channel_width <int>    : VPR Routing channel setting
+   set_limits <type> <int>    : Sets a user limit on object of type <type>
+                       <type> : dsp, bram
+                          dsp : Max usable DSPs
+                         bram : Max usable BRAMs
    architecture <vpr_file.xml> ?<openfpga_file.xml>?
                               : Uses the architecture file and optional openfpga arch file (For bitstream generation)
    custom_openfpga_script <file> : Uses a custom OpenFPGA templatized script
@@ -112,8 +123,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    sta ?clean? ?opensta?      : Statistical Timing Analysis with Tatum (Default) or OpenSTA
    bitstream ?force? ?clean?  : Bitstream generation
    set_top_testbench <module> : Sets the top-level testbench module/entity
-   simulation_options <simulator> <task> <options> : Sets the simulator-specific options for the specified simulator task
-                       <task> : compilation, elaboration, simulation
+   simulation_options <simulator> <phase> ?<level>? <options>
+                                Sets the simulator specific options for the specified phase
+                      <phase> : compilation, elaboration, simulation, extra_options
    simulate <level> ?<simulator>? ?<waveform_file>?: Simulates the design and testbench
                       <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
                   <simulator> : verilator, ghdl, icarus

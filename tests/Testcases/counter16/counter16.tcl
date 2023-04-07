@@ -8,7 +8,7 @@ set_top_module counter16
 target_device GEMINI_COMPACT_10x8
 
 analyze
-synth_options -no_dsp
+set_limits dsp 0
 synthesize delay
 packing
 place
