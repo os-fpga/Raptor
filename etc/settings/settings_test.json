@@ -1,139 +1,5 @@
 {
     "Tasks": {
-        "Example": {
-            "double_spinbox_ex": {
-                "label": "Double Spinbox Example",
-                "widgetType": "DoubleSpinbox",
-                "minVal": 2.4,
-                "maxVal": 11.4,
-                "stepVal": 1.1,
-                "default": 2.5
-            },
-            "int_spinbox_ex": {
-                "label": "Int Spinbox Example",
-                "widgetType": "Spinbox",
-                "minVal": 2.4,
-                "maxVal": 11.4,
-                "stepVal": 1.1,
-                "default": 2.5
-            },
-            "radiobuttons_vert_ex": {
-                "label": "Radio Button Example (vertical/default)",
-                "widgetType": "radiobuttons",
-                "options": [
-                    "b1",
-                    "b2",
-                    "b3"
-                ],
-                "default": "b2"
-            },
-            "radiobuttons_horiz_ex": {
-                "label": "Radio Button Example (horizontal)",
-                "widgetType": "radiobuttons",
-                "options": [
-                    "b1",
-                    "b2",
-                    "b3"
-                ],
-                "layout": "horizontal",
-                "default": "b2"
-            },
-            "checkbox_ex": {
-                "label": "Checkbox Example",
-                "text": "Checkbox Text",
-                "widgetType": "checkbox",
-                "default": "unchecked"
-            },
-            "dropdown_ex": {
-                "label": "Dropdown Example",
-                "widgetType": "dropdown",
-                "options": [
-                    "option1",
-                    "option2",
-                    "option3"
-                ],
-                "default": "option2"
-            },
-            "input_ex_1": {
-                "label": "Text Input Example",
-                "widgetType": "input",
-                "default": "some text"
-            },
-            "input_ex_2": {
-                "widgetType": "input",
-                "default": "input field w/o a label provided"
-            },
-            "_META_": {
-                "hidden": true,
-                "isSetting": true
-            }
-        },
-        "TclExample": {
-            "double_spinbox_ex": {
-                "label": "Double Spinbox Example",
-                "widgetType": "DoubleSpinbox",
-                "minVal": 2.4,
-                "maxVal": 11.4,
-                "stepVal": 1.1,
-                "default": 2.5,
-                "arg": "double_spin_ex"
-            },
-            "int_spinbox_ex": {
-                "label": "Int Spinbox Example",
-                "widgetType": "Spinbox",
-                "minVal": 2.4,
-                "maxVal": 11.4,
-                "stepVal": 1.1,
-                "default": 2.5,
-                "arg": "int_spin_ex"
-            },
-            "radiobuttons_horiz_ex": {
-                "label": "Radio Button Example",
-                "widgetType": "radiobuttons",
-                "options": [
-                    "B1",
-                    "B2",
-                    "B3"
-                ],
-                "optionsLookup": [
-                    "b1",
-                    "b2",
-                    "b3"
-                ],
-                "layout": "horizontal",
-                "default": "b2",
-                "arg": "radio_ex"
-            },
-            "checkbox_ex": {
-                "label": "Checkbox Example",
-                "text": "Checkbox Text",
-                "widgetType": "checkbox",
-                "default": "unchecked",
-                "arg": "check_ex"
-            },
-            "dropdown_ex": {
-                "label": "Dropdown Example",
-                "widgetType": "dropdown",
-                "options": [
-                    "option1",
-                    "option2",
-                    "option3"
-                ],
-                "default": "option2",
-                "arg": "dropdown_ex"
-            },
-            "input_ex_1": {
-                "label": "Text Input Example",
-                "widgetType": "input",
-                "default": "some text",
-                "arg": "input_ex"
-            },
-            "_META_": {
-                "hidden": true,
-                "isSetting": true,
-                "tclArgKey": "TclExample"
-            }
-        },
         "Synthesis": {
             "opt_dropdown": {
                 "label": "Optimization",
@@ -217,15 +83,23 @@
                 "default": "Verilog",
                 "arg": "netlist_lang"
             },
-            "no_dsp_checkbox": {
-                "label": "No DSP Blocks",
-                "widgetType": "checkbox",
-                "arg": "no_dsp"
+            "dsp_spinbox_ex": {
+                "label": "Dsp limit",
+                "widgetType": "spinbox",
+                "minVal": 0,
+                "maxVal": 0,
+                "stepVal": 1,
+                "default": 0,
+                "arg": "dsp_limit"
             },
-            "no_bram_checkbox": {
-                "label": "No Block Ram",
-                "widgetType": "checkbox",
-                "arg": "no_bram"
+            "bram_spinbox_ex": {
+                "label": "Block Ram limit",
+                "widgetType": "spinbox",
+                "minVal": 0,
+                "maxVal": 0,
+                "stepVal": 1,
+                "default": 0,
+                "arg": "bram_limit"
             },
             "fast_checkbox": {
                 "label": "Fast Synthesis",
