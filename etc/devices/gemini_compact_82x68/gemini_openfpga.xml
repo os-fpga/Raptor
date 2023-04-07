@@ -216,7 +216,7 @@
       <lut_intermediate_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx2" location_map="-1-1-"/>
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="6" tri_state_map="----11" circuit_model_name="dti_16f_7p5t_90c_or2x1"/>
-      <port type="output" prefix="lut4_out" size="4" lut_frac_level="4" lut_output_mask="0,1,2,3"/>
+      <!-- <port type="output" prefix="lut4_out" size="4" lut_frac_level="4" lut_output_mask="0,1,2,3"/> -->
       <port type="output" prefix="lut5_out" size="2" lut_frac_level="5" lut_output_mask="0,1"/>
       <port type="output" prefix="lut6_out" size="1" lut_output_mask="0"/>
       <port type="sram" prefix="sram" size="64"/>
@@ -475,45 +475,41 @@
     </pb_type>
     <!-- End physical pb_type binding in complex block IO -->
     <!-- physical pb_type binding in complex block CLB -->
-    <!--pb_type name="clb.fle[physical].fabric.frac_logic">
-      <interconnect name="mux0" circuit_model_name="mux_1level_fabric"/>
-      <interconnect name="mux1" circuit_model_name="mux_1level_fabric"/>
-    </pb_type-->
-    <pb_type name="clb.fle[physical].fabric">
+    <!--    <pb_type name="clb.fle[physical].fabric">
       <interconnect name="mux2" circuit_model_name="mux_1level_fabric"/>
       <interconnect name="mux3" circuit_model_name="mux_1level_fabric"/>
-    </pb_type>
+    </pb_type> -->
     <!-- physical mode will be the default mode if not specified -->
     <pb_type name="clb.fle" physical_mode_name="physical"/>
     <!-- Binding regular FLEs -->
-    <pb_type name="clb.fle[physical].fabric.frac_logic.frac_lut6" circuit_model_name="frac_lut6" mode_bits="00"/>
-    <pb_type name="clb.fle[physical].fabric.frac_logic.adder_carry" circuit_model_name="QL_XOR_MUX2"/>
-    <pb_type name="clb.fle[physical].fabric.ff_phy" circuit_model_name="GC_FF"/>
+    <pb_type name="clb.fle[physical].fabric.frac_lut6" circuit_model_name="frac_lut6" mode_bits="00"/>
+    <pb_type name="clb.fle[physical].fabric.adder_carry" circuit_model_name="QL_XOR_MUX2"/>
+    <pb_type name="clb.fle[physical].fabric.ff_bypass.ff_phy" circuit_model_name="GC_FF"/>
     <!-- Binding operating pb_types in mode 'n1_lut6' -->
-    <pb_type name="clb.fle[n1_lut6].ble6.lut6" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" mode_bits="00">
+    <pb_type name="clb.fle[n1_lut6].ble6.lut6" physical_pb_type_name="clb.fle[physical].fabric.frac_lut6" mode_bits="00">
       <port name="in" physical_mode_port="in[0:5]"/>
       <port name="out" physical_mode_port="lut6_out"/>
     </pb_type>
-    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1">
+    <pb_type name="clb.fle[n1_lut6].ble6.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_bypass.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1">
     </pb_type>
-    <pb_type name="clb.fle[fast_lut6].fast6.lut6" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" mode_bits="00">
+    <pb_type name="clb.fle[fast_lut6].fast6.lut6" physical_pb_type_name="clb.fle[physical].fabric.frac_lut6" mode_bits="00">
       <port name="in" physical_mode_port="in[0:5]"/>
       <port name="out" physical_mode_port="lut6_out"/>
     </pb_type>
     <!-- Binding operating pb_types in mode 'n2_lut5' -->
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.lut5" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" physical_pb_type_index_factor="0.5" mode_bits="01">
+    <pb_type name="clb.fle[n2_lut5].ble5.lut5" physical_pb_type_name="clb.fle[physical].fabric.frac_lut6" physical_pb_type_index_factor="0.5" mode_bits="01">
       <port name="in" physical_mode_port="in[0:4]"/>
       <port name="out" physical_mode_port="lut5_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[blut5].flut5.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy">
+    <pb_type name="clb.fle[n2_lut5].ble5.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_bypass.ff_phy">
     </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.adder.lut4" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.frac_lut6" physical_pb_type_index_factor="0.25" mode_bits="11">
-      <port name="in" physical_mode_port="in[0:3]"/>
-      <port name="out" physical_mode_port="lut4_out[0:0]" physical_mode_pin_rotate_offset="1"/>
+    <pb_type name="clb.fle[arithmetic].adder.lut5" physical_pb_type_name="clb.fle[physical].fabric.frac_lut6" physical_pb_type_index_factor="0.5" mode_bits="01">
+      <port name="in" physical_mode_port="in[0:4]"/>
+      <port name="out" physical_mode_port="lut5_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.adder.adder_carry" physical_pb_type_name="clb.fle[physical].fabric.frac_logic.adder_carry"/>
-    <pb_type name="clb.fle[n2_lut5].lut5inter.ble5[arithmetic].soft_adder.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_phy">
+    <pb_type name="clb.fle[arithmetic].adder.ff[DFFRE].DFFRE" physical_pb_type_name="clb.fle[physical].fabric.ff_bypass.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="0">
     </pb_type>
+    <pb_type name="clb.fle[arithmetic].adder.adder_carry" physical_pb_type_name="clb.fle[physical].fabric.adder_carry"/>
     <pb_type name="dsp.dsp_lr" physical_mode_name="physical"/>
     <pb_type name="dsp.dsp_lr[physical].dsp_phy" circuit_model_name="QL_DSP" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="sc_in" physical_mode_port="sc_in"/>
