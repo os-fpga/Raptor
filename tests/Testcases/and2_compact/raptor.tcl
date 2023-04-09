@@ -14,4 +14,4 @@ packing
 place
 route
 sta 
-bitstream enable_simulation
+bitstream 
