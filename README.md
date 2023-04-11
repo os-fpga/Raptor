@@ -129,6 +129,11 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    simulate <level> ?<simulator>? ?<waveform_file>?: Simulates the design and testbench
                       <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
                   <simulator> : verilator, ghdl, icarus
+   diagnostic <type>: Debug mode. Types: packer
+   chatgpt <command> "<message>" ?-c <path>?: Send message to ChatGPT
+                    <command> : Support two commands: send and reset
+                         send : Send message
+                        reset : Reset context for ChatGPT
    wave_*                     : All wave commands will launch a GTKWave process if one hasn't been launched already. Subsequent commands will be sent to the launched process.
    wave_cmd ...               : Sends given tcl commands to GTKWave process. See GTKWave docs for gtkwave:: commands.
    wave_open <filename>       : Load given file in current GTKWave process.
