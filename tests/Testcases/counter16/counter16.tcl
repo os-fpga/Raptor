@@ -14,5 +14,5 @@ packing
 place
 route
 sta
-#bitstream_config_files -key ../fabric_task/flow_inputs/output_fabric_key.xml -repack repack.xml
-bitstream enable_simulation
+#bitstream enable_simulation
+bitstream
