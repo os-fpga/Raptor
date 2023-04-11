@@ -546,15 +546,25 @@
           <fc_override port_name="cout" fc_type="frac" fc_val="0"/>
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
         </fc>
-        <!-- Highly recommand to customize pin location when direct connection is used!!! -->
-        <!-- To ensure best tileable routing architecture (minimize the number of unique SBs
-           We keep all the pins that touch routing architecture on the right and bottom sides of the tile
-           Top side pins are mainly for direct connections
-        -->
         <pinlocations pattern="custom">
-          <loc side="top"> clb.clk clb.cin clb.sc_in </loc>
-          <loc side="right"> clb.I00 clb.I10 clb.IS0[2:0] clb.O0[11:0] </loc>
-          <loc side="bottom"> clb.I20 clb.I30 clb.IS0[5:3] clb.O0[23:12] clb.sc_out clb.cout </loc>
+          <loc side="left">
+            clb.clk clb.sc_in
+        </loc>
+          <loc side="top">
+            clb.I10[11:0] clb.I00[11:0]
+            clb.IS0[2:0]
+            clb.O0[11:0]
+            clb.cin
+        </loc>
+          <loc side="right">
+            clb.I30[11:0] clb.I20[11:0]
+            clb.IS0[5:3]
+            clb.O0[23:12]
+            clb.sc_out
+        </loc>
+          <loc side="bottom">
+            clb.cout
+        </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -590,13 +600,43 @@
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="right" yoffset="0"> dsp.I00 dsp.I10 dsp.IS0[2:0] dsp.O0[11:0] </loc>
-          <loc side="right" yoffset="1"> dsp.I01 dsp.I11 dsp.IS1[2:0] dsp.O1[11:0] </loc>
-          <loc side="right" yoffset="2"> dsp.I02 dsp.I12 dsp.IS2[2:0] dsp.O2[11:0] </loc>
-          <loc side="bottom">             dsp.I20 dsp.I30 dsp.IS0[5:3] dsp.O0[23:12]
-                                          dsp.I21 dsp.I31 dsp.IS1[5:3] dsp.O1[23:12]
-                                          dsp.I22 dsp.I32 dsp.IS2[5:3] dsp.O2[23:12] dsp.sc_out </loc>
-          <loc side="top"> dsp.clk dsp.sc_in </loc>
+          <loc side="left" yoffset="0"> dsp.clk dsp.sc_in </loc>
+          <loc side="left" yoffset="1"> </loc>
+          <loc side="left" yoffset="2"> </loc>
+          <loc side="right" yoffset="0">
+            dsp.I20[11:0] dsp.I30[11:0]
+            dsp.IS0[5:3]
+            dsp.O0[23:12]
+            dsp.sc_out
+          </loc>
+          <loc side="right" yoffset="1">
+            dsp.I21[11:0] dsp.I31[11:0]
+            dsp.IS1[5:3]
+            dsp.O1[23:12]
+          </loc>
+          <loc side="right" yoffset="2">
+            dsp.I22[11:0] dsp.I32[11:0]
+            dsp.IS2[5:3]
+            dsp.O2[23:12]
+          </loc>
+          <loc side="top" yoffset="0">
+            dsp.I00[11:0] dsp.I10[11:0]
+            dsp.IS0[2:0]
+            dsp.O0[11:0]
+          </loc>
+          <loc side="top" yoffset="1">
+            dsp.I01[11:0] dsp.I11[11:0]
+            dsp.IS1[2:0]
+            dsp.O1[11:0]
+          </loc>
+          <loc side="top" yoffset="2">
+            dsp.I02[11:0] dsp.I12[11:0]
+            dsp.IS2[2:0]
+            dsp.O2[11:0]
+          </loc>
+          <loc side="bottom" yoffset="0"> </loc>
+          <loc side="bottom" yoffset="1"> </loc>
+          <loc side="bottom" yoffset="2"> </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -662,15 +702,48 @@
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="right" yoffset="0"> bram.I00 bram.I10 bram.IS0[2:0] bram.O0[11:0] </loc>
-          <loc side="right" yoffset="1"> bram.I01 bram.I11 bram.IS1[2:0] bram.O1[11:0] </loc>
-          <loc side="right" yoffset="2"> bram.I02 bram.I12 bram.IS2[2:0] bram.O2[11:0] </loc>
-          <loc side="bottom"> bram.I20 bram.I30 bram.IS0[5:3] bram.O0[23:12]
-                              bram.I21 bram.I31 bram.IS1[5:3] bram.O1[23:12] 
-                              bram.I22 bram.I32 bram.IS2[5:3] bram.O2[23:12]
-                              bram.sc_out bram.PL_INIT_o bram.PL_ENA_o bram.PL_REN_o bram.PL_CLK_o bram.PL_WEN_o bram.PL_ADDR_o bram.PL_DATA_o </loc>
-          <loc side="top">    bram.clk bram.RAM_ID_i
-                              bram.sc_in bram.PL_INIT_i bram.PL_ENA_i bram.PL_REN_i bram.PL_CLK_i bram.PL_WEN_i bram.PL_ADDR_i bram.PL_DATA_i </loc>
+          <loc side="left" yoffset="0"> bram.clk bram.sc_in </loc>
+          <loc side="left" yoffset="1"> bram.RAM_ID_i </loc>
+          <loc side="left" yoffset="2"> </loc>
+          <loc side="right" yoffset="0">
+            bram.I20[11:0] bram.I30[11:0]
+            bram.IS0[5:3]
+            bram.O0[23:12]
+            bram.sc_out
+          </loc>
+          <loc side="right" yoffset="1">
+            bram.I21[11:0] bram.I31[11:0]
+            bram.IS1[5:3]
+            bram.O1[23:12]
+          </loc>
+          <loc side="right" yoffset="2">
+            bram.I22[11:0] bram.I32[11:0]
+            bram.IS2[5:3]
+            bram.O2[23:12]
+          </loc>
+          <loc side="top" yoffset="0">
+            bram.I00[11:0] bram.I10[11:0]
+            bram.IS0[2:0]
+            bram.O0[11:0]
+          </loc>
+          <loc side="top" yoffset="1">
+            bram.I01[11:0] bram.I11[11:0]
+            bram.IS1[2:0]
+            bram.O1[11:0]
+          </loc>
+          <loc side="top" yoffset="2">
+            bram.I02[11:0] bram.I12[11:0]
+            bram.IS2[2:0]
+            bram.O2[11:0]
+            bram.PL_INIT_i bram.PL_ENA_i bram.PL_REN_i bram.PL_CLK_i bram.PL_WEN_i bram.PL_ADDR_i bram.PL_DATA_i
+            <!-- bram.PL_DATA_OUT TODO add BRAM preload read feedback connections -->
+          </loc>
+          <loc side="bottom" yoffset="0">
+            bram.PL_INIT_o bram.PL_ENA_o bram.PL_REN_o bram.PL_CLK_o bram.PL_WEN_o bram.PL_ADDR_o bram.PL_DATA_o
+            <!-- bram.PL_DATA_IN -->
+          </loc>
+          <loc side="bottom" yoffset="1"> </loc>
+          <loc side="bottom" yoffset="2"> </loc>
         </pinlocations>
       </sub_tile>
     </tile>
