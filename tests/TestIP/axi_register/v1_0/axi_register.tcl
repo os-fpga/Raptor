@@ -1,10 +1,16 @@
-create_design axis_register_prj
-target_device GEMINI
+create_design axi_register_prj
 
-configure_ip axi_ram_v1_0 -mod_name axis_register_wrapper -Pdata_width=64 -Paddr_width=8 -Pid_width=8 -Ppip_out=1 -out_file ./axis_register_wrapper.v
+target_device 1GE100
+
+#Configuring axi_register_v1_0 IP
+configure_ip axi_register_v1_0 -mod_name axi_register_wrapper -Pdata_width=64 -Paddr_width=8 -out_file ./axi_register_wrapper.v
+
+#Generate IP
 ipgenerate
-add_design_file ./rapidsilicon/ip/axi_ram/v1_0/axis_register_wrapper/src/axis_register_wrapper.v
-add_library_path rapidsilicon/ip/axi_ram/v1_0/axis_register_wrapper/src/
-set_top_module axis_register_wrapper
+
+#Add generate IP as a design and synthesize it
+add_design_file ./rapidsilicon/ip/axi_register/v1_0/axi_register_wrapper/src/axi_register_wrapper.v
+add_library_path rapidsilicon/ip/axi_register/v1_0/axi_register_wrapper/src/
+set_top_module axi_register_wrapper
 synth delay
 
