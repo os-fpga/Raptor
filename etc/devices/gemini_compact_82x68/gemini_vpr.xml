@@ -429,7 +429,7 @@
            Each output of the tile can drive 10% of routing tracks
         -->
     <tile name="io_top" area="0">
-      <sub_tile name="io_top" capacity="20">
+      <sub_tile name="io_top" capacity="72">
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
@@ -444,13 +444,15 @@
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_top.clk io_top.sc_in </loc>
-          <loc side="bottom"> io_top.a2f_o io_top.f2a_i io_top.sc_out </loc>
+          <loc side="top"> io_top[71:12].f2a_i io_top[11:0].a2f_o io_top[71:24].a2f_o </loc>
+          <loc side="right">io_top[23:12].a2f_o io_top[11:0].f2a_i </loc>
+          <loc side="left">io_top.sc_in io_top.sc_out </loc>
+          <loc side="bottom">io_top.clk </loc>
         </pinlocations>
       </sub_tile>
     </tile>
     <tile name="io_right" area="0">
-      <sub_tile name="io_right" capacity="20">
+      <sub_tile name="io_right" capacity="72">
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
@@ -465,14 +467,15 @@
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_right.clk io_right.sc_in </loc>
-          <loc side="left"> io_right.a2f_o io_right.f2a_i </loc>
-          <loc side="bottom"> io_right.sc_out </loc>
+          <loc side="top"> io_right[71:12].f2a_i io_right[11:0].a2f_o </loc>
+          <loc side="right">io_right[23:12].a2f_o io_right[11:0].f2a_i io_right[71:24].a2f_o </loc>
+          <loc side="left">io_right.sc_in io_right.sc_out </loc>
+          <loc side="bottom">io_right.clk </loc>
         </pinlocations>
       </sub_tile>
     </tile>
     <tile name="io_bottom" area="0">
-      <sub_tile name="io_bottom" capacity="20">
+      <sub_tile name="io_bottom" capacity="72">
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
@@ -487,13 +490,15 @@
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_bottom.clk io_bottom.sc_in io_bottom.a2f_o io_bottom.f2a_i </loc>
-          <loc side="bottom"> io_bottom.sc_out </loc>
+          <loc side="top"> io_bottom[71:12].f2a_i io_bottom[11:0].a2f_o </loc>
+          <loc side="right">io_bottom[23:12].a2f_o io_bottom[11:0].f2a_i </loc>
+          <loc side="left">io_bottom.sc_in io_bottom.sc_out io_bottom[71:24].a2f_o </loc>
+          <loc side="bottom">io_bottom.clk </loc>
         </pinlocations>
       </sub_tile>
     </tile>
     <tile name="io_left" area="0">
-      <sub_tile name="io_left" capacity="20">
+      <sub_tile name="io_left" capacity="72">
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
@@ -508,9 +513,10 @@
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_left.clk io_left.sc_in </loc>
-          <loc side="right"> io_left.a2f_o io_left.f2a_i </loc>
-          <loc side="bottom"> io_left.sc_out </loc>
+          <loc side="top"> io_left[71:12].f2a_i io_left[11:0].a2f_o </loc>
+          <loc side="right">io_left[23:12].a2f_o io_left[11:0].f2a_i </loc>
+          <loc side="left">io_left.sc_in io_left.sc_out io_left[71:24].a2f_o </loc>
+          <loc side="bottom">io_left.clk </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -1054,40 +1060,50 @@
       <output name="sc_out" num_pins="1"/>
       <output name="cout" num_pins="1"/>
       <clock name="clk" num_pins="8"/>
-      <!-- Describe fracturable logic element -->
-      <pb_type name="fle" num_pb="8">
-        <input name="in" num_pins="6"/>
-        <input name="cin" num_pins="1"/>
+      <pb_type name="clb_lr" num_pb="1">
+        <input name="in" num_pins="48"/>
+        <input name="reset" num_pins="2"/>
+        <input name="enable" num_pins="4"/>
         <input name="sc_in" num_pins="1"/>
-        <input name="reset" num_pins="1"/>
-        <input name="enable" num_pins="1"/>
-        <output name="out" num_pins="2"/>
-        <output name="o6" num_pins="1"/>
-        <output name="cout" num_pins="1"/>
+        <input name="cin" num_pins="1"/>
+        <output name="out" num_pins="24"/>
         <output name="sc_out" num_pins="1"/>
+        <output name="cout" num_pins="1"/>
         <clock name="clk" num_pins="1"/>
-        <!-- Describe physical mode begins -->
-        <!-- Timing annotation is not require for unpackable mode
+        <!-- Describe fracturable logic element -->
+        <pb_type name="fle" num_pb="8">
+          <input name="in" num_pins="6"/>
+          <input name="cin" num_pins="1"/>
+          <input name="sc_in" num_pins="1"/>
+          <input name="reset" num_pins="1"/>
+          <input name="enable" num_pins="2"/>
+          <output name="out" num_pins="2"/>
+          <output name="o6" num_pins="1"/>
+          <output name="cout" num_pins="1"/>
+          <output name="sc_out" num_pins="1"/>
+          <clock name="clk" num_pins="1"/>
+          <!-- Describe physical mode begins -->
+          <!-- Timing annotation is not require for unpackable mode
              It will not be used by timing analyzer
           -->
-        <mode name="physical" disable_packing="true">
-          <pb_type name="fabric" num_pb="1">
-            <input name="in" num_pins="6"/>
-            <input name="cin" num_pins="1"/>
-            <input name="sc_in" num_pins="1"/>
-            <input name="reset" num_pins="1"/>
-            <input name="enable" num_pins="1"/>
-            <output name="out" num_pins="2"/>
-            <output name="o6" num_pins="1"/>
-            <output name="cout" num_pins="1"/>
-            <output name="sc_out" num_pins="1"/>
-            <clock name="clk" num_pins="1"/>
-            <pb_type name="frac_lut6" blif_model=".subckt frac_lut6" num_pb="1">
+          <mode name="physical" disable_packing="true">
+            <pb_type name="fabric" num_pb="1">
               <input name="in" num_pins="6"/>
-              <!-- <output name="lut4_out" num_pins="4"/>        -->
-              <output name="lut5_out" num_pins="2"/>
-              <output name="lut6_out" num_pins="1"/>
-              <delay_matrix type="max" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
+              <input name="cin" num_pins="1"/>
+              <input name="sc_in" num_pins="1"/>
+              <input name="reset" num_pins="1"/>
+              <input name="enable" num_pins="2"/>
+              <output name="out" num_pins="2"/>
+              <output name="o6" num_pins="1"/>
+              <output name="cout" num_pins="1"/>
+              <output name="sc_out" num_pins="1"/>
+              <clock name="clk" num_pins="1"/>
+              <pb_type name="frac_lut6" blif_model=".subckt frac_lut6" num_pb="1">
+                <input name="in" num_pins="6"/>
+                <!-- <output name="lut4_out" num_pins="4"/>        -->
+                <output name="lut5_out" num_pins="2"/>
+                <output name="lut6_out" num_pins="1"/>
+                <delay_matrix type="max" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
                            2.37077e-10
                            3.35531e-10
                            2.32502e-10
@@ -1095,7 +1111,7 @@
                            1.75772e-10
                            1.40727e-10
                         </delay_matrix>
-              <delay_matrix type="min" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
+                <delay_matrix type="min" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
                            1.21878e-10
                            1.6836e-10
                            1.20323e-10
@@ -1103,35 +1119,35 @@
                            9.0768e-11
                            6.96315e-11
                         </delay_matrix>
-              <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
+                <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
                            1.16846e-10
                            2.30306e-10
                            1.1712e-10
                            1.9883e-10
                            6.34095e-11
                         </delay_matrix>
-              <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
+                <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
                            6.08475e-11
                            1.07055e-10
                            6.23115e-11
                            9.6807e-11
                            2.04045e-11
                         </delay_matrix>
-              <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
+                <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
                            1.16846e-10
                            2.30306e-10
                            1.1712e-10
                            1.9883e-10
                            6.34095e-11
                         </delay_matrix>
-              <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
+                <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
                            6.08475e-11
                            1.07055e-10
                            6.23115e-11
                            9.6807e-11
                            2.04045e-11
                         </delay_matrix>
-              <!--                        <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[0]">
+                <!--                        <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[0]">
                            8.0337e-11
                            1.93157e-10
                            7.98795e-11
@@ -1180,31 +1196,23 @@
                            6.9174e-11
                         </delay_matrix>     
 -->
-            </pb_type>
-            <!-- frac_lut6 -->
-            <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="1">
-              <input name="p" num_pins="1"/>
-              <input name="g" num_pins="1"/>
-              <input name="cin" num_pins="1"/>
-              <output name="sumout" num_pins="1"/>
-              <output name="cout" num_pins="1"/>
-              <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
-              <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
-              <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
-              <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
-              <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-              <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
-            </pb_type>
-            <!-- adder_carry -->
-            <pb_type name="ff_bypass" num_pb="2">
-              <input name="D" num_pins="1"/>
-              <input name="SI" num_pins="1"/>
-              <output name="SO" num_pins="1"/>
-              <input name="R" num_pins="1"/>
-              <input name="E" num_pins="1"/>
-              <output name="Q" num_pins="1"/>
-              <clock name="C" num_pins="1"/>
-              <pb_type name="ff_phy" blif_model=".subckt scff" num_pb="1">
+              </pb_type>
+              <!-- frac_lut6 -->
+              <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="1">
+                <input name="p" num_pins="1"/>
+                <input name="g" num_pins="1"/>
+                <input name="cin" num_pins="1"/>
+                <output name="sumout" num_pins="1"/>
+                <output name="cout" num_pins="1"/>
+                <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
+                <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
+                <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
+                <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
+                <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
+                <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+              </pb_type>
+              <!-- adder_carry -->
+              <pb_type name="ff_bypass" num_pb="2">
                 <input name="D" num_pins="1"/>
                 <input name="SI" num_pins="1"/>
                 <output name="SO" num_pins="1"/>
@@ -1212,73 +1220,81 @@
                 <input name="E" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="C" num_pins="1"/>
-                <T_setup value="3.15675e-11" port="ff_phy.D" clock="C"/>
-                <T_setup value="3.15675e-11" port="ff_phy.SI" clock="C"/>
-                <T_setup value="3.15675e-11" port="ff_phy.E" clock="C"/>
-                <T_setup value="3.15675e-11" port="ff_phy.R" clock="C"/>
-                <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.Q" clock="C"/>
-                <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.SO" clock="C"/>
+                <pb_type name="ff_phy" blif_model=".subckt scff" num_pb="1">
+                  <input name="D" num_pins="1"/>
+                  <input name="SI" num_pins="1"/>
+                  <output name="SO" num_pins="1"/>
+                  <input name="R" num_pins="1"/>
+                  <input name="E" num_pins="1"/>
+                  <output name="Q" num_pins="1"/>
+                  <clock name="C" num_pins="1"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.D" clock="C"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.SI" clock="C"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.E" clock="C"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.R" clock="C"/>
+                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.Q" clock="C"/>
+                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.SO" clock="C"/>
+                </pb_type>
+                <!-- ff_phy -->
+                <interconnect>
+                  <direct name="direct_C" input="ff_bypass.C" output="ff_phy.C"/>
+                  <direct name="direct_SI" input="ff_bypass.SI" output="ff_phy.SI"/>
+                  <direct name="direct_SO" input="ff_phy.SO" output="ff_bypass.SO"/>
+                  <direct name="direct_R" input="ff_bypass.R" output="ff_phy.R"/>
+                  <direct name="direct_E" input="ff_bypass.E" output="ff_phy.E"/>
+                  <direct name="direct_D" input="ff_bypass.D" output="ff_phy.D"/>
+                  <mux name="mux_bypass" input="ff_bypass.D ff_phy.Q" output="ff_bypass.Q"/>
+                </interconnect>
               </pb_type>
-              <!-- ff_phy -->
+              <!-- ff_bypass -->
               <interconnect>
-                <direct name="direct_C" input="ff_bypass.C" output="ff_phy.C"/>
-                <direct name="direct_SI" input="ff_bypass.SI" output="ff_phy.SI"/>
-                <direct name="direct_SO" input="ff_phy.SO" output="ff_bypass.SO"/>
-                <direct name="direct_R" input="ff_bypass.R" output="ff_phy.R"/>
-                <direct name="direct_E" input="ff_bypass.E" output="ff_phy.E"/>
-                <direct name="direct_D" input="ff_bypass.D" output="ff_phy.D"/>
-                <mux name="mux_bypass" input="ff_bypass.D ff_phy.Q" output="ff_bypass.Q"/>
+                <direct name="direct_clk0" input="fabric.clk" output="ff_bypass[0].C"/>
+                <direct name="direct_clk1" input="fabric.clk" output="ff_bypass[1].C"/>
+                <direct name="direct_reset0" input="fabric.reset" output="ff_bypass[0].R"/>
+                <direct name="direct_reset1" input="fabric.reset" output="ff_bypass[1].R"/>
+                <direct name="direct_enable0" input="fabric.enable[0]" output="ff_bypass[0].E"/>
+                <direct name="direct_enable1" input="fabric.enable[1]" output="ff_bypass[1].E"/>
+                <direct name="direct_in" input="fabric.in" output="frac_lut6.in"/>
+                <direct name="direct_cin" input="fabric.cin" output="adder_carry.cin"/>
+                <direct name="direct_cout" input="adder_carry.cout" output="fabric.cout"/>
+                <direct name="direct_scan0" input="fabric.sc_in" output="ff_bypass[0].SI"/>
+                <direct name="direct_scan1" input="ff_bypass[0].SO" output="ff_bypass[1].SI"/>
+                <direct name="direct_scan2" input="ff_bypass[1].SO" output="fabric.sc_out"/>
+                <direct name="direct_p" input="frac_lut6.lut5_out[0]" output="adder_carry.p"/>
+                <direct name="direct_g" input="frac_lut6.lut5_out[1]" output="adder_carry.g"/>
+                <mux name="mux_pre_ff0" input="adder_carry.sumout frac_lut6.lut5_out[0]" output="ff_bypass[0].D"/>
+                <mux name="mux_pre_ff1" input="frac_lut6.lut6_out frac_lut6.lut5_out[1]" output="ff_bypass[1].D"/>
+                <direct name="direct_byp0" input="ff_bypass[0].Q" output="fabric.out[0]"/>
+                <direct name="direct_byp1" input="ff_bypass[1].Q" output="fabric.out[1]"/>
+                <!-- <mux name="mux_byp0" input="adder_carry.sumout frac_lut6.lut5_out[0] ff_bypass[0].Q" output="fabric.out[0]"/> -->
+                <!-- <mux name="mux_byp1" input="frac_lut6.lut6_out frac_lut6.lut5_out[1] ff_bypass[1].Q" output="fabric.out[1]"/> -->
+                <direct name="direct_o6" input="frac_lut6.lut6_out" output="fabric.o6"/>
               </interconnect>
             </pb_type>
-            <!-- ff_bypass -->
+            <!-- fabric -->
             <interconnect>
-              <direct name="direct_clk0" input="fabric.clk" output="ff_bypass[0].C"/>
-              <direct name="direct_clk1" input="fabric.clk" output="ff_bypass[1].C"/>
-              <direct name="direct_reset0" input="fabric.reset" output="ff_bypass[0].R"/>
-              <direct name="direct_reset1" input="fabric.reset" output="ff_bypass[1].R"/>
-              <direct name="direct_enable0" input="fabric.enable" output="ff_bypass[0].E"/>
-              <direct name="direct_enable1" input="fabric.enable" output="ff_bypass[1].E"/>
-              <direct name="direct_in" input="fabric.in" output="frac_lut6.in"/>
-              <direct name="direct_cin" input="fabric.cin" output="adder_carry.cin"/>
-              <direct name="direct_cout" input="adder_carry.cout" output="fabric.cout"/>
-              <direct name="direct_scan0" input="fabric.sc_in" output="ff_bypass[0].SI"/>
-              <direct name="direct_scan1" input="ff_bypass[0].SO" output="ff_bypass[1].SI"/>
-              <direct name="direct_scan2" input="ff_bypass[1].SO" output="fabric.sc_out"/>
-              <direct name="direct_p" input="frac_lut6.lut5_out[0]" output="adder_carry.p"/>
-              <direct name="direct_g" input="frac_lut6.lut5_out[1]" output="adder_carry.g"/>
-              <mux name="mux_pre_ff0" input="adder_carry.sumout frac_lut6.lut5_out[0]" output="ff_bypass[0].D"/>
-              <mux name="mux_pre_ff1" input="frac_lut6.lut6_out frac_lut6.lut5_out[1]" output="ff_bypass[1].D"/>
-              <direct name="direct_byp0" input="ff_bypass[0].Q" output="fabric.out[0]"/>
-              <direct name="direct_byp1" input="ff_bypass[1].Q" output="fabric.out[1]"/>
-              <!-- <mux name="mux_byp0" input="adder_carry.sumout frac_lut6.lut5_out[0] ff_bypass[0].Q" output="fabric.out[0]"/> -->
-              <!-- <mux name="mux_byp1" input="frac_lut6.lut6_out frac_lut6.lut5_out[1] ff_bypass[1].Q" output="fabric.out[1]"/> -->
-              <direct name="direct_o6" input="frac_lut6.lut6_out" output="fabric.o6"/>
+              <direct name="direct1" input="fle.in" output="fabric.in"/>
+              <direct name="direct3" input="fle.sc_in" output="fabric.sc_in"/>
+              <direct name="direct4" input="fle.cin" output="fabric.cin"/>
+              <direct name="direct5" input="fabric.out" output="fle.out"/>
+              <direct name="direct6" input="fabric.o6" output="fle.o6"/>
+              <direct name="direct7" input="fabric.sc_out" output="fle.sc_out"/>
+              <direct name="direct8" input="fabric.cout" output="fle.cout"/>
+              <direct name="direct9" input="fle.clk" output="fabric.clk"/>
+              <direct name="direct10" input="fle.reset" output="fabric.reset"/>
+              <direct name="direct12" input="fle.enable" output="fabric.enable"/>
             </interconnect>
-          </pb_type>
-          <!-- fabric -->
-          <interconnect>
-            <direct name="direct1" input="fle.in" output="fabric.in"/>
-            <direct name="direct3" input="fle.sc_in" output="fabric.sc_in"/>
-            <direct name="direct4" input="fle.cin" output="fabric.cin"/>
-            <direct name="direct5" input="fabric.out" output="fle.out"/>
-            <direct name="direct6" input="fabric.o6" output="fle.o6"/>
-            <direct name="direct7" input="fabric.sc_out" output="fle.sc_out"/>
-            <direct name="direct8" input="fabric.cout" output="fle.cout"/>
-            <direct name="direct9" input="fle.clk" output="fabric.clk"/>
-            <direct name="direct10" input="fle.reset" output="fabric.reset"/>
-            <direct name="direct12" input="fle.enable" output="fabric.enable"/>
-          </interconnect>
-        </mode>
-        <!-- Define physical mode ends -->
-        <!-- BEGIN FAST LUT6 MODE -->
-        <mode name="fast_lut6">
-          <pb_type name="fast6" num_pb="1">
-            <input name="in" num_pins="6"/>
-            <output name="out" num_pins="1"/>
-            <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
-              <input name="in" num_pins="6" port_class="lut_in"/>
-              <output name="out" num_pins="1" port_class="lut_out"/>
-              <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
+          </mode>
+          <!-- Define physical mode ends -->
+          <!-- BEGIN FAST LUT6 MODE -->
+          <mode name="fast_lut6">
+            <pb_type name="fast6" num_pb="1">
+              <input name="in" num_pins="6"/>
+              <output name="out" num_pins="1"/>
+              <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
+                <input name="in" num_pins="6" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
                            2.37077e-10
                            3.35531e-10
                            2.32502e-10
@@ -1286,7 +1302,7 @@
                            1.75772e-10
                            1.40727e-10
                      </delay_matrix>
-              <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
+                <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
                         1.21878e-10
                         1.6836e-10
                         1.20323e-10
@@ -1294,29 +1310,29 @@
                         9.0768e-11
                         6.96315e-11
               </delay_matrix>
+              </pb_type>
+              <interconnect>
+                <direct name="direct1" input="fast6.in" output="lut6[0:0].in"/>
+                <direct name="direct2" input="lut6.out" output="fast6.out"/>
+              </interconnect>
             </pb_type>
             <interconnect>
-              <direct name="direct1" input="fast6.in" output="lut6[0:0].in"/>
-              <direct name="direct2" input="lut6.out" output="fast6.out"/>
+              <direct name="direct1" input="fle.in" output="fast6.in"/>
+              <direct name="direct2" input="fast6.out" output="fle.o6"/>
             </interconnect>
-          </pb_type>
-          <interconnect>
-            <direct name="direct1" input="fle.in" output="fast6.in"/>
-            <direct name="direct2" input="fast6.out" output="fle.o6"/>
-          </interconnect>
-        </mode>
-        <!-- END FAST LUT6 MODE -->
-        <mode name="n1_lut6">
-          <pb_type name="ble6" num_pb="1">
-            <input name="in" num_pins="6"/>
-            <input name="reset" num_pins="1"/>
-            <input name="enable" num_pins="1"/>
-            <output name="out" num_pins="1"/>
-            <clock name="clk" num_pins="1"/>
-            <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
-              <input name="in" num_pins="6" port_class="lut_in"/>
-              <output name="out" num_pins="1" port_class="lut_out"/>
-              <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
+          </mode>
+          <!-- END FAST LUT6 MODE -->
+          <mode name="n1_lut6">
+            <pb_type name="ble6" num_pb="1">
+              <input name="in" num_pins="6"/>
+              <input name="reset" num_pins="1"/>
+              <input name="enable" num_pins="1"/>
+              <output name="out" num_pins="1"/>
+              <clock name="clk" num_pins="1"/>
+              <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
+                <input name="in" num_pins="6" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
                             2.37077e-10
                             3.35531e-10
                             2.32502e-10
@@ -1324,7 +1340,7 @@
                             1.75772e-10
                             1.40727e-10
                         </delay_matrix>
-              <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
+                <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
                             1.21878e-10
                             1.6836e-10
                             1.20323e-10
@@ -1332,312 +1348,373 @@
                             9.0768e-11
                             6.96315e-11
                         </delay_matrix>
+              </pb_type>
+              <!-- lut6 -->
+              <pb_type name="ff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <input name="R" num_pins="1"/>
+                <input name="E" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="clk" num_pins="1"/>
+                <mode name="DFFRE">
+                  <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
+                    <input name="D" num_pins="1"/>
+                    <input name="R" num_pins="1"/>
+                    <input name="E" num_pins="1"/>
+                    <output name="Q" num_pins="1"/>
+                    <clock name="C" num_pins="1"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
+                  </pb_type>
+                  <interconnect>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
+                    <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
+                    <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
+                    <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
+                  </interconnect>
+                </mode>
+              </pb_type>
+              <!-- ff -->
+              <interconnect>
+                <direct name="direct1" input="ble6.in" output="lut6[0:0].in"/>
+                <direct name="direct2" input="lut6.out" output="ff.D">
+                  <pack_pattern name="lut6-out" in_port="lut6.out" out_port="ff.D"/>
+                </direct>
+                <direct name="direct3" input="ble6.clk" output="ff.clk"/>
+                <direct name="direct5" input="ble6.reset" output="ff.R"/>
+                <direct name="direct6" input="ble6.enable" output="ff.E"/>
+                <!-- <mux name="mux4" input="lut6.out ff.Q" output="ble6.out"/> -->
+                <direct name="direct7" input="ff.Q" output="ble6.out"/>
+              </interconnect>
             </pb_type>
-            <!-- lut6 -->
-            <pb_type name="ff" num_pb="1">
-              <input name="D" num_pins="1"/>
-              <input name="R" num_pins="1"/>
-              <input name="E" num_pins="1"/>
-              <output name="Q" num_pins="1"/>
-              <clock name="clk" num_pins="1"/>
-              <mode name="DFFRE">
-                <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
-                  <input name="D" num_pins="1"/>
-                  <input name="R" num_pins="1"/>
-                  <input name="E" num_pins="1"/>
-                  <output name="Q" num_pins="1"/>
-                  <clock name="C" num_pins="1"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
-                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
-                </pb_type>
-                <interconnect>
-                  <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
-                  <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
-                  <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
-                  <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
-                  <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
-                </interconnect>
-              </mode>
-            </pb_type>
-            <!-- ff -->
+            <!-- ble6 -->
             <interconnect>
-              <direct name="direct1" input="ble6.in" output="lut6[0:0].in"/>
-              <direct name="direct2" input="lut6.out" output="ff.D">
-                <pack_pattern name="lut6-out" in_port="lut6.out" out_port="ff.D"/>
-              </direct>
-              <direct name="direct3" input="ble6.clk" output="ff.clk"/>
-              <direct name="direct5" input="ble6.reset" output="ff.R"/>
-              <direct name="direct6" input="ble6.enable" output="ff.E"/>
-              <!-- <mux name="mux4" input="lut6.out ff.Q" output="ble6.out"/> -->
-              <direct name="direct7" input="ff.Q" output="ble6.out"/>
+              <direct name="direct1" input="fle.in" output="ble6.in"/>
+              <direct name="direct2" input="ble6.out" output="fle.out[1]"/>
+              <direct name="direct3" input="fle.clk" output="ble6.clk"/>
+              <direct name="direct5" input="fle.reset" output="ble6.reset"/>
+              <direct name="direct6" input="fle.enable[1]" output="ble6.enable"/>
             </interconnect>
-          </pb_type>
-          <!-- ble6 -->
-          <interconnect>
-            <direct name="direct1" input="fle.in" output="ble6.in"/>
-            <direct name="direct2" input="ble6.out" output="fle.out[1]"/>
-            <direct name="direct3" input="fle.clk" output="ble6.clk"/>
-            <direct name="direct5" input="fle.reset" output="ble6.reset"/>
-            <direct name="direct6" input="fle.enable" output="ble6.enable"/>
-          </interconnect>
-        </mode>
-        <!-- Define n1_lut6 mode ends -->
-        <!-- Define n2_lut5 mode begins -->
-        <mode name="n2_lut5" disable_packing="false">
-          <pb_type name="ble5" num_pb="2">
-            <input name="in" num_pins="5"/>
-            <input name="reset" num_pins="1"/>
-            <input name="enable" num_pins="1"/>
-            <output name="out" num_pins="1"/>
-            <clock name="clk" num_pins="1"/>
-            <!-- Regular LUT mode -->
-            <pb_type name="lut5" blif_model=".names" num_pb="1" class="lut">
-              <input name="in" num_pins="5" port_class="lut_in"/>
-              <output name="out" num_pins="1" port_class="lut_out"/>
-              <!-- LUT timing using delay matrix -->
-              <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
+          </mode>
+          <!-- Define n1_lut6 mode ends -->
+          <!-- Define n2_lut5 mode begins -->
+          <mode name="n2_lut5" disable_packing="false">
+            <pb_type name="ble5" num_pb="2">
+              <input name="in" num_pins="5"/>
+              <input name="reset" num_pins="1"/>
+              <input name="enable" num_pins="1"/>
+              <output name="out" num_pins="1"/>
+              <clock name="clk" num_pins="1"/>
+              <!-- Regular LUT mode -->
+              <pb_type name="lut5" blif_model=".names" num_pb="1" class="lut">
+                <input name="in" num_pins="5" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <!-- LUT timing using delay matrix -->
+                <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
                                  1.16846e-10
                                  2.30306e-10
                                  1.1712e-10
                                  1.9883e-10
                                  6.34095e-11
                               </delay_matrix>
-              <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
+                <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
                                  6.08475e-11
                                  1.07055e-10
                                  6.23115e-11
                                  9.6807e-11
                                  2.04045e-11
                               </delay_matrix>
+              </pb_type>
+              <!-- lut5 -->
+              <pb_type name="ff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <input name="R" num_pins="1"/>
+                <input name="E" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="clk" num_pins="1"/>
+                <mode name="DFFRE">
+                  <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
+                    <input name="D" num_pins="1"/>
+                    <input name="R" num_pins="1"/>
+                    <input name="E" num_pins="1"/>
+                    <output name="Q" num_pins="1"/>
+                    <clock name="C" num_pins="1"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
+                  </pb_type>
+                  <interconnect>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
+                    <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
+                    <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
+                    <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
+                  </interconnect>
+                </mode>
+              </pb_type>
+              <!-- ff -->
+              <interconnect>
+                <direct name="direct1a" input="ble5.in" output="lut5.in"/>
+                <direct name="direct2a" input="lut5.out" output="ff.D">
+                  <pack_pattern name="lut5-out" in_port="lut5.out" out_port="ff.D"/>
+                </direct>
+                <direct name="direct3a" input="ble5.clk" output="ff.clk"/>
+                <direct name="direct5a" input="ble5.reset" output="ff.R"/>
+                <direct name="direct6a" input="ble5.enable" output="ff.E"/>
+                <mux name="mux4a" input="lut5.out ff.Q" output="ble5.out"/>
+              </interconnect>
             </pb_type>
-            <!-- lut5 -->
-            <pb_type name="ff" num_pb="1">
-              <input name="D" num_pins="1"/>
-              <input name="R" num_pins="1"/>
-              <input name="E" num_pins="1"/>
-              <output name="Q" num_pins="1"/>
-              <clock name="clk" num_pins="1"/>
-              <mode name="DFFRE">
-                <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
-                  <input name="D" num_pins="1"/>
-                  <input name="R" num_pins="1"/>
-                  <input name="E" num_pins="1"/>
-                  <output name="Q" num_pins="1"/>
-                  <clock name="C" num_pins="1"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
-                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
-                </pb_type>
-                <interconnect>
-                  <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
-                  <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
-                  <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
-                  <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
-                  <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
-                </interconnect>
-              </mode>
-            </pb_type>
-            <!-- ff -->
+            <!-- ble5 -->
             <interconnect>
-              <direct name="direct1a" input="ble5.in" output="lut5.in"/>
-              <direct name="direct2a" input="lut5.out" output="ff.D">
-                <pack_pattern name="lut5-out" in_port="lut5.out" out_port="ff.D"/>
-              </direct>
-              <direct name="direct3a" input="ble5.clk" output="ff.clk"/>
-              <direct name="direct5a" input="ble5.reset" output="ff.R"/>
-              <direct name="direct6a" input="ble5.enable" output="ff.E"/>
-              <mux name="mux4a" input="lut5.out ff.Q" output="ble5.out"/>
+              <direct name="direct1a" input="fle.in[4:0]" output="ble5[0].in"/>
+              <direct name="direct1b" input="fle.in[4:0]" output="ble5[1].in"/>
+              <direct name="direct2" input="ble5.out" output="fle.out"/>
+              <direct name="direct3a" input="fle.clk" output="ble5[0].clk"/>
+              <direct name="direct3b" input="fle.clk" output="ble5[1].clk"/>
+              <direct name="direct5a" input="fle.reset" output="ble5[0].reset"/>
+              <direct name="direct5b" input="fle.reset" output="ble5[1].reset"/>
+              <direct name="direct6a" input="fle.enable[0]" output="ble5[0].enable"/>
+              <direct name="direct6b" input="fle.enable[1]" output="ble5[1].enable"/>
             </interconnect>
-          </pb_type>
-          <!-- ble5 -->
-          <interconnect>
-            <direct name="direct1a" input="fle.in[4:0]" output="ble5[0].in"/>
-            <direct name="direct1b" input="fle.in[4:0]" output="ble5[1].in"/>
-            <direct name="direct2" input="ble5.out" output="fle.out"/>
-            <direct name="direct3a" input="fle.clk" output="ble5[0].clk"/>
-            <direct name="direct3b" input="fle.clk" output="ble5[1].clk"/>
-            <direct name="direct5a" input="fle.reset" output="ble5[0].reset"/>
-            <direct name="direct5b" input="fle.reset" output="ble5[1].reset"/>
-            <direct name="direct6a" input="fle.enable" output="ble5[0].enable"/>
-            <direct name="direct6b" input="fle.enable" output="ble5[1].enable"/>
-          </interconnect>
-        </mode>
-        <!-- Define n2_lut5 mode ends -->
-        <!-- Define arithmetic mode begins -->
-        <mode name="arithmetic" disable_packing="false">
-          <pb_type name="adder" num_pb="1">
-            <input name="in" num_pins="5"/>
-            <input name="reset" num_pins="1"/>
-            <input name="enable" num_pins="1"/>
-            <output name="out" num_pins="1"/>
-            <input name="cin" num_pins="1"/>
-            <output name="cout" num_pins="1"/>
-            <clock name="clk" num_pins="1"/>
-            <!-- Regular LUT mode -->
-            <pb_type name="lut5" blif_model=".names" num_pb="2" class="lut">
-              <input name="in" num_pins="5" port_class="lut_in"/>
-              <output name="out" num_pins="1" port_class="lut_out"/>
-              <!-- LUT timing using delay matrix -->
-              <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
-                                 1.16846e-10
-                                 2.30306e-10
-                                 1.1712e-10
-                                 1.9883e-10
-                                 6.34095e-11
-                              </delay_matrix>
-              <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
-                                 6.08475e-11
-                                 1.07055e-10
-                                 6.23115e-11
-                                 9.6807e-11
-                                 2.04045e-11
-                              </delay_matrix>
-            </pb_type>
-            <!-- lut5 -->
-            <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="1">
-              <input name="p" num_pins="1"/>
-              <input name="g" num_pins="1"/>
+          </mode>
+          <!-- Define n2_lut5 mode ends -->
+          <!-- Define arithmetic mode begins -->
+          <mode name="arithmetic" disable_packing="false">
+            <pb_type name="adder" num_pb="1">
+              <input name="in" num_pins="5"/>
+              <input name="reset" num_pins="1"/>
+              <input name="enable" num_pins="1"/>
+              <output name="out" num_pins="1"/>
               <input name="cin" num_pins="1"/>
-              <output name="sumout" num_pins="1"/>
               <output name="cout" num_pins="1"/>
-              <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
-              <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
-              <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
-              <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
-              <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-              <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
-            </pb_type>
-            <pb_type name="ff" num_pb="1">
-              <input name="D" num_pins="1"/>
-              <input name="R" num_pins="1"/>
-              <input name="E" num_pins="1"/>
-              <output name="Q" num_pins="1"/>
               <clock name="clk" num_pins="1"/>
-              <mode name="DFFRE">
-                <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
-                  <input name="D" num_pins="1"/>
-                  <input name="R" num_pins="1"/>
-                  <input name="E" num_pins="1"/>
-                  <output name="Q" num_pins="1"/>
-                  <clock name="C" num_pins="1"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
-                  <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
-                  <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
-                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
-                </pb_type>
-                <interconnect>
-                  <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
-                  <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
-                  <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
-                  <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
-                  <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
-                </interconnect>
-              </mode>
+              <!-- Regular LUT mode -->
+              <pb_type name="lut5" blif_model=".names" num_pb="2" class="lut">
+                <input name="in" num_pins="5" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <!-- LUT timing using delay matrix -->
+                <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
+                                 1.16846e-10
+                                 2.30306e-10
+                                 1.1712e-10
+                                 1.9883e-10
+                                 6.34095e-11
+                              </delay_matrix>
+                <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
+                                 6.08475e-11
+                                 1.07055e-10
+                                 6.23115e-11
+                                 9.6807e-11
+                                 2.04045e-11
+                              </delay_matrix>
+              </pb_type>
+              <!-- lut5 -->
+              <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="1">
+                <input name="p" num_pins="1"/>
+                <input name="g" num_pins="1"/>
+                <input name="cin" num_pins="1"/>
+                <output name="sumout" num_pins="1"/>
+                <output name="cout" num_pins="1"/>
+                <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
+                <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
+                <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
+                <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
+                <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
+                <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+              </pb_type>
+              <pb_type name="ff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <input name="R" num_pins="1"/>
+                <input name="E" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="clk" num_pins="1"/>
+                <mode name="DFFRE">
+                  <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
+                    <input name="D" num_pins="1"/>
+                    <input name="R" num_pins="1"/>
+                    <input name="E" num_pins="1"/>
+                    <output name="Q" num_pins="1"/>
+                    <clock name="C" num_pins="1"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
+                  </pb_type>
+                  <interconnect>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
+                    <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
+                    <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
+                    <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
+                  </interconnect>
+                </mode>
+              </pb_type>
+              <!-- ff -->
+              <interconnect>
+                <direct name="carry_in" input="adder.cin" output="adder_carry.cin">
+                  <pack_pattern name="carrychain" in_port="adder.cin" out_port="adder_carry.cin"/>
+                </direct>
+                <direct name="carry_out" input="adder_carry.cout" output="adder.cout">
+                  <pack_pattern name="carrychain" in_port="adder_carry.cout" out_port="adder.cout"/>
+                </direct>
+                <direct name="direct1a" input="adder.in" output="lut5[0].in"/>
+                <direct name="direct1b" input="adder.in" output="lut5[1].in"/>
+                <direct name="direct2a" input="lut5[0].out" output="adder_carry.p">
+                  <pack_pattern name="adder-pack" in_port="lut5[0].out" out_port="adder_carry.p"/>
+                </direct>
+                <direct name="direct2b" input="lut5[1].out" output="adder_carry.g">
+                  <pack_pattern name="adder-pack" in_port="lut5[1].out" out_port="adder_carry.g"/>
+                </direct>
+                <direct name="direct7" input="adder_carry.sumout" output="ff.D">
+                  <pack_pattern name="adder-pack" in_port="adder_carry.sumout" out_port="ff.D"/>
+                </direct>
+                <direct name="direct3a" input="adder.clk" output="ff.clk"/>
+                <direct name="direct5a" input="adder.reset" output="ff.R"/>
+                <direct name="direct6a" input="adder.enable" output="ff.E"/>
+                <mux name="mux4a" input="ff.Q adder_carry.sumout" output="adder.out"/>
+              </interconnect>
             </pb_type>
-            <!-- ff -->
+            <!-- adder -->
             <interconnect>
-              <direct name="carry_in" input="adder.cin" output="adder_carry.cin">
-                <pack_pattern name="carrychain" in_port="adder.cin" out_port="adder_carry.cin"/>
-              </direct>
-              <direct name="carry_out" input="adder_carry.cout" output="adder.cout">
-                <pack_pattern name="carrychain" in_port="adder_carry.cout" out_port="adder.cout"/>
-              </direct>
-              <direct name="direct1a" input="adder.in" output="lut5[0].in"/>
-              <direct name="direct1b" input="adder.in" output="lut5[1].in"/>
-              <direct name="direct2a" input="lut5[0].out" output="adder_carry.p">
-                <pack_pattern name="adder-pack" in_port="lut5[0].out" out_port="adder_carry.p"/>
-              </direct>
-              <direct name="direct2b" input="lut5[1].out" output="adder_carry.g">
-                <pack_pattern name="adder-pack" in_port="lut5[1].out" out_port="adder_carry.g"/>
-              </direct>
-              <direct name="direct7" input="adder_carry.sumout" output="ff.D">
-                <pack_pattern name="adder-pack" in_port="adder_carry.sumout" out_port="ff.D"/>
-              </direct>
-              <direct name="direct3a" input="adder.clk" output="ff.clk"/>
-              <direct name="direct5a" input="adder.reset" output="ff.R"/>
-              <direct name="direct6a" input="adder.enable" output="ff.E"/>
-              <mux name="mux4a" input="ff.Q adder_carry.sumout" output="adder.out"/>
+              <direct name="direct1a" input="fle.in[4:0]" output="adder.in"/>
+              <direct name="direct2" input="adder.out" output="fle.out[0]"/>
+              <direct name="direct3a" input="fle.clk" output="adder.clk"/>
+              <direct name="direct5a" input="fle.reset" output="adder.reset"/>
+              <direct name="direct6a" input="fle.enable[0]" output="adder.enable"/>
+              <direct name="direct7" input="fle.cin" output="adder.cin"/>
+              <direct name="direct8" input="adder.cout" output="fle.cout"/>
             </interconnect>
-          </pb_type>
-          <!-- adder -->
-          <interconnect>
-            <direct name="direct1a" input="fle.in[4:0]" output="adder.in"/>
-            <direct name="direct2" input="adder.out" output="fle.out[0]"/>
-            <direct name="direct3a" input="fle.clk" output="adder.clk"/>
-            <direct name="direct5a" input="fle.reset" output="adder.reset"/>
-            <direct name="direct6a" input="fle.enable" output="adder.enable"/>
-            <direct name="direct7" input="fle.cin" output="adder.cin"/>
-            <direct name="direct8" input="adder.cout" output="fle.cout"/>
-          </interconnect>
-        </mode>
-        <!-- Define arithmetic mode ends -->
+          </mode>
+          <!-- Define arithmetic mode ends -->
+        </pb_type>
+        <!-- fle -->
+        <interconnect>
+          <!-- clb_lr to fle -->
+          <!-- direct to local routing -->
+          <direct name="direct_clk0" input="clb_lr.clk" output="fle[0].clk"/>
+          <direct name="direct_clk1" input="clb_lr.clk" output="fle[1].clk"/>
+          <direct name="direct_clk2" input="clb_lr.clk" output="fle[2].clk"/>
+          <direct name="direct_clk3" input="clb_lr.clk" output="fle[3].clk"/>
+          <direct name="direct_clk4" input="clb_lr.clk" output="fle[4].clk"/>
+          <direct name="direct_clk5" input="clb_lr.clk" output="fle[5].clk"/>
+          <direct name="direct_clk6" input="clb_lr.clk" output="fle[6].clk"/>
+          <direct name="direct_clk7" input="clb_lr.clk" output="fle[7].clk"/>
+          <direct name="direct_in_0" input="clb_lr.in[7:0]" output="fle[7:0].in[0]"/>
+          <direct name="direct_in_1" input="clb_lr.in[15:8]" output="fle[7:0].in[1]"/>
+          <direct name="direct_in_2" input="clb_lr.in[23:16]" output="fle[7:0].in[2]"/>
+          <direct name="direct_in_3" input="clb_lr.in[31:24]" output="fle[7:0].in[3]"/>
+          <direct name="direct_in_4" input="clb_lr.in[39:32]" output="fle[7:0].in[4]"/>
+          <direct name="direct_in_5" input="clb_lr.in[47:40]" output="fle[7:0].in[5]"/>
+          <direct name="direct_reset_0" input="clb_lr.reset[0]" output="fle[0].reset"/>
+          <direct name="direct_enable_0" input="clb_lr.enable[1:0]" output="fle[0].enable[1:0]"/>
+          <direct name="direct_reset_1" input="clb_lr.reset[0]" output="fle[1].reset"/>
+          <direct name="direct_enable_1" input="clb_lr.enable[1:0]" output="fle[1].enable[1:0]"/>
+          <direct name="direct_reset_2" input="clb_lr.reset[0]" output="fle[2].reset"/>
+          <direct name="direct_enable_2" input="clb_lr.enable[1:0]" output="fle[2].enable[1:0]"/>
+          <direct name="direct_reset_3" input="clb_lr.reset[0]" output="fle[3].reset"/>
+          <direct name="direct_enable_3" input="clb_lr.enable[1:0]" output="fle[3].enable[1:0]"/>
+          <direct name="direct_reset_4" input="clb_lr.reset[1]" output="fle[4].reset"/>
+          <direct name="direct_enable_4" input="clb_lr.enable[3:2]" output="fle[4].enable[1:0]"/>
+          <direct name="direct_reset_5" input="clb_lr.reset[1]" output="fle[5].reset"/>
+          <direct name="direct_enable_5" input="clb_lr.enable[3:2]" output="fle[5].enable[1:0]"/>
+          <direct name="direct_reset_6" input="clb_lr.reset[1]" output="fle[6].reset"/>
+          <direct name="direct_enable_6" input="clb_lr.enable[3:2]" output="fle[6].enable[1:0]"/>
+          <direct name="direct_reset_7" input="clb_lr.reset[1]" output="fle[7].reset"/>
+          <direct name="direct_enable_7" input="clb_lr.enable[3:2]" output="fle[7].enable[1:0]"/>
+          <direct name="direct_out0_0" input="fle[0].out[0]" output="clb_lr.out[0]"/>
+          <direct name="direct_out1_0" input="fle[0].out[1]" output="clb_lr.out[1]"/>
+          <direct name="direct_o6_0" input="fle[0].o6" output="clb_lr.out[2]"/>
+          <direct name="direct_out0_1" input="fle[1].out[0]" output="clb_lr.out[3]"/>
+          <direct name="direct_out1_1" input="fle[1].out[1]" output="clb_lr.out[4]"/>
+          <direct name="direct_o6_1" input="fle[1].o6" output="clb_lr.out[5]"/>
+          <direct name="direct_out0_2" input="fle[2].out[0]" output="clb_lr.out[6]"/>
+          <direct name="direct_out1_2" input="fle[2].out[1]" output="clb_lr.out[7]"/>
+          <direct name="direct_o6_2" input="fle[2].o6" output="clb_lr.out[8]"/>
+          <direct name="direct_out0_3" input="fle[3].out[0]" output="clb_lr.out[9]"/>
+          <direct name="direct_out1_3" input="fle[3].out[1]" output="clb_lr.out[10]"/>
+          <direct name="direct_o6_3" input="fle[3].o6" output="clb_lr.out[11]"/>
+          <direct name="direct_out0_4" input="fle[4].out[0]" output="clb_lr.out[12]"/>
+          <direct name="direct_out1_4" input="fle[4].out[1]" output="clb_lr.out[13]"/>
+          <direct name="direct_o6_4" input="fle[4].o6" output="clb_lr.out[14]"/>
+          <direct name="direct_out0_5" input="fle[5].out[0]" output="clb_lr.out[15]"/>
+          <direct name="direct_out1_5" input="fle[5].out[1]" output="clb_lr.out[16]"/>
+          <direct name="direct_o6_5" input="fle[5].o6" output="clb_lr.out[17]"/>
+          <direct name="direct_out0_6" input="fle[6].out[0]" output="clb_lr.out[18]"/>
+          <direct name="direct_out1_6" input="fle[6].out[1]" output="clb_lr.out[19]"/>
+          <direct name="direct_o6_6" input="fle[6].o6" output="clb_lr.out[20]"/>
+          <direct name="direct_out0_7" input="fle[7].out[0]" output="clb_lr.out[21]"/>
+          <direct name="direct_out1_7" input="fle[7].out[1]" output="clb_lr.out[22]"/>
+          <direct name="direct_o6_7" input="fle[7].o6" output="clb_lr.out[23]"/>
+          <!-- Scan chain links -->
+          <direct name="scff_in" input="clb_lr.sc_in" output="fle[0].sc_in"/>
+          <direct name="scff_out" input="fle[7].sc_out" output="clb_lr.sc_out"/>
+          <direct name="scff_link" input="fle[6:0].sc_out" output="fle[7:1].sc_in"/>
+          <!-- Carry chain links -->
+          <complete name="carry_in" input="clb_lr.cin" output="fle[0].cin">
+            <pack_pattern name="carrychain" in_port="clb_lr.cin" out_port="fle[0].cin"/>
+          </complete>
+          <direct name="carry_out" input="fle[7].cout" output="clb_lr.cout">
+            <pack_pattern name="carrychain" in_port="fle[7].cout" out_port="clb_lr.cout"/>
+          </direct>
+          <direct name="carry_link" input="fle[0:6].cout" output="fle[1:7].cin">
+            <pack_pattern name="carrychain" in_port="fle[0:6].cout" out_port="fle[1:7].cin"/>
+          </direct>
+        </interconnect>
+        <!-- clb_lr to fle -->
       </pb_type>
-      <!-- fle -->
+      <!-- clb_lr -->
       <interconnect>
-        <complete name="crossbar0" input="clb.I00 clb.I30" output="fle[7:0].in[0]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[0]"/>
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[0]"/>
+        <!-- clb to clb_lr -->
+        <complete name="crossbar0" input="clb.I00 clb.I30" output="clb_lr.in[7:0]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[7:0]"/>
         </complete>
-        <complete name="crossbar1" input="clb.I10 clb.I20" output="fle[7:0].in[1]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[1]"/>
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[1]"/>
+        <complete name="crossbar1" input="clb.I10 clb.I20" output="clb_lr.in[15:8]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[15:8]"/>
         </complete>
-        <complete name="crossbar2" input="clb.I00 clb.I20" output="fle[7:0].in[2]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I20" out_port="fle[7:0].in[2]"/>
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[2]"/>
+        <complete name="crossbar2" input="clb.I00 clb.I20" output="clb_lr.in[23:16]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I20" out_port="clb_lr.in[23:16]"/>
         </complete>
-        <complete name="crossbar3" input="clb.I10 clb.I30" output="fle[7:0].in[3]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I30" out_port="fle[7:0].in[3]"/>
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[3]"/>
+        <complete name="crossbar3" input="clb.I10 clb.I30" output="clb_lr.in[31:24]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I30" out_port="clb_lr.in[31:24]"/>
         </complete>
-        <complete name="crossbar4" input="clb.I00 clb.I30" output="fle[7:0].in[4]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="fle[7:0].in[4]"/>
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[4]"/>
+        <complete name="crossbar4" input="clb.I00 clb.I30" output="clb_lr.in[39:32]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[39:32]"/>
         </complete>
-        <complete name="crossbar5" input="clb.I10 clb.I20" output="fle[7:0].in[5]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="fle[7:0].in[5]"/>
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="fle.out" out_port="fle[7:0].in[5]"/>
+        <complete name="crossbar5" input="clb.I10 clb.I20" output="clb_lr.in[47:40]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[47:40]"/>
         </complete>
-        <complete name="clks" input="clb.clk" output="fle[7:0].clk">     
-               
+        <complete name="clks" input="clb.clk" output="clb_lr.clk">     
             </complete>
-        <complete name="crossbar6" input="clb.IS0" output="fle.enable">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="fle.enable"/>
+        <complete name="crossbar6" input="clb.IS0" output="clb_lr.enable">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="clb_lr.enable"/>
         </complete>
-        <complete name="crossbar7" input="clb.IS0" output="fle.reset">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="fle.reset"/>
+        <complete name="crossbar7" input="clb.IS0" output="clb_lr.reset">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="clb_lr.reset"/>
         </complete>
-        <direct name="clbouts1" input="fle[7:0].out[0]" output="clb.O0[7:0]"/>
-        <direct name="clbouts2" input="fle[7:0].out[1]" output="clb.O0[15:8]"/>
-        <direct name="clbouto6" input="fle[7:0].o6" output="clb.O0[23:16]"/>
-        <!-- Carry chain links -->
-        <complete name="carry_in" input="clb.cin" output="fle[0].cin">
-          <pack_pattern name="carrychain" in_port="clb.cin" out_port="fle[0].cin"/>
-        </complete>
-        <direct name="carry_out" input="fle[7].cout" output="clb.cout">
-          <pack_pattern name="carrychain" in_port="fle[7].cout" out_port="clb.cout"/>
-        </direct>
-        <direct name="carry_link" input="fle[0:6].cout" output="fle[1:7].cin">
-          <pack_pattern name="carrychain" in_port="fle[0:6].cout" out_port="fle[1:7].cin"/>
-        </direct>
-        <!-- Scan chain links -->
-        <direct name="scff_in" input="clb.sc_in" output="fle[0:0].sc_in"/>
-        <direct name="scff_out" input="fle[7:7].sc_out" output="clb.sc_out"/>
-        <direct name="scff_link" input="fle[6:0].sc_out" output="fle[7:1].sc_in"/>
+        <direct name="clbouts1" input="clb_lr.out[7:0]" output="clb.O0[7:0]"/>
+        <direct name="clbouts2" input="clb_lr.out[15:8]" output="clb.O0[15:8]"/>
+        <direct name="clbouts3" input="clb_lr.out[23:16]" output="clb.O0[23:16]"/>
+        <direct name="direct_cin" input="clb.cin" output="clb_lr.cin"/>
+        <direct name="direct_cout" input="clb_lr.cout" output="clb.cout"/>
+        <direct name="direct_sc_in" input="clb.sc_in" output="clb_lr.sc_in"/>
+        <direct name="direct_sc_out" input="clb_lr.sc_out" output="clb.sc_out"/>
       </interconnect>
+      <!-- clb to clb_lr -->
     </pb_type>
+    <!-- clb -->
     <!-- Define RS_DSP begin -->
     <pb_type name="dsp">
       <input name="I00" num_pins="12" equivalent="full"/>
