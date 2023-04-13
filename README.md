@@ -133,7 +133,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    chatgpt <command> "<message>" ?-c <path>?: Send message to ChatGPT
                     <command> : Support two commands: send and reset
                          send : Send message
-                        reset : Reset context for ChatGPT
+                        reset : Reset history
+                    -c <path> : Specify ini file path with API key. The key needs to be set only once for a session
+                                [OpenAI]
+                                API_KEY: <api key>
    wave_*                     : All wave commands will launch a GTKWave process if one hasn't been launched already. Subsequent commands will be sent to the launched process.
    wave_cmd ...               : Sends given tcl commands to GTKWave process. See GTKWave docs for gtkwave:: commands.
    wave_open <filename>       : Load given file in current GTKWave process.
