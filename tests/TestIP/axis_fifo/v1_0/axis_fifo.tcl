@@ -1,10 +1,16 @@
 create_design axis_fifo_prj
-target_device GEMINI
 
-configure_ip axi_ram_v1_0 -mod_name axis_fifo_wrapper -Pdata_width=64 -Paddr_width=8 -Pid_width=8 -Ppip_out=1 -out_file ./axis_fifo_wrapper.v
+target_device 1GE100
+
+#Configuring axis_fifo_v1_0 IP 
+configure_ip axis_fifo_v1_0 -mod_name axis_fifo_wrapper -Pdepth=4096 -Pdata_width=16 -out_file ./axis_fifo_wrapper.v
+
+#Generate IP
 ipgenerate
-add_design_file ./rapidsilicon/ip/axi_ram/v1_0/axis_fifo_wrapper/src/axis_fifo_wrapper.v
-add_library_path rapidsilicon/ip/axi_ram/v1_0/axis_fifo_wrapper/src/
+
+#Add generate IP as a design and synthesize it
+add_design_file ./rapidsilicon/ip/axis_fifo/v1_0/axis_fifo_wrapper/src/axis_fifo_wrapper.v
+add_library_path rapidsilicon/ip/axis_fifo/v1_0/axis_fifo_wrapper/src/
 set_top_module axis_fifo_wrapper
 synth delay
 
