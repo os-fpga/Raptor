@@ -105,6 +105,19 @@ endif
 else
 install: release
 	cmake --install build
+ifeq ($(1GE100_ONLY_BUILD),1)
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_legacy
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_10x8
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_4x4
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_82x68
+	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
+	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini
+	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_21x24
+	mv $(PREFIX)/share/raptor/etc/device-1GE100-only.xml $(PREFIX)/share/raptor/etc/device.xml
+endif
 endif
 
 test_install_mac:
@@ -173,7 +186,11 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axis_fifo/v1_0/axis_fifo.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axi_cdma/v1_0/axi_cdma.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axil_gpio/v1_0/axil_gpio.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/reset_release/v1_0/reset_release.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
 
 test/batch_gen2: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
