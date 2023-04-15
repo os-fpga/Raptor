@@ -1075,7 +1075,7 @@
           <input name="in" num_pins="6"/>
           <input name="cin" num_pins="1"/>
           <input name="sc_in" num_pins="1"/>
-          <input name="reset" num_pins="1"/>
+          <input name="reset" num_pins="2"/>
           <input name="enable" num_pins="2"/>
           <output name="out" num_pins="2"/>
           <output name="o6" num_pins="1"/>
@@ -1091,7 +1091,7 @@
               <input name="in" num_pins="6"/>
               <input name="cin" num_pins="1"/>
               <input name="sc_in" num_pins="1"/>
-              <input name="reset" num_pins="1"/>
+              <input name="reset" num_pins="2"/>
               <input name="enable" num_pins="2"/>
               <output name="out" num_pins="2"/>
               <output name="o6" num_pins="1"/>
@@ -1250,8 +1250,8 @@
               <interconnect>
                 <direct name="direct_clk0" input="fabric.clk" output="ff_bypass[0].C"/>
                 <direct name="direct_clk1" input="fabric.clk" output="ff_bypass[1].C"/>
-                <direct name="direct_reset0" input="fabric.reset" output="ff_bypass[0].R"/>
-                <direct name="direct_reset1" input="fabric.reset" output="ff_bypass[1].R"/>
+                <direct name="direct_reset0" input="fabric.reset[0]" output="ff_bypass[0].R"/>
+                <direct name="direct_reset1" input="fabric.reset[1]" output="ff_bypass[1].R"/>
                 <direct name="direct_enable0" input="fabric.enable[0]" output="ff_bypass[0].E"/>
                 <direct name="direct_enable1" input="fabric.enable[1]" output="ff_bypass[1].E"/>
                 <direct name="direct_in" input="fabric.in" output="frac_lut6.in"/>
@@ -1398,7 +1398,7 @@
               <direct name="direct1" input="fle.in" output="ble6.in"/>
               <direct name="direct2" input="ble6.out" output="fle.out[1]"/>
               <direct name="direct3" input="fle.clk" output="ble6.clk"/>
-              <direct name="direct5" input="fle.reset" output="ble6.reset"/>
+              <direct name="direct5" input="fle.reset[1]" output="ble6.reset"/>
               <direct name="direct6" input="fle.enable[1]" output="ble6.enable"/>
             </interconnect>
           </mode>
@@ -1481,8 +1481,8 @@
               <direct name="direct2" input="ble5.out" output="fle.out"/>
               <direct name="direct3a" input="fle.clk" output="ble5[0].clk"/>
               <direct name="direct3b" input="fle.clk" output="ble5[1].clk"/>
-              <direct name="direct5a" input="fle.reset" output="ble5[0].reset"/>
-              <direct name="direct5b" input="fle.reset" output="ble5[1].reset"/>
+              <direct name="direct5a" input="fle.reset[0]" output="ble5[0].reset"/>
+              <direct name="direct5b" input="fle.reset[1]" output="ble5[1].reset"/>
               <direct name="direct6a" input="fle.enable[0]" output="ble5[0].enable"/>
               <direct name="direct6b" input="fle.enable[1]" output="ble5[1].enable"/>
             </interconnect>
@@ -1592,7 +1592,7 @@
               <direct name="direct1a" input="fle.in[4:0]" output="adder.in"/>
               <direct name="direct2" input="adder.out" output="fle.out[0]"/>
               <direct name="direct3a" input="fle.clk" output="adder.clk"/>
-              <direct name="direct5a" input="fle.reset" output="adder.reset"/>
+              <direct name="direct5a" input="fle.reset[0]" output="adder.reset"/>
               <direct name="direct6a" input="fle.enable[0]" output="adder.enable"/>
               <direct name="direct7" input="fle.cin" output="adder.cin"/>
               <direct name="direct8" input="adder.cout" output="fle.cout"/>
@@ -1618,22 +1618,22 @@
           <direct name="direct_in_3" input="clb_lr.in[31:24]" output="fle[7:0].in[3]"/>
           <direct name="direct_in_4" input="clb_lr.in[39:32]" output="fle[7:0].in[4]"/>
           <direct name="direct_in_5" input="clb_lr.in[47:40]" output="fle[7:0].in[5]"/>
-          <direct name="direct_reset_0" input="clb_lr.reset[0]" output="fle[0].reset"/>
-          <direct name="direct_enable_0" input="clb_lr.enable[1:0]" output="fle[0].enable[1:0]"/>
-          <direct name="direct_reset_1" input="clb_lr.reset[0]" output="fle[1].reset"/>
-          <direct name="direct_enable_1" input="clb_lr.enable[1:0]" output="fle[1].enable[1:0]"/>
-          <direct name="direct_reset_2" input="clb_lr.reset[0]" output="fle[2].reset"/>
-          <direct name="direct_enable_2" input="clb_lr.enable[1:0]" output="fle[2].enable[1:0]"/>
-          <direct name="direct_reset_3" input="clb_lr.reset[0]" output="fle[3].reset"/>
-          <direct name="direct_enable_3" input="clb_lr.enable[1:0]" output="fle[3].enable[1:0]"/>
-          <direct name="direct_reset_4" input="clb_lr.reset[1]" output="fle[4].reset"/>
-          <direct name="direct_enable_4" input="clb_lr.enable[3:2]" output="fle[4].enable[1:0]"/>
-          <direct name="direct_reset_5" input="clb_lr.reset[1]" output="fle[5].reset"/>
-          <direct name="direct_enable_5" input="clb_lr.enable[3:2]" output="fle[5].enable[1:0]"/>
-          <direct name="direct_reset_6" input="clb_lr.reset[1]" output="fle[6].reset"/>
-          <direct name="direct_enable_6" input="clb_lr.enable[3:2]" output="fle[6].enable[1:0]"/>
-          <direct name="direct_reset_7" input="clb_lr.reset[1]" output="fle[7].reset"/>
-          <direct name="direct_enable_7" input="clb_lr.enable[3:2]" output="fle[7].enable[1:0]"/>
+          <direct name="direct_reset_0" input="clb_lr.reset" output="fle[0].reset"/>
+          <direct name="direct_enable_0" input="clb_lr.enable[1:0]" output="fle[0].enable"/>
+          <direct name="direct_reset_1" input="clb_lr.reset" output="fle[1].reset"/>
+          <direct name="direct_enable_1" input="clb_lr.enable[1:0]" output="fle[1].enable"/>
+          <direct name="direct_reset_2" input="clb_lr.reset" output="fle[2].reset"/>
+          <direct name="direct_enable_2" input="clb_lr.enable[1:0]" output="fle[2].enable"/>
+          <direct name="direct_reset_3" input="clb_lr.reset" output="fle[3].reset"/>
+          <direct name="direct_enable_3" input="clb_lr.enable[1:0]" output="fle[3].enable"/>
+          <direct name="direct_reset_4" input="clb_lr.reset" output="fle[4].reset"/>
+          <direct name="direct_enable_4" input="clb_lr.enable[3:2]" output="fle[4].enable"/>
+          <direct name="direct_reset_5" input="clb_lr.reset" output="fle[5].reset"/>
+          <direct name="direct_enable_5" input="clb_lr.enable[3:2]" output="fle[5].enable"/>
+          <direct name="direct_reset_6" input="clb_lr.reset" output="fle[6].reset"/>
+          <direct name="direct_enable_6" input="clb_lr.enable[3:2]" output="fle[6].enable"/>
+          <direct name="direct_reset_7" input="clb_lr.reset" output="fle[7].reset"/>
+          <direct name="direct_enable_7" input="clb_lr.enable[3:2]" output="fle[7].enable"/>
           <direct name="direct_out0_0" input="fle[0].out[0]" output="clb_lr.out[0]"/>
           <direct name="direct_out1_0" input="fle[0].out[1]" output="clb_lr.out[1]"/>
           <direct name="direct_o6_0" input="fle[0].o6" output="clb_lr.out[2]"/>
