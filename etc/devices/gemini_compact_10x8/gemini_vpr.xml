@@ -102,19 +102,16 @@
         <port name="feedback" clock="clk"/>
         <port name="unsigned_a" clock="clk"/>
         <port name="unsigned_b" clock="clk"/>
-        <!-- <port name="f_mode"/>     -->
-        <!-- <port name="output_select"/>     -->
         <port name="saturate_enable" clock="clk"/>
         <port name="shift_right" clock="clk"/>
         <port name="round" clock="clk"/>
         <port name="subtract" clock="clk"/>
-        <!-- <port name="register_inputs"/>     -->
         <port name="clk" is_clock="1"/>
         <port name="sc_in"/>
       </input_ports>
       <output_ports>
-        <port name="z_o"/>
-        <port name="dly_b_o"/>
+        <port name="z_o" clock="clk"/>
+        <port name="dly_b_o" clock="clk"/>
         <port name="sc_out"/>
       </output_ports>
     </model>
@@ -190,6 +187,7 @@
       </input_ports>
       <output_ports>
         <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
       </output_ports>
     </model>
     <model name="RS_DSP_MULTADD_REGIN">
@@ -210,6 +208,7 @@
       </input_ports>
       <output_ports>
         <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
       </output_ports>
     </model>
     <model name="RS_DSP_MULTADD_REGOUT">
@@ -230,6 +229,7 @@
       </input_ports>
       <output_ports>
         <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
       </output_ports>
     </model>
     <model name="RS_DSP_MULTADD_REGIN_REGOUT">
@@ -250,6 +250,7 @@
       </input_ports>
       <output_ports>
         <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
       </output_ports>
     </model>
     <model name="RS_DSP_MULTACC">
@@ -442,10 +443,12 @@
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_top[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_top[71:24].a2f_o" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_top[71:12].f2a_i io_top[11:0].a2f_o io_top[71:24].a2f_o </loc>
-          <loc side="right">io_top[23:12].a2f_o io_top[11:0].f2a_i </loc>
+          <loc side="top"> io_top[47:0].f2a_i io_top[11:0].a2f_o io_top[71:24].a2f_o </loc>
+          <loc side="right">io_top[23:12].a2f_o io_top[71:48].f2a_i </loc>
           <loc side="left">io_top.sc_in io_top.sc_out </loc>
           <loc side="bottom">io_top.clk </loc>
         </pinlocations>
@@ -465,10 +468,12 @@
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_right[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_right[71:24].a2f_o" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_right[71:12].f2a_i io_right[11:0].a2f_o </loc>
-          <loc side="right">io_right[23:12].a2f_o io_right[11:0].f2a_i io_right[71:24].a2f_o </loc>
+          <loc side="top"> io_right[47:0].f2a_i io_right[11:0].a2f_o io_right[71:24].a2f_o </loc>
+          <loc side="right">io_right[23:12].a2f_o io_right[71:48].f2a_i </loc>
           <loc side="left">io_right.sc_in io_right.sc_out </loc>
           <loc side="bottom">io_right.clk </loc>
         </pinlocations>
@@ -488,11 +493,13 @@
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_bottom[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_bottom[71:24].a2f_o" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_bottom[71:12].f2a_i io_bottom[11:0].a2f_o </loc>
-          <loc side="right">io_bottom[23:12].a2f_o io_bottom[11:0].f2a_i </loc>
-          <loc side="left">io_bottom.sc_in io_bottom.sc_out io_bottom[71:24].a2f_o </loc>
+          <loc side="top"> io_bottom[47:0].f2a_i io_bottom[11:0].a2f_o io_bottom[71:24].a2f_o </loc>
+          <loc side="right">io_bottom[23:12].a2f_o io_bottom[71:48].f2a_i </loc>
+          <loc side="left">io_bottom.sc_in io_bottom.sc_out </loc>
           <loc side="bottom">io_bottom.clk </loc>
         </pinlocations>
       </sub_tile>
@@ -511,11 +518,13 @@
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_left[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_left[71:24].a2f_o" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_left[71:12].f2a_i io_left[11:0].a2f_o </loc>
-          <loc side="right">io_left[23:12].a2f_o io_left[11:0].f2a_i </loc>
-          <loc side="left">io_left.sc_in io_left.sc_out io_left[71:24].a2f_o </loc>
+          <loc side="top"> io_left[47:0].f2a_i io_left[11:0].a2f_o io_left[71:24].a2f_o </loc>
+          <loc side="right">io_left[23:12].a2f_o io_left[71:48].f2a_i </loc>
+          <loc side="left">io_left.sc_in io_left.sc_out </loc>
           <loc side="bottom">io_left.clk </loc>
         </pinlocations>
       </sub_tile>
@@ -539,6 +548,8 @@
         <output name="O0" num_pins="24" equivalent="none"/>
         <output name="sc_out" num_pins="1"/>
         <output name="cout" num_pins="1"/>
+        <input name="sr_in" num_pins="1"/>
+        <output name="sr_out" num_pins="1"/>
         <clock name="clk" num_pins="8"/>
         <!-- Each input of the tile can be driven by 15% of routing tracks
            Each output of the tile can drive 15% of routing tracks
@@ -548,13 +559,15 @@
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_out" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cin" fc_type="frac" fc_val="0"/>
           <fc_override port_name="cout" fc_type="frac" fc_val="0"/>
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
           <loc side="left">
-            clb.clk clb.sc_in
+            clb.clk clb.sc_in clb.sr_out
         </loc>
           <loc side="top">
             clb.I10[11:0] clb.I00[11:0]
@@ -566,7 +579,7 @@
             clb.I30[11:0] clb.I20[11:0]
             clb.IS0[5:3]
             clb.O0[23:12]
-            clb.sc_out
+            clb.sc_out clb.sr_in
         </loc>
           <loc side="bottom">
             clb.cout
@@ -600,20 +613,24 @@
         <clock name="clk" num_pins="8"/>
         <input name="sc_in" num_pins="3"/>
         <output name="sc_out" num_pins="3"/>
+        <input name="sr_in" num_pins="3"/>
+        <output name="sr_out" num_pins="3"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_out" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="left" yoffset="0"> dsp.clk dsp.sc_in </loc>
+          <loc side="left" yoffset="0"> dsp.clk dsp.sc_in dsp.sr_out </loc>
           <loc side="left" yoffset="1"> </loc>
           <loc side="left" yoffset="2"> </loc>
           <loc side="right" yoffset="0">
             dsp.I20[11:0] dsp.I30[11:0]
             dsp.IS0[5:3]
             dsp.O0[23:12]
-            dsp.sc_out
+            dsp.sc_out dsp.sr_in
           </loc>
           <loc side="right" yoffset="1">
             dsp.I21[11:0] dsp.I31[11:0]
@@ -686,6 +703,10 @@
         <output name="PL_DATA_o" num_pins="36"/>
         <input name="sc_in" num_pins="6"/>
         <output name="sc_out" num_pins="6"/>
+        <input name="sr_in" num_pins="6"/>
+        <output name="sr_out" num_pins="6"/>
+        <input name="plr_i" num_pins="36"/>
+        <output name="plr_o" num_pins="36"/>
         <clock name="clk" num_pins="8"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
@@ -706,16 +727,20 @@
           <fc_override port_name="PL_DATA_o" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
           <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="plr_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="plr_o" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="left" yoffset="0"> bram.clk bram.sc_in </loc>
+          <loc side="left" yoffset="0"> bram.clk bram.sc_in bram.sr_out bram.plr_o </loc>
           <loc side="left" yoffset="1"> bram.RAM_ID_i </loc>
           <loc side="left" yoffset="2"> </loc>
           <loc side="right" yoffset="0">
             bram.I20[11:0] bram.I30[11:0]
             bram.IS0[5:3]
             bram.O0[23:12]
-            bram.sc_out
+            bram.sc_out bram.sr_in bram.plr_i
           </loc>
           <loc side="right" yoffset="1">
             bram.I21[11:0] bram.I31[11:0]
@@ -1048,6 +1073,7 @@
                      The organization is similar the adder chain except it is programmable
          - crossbar: every local routing MULTiplexer accesses to 50% of the CLB inputs and 25% of the feedback
       -->
+    <!-- WARNING: the port order of the pb_type must match the tile port order -->
     <pb_type name="clb">
       <input name="I00" num_pins="12" equivalent="full"/>
       <input name="I10" num_pins="12" equivalent="full"/>
@@ -1059,6 +1085,8 @@
       <output name="O0" num_pins="24" equivalent="none"/>
       <output name="sc_out" num_pins="1"/>
       <output name="cout" num_pins="1"/>
+      <input name="sr_in" num_pins="1"/>
+      <output name="sr_out" num_pins="1"/>
       <clock name="clk" num_pins="8"/>
       <pb_type name="clb_lr" num_pb="1">
         <input name="in" num_pins="48"/>
@@ -1711,6 +1739,7 @@
         <direct name="direct_cout" input="clb_lr.cout" output="clb.cout"/>
         <direct name="direct_sc_in" input="clb.sc_in" output="clb_lr.sc_in"/>
         <direct name="direct_sc_out" input="clb_lr.sc_out" output="clb.sc_out"/>
+        <direct name="direct_sr" input="clb.sr_in" output="clb.sr_out"/>
       </interconnect>
       <!-- clb to clb_lr -->
     </pb_type>
@@ -1735,9 +1764,11 @@
       <input name="I32" num_pins="12" equivalent="full"/>
       <input name="IS2" num_pins="6" equivalent="full"/>
       <output name="O2" num_pins="24" equivalent="none"/>
-      <input name="sc_in" num_pins="3"/>
       <clock name="clk" num_pins="8"/>
+      <input name="sc_in" num_pins="3"/>
       <output name="sc_out" num_pins="3"/>
+      <input name="sr_in" num_pins="3"/>
+      <output name="sr_out" num_pins="3"/>
       <pb_type name="dsp_lr" num_pb="1">
         <input name="a_i" num_pins="20"/>
         <input name="acc_fir_i" num_pins="6"/>
@@ -1775,6 +1806,8 @@
             <output name="z_o" num_pins="38"/>
             <output name="dly_b_o" num_pins="18"/>
             <output name="sc_out" num_pins="3"/>
+            <T_clock_to_Q max="1.83e-10" port="dsp_phy.z_o" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="dsp_phy.dly_b_o" clock="clk"/>
             <!--
                <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="dsp_phy.a_i" out_port="dsp_phy.z_o"/>
 	           <delay_constant max="3500e-12" in_port="dsp_phy.acc_fir_i" out_port="dsp_phy.z_o"/>
@@ -1934,6 +1967,9 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.dly_b" clock="clk"/>
             <T_setup value="8.80651e-11" port="RS_DSP_MULTADD.a" clock="clk"/>
             <T_setup value="5.4555e-11" port="RS_DSP_MULTADD.b" clock="clk"/>
             <T_setup value="4.19921e-11" port="RS_DSP_MULTADD.subtract" clock="clk"/>
@@ -1986,6 +2022,9 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN.dly_b" clock="clk"/>
             <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGIN.a" clock="clk"/>
             <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGIN.b" clock="clk"/>
             <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGIN.subtract" clock="clk"/>
@@ -2027,6 +2066,9 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGOUT.dly_b" clock="clk"/>
             <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGOUT.a" clock="clk"/>
             <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGOUT.b" clock="clk"/>
             <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGOUT.subtract" clock="clk"/>
@@ -2068,6 +2110,9 @@
             <input name="shift_right" num_pins="6"/>
             <input name="round" num_pins="1"/>
             <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.dly_b" clock="clk"/>
             <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
             <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
             <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
@@ -2260,6 +2305,7 @@
         <!-- local routing from dsp to dsp_lr -->
         <complete name="crossbar_clk" input="dsp.clk" output="dsp_lr.clk"> </complete>
         <!-- 1x 4:1 mux -->
+        <direct name="direct_sr" input="dsp.sr_in" output="dsp.sr_out"/>
         <direct name="direct1" input="dsp.sc_in" output="dsp_lr.sc_in"/>
         <direct name="direct2" input="dsp_lr.sc_out" output="dsp.sc_out"/>
         <direct name="direct3" input="dsp_lr.z_o[23:0]" output="dsp.O0"/>
@@ -2335,6 +2381,10 @@
       <output name="PL_DATA_o" num_pins="36"/>
       <input name="sc_in" num_pins="6"/>
       <output name="sc_out" num_pins="6"/>
+      <input name="sr_in" num_pins="6"/>
+      <output name="sr_out" num_pins="6"/>
+      <input name="plr_i" num_pins="36"/>
+      <output name="plr_o" num_pins="36"/>
       <clock name="clk" num_pins="8"/>
       <pb_type name="bram_lr" num_pb="1">
         <input name="WDATA_A1_i" num_pins="18"/>
@@ -2651,6 +2701,8 @@
         <direct name="direct21" input="bram_lr.PL_DATA_o" output="bram.PL_DATA_o"/>
         <direct name="direct22" input="bram.sc_in" output="bram_lr.sc_in"/>
         <direct name="direct23" input="bram_lr.sc_out" output="bram.sc_out"/>
+        <direct name="direct_sr" input="bram.sr_in" output="bram.sr_out"/>
+        <direct name="direct_pr" input="bram.plr_i" output="bram.plr_o"/>
         <!-- ~130x 24:1 input mux -->
         <complete name="crossbar0" input="bram.I00 bram.I20" output="bram_lr.WDATA_A1_i[0] bram_lr.WDATA_A2_i[0] bram_lr.WDATA_B1_i[0] bram_lr.WDATA_B2_i[0] bram_lr.ADDR_A1_i[0]                        bram_lr.ADDR_A2_i[0] bram_lr.ADDR_B1_i[0] bram_lr.ADDR_B2_i[0] bram_lr.WDATA_A1_i[12] bram_lr.WDATA_A2_i[12] bram_lr.WDATA_B1_i[12]">
            </complete>
