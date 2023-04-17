@@ -133,7 +133,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 5)
-set(VERSION_PATCH 49)
+set(VERSION_PATCH 50)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -370,6 +370,9 @@ else ()
   add_dependencies(raptor-bin pin_c)
   add_dependencies(raptor-bin stars)
 endif()
+
+# Make sure openocd_cmake build is done before raptor
+add_dependencies(raptor rs_openocd_extract_config_and_openocd)
 
 if (APPLE)
   # In macOS, it is necessary to add the correct @rpath to the executable for
@@ -648,7 +651,12 @@ install(
 
 install(
   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
-
+install(
+  DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/configuration DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor USE_SOURCE_PERMISSIONS)
+install(
+    PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/bin/openocd${CMAKE_EXECUTABLE_SUFFIX} 
+    DESTINATION ${CMAKE_INSTALL_BINDIR} 
+)
 
 install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink  ../../../../bin/gtkwave/bin/lib/tcl8.6/tk8.6   ${CMAKE_INSTALL_PREFIX}/share/raptor/tcl8.6.12/library/tk8.6)")
 
