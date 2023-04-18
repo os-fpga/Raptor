@@ -1,5 +1,7 @@
 {
 	"general" : {
-		"license-path" : "$HOME/.local/Rapidsilicon/raptor.lic"
+		"license-path" : "$HOME/.local/Rapidsilicon/raptor.lic",
+		"user-guide" : "https://customerportal.rapidsilicon.com/hubfs/Raptor/User_Guide/Latest/Raptor_User_Guide.pdf",
+		"release-notes" : "https://customerportal.rapidsilicon.com/hubfs/Raptor/Release_Notes/Latest/Raptor_Release_Notes.pdf"
 	}
 }
