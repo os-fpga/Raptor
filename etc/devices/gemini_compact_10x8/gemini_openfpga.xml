@@ -257,19 +257,17 @@
       <wire_param model_type="pi" R="0" C="0" num_level="1"/>
       <!-- model_type could be T, res_val cap_val should be defined -->
     </circuit_model>
-    <circuit_model type="iopad" name="QL_PREIO" prefix="QL_PREIO" is_default="true" verilog_netlist="./SRC/CustomModules/rs_preio.v">
+    <!-- under the hood, this is RS_PREIO -->
+    <circuit_model type="iopad" name="QL_PREIO" prefix="QL_PREIO" is_default="true" verilog_netlist="./SRC/CustomModules/ql_preio.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx1"/>
       <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_bufx2"/>
-      <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
+      <port type="clock" prefix="clk" lib_name="FPGA_CLK" size="1" is_global="false" default_val="0"/>
       <port type="input" prefix="A2F" lib_name="SOC_IN" size="1" is_global="true" is_io="true" is_data_io="true"/>
       <port type="output" prefix="F2A" lib_name="SOC_OUT" size="1" is_global="true" is_io="true" is_data_io="true"/>
-      <port type="output" prefix="F2A_DEF0" lib_name="F2A_DEF0" size="1" is_global="true" is_io="true"/>
-      <port type="output" prefix="F2A_DEF1" lib_name="F2A_DEF1" size="1" is_global="true" is_io="true"/>
-      <port type="output" prefix="F2A_CLK" lib_name="F2A_CLK" size="1" is_global="true" is_io="true"/>
+      <port type="output" prefix="F2A_CLK" lib_name="SOC_CLK" size="1" is_global="true" is_io="true"/>
       <port type="output" prefix="inpad" lib_name="FPGA_IN" size="1"/>
       <port type="input" prefix="outpad" lib_name="FPGA_OUT" size="1"/>
-      <port type="sram" prefix="DEF" lib_name="DEF" size="4" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000"/>
     </circuit_model>
     <circuit_model type="ff" name="QL_IOFF" prefix="QL_IOFF" is_default="true" verilog_netlist="./SRC/CustomModules/rs_ioff.v">
       <design_technology type="cmos"/>
@@ -278,7 +276,6 @@
       <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
-      <port type="input" prefix="reset" lib_name="R" size="1" default_val="1"/>
       <port type="input" prefix="scan_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
@@ -456,18 +453,16 @@
       <interconnect name="mux1" circuit_model_name="mux_1level_io"/>
       <interconnect name="mux2" circuit_model_name="mux_1level_io"/>
     </pb_type>
-    <pb_type name="io[physical].iopad.pad" circuit_model_name="QL_PREIO" mode_bits="0000"/>
+    <pb_type name="io[physical].iopad.pad" circuit_model_name="QL_PREIO" mode_bits=""/>
     <pb_type name="io[physical].iopad.ff" circuit_model_name="QL_IOFF" mode_bits="1"/>
-    <pb_type name="io[io_input].io_input.inpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="1000"/>
-    <pb_type name="io[io_output].io_output.outpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits="0000"/>
-    <pb_type name="io[io_input].io_input.ff[LATCH].LATCH" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="1"/>
+    <pb_type name="io[io_input].io_input.inpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits=""/>
+    <pb_type name="io[io_output].io_output.outpad" physical_pb_type_name="io[physical].iopad.pad" mode_bits=""/>
     <pb_type name="io[io_input].io_input.ff[DFF].DFF" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="1">
       <port name="C" physical_mode_port="clk"/>
     </pb_type>
     <pb_type name="io[io_input].io_input.ff[DFFN].DFFN" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="1" mode_bits="0">
       <port name="C" physical_mode_port="clk"/>
     </pb_type>
-    <pb_type name="io[io_output].io_output.ff[LATCH].LATCH" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="0" mode_bits="1"/>
     <pb_type name="io[io_output].io_output.ff[DFF].DFF" physical_pb_type_name="io[physical].iopad.ff" physical_pb_type_index_offset="0" mode_bits="1">
       <port name="C" physical_mode_port="clk"/>
     </pb_type>

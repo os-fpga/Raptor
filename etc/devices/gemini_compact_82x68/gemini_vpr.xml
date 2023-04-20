@@ -895,24 +895,6 @@
             <input name="D" num_pins="1"/>
             <output name="Q" num_pins="1"/>
             <clock name="clk" num_pins="1"/>
-            <mode name="LATCH">
-              <pb_type name="LATCH" blif_model=".latch" num_pb="1" class="flipflop">
-                <input name="D" num_pins="1" port_class="D"/>
-                <output name="Q" num_pins="1" port_class="Q"/>
-                <clock name="clk" num_pins="1" port_class="clock"/>
-                <T_setup value="5.307e-11" port="LATCH.D" clock="clk"/>
-                <T_hold value="-4.1664e-11" port="LATCH.D" clock="clk"/>
-                <T_clock_to_Q max="1.4576e-10" port="LATCH.Q" clock="clk"/>
-              </pb_type>
-              <interconnect>
-                <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q">
-                  <pack_pattern name="pack-OLATCH" in_port="LATCH.Q" out_port="ff.Q"/>
-                </direct>
-                <direct input="ff.D" name="LATCH-D" output="LATCH.D">
-                </direct>
-                <direct input="ff.clk" name="LATCH-clk" output="LATCH.clk"/>
-              </interconnect>
-            </mode>
             <mode name="DFF">
               <pb_type name="DFF" blif_model=".subckt dff" num_pb="1">
                 <input name="D" num_pins="1"/>
@@ -957,7 +939,6 @@
             <direct name="ff-clk" input="io_output.clk" output="ff.clk"/>
             <direct name="ff-D" input="io_output.f2a_i" output="ff.D"/>
             <mux name="mux1" input="io_output.f2a_i ff.Q" output="outpad.outpad">
-              <pack_pattern name="pack-OLATCH" in_port="ff.Q" out_port="outpad.outpad"/>
               <pack_pattern name="pack-OREG" in_port="ff.Q" out_port="outpad.outpad"/>
               <pack_pattern name="pack-OREGN" in_port="ff.Q" out_port="outpad.outpad"/>
               <delay_constant max="2.27835e-11" min="1.5738e-11" in_port="io_output.f2a_i" out_port="outpad.outpad"/>
@@ -983,23 +964,6 @@
             <input name="D" num_pins="1" port_class="D"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
-            <mode name="LATCH">
-              <pb_type name="LATCH" blif_model=".latch" num_pb="1" class="flipflop">
-                <input name="D" num_pins="1" port_class="D"/>
-                <output name="Q" num_pins="1" port_class="Q"/>
-                <clock name="clk" num_pins="1" port_class="clock"/>
-                <T_setup value="5.307e-11" port="LATCH.D" clock="clk"/>
-                <T_hold value="-4.1664e-11" port="LATCH.D" clock="clk"/>
-                <T_clock_to_Q max="1.4576e-10" port="LATCH.Q" clock="clk"/>
-              </pb_type>
-              <interconnect>
-                <direct input="LATCH.Q" name="LATCH-Q" output="ff.Q"/>
-                <direct input="ff.D" name="LATCH-D" output="LATCH.D">
-                  <pack_pattern name="pack-ILATCH" in_port="ff.D" out_port="LATCH.D"/>
-                </direct>
-                <direct input="ff.clk" name="LATCH-clk" output="LATCH.clk"/>
-              </interconnect>
-            </mode>
             <mode name="DFF">
               <pb_type name="DFF" blif_model=".subckt dff" num_pb="1">
                 <input name="D" num_pins="1"/>
@@ -1039,7 +1003,6 @@
             <direct name="ff-clk" input="io_input.clk" output="ff.clk"/>
             <direct name="ff-D" input="inpad.inpad" output="ff.D">
               <delay_constant max="3.0927e-11" min="8.5095e-12" in_port="inpad.inpad" out_port="ff.D"/>
-              <pack_pattern name="pack-ILATCH" in_port="inpad.inpad" out_port="ff.D"/>
               <pack_pattern name="pack-IREG" in_port="inpad.inpad" out_port="ff.D"/>
               <pack_pattern name="pack-IREGN" in_port="inpad.inpad" out_port="ff.D"/>
             </direct>
