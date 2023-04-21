@@ -215,9 +215,10 @@ jobs:
         check_artifacts: true
         search_artifacts: true
         github_token: ${{ secrets.QT_DOWNLOAD }}
-        #repo: ${{ github.repository }}
+        repo: ${{ github.repository }}
         run_number: 2555
         skip_unpack: true
+        branch: main
         #workflow_conclusion: success
         
     - name: Install dependencies and build QT
