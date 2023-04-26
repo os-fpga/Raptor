@@ -293,30 +293,12 @@
       <port type="output" prefix="sumout" lib_name="SUMOUT" size="1"/>
       <port type="output" prefix="cout" lib_name="CO" size="1"/>
     </circuit_model>
-    <circuit_model type="ff" name="QL_FF" prefix="QL_FF" verilog_netlist="./SRC/CustomModules/ql_ff.v">
-      <design_technology type="cmos"/>
-      <input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
-      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
-      <port type="input" prefix="D" lib_name="D" size="1"/>
-      <port type="input" prefix="SI" lib_name="SI" size="1"/>
-      <port type="output" prefix="SO" lib_name="SO" size="1"/>
-      <port type="input" prefix="S" lib_name="S" size="1"/>
-      <port type="input" prefix="R" lib_name="R" size="1"/>
-      <port type="input" prefix="SYNC_S" lib_name="SYNC_S" size="1"/>
-      <port type="input" prefix="SYNC_R" lib_name="SYNC_R" size="1"/>
-      <port type="input" prefix="LAT_R" lib_name="LAT_R" size="1"/>
-      <port type="input" prefix="E" lib_name="E" size="1"/>
-      <port type="input" prefix="scan_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
-      <port type="output" prefix="Q" lib_name="Q" size="1"/>
-      <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
-      <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/>
-      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="2" mode_select="true" circuit_model_name="RS_CCFF" default_val="01"/>
-    </circuit_model>
     <circuit_model type="ff" name="GC_FF" prefix="GC_FF" verilog_netlist="./SRC/CustomModules/gc_ff.v">
       <design_technology type="cmos"/>
       <input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
       <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
+      <port type="input" prefix="scan_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="output" prefix="SO" lib_name="SO" size="1"/>
       <port type="input" prefix="R" lib_name="R" size="1"/>
@@ -335,7 +317,6 @@
       <port type="output" prefix="z_o" size="38"/>
       <port type="output" prefix="dly_b_o" size="18"/>
       <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
-      <port type="input" prefix="scan_reset" lib_name="scan_reset" size="1"/>
       <port type="input" prefix="lreset" lib_name="reset" size="1"/>
       <port type="input" prefix="feedback" lib_name="feedback" size="3"/>
       <port type="input" prefix="load_acc" lib_name="load_acc" size="1"/>
@@ -403,7 +384,6 @@
       <port type="output" prefix="PL_DATA_o" size="36"/>
       <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
       <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
-      <port type="input" prefix="scan_reset" lib_name="SCAN_RESET_i" size="1"/>
       <port type="input" prefix="sc_in" lib_name="SCAN_i" size="6"/>
       <port type="input" prefix="scan_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="sc_out" lib_name="SCAN_o" size="6"/>
