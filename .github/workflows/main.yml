@@ -114,7 +114,7 @@ jobs:
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release PRODUCTION_BUILD=1
+        make release PRODUCTION_BUILD=1 PRODUCTION_DEVICES="1GE75"
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
