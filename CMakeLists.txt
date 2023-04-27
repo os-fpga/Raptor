@@ -133,7 +133,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 5)
-set(VERSION_PATCH 58)
+set(VERSION_PATCH 57)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -685,13 +685,14 @@ if (PRODUCTION_BUILD)
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/etc/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/mpw1
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_legacy
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_10x8
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_4x4
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_compact
-      COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device-rel.xml
-      ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml
+      COMMAND python3 ${PROJECT_SOURCE_DIR}/gen_rel_device.py --production_devices ${PRODUCTION_DEVICES} --xml_filepath ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml --devices_dirs_path ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices
+#      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/mpw1
+#      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_legacy
+#      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_10x8
+#      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_4x4
+#      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_compact
+#      COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device-rel.xml
+#      ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml
       COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress-rel.json
       ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress.json)
 else()
