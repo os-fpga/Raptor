@@ -94,8 +94,8 @@ install: release
 #	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8
 #	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_82x68
 #	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
+	$(RM) $(PREFIX)/share/raptor/etc/device-rel.xml
 	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
-	$(RM) $(PREFIX)/share/raptor/etc/device.xml
 ifeq ($(1GE100_BUILD),1)
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini
 	mv $(PREFIX)/share/raptor/etc/device-1GE100.xml $(PREFIX)/share/raptor/etc/device.xml
