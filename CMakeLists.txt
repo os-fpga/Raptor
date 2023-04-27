@@ -133,7 +133,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 5)
-set(VERSION_PATCH 58)
+set(VERSION_PATCH 57)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -693,9 +693,8 @@ if (PRODUCTION_BUILD)
 #      COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices/gemini_compact
 #      COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device-rel.xml
 #      ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml
-      COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device-rel.xml
+      COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress-rel.json
       ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress.json)
-      COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device-rel.xml
 else()
   add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir"
