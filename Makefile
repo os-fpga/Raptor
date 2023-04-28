@@ -36,7 +36,7 @@ debug: run-cmake-debug
 	cmake --build dbuild -j $(CPU_CORES)
 
 run-cmake-release:
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DPRODUCTION_DEVICES=$(PRODUCTION_DEVICES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DPRODUCTION_DEVICES="$(PRODUCTION_DEVICES)" $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
 
 run-cmake-release_no_tcmalloc:
 	cmake -DNO_TCMALLOC=On -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
@@ -86,7 +86,7 @@ clean:
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
 	cmake --install build
-	$(PREFIX)/share/envs/litex/bin/python3 gen_rel_device.py --production_devices $(PRODUCTION_DEVICES) --xml_filepath $(PREFIX)/share/raptor/etc/device.xml --devices_dirs_path $(PREFIX)/share/raptor/etc/devices
+	$(PREFIX)/share/envs/litex/bin/python3 gen_rel_device.py --production_devices "$(PRODUCTION_DEVICES)" --xml_filepath $(PREFIX)/share/raptor/etc/device.xml --devices_dirs_path $(PREFIX)/share/raptor/etc/devices
 #	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_legacy
 #	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
 #	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_10x8
