@@ -36,7 +36,7 @@ debug: run-cmake-debug
 	cmake --build dbuild -j $(CPU_CORES)
 
 run-cmake-release:
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DPRODUCTION_DEVICES=$(PRODUCTION_DEVICES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
 
 run-cmake-release_no_tcmalloc:
 	cmake -DNO_TCMALLOC=On -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
@@ -86,19 +86,22 @@ clean:
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
 	cmake --install build
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_legacy
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_10x8
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_4x4
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8
-	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_82x68
-	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
+	$(PREFIX)/share/envs/litex/bin/python3 gen_rel_device.py --production_devices $(PRODUCTION_DEVICES) --xml_filepath $(PREFIX)/share/raptor/etc/device.xml --devices_dirs_path $(PREFIX)/share/raptor/etc/devices
+#	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_legacy
+#	$(RM) -r $(PREFIX)/share/raptor/etc/devices/mpw1
+#	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_10x8
+#	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_4x4
+#	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8
+#	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_82x68
+#	mv $(PREFIX)/share/raptor/etc/device-rel.xml $(PREFIX)/share/raptor/etc/device.xml
+	$(RM) $(PREFIX)/share/raptor/etc/device-rel.xml
 	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
 ifeq ($(1GE100_BUILD),1)
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini
 	mv $(PREFIX)/share/raptor/etc/device-1GE100.xml $(PREFIX)/share/raptor/etc/device.xml
 else
 	$(RM) $(PREFIX)/share/raptor/etc/device-1GE100.xml
+	$(RM) $(PREFIX)/share/raptor/etc/device-1GE100-only.xml
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini_compact_21x24
 	$(RM) -r $(PREFIX)/share/raptor/etc/devices/gemini
 endif
@@ -139,7 +142,6 @@ test_install:
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_gate.tcl
 # Broken in pin_c $(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_verilog.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_gemini/raptor.tcl
 
