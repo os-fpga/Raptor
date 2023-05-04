@@ -8,7 +8,7 @@
                     "Area",
                     "Delay",
                     "Mixed",
-                    "None"
+                    "Balanced"
                 ],
                 "optionsLookup": [
                     "area",
@@ -17,7 +17,7 @@
                     "none"
                 ],
                 "arg": "_SynthOpt_",
-                "default":"None" 
+                "default":"Balanced"
             },
             "effort_dropdown": {
                 "label": "Effort",
@@ -84,21 +84,19 @@
                 "arg": "netlist_lang"
             },
             "dsp_spinbox_ex": {
-                "label": "Dsp limit",
+                "label": "DSP limit",
                 "widgetType": "spinbox",
                 "minVal": 0,
                 "maxVal": 0,
                 "stepVal": 1,
-                "default": 0,
                 "arg": "dsp_limit"
             },
             "bram_spinbox_ex": {
-                "label": "Block Ram limit",
+                "label": "Block RAM limit",
                 "widgetType": "spinbox",
                 "minVal": 0,
                 "maxVal": 0,
                 "stepVal": 1,
-                "default": 0,
                 "arg": "bram_limit"
             },
             "fast_checkbox": {
@@ -132,7 +130,7 @@
 		"arg": "netlist_lang"
       },
       "clb_packing": {
-          "label": "Clb packing",
+          "label": "CLB packing",
           "options": [
               "Auto",
               "Dense"
