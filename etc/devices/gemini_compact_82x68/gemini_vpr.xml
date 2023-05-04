@@ -472,10 +472,11 @@
           <fc_override port_name="io_right[71:24].a2f_o" fc_type="frac" fc_val="0"/>
         </fc>
         <pinlocations pattern="custom">
-          <loc side="top"> io_right[47:0].f2a_i io_right[11:0].a2f_o io_right[71:24].a2f_o </loc>
-          <loc side="right">io_right[23:12].a2f_o io_right[71:48].f2a_i </loc>
-          <loc side="left">io_right.sc_in io_right.sc_out </loc>
-          <loc side="bottom">io_right.clk </loc>
+          <!-- regularize routing -->
+          <loc side="top"> io_right[47:0].f2a_i io_right[5:0].a2f_o io_right[71:66].a2f_o </loc>
+          <loc side="right">io_right[65:6].a2f_o io_right[71:48].f2a_i </loc>
+          <loc side="left"> io_right.sc_in io_right.sc_out </loc>
+          <loc side="bottom"> io_right.clk </loc>
         </pinlocations>
       </sub_tile>
     </tile>
@@ -2699,24 +2700,21 @@
   </complexblocklist>
   <layout tileable="true" through_channel="true">
     <fixed_layout name="castor10x8_heterogeneous" width="12" height="10">
-      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <fill type="clb" priority="10"/>
+      <region type="dsp" startx="4" endx="4" starty="2" endy="H-3" priority="30"/>
+      <region type="bram" startx="7" endx="7" starty="2" endy="H-3" priority="30"/>
       <row type="io_top" starty="H-2" priority="90"/>
       <row type="io_bottom" starty="1" priority="91"/>
       <col type="io_right" startx="W-2" priority="92"/>
       <col type="io_left" startx="1" priority="93"/>
-      <!-- <single type="io_right_top" x="10" y="8" priority="94"/> -->
-      <!-- <single type="io_right_bottom" x="10" y="1" priority="95"/> -->
-      <corners type="EMPTY" priority="100"/>
+      <!-- <single type="io_left" x="1" y="1" priority="94"/> -->
+      <!-- <single type="io_left" x="1" y="H-2" priority="95"/> -->
+      <!-- <single type="io_right" x="W-2" y="1" priority="96"/> -->
+      <!-- <single type="io_right" x="W-2" y="H-2" priority="97"/> -->
       <row type="EMPTY" starty="H-1" priority="101"/>
-      <col type="EMPTY" startx="W-1" priority="102"/>
       <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
       <col type="EMPTY" startx="0" priority="104"/>
-      <!--Default to clb-->
-      <fill type="clb" priority="10"/>
-      <!--Insert DSP column(s)-->
-      <region type="dsp" startx="4" endx="4" starty="2" endy="H-3" priority="30"/>
-      <!--Insert BRAM column(s)-->
-      <region type="bram" startx="7" endx="7" starty="2" endy="H-3" priority="30"/>
     </fixed_layout>
     <fixed_layout name="castor62x44_heterogeneous" width="64" height="46">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
