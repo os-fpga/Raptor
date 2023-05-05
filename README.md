@@ -143,6 +143,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    wave_refresh               : Reloads the current active wave file
    wave_show <signal>         : Add the given signal to the GTKWave window and highlight it.
    wave_time <time>           : Set the primary marker to <time>. Time units can be specified, without a space. Ex: wave_time 100ps.
+   program_device <-b> "<bitstream_file>" <-c> "<config_file>" <-n> "<index>": Perform device programming.
+                                                                           -b: <bitstream_file>: Specify bitstream file path to program. Ex: -b /home/user/mybitstream.bit
+                                                                           -c: <config_file>: Specify config file. Ex: -c gemini.cfg
+                                                                           -n: <index>: Optional. Default value is 0. Specify index of the device. Ex. -n 0
 -----------------------------------------------
 ```
 
