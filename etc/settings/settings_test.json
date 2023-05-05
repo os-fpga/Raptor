@@ -133,14 +133,16 @@
           "label": "CLB packing",
           "options": [
               "Auto",
-              "Dense"
+              "Dense",
+              "Timing Driven"
           ],
           "optionsLookup": [
               "auto",
-              "dense"
+              "dense",
+              "timing_driven"
           ],
           "widgetType": "dropdown",
-          "default" : "Dense",
+          "default" : "Auto",
           "arg": "clb_packing"
        },
        "_META_": {
