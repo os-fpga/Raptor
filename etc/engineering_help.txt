@@ -24,6 +24,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Project ---
 ---------------
+   create_design <name> ?-type <project type>? : Creates a design with <name> name
+     <project type>           : rtl (Default), gate-level
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
    target_device <name>       : Targets a device with <name> (default is 1GE75)
@@ -46,12 +48,23 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    clear_simulation_files     : Remove all simulation files
    script_path                : Returns the path of the Tcl script passed with --script
    max_threads <-1/[2:64]>    : Maximum number of threads to be used (-1 is for automatic selection)
+   set_device_size XxY        : Device fabric size selection
+   custom_openfpga_script <file> : Uses a custom OpenFPGA templatized script
+   architecture <vpr_file.xml> ?<openfpga_file.xml>?
+                              : Uses the architecture file and optional openfpga arch file (For bitstream generation)
+   verific_parser <on/off>    : Turns on/off Verific Parser
 
 -------------------
 --- Constraints ---
 -------------------
    keep <signal list> OR all_signals : Keeps the list of signals or all signals through Synthesis unchanged (unoptimized in certain cases)
    message_severity <message_id> <ERROR/WARNING/INFO/IGNORE> : Upgrade/downgrade message severity
+   set_pin_loc <design_io_name> <device_io_name> ?<internal_pinname>?: Constraints pin location (Use in constraint.pin file)
+   set_property mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint.pin file)
+   set_clock_pin -device_clock <device_clock_name> -design_clock <design_clock_name>
+                              : like gemini has 16 clocks clk[0],clk[1]....,clk[15].
+                                and e.g. user clocks are clk_a, clk_b and want to map clk_a with clk[15]
+                               Constraints : set clocks for repacking constraints (Use in constraint.pin file)
 
 ----------
 --- IP ---
@@ -110,6 +123,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        area                   : Optimize for reduce resource area 
        delay                  : Optimize for performance
        mixed                  : Optimize for area and performance (default)
+   synthesis_type Yosys/QL/RS : Selects Synthesis type
+   custom_synth_script <file> : Uses a custom Yosys templatized script
 
 ---------------
 --- Packing ---
@@ -136,6 +151,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 --- Route ---
 -------------
    route ?clean?              : Router, clean removes related files
+   set_channel_width <int>    : VPR Routing channel setting
 
 ------------------------------
 --- Static Timing Analysis ---
@@ -146,29 +162,12 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 --- Bitstream ---
 -----------------
    bitstream ?force? ?clean? ?enable_simulation? ?write_xml? ?write_fabric_independent? ?pb_pin_fixup? : Bitstream generation, clean removes related files
-
------------------
---- Internal  ---
------------------
-   create_design <name> ?-type <project type>? : Creates a design with <name> name
-     <project type>           : rtl (Default), gate-level
-   set_pin_loc <design_io_name> <device_io_name> ?<internal_pinname>?: Constraints pin location (Use in constraint.pin file)
-   set_property mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint.pin file)
-   set_clock_pin -device_clock <device_clock_name> -design_clock <design_clock_name>
-                              : like gemini has 16 clocks clk[0],clk[1]....,clk[15].
-                                and e.g. user clocks are clk_a, clk_b and want to map clk_a with clk[15]
-                               Constraints : set clocks for repacking constraints (Use in constraint.pin file)
-
-   verific_parser <on/off>    : Turns on/off Verific Parser
-   synthesis_type Yosys/QL/RS : Selects Synthesis type
-   custom_synth_script <file> : Uses a custom Yosys templatized script
-   set_channel_width <int>    : VPR Routing channel setting
-   architecture <vpr_file.xml> ?<openfpga_file.xml>?
-                              : Uses the architecture file and optional openfpga arch file (For bitstream generation)
-   custom_openfpga_script <file> : Uses a custom OpenFPGA templatized script
    bitstream_config_files -bitstream <bitstream_setting.xml> -sim <sim_setting.xml> -repack <repack_setting.xml> -key <fabric_key.xml>
                               : Uses alternate bitstream generation configuration files
-   set_device_size XxY        : Device fabric size selection
+
+--------------
+--- Debug  ---
+--------------
    diagnostic <type>          : Debug mode. Types: packer
-   
+
 -----------------------------------------------
