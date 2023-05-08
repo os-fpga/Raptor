@@ -24,6 +24,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Project ---
 ---------------
+<engineering>
+   create_design <name> ?-type <project type>? : Creates a design with <name> name
+     <project type>           : rtl (Default), gate-level
+</engineering>
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
    target_device <name>       : Targets a device with <name> (default is 1GE75)
@@ -46,12 +50,27 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    clear_simulation_files     : Remove all simulation files
    script_path                : Returns the path of the Tcl script passed with --script
    max_threads <-1/[2:64]>    : Maximum number of threads to be used (-1 is for automatic selection)
+<engineering>
+   set_device_size XxY        : Device fabric size selection
+   custom_openfpga_script <file> : Uses a custom OpenFPGA templatized script
+   architecture <vpr_file.xml> ?<openfpga_file.xml>?
+                              : Uses the architecture file and optional openfpga arch file (For bitstream generation)
+   verific_parser <on/off>    : Turns on/off Verific Parser
+</engineering>
 
 -------------------
 --- Constraints ---
 -------------------
    keep <signal list> OR all_signals : Keeps the list of signals or all signals through Synthesis unchanged (unoptimized in certain cases)
    message_severity <message_id> <ERROR/WARNING/INFO/IGNORE> : Upgrade/downgrade message severity
+<engineering>
+   set_pin_loc <design_io_name> <device_io_name> ?<internal_pinname>?: Constraints pin location (Use in constraint.pin file)
+   set_property mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint.pin file)
+   set_clock_pin -device_clock <device_clock_name> -design_clock <design_clock_name>
+                              : like gemini has 16 clocks clk[0],clk[1]....,clk[15].
+                                and e.g. user clocks are clk_a, clk_b and want to map clk_a with clk[15]
+                               Constraints : set clocks for repacking constraints (Use in constraint.pin file)
+</engineering>
 
 ----------
 --- IP ---
@@ -98,6 +117,12 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        late                   : Perform late extraction
      -fast                    : Perform the fastest synthesis. QoR can be impacted.
      -no_simplify             : Do not run special simplification algorithms in synthesis. 
+<engineering>
+     -clke_strategy <strategy>: Clock enable extraction strategy for FFs:
+       early                  : Perform early extraction
+       late                   : Perform late extraction
+     -cec                     : Dump verilog after key phases and use internal equivalence checking (ABC based) 
+</engineering>
    set_limits <type> <int>    : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
        dsp                    : Maximum number of usable DSPs
        bram                   : Maximum number of usable BRAMs
@@ -106,6 +131,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        area                   : Optimize for reduce resource area 
        delay                  : Optimize for performance
        mixed                  : Optimize for area and performance (default)
+<engineering>
+   synthesis_type Yosys/QL/RS : Selects Synthesis type
+   custom_synth_script <file> : Uses a custom Yosys templatized script
+</engineering>
 
 ---------------
 --- Packing ---
@@ -117,7 +146,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        dense                  : Pack logic more densely into CLBs resulting in fewer utilized CLBs however may negatively impact timing
        timing_driven          : Pack logic to optimize timing
    packing ?clean?            : Packing, clean removes related files
-
 
 -------------
 --- Place ---
@@ -132,6 +160,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 --- Route ---
 -------------
    route ?clean?              : Router, clean removes related files
+<engineering>
+   set_channel_width <int>    : VPR Routing channel setting
+</engineering>
 
 ------------------------------
 --- Static Timing Analysis ---
@@ -141,6 +172,18 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 -----------------
 --- Bitstream ---
 -----------------
+<production>
    bitstream ?clean?          : Bitstream generation, clean removes related files
+</production>
+<engineering>
+   bitstream ?force? ?clean? ?enable_simulation? ?write_xml? ?write_fabric_independent? ?pb_pin_fixup? : Bitstream generation, clean removes related files
+   bitstream_config_files -bitstream <bitstream_setting.xml> -sim <sim_setting.xml> -repack <repack_setting.xml> -key <fabric_key.xml>
+                              : Uses alternate bitstream generation configuration files
+
+--------------
+--- Debug  ---
+--------------
+   diagnostic <type>          : Debug mode. Types: packer
+</engineering>
 
 -----------------------------------------------
