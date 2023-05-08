@@ -111,10 +111,11 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 --- Packing ---
 ---------------
    pnr_netlist_lang <format>  : Chooses post-synthesis netlist format, (blif, edif, verilog, vhdl)
-   clb_packing   <directive>  : Performance optimization flags (auto, dense)
+   packing_options <option list>: Packing options
+     -clb_packing <directive> : Performance optimization flags (auto, dense, timing_driven)
        auto                   : CLB packing automatically determined (default)
        dense                  : Pack logic more densely into CLBs resulting in fewer utilized CLBs however may negatively impact timing
-       timing_driven          : Pack logic to topimize timing
+       timing_driven          : Pack logic to optimize timing
    packing ?clean?            : Packing, clean removes related files
 
 
