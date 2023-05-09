@@ -2,11 +2,10 @@
 
 # Raptor Preview Release
 
-Rapid Silicon complete Software solution
+Rapid Silicon Raptor Design Suite
 
 Raptor is a classic RTL (User design + IPs) 2 Bitstream FPGA compiler.
 It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
-The initial focus of this release is batch mode or GUI mode driven from a Tcl script.
 
 ## INSTALLATION
 
@@ -190,17 +189,6 @@ sasc_testcase    : a FIFO design targeting the GEMINI device
 
 ## User design
 
-### Pin Table
-
-```
-The GEMINI device pin table is located here: share/raptor/etc/devices/gemini/Gemini_Pin_Table.csv
-
-Users can select the pins "Bump/Pin Name" which are marked in the "Usable" column with a "Y"
-and use them in the .sdc file with the command "set_pin_loc".
-
-If not set, pin locations will be randomly assigned to a legal locations (Per Pin Table) which might not be optimal for placement.
-
-```
 
 ### Synthesis considerations
 
