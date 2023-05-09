@@ -77,6 +77,7 @@
       </input_ports>
       <output_ports>
         <port name="Q" clock="clk"/>
+        <port name="SO" clock="clk"/>
       </output_ports>
     </model>
     <model name="scff">
@@ -846,6 +847,7 @@
           <pb_type name="ff" blif_model=".subckt io_scff" num_pb="2">
             <input name="D" num_pins="1" port_class="D"/>
             <input name="SI" num_pins="1"/>
+            <output name="SO" num_pins="1"/>
             <output name="Q" num_pins="1" port_class="Q"/>
             <clock name="clk" num_pins="1" port_class="clock"/>
             <T_setup value="5.307e-11" port="ff[0:0].D" clock="clk"/>
@@ -853,6 +855,8 @@
             <T_setup value="5.7279e-11" port="ff.SI" clock="clk"/>
             <T_clock_to_Q max="1.4576e-10" port="ff[0:0].Q" clock="clk"/>
             <T_clock_to_Q max="1.4576e-10" port="ff[1:1].Q" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[0:0].SO" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[1:1].SO" clock="clk"/>
           </pb_type>
           <pb_type name="pad" blif_model=".subckt io" num_pb="1">
             <clock name="clk" num_pins="1" port_class="clock"/>
@@ -866,8 +870,8 @@
             <direct name="ff[0:0]-D" input="iopad.f2a_i" output="ff[0:0].D"/>
             <direct name="ff[1:1]-D" input="pad.inpad" output="ff[1:1].D"/>
             <direct name="ff[0:0]-DI" input="iopad.sc_in" output="ff[0:0].SI"/>
-            <direct name="ff[1:1]-DI" input="ff[0:0].Q" output="ff[1:1].SI"/>
-            <direct name="iopad-sc_out" input="ff[1:1].Q" output="iopad.sc_out"/>
+            <direct name="ff[1:1]-DI" input="ff[0:0].SO" output="ff[1:1].SI"/>
+            <direct name="iopad-sc_out" input="ff[1:1].SO" output="iopad.sc_out"/>
             <mux name="mux1" input="iopad.f2a_i ff[0:0].Q" output="pad.outpad">
               <delay_constant max="2.27835e-11" min="1.5738e-11" in_port="iopad.f2a_i" out_port="pad.outpad"/>
               <delay_constant max="2.2875e-11" min="1.56465e-11" in_port="ff[0:0].Q" out_port="pad.outpad"/>
