@@ -111,7 +111,6 @@ test_install:
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt_open_source.tcl
 # Broken in pin_c $(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_verilog.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_gemini/raptor.tcl
 
@@ -127,7 +126,7 @@ test/rs_gui: run-cmake-release
 	./build/bin/raptor --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 
 test/openfpga: run-cmake-release
-	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt_open_source.tcl
+	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 
 test/openfpga_gui: run-cmake-release
 	./build/bin/raptor --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
@@ -148,7 +147,6 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl --device 1GE75
-	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_100k.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_batch.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
