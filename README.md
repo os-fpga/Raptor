@@ -174,16 +174,13 @@ and2_gemini       : an AND2 design targeting the 1GE75 device
 oneff             : an async-reset FF design targeting the 1GE75 device with Verilator simulation
                     raptor --script $RAPTOR_PATH/share/raptor/tcl_examples/oneff/raptor.tcl
 
-aes_decrypt_fpga  : an AES decryption design targeting the GEMINI device
+aes_decrypt_fpga  : an AES decryption design targeting the 1GE75 device
                     raptor --script $RAPTOR_PATH/share/raptor/tcl_examples/aes_decrypt_fpga/aes_decrypt.tcl
 
-ip_gen_axis_conv  : a LiteX IP generation example targeting the GEMINI device (Requires LiteX installed separately)
+ip_gen_axis_conv  : a LiteX IP generation example targeting the 1GE75 device (Requires LiteX installed separately)
                     raptor --script $RAPTOR_PATH/share/raptor/tcl_examples/ip_gen_axis_conv/raptor.tcl
 
-aes_decrypt_gate  : a gate-level (BLIF) AES decryption design targeting the GEMINI device
-                    raptor --script $RAPTOR_PATH/share/raptor/tcl_examples/aes_decrypt_gate/aes_decrypt_gate.tcl
-
-sasc_testcase    : a FIFO design targeting the GEMINI device
+sasc_testcase    : a FIFO design targeting the 1GE75 device
                     raptor --script $RAPTOR_PATH/share/raptor/tcl_examples/sasc_testcase/raptor.tcl
 ```
 
