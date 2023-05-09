@@ -3,7 +3,7 @@ create_design AES_DECRYPT_GATE -type gate-level
 
 target_device 1GE75
 
-read_netlist aes_decrypt.blif
+read_netlist aes_decrypt.v
 pnr_netlist_lang blif
 add_constraint_file aes_decrypt_gate.sdc
 packing

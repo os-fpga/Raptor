@@ -1,0 +1,1332 @@
+[
+  {
+	"ports": [
+	  {
+		"direction": "input",
+		"name": "ct_vld",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "ct_rdy",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "rkey_vld",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "next_rkey",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt_vld",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "clk",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "rst",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[127]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[126]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[125]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[124]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[123]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[122]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[121]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[120]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[119]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[118]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[117]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[116]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[115]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[114]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[113]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[112]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[111]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[110]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[109]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[108]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[107]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[106]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[105]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[104]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[103]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[102]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[101]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[100]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[99]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[98]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[97]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[96]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[95]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[94]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[93]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[92]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[91]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[90]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[89]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[88]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[87]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[86]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[85]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[84]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[83]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[82]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[81]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[80]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[79]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[78]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[77]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[76]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[75]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[74]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[73]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[72]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[71]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[70]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[69]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[68]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[67]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[66]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[65]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[64]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[63]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[62]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[61]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[60]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[59]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[58]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[57]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[56]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[55]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[54]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[53]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[52]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[51]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[50]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[49]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[48]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[47]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[46]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[45]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[44]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[43]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[42]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[41]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[40]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[39]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[38]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[37]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[36]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[35]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[34]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[33]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[32]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[31]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[30]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[29]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[28]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[27]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[26]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[25]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[24]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[23]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[22]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[21]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[20]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[19]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[18]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[17]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[16]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[15]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[14]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[13]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[12]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[11]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[10]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[9]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[8]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[7]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[6]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[5]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[4]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[3]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[2]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[1]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "output",
+		"name": "pt[0]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "klen_sel[1]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "klen_sel[0]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[127]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[126]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[125]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[124]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[123]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[122]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[121]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[120]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[119]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[118]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[117]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[116]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[115]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[114]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[113]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[112]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[111]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[110]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[109]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[108]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[107]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[106]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[105]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[104]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[103]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[102]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[101]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[100]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[99]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[98]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[97]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[96]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[95]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[94]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[93]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[92]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[91]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[90]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[89]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[88]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[87]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[86]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[85]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[84]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[83]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[82]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[81]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[80]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[79]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[78]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[77]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[76]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[75]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[74]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[73]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[72]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[71]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[70]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[69]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[68]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[67]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[66]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[65]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[64]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[63]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[62]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[61]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[60]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[59]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[58]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[57]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[56]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[55]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[54]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[53]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[52]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[51]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[50]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[49]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[48]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[47]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[46]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[45]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[44]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[43]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[42]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[41]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[40]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[39]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[38]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[37]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[36]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[35]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[34]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[33]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[32]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[31]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[30]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[29]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[28]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[27]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[26]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[25]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[24]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[23]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[22]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[21]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[20]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[19]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[18]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[17]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[16]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[15]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[14]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[13]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[12]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[11]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[10]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[9]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[8]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[7]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[6]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[5]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[4]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[3]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[2]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[1]",
+		"type": "WIRE"
+	  },
+	  {
+		"direction": "input",
+		"name": "ct[0]",
+		"type": "WIRE"
+	  }
+	],
+	"topModule": "wrapper"
+  }
+]
