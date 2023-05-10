@@ -116,6 +116,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        early                  : Perform early extraction (default)
        late                   : Perform late extraction
      -fast                    : Perform the fastest synthesis. QoR can be impacted.
+     -no_flatten              : Do not flatten design.
      -no_simplify             : Do not run special simplification algorithms in synthesis. 
 <engineering>
      -clke_strategy <strategy>: Clock enable extraction strategy for FFs:
