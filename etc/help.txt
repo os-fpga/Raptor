@@ -175,27 +175,11 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 -----------------
 <production>
    bitstream ?clean?          : Bitstream generation, clean removes related files
-   
----------------
---- Program ---
----------------
-  program_device              : Program the device via JTAG
-    -b <bitstream>            : Target bitstream file for loading
-    -c <config_file>          : Configuration file
-    -n <index>                : Index of device in JTAG chain
 </production>
 <engineering>
    bitstream ?force? ?clean? ?enable_simulation? ?write_xml? ?write_fabric_independent? ?pb_pin_fixup? : Bitstream generation, clean removes related files
    bitstream_config_files -bitstream <bitstream_setting.xml> -sim <sim_setting.xml> -repack <repack_setting.xml> -key <fabric_key.xml>
                               : Uses alternate bitstream generation configuration files
-                              
----------------
---- Program ---
----------------
-  program_device              : Program the device via JTAG
-    -b <bitstream>            : Target bitstream file for loading
-    -c <config_file>          : Configuration file
-    -n <index>                : Index of device in JTAG chain
 
 --------------
 --- Debug  ---
@@ -203,4 +187,12 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    diagnostic <type>          : Debug mode. Types: packer
 </engineering>
 
+---------------
+--- Program ---
+---------------
+  program_device              : Program the device via JTAG
+    -b <bitstream>            : Target bitstream file for loading
+    -c <config_file>          : Configuration file
+    -n <index>                : Index of device in JTAG chain
+    
 -----------------------------------------------
