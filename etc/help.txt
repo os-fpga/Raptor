@@ -24,10 +24,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Project ---
 ---------------
-<engineering>
    create_design <name> ?-type <project type>? : Creates a design with <name> name
      <project type>           : rtl (Default), gate-level
-</engineering>
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
    target_device <name>       : Targets a device with <name> (default is 1GE75)
@@ -80,6 +78,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    ip_configure <IP_NAME> -mod_name <name> -out_file <filename> -version <ver_name> -P<param>="<value>"...
                               : Configures an IP <IP_NAME> and generates the corresponding file with module name
    ipgenerate ?clean?         : Generates all IP instances set by ip_configure
+     clean                    : Deletes files generated from this task
    simulate_ip  <module name> : Simulate IP with module name <module name>
 
 ------------------
@@ -127,11 +126,14 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    set_limits <type> <int>    : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
        dsp                    : Maximum number of usable DSPs
        bram                   : Maximum number of usable BRAMs
-   analyze ?clean?            : Analyzes the RTL design, generates top-level, pin and hierarchy information, clean removes related files
-   synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed), clean removes related files
+   analyze ?clean?            : Analyzes the RTL design, generates top-level, pin and hierarchy information
+     clean                    : Deletes files generated from this task
+   synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed)
+     <optimization>           : area, delay, mixed
        area                   : Optimize for reduce resource area 
        delay                  : Optimize for performance
        mixed                  : Optimize for area and performance (default)
+     clean                    : Deletes files generated from this task
 <engineering>
    synthesis_type Yosys/QL/RS : Selects Synthesis type
    custom_synth_script <file> : Uses a custom Yosys templatized script
@@ -146,7 +148,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        auto                   : CLB packing automatically determined (default)
        dense                  : Pack logic more densely into CLBs resulting in fewer utilized CLBs however may negatively impact timing
        timing_driven          : Pack logic to optimize timing
-   packing ?clean?            : Packing, clean removes related files
+   packing ?clean?            : Packing
+     clean                    : Deletes files generated from this task
 
 -------------
 --- Place ---
@@ -155,12 +158,14 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        in_define_order        : Port order pin assignment (default)
        random                 : Random pin assignment
        free                   : No automatic pin assignment
-   place ?clean?              : Placer, clean removes related files
+   place ?clean?              : Placer
+     clean                    : Deletes files generated from this task
 
 -------------
 --- Route ---
 -------------
-   route ?clean?              : Router, clean removes related files
+   route ?clean?              : Router
+     clean                    : Deletes files generated from this task
 <engineering>
    set_channel_width <int>    : VPR Routing channel setting
 </engineering>
@@ -168,16 +173,19 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ------------------------------
 --- Static Timing Analysis ---
 ------------------------------
-   sta ?clean?                : Statistical Timing Analysis, clean removes related files
+   sta ?clean?                : Statistical Timing Analysis
+     clean                    : Deletes files generated from this task
 
 -----------------
 --- Bitstream ---
 -----------------
 <production>
-   bitstream ?clean?          : Bitstream generation, clean removes related files
+   bitstream ?clean?          : Bitstream generation
+     clean                    : Deletes files generated from this task
 </production>
 <engineering>
-   bitstream ?force? ?clean? ?enable_simulation? ?write_xml? ?write_fabric_independent? ?pb_pin_fixup? : Bitstream generation, clean removes related files
+   bitstream ?force? ?clean? ?enable_simulation? ?write_xml? ?write_fabric_independent? ?pb_pin_fixup? : Bitstream generation
+     clean                    : Deletes files generated from this task
    bitstream_config_files -bitstream <bitstream_setting.xml> -sim <sim_setting.xml> -repack <repack_setting.xml> -key <fabric_key.xml>
                               : Uses alternate bitstream generation configuration files
 
@@ -190,7 +198,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Program ---
 ---------------
-  program_device              : Program the device via JTAG
+  program_device <-b> "<bitstream_file>" <-c> "<config_file>" <-n> "<index>" : Program the device via JTAG
     -b <bitstream>            : Target bitstream file for loading
     -c <config_file>          : Configuration file
     -n <index>                : Index of device in JTAG chain
