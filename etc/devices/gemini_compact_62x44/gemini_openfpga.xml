@@ -210,6 +210,16 @@
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
     </circuit_model>
+    <!-- balanced clock mux -->
+    <circuit_model type="mux" name="clock_mux" prefix="clock_mux" is_default="false" dump_structural_verilog="true">
+      <design_technology type="cmos" structure="tree" add_const_input="false"/>
+      <input_buffer exist="false"/>
+      <output_buffer exist="false"/>
+      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_ckmux21x1"/>
+      <port type="input" prefix="in" size="1"/>
+      <port type="output" prefix="out" size="1"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+    </circuit_model>
     <circuit_model type="lut" name="frac_lut6" prefix="frac_lut6" dump_structural_verilog="true" is_default="true">
       <design_technology type="cmos" fracturable_lut="true"/>
       <input_buffer exist="false" circuit_model_name="dti_16f_7p5t_90c_bufx2"/>
@@ -430,6 +440,9 @@
   <pb_type_annotations>
     <!-- physical pb_type binding in complex block IO -->
     <pb_type name="io" physical_mode_name="physical"/>
+    <pb_type name="io">
+      <interconnect name="clks" circuit_model_name="clock_mux"/>
+    </pb_type>
     <pb_type name="io[physical].iopad">
       <interconnect name="mux1" circuit_model_name="mux_1level_io"/>
       <interconnect name="mux2" circuit_model_name="mux_1level_io"/>
@@ -453,6 +466,9 @@
     <!-- End physical pb_type binding in complex block IO -->
     <!-- physical pb_type binding in complex block CLB -->
     <!-- physical mode will be the default mode if not specified -->
+    <pb_type name="clb">
+      <interconnect name="clks" circuit_model_name="clock_mux"/>
+    </pb_type>
     <pb_type name="clb.clb_lr.fle" physical_mode_name="physical"/>
     <!-- Binding regular FLEs -->
     <pb_type name="clb.clb_lr.fle[physical].fabric.frac_lut6" circuit_model_name="frac_lut6"/>
@@ -484,6 +500,9 @@
     </pb_type>
     <pb_type name="clb.clb_lr.fle[arithmetic].adder.adder_carry" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.adder_carry"/>
     <pb_type name="dsp.dsp_lr" physical_mode_name="physical"/>
+    <pb_type name="dsp">
+      <interconnect name="crossbar_clk" circuit_model_name="clock_mux"/>
+    </pb_type>
     <pb_type name="dsp.dsp_lr[physical].dsp_phy" circuit_model_name="QL_DSP" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="sc_in" physical_mode_port="sc_in"/>
       <port name="sc_out" physical_mode_port="sc_out"/>
@@ -569,6 +588,9 @@
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
     <pb_type name="bram.bram_lr" physical_mode_name="physical"/>
+    <pb_type name="bram">
+      <interconnect name="crossbar_clk" circuit_model_name="clock_mux"/>
+    </pb_type>
     <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="sc_in" physical_mode_port="sc_in"/>
       <port name="sc_out" physical_mode_port="sc_out"/>
