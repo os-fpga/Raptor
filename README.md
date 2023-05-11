@@ -46,6 +46,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Project ---
 ---------------
+   create_design <name> ?-type <project type>? : Creates a design with <name> name
+     <project type>           : rtl (Default), gate-level
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
    target_device <name>       : Targets a device with <name> (default is 1GE75)
@@ -83,6 +85,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    ip_configure <IP_NAME> -mod_name <name> -out_file <filename> -version <ver_name> -P<param>="<value>"...
                               : Configures an IP <IP_NAME> and generates the corresponding file with module name
    ipgenerate ?clean?         : Generates all IP instances set by ip_configure
+     clean                    : Deletes files generated from this task
    simulate_ip  <module name> : Simulate IP with module name <module name>
 
 ------------------
@@ -119,26 +122,31 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        early                  : Perform early extraction (default)
        late                   : Perform late extraction
      -fast                    : Perform the fastest synthesis. QoR can be impacted.
+     -no_flatten              : Do not flatten design.
      -no_simplify             : Do not run special simplification algorithms in synthesis. 
    set_limits <type> <int>    : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
        dsp                    : Maximum number of usable DSPs
        bram                   : Maximum number of usable BRAMs
-   analyze ?clean?            : Analyzes the RTL design, generates top-level, pin and hierarchy information, clean removes related files
-   synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed), clean removes related files
+   analyze ?clean?            : Analyzes the RTL design, generates top-level, pin and hierarchy information
+     clean                    : Deletes files generated from this task
+   synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed)
+     <optimization>           : area, delay, mixed
        area                   : Optimize for reduce resource area 
        delay                  : Optimize for performance
        mixed                  : Optimize for area and performance (default)
+     clean                    : Deletes files generated from this task
 
 ---------------
 --- Packing ---
 ---------------
    pnr_netlist_lang <format>  : Chooses post-synthesis netlist format, (blif, edif, verilog, vhdl)
-   clb_packing   <directive>  : Performance optimization flags (auto, dense)
+   packing_options <option list>: Packing options
+     -clb_packing <directive> : Performance optimization flags (auto, dense, timing_driven)
        auto                   : CLB packing automatically determined (default)
        dense                  : Pack logic more densely into CLBs resulting in fewer utilized CLBs however may negatively impact timing
-       timing_driven          : Pack logic to topimize timing
-   packing ?clean?            : Packing, clean removes related files
-
+       timing_driven          : Pack logic to optimize timing
+   packing ?clean?            : Packing
+     clean                    : Deletes files generated from this task
 
 -------------
 --- Place ---
@@ -147,27 +155,35 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        in_define_order        : Port order pin assignment (default)
        random                 : Random pin assignment
        free                   : No automatic pin assignment
-   place ?clean?              : Placer, clean removes related files
+   place ?clean?              : Placer
+     clean                    : Deletes files generated from this task
 
 -------------
 --- Route ---
 -------------
-   route ?clean?              : Router, clean removes related files
+   route ?clean?              : Router
+     clean                    : Deletes files generated from this task
 
 ------------------------------
 --- Static Timing Analysis ---
 ------------------------------
-   sta ?clean?                : Statistical Timing Analysis, clean removes related files
+   sta ?clean?                : Statistical Timing Analysis
+     clean                    : Deletes files generated from this task
 
 -----------------
 --- Bitstream ---
 -----------------
-   bitstream ?clean?          : Bitstream generation, clean removes related files
-   program_device <-b> "<bitstream_file>" <-c> "<config_file>" <-n> "<index>": Perform device programming.
-     -b <bitstream_file>      : Specify bitstream file path to program. Ex: -b /home/user/mybitstream.bit
-     -c <config_file>         : Specify config file. Ex: -c gemini.cfg
-     -n <index>               : Optional. Default value is 0. Specify index of the device. Ex. -n 0
+   bitstream ?clean?          : Bitstream generation
+     clean                    : Deletes files generated from this task
 
+---------------
+--- Program ---
+---------------
+  program_device <-b> "<bitstream_file>" <-c> "<config_file>" <-n> "<index>" : Program the device via JTAG
+    -b <bitstream>            : Target bitstream file for loading
+    -c <config_file>          : Configuration file
+    -n <index>                : Index of device in JTAG chain
+    
 -----------------------------------------------
 ```
 
