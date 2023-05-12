@@ -51,14 +51,31 @@ list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
   Backend
   )
 
+list(APPEND RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS
+  Backend/OpenFPGA
+  Backend/OpenFPGA/vtr-verilog-to-routing
+)
+
 find_package(Git QUIET)
 
 if (NOT UPDATE_SUBMODULES)
   set(UPDATE_SUBMODULES OFF)
 endif()
 
-function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE)
-  foreach(SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
+function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE PARTIAL)
+    set(ORGNL_RECEV ${WORK_DIR})
+    message("###########################")
+    message(${SUBSYSTEM_LIST})
+    message("###########################")
+  foreach(GIVEN_SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
+    if(PARTIAL)
+        set(WORK_DIR ${ORGNL_RECEV})
+        get_filename_component(SUBMODULE "${GIVEN_SUBMODULE}" NAME)
+        get_filename_component(extract_dir "${GIVEN_SUBMODULE}" DIRECTORY)
+        set(WORK_DIR ${WORK_DIR}/${extract_dir})
+    else()
+        set(SUBMODULE ${GIVEN_SUBMODULE})    
+    endif()
     file(GLOB README ${WORK_DIR}/${SUBMODULE}/README*)
     if (NOT EXISTS "${README}" OR ${UPDATE})
       message("Updating ${SUBMODULE} submodule...")
@@ -74,11 +91,9 @@ function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE)
   endforeach()
 endfunction(checkout_subsystems)
 
-checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES})
-checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES})
-# checkout partial subsystem by going into their directory. 
-checkout_subsystems(OpenFPGA ${CMAKE_CURRENT_SOURCE_DIR}/Backend "" ${UPDATE_SUBMODULES})
-checkout_subsystems(vtr-verilog-to-routing ${CMAKE_CURRENT_SOURCE_DIR}/Backend/OpenFPGA "" ${UPDATE_SUBMODULES})
+checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES} OFF)
+checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} OFF)
+checkout_subsystems(RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} ON)
 
 if (PRODUCTION_BUILD)
   get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
