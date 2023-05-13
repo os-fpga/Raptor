@@ -44,13 +44,17 @@ list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   Raptor_Tools
   )
 
-list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS Backend)
-
 list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
   yosys_verific_rs
   FOEDAG_rs
   IP_Catalog
+  Backend
   )
+
+list(APPEND RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS
+  Backend/OpenFPGA
+  Backend/OpenFPGA/vtr-verilog-to-routing
+)
 
 find_package(Git QUIET)
 
@@ -58,8 +62,20 @@ if (NOT UPDATE_SUBMODULES)
   set(UPDATE_SUBMODULES OFF)
 endif()
 
-function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE)
-  foreach(SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
+function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE PARTIAL)
+    set(ORGNL_RECEV ${WORK_DIR})
+    message("###########################")
+    message(${SUBSYSTEM_LIST})
+    message("###########################")
+  foreach(GIVEN_SUBMODULE IN LISTS ${SUBSYSTEM_LIST})
+    if(PARTIAL)
+        set(WORK_DIR ${ORGNL_RECEV})
+        get_filename_component(SUBMODULE "${GIVEN_SUBMODULE}" NAME)
+        get_filename_component(extract_dir "${GIVEN_SUBMODULE}" DIRECTORY)
+        set(WORK_DIR ${WORK_DIR}/${extract_dir})
+    else()
+        set(SUBMODULE ${GIVEN_SUBMODULE})    
+    endif()
     file(GLOB README ${WORK_DIR}/${SUBMODULE}/README*)
     if (NOT EXISTS "${README}" OR ${UPDATE})
       message("Updating ${SUBMODULE} submodule...")
@@ -75,8 +91,9 @@ function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE)
   endforeach()
 endfunction(checkout_subsystems)
 
-checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES})
-checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES})
+checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES} OFF)
+checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} OFF)
+checkout_subsystems(RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} ON)
 
 if (PRODUCTION_BUILD)
   get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
@@ -133,7 +150,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 5)
-set(VERSION_PATCH 67)
+set(VERSION_PATCH 68)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
