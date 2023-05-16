@@ -99,10 +99,23 @@
                 "stepVal": 1,
                 "arg": "bram_limit"
             },
+            "carry_chain_spinbox_ex": {
+                "label": "Carry chain limit",
+                "widgetType": "spinbox",
+                "minVal": 0,
+                "maxVal": 0,
+                "stepVal": 1,
+                "arg": "carry_chain_limit"
+            },
             "fast_checkbox": {
                 "label": "Fast Synthesis",
                 "widgetType": "checkbox",
                 "arg": "fast"
+            },
+            "no_flatten": {
+                "label": "No flatten",
+                "widgetType": "checkbox",
+                "arg": "no_flatten"
             },
             "_META_": {
                 "hidden": false,
