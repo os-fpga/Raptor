@@ -65,7 +65,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    set_pin_loc <design_io_name> <device_io_name> ?<internal_pinname>?: Constraints pin location (Use in constraint.pin file)
    set_property mode <io_mode_name> <device_io_name> : Constraints pin mode (Use in constraint.pin file)
    set_clock_pin -device_clock <device_clock_name> -design_clock <design_clock_name>
-                              : like gemini has 16 clocks clk[0],clk[1]....,clk[15].
+                              : like gemini has 16 clocks clk[0],clk[1]....,clk[15]
                                 and e.g. user clocks are clk_a, clk_b and want to map clk_a with clk[15]
                                Constraints : set clocks for repacking constraints (Use in constraint.pin file)
 </engineering>
@@ -87,14 +87,14 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    simulation_options <simulator> <phase> ?<level>? <options> : Sets the simulator specific options for the specified phase
                       <phase> : compilation, elaboration, simulation, extra_options
    simulate <level> ?<simulator>? ?<waveform_file>?: Simulates the design and testbench
-                      <level> : rtl, gate, pnr. rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
+                      <level> : rtl, gate, pnr, rtl: RTL simulation, gate: post-synthesis simulation, pnr: post-pnr simulation
                   <simulator> : verilator, ghdl, icarus
-   wave_*                     : All wave commands will launch a GTKWave process if one hasn't been launched already. Subsequent commands will be sent to the launched process.
-   wave_cmd ...               : Sends given tcl commands to GTKWave process. See GTKWave docs for gtkwave:: commands.
-   wave_open <filename>       : Load given file in current GTKWave process.
+   wave_*                     : All wave commands will launch a GTKWave process if one hasn't been launched already. Subsequent commands will be sent to the launched process
+   wave_cmd ...               : Sends given tcl commands to GTKWave process. See GTKWave docs for gtkwave:: commands
+   wave_open <filename>       : Load given file in current GTKWave process
    wave_refresh               : Reloads the current active wave file
-   wave_show <signal>         : Add the given signal to the GTKWave window and highlight it.
-   wave_time <time>           : Set the primary marker to <time>. Time units can be specified, without a space. Ex: wave_time 100ps.
+   wave_show <signal>         : Add the given signal to the GTKWave window and highlight it
+   wave_time <time>           : Set the primary marker to <time>. Time units can be specified, without a space. Ex: wave_time 100ps
 
 -----------------
 --- Synthesis ---
@@ -114,9 +114,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      -clke_strategy <strategy>: Clock enable extraction strategy for FFs (early, late)
        early                  : Perform early extraction (default)
        late                   : Perform late extraction
-     -fast                    : Perform the fastest synthesis. QoR can be impacted.
-     -no_flatten              : Do not flatten design.
-     -no_simplify             : Do not run special simplification algorithms in synthesis. 
+     -fast                    : Perform the fastest synthesis. QoR can be impacted
+     -no_flatten              : Do not flatten design
+     -no_simplify             : Do not run special simplification algorithms in synthesis
 <engineering>
      -clke_strategy <strategy>: Clock enable extraction strategy for FFs:
        early                  : Perform early extraction
