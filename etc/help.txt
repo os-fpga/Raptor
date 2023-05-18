@@ -133,8 +133,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      <optimization>           : area, delay, mixed
        area                   : Optimize for reduce resource area 
        delay                  : Optimize for performance
-       mixed                  : Optimize for area and performance
-       none                   : Balanced (default)
+       mixed                  : Optimize for area and performance (default)
      clean                    : Deletes files generated from this task
 <engineering>
    synthesis_type Yosys/QL/RS : Selects Synthesis type
