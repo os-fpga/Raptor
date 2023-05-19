@@ -7,17 +7,15 @@
                 "options": [
                     "Area",
                     "Delay",
-                    "Mixed",
-                    "Balanced"
+                    "Mixed"
                 ],
                 "optionsLookup": [
                     "area",
                     "delay",
-                    "mixed",
-                    "none"
+                    "mixed"
                 ],
                 "arg": "_SynthOpt_",
-                "default":"Balanced"
+                "default":"Mixed"
             },
             "effort_dropdown": {
                 "label": "Effort",
