@@ -98,7 +98,7 @@
                 "arg": "bram_limit"
             },
             "carry_chain_spinbox_ex": {
-                "label": "Carry chain limit",
+                "label": "Carry length limit",
                 "widgetType": "spinbox",
                 "minVal": 0,
                 "maxVal": 0,
