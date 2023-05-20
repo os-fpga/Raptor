@@ -569,23 +569,7 @@ install(
 install(
     DIRECTORY examples/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/examples)
 install(
-      DIRECTORY tests/Testcases/aes_decrypt_fpga/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/aes_decrypt_fpga/)
-install(
-      DIRECTORY tests/Testcases/aes_decrypt_gate/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/aes_decrypt_gate/)
-install(
-      DIRECTORY tests/Testcases/sasc_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/sasc_testcase/)
-install(
-      DIRECTORY tests/Testcases/and2_testcase/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_testcase/)
-install(
-      DIRECTORY tests/Testcases/and2_gemini/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/and2_gemini/)      
-install(
-      DIRECTORY tests/Testcases/oneff/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/oneff/)
-install(
-      DIRECTORY tests/Testcases/counter/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter/)
-install(
-      DIRECTORY tests/Testcases/counter_vhdl/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/counter_vhdl/)
-install(
-      DIRECTORY tests/Testcases/ip_gen_axis_conv/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples/ip_gen_axis_conv/)
+      DIRECTORY tests/tcl_examples/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl_examples)
 install(
         DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/IP_Catalog DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/)
 install(
@@ -740,26 +724,8 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${PROJECT_SOURCE_DIR}/examples
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples/
       COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_fpga
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/aes_decrypt_fpga/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/aes_decrypt_gate
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/aes_decrypt_gate/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/sasc_testcase
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/sasc_testcase/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/and2_testcase
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_testcase/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/and2_gemini
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/and2_gemini/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/oneff
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/oneff/
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/tests/Testcases/counter_vhdl
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/counter_vhdl/
+          ${PROJECT_SOURCE_DIR}/tests/tcl_examples/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
