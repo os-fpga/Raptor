@@ -84,7 +84,7 @@
         <resource type="ff" num="51200"/>
         <resource type="bram" num="56"/>
         <resource type="dsp" num="56"/>
-        <resource type="carry_length" num="352"/>
+        <resource type="carry_length" num="336"/>
         <internal type="tag_version" name="v1.6.112"/>
         <internal type="vpr_arch" file="gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
@@ -114,7 +114,7 @@
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
-        <resource type="carry_length" num="544"/>
+        <resource type="carry_length" num="528"/>
         <internal type="tag_version" name="v1.6.112"/>
         <internal type="vpr_arch" file="gemini_compact_82x68/gemini_vpr.xml"/>
         <internal type="device_size" name="castor82x68_heterogeneous"/>
@@ -144,7 +144,7 @@
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
-        <resource type="carry_length" num="544"/>
+        <resource type="carry_length" num="528"/>
         <internal type="tag_version" name="v1.6.112"/>
         <internal type="vpr_arch" file="gemini_compact_82x68/gemini_vpr.xml"/>
         <internal type="device_size" name="castor82x68_heterogeneous"/>
@@ -174,7 +174,7 @@
         <resource type="ff" num="43648"/>
         <resource type="bram" num="56"/>
         <resource type="dsp" num="56"/>
-        <resource type="carry_length" num="352"/>
+        <resource type="carry_length" num="336"/>
         <internal type="tag_version" name="v1.6.112"/>
         <internal type="vpr_arch" file="gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
@@ -204,7 +204,7 @@
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
-        <resource type="carry_length" num="352"/>
+        <resource type="carry_length" num="336"/>
         <internal type="tag_version" name="v1.6.112"/>
         <internal type="vpr_arch" file="gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
@@ -234,7 +234,7 @@
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
-        <resource type="carry_length" num="64"/>
+        <resource type="carry_length" num="48"/>
         <internal type="tag_version" name="v1.6.112"/>
         <internal type="vpr_arch" file="gemini_compact_10x8/gemini_vpr.xml"/>
         <internal type="device_size" name="castor10x8_heterogeneous"/>
@@ -339,7 +339,7 @@
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
-        <resource type="carry_length" num="544"/>
+        <resource type="carry_length" num="528"/>
         <internal type="vpr_arch" file="gemini/gemini_vpr.xml"/>
         <internal type="device_size" name="castor82x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -367,7 +367,7 @@
         <resource type="ff" num="200000"/>
         <resource type="bram" num="312"/>
         <resource type="dsp" num="312"/>
-        <resource type="carry_length" num="64"/>
+        <resource type="carry_length" num="48"/>
         <internal type="vpr_arch" file="gemini_10x8/gemini_vpr.xml"/>
         <internal type="device_size" name="castor10x8_heterogeneous"/>
         <internal type="lut_size" num="6"/>
