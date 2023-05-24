@@ -71,7 +71,7 @@
       <port type="input" prefix="s" lib_name="S" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
     </circuit_model>
-    <circuit_model type="gate" name="dti_16f_7p5t_90c_ckmux21x1" prefix="dti_16f_7p5t_90c_ckmux21x1" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
+    <circuit_model type="gate" name="dti_lvt_16f_7p5t_90c_ckmux21x2" prefix="dti_lvt_16f_7p5t_90c_ckmux21x2" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="MUX2"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
@@ -215,7 +215,7 @@
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_ckmux21x1"/>
+      <pass_gate_logic circuit_model_name="dti_lvt_16f_7p5t_90c_ckmux21x2"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
@@ -310,6 +310,7 @@
       <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
       <port type="input" prefix="D" lib_name="D" size="1"/>
       <port type="input" prefix="scan_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
       <port type="input" prefix="SI" lib_name="SI" size="1"/>
       <port type="output" prefix="SO" lib_name="SO" size="1"/>
       <port type="input" prefix="R" lib_name="R" size="1"/>
@@ -513,33 +514,25 @@
       <port name="z" physical_mode_port="z_o"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULT_REGIN].RS_DSP_MULT_REGIN" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0100000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULT_REGIN].RS_DSP_MULT_REGIN" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000000010">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULT_REGOUT].RS_DSP_MULT_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0010000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULT_REGOUT].RS_DSP_MULT_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000000100">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULT_REGIN_REGOUT].RS_DSP_MULT_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0110000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULT_REGIN_REGOUT].RS_DSP_MULT_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000000110">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTADD].RS_DSP_MULTADD" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0001000000000000000000000000000000000000000000000000000000000000000000000000000000000">
-      <port name="a" physical_mode_port="a_i"/>
-      <port name="b" physical_mode_port="b_i"/>
-      <port name="z" physical_mode_port="z_o"/>
-      <port name="dly_b" physical_mode_port="dly_b_o"/>
-      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
-      <port name="lreset" physical_mode_port="lreset"/>
-    </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTADD_REGIN].RS_DSP_MULTADD_REGIN" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0101000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULTADD].RS_DSP_MULTADD" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000001000">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -547,7 +540,7 @@
       <port name="acc_fir" physical_mode_port="acc_fir_i"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTADD_REGOUT].RS_DSP_MULTADD_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0011000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULTADD_REGIN].RS_DSP_MULTADD_REGIN" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000001010">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -555,7 +548,7 @@
       <port name="acc_fir" physical_mode_port="acc_fir_i"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTADD_REGIN_REGOUT].RS_DSP_MULTADD_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0111000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULTADD_REGOUT].RS_DSP_MULTADD_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000001100">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
@@ -563,25 +556,33 @@
       <port name="acc_fir" physical_mode_port="acc_fir_i"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTACC].RS_DSP_MULTACC" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULTADD_REGIN_REGOUT].RS_DSP_MULTADD_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000001110">
+      <port name="a" physical_mode_port="a_i"/>
+      <port name="b" physical_mode_port="b_i"/>
+      <port name="z" physical_mode_port="z_o"/>
+      <port name="dly_b" physical_mode_port="dly_b_o"/>
+      <port name="acc_fir" physical_mode_port="acc_fir_i"/>
+      <port name="lreset" physical_mode_port="lreset"/>
+    </pb_type>
+    <pb_type name="dsp.dsp_lr[MULTACC].RS_DSP_MULTACC" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000010000">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTACC_REGIN].RS_DSP_MULTACC_REGIN" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0100100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULTACC_REGIN].RS_DSP_MULTACC_REGIN" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000010010">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTACC_REGOUT].RS_DSP_MULTACC_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0010100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULTACC_REGOUT].RS_DSP_MULTACC_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000010100">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
       <port name="lreset" physical_mode_port="lreset"/>
     </pb_type>
-    <pb_type name="dsp.dsp_lr[MULTACC_REGIN_REGOUT].RS_DSP_MULTACC_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0110100000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="dsp.dsp_lr[MULTACC_REGIN_REGOUT].RS_DSP_MULTACC_REGIN_REGOUT" physical_pb_type_name="dsp.dsp_lr[physical].dsp_phy" mode_bits="0000000000000000000000000000000000000000000000000000000000000000000000000000000010110">
       <port name="a" physical_mode_port="a_i"/>
       <port name="b" physical_mode_port="b_i"/>
       <port name="z" physical_mode_port="z_o"/>
