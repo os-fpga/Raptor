@@ -37,9 +37,17 @@ simulate rtl icarus
 puts "Compiling $project_name..."
 analyze
 synthesize delay
+
+# Gate Simulation
+simulate gate icarus
+
 packing
 place
 route
+
+# Post PnR Simulation
+simulate pnr icarus
+
 sta 
 # bitstream 
 
