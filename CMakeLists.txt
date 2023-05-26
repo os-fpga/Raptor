@@ -595,7 +595,7 @@ install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
 install(
-      FILES ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
+      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
 install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/cell_sim_blackbox.v
@@ -609,7 +609,7 @@ install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
 install(
-      FILES ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
+      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
 install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/cell_sim_blackbox.v
@@ -623,7 +623,7 @@ install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
 install(
-      FILES ${PROJECT_SOURCE_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vtr_flow/primitives.v
+      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
 install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis3/cell_sim_blackbox.v
