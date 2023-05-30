@@ -411,12 +411,11 @@
       <port type="output" prefix="PL_ADDR_o" size="32"/>
       <port type="output" prefix="PL_DATA_o" size="36"/>
       <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
-      <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+      <port type="sram" prefix="mode" size="84" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       <port type="input" prefix="sc_in" lib_name="SCAN_i" size="6"/>
       <port type="input" prefix="scan_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="sc_out" lib_name="SCAN_o" size="6"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE_i" size="1" is_global="true" default_val="0"/>
-      <port type="input" prefix="rwm" lib_name="rwm" size="3" is_global="true"/>
     </circuit_model>
   </circuit_library>
   <configuration_protocol>
@@ -608,11 +607,11 @@
     <pb_type name="bram">
       <interconnect name="crossbar_clk" circuit_model_name="clock_mux"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="sc_in" physical_mode_port="sc_in"/>
       <port name="sc_out" physical_mode_port="sc_out"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="WEN_A1" physical_mode_port="WEN_A1_i"/>
       <port name="WEN_B1" physical_mode_port="WEN_B1_i"/>
       <port name="BE_A1" physical_mode_port="BE_A1_i"/>
