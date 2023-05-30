@@ -319,6 +319,22 @@
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="C" lib_name="C" size="1" is_global="false" default_val="0"/>
     </circuit_model>
+    <circuit_model type="ff" name="GC_FFN" prefix="GC_FFN" verilog_netlist="./SRC/CustomModules/gc_ffn.v">
+      <design_technology type="cmos"/>
+      <input_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
+      <output_buffer exist="true" circuit_model_name="dti_16f_7p5t_90c_invx1"/>
+      <port type="input" prefix="D" lib_name="D" size="1"/>
+      <port type="input" prefix="scan_en" lib_name="SE" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
+      <port type="input" prefix="SI" lib_name="SI" size="1"/>
+      <port type="output" prefix="SO" lib_name="SO" size="1"/>
+      <port type="input" prefix="R" lib_name="R" size="1"/>
+      <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
+      <port type="input" prefix="E" lib_name="E" size="1"/>
+      <port type="output" prefix="Q" lib_name="Q" size="1"/>
+      <port type="clock" prefix="C" lib_name="C" size="1" is_global="false" default_val="0"/>
+      <port type="sram" prefix="mode" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="0"/>
+    </circuit_model>
     <circuit_model type="hard_logic" name="QL_DSP" prefix="QL_DSP" is_default="true" verilog_netlist="./SRC/CustomModules/rs_dsp.v">
       <design_technology type="cmos"/>
       <input_buffer exist="false"/>
@@ -395,12 +411,11 @@
       <port type="output" prefix="PL_ADDR_o" size="32"/>
       <port type="output" prefix="PL_DATA_o" size="36"/>
       <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
-      <port type="sram" prefix="mode" size="81" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+      <port type="sram" prefix="mode" size="84" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       <port type="input" prefix="sc_in" lib_name="SCAN_i" size="6"/>
       <port type="input" prefix="scan_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="sc_out" lib_name="SCAN_o" size="6"/>
       <port type="input" prefix="scan_mode" lib_name="SCAN_MODE_i" size="1" is_global="true" default_val="0"/>
-      <port type="input" prefix="rwm" lib_name="rwm" size="3" is_global="true"/>
     </circuit_model>
   </circuit_library>
   <configuration_protocol>
@@ -480,8 +495,7 @@
       <port name="in" physical_mode_port="in[0:5]"/>
       <port name="out" physical_mode_port="lut6_out"/>
     </pb_type>
-    <pb_type name="clb.clb_lr.fle[n1_lut6].ble6.ff[DFFRE].DFFRE" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.ff_bypass.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1">
-    </pb_type>
+    <pb_type name="clb.clb_lr.fle[n1_lut6].ble6.ff[DFFRE].DFFRE" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.ff_bypass.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="1"/>
     <pb_type name="clb.clb_lr.fle[fast_lut6].fast6.lut6" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.frac_lut6">
       <port name="in" physical_mode_port="in[0:5]"/>
       <port name="out" physical_mode_port="lut6_out"/>
@@ -491,14 +505,12 @@
       <port name="in" physical_mode_port="in[0:4]"/>
       <port name="out" physical_mode_port="lut5_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
-    <pb_type name="clb.clb_lr.fle[n2_lut5].ble5.ff[DFFRE].DFFRE" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.ff_bypass.ff_phy">
-    </pb_type>
+    <pb_type name="clb.clb_lr.fle[n2_lut5].ble5.ff[DFFRE].DFFRE" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.ff_bypass.ff_phy"/>
     <pb_type name="clb.clb_lr.fle[arithmetic].adder.lut5" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.frac_lut6" physical_pb_type_index_factor="0.5">
       <port name="in" physical_mode_port="in[0:4]"/>
       <port name="out" physical_mode_port="lut5_out[0:0]" physical_mode_pin_rotate_offset="1"/>
     </pb_type>
-    <pb_type name="clb.clb_lr.fle[arithmetic].adder.ff[DFFRE].DFFRE" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.ff_bypass.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="0">
-    </pb_type>
+    <pb_type name="clb.clb_lr.fle[arithmetic].adder.ff[DFFRE].DFFRE" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.ff_bypass.ff_phy" physical_pb_type_index_factor="2" physical_pb_type_index_offset="0"/>
     <pb_type name="clb.clb_lr.fle[arithmetic].adder.adder_carry" physical_pb_type_name="clb.clb_lr.fle[physical].fabric.adder_carry"/>
     <pb_type name="dsp.dsp_lr" physical_mode_name="physical"/>
     <pb_type name="dsp">
@@ -592,11 +604,11 @@
     <pb_type name="bram">
       <interconnect name="crossbar_clk" circuit_model_name="clock_mux"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="sc_in" physical_mode_port="sc_in"/>
       <port name="sc_out" physical_mode_port="sc_out"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="WEN_A1" physical_mode_port="WEN_A1_i"/>
       <port name="WEN_B1" physical_mode_port="WEN_B1_i"/>
       <port name="BE_A1" physical_mode_port="BE_A1_i"/>
