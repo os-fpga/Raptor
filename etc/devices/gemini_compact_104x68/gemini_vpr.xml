@@ -69,17 +69,6 @@
         <port name="Q" clock="C"/>
       </output_ports>
     </model>
-    <model name="dffnre">
-      <input_ports>
-        <port name="D" clock="C"/>
-        <port name="C" is_clock="1"/>
-        <port name="E" clock="C"/>
-        <port name="R" clock="C"/>
-      </input_ports>
-      <output_ports>
-        <port name="Q" clock="C"/>
-      </output_ports>
-    </model>
     <model name="io_scff">
       <input_ports>
         <port name="D" clock="clk"/>
@@ -446,7 +435,7 @@
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
-        <clock name="clk" num_pins="8"/>
+        <clock name="clk" num_pins="16"/>
         <input name="f2a_i" num_pins="1"/>
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
@@ -471,7 +460,7 @@
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
-        <clock name="clk" num_pins="8"/>
+        <clock name="clk" num_pins="16"/>
         <input name="f2a_i" num_pins="1"/>
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
@@ -497,7 +486,7 @@
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
-        <clock name="clk" num_pins="8"/>
+        <clock name="clk" num_pins="16"/>
         <input name="f2a_i" num_pins="1"/>
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
@@ -522,7 +511,7 @@
         <equivalent_sites>
           <site pb_type="io"/>
         </equivalent_sites>
-        <clock name="clk" num_pins="8"/>
+        <clock name="clk" num_pins="16"/>
         <input name="f2a_i" num_pins="1"/>
         <output name="a2f_o" num_pins="1"/>
         <input name="sc_in" num_pins="1"/>
@@ -563,7 +552,7 @@
         <output name="cout" num_pins="1"/>
         <input name="sr_in" num_pins="1"/>
         <output name="sr_out" num_pins="1"/>
-        <clock name="clk" num_pins="8"/>
+        <clock name="clk" num_pins="16"/>
         <!-- Each input of the tile can be driven by 15% of routing tracks
            Each output of the tile can drive 15% of routing tracks
            There are two pins (sc_in, sc_out) has not connection 
@@ -623,7 +612,7 @@
         <input name="I32" num_pins="12" equivalent="full"/>
         <input name="IS2" num_pins="6" equivalent="full"/>
         <output name="O2" num_pins="24" equivalent="none"/>
-        <clock name="clk" num_pins="8"/>
+        <clock name="clk" num_pins="16"/>
         <input name="sc_in" num_pins="3"/>
         <output name="sc_out" num_pins="3"/>
         <input name="sr_in" num_pins="3"/>
@@ -720,7 +709,7 @@
         <output name="sr_out" num_pins="6"/>
         <input name="plr_i" num_pins="36"/>
         <output name="plr_o" num_pins="36"/>
-        <clock name="clk" num_pins="8"/>
+        <clock name="clk" num_pins="16"/>
         <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
           <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
           <fc_override port_name="RAM_ID_i" fc_type="frac" fc_val="0"/>
@@ -843,7 +832,7 @@
     <!-- Capacity is a unique property of I/Os, it is the maximum number of I/Os that can be placed at the same (X,Y) location on the FPGA -->
     <!-- Not sure of the area of an I/O (varies widely), and it's not relevant to the design of the FPGA core, so we're setting it to 0. -->
     <pb_type name="io">
-      <clock name="clk" num_pins="8"/>
+      <clock name="clk" num_pins="16"/>
       <input name="f2a_i" num_pins="1"/>
       <output name="a2f_o" num_pins="1"/>
       <input name="sc_in" num_pins="1"/>
@@ -1066,7 +1055,7 @@
       <output name="cout" num_pins="1"/>
       <input name="sr_in" num_pins="1"/>
       <output name="sr_out" num_pins="1"/>
-      <clock name="clk" num_pins="8"/>
+      <clock name="clk" num_pins="16"/>
       <pb_type name="clb_lr" num_pb="1">
         <input name="in" num_pins="48"/>
         <input name="reset" num_pins="2"/>
@@ -1386,29 +1375,6 @@
                     <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
                   </interconnect>
                 </mode>
-                <mode name="DFFNRE">
-                  <pb_type name="DFFNRE" num_pb="1" blif_model=".subckt dffnre">
-                    <input name="D" num_pins="1"/>
-                    <input name="R" num_pins="1"/>
-                    <input name="E" num_pins="1"/>
-                    <output name="Q" num_pins="1"/>
-                    <clock name="C" num_pins="1"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.D" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.D" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.R" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.R" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.E" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.E" clock="C"/>
-                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
-                    <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
-                    <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
-                    <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
-                    <direct name="clk_to_C" input="ff.clk" output="DFFNRE.C"/>
-                  </interconnect>
-                </mode>
               </pb_type>
               <!-- ff -->
               <interconnect>
@@ -1468,29 +1434,6 @@
                 <input name="E" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="clk" num_pins="1"/>
-                <mode name="DFFNRE">
-                  <pb_type name="DFFNRE" num_pb="1" blif_model=".subckt dffnre">
-                    <input name="D" num_pins="1"/>
-                    <input name="R" num_pins="1"/>
-                    <input name="E" num_pins="1"/>
-                    <output name="Q" num_pins="1"/>
-                    <clock name="C" num_pins="1"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.D" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.D" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.R" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.R" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.E" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.E" clock="C"/>
-                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
-                    <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
-                    <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
-                    <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
-                    <direct name="clk_to_C" input="ff.clk" output="DFFNRE.C"/>
-                  </interconnect>
-                </mode>
                 <mode name="DFFRE">
                   <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
                     <input name="D" num_pins="1"/>
@@ -1591,29 +1534,6 @@
                 <input name="E" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="clk" num_pins="1"/>
-                <mode name="DFFNRE">
-                  <pb_type name="DFFNRE" num_pb="1" blif_model=".subckt dffnre">
-                    <input name="D" num_pins="1"/>
-                    <input name="R" num_pins="1"/>
-                    <input name="E" num_pins="1"/>
-                    <output name="Q" num_pins="1"/>
-                    <clock name="C" num_pins="1"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.D" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.D" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.R" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.R" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.E" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.E" clock="C"/>
-                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
-                    <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
-                    <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
-                    <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
-                    <direct name="clk_to_C" input="ff.clk" output="DFFNRE.C"/>
-                  </interconnect>
-                </mode>
                 <mode name="DFFRE">
                   <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
                     <input name="D" num_pins="1"/>
@@ -1812,7 +1732,7 @@
       <input name="I32" num_pins="12" equivalent="full"/>
       <input name="IS2" num_pins="6" equivalent="full"/>
       <output name="O2" num_pins="24" equivalent="none"/>
-      <clock name="clk" num_pins="8"/>
+      <clock name="clk" num_pins="16"/>
       <input name="sc_in" num_pins="3"/>
       <output name="sc_out" num_pins="3"/>
       <input name="sr_in" num_pins="3"/>
@@ -2433,7 +2353,7 @@
       <output name="sr_out" num_pins="6"/>
       <input name="plr_i" num_pins="36"/>
       <output name="plr_o" num_pins="36"/>
-      <clock name="clk" num_pins="8"/>
+      <clock name="clk" num_pins="16"/>
       <pb_type name="bram_lr" num_pb="1">
         <input name="WDATA_A1_i" num_pins="18"/>
         <input name="WDATA_A2_i" num_pins="18"/>
@@ -2826,7 +2746,7 @@
       <col type="bram" startx="40" starty="2" priority="20"/>
       <col type="bram" startx="52" starty="2" priority="20"/>
     </fixed_layout>
-    <fixed_layout name="castor82x68_heterogeneous" width="84" height="70">
+    <fixed_layout name="castor82x68_heterogeneous_real" width="84" height="70">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
       <row type="io_bottom" starty="1" priority="91"/>
@@ -2857,6 +2777,74 @@
       <col type="bram" startx="51" starty="2" priority="20"/>
       <col type="bram" startx="59" starty="2" priority="20"/>
       <col type="bram" startx="67" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor82x68_heterogeneous" width="106" height="70">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="12" starty="2" priority="20"/>
+      <col type="dsp" startx="24" starty="2" priority="20"/>
+      <col type="dsp" startx="36" starty="2" priority="20"/>
+      <col type="dsp" startx="48" starty="2" priority="20"/>
+      <col type="dsp" startx="57" starty="2" priority="20"/>
+      <col type="dsp" startx="69" starty="2" priority="20"/>
+      <col type="dsp" startx="81" starty="2" priority="20"/>
+      <col type="dsp" startx="93" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="7" starty="2" priority="20"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="74" starty="2" priority="20"/>
+      <col type="bram" startx="86" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor104x68_heterogeneous" width="106" height="70">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="12" starty="2" priority="20"/>
+      <col type="dsp" startx="24" starty="2" priority="20"/>
+      <col type="dsp" startx="36" starty="2" priority="20"/>
+      <col type="dsp" startx="48" starty="2" priority="20"/>
+      <col type="dsp" startx="57" starty="2" priority="20"/>
+      <col type="dsp" startx="69" starty="2" priority="20"/>
+      <col type="dsp" startx="81" starty="2" priority="20"/>
+      <col type="dsp" startx="93" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="7" starty="2" priority="20"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="74" starty="2" priority="20"/>
+      <col type="bram" startx="86" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
   </layout>
 </architecture>
