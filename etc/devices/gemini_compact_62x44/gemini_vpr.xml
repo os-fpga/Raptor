@@ -69,17 +69,6 @@
         <port name="Q" clock="C"/>
       </output_ports>
     </model>
-    <model name="dffnre">
-      <input_ports>
-        <port name="D" clock="C"/>
-        <port name="C" is_clock="1"/>
-        <port name="E" clock="C"/>
-        <port name="R" clock="C"/>
-      </input_ports>
-      <output_ports>
-        <port name="Q" clock="C"/>
-      </output_ports>
-    </model>
     <model name="io_scff">
       <input_ports>
         <port name="D" clock="clk"/>
@@ -1386,29 +1375,6 @@
                     <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
                   </interconnect>
                 </mode>
-                <mode name="DFFNRE">
-                  <pb_type name="DFFNRE" num_pb="1" blif_model=".subckt dffnre">
-                    <input name="D" num_pins="1"/>
-                    <input name="R" num_pins="1"/>
-                    <input name="E" num_pins="1"/>
-                    <output name="Q" num_pins="1"/>
-                    <clock name="C" num_pins="1"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.D" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.D" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.R" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.R" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.E" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.E" clock="C"/>
-                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
-                    <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
-                    <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
-                    <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
-                    <direct name="clk_to_C" input="ff.clk" output="DFFNRE.C"/>
-                  </interconnect>
-                </mode>
               </pb_type>
               <!-- ff -->
               <interconnect>
@@ -1468,29 +1434,6 @@
                 <input name="E" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="clk" num_pins="1"/>
-                <mode name="DFFNRE">
-                  <pb_type name="DFFNRE" num_pb="1" blif_model=".subckt dffnre">
-                    <input name="D" num_pins="1"/>
-                    <input name="R" num_pins="1"/>
-                    <input name="E" num_pins="1"/>
-                    <output name="Q" num_pins="1"/>
-                    <clock name="C" num_pins="1"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.D" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.D" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.R" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.R" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.E" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.E" clock="C"/>
-                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
-                    <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
-                    <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
-                    <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
-                    <direct name="clk_to_C" input="ff.clk" output="DFFNRE.C"/>
-                  </interconnect>
-                </mode>
                 <mode name="DFFRE">
                   <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
                     <input name="D" num_pins="1"/>
@@ -1591,29 +1534,6 @@
                 <input name="E" num_pins="1"/>
                 <output name="Q" num_pins="1"/>
                 <clock name="clk" num_pins="1"/>
-                <mode name="DFFNRE">
-                  <pb_type name="DFFNRE" num_pb="1" blif_model=".subckt dffnre">
-                    <input name="D" num_pins="1"/>
-                    <input name="R" num_pins="1"/>
-                    <input name="E" num_pins="1"/>
-                    <output name="Q" num_pins="1"/>
-                    <clock name="C" num_pins="1"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.D" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.D" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.R" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.R" clock="C"/>
-                    <T_setup value="3.15675e-11" port="DFFNRE.E" clock="C"/>
-                    <T_hold value="-2.83185e-11" port="DFFNRE.E" clock="C"/>
-                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
-                  </pb_type>
-                  <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
-                    <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
-                    <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
-                    <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
-                    <direct name="clk_to_C" input="ff.clk" output="DFFNRE.C"/>
-                  </interconnect>
-                </mode>
                 <mode name="DFFRE">
                   <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
                     <input name="D" num_pins="1"/>
