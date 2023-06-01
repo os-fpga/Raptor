@@ -3,4 +3,8 @@
   <set_io pin="clk[1]" net="OPEN"/>
   <set_io pin="clk[2]" net="OPEN"/>
   <set_io pin="clk[3]" net="OPEN"/>
+  <set_io pin="clk[4]" net="OPEN"/>
+  <set_io pin="clk[5]" net="OPEN"/>
+  <set_io pin="clk[6]" net="OPEN"/> 
+  <set_io pin="clk[7]" net="OPEN"/> 
 </pin_constraints>
