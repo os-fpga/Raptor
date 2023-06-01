@@ -1,0 +1,2850 @@
+<?xml version="1.0"?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM DO NOT EDIT
+////////////////////////////////////////////////////////////////////////////////
+-->
+<!--
+    GEMINI_COMPACT
+-->
+<architecture>
+  <models>
+    <model name="io">
+      <input_ports>
+        <port name="clk" is_clock="1"/>
+        <port name="outpad"/>
+      </input_ports>
+      <output_ports>
+        <port name="inpad"/>
+      </output_ports>
+    </model>
+    <model name="frac_lut6">
+      <input_ports>
+        <!-- <port name="in" combinational_sink_ports="lut4_out lut5_out lut6_out"/>    -->
+        <port name="in" combinational_sink_ports="lut5_out lut6_out"/>
+      </input_ports>
+      <output_ports>
+        <!-- <port name="lut4_out"/>    -->
+        <port name="lut5_out"/>
+        <port name="lut6_out"/>
+      </output_ports>
+    </model>
+    <model name="adder_carry">
+      <input_ports>
+        <port name="p" combinational_sink_ports="sumout cout"/>
+        <port name="g" combinational_sink_ports="sumout cout"/>
+        <port name="cin" combinational_sink_ports="sumout cout"/>
+      </input_ports>
+      <output_ports>
+        <port name="sumout"/>
+        <port name="cout"/>
+      </output_ports>
+    </model>
+    <model name="dff">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="C" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+      </output_ports>
+    </model>
+    <model name="dffn">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="C" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+      </output_ports>
+    </model>
+    <model name="dffre">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="C" is_clock="1"/>
+        <port name="E" clock="C"/>
+        <port name="R" clock="C"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+      </output_ports>
+    </model>
+    <model name="io_scff">
+      <input_ports>
+        <port name="D" clock="clk"/>
+        <port name="SI" clock="clk"/>
+        <port name="clk" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="clk"/>
+        <port name="SO" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="scff">
+      <input_ports>
+        <port name="D" clock="C"/>
+        <port name="SI" clock="C"/>
+        <port name="R" clock="C"/>
+        <port name="E" clock="C"/>
+        <port name="C" is_clock="1"/>
+      </input_ports>
+      <output_ports>
+        <port name="Q" clock="C"/>
+        <port name="SO" clock="C"/>
+      </output_ports>
+    </model>
+    <model name="dsp_phy">
+      <input_ports>
+        <port name="a_i" clock="clk"/>
+        <port name="acc_fir_i" clock="clk"/>
+        <port name="b_i" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="lreset"/>
+        <port name="feedback" clock="clk"/>
+        <port name="unsigned_a" clock="clk"/>
+        <port name="unsigned_b" clock="clk"/>
+        <port name="saturate_enable" clock="clk"/>
+        <port name="shift_right" clock="clk"/>
+        <port name="round" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="clk" is_clock="1"/>
+        <port name="sc_in"/>
+      </input_ports>
+      <output_ports>
+        <port name="z_o" clock="clk"/>
+        <port name="dly_b_o" clock="clk"/>
+        <port name="sc_out"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULT">
+      <input_ports>
+        <port name="a" combinational_sink_ports="z"/>
+        <port name="b" combinational_sink_ports="z"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="feedback"/>
+      </input_ports>
+      <output_ports>
+        <port name="z"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULT_REGIN">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="feedback" clock="clk"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULT_REGOUT">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="feedback" clock="clk"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULT_REGIN_REGOUT">
+      <input_ports>
+        <port name="a" clock="clk" combinational_sink_ports="z"/>
+        <port name="b" clock="clk" combinational_sink_ports="z"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="feedback" clock="clk"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTADD">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="acc_fir" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="feedback" clock="clk"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTADD_REGIN">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="acc_fir" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTADD_REGOUT">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="acc_fir" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTADD_REGIN_REGOUT">
+      <input_ports>
+        <port name="a" clock="clk" combinational_sink_ports="z"/>
+        <port name="b" clock="clk" combinational_sink_ports="z"/>
+        <port name="subtract" clock="clk" combinational_sink_ports="z"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="acc_fir" clock="clk" combinational_sink_ports="z"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+        <port name="dly_b" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTACC">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTACC_REGIN">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTACC_REGOUT">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="RS_DSP_MULTACC_REGIN_REGOUT">
+      <input_ports>
+        <port name="a" clock="clk"/>
+        <port name="b" clock="clk"/>
+        <port name="subtract" clock="clk"/>
+        <port name="feedback" clock="clk"/>
+        <port name="load_acc" clock="clk"/>
+        <port name="unsigned_a"/>
+        <port name="unsigned_b"/>
+        <port name="clk" is_clock="1"/>
+        <port name="lreset"/>
+        <port name="saturate_enable"/>
+        <port name="shift_right"/>
+        <port name="round"/>
+      </input_ports>
+      <output_ports>
+        <port name="z" clock="clk"/>
+      </output_ports>
+    </model>
+    <model name="bram_phy">
+      <input_ports>
+        <port name="WEN_A1_i" clock="CLK_A1_i"/>
+        <port name="WEN_B1_i" clock="CLK_B1_i"/>
+        <port name="BE_A1_i" clock="CLK_A1_i"/>
+        <port name="BE_B1_i" clock="CLK_B1_i"/>
+        <port name="REN_A1_i" clock="CLK_A1_i"/>
+        <port name="REN_B1_i" clock="CLK_B1_i"/>
+        <port name="ADDR_A1_i" clock="CLK_A1_i"/>
+        <port name="ADDR_B1_i" clock="CLK_B1_i"/>
+        <port name="WDATA_A1_i" clock="CLK_A1_i"/>
+        <port name="WDATA_B1_i" clock="CLK_B1_i"/>
+        <port name="CLK_A1_i" is_clock="1"/>
+        <port name="CLK_B1_i" is_clock="1"/>
+        <port name="FLUSH1_i" clock="CLK_A1_i"/>
+        <port name="WEN_A2_i" clock="CLK_A2_i"/>
+        <port name="WEN_B2_i" clock="CLK_B2_i"/>
+        <port name="BE_A2_i" clock="CLK_A2_i"/>
+        <port name="BE_B2_i" clock="CLK_B2_i"/>
+        <port name="REN_A2_i" clock="CLK_A2_i"/>
+        <port name="REN_B2_i" clock="CLK_B2_i"/>
+        <port name="ADDR_A2_i" clock="CLK_A2_i"/>
+        <port name="ADDR_B2_i" clock="CLK_B2_i"/>
+        <port name="WDATA_A2_i" clock="CLK_A2_i"/>
+        <port name="WDATA_B2_i" clock="CLK_B2_i"/>
+        <port name="CLK_A2_i" is_clock="1"/>
+        <port name="CLK_B2_i" is_clock="1"/>
+        <port name="FLUSH2_i" clock="CLK_A2_i"/>
+        <port name="RAM_ID_i" clock="PL_CLK_i"/>
+        <port name="PL_INIT_i" clock="PL_CLK_i"/>
+        <port name="PL_ENA_i" clock="PL_CLK_i"/>
+        <port name="PL_REN_i" clock="PL_CLK_i"/>
+        <port name="PL_CLK_i" is_clock="1"/>
+        <port name="PL_WEN_i" clock="PL_CLK_i"/>
+        <port name="PL_ADDR_i" clock="PL_CLK_i"/>
+        <port name="PL_DATA_i" clock="PL_CLK_i"/>
+        <port name="sc_in"/>
+      </input_ports>
+      <output_ports>
+        <port name="RDATA_A1_o" clock="CLK_A1_i"/>
+        <port name="RDATA_B1_o" clock="CLK_B1_i"/>
+        <port name="RDATA_A2_o" clock="CLK_A2_i"/>
+        <port name="RDATA_B2_o" clock="CLK_B2_i"/>
+        <port name="PL_INIT_o"/>
+        <port name="PL_ENA_o"/>
+        <port name="PL_REN_o"/>
+        <port name="PL_CLK_o"/>
+        <port name="PL_WEN_o"/>
+        <port name="PL_ADDR_o"/>
+        <port name="PL_DATA_o"/>
+        <port name="sc_out"/>
+      </output_ports>
+    </model>
+    <model name="RS_TDP36K">
+      <input_ports>
+        <port name="WEN_A1" clock="CLK_A1"/>
+        <port name="WEN_B1" clock="CLK_B1"/>
+        <port name="BE_A1" clock="CLK_A1"/>
+        <port name="BE_B1" clock="CLK_B1"/>
+        <port name="REN_A1" clock="CLK_A1"/>
+        <port name="REN_B1" clock="CLK_B1"/>
+        <port name="ADDR_A1" clock="CLK_A1"/>
+        <port name="ADDR_B1" clock="CLK_B1"/>
+        <port name="WDATA_A1" clock="CLK_A1"/>
+        <port name="WDATA_B1" clock="CLK_B1"/>
+        <port name="CLK_A1" is_clock="1"/>
+        <port name="CLK_B1" is_clock="1"/>
+        <port name="FLUSH1" clock="CLK_A1"/>
+        <port name="WEN_A2" clock="CLK_A2"/>
+        <port name="WEN_B2" clock="CLK_B2"/>
+        <port name="BE_A2" clock="CLK_A2"/>
+        <port name="BE_B2" clock="CLK_B2"/>
+        <port name="REN_A2" clock="CLK_A2"/>
+        <port name="REN_B2" clock="CLK_B2"/>
+        <port name="ADDR_A2" clock="CLK_A2"/>
+        <port name="ADDR_B2" clock="CLK_B2"/>
+        <port name="WDATA_A2" clock="CLK_A2"/>
+        <port name="WDATA_B2" clock="CLK_B2"/>
+        <port name="CLK_A2" is_clock="1"/>
+        <port name="CLK_B2" is_clock="1"/>
+        <port name="FLUSH2" clock="CLK_A2"/>
+        <!-- <port name="RESET_ni" clock="CLK_A2"/> -->
+      </input_ports>
+      <output_ports>
+        <port name="RDATA_A1" clock="CLK_A1"/>
+        <port name="RDATA_B1" clock="CLK_B1"/>
+        <port name="RDATA_A2" clock="CLK_A2"/>
+        <port name="RDATA_B2" clock="CLK_B2"/>
+      </output_ports>
+    </model>
+  </models>
+  <tiles>
+    <!-- Each I/O tile includes a GPIO -->
+    <!-- IOs go on the periphery of the FPGA, for consistency, 
+         make it physically equivalent on all sides so that only one definition of I/Os is needed.
+         If I do not make a physically equivalent definition, then I need to define 4 different I/Os, one for each side of the FPGA
+      -->
+    <!-- Each input of the tile can be driven by 15% of routing tracks
+           Each output of the tile can drive 10% of routing tracks
+        -->
+    <tile name="io_top" area="0">
+      <sub_tile name="io_top" capacity="72">
+        <equivalent_sites>
+          <site pb_type="io"/>
+        </equivalent_sites>
+        <clock name="clk" num_pins="16"/>
+        <input name="f2a_i" num_pins="1"/>
+        <output name="a2f_o" num_pins="1"/>
+        <input name="sc_in" num_pins="1"/>
+        <output name="sc_out" num_pins="1"/>
+        <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
+          <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_top[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_top[71:24].a2f_o" fc_type="frac" fc_val="0"/>
+        </fc>
+        <pinlocations pattern="custom">
+          <loc side="top"> io_top[47:0].f2a_i io_top[11:0].a2f_o io_top[71:24].a2f_o </loc>
+          <loc side="right">io_top[23:12].a2f_o io_top[71:48].f2a_i </loc>
+          <loc side="left">io_top.sc_in io_top.sc_out </loc>
+          <loc side="bottom">io_top.clk </loc>
+        </pinlocations>
+      </sub_tile>
+    </tile>
+    <tile name="io_right" area="0">
+      <sub_tile name="io_right" capacity="72">
+        <equivalent_sites>
+          <site pb_type="io"/>
+        </equivalent_sites>
+        <clock name="clk" num_pins="16"/>
+        <input name="f2a_i" num_pins="1"/>
+        <output name="a2f_o" num_pins="1"/>
+        <input name="sc_in" num_pins="1"/>
+        <output name="sc_out" num_pins="1"/>
+        <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
+          <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_right[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_right[71:24].a2f_o" fc_type="frac" fc_val="0"/>
+        </fc>
+        <pinlocations pattern="custom">
+          <!-- regularize routing -->
+          <loc side="top"> io_right[47:0].f2a_i io_right[5:0].a2f_o io_right[71:66].a2f_o </loc>
+          <loc side="right">io_right[65:6].a2f_o io_right[71:48].f2a_i </loc>
+          <loc side="left"> io_right.sc_in io_right.sc_out </loc>
+          <loc side="bottom"> io_right.clk </loc>
+        </pinlocations>
+      </sub_tile>
+    </tile>
+    <tile name="io_bottom" area="0">
+      <sub_tile name="io_bottom" capacity="72">
+        <equivalent_sites>
+          <site pb_type="io"/>
+        </equivalent_sites>
+        <clock name="clk" num_pins="16"/>
+        <input name="f2a_i" num_pins="1"/>
+        <output name="a2f_o" num_pins="1"/>
+        <input name="sc_in" num_pins="1"/>
+        <output name="sc_out" num_pins="1"/>
+        <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
+          <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_bottom[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_bottom[71:24].a2f_o" fc_type="frac" fc_val="0"/>
+        </fc>
+        <pinlocations pattern="custom">
+          <loc side="top"> io_bottom[47:0].f2a_i io_bottom[11:0].a2f_o io_bottom[71:24].a2f_o </loc>
+          <loc side="right">io_bottom[23:12].a2f_o io_bottom[71:48].f2a_i </loc>
+          <loc side="left">io_bottom.sc_in io_bottom.sc_out </loc>
+          <loc side="bottom">io_bottom.clk </loc>
+        </pinlocations>
+      </sub_tile>
+    </tile>
+    <tile name="io_left" area="0">
+      <sub_tile name="io_left" capacity="72">
+        <equivalent_sites>
+          <site pb_type="io"/>
+        </equivalent_sites>
+        <clock name="clk" num_pins="16"/>
+        <input name="f2a_i" num_pins="1"/>
+        <output name="a2f_o" num_pins="1"/>
+        <input name="sc_in" num_pins="1"/>
+        <output name="sc_out" num_pins="1"/>
+        <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
+          <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_left[23:0].f2a_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="io_left[71:24].a2f_o" fc_type="frac" fc_val="0"/>
+        </fc>
+        <pinlocations pattern="custom">
+          <loc side="top"> io_left[47:0].f2a_i io_left[11:0].a2f_o io_left[71:24].a2f_o </loc>
+          <loc side="right">io_left[23:12].a2f_o io_left[71:48].f2a_i </loc>
+          <loc side="left">io_left.sc_in io_left.sc_out </loc>
+          <loc side="bottom">io_left.clk </loc>
+        </pinlocations>
+      </sub_tile>
+    </tile>
+    <!-- Each CLB tile includes a Configurable Logic Block (CLB)
+         Each input of the tile can be driven by 15% of routing tracks
+         Each output of the tile can drive 15% of routing tracks
+      -->
+    <tile name="clb" area="53894">
+      <sub_tile name="clb">
+        <equivalent_sites>
+          <site pb_type="clb"/>
+        </equivalent_sites>
+        <input name="I00" num_pins="12" equivalent="full"/>
+        <input name="I10" num_pins="12" equivalent="full"/>
+        <input name="I20" num_pins="12" equivalent="full"/>
+        <input name="I30" num_pins="12" equivalent="full"/>
+        <input name="IS0" num_pins="6" equivalent="full"/>
+        <input name="sc_in" num_pins="1"/>
+        <input name="cin" num_pins="1"/>
+        <output name="O0" num_pins="24" equivalent="none"/>
+        <output name="sc_out" num_pins="1"/>
+        <output name="cout" num_pins="1"/>
+        <input name="sr_in" num_pins="1"/>
+        <output name="sr_out" num_pins="1"/>
+        <clock name="clk" num_pins="16"/>
+        <!-- Each input of the tile can be driven by 15% of routing tracks
+           Each output of the tile can drive 15% of routing tracks
+           There are two pins (sc_in, sc_out) has not connection 
+           to routing tracks. There are directed wired from/to adjacent CLBs
+        -->
+        <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
+          <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="cin" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="cout" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
+        </fc>
+        <pinlocations pattern="custom">
+          <loc side="left">
+            clb.clk clb.sc_in clb.sr_out
+        </loc>
+          <loc side="top">
+            clb.I10[11:0] clb.I00[11:0]
+            clb.IS0[2:0]
+            clb.O0[11:0]
+            clb.cin
+        </loc>
+          <loc side="right">
+            clb.I30[11:0] clb.I20[11:0]
+            clb.IS0[5:3]
+            clb.O0[23:12]
+            clb.sc_out clb.sr_in
+        </loc>
+          <loc side="bottom">
+            clb.cout
+        </loc>
+        </pinlocations>
+      </sub_tile>
+    </tile>
+    <tile name="dsp" height="3" width="1" area="548000">
+      <sub_tile name="dsp">
+        <equivalent_sites>
+          <site pb_type="dsp"/>
+        </equivalent_sites>
+        <input name="I00" num_pins="12" equivalent="full"/>
+        <input name="I10" num_pins="12" equivalent="full"/>
+        <input name="I20" num_pins="12" equivalent="full"/>
+        <input name="I30" num_pins="12" equivalent="full"/>
+        <input name="IS0" num_pins="6" equivalent="full"/>
+        <output name="O0" num_pins="24" equivalent="none"/>
+        <input name="I01" num_pins="12" equivalent="full"/>
+        <input name="I11" num_pins="12" equivalent="full"/>
+        <input name="I21" num_pins="12" equivalent="full"/>
+        <input name="I31" num_pins="12" equivalent="full"/>
+        <input name="IS1" num_pins="6" equivalent="full"/>
+        <output name="O1" num_pins="24" equivalent="none"/>
+        <input name="I02" num_pins="12" equivalent="full"/>
+        <input name="I12" num_pins="12" equivalent="full"/>
+        <input name="I22" num_pins="12" equivalent="full"/>
+        <input name="I32" num_pins="12" equivalent="full"/>
+        <input name="IS2" num_pins="6" equivalent="full"/>
+        <output name="O2" num_pins="24" equivalent="none"/>
+        <clock name="clk" num_pins="16"/>
+        <input name="sc_in" num_pins="3"/>
+        <output name="sc_out" num_pins="3"/>
+        <input name="sr_in" num_pins="3"/>
+        <output name="sr_out" num_pins="3"/>
+        <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
+          <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_out" fc_type="frac" fc_val="0"/>
+        </fc>
+        <pinlocations pattern="custom">
+          <loc side="left" yoffset="0"> dsp.clk dsp.sc_in dsp.sr_out </loc>
+          <loc side="left" yoffset="1"> </loc>
+          <loc side="left" yoffset="2"> </loc>
+          <loc side="right" yoffset="0">
+            dsp.I20[11:0] dsp.I30[11:0]
+            dsp.IS0[5:3]
+            dsp.O0[23:12]
+            dsp.sc_out dsp.sr_in
+          </loc>
+          <loc side="right" yoffset="1">
+            dsp.I21[11:0] dsp.I31[11:0]
+            dsp.IS1[5:3]
+            dsp.O1[23:12]
+          </loc>
+          <loc side="right" yoffset="2">
+            dsp.I22[11:0] dsp.I32[11:0]
+            dsp.IS2[5:3]
+            dsp.O2[23:12]
+          </loc>
+          <loc side="top" yoffset="0">
+            dsp.I00[11:0] dsp.I10[11:0]
+            dsp.IS0[2:0]
+            dsp.O0[11:0]
+          </loc>
+          <loc side="top" yoffset="1">
+            dsp.I01[11:0] dsp.I11[11:0]
+            dsp.IS1[2:0]
+            dsp.O1[11:0]
+          </loc>
+          <loc side="top" yoffset="2">
+            dsp.I02[11:0] dsp.I12[11:0]
+            dsp.IS2[2:0]
+            dsp.O2[11:0]
+          </loc>
+          <loc side="bottom" yoffset="0"> </loc>
+          <loc side="bottom" yoffset="1"> </loc>
+          <loc side="bottom" yoffset="2"> </loc>
+        </pinlocations>
+      </sub_tile>
+    </tile>
+    <tile name="bram" height="3" width="1" area="548000">
+      <sub_tile name="bram">
+        <equivalent_sites>
+          <site pb_type="bram"/>
+        </equivalent_sites>
+        <input name="I00" num_pins="12" equivalent="full"/>
+        <input name="I10" num_pins="12" equivalent="full"/>
+        <input name="I20" num_pins="12" equivalent="full"/>
+        <input name="I30" num_pins="12" equivalent="full"/>
+        <input name="IS0" num_pins="6" equivalent="full"/>
+        <output name="O0" num_pins="24" equivalent="none"/>
+        <input name="I01" num_pins="12" equivalent="full"/>
+        <input name="I11" num_pins="12" equivalent="full"/>
+        <input name="I21" num_pins="12" equivalent="full"/>
+        <input name="I31" num_pins="12" equivalent="full"/>
+        <input name="IS1" num_pins="6" equivalent="full"/>
+        <output name="O1" num_pins="24" equivalent="none"/>
+        <input name="I02" num_pins="12" equivalent="full"/>
+        <input name="I12" num_pins="12" equivalent="full"/>
+        <input name="I22" num_pins="12" equivalent="full"/>
+        <input name="I32" num_pins="12" equivalent="full"/>
+        <input name="IS2" num_pins="6" equivalent="full"/>
+        <output name="O2" num_pins="24" equivalent="none"/>
+        <input name="RAM_ID_i" num_pins="20"/>
+        <input name="PL_INIT_i" num_pins="1"/>
+        <input name="PL_ENA_i" num_pins="1"/>
+        <input name="PL_REN_i" num_pins="1"/>
+        <clock name="PL_CLK_i" num_pins="1"/>
+        <input name="PL_WEN_i" num_pins="2"/>
+        <input name="PL_ADDR_i" num_pins="32"/>
+        <input name="PL_DATA_i" num_pins="36"/>
+        <output name="PL_INIT_o" num_pins="1"/>
+        <output name="PL_ENA_o" num_pins="1"/>
+        <output name="PL_REN_o" num_pins="1"/>
+        <output name="PL_CLK_o" num_pins="1"/>
+        <output name="PL_WEN_o" num_pins="2"/>
+        <output name="PL_ADDR_o" num_pins="32"/>
+        <output name="PL_DATA_o" num_pins="36"/>
+        <input name="sc_in" num_pins="6"/>
+        <output name="sc_out" num_pins="6"/>
+        <input name="sr_in" num_pins="6"/>
+        <output name="sr_out" num_pins="6"/>
+        <input name="plr_i" num_pins="36"/>
+        <output name="plr_o" num_pins="36"/>
+        <clock name="clk" num_pins="16"/>
+        <fc in_type="frac" in_val="0.15" out_type="frac" out_val="0.15">
+          <fc_override port_name="clk" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="RAM_ID_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_INIT_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_ENA_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_REN_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_CLK_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_WEN_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_ADDR_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_DATA_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_INIT_o" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_ENA_o" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_REN_o" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_CLK_o" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_WEN_o" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_ADDR_o" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="PL_DATA_o" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sc_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_in" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="sr_out" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="plr_i" fc_type="frac" fc_val="0"/>
+          <fc_override port_name="plr_o" fc_type="frac" fc_val="0"/>
+        </fc>
+        <pinlocations pattern="custom">
+          <loc side="left" yoffset="0"> bram.clk bram.sc_in bram.sr_out bram.plr_o </loc>
+          <loc side="left" yoffset="1"> bram.RAM_ID_i </loc>
+          <loc side="left" yoffset="2"> </loc>
+          <loc side="right" yoffset="0">
+            bram.I20[11:0] bram.I30[11:0]
+            bram.IS0[5:3]
+            bram.O0[23:12]
+            bram.sc_out bram.sr_in bram.plr_i
+          </loc>
+          <loc side="right" yoffset="1">
+            bram.I21[11:0] bram.I31[11:0]
+            bram.IS1[5:3]
+            bram.O1[23:12]
+          </loc>
+          <loc side="right" yoffset="2">
+            bram.I22[11:0] bram.I32[11:0]
+            bram.IS2[5:3]
+            bram.O2[23:12]
+          </loc>
+          <loc side="top" yoffset="0">
+            bram.I00[11:0] bram.I10[11:0]
+            bram.IS0[2:0]
+            bram.O0[11:0]
+          </loc>
+          <loc side="top" yoffset="1">
+            bram.I01[11:0] bram.I11[11:0]
+            bram.IS1[2:0]
+            bram.O1[11:0]
+          </loc>
+          <loc side="top" yoffset="2">
+            bram.I02[11:0] bram.I12[11:0]
+            bram.IS2[2:0]
+            bram.O2[11:0]
+            bram.PL_INIT_i bram.PL_ENA_i bram.PL_REN_i bram.PL_CLK_i bram.PL_WEN_i bram.PL_ADDR_i bram.PL_DATA_i
+            <!-- bram.PL_DATA_OUT TODO add BRAM preload read feedback connections -->
+          </loc>
+          <loc side="bottom" yoffset="0">
+            bram.PL_INIT_o bram.PL_ENA_o bram.PL_REN_o bram.PL_CLK_o bram.PL_WEN_o bram.PL_ADDR_o bram.PL_DATA_o
+            <!-- bram.PL_DATA_IN -->
+          </loc>
+          <loc side="bottom" yoffset="1"> </loc>
+          <loc side="bottom" yoffset="2"> </loc>
+        </pinlocations>
+      </sub_tile>
+    </tile>
+  </tiles>
+  <!-- ODIN II specific config ends -->
+  <!-- Physical descriptions begin -->
+  <!-- Apply tileable routing architecture.
+       This is strongly recommended if you want to PnR large FPGA fabric
+    -->
+  <device>
+    <sizing R_minW_nmos="8926" R_minW_pmos="16067"/>
+    <!-- The grid_logic_tile_area below will be used for all blocks that do not explicitly set their own (non-routing)
+         area; set to 0 since we explicitly set the area of all blocks currently in this architecture file.
+      -->
+    <area grid_logic_tile_area="0"/>
+    <chan_width_distr>
+      <x distr="uniform" peak="1.000000"/>
+      <y distr="uniform" peak="1.000000"/>
+    </chan_width_distr>
+    <!-- Use Wilton-style connecting pattern in switch block 
+         Each routing track has access to only three other routing tracks
+         (one per each side of the switch block except the side where the routing track locates)
+      -->
+    <switch_block type="wilton" fs="3" sub_type="subset" sub_fs="3"/>
+    <connection_block input_switch_name="ipin_cblock"/>
+  </device>
+  <switchlist>
+    <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="1.91784e-10" mux_trans_size="1.222260" buf_size="auto"/>
+    <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="9.14e-11" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.784e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
+  </switchlist>
+  <segmentlist>
+    <!-- GIVE a specific name for the segment! OpenFPGA appreciate that! -->
+    <!-- Uni-directional routing architecture using only length-4 wires in routing channels -->
+    <segment name="L1" freq="0.20" length="1" type="unidir" Rmetal="0" Cmetal="0">
+      <mux name="L1_mux"/>
+      <sb type="pattern">1 1</sb>
+      <cb type="pattern">1</cb>
+    </segment>
+    <segment name="L4" freq="0.80" length="4" type="unidir" Rmetal="0" Cmetal="0">
+      <mux name="L4_mux"/>
+      <sb type="pattern">1 1 1 1 1</sb>
+      <cb type="pattern">1 1 1 1</cb>
+    </segment>
+  </segmentlist>
+  <directlist>
+    <direct name="carry_chain" from_pin="clb.cout" to_pin="clb.cin" x_offset="0" y_offset="-1" z_offset="0"/>
+    <!--direct name="scff_chain" from_pin="clb.sc_out" to_pin="clb.sc_in" x_offset="1" y_offset="0" z_offset="0"/-->
+    <!--direct name="scff_chain" from_pin="clb.sc_out" to_pin="clb.sc_in" x_offset="1" y_offset="0" z_offset="0" interconnection_type="row" x_dir="positive" y_dir="negative"/-->
+  </directlist>
+  <complexblocklist>
+    <!-- Define I/O pads begin -->
+    <!-- Capacity is a unique property of I/Os, it is the maximum number of I/Os that can be placed at the same (X,Y) location on the FPGA -->
+    <!-- Not sure of the area of an I/O (varies widely), and it's not relevant to the design of the FPGA core, so we're setting it to 0. -->
+    <pb_type name="io">
+      <clock name="clk" num_pins="16"/>
+      <input name="f2a_i" num_pins="1"/>
+      <output name="a2f_o" num_pins="1"/>
+      <input name="sc_in" num_pins="1"/>
+      <output name="sc_out" num_pins="1"/>
+      <mode name="physical" disable_packing="true">
+        <pb_type name="iopad" num_pb="1">
+          <clock name="clk" num_pins="1"/>
+          <input name="f2a_i" num_pins="1"/>
+          <output name="a2f_o" num_pins="1"/>
+          <input name="sc_in" num_pins="1"/>
+          <output name="sc_out" num_pins="1"/>
+          <pb_type name="ff" blif_model=".subckt io_scff" num_pb="2">
+            <input name="D" num_pins="1" port_class="D"/>
+            <input name="SI" num_pins="1"/>
+            <output name="SO" num_pins="1"/>
+            <output name="Q" num_pins="1" port_class="Q"/>
+            <clock name="clk" num_pins="1" port_class="clock"/>
+            <T_setup value="5.307e-11" port="ff[0:0].D" clock="clk"/>
+            <T_setup value="5.307e-11" port="ff[1:1].D" clock="clk"/>
+            <T_setup value="5.7279e-11" port="ff.SI" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[0:0].Q" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[1:1].Q" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[0:0].SO" clock="clk"/>
+            <T_clock_to_Q max="1.4576e-10" port="ff[1:1].SO" clock="clk"/>
+          </pb_type>
+          <pb_type name="pad" blif_model=".subckt io" num_pb="1">
+            <clock name="clk" num_pins="1" port_class="clock"/>
+            <input name="outpad" num_pins="1"/>
+            <output name="inpad" num_pins="1"/>
+          </pb_type>
+          <interconnect>
+            <direct name="pad-clk" input="iopad.clk" output="pad.clk"/>
+            <direct name="ff[0:0]-clk" input="iopad.clk" output="ff[0:0].clk"/>
+            <direct name="ff[1:1]-clk" input="iopad.clk" output="ff[1:1].clk"/>
+            <direct name="ff[0:0]-D" input="iopad.f2a_i" output="ff[0:0].D"/>
+            <direct name="ff[1:1]-D" input="pad.inpad" output="ff[1:1].D"/>
+            <direct name="ff[0:0]-DI" input="iopad.sc_in" output="ff[0:0].SI"/>
+            <direct name="ff[1:1]-DI" input="ff[0:0].SO" output="ff[1:1].SI"/>
+            <direct name="iopad-sc_out" input="ff[1:1].SO" output="iopad.sc_out"/>
+            <mux name="mux1" input="iopad.f2a_i ff[0:0].Q" output="pad.outpad">
+              <delay_constant max="2.27835e-11" min="1.5738e-11" in_port="iopad.f2a_i" out_port="pad.outpad"/>
+              <delay_constant max="2.2875e-11" min="1.56465e-11" in_port="ff[0:0].Q" out_port="pad.outpad"/>
+            </mux>
+            <mux name="mux2" input="pad.inpad ff[1:1].Q" output="iopad.a2f_o">
+              <delay_constant max="5.4351e-11" min="1.9215e-11" in_port="pad.inpad" out_port="iopad.a2f_o"/>
+              <delay_constant max="5.48085e-11" min="1.98555e-11" in_port="ff[1:1].Q" out_port="iopad.a2f_o"/>
+            </mux>
+          </interconnect>
+        </pb_type>
+        <interconnect>
+          <complete name="clks" input="io.clk" output="iopad.clk">      
+                  
+               </complete>
+          <direct name="direct3" input="io.f2a_i" output="iopad.f2a_i"/>
+          <direct name="direct4" input="iopad.a2f_o" output="io.a2f_o"/>
+          <direct name="direct6" input="io.sc_in" output="iopad.sc_in"/>
+          <direct name="direct7" input="iopad.sc_out" output="io.sc_out"/>
+        </interconnect>
+      </mode>
+      <mode name="io_output">
+        <pb_type name="io_output" num_pb="1">
+          <clock name="clk" num_pins="1"/>
+          <input name="f2a_i" num_pins="1"/>
+          <pb_type name="ff" num_pb="1">
+            <input name="D" num_pins="1"/>
+            <output name="Q" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <mode name="DFF">
+              <pb_type name="DFF" blif_model=".subckt dff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="C" num_pins="1"/>
+                <T_setup value="5.307e-11" port="DFF.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFF.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFF.Q" clock="C"/>
+              </pb_type>
+              <interconnect>
+                <direct input="DFF.Q" name="DFF-Q" output="ff.Q">
+                  <pack_pattern name="pack-OREG" in_port="DFF.Q" out_port="ff.Q"/>
+                </direct>
+                <direct input="ff.D" name="DFF-D" output="DFF.D">
+                </direct>
+                <direct input="ff.clk" name="DFF-clk" output="DFF.C"/>
+              </interconnect>
+            </mode>
+            <mode name="DFFN">
+              <pb_type name="DFFN" blif_model=".subckt dffn" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="C" num_pins="1"/>
+                <T_setup value="5.307e-11" port="DFFN.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFFN.Q" clock="C"/>
+              </pb_type>
+              <interconnect>
+                <direct input="DFFN.Q" name="DFFN-Q" output="ff.Q">
+                  <pack_pattern name="pack-OREGN" in_port="DFFN.Q" out_port="ff.Q"/>
+                </direct>
+                <direct input="ff.D" name="DFFN-D" output="DFFN.D">
+                </direct>
+                <direct input="ff.clk" name="DFFN-clk" output="DFFN.C"/>
+              </interconnect>
+            </mode>
+          </pb_type>
+          <pb_type name="outpad" blif_model=".output" num_pb="1">
+            <input name="outpad" num_pins="1"/>
+          </pb_type>
+          <interconnect>
+            <direct name="ff-clk" input="io_output.clk" output="ff.clk"/>
+            <direct name="ff-D" input="io_output.f2a_i" output="ff.D"/>
+            <mux name="mux1" input="io_output.f2a_i ff.Q" output="outpad.outpad">
+              <pack_pattern name="pack-OREG" in_port="ff.Q" out_port="outpad.outpad"/>
+              <pack_pattern name="pack-OREGN" in_port="ff.Q" out_port="outpad.outpad"/>
+              <delay_constant max="2.27835e-11" min="1.5738e-11" in_port="io_output.f2a_i" out_port="outpad.outpad"/>
+              <delay_constant max="2.2875e-11" min="1.56465e-11" in_port="ff.Q" out_port="outpad.outpad"/>
+            </mux>
+          </interconnect>
+        </pb_type>
+        <interconnect>
+          <complete name="io_output-clk" input="io.clk" output="io_output.clk">      
+                  
+               </complete>
+          <direct name="io_output-f2a_i" input="io.f2a_i" output="io_output.f2a_i"/>
+        </interconnect>
+      </mode>
+      <mode name="io_input">
+        <pb_type name="io_input" num_pb="1">
+          <clock name="clk" num_pins="1"/>
+          <output name="a2f_o" num_pins="1"/>
+          <pb_type name="inpad" blif_model=".input" num_pb="1">
+            <output name="inpad" num_pins="1"/>
+          </pb_type>
+          <pb_type name="ff" num_pb="1">
+            <input name="D" num_pins="1" port_class="D"/>
+            <output name="Q" num_pins="1" port_class="Q"/>
+            <clock name="clk" num_pins="1" port_class="clock"/>
+            <mode name="DFF">
+              <pb_type name="DFF" blif_model=".subckt dff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="C" num_pins="1"/>
+                <T_setup value="5.307e-11" port="DFF.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFF.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFF.Q" clock="C"/>
+              </pb_type>
+              <interconnect>
+                <direct input="DFF.Q" name="DFF-Q" output="ff.Q"/>
+                <direct input="ff.D" name="DFF-D" output="DFF.D">
+                  <pack_pattern name="pack-IREG" in_port="ff.D" out_port="DFF.D"/>
+                </direct>
+                <direct input="ff.clk" name="DFF-clk" output="DFF.C"/>
+              </interconnect>
+            </mode>
+            <mode name="DFFN">
+              <pb_type name="DFFN" blif_model=".subckt dffn" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="C" num_pins="1"/>
+                <T_setup value="5.307e-11" port="DFFN.D" clock="C"/>
+                <T_hold value="-4.1664e-11" port="DFFN.D" clock="C"/>
+                <T_clock_to_Q max="1.4576e-10" port="DFFN.Q" clock="C"/>
+              </pb_type>
+              <interconnect>
+                <direct input="DFFN.Q" name="DFFN-Q" output="ff.Q"/>
+                <direct input="ff.D" name="DFFN-D" output="DFFN.D">
+                  <pack_pattern name="pack-IREGN" in_port="ff.D" out_port="DFFN.D"/>
+                </direct>
+                <direct input="ff.clk" name="DFFN-clk" output="DFFN.C"/>
+              </interconnect>
+            </mode>
+          </pb_type>
+          <interconnect>
+            <direct name="ff-clk" input="io_input.clk" output="ff.clk"/>
+            <direct name="ff-D" input="inpad.inpad" output="ff.D">
+              <delay_constant max="3.0927e-11" min="8.5095e-12" in_port="inpad.inpad" out_port="ff.D"/>
+              <pack_pattern name="pack-IREG" in_port="inpad.inpad" out_port="ff.D"/>
+              <pack_pattern name="pack-IREGN" in_port="inpad.inpad" out_port="ff.D"/>
+            </direct>
+            <mux name="mux2" input="inpad.inpad ff.Q" output="io_input.a2f_o">
+              <delay_constant max="5.4351e-11" min="1.9215e-11" in_port="inpad.inpad" out_port="io_input.a2f_o"/>
+              <delay_constant max="5.48085e-11" min="1.98555e-11" in_port="ff.Q" out_port="io_input.a2f_o"/>
+            </mux>
+          </interconnect>
+        </pb_type>
+        <interconnect>
+          <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o"/>
+          <complete name="io_input-clk" input="io.clk" output="io_input.clk">      
+                  
+               </complete>
+        </interconnect>
+      </mode>
+    </pb_type>
+    <!-- Define I/O pads ends -->
+    <!-- Define MULTi-mode Configurable Logic Block (CLB) begin -->
+    <!-- Technical highlight:
+         - K6_frac: Each Logic Element (LE) contains a fracturable 6 LUT,
+                    which can operate as one 6-LUT or two 5-LUTs or four 4-LUTs 
+                    In addition to 6-LUT, each LE also includes two Flip-Flops
+         - N10: every CLB consists of 10 LEs and a local routing architecture
+         - I40: every CLB has 40 inputs
+         - chain: a soft adder chain across all the LEs in a CLB
+                  The inputs of a carry chain mux are driven by 4-LUTs that are used to implement P&G for CLA
+                  The sumout and carry-out of adder can optional drive an LE output or a Flip-Flop
+                  The carry-out of adder will drive the carry-in of the next adder in the chain
+         - shiftreg: Flip-flops inside CLB can be configured as shift registers.
+                     The organization is similar the adder chain except it is programmable
+         - crossbar: every local routing MULTiplexer accesses to 50% of the CLB inputs and 25% of the feedback
+      -->
+    <!-- WARNING: the port order of the pb_type must match the tile port order -->
+    <pb_type name="clb">
+      <input name="I00" num_pins="12" equivalent="full"/>
+      <input name="I10" num_pins="12" equivalent="full"/>
+      <input name="I20" num_pins="12" equivalent="full"/>
+      <input name="I30" num_pins="12" equivalent="full"/>
+      <input name="IS0" num_pins="6" equivalent="full"/>
+      <input name="sc_in" num_pins="1"/>
+      <input name="cin" num_pins="1"/>
+      <output name="O0" num_pins="24" equivalent="none"/>
+      <output name="sc_out" num_pins="1"/>
+      <output name="cout" num_pins="1"/>
+      <input name="sr_in" num_pins="1"/>
+      <output name="sr_out" num_pins="1"/>
+      <clock name="clk" num_pins="16"/>
+      <pb_type name="clb_lr" num_pb="1">
+        <input name="in" num_pins="48"/>
+        <input name="reset" num_pins="2"/>
+        <input name="enable" num_pins="4"/>
+        <input name="sc_in" num_pins="1"/>
+        <input name="cin" num_pins="1"/>
+        <output name="out" num_pins="24"/>
+        <output name="sc_out" num_pins="1"/>
+        <output name="cout" num_pins="1"/>
+        <clock name="clk" num_pins="1"/>
+        <!-- Describe fracturable logic element -->
+        <pb_type name="fle" num_pb="8">
+          <input name="in" num_pins="6"/>
+          <input name="cin" num_pins="1"/>
+          <input name="sc_in" num_pins="1"/>
+          <input name="reset" num_pins="2"/>
+          <input name="enable" num_pins="2"/>
+          <output name="out" num_pins="2"/>
+          <output name="o6" num_pins="1"/>
+          <output name="cout" num_pins="1"/>
+          <output name="sc_out" num_pins="1"/>
+          <clock name="clk" num_pins="1"/>
+          <!-- Describe physical mode begins -->
+          <!-- Timing annotation is not require for unpackable mode
+             It will not be used by timing analyzer
+          -->
+          <mode name="physical" disable_packing="true">
+            <pb_type name="fabric" num_pb="1">
+              <input name="in" num_pins="6"/>
+              <input name="cin" num_pins="1"/>
+              <input name="sc_in" num_pins="1"/>
+              <input name="reset" num_pins="2"/>
+              <input name="enable" num_pins="2"/>
+              <output name="out" num_pins="2"/>
+              <output name="o6" num_pins="1"/>
+              <output name="cout" num_pins="1"/>
+              <output name="sc_out" num_pins="1"/>
+              <clock name="clk" num_pins="1"/>
+              <pb_type name="frac_lut6" blif_model=".subckt frac_lut6" num_pb="1">
+                <input name="in" num_pins="6"/>
+                <!-- <output name="lut4_out" num_pins="4"/>        -->
+                <output name="lut5_out" num_pins="2"/>
+                <output name="lut6_out" num_pins="1"/>
+                <delay_matrix type="max" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
+                           2.37077e-10
+                           3.35531e-10
+                           2.32502e-10
+                           3.09179e-10
+                           1.75772e-10
+                           1.40727e-10
+                        </delay_matrix>
+                <delay_matrix type="min" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
+                           1.21878e-10
+                           1.6836e-10
+                           1.20323e-10
+                           1.61406e-10
+                           9.0768e-11
+                           6.96315e-11
+                        </delay_matrix>
+                <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
+                           1.16846e-10
+                           2.30306e-10
+                           1.1712e-10
+                           1.9883e-10
+                           6.34095e-11
+                        </delay_matrix>
+                <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
+                           6.08475e-11
+                           1.07055e-10
+                           6.23115e-11
+                           9.6807e-11
+                           2.04045e-11
+                        </delay_matrix>
+                <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
+                           1.16846e-10
+                           2.30306e-10
+                           1.1712e-10
+                           1.9883e-10
+                           6.34095e-11
+                        </delay_matrix>
+                <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
+                           6.08475e-11
+                           1.07055e-10
+                           6.23115e-11
+                           9.6807e-11
+                           2.04045e-11
+                        </delay_matrix>
+                <!--                        <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[0]">
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>        
+                        <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[0]">
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>        
+                        <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[1]">
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>        
+                        <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[1]">
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>        
+                        <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[2]">
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>        
+                        <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[2]">
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>        
+                        <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[3]">
+                           8.0337e-11
+                           1.93157e-10
+                           7.98795e-11
+                           1.62321e-10
+                        </delay_matrix>        
+                        <delay_matrix type="min" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[3]">
+                           3.3489e-11
+                           7.96965e-11
+                           3.50445e-11
+                           6.9174e-11
+                        </delay_matrix>     
+-->
+              </pb_type>
+              <!-- frac_lut6 -->
+              <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="1">
+                <input name="p" num_pins="1"/>
+                <input name="g" num_pins="1"/>
+                <input name="cin" num_pins="1"/>
+                <output name="sumout" num_pins="1"/>
+                <output name="cout" num_pins="1"/>
+                <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
+                <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
+                <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
+                <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
+                <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
+                <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+              </pb_type>
+              <!-- adder_carry -->
+              <pb_type name="ff_bypass" num_pb="2">
+                <input name="D" num_pins="1"/>
+                <input name="SI" num_pins="1"/>
+                <output name="SO" num_pins="1"/>
+                <input name="R" num_pins="1"/>
+                <input name="E" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="C" num_pins="1"/>
+                <pb_type name="ff_phy" blif_model=".subckt scff" num_pb="1">
+                  <input name="D" num_pins="1"/>
+                  <input name="SI" num_pins="1"/>
+                  <output name="SO" num_pins="1"/>
+                  <input name="R" num_pins="1"/>
+                  <input name="E" num_pins="1"/>
+                  <output name="Q" num_pins="1"/>
+                  <clock name="C" num_pins="1"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.D" clock="C"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.SI" clock="C"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.E" clock="C"/>
+                  <T_setup value="3.15675e-11" port="ff_phy.R" clock="C"/>
+                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.Q" clock="C"/>
+                  <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="ff_phy.SO" clock="C"/>
+                </pb_type>
+                <!-- ff_phy -->
+                <interconnect>
+                  <direct name="direct_C" input="ff_bypass.C" output="ff_phy.C"/>
+                  <direct name="direct_SI" input="ff_bypass.SI" output="ff_phy.SI"/>
+                  <direct name="direct_SO" input="ff_phy.SO" output="ff_bypass.SO"/>
+                  <direct name="direct_R" input="ff_bypass.R" output="ff_phy.R"/>
+                  <direct name="direct_E" input="ff_bypass.E" output="ff_phy.E"/>
+                  <direct name="direct_D" input="ff_bypass.D" output="ff_phy.D"/>
+                  <mux name="mux_bypass" input="ff_bypass.D ff_phy.Q" output="ff_bypass.Q"/>
+                </interconnect>
+              </pb_type>
+              <!-- ff_bypass -->
+              <interconnect>
+                <direct name="direct_clk0" input="fabric.clk" output="ff_bypass[0].C"/>
+                <direct name="direct_clk1" input="fabric.clk" output="ff_bypass[1].C"/>
+                <direct name="direct_reset0" input="fabric.reset[0]" output="ff_bypass[0].R"/>
+                <direct name="direct_reset1" input="fabric.reset[1]" output="ff_bypass[1].R"/>
+                <direct name="direct_enable0" input="fabric.enable[0]" output="ff_bypass[0].E"/>
+                <direct name="direct_enable1" input="fabric.enable[1]" output="ff_bypass[1].E"/>
+                <direct name="direct_in" input="fabric.in" output="frac_lut6.in"/>
+                <direct name="direct_cin" input="fabric.cin" output="adder_carry.cin"/>
+                <direct name="direct_cout" input="adder_carry.cout" output="fabric.cout"/>
+                <direct name="direct_scan0" input="fabric.sc_in" output="ff_bypass[0].SI"/>
+                <direct name="direct_scan1" input="ff_bypass[0].SO" output="ff_bypass[1].SI"/>
+                <direct name="direct_scan2" input="ff_bypass[1].SO" output="fabric.sc_out"/>
+                <direct name="direct_p" input="frac_lut6.lut5_out[0]" output="adder_carry.p"/>
+                <direct name="direct_g" input="frac_lut6.lut5_out[1]" output="adder_carry.g"/>
+                <mux name="mux_pre_ff0" input="adder_carry.sumout frac_lut6.lut5_out[0]" output="ff_bypass[0].D"/>
+                <mux name="mux_pre_ff1" input="frac_lut6.lut6_out frac_lut6.lut5_out[1]" output="ff_bypass[1].D"/>
+                <direct name="direct_byp0" input="ff_bypass[0].Q" output="fabric.out[0]"/>
+                <direct name="direct_byp1" input="ff_bypass[1].Q" output="fabric.out[1]"/>
+                <!-- <mux name="mux_byp0" input="adder_carry.sumout frac_lut6.lut5_out[0] ff_bypass[0].Q" output="fabric.out[0]"/> -->
+                <!-- <mux name="mux_byp1" input="frac_lut6.lut6_out frac_lut6.lut5_out[1] ff_bypass[1].Q" output="fabric.out[1]"/> -->
+                <direct name="direct_o6" input="frac_lut6.lut6_out" output="fabric.o6"/>
+              </interconnect>
+            </pb_type>
+            <!-- fabric -->
+            <interconnect>
+              <direct name="direct1" input="fle.in" output="fabric.in"/>
+              <direct name="direct3" input="fle.sc_in" output="fabric.sc_in"/>
+              <direct name="direct4" input="fle.cin" output="fabric.cin"/>
+              <direct name="direct5" input="fabric.out" output="fle.out"/>
+              <direct name="direct6" input="fabric.o6" output="fle.o6"/>
+              <direct name="direct7" input="fabric.sc_out" output="fle.sc_out"/>
+              <direct name="direct8" input="fabric.cout" output="fle.cout"/>
+              <direct name="direct9" input="fle.clk" output="fabric.clk"/>
+              <direct name="direct10" input="fle.reset" output="fabric.reset"/>
+              <direct name="direct12" input="fle.enable" output="fabric.enable"/>
+            </interconnect>
+          </mode>
+          <!-- Define physical mode ends -->
+          <!-- BEGIN FAST LUT6 MODE -->
+          <mode name="fast_lut6">
+            <pb_type name="fast6" num_pb="1">
+              <input name="in" num_pins="6"/>
+              <output name="out" num_pins="1"/>
+              <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
+                <input name="in" num_pins="6" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
+                           2.37077e-10
+                           3.35531e-10
+                           2.32502e-10
+                           3.09179e-10
+                           1.75772e-10
+                           1.40727e-10
+                     </delay_matrix>
+                <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
+                        1.21878e-10
+                        1.6836e-10
+                        1.20323e-10
+                        1.61406e-10
+                        9.0768e-11
+                        6.96315e-11
+              </delay_matrix>
+              </pb_type>
+              <interconnect>
+                <direct name="direct1" input="fast6.in" output="lut6[0:0].in"/>
+                <direct name="direct2" input="lut6.out" output="fast6.out"/>
+              </interconnect>
+            </pb_type>
+            <interconnect>
+              <direct name="direct1" input="fle.in" output="fast6.in"/>
+              <direct name="direct2" input="fast6.out" output="fle.o6"/>
+            </interconnect>
+          </mode>
+          <!-- END FAST LUT6 MODE -->
+          <mode name="n1_lut6">
+            <pb_type name="ble6" num_pb="1">
+              <input name="in" num_pins="6"/>
+              <input name="reset" num_pins="1"/>
+              <input name="enable" num_pins="1"/>
+              <output name="out" num_pins="1"/>
+              <clock name="clk" num_pins="1"/>
+              <pb_type name="lut6" blif_model=".names" num_pb="1" class="lut">
+                <input name="in" num_pins="6" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
+                            2.37077e-10
+                            3.35531e-10
+                            2.32502e-10
+                            3.09179e-10
+                            1.75772e-10
+                            1.40727e-10
+                        </delay_matrix>
+                <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
+                            1.21878e-10
+                            1.6836e-10
+                            1.20323e-10
+                            1.61406e-10
+                            9.0768e-11
+                            6.96315e-11
+                        </delay_matrix>
+              </pb_type>
+              <!-- lut6 -->
+              <pb_type name="ff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <input name="R" num_pins="1"/>
+                <input name="E" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="clk" num_pins="1"/>
+                <mode name="DFFRE">
+                  <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
+                    <input name="D" num_pins="1"/>
+                    <input name="R" num_pins="1"/>
+                    <input name="E" num_pins="1"/>
+                    <output name="Q" num_pins="1"/>
+                    <clock name="C" num_pins="1"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
+                  </pb_type>
+                  <interconnect>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
+                    <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
+                    <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
+                    <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
+                  </interconnect>
+                </mode>
+              </pb_type>
+              <!-- ff -->
+              <interconnect>
+                <direct name="direct1" input="ble6.in" output="lut6[0:0].in"/>
+                <direct name="direct2" input="lut6.out" output="ff.D">
+                  <pack_pattern name="lut6-out" in_port="lut6.out" out_port="ff.D"/>
+                </direct>
+                <direct name="direct3" input="ble6.clk" output="ff.clk"/>
+                <direct name="direct5" input="ble6.reset" output="ff.R"/>
+                <direct name="direct6" input="ble6.enable" output="ff.E"/>
+                <!-- <mux name="mux4" input="lut6.out ff.Q" output="ble6.out"/> -->
+                <direct name="direct7" input="ff.Q" output="ble6.out"/>
+              </interconnect>
+            </pb_type>
+            <!-- ble6 -->
+            <interconnect>
+              <direct name="direct1" input="fle.in" output="ble6.in"/>
+              <direct name="direct2" input="ble6.out" output="fle.out[1]"/>
+              <direct name="direct3" input="fle.clk" output="ble6.clk"/>
+              <direct name="direct5" input="fle.reset[1]" output="ble6.reset"/>
+              <direct name="direct6" input="fle.enable[1]" output="ble6.enable"/>
+            </interconnect>
+          </mode>
+          <!-- Define n1_lut6 mode ends -->
+          <!-- Define n2_lut5 mode begins -->
+          <mode name="n2_lut5" disable_packing="false">
+            <pb_type name="ble5" num_pb="2">
+              <input name="in" num_pins="5"/>
+              <input name="reset" num_pins="1"/>
+              <input name="enable" num_pins="1"/>
+              <output name="out" num_pins="1"/>
+              <clock name="clk" num_pins="1"/>
+              <!-- Regular LUT mode -->
+              <pb_type name="lut5" blif_model=".names" num_pb="1" class="lut">
+                <input name="in" num_pins="5" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <!-- LUT timing using delay matrix -->
+                <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
+                                 1.16846e-10
+                                 2.30306e-10
+                                 1.1712e-10
+                                 1.9883e-10
+                                 6.34095e-11
+                              </delay_matrix>
+                <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
+                                 6.08475e-11
+                                 1.07055e-10
+                                 6.23115e-11
+                                 9.6807e-11
+                                 2.04045e-11
+                              </delay_matrix>
+              </pb_type>
+              <!-- lut5 -->
+              <pb_type name="ff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <input name="R" num_pins="1"/>
+                <input name="E" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="clk" num_pins="1"/>
+                <mode name="DFFRE">
+                  <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
+                    <input name="D" num_pins="1"/>
+                    <input name="R" num_pins="1"/>
+                    <input name="E" num_pins="1"/>
+                    <output name="Q" num_pins="1"/>
+                    <clock name="C" num_pins="1"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
+                  </pb_type>
+                  <interconnect>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
+                    <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
+                    <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
+                    <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
+                  </interconnect>
+                </mode>
+              </pb_type>
+              <!-- ff -->
+              <interconnect>
+                <direct name="direct1a" input="ble5.in" output="lut5.in"/>
+                <direct name="direct2a" input="lut5.out" output="ff.D">
+                  <pack_pattern name="lut5-out" in_port="lut5.out" out_port="ff.D"/>
+                </direct>
+                <direct name="direct3a" input="ble5.clk" output="ff.clk"/>
+                <direct name="direct5a" input="ble5.reset" output="ff.R"/>
+                <direct name="direct6a" input="ble5.enable" output="ff.E"/>
+                <mux name="mux4a" input="lut5.out ff.Q" output="ble5.out"/>
+              </interconnect>
+            </pb_type>
+            <!-- ble5 -->
+            <interconnect>
+              <direct name="direct1a" input="fle.in[4:0]" output="ble5[0].in"/>
+              <direct name="direct1b" input="fle.in[4:0]" output="ble5[1].in"/>
+              <direct name="direct2" input="ble5.out" output="fle.out"/>
+              <direct name="direct3a" input="fle.clk" output="ble5[0].clk"/>
+              <direct name="direct3b" input="fle.clk" output="ble5[1].clk"/>
+              <direct name="direct5a" input="fle.reset[0]" output="ble5[0].reset"/>
+              <direct name="direct5b" input="fle.reset[1]" output="ble5[1].reset"/>
+              <direct name="direct6a" input="fle.enable[0]" output="ble5[0].enable"/>
+              <direct name="direct6b" input="fle.enable[1]" output="ble5[1].enable"/>
+            </interconnect>
+          </mode>
+          <!-- Define n2_lut5 mode ends -->
+          <!-- Define arithmetic mode begins -->
+          <mode name="arithmetic" disable_packing="false">
+            <pb_type name="adder" num_pb="1">
+              <input name="in" num_pins="5"/>
+              <input name="reset" num_pins="1"/>
+              <input name="enable" num_pins="1"/>
+              <output name="out" num_pins="1"/>
+              <input name="cin" num_pins="1"/>
+              <output name="cout" num_pins="1"/>
+              <clock name="clk" num_pins="1"/>
+              <!-- Regular LUT mode -->
+              <pb_type name="lut5" blif_model=".names" num_pb="2" class="lut">
+                <input name="in" num_pins="5" port_class="lut_in"/>
+                <output name="out" num_pins="1" port_class="lut_out"/>
+                <!-- LUT timing using delay matrix -->
+                <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
+                                 1.16846e-10
+                                 2.30306e-10
+                                 1.1712e-10
+                                 1.9883e-10
+                                 6.34095e-11
+                              </delay_matrix>
+                <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
+                                 6.08475e-11
+                                 1.07055e-10
+                                 6.23115e-11
+                                 9.6807e-11
+                                 2.04045e-11
+                              </delay_matrix>
+              </pb_type>
+              <!-- lut5 -->
+              <pb_type name="adder_carry" blif_model=".subckt adder_carry" num_pb="1">
+                <input name="p" num_pins="1"/>
+                <input name="g" num_pins="1"/>
+                <input name="cin" num_pins="1"/>
+                <output name="sumout" num_pins="1"/>
+                <output name="cout" num_pins="1"/>
+                <delay_constant max="3.66e-11" min="1.83e-11" in_port="adder_carry.p" out_port="adder_carry.sumout"/>
+                <delay_constant max="8.784e-11" min="4.392e-11" in_port="adder_carry.g" out_port="adder_carry.sumout"/>
+                <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
+                <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
+                <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
+                <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+              </pb_type>
+              <pb_type name="ff" num_pb="1">
+                <input name="D" num_pins="1"/>
+                <input name="R" num_pins="1"/>
+                <input name="E" num_pins="1"/>
+                <output name="Q" num_pins="1"/>
+                <clock name="clk" num_pins="1"/>
+                <mode name="DFFRE">
+                  <pb_type name="DFFRE" num_pb="1" blif_model=".subckt dffre">
+                    <input name="D" num_pins="1"/>
+                    <input name="R" num_pins="1"/>
+                    <input name="E" num_pins="1"/>
+                    <output name="Q" num_pins="1"/>
+                    <clock name="C" num_pins="1"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.D" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.D" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.R" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.R" clock="C"/>
+                    <T_setup value="3.15675e-11" port="DFFRE.E" clock="C"/>
+                    <T_hold value="-2.83185e-11" port="DFFRE.E" clock="C"/>
+                    <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
+                  </pb_type>
+                  <interconnect>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
+                    <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
+                    <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
+                    <direct name="clk_to_C" input="ff.clk" output="DFFRE.C"/>
+                  </interconnect>
+                </mode>
+              </pb_type>
+              <!-- ff -->
+              <interconnect>
+                <direct name="carry_in" input="adder.cin" output="adder_carry.cin">
+                  <pack_pattern name="carrychain" in_port="adder.cin" out_port="adder_carry.cin"/>
+                </direct>
+                <direct name="carry_out" input="adder_carry.cout" output="adder.cout">
+                  <pack_pattern name="carrychain" in_port="adder_carry.cout" out_port="adder.cout"/>
+                </direct>
+                <direct name="direct1a" input="adder.in" output="lut5[0].in"/>
+                <direct name="direct1b" input="adder.in" output="lut5[1].in"/>
+                <direct name="direct2a" input="lut5[0].out" output="adder_carry.p">
+                  <pack_pattern name="adder-pack" in_port="lut5[0].out" out_port="adder_carry.p"/>
+                </direct>
+                <direct name="direct2b" input="lut5[1].out" output="adder_carry.g">
+                  <pack_pattern name="adder-pack" in_port="lut5[1].out" out_port="adder_carry.g"/>
+                </direct>
+                <direct name="direct7" input="adder_carry.sumout" output="ff.D">
+                  <pack_pattern name="adder-pack" in_port="adder_carry.sumout" out_port="ff.D"/>
+                </direct>
+                <direct name="direct3a" input="adder.clk" output="ff.clk"/>
+                <direct name="direct5a" input="adder.reset" output="ff.R"/>
+                <direct name="direct6a" input="adder.enable" output="ff.E"/>
+                <mux name="mux4a" input="ff.Q adder_carry.sumout" output="adder.out"/>
+              </interconnect>
+            </pb_type>
+            <!-- adder -->
+            <interconnect>
+              <direct name="direct1a" input="fle.in[4:0]" output="adder.in"/>
+              <direct name="direct2" input="adder.out" output="fle.out[0]"/>
+              <direct name="direct3a" input="fle.clk" output="adder.clk"/>
+              <direct name="direct5a" input="fle.reset[0]" output="adder.reset"/>
+              <direct name="direct6a" input="fle.enable[0]" output="adder.enable"/>
+              <direct name="direct7" input="fle.cin" output="adder.cin"/>
+              <direct name="direct8" input="adder.cout" output="fle.cout"/>
+            </interconnect>
+          </mode>
+          <!-- Define arithmetic mode ends -->
+        </pb_type>
+        <!-- fle -->
+        <interconnect>
+          <!-- clb_lr to fle -->
+          <!-- direct to local routing -->
+          <direct name="direct_clk0" input="clb_lr.clk" output="fle[0].clk"/>
+          <direct name="direct_clk1" input="clb_lr.clk" output="fle[1].clk"/>
+          <direct name="direct_clk2" input="clb_lr.clk" output="fle[2].clk"/>
+          <direct name="direct_clk3" input="clb_lr.clk" output="fle[3].clk"/>
+          <direct name="direct_clk4" input="clb_lr.clk" output="fle[4].clk"/>
+          <direct name="direct_clk5" input="clb_lr.clk" output="fle[5].clk"/>
+          <direct name="direct_clk6" input="clb_lr.clk" output="fle[6].clk"/>
+          <direct name="direct_clk7" input="clb_lr.clk" output="fle[7].clk"/>
+          <direct name="direct_in_0" input="clb_lr.in[7:0]" output="fle[7:0].in[0]"/>
+          <direct name="direct_in_1" input="clb_lr.in[15:8]" output="fle[7:0].in[1]"/>
+          <direct name="direct_in_2" input="clb_lr.in[23:16]" output="fle[7:0].in[2]"/>
+          <direct name="direct_in_3" input="clb_lr.in[31:24]" output="fle[7:0].in[3]"/>
+          <direct name="direct_in_4" input="clb_lr.in[39:32]" output="fle[7:0].in[4]"/>
+          <direct name="direct_in_5" input="clb_lr.in[47:40]" output="fle[7:0].in[5]"/>
+          <direct name="direct_reset_0" input="clb_lr.reset" output="fle[0].reset"/>
+          <direct name="direct_enable_0" input="clb_lr.enable[1:0]" output="fle[0].enable"/>
+          <direct name="direct_reset_1" input="clb_lr.reset" output="fle[1].reset"/>
+          <direct name="direct_enable_1" input="clb_lr.enable[1:0]" output="fle[1].enable"/>
+          <direct name="direct_reset_2" input="clb_lr.reset" output="fle[2].reset"/>
+          <direct name="direct_enable_2" input="clb_lr.enable[1:0]" output="fle[2].enable"/>
+          <direct name="direct_reset_3" input="clb_lr.reset" output="fle[3].reset"/>
+          <direct name="direct_enable_3" input="clb_lr.enable[1:0]" output="fle[3].enable"/>
+          <direct name="direct_reset_4" input="clb_lr.reset" output="fle[4].reset"/>
+          <direct name="direct_enable_4" input="clb_lr.enable[3:2]" output="fle[4].enable"/>
+          <direct name="direct_reset_5" input="clb_lr.reset" output="fle[5].reset"/>
+          <direct name="direct_enable_5" input="clb_lr.enable[3:2]" output="fle[5].enable"/>
+          <direct name="direct_reset_6" input="clb_lr.reset" output="fle[6].reset"/>
+          <direct name="direct_enable_6" input="clb_lr.enable[3:2]" output="fle[6].enable"/>
+          <direct name="direct_reset_7" input="clb_lr.reset" output="fle[7].reset"/>
+          <direct name="direct_enable_7" input="clb_lr.enable[3:2]" output="fle[7].enable"/>
+          <direct name="direct_out0_0" input="fle[0].out[0]" output="clb_lr.out[0]"/>
+          <direct name="direct_out1_0" input="fle[0].out[1]" output="clb_lr.out[1]"/>
+          <direct name="direct_o6_0" input="fle[0].o6" output="clb_lr.out[2]"/>
+          <direct name="direct_out0_1" input="fle[1].out[0]" output="clb_lr.out[3]"/>
+          <direct name="direct_out1_1" input="fle[1].out[1]" output="clb_lr.out[4]"/>
+          <direct name="direct_o6_1" input="fle[1].o6" output="clb_lr.out[5]"/>
+          <direct name="direct_out0_2" input="fle[2].out[0]" output="clb_lr.out[6]"/>
+          <direct name="direct_out1_2" input="fle[2].out[1]" output="clb_lr.out[7]"/>
+          <direct name="direct_o6_2" input="fle[2].o6" output="clb_lr.out[8]"/>
+          <direct name="direct_out0_3" input="fle[3].out[0]" output="clb_lr.out[9]"/>
+          <direct name="direct_out1_3" input="fle[3].out[1]" output="clb_lr.out[10]"/>
+          <direct name="direct_o6_3" input="fle[3].o6" output="clb_lr.out[11]"/>
+          <direct name="direct_out0_4" input="fle[4].out[0]" output="clb_lr.out[12]"/>
+          <direct name="direct_out1_4" input="fle[4].out[1]" output="clb_lr.out[13]"/>
+          <direct name="direct_o6_4" input="fle[4].o6" output="clb_lr.out[14]"/>
+          <direct name="direct_out0_5" input="fle[5].out[0]" output="clb_lr.out[15]"/>
+          <direct name="direct_out1_5" input="fle[5].out[1]" output="clb_lr.out[16]"/>
+          <direct name="direct_o6_5" input="fle[5].o6" output="clb_lr.out[17]"/>
+          <direct name="direct_out0_6" input="fle[6].out[0]" output="clb_lr.out[18]"/>
+          <direct name="direct_out1_6" input="fle[6].out[1]" output="clb_lr.out[19]"/>
+          <direct name="direct_o6_6" input="fle[6].o6" output="clb_lr.out[20]"/>
+          <direct name="direct_out0_7" input="fle[7].out[0]" output="clb_lr.out[21]"/>
+          <direct name="direct_out1_7" input="fle[7].out[1]" output="clb_lr.out[22]"/>
+          <direct name="direct_o6_7" input="fle[7].o6" output="clb_lr.out[23]"/>
+          <!-- Scan chain links -->
+          <direct name="scff_in" input="clb_lr.sc_in" output="fle[0].sc_in"/>
+          <direct name="scff_out" input="fle[7].sc_out" output="clb_lr.sc_out"/>
+          <direct name="scff_link" input="fle[6:0].sc_out" output="fle[7:1].sc_in"/>
+          <!-- Carry chain links -->
+          <complete name="carry_in" input="clb_lr.cin" output="fle[0].cin">
+            <pack_pattern name="carrychain" in_port="clb_lr.cin" out_port="fle[0].cin"/>
+          </complete>
+          <direct name="carry_out" input="fle[7].cout" output="clb_lr.cout">
+            <pack_pattern name="carrychain" in_port="fle[7].cout" out_port="clb_lr.cout"/>
+          </direct>
+          <direct name="carry_link" input="fle[0:6].cout" output="fle[1:7].cin">
+            <pack_pattern name="carrychain" in_port="fle[0:6].cout" out_port="fle[1:7].cin"/>
+          </direct>
+        </interconnect>
+        <!-- clb_lr to fle -->
+      </pb_type>
+      <!-- clb_lr -->
+      <interconnect>
+        <!-- clb to clb_lr -->
+        <complete name="crossbar0" input="clb.I00 clb.I30" output="clb_lr.in[7:0]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[7:0]"/>
+        </complete>
+        <complete name="crossbar1" input="clb.I10 clb.I20" output="clb_lr.in[15:8]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[15:8]"/>
+        </complete>
+        <complete name="crossbar2" input="clb.I00 clb.I20" output="clb_lr.in[23:16]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I20" out_port="clb_lr.in[23:16]"/>
+        </complete>
+        <complete name="crossbar3" input="clb.I10 clb.I30" output="clb_lr.in[31:24]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I30" out_port="clb_lr.in[31:24]"/>
+        </complete>
+        <complete name="crossbar4" input="clb.I00 clb.I30" output="clb_lr.in[39:32]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[39:32]"/>
+        </complete>
+        <complete name="crossbar5" input="clb.I10 clb.I20" output="clb_lr.in[47:40]">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[47:40]"/>
+        </complete>
+        <complete name="clks" input="clb.clk" output="clb_lr.clk">     
+            </complete>
+        <complete name="crossbar6" input="clb.IS0" output="clb_lr.enable">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="clb_lr.enable"/>
+        </complete>
+        <complete name="crossbar7" input="clb.IS0" output="clb_lr.reset">
+          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="clb_lr.reset"/>
+        </complete>
+        <direct name="clbouts1" input="clb_lr.out[7:0]" output="clb.O0[7:0]"/>
+        <direct name="clbouts2" input="clb_lr.out[15:8]" output="clb.O0[15:8]"/>
+        <direct name="clbouts3" input="clb_lr.out[23:16]" output="clb.O0[23:16]"/>
+        <direct name="direct_cin" input="clb.cin" output="clb_lr.cin"/>
+        <direct name="direct_cout" input="clb_lr.cout" output="clb.cout"/>
+        <direct name="direct_sc_in" input="clb.sc_in" output="clb_lr.sc_in"/>
+        <direct name="direct_sc_out" input="clb_lr.sc_out" output="clb.sc_out"/>
+        <direct name="direct_sr" input="clb.sr_in" output="clb.sr_out"/>
+      </interconnect>
+      <!-- clb to clb_lr -->
+    </pb_type>
+    <!-- clb -->
+    <!-- Define RS_DSP begin -->
+    <pb_type name="dsp">
+      <input name="I00" num_pins="12" equivalent="full"/>
+      <input name="I10" num_pins="12" equivalent="full"/>
+      <input name="I20" num_pins="12" equivalent="full"/>
+      <input name="I30" num_pins="12" equivalent="full"/>
+      <input name="IS0" num_pins="6" equivalent="full"/>
+      <output name="O0" num_pins="24" equivalent="none"/>
+      <input name="I01" num_pins="12" equivalent="full"/>
+      <input name="I11" num_pins="12" equivalent="full"/>
+      <input name="I21" num_pins="12" equivalent="full"/>
+      <input name="I31" num_pins="12" equivalent="full"/>
+      <input name="IS1" num_pins="6" equivalent="full"/>
+      <output name="O1" num_pins="24" equivalent="none"/>
+      <input name="I02" num_pins="12" equivalent="full"/>
+      <input name="I12" num_pins="12" equivalent="full"/>
+      <input name="I22" num_pins="12" equivalent="full"/>
+      <input name="I32" num_pins="12" equivalent="full"/>
+      <input name="IS2" num_pins="6" equivalent="full"/>
+      <output name="O2" num_pins="24" equivalent="none"/>
+      <clock name="clk" num_pins="16"/>
+      <input name="sc_in" num_pins="3"/>
+      <output name="sc_out" num_pins="3"/>
+      <input name="sr_in" num_pins="3"/>
+      <output name="sr_out" num_pins="3"/>
+      <pb_type name="dsp_lr" num_pb="1">
+        <input name="a_i" num_pins="20"/>
+        <input name="acc_fir_i" num_pins="6"/>
+        <input name="b_i" num_pins="18"/>
+        <input name="sc_in" num_pins="3"/>
+        <input name="load_acc" num_pins="1"/>
+        <input name="lreset" num_pins="1"/>
+        <input name="feedback" num_pins="3"/>
+        <input name="unsigned_a" num_pins="1"/>
+        <input name="unsigned_b" num_pins="1"/>
+        <input name="saturate_enable" num_pins="1"/>
+        <input name="shift_right" num_pins="6"/>
+        <input name="round" num_pins="1"/>
+        <input name="subtract" num_pins="1"/>
+        <clock name="clk" num_pins="1"/>
+        <output name="z_o" num_pins="38"/>
+        <output name="dly_b_o" num_pins="18"/>
+        <output name="sc_out" num_pins="3"/>
+        <mode name="physical" disable_packing="true">
+          <pb_type name="dsp_phy" blif_model=".subckt dsp_phy" num_pb="1">
+            <input name="a_i" num_pins="20"/>
+            <input name="acc_fir_i" num_pins="6"/>
+            <input name="b_i" num_pins="18"/>
+            <input name="sc_in" num_pins="3"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <input name="subtract" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <output name="z_o" num_pins="38"/>
+            <output name="dly_b_o" num_pins="18"/>
+            <output name="sc_out" num_pins="3"/>
+            <T_clock_to_Q max="1.83e-10" port="dsp_phy.z_o" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="dsp_phy.dly_b_o" clock="clk"/>
+            <!--
+               <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="dsp_phy.a_i" out_port="dsp_phy.z_o"/>
+	           <delay_constant max="3500e-12" in_port="dsp_phy.acc_fir_i" out_port="dsp_phy.z_o"/>
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="dsp_phy.b_i" out_port="dsp_phy.z_o"/>
+               -->
+            <T_setup value="8.80651e-11" port="dsp_phy.a_i" clock="clk"/>
+            <T_setup value="5.4555e-11" port="dsp_phy.b_i" clock="clk"/>
+            <T_setup value="3.90431e-11" port="dsp_phy.acc_fir_i" clock="clk"/>
+            <T_setup value="4.47206e-11" port="dsp_phy.load_acc" clock="clk"/>
+            <T_setup value="4.26719e-11" port="dsp_phy.feedback" clock="clk"/>
+            <T_setup value="3.20506e-11" port="dsp_phy.unsigned_a" clock="clk"/>
+            <T_setup value="3.36144e-11" port="dsp_phy.unsigned_b" clock="clk"/>
+            <T_setup value="4.3565e-11" port="dsp_phy.saturate_enable" clock="clk"/>
+            <T_setup value="7.81392e-11" port="dsp_phy.shift_right" clock="clk"/>
+            <T_setup value="4.52788e-11" port="dsp_phy.round" clock="clk"/>
+            <T_setup value="4.19921e-11" port="dsp_phy.subtract" clock="clk"/>
+            <!--
+               <T_setup value="1.67558e-10" port="dsp_phy.lreset" clock="clk"/>
+-->
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="dsp_phy.a_i"/>
+            <direct name="direct2" input="dsp_lr.acc_fir_i" output="dsp_phy.acc_fir_i"/>
+            <direct name="direct3" input="dsp_lr.b_i" output="dsp_phy.b_i"/>
+            <direct name="dsp-clk" input="dsp_lr.clk" output="dsp_phy.clk"/>
+            <direct name="direct5" input="dsp_lr.lreset" output="dsp_phy.lreset"/>
+            <direct name="direct6" input="dsp_phy.z_o" output="dsp_lr.z_o"/>
+            <direct name="direct7" input="dsp_phy.dly_b_o" output="dsp_lr.dly_b_o"/>
+            <direct name="direct10" input="dsp_lr.load_acc" output="dsp_phy.load_acc"/>
+            <direct name="direct11" input="dsp_lr.feedback" output="dsp_phy.feedback"/>
+            <direct name="direct12" input="dsp_lr.unsigned_a" output="dsp_phy.unsigned_a"/>
+            <direct name="direct13" input="dsp_lr.unsigned_b" output="dsp_phy.unsigned_b"/>
+            <direct name="direct16" input="dsp_lr.saturate_enable" output="dsp_phy.saturate_enable"/>
+            <direct name="direct17" input="dsp_lr.shift_right" output="dsp_phy.shift_right"/>
+            <direct name="direct18" input="dsp_lr.round" output="dsp_phy.round"/>
+            <direct name="direct19" input="dsp_lr.subtract" output="dsp_phy.subtract"/>
+            <direct name="direct21" input="dsp_lr.sc_in" output="dsp_phy.sc_in"/>
+            <direct name="direct22" input="dsp_phy.sc_out" output="dsp_lr.sc_out"/>
+          </interconnect>
+        </mode>
+        <mode name="MULT" disable_packing="false">
+          <pb_type name="RS_DSP_MULT" blif_model=".subckt RS_DSP_MULT" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <input name="feedback" num_pins="3"/>
+            <output name="z" num_pins="38"/>
+            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULT.b"/>
+            <direct name="direct3" input="RS_DSP_MULT.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULT.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULT.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULT.feedback"/>
+          </interconnect>
+        </mode>
+        <mode name="MULT_REGIN" disable_packing="false">
+          <pb_type name="RS_DSP_MULT_REGIN" blif_model=".subckt RS_DSP_MULT_REGIN" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="lreset" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULT_REGIN.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULT_REGIN.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULT_REGIN.feedback" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT_REGIN.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULT_REGIN.b"/>
+            <direct name="direct3" input="RS_DSP_MULT_REGIN.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULT_REGIN.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULT_REGIN.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULT_REGIN.feedback"/>
+            <direct name="direct10" input="dsp_lr.lreset" output="RS_DSP_MULT_REGIN.lreset"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULT_REGIN.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULT_REGOUT" disable_packing="false">
+          <pb_type name="RS_DSP_MULT_REGOUT" blif_model=".subckt RS_DSP_MULT_REGOUT" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="lreset" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULT_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULT_REGOUT.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULT_REGOUT.feedback" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGOUT.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT_REGOUT.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULT_REGOUT.b"/>
+            <direct name="direct3" input="RS_DSP_MULT_REGOUT.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULT_REGOUT.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULT_REGOUT.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULT_REGOUT.feedback"/>
+            <direct name="direct10" input="dsp_lr.lreset" output="RS_DSP_MULT_REGOUT.lreset"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULT_REGOUT.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULT_REGIN_REGOUT" disable_packing="false">
+          <pb_type name="RS_DSP_MULT_REGIN_REGOUT" blif_model=".subckt RS_DSP_MULT_REGIN_REGOUT" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="lreset" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULT_REGIN_REGOUT.feedback" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN_REGOUT.a" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULT_REGIN_REGOUT.b" clock="clk"/>
+            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.a" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULT_REGIN_REGOUT.b" out_port="RS_DSP_MULT_REGIN_REGOUT.z"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT_REGIN_REGOUT.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULT_REGIN_REGOUT.b"/>
+            <direct name="direct3" input="RS_DSP_MULT_REGIN_REGOUT.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULT_REGIN_REGOUT.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULT_REGIN_REGOUT.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULT_REGIN_REGOUT.feedback"/>
+            <direct name="direct10" input="dsp_lr.lreset" output="RS_DSP_MULT_REGIN_REGOUT.lreset"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULT_REGIN_REGOUT.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTADD" disable_packing="false">
+          <pb_type name="RS_DSP_MULTADD" blif_model=".subckt RS_DSP_MULTADD" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="acc_fir" num_pins="6"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.dly_b" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTADD.load_acc" clock="clk"/>
+            <T_setup value="3.90431e-11" port="RS_DSP_MULTADD.acc_fir" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.a" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.b" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.subtract" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD.acc_fir" clock="clk"/>
+            <!--
+               <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULTADD.a" out_port="RS_DSP_MULTADD.z"/>     
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD.b" out_port="RS_DSP_MULTADD.z"/>     
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD.subtract" out_port="RS_DSP_MULTADD.z"/>     
+               <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD.acc_fir" out_port="RS_DSP_MULTADD.z"/>     
+               -->
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTADD.b"/>
+            <direct name="direct3" input="RS_DSP_MULTADD.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTADD.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTADD.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.subtract" output="RS_DSP_MULTADD.subtract"/>
+            <direct name="direct10" input="dsp_lr.acc_fir_i" output="RS_DSP_MULTADD.acc_fir"/>
+            <direct name="direct11" input="dsp_lr.feedback" output="RS_DSP_MULTADD.feedback"/>
+            <direct name="direct12" input="dsp_lr.load_acc" output="RS_DSP_MULTADD.load_acc"/>
+            <direct name="direct13" input="dsp_lr.lreset" output="RS_DSP_MULTADD.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTADD.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTADD.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTADD.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTADD.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTADD_REGIN" disable_packing="false">
+          <pb_type name="RS_DSP_MULTADD_REGIN" blif_model=".subckt RS_DSP_MULTADD_REGIN" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="acc_fir" num_pins="6"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN.dly_b" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGIN.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGIN.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGIN.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD_REGIN.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTADD_REGIN.load_acc" clock="clk"/>
+            <T_setup value="3.90431e-11" port="RS_DSP_MULTADD_REGIN.acc_fir" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD_REGIN.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTADD_REGIN.b"/>
+            <direct name="direct3" input="RS_DSP_MULTADD_REGIN.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTADD_REGIN.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTADD_REGIN.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULTADD_REGIN.feedback"/>
+            <direct name="direct10" input="dsp_lr.subtract" output="RS_DSP_MULTADD_REGIN.subtract"/>
+            <direct name="direct11" input="dsp_lr.load_acc" output="RS_DSP_MULTADD_REGIN.load_acc"/>
+            <direct name="direct12" input="dsp_lr.acc_fir_i" output="RS_DSP_MULTADD_REGIN.acc_fir"/>
+            <direct name="direct13" input="dsp_lr.lreset" output="RS_DSP_MULTADD_REGIN.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTADD_REGIN.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTADD_REGIN.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTADD_REGIN.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTADD_REGIN.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTADD_REGOUT" disable_packing="false">
+          <pb_type name="RS_DSP_MULTADD_REGOUT" blif_model=".subckt RS_DSP_MULTADD_REGOUT" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="acc_fir" num_pins="6"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGOUT.dly_b" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGOUT.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD_REGOUT.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTADD_REGOUT.load_acc" clock="clk"/>
+            <T_setup value="3.90431e-11" port="RS_DSP_MULTADD_REGOUT.acc_fir" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGOUT.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD_REGOUT.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTADD_REGOUT.b"/>
+            <direct name="direct3" input="RS_DSP_MULTADD_REGOUT.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTADD_REGOUT.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTADD_REGOUT.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULTADD_REGOUT.feedback"/>
+            <direct name="direct10" input="dsp_lr.subtract" output="RS_DSP_MULTADD_REGOUT.subtract"/>
+            <direct name="direct11" input="dsp_lr.load_acc" output="RS_DSP_MULTADD_REGOUT.load_acc"/>
+            <direct name="direct12" input="dsp_lr.acc_fir_i" output="RS_DSP_MULTADD_REGOUT.acc_fir"/>
+            <direct name="direct13" input="dsp_lr.lreset" output="RS_DSP_MULTADD_REGOUT.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTADD_REGOUT.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTADD_REGOUT.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTADD_REGOUT.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTADD_REGOUT.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTADD_REGIN_REGOUT" disable_packing="false">
+          <pb_type name="RS_DSP_MULTADD_REGIN_REGOUT" blif_model=".subckt RS_DSP_MULTADD_REGIN_REGOUT" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="acc_fir" num_pins="6"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <output name="dly_b" num_pins="18"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.dly_b" clock="clk"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.feedback" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.load_acc" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
+            <T_setup value="9.15e-11" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.z" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.a" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
+            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD_REGIN_REGOUT.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTADD_REGIN_REGOUT.b"/>
+            <direct name="direct3" input="RS_DSP_MULTADD_REGIN_REGOUT.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTADD_REGIN_REGOUT.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTADD_REGIN_REGOUT.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULTADD_REGIN_REGOUT.feedback"/>
+            <direct name="direct10" input="dsp_lr.subtract" output="RS_DSP_MULTADD_REGIN_REGOUT.subtract"/>
+            <direct name="direct11" input="dsp_lr.load_acc" output="RS_DSP_MULTADD_REGIN_REGOUT.load_acc"/>
+            <direct name="direct12" input="dsp_lr.acc_fir_i" output="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir"/>
+            <direct name="direct13" input="dsp_lr.lreset" output="RS_DSP_MULTADD_REGIN_REGOUT.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTADD_REGIN_REGOUT.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTADD_REGIN_REGOUT.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTADD_REGIN_REGOUT.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTADD_REGIN_REGOUT.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTACC" disable_packing="false">
+          <pb_type name="RS_DSP_MULTACC" blif_model=".subckt RS_DSP_MULTACC" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC.feedback" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC.subtract" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTACC.b"/>
+            <direct name="direct3" input="RS_DSP_MULTACC.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTACC.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTACC.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.subtract" output="RS_DSP_MULTACC.subtract"/>
+            <direct name="direct10" input="dsp_lr.feedback" output="RS_DSP_MULTACC.feedback"/>
+            <direct name="direct11" input="dsp_lr.load_acc" output="RS_DSP_MULTACC.load_acc"/>
+            <direct name="direct12" input="dsp_lr.lreset" output="RS_DSP_MULTACC.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTACC.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTACC.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTACC.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTACC.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTACC_REGIN" disable_packing="false">
+          <pb_type name="RS_DSP_MULTACC_REGIN" blif_model=".subckt RS_DSP_MULTACC_REGIN" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC_REGIN.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC_REGIN.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC_REGIN.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC_REGIN.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC_REGIN.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC_REGIN.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC_REGIN.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTACC_REGIN.b"/>
+            <direct name="direct3" input="RS_DSP_MULTACC_REGIN.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTACC_REGIN.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTACC_REGIN.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULTACC_REGIN.feedback"/>
+            <direct name="direct10" input="dsp_lr.subtract" output="RS_DSP_MULTACC_REGIN.subtract"/>
+            <direct name="direct11" input="dsp_lr.load_acc" output="RS_DSP_MULTACC_REGIN.load_acc"/>
+            <direct name="direct12" input="dsp_lr.lreset" output="RS_DSP_MULTACC_REGIN.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTACC_REGIN.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTACC_REGIN.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTACC_REGIN.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTACC_REGIN.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTACC_REGOUT" disable_packing="false">
+          <pb_type name="RS_DSP_MULTACC_REGOUT" blif_model=".subckt RS_DSP_MULTACC_REGOUT" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC_REGOUT.b" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC_REGOUT.feedback" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC_REGOUT.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC_REGOUT.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC_REGOUT.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTACC_REGOUT.b"/>
+            <direct name="direct3" input="RS_DSP_MULTACC_REGOUT.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTACC_REGOUT.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTACC_REGOUT.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULTACC_REGOUT.feedback"/>
+            <direct name="direct10" input="dsp_lr.subtract" output="RS_DSP_MULTACC_REGOUT.subtract"/>
+            <direct name="direct11" input="dsp_lr.load_acc" output="RS_DSP_MULTACC_REGOUT.load_acc"/>
+            <direct name="direct12" input="dsp_lr.lreset" output="RS_DSP_MULTACC_REGOUT.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTACC_REGOUT.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTACC_REGOUT.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTACC_REGOUT.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTACC_REGOUT.clk"/>
+          </interconnect>
+        </mode>
+        <mode name="MULTACC_REGIN_REGOUT" disable_packing="false">
+          <pb_type name="RS_DSP_MULTACC_REGIN_REGOUT" blif_model=".subckt RS_DSP_MULTACC_REGIN_REGOUT" num_pb="1">
+            <input name="a" num_pins="20"/>
+            <input name="b" num_pins="18"/>
+            <input name="feedback" num_pins="3"/>
+            <input name="subtract" num_pins="1"/>
+            <input name="load_acc" num_pins="1"/>
+            <input name="unsigned_a" num_pins="1"/>
+            <input name="unsigned_b" num_pins="1"/>
+            <clock name="clk" num_pins="1"/>
+            <input name="lreset" num_pins="1"/>
+            <input name="saturate_enable" num_pins="1"/>
+            <input name="shift_right" num_pins="6"/>
+            <input name="round" num_pins="1"/>
+            <output name="z" num_pins="38"/>
+            <T_setup value="8.80651e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.a" clock="clk"/>
+            <T_setup value="5.4555e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.b" clock="clk"/>
+            <T_setup value="4.19921e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.subtract" clock="clk"/>
+            <T_setup value="4.26719e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.feedback" clock="clk"/>
+            <T_setup value="4.47206e-11" port="RS_DSP_MULTACC_REGIN_REGOUT.load_acc" clock="clk"/>
+            <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTACC_REGIN_REGOUT.z" clock="clk"/>
+          </pb_type>
+          <interconnect>
+            <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTACC_REGIN_REGOUT.a"/>
+            <direct name="direct2" input="dsp_lr.b_i" output="RS_DSP_MULTACC_REGIN_REGOUT.b"/>
+            <direct name="direct3" input="RS_DSP_MULTACC_REGIN_REGOUT.z" output="dsp_lr.z_o"/>
+            <direct name="direct4" input="dsp_lr.unsigned_a" output="RS_DSP_MULTACC_REGIN_REGOUT.unsigned_a"/>
+            <direct name="direct5" input="dsp_lr.unsigned_b" output="RS_DSP_MULTACC_REGIN_REGOUT.unsigned_b"/>
+            <direct name="direct9" input="dsp_lr.feedback" output="RS_DSP_MULTACC_REGIN_REGOUT.feedback"/>
+            <direct name="direct10" input="dsp_lr.subtract" output="RS_DSP_MULTACC_REGIN_REGOUT.subtract"/>
+            <direct name="direct11" input="dsp_lr.load_acc" output="RS_DSP_MULTACC_REGIN_REGOUT.load_acc"/>
+            <direct name="direct12" input="dsp_lr.lreset" output="RS_DSP_MULTACC_REGIN_REGOUT.lreset"/>
+            <direct name="direct14" input="dsp_lr.saturate_enable" output="RS_DSP_MULTACC_REGIN_REGOUT.saturate_enable"/>
+            <direct name="direct15" input="dsp_lr.shift_right" output="RS_DSP_MULTACC_REGIN_REGOUT.shift_right"/>
+            <direct name="direct16" input="dsp_lr.round" output="RS_DSP_MULTACC_REGIN_REGOUT.round"/>
+            <direct name="clk" input="dsp_lr.clk" output="RS_DSP_MULTACC_REGIN_REGOUT.clk"/>
+          </interconnect>
+        </mode>
+      </pb_type>
+      <!-- dsp_lr -->
+      <interconnect>
+        <!-- local routing from dsp to dsp_lr -->
+        <complete name="crossbar_clk" input="dsp.clk" output="dsp_lr.clk"> </complete>
+        <!-- 1x 4:1 mux -->
+        <direct name="direct_sr" input="dsp.sr_in" output="dsp.sr_out"/>
+        <direct name="direct1" input="dsp.sc_in" output="dsp_lr.sc_in"/>
+        <direct name="direct2" input="dsp_lr.sc_out" output="dsp.sc_out"/>
+        <direct name="direct3" input="dsp_lr.z_o[23:0]" output="dsp.O0"/>
+        <direct name="direct4" input="dsp_lr.z_o[37:24]" output="dsp.O1[13:0]"/>
+        <direct name="direct5" input="dsp_lr.dly_b_o[9:0]" output="dsp.O1[23:14]"/>
+        <direct name="direct6" input="dsp_lr.dly_b_o[17:10]" output="dsp.O2[7:0]"/>
+        <direct name="direct7" input="dsp_lr.z_o[15:0]" output="dsp.O2[23:8]"/>
+        <!-- replicate for padding -->
+        <!-- ~60x 24:1 mux -->
+        <complete name="crossbar0" input="dsp.I00 dsp.I20" output="dsp_lr.a_i[0] dsp_lr.b_i[0] dsp_lr.acc_fir_i[0] dsp_lr.load_acc">   
+        </complete>
+        <complete name="crossbar1" input="dsp.I10 dsp.I20" output="dsp_lr.a_i[1] dsp_lr.b_i[1] dsp_lr.acc_fir_i[1] dsp_lr.feedback[0] dsp_lr.feedback[1]">
+        </complete>
+        <complete name="crossbar2" input="dsp.I00 dsp.I30" output="dsp_lr.a_i[2] dsp_lr.b_i[2] dsp_lr.acc_fir_i[2] dsp_lr.feedback[2] dsp_lr.unsigned_a">
+        </complete>
+        <complete name="crossbar3" input="dsp.I10 dsp.I30" output="dsp_lr.a_i[3] dsp_lr.b_i[3] dsp_lr.acc_fir_i[3] dsp_lr.unsigned_b dsp_lr.saturate_enable">
+        </complete>
+        <complete name="crossbar4" input="dsp.I01 dsp.I21" output="dsp_lr.a_i[4] dsp_lr.b_i[4] dsp_lr.acc_fir_i[4] dsp_lr.round dsp_lr.subtract">   
+        </complete>
+        <complete name="crossbar5" input="dsp.I11 dsp.I21" output="dsp_lr.a_i[5] dsp_lr.b_i[5] dsp_lr.acc_fir_i[5] dsp_lr.a_i[19] dsp_lr.a_i[18]">
+        </complete>
+        <complete name="crossbar6" input="dsp.I01 dsp.I31" output="dsp_lr.a_i[6] dsp_lr.b_i[6] dsp_lr.shift_right[0] dsp_lr.a_i[17] dsp_lr.b_i[17]">
+        </complete>
+        <complete name="crossbar7" input="dsp.I11 dsp.I31" output="dsp_lr.a_i[7] dsp_lr.b_i[7] dsp_lr.shift_right[1] dsp_lr.a_i[16] dsp_lr.b_i[16]">
+        </complete>
+        <complete name="crossbar8" input="dsp.I02 dsp.I22" output="dsp_lr.a_i[8] dsp_lr.b_i[8] dsp_lr.shift_right[2] dsp_lr.a_i[15] dsp_lr.b_i[15]">   
+        </complete>
+        <complete name="crossbar9" input="dsp.I12 dsp.I22" output="dsp_lr.a_i[9] dsp_lr.b_i[9] dsp_lr.shift_right[3] dsp_lr.a_i[14] dsp_lr.b_i[14]">
+        </complete>
+        <complete name="crossbar10" input="dsp.I02 dsp.I32" output="dsp_lr.a_i[10] dsp_lr.b_i[10] dsp_lr.shift_right[4] dsp_lr.a_i[13] dsp_lr.b_i[13]">
+        </complete>
+        <complete name="crossbar11" input="dsp.I12 dsp.I32" output="dsp_lr.a_i[11] dsp_lr.b_i[11] dsp_lr.shift_right[5] dsp_lr.a_i[12] dsp_lr.b_i[12]">
+        </complete>
+        <complete name="crossbar12" input="dsp.IS0 dsp.IS1 dsp.IS2" output="dsp_lr.lreset">   
+        </complete>
+      </interconnect>
+    </pb_type>
+    <!-- dsp -->
+    <!-- Define RS_BRAM begin -->
+    <pb_type name="bram">
+      <input name="I00" num_pins="12" equivalent="full"/>
+      <input name="I10" num_pins="12" equivalent="full"/>
+      <input name="I20" num_pins="12" equivalent="full"/>
+      <input name="I30" num_pins="12" equivalent="full"/>
+      <input name="IS0" num_pins="6" equivalent="full"/>
+      <output name="O0" num_pins="24" equivalent="none"/>
+      <input name="I01" num_pins="12" equivalent="full"/>
+      <input name="I11" num_pins="12" equivalent="full"/>
+      <input name="I21" num_pins="12" equivalent="full"/>
+      <input name="I31" num_pins="12" equivalent="full"/>
+      <input name="IS1" num_pins="6" equivalent="full"/>
+      <output name="O1" num_pins="24" equivalent="none"/>
+      <input name="I02" num_pins="12" equivalent="full"/>
+      <input name="I12" num_pins="12" equivalent="full"/>
+      <input name="I22" num_pins="12" equivalent="full"/>
+      <input name="I32" num_pins="12" equivalent="full"/>
+      <input name="IS2" num_pins="6" equivalent="full"/>
+      <output name="O2" num_pins="24" equivalent="none"/>
+      <input name="RAM_ID_i" num_pins="20"/>
+      <input name="PL_INIT_i" num_pins="1"/>
+      <input name="PL_ENA_i" num_pins="1"/>
+      <input name="PL_REN_i" num_pins="1"/>
+      <clock name="PL_CLK_i" num_pins="1"/>
+      <input name="PL_WEN_i" num_pins="2"/>
+      <input name="PL_ADDR_i" num_pins="32"/>
+      <input name="PL_DATA_i" num_pins="36"/>
+      <output name="PL_INIT_o" num_pins="1"/>
+      <output name="PL_ENA_o" num_pins="1"/>
+      <output name="PL_REN_o" num_pins="1"/>
+      <output name="PL_CLK_o" num_pins="1"/>
+      <output name="PL_WEN_o" num_pins="2"/>
+      <output name="PL_ADDR_o" num_pins="32"/>
+      <output name="PL_DATA_o" num_pins="36"/>
+      <input name="sc_in" num_pins="6"/>
+      <output name="sc_out" num_pins="6"/>
+      <input name="sr_in" num_pins="6"/>
+      <output name="sr_out" num_pins="6"/>
+      <input name="plr_i" num_pins="36"/>
+      <output name="plr_o" num_pins="36"/>
+      <clock name="clk" num_pins="16"/>
+      <pb_type name="bram_lr" num_pb="1">
+        <input name="WDATA_A1_i" num_pins="18"/>
+        <input name="WDATA_A2_i" num_pins="18"/>
+        <input name="ADDR_A1_i" num_pins="15"/>
+        <input name="ADDR_A2_i" num_pins="14"/>
+        <input name="REN_A1_i" num_pins="1"/>
+        <input name="REN_A2_i" num_pins="1"/>
+        <input name="WEN_A1_i" num_pins="1"/>
+        <input name="WEN_A2_i" num_pins="1"/>
+        <input name="BE_A1_i" num_pins="2"/>
+        <input name="BE_A2_i" num_pins="2"/>
+        <input name="WDATA_B1_i" num_pins="18"/>
+        <input name="WDATA_B2_i" num_pins="18"/>
+        <input name="ADDR_B1_i" num_pins="15"/>
+        <input name="ADDR_B2_i" num_pins="14"/>
+        <input name="REN_B1_i" num_pins="1"/>
+        <input name="REN_B2_i" num_pins="1"/>
+        <input name="WEN_B1_i" num_pins="1"/>
+        <input name="WEN_B2_i" num_pins="1"/>
+        <input name="BE_B1_i" num_pins="2"/>
+        <input name="BE_B2_i" num_pins="2"/>
+        <input name="FLUSH1_i" num_pins="1"/>
+        <input name="FLUSH2_i" num_pins="1"/>
+        <output name="RDATA_A1_o" num_pins="18"/>
+        <output name="RDATA_A2_o" num_pins="18"/>
+        <output name="RDATA_B1_o" num_pins="18"/>
+        <output name="RDATA_B2_o" num_pins="18"/>
+        <clock name="CLK_A1_i" num_pins="1"/>
+        <clock name="CLK_A2_i" num_pins="1"/>
+        <clock name="CLK_B1_i" num_pins="1"/>
+        <clock name="CLK_B2_i" num_pins="1"/>
+        <input name="RAM_ID_i" num_pins="20"/>
+        <input name="PL_INIT_i" num_pins="1"/>
+        <input name="PL_ENA_i" num_pins="1"/>
+        <input name="PL_REN_i" num_pins="1"/>
+        <clock name="PL_CLK_i" num_pins="1"/>
+        <input name="PL_WEN_i" num_pins="2"/>
+        <input name="PL_ADDR_i" num_pins="32"/>
+        <input name="PL_DATA_i" num_pins="36"/>
+        <output name="PL_INIT_o" num_pins="1"/>
+        <output name="PL_ENA_o" num_pins="1"/>
+        <output name="PL_REN_o" num_pins="1"/>
+        <output name="PL_CLK_o" num_pins="1"/>
+        <output name="PL_WEN_o" num_pins="2"/>
+        <output name="PL_ADDR_o" num_pins="32"/>
+        <output name="PL_DATA_o" num_pins="36"/>
+        <input name="sc_in" num_pins="6"/>
+        <output name="sc_out" num_pins="6"/>
+        <mode name="physical" disable_packing="true">
+          <pb_type name="bram_phy" blif_model=".subckt bram_phy" num_pb="1">
+            <input name="WDATA_A1_i" num_pins="18"/>
+            <input name="WDATA_A2_i" num_pins="18"/>
+            <output name="RDATA_A1_o" num_pins="18"/>
+            <output name="RDATA_A2_o" num_pins="18"/>
+            <input name="ADDR_A1_i" num_pins="15"/>
+            <input name="ADDR_A2_i" num_pins="14"/>
+            <clock name="CLK_A1_i" num_pins="1"/>
+            <clock name="CLK_A2_i" num_pins="1"/>
+            <input name="REN_A1_i" num_pins="1"/>
+            <input name="REN_A2_i" num_pins="1"/>
+            <input name="WEN_A1_i" num_pins="1"/>
+            <input name="WEN_A2_i" num_pins="1"/>
+            <input name="BE_A1_i" num_pins="2"/>
+            <input name="BE_A2_i" num_pins="2"/>
+            <input name="WDATA_B1_i" num_pins="18"/>
+            <input name="WDATA_B2_i" num_pins="18"/>
+            <output name="RDATA_B1_o" num_pins="18"/>
+            <output name="RDATA_B2_o" num_pins="18"/>
+            <input name="ADDR_B1_i" num_pins="15"/>
+            <input name="ADDR_B2_i" num_pins="14"/>
+            <clock name="CLK_B1_i" num_pins="1"/>
+            <clock name="CLK_B2_i" num_pins="1"/>
+            <input name="REN_B1_i" num_pins="1"/>
+            <input name="REN_B2_i" num_pins="1"/>
+            <input name="WEN_B1_i" num_pins="1"/>
+            <input name="WEN_B2_i" num_pins="1"/>
+            <input name="BE_B1_i" num_pins="2"/>
+            <input name="BE_B2_i" num_pins="2"/>
+            <input name="FLUSH1_i" num_pins="1"/>
+            <input name="FLUSH2_i" num_pins="1"/>
+            <input name="RAM_ID_i" num_pins="20"/>
+            <input name="PL_INIT_i" num_pins="1"/>
+            <input name="PL_ENA_i" num_pins="1"/>
+            <input name="PL_REN_i" num_pins="1"/>
+            <clock name="PL_CLK_i" num_pins="1"/>
+            <input name="PL_WEN_i" num_pins="2"/>
+            <input name="PL_ADDR_i" num_pins="32"/>
+            <input name="PL_DATA_i" num_pins="36"/>
+            <output name="PL_INIT_o" num_pins="1"/>
+            <output name="PL_ENA_o" num_pins="1"/>
+            <output name="PL_REN_o" num_pins="1"/>
+            <output name="PL_CLK_o" num_pins="1"/>
+            <output name="PL_WEN_o" num_pins="2"/>
+            <output name="PL_ADDR_o" num_pins="32"/>
+            <output name="PL_DATA_o" num_pins="36"/>
+            <input name="sc_in" num_pins="6"/>
+            <output name="sc_out" num_pins="6"/>
+            <T_setup value="8.5095e-11" port="bram_phy.WEN_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="6.99975e-11" port="bram_phy.WEN_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="5.71875e-11" port="bram_phy.BE_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="6.12135e-11" port="bram_phy.BE_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="5.3436e-11" port="bram_phy.REN_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="5.64555e-11" port="bram_phy.REN_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="9.85455e-11" port="bram_phy.ADDR_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="7.54875e-11" port="bram_phy.ADDR_B1_i" clock="CLK_B1_i"/>
+            <T_setup value="4.7397e-11" port="bram_phy.WDATA_A1_i" clock="CLK_A1_i"/>
+            <T_setup value="7.1004e-11" port="bram_phy.WDATA_B1_i" clock="CLK_B1_i"/>
+            <T_clock_to_Q min="2.2079e-10" max="3.26289e-10" port="bram_phy.RDATA_A1_o" clock="CLK_A1_i"/>
+            <T_clock_to_Q min="2.16215e-10" max="3.32786e-10" port="bram_phy.RDATA_B1_o" clock="CLK_B1_i"/>
+            <T_setup value="4.9959e-11" port="bram_phy.WEN_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="4.9776e-11" port="bram_phy.WEN_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="5.2704e-11" port="bram_phy.BE_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="5.7462e-11" port="bram_phy.BE_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="5.02335e-11" port="bram_phy.REN_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="6.83505e-11" port="bram_phy.REN_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="6.45075e-11" port="bram_phy.ADDR_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="6.2769e-11" port="bram_phy.ADDR_B2_i" clock="CLK_B2_i"/>
+            <T_setup value="6.8076e-11" port="bram_phy.WDATA_A2_i" clock="CLK_A2_i"/>
+            <T_setup value="8.3448e-11" port="bram_phy.WDATA_B2_i" clock="CLK_B2_i"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.38632e-10" port="bram_phy.RDATA_A2_o" clock="CLK_A2_i"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.03588e-10" port="bram_phy.RDATA_B2_o" clock="CLK_B2_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.RAM_ID_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_INIT_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_ENA_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_REN_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_WEN_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_ADDR_i" clock="PL_CLK_i"/>
+            <T_setup value="9.15e-11" port="bram_phy.PL_DATA_i" clock="PL_CLK_i"/>
+            <T_setup value="4.7031e-11" port="bram_phy.FLUSH1_i" clock="CLK_A1_i"/>
+            <T_setup value="1.67903e-10" port="bram_phy.FLUSH2_i" clock="CLK_A2_i"/>
+          </pb_type>
+          <interconnect>
+            <direct name="bram-clk_a1" input="bram_lr.CLK_A1_i" output="bram_phy.CLK_A1_i"/>
+            <direct name="bram-clk_b1" input="bram_lr.CLK_B1_i" output="bram_phy.CLK_B1_i"/>
+            <direct name="bram-clk_a2" input="bram_lr.CLK_A2_i" output="bram_phy.CLK_A2_i"/>
+            <direct name="bram-clk_b2" input="bram_lr.CLK_B2_i" output="bram_phy.CLK_B2_i"/>
+            <direct name="direct1" input="bram_lr.WEN_A1_i" output="bram_phy.WEN_A1_i"/>
+            <direct name="direct2" input="bram_lr.WEN_B1_i" output="bram_phy.WEN_B1_i"/>
+            <direct name="direct1_BE" input="bram_lr.BE_A1_i" output="bram_phy.BE_A1_i"/>
+            <direct name="direct2_BE" input="bram_lr.BE_B1_i" output="bram_phy.BE_B1_i"/>
+            <direct name="direct3" input="bram_lr.REN_A1_i" output="bram_phy.REN_A1_i"/>
+            <direct name="direct4" input="bram_lr.REN_B1_i" output="bram_phy.REN_B1_i"/>
+            <direct name="direct7" input="bram_lr.ADDR_A1_i" output="bram_phy.ADDR_A1_i"/>
+            <direct name="direct8" input="bram_lr.ADDR_B1_i" output="bram_phy.ADDR_B1_i"/>
+            <direct name="direct9" input="bram_lr.WDATA_A1_i" output="bram_phy.WDATA_A1_i"/>
+            <direct name="direct10" input="bram_lr.WDATA_B1_i" output="bram_phy.WDATA_B1_i"/>
+            <direct name="direct11" input="bram_phy.RDATA_A1_o" output="bram_lr.RDATA_A1_o"/>
+            <direct name="direct12" input="bram_phy.RDATA_B1_o" output="bram_lr.RDATA_B1_o"/>
+            <direct name="direct13" input="bram_lr.FLUSH1_i" output="bram_phy.FLUSH1_i"/>
+            <direct name="direct25" input="bram_lr.WEN_A2_i" output="bram_phy.WEN_A2_i"/>
+            <direct name="direct26" input="bram_lr.WEN_B2_i" output="bram_phy.WEN_B2_i"/>
+            <direct name="direct25_BE" input="bram_lr.BE_A2_i" output="bram_phy.BE_A2_i"/>
+            <direct name="direct26_BE" input="bram_lr.BE_B2_i" output="bram_phy.BE_B2_i"/>
+            <direct name="direct27" input="bram_lr.REN_A2_i" output="bram_phy.REN_A2_i"/>
+            <direct name="direct28" input="bram_lr.REN_B2_i" output="bram_phy.REN_B2_i"/>
+            <direct name="direct31" input="bram_lr.ADDR_A2_i" output="bram_phy.ADDR_A2_i"/>
+            <direct name="direct32" input="bram_lr.ADDR_B2_i" output="bram_phy.ADDR_B2_i"/>
+            <direct name="direct33" input="bram_lr.WDATA_A2_i" output="bram_phy.WDATA_A2_i"/>
+            <direct name="direct34" input="bram_lr.WDATA_B2_i" output="bram_phy.WDATA_B2_i"/>
+            <direct name="direct35" input="bram_phy.RDATA_A2_o" output="bram_lr.RDATA_A2_o"/>
+            <direct name="direct36" input="bram_phy.RDATA_B2_o" output="bram_lr.RDATA_B2_o"/>
+            <direct name="direct37" input="bram_lr.FLUSH2_i" output="bram_phy.FLUSH2_i"/>
+            <direct name="direct49" input="bram_lr.RAM_ID_i" output="bram_phy.RAM_ID_i"/>
+            <direct name="direct50" input="bram_lr.PL_INIT_i" output="bram_phy.PL_INIT_i"/>
+            <direct name="direct51" input="bram_lr.PL_ENA_i" output="bram_phy.PL_ENA_i"/>
+            <direct name="direct52" input="bram_lr.PL_REN_i" output="bram_phy.PL_REN_i"/>
+            <direct name="direct53" input="bram_lr.PL_CLK_i" output="bram_phy.PL_CLK_i"/>
+            <direct name="direct54" input="bram_lr.PL_WEN_i" output="bram_phy.PL_WEN_i"/>
+            <direct name="direct55" input="bram_lr.PL_ADDR_i" output="bram_phy.PL_ADDR_i"/>
+            <direct name="direct56" input="bram_lr.PL_DATA_i" output="bram_phy.PL_DATA_i"/>
+            <direct name="direct57" input="bram_phy.PL_INIT_o" output="bram_lr.PL_INIT_o"/>
+            <direct name="direct58" input="bram_phy.PL_ENA_o" output="bram_lr.PL_ENA_o"/>
+            <direct name="direct59" input="bram_phy.PL_REN_o" output="bram_lr.PL_REN_o"/>
+            <direct name="direct60" input="bram_phy.PL_CLK_o" output="bram_lr.PL_CLK_o"/>
+            <direct name="direct61" input="bram_phy.PL_WEN_o" output="bram_lr.PL_WEN_o"/>
+            <direct name="direct62" input="bram_phy.PL_ADDR_o" output="bram_lr.PL_ADDR_o"/>
+            <direct name="direct63" input="bram_phy.PL_DATA_o" output="bram_lr.PL_DATA_o"/>
+            <direct name="direct64" input="bram_lr.sc_in" output="bram_phy.sc_in"/>
+            <direct name="direct66" input="bram_phy.sc_out" output="bram_lr.sc_out"/>
+          </interconnect>
+        </mode>
+        <mode name="mem_36K_tdp">
+          <pb_type blif_model=".subckt RS_TDP36K" name="mem_36K" num_pb="1">
+            <input name="WDATA_A1" num_pins="18"/>
+            <input name="WDATA_A2" num_pins="18"/>
+            <output name="RDATA_A1" num_pins="18"/>
+            <output name="RDATA_A2" num_pins="18"/>
+            <input name="ADDR_A1" num_pins="15"/>
+            <input name="ADDR_A2" num_pins="14"/>
+            <clock name="CLK_A1" num_pins="1"/>
+            <clock name="CLK_A2" num_pins="1"/>
+            <input name="REN_A1" num_pins="1"/>
+            <input name="REN_A2" num_pins="1"/>
+            <input name="WEN_A1" num_pins="1"/>
+            <input name="WEN_A2" num_pins="1"/>
+            <input name="BE_A1" num_pins="2"/>
+            <input name="BE_A2" num_pins="2"/>
+            <input name="WDATA_B1" num_pins="18"/>
+            <input name="WDATA_B2" num_pins="18"/>
+            <output name="RDATA_B1" num_pins="18"/>
+            <output name="RDATA_B2" num_pins="18"/>
+            <input name="ADDR_B1" num_pins="15"/>
+            <input name="ADDR_B2" num_pins="14"/>
+            <clock name="CLK_B1" num_pins="1"/>
+            <clock name="CLK_B2" num_pins="1"/>
+            <input name="REN_B1" num_pins="1"/>
+            <input name="REN_B2" num_pins="1"/>
+            <input name="WEN_B1" num_pins="1"/>
+            <input name="WEN_B2" num_pins="1"/>
+            <input name="BE_B1" num_pins="2"/>
+            <input name="BE_B2" num_pins="2"/>
+            <input name="FLUSH1" num_pins="1"/>
+            <input name="FLUSH2" num_pins="1"/>
+            <!-- <input name="RESET_ni" num_pins="1"/>      -->
+            <!-- Delay extracted from standard cell libraries -->
+            <T_setup value="8.5095e-11" port="mem_36K.WEN_A1" clock="CLK_A1"/>
+            <T_setup value="6.99975e-11" port="mem_36K.WEN_B1" clock="CLK_B1"/>
+            <T_setup value="5.71875e-11" port="mem_36K.BE_A1" clock="CLK_A1"/>
+            <T_setup value="6.12135e-11" port="mem_36K.BE_B1" clock="CLK_B1"/>
+            <T_setup value="5.3436e-11" port="mem_36K.REN_A1" clock="CLK_A1"/>
+            <T_setup value="5.64555e-11" port="mem_36K.REN_B1" clock="CLK_B1"/>
+            <T_setup value="9.85455e-11" port="mem_36K.ADDR_A1" clock="CLK_A1"/>
+            <T_setup value="7.54875e-11" port="mem_36K.ADDR_B1" clock="CLK_B1"/>
+            <T_setup value="4.7397e-11" port="mem_36K.WDATA_A1" clock="CLK_A1"/>
+            <T_setup value="7.1004e-11" port="mem_36K.WDATA_B1" clock="CLK_B1"/>
+            <T_clock_to_Q min="2.2079e-10" max="3.26289e-10" port="mem_36K.RDATA_A1" clock="CLK_A1"/>
+            <T_clock_to_Q min="2.16215e-10" max="3.32786e-10" port="mem_36K.RDATA_B1" clock="CLK_B1"/>
+            <T_setup value="4.9959e-11" port="mem_36K.WEN_A2" clock="CLK_A2"/>
+            <T_setup value="4.9776e-11" port="mem_36K.WEN_B2" clock="CLK_B2"/>
+            <T_setup value="5.2704e-11" port="mem_36K.BE_A2" clock="CLK_A2"/>
+            <T_setup value="5.7462e-11" port="mem_36K.BE_B2" clock="CLK_B2"/>
+            <T_setup value="5.02335e-11" port="mem_36K.REN_A2" clock="CLK_A2"/>
+            <T_setup value="6.83505e-11" port="mem_36K.REN_B2" clock="CLK_B2"/>
+            <T_setup value="6.45075e-11" port="mem_36K.ADDR_A2" clock="CLK_A2"/>
+            <T_setup value="6.2769e-11" port="mem_36K.ADDR_B2" clock="CLK_B2"/>
+            <T_setup value="6.8076e-11" port="mem_36K.WDATA_A2" clock="CLK_A2"/>
+            <T_setup value="8.3448e-11" port="mem_36K.WDATA_B2" clock="CLK_B2"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.38632e-10" port="mem_36K.RDATA_A2" clock="CLK_A2"/>
+            <T_clock_to_Q min="1.98372e-10" max="2.03588e-10" port="mem_36K.RDATA_B2" clock="CLK_B2"/>
+            <T_setup value="4.7031e-11" port="mem_36K.FLUSH1" clock="CLK_A1"/>
+            <T_setup value="1.67903e-10" port="mem_36K.FLUSH2" clock="CLK_A2"/>
+            <!-- <T_setup value="500e-12" port="mem_36K.RESET_ni" clock="CLK_A2"/>      -->
+            <power method="pin-toggle">
+              <port name="CLK_A1" energy_per_toggle="17.9e-12"/>
+              <port name="CLK_A2" energy_per_toggle="17.9e-12"/>
+              <port name="CLK_B1" energy_per_toggle="17.9e-12"/>
+              <port name="CLK_B2" energy_per_toggle="17.9e-12"/>
+              <static_power power_per_instance="0.0"/>
+            </power>
+          </pb_type>
+          <interconnect>
+            <direct name="bram-clk_a1" input="bram_lr.CLK_A1_i" output="mem_36K.CLK_A1"/>
+            <direct name="bram-clk_b1" input="bram_lr.CLK_B1_i" output="mem_36K.CLK_B1"/>
+            <direct name="bram-clk_a2" input="bram_lr.CLK_A2_i" output="mem_36K.CLK_A2"/>
+            <direct name="bram-clk_b2" input="bram_lr.CLK_B2_i" output="mem_36K.CLK_B2"/>
+            <direct name="direct1" input="bram_lr.WEN_A1_i" output="mem_36K.WEN_A1"/>
+            <direct name="direct2" input="bram_lr.WEN_B1_i" output="mem_36K.WEN_B1"/>
+            <direct name="direct1_BE" input="bram_lr.BE_A1_i" output="mem_36K.BE_A1"/>
+            <direct name="direct2_BE" input="bram_lr.BE_B1_i" output="mem_36K.BE_B1"/>
+            <direct name="direct3" input="bram_lr.REN_A1_i" output="mem_36K.REN_A1"/>
+            <direct name="direct4" input="bram_lr.REN_B1_i" output="mem_36K.REN_B1"/>
+            <direct name="direct7" input="bram_lr.ADDR_A1_i" output="mem_36K.ADDR_A1"/>
+            <direct name="direct8" input="bram_lr.ADDR_B1_i" output="mem_36K.ADDR_B1"/>
+            <direct name="direct9" input="bram_lr.WDATA_A1_i" output="mem_36K.WDATA_A1"/>
+            <direct name="direct10" input="bram_lr.WDATA_B1_i" output="mem_36K.WDATA_B1"/>
+            <direct name="direct11" input="mem_36K.RDATA_A1" output="bram_lr.RDATA_A1_o"/>
+            <direct name="direct12" input="mem_36K.RDATA_B1" output="bram_lr.RDATA_B1_o"/>
+            <direct name="direct13" input="bram_lr.FLUSH1_i" output="mem_36K.FLUSH1"/>
+            <direct name="direct25" input="bram_lr.WEN_A2_i" output="mem_36K.WEN_A2"/>
+            <direct name="direct26" input="bram_lr.WEN_B2_i" output="mem_36K.WEN_B2"/>
+            <direct name="direct25_BE" input="bram_lr.BE_A2_i" output="mem_36K.BE_A2"/>
+            <direct name="direct26_BE" input="bram_lr.BE_B2_i" output="mem_36K.BE_B2"/>
+            <direct name="direct27" input="bram_lr.REN_A2_i" output="mem_36K.REN_A2"/>
+            <direct name="direct28" input="bram_lr.REN_B2_i" output="mem_36K.REN_B2"/>
+            <direct name="direct31" input="bram_lr.ADDR_A2_i" output="mem_36K.ADDR_A2"/>
+            <direct name="direct32" input="bram_lr.ADDR_B2_i" output="mem_36K.ADDR_B2"/>
+            <direct name="direct33" input="bram_lr.WDATA_A2_i" output="mem_36K.WDATA_A2"/>
+            <direct name="direct34" input="bram_lr.WDATA_B2_i" output="mem_36K.WDATA_B2"/>
+            <direct name="direct35" input="mem_36K.RDATA_A2" output="bram_lr.RDATA_A2_o"/>
+            <direct name="direct36" input="mem_36K.RDATA_B2" output="bram_lr.RDATA_B2_o"/>
+            <direct name="direct37" input="bram_lr.FLUSH2_i" output="mem_36K.FLUSH2"/>
+          </interconnect>
+        </mode>
+      </pb_type>
+      <!-- bram_lr -->
+      <interconnect>
+        <!-- start BRAM LR -->
+        <!-- clock mux -->
+        <complete name="crossbar_clk" input="bram.clk" output="bram_lr.CLK_A1_i bram_lr.CLK_A2_i bram_lr.CLK_B1_i bram_lr.CLK_B2_i"> </complete>
+        <!-- 4x 4:1 mux -->
+        <!-- 72 fabric outputs -->
+        <direct name="direct1" input="bram_lr.RDATA_A1_o" output="bram.O0[17:0]"/>
+        <direct name="direct2" input="bram_lr.RDATA_A2_o" output="bram.O1[17:0]"/>
+        <direct name="direct3" input="bram_lr.RDATA_B1_o" output="bram.O2[17:0]"/>
+        <direct name="direct4" input="bram_lr.RDATA_B2_o[5:0]" output="bram.O0[23:18]"/>
+        <direct name="direct5" input="bram_lr.RDATA_B2_o[11:6]" output="bram.O1[23:18]"/>
+        <direct name="direct6" input="bram_lr.RDATA_B2_o[17:12]" output="bram.O2[23:18]"/>
+        <!-- non-fabric top level connections -->
+        <direct name="direct7" input="bram.RAM_ID_i" output="bram_lr.RAM_ID_i"/>
+        <direct name="direct8" input="bram.PL_INIT_i" output="bram_lr.PL_INIT_i"/>
+        <direct name="direct9" input="bram.PL_ENA_i" output="bram_lr.PL_ENA_i"/>
+        <direct name="direct10" input="bram.PL_REN_i" output="bram_lr.PL_REN_i"/>
+        <direct name="direct11" input="bram.PL_CLK_i" output="bram_lr.PL_CLK_i"/>
+        <direct name="direct12" input="bram.PL_WEN_i" output="bram_lr.PL_WEN_i"/>
+        <direct name="direct13" input="bram.PL_ADDR_i" output="bram_lr.PL_ADDR_i"/>
+        <direct name="direct14" input="bram.PL_DATA_i" output="bram_lr.PL_DATA_i"/>
+        <direct name="direct15" input="bram_lr.PL_INIT_o" output="bram.PL_INIT_o"/>
+        <direct name="direct16" input="bram_lr.PL_ENA_o" output="bram.PL_ENA_o"/>
+        <direct name="direct17" input="bram_lr.PL_REN_o" output="bram.PL_REN_o"/>
+        <direct name="direct18" input="bram_lr.PL_CLK_o" output="bram.PL_CLK_o"/>
+        <direct name="direct19" input="bram_lr.PL_WEN_o" output="bram.PL_WEN_o"/>
+        <direct name="direct20" input="bram_lr.PL_ADDR_o" output="bram.PL_ADDR_o"/>
+        <direct name="direct21" input="bram_lr.PL_DATA_o" output="bram.PL_DATA_o"/>
+        <direct name="direct22" input="bram.sc_in" output="bram_lr.sc_in"/>
+        <direct name="direct23" input="bram_lr.sc_out" output="bram.sc_out"/>
+        <direct name="direct_sr" input="bram.sr_in" output="bram.sr_out"/>
+        <direct name="direct_pr" input="bram.plr_i" output="bram.plr_o"/>
+        <!-- ~130x 24:1 input mux -->
+        <complete name="crossbar0" input="bram.I00 bram.I20" output="bram_lr.WDATA_A1_i[0] bram_lr.WDATA_A2_i[0] bram_lr.WDATA_B1_i[0] bram_lr.WDATA_B2_i[0] bram_lr.ADDR_A1_i[0]                        bram_lr.ADDR_A2_i[0] bram_lr.ADDR_B1_i[0] bram_lr.ADDR_B2_i[0] bram_lr.WDATA_A1_i[12] bram_lr.WDATA_A2_i[12] bram_lr.WDATA_B1_i[12]">
+           </complete>
+        <complete name="crossbar1" input="bram.I10 bram.I20" output="bram_lr.WDATA_A1_i[1] bram_lr.WDATA_A2_i[1] bram_lr.WDATA_B1_i[1] bram_lr.WDATA_B2_i[1] bram_lr.ADDR_A1_i[1]                        bram_lr.ADDR_A2_i[1] bram_lr.ADDR_B1_i[1] bram_lr.ADDR_B2_i[1] bram_lr.WDATA_A1_i[13] bram_lr.WDATA_A2_i[13] bram_lr.WDATA_B1_i[13]">
+           </complete>
+        <complete name="crossbar2" input="bram.I00 bram.I30" output="bram_lr.WDATA_A1_i[2] bram_lr.WDATA_A2_i[2] bram_lr.WDATA_B1_i[2] bram_lr.WDATA_B2_i[2] bram_lr.ADDR_A1_i[2]                        bram_lr.ADDR_A2_i[2] bram_lr.ADDR_B1_i[2] bram_lr.ADDR_B2_i[2] bram_lr.WDATA_A1_i[14] bram_lr.WDATA_A2_i[14] bram_lr.WDATA_B1_i[14]">
+           </complete>
+        <complete name="crossbar3" input="bram.I10 bram.I30" output="bram_lr.WDATA_A1_i[3] bram_lr.WDATA_A2_i[3] bram_lr.WDATA_B1_i[3] bram_lr.WDATA_B2_i[3] bram_lr.ADDR_A1_i[3]                        bram_lr.ADDR_A2_i[3] bram_lr.ADDR_B1_i[3] bram_lr.ADDR_B2_i[3] bram_lr.WDATA_A1_i[15] bram_lr.WDATA_A2_i[15] bram_lr.WDATA_B1_i[15]">
+           </complete>
+        <complete name="crossbar4" input="bram.I01 bram.I21" output="bram_lr.WDATA_A1_i[4] bram_lr.WDATA_A2_i[4] bram_lr.WDATA_B1_i[4] bram_lr.WDATA_B2_i[4] bram_lr.ADDR_A1_i[4]                        bram_lr.ADDR_A2_i[4] bram_lr.ADDR_B1_i[4] bram_lr.ADDR_B2_i[4] bram_lr.WDATA_A1_i[16] bram_lr.WDATA_A2_i[16] bram_lr.WDATA_B1_i[16]">
+           </complete>
+        <complete name="crossbar5" input="bram.I11 bram.I21" output="bram_lr.WDATA_A1_i[5] bram_lr.WDATA_A2_i[5] bram_lr.WDATA_B1_i[5] bram_lr.WDATA_B2_i[5] bram_lr.ADDR_A1_i[5]                        bram_lr.ADDR_A2_i[5] bram_lr.ADDR_B1_i[5] bram_lr.ADDR_B2_i[5] bram_lr.WDATA_A1_i[17] bram_lr.WDATA_A2_i[17] bram_lr.WDATA_B1_i[17]">
+           </complete>
+        <complete name="crossbar6" input="bram.I01 bram.I31" output="bram_lr.WDATA_A1_i[6] bram_lr.WDATA_A2_i[6] bram_lr.WDATA_B1_i[6] bram_lr.WDATA_B2_i[6] bram_lr.ADDR_A1_i[6]                        bram_lr.ADDR_A2_i[6] bram_lr.ADDR_B1_i[6] bram_lr.ADDR_B2_i[6] bram_lr.WDATA_B2_i[12] bram_lr.ADDR_A1_i[12] bram_lr.ADDR_A2_i[12]">
+           </complete>
+        <complete name="crossbar7" input="bram.I11 bram.I31" output="bram_lr.WDATA_A1_i[7] bram_lr.WDATA_A2_i[7] bram_lr.WDATA_B1_i[7] bram_lr.WDATA_B2_i[7] bram_lr.ADDR_A1_i[7]                        bram_lr.ADDR_A2_i[7] bram_lr.ADDR_B1_i[7] bram_lr.ADDR_B2_i[7] bram_lr.WDATA_B2_i[13] bram_lr.ADDR_A1_i[13] bram_lr.ADDR_A2_i[13]">
+           </complete>
+        <complete name="crossbar8" input="bram.I02 bram.I22" output="bram_lr.WDATA_A1_i[8] bram_lr.WDATA_A2_i[8] bram_lr.WDATA_B1_i[8] bram_lr.WDATA_B2_i[8] bram_lr.ADDR_A1_i[8]                        bram_lr.ADDR_A2_i[8] bram_lr.ADDR_B1_i[8] bram_lr.ADDR_B2_i[8] bram_lr.WDATA_B2_i[14] bram_lr.ADDR_A1_i[14]">
+           </complete>
+        <complete name="crossbar9" input="bram.I12 bram.I22" output="bram_lr.WDATA_A1_i[9] bram_lr.WDATA_A2_i[9] bram_lr.WDATA_B1_i[9] bram_lr.WDATA_B2_i[9] bram_lr.ADDR_A1_i[9]                        bram_lr.ADDR_A2_i[9] bram_lr.ADDR_B1_i[9] bram_lr.ADDR_B2_i[9] bram_lr.WDATA_B2_i[15] bram_lr.ADDR_B1_i[12]">
+           </complete>
+        <complete name="crossbar10" input="bram.I02 bram.I32" output="bram_lr.WDATA_A1_i[10] bram_lr.WDATA_A2_i[10] bram_lr.WDATA_B1_i[10] bram_lr.WDATA_B2_i[10] bram_lr.ADDR_A1_i[10]                        bram_lr.ADDR_A2_i[10] bram_lr.ADDR_B1_i[10] bram_lr.ADDR_B2_i[10] bram_lr.WDATA_B2_i[16] bram_lr.ADDR_B1_i[13] bram_lr.ADDR_B2_i[12]">
+           </complete>
+        <complete name="crossbar11" input="bram.I12 bram.I32" output="bram_lr.WDATA_A1_i[11] bram_lr.WDATA_A2_i[11] bram_lr.WDATA_B1_i[11] bram_lr.WDATA_B2_i[11] bram_lr.ADDR_A1_i[11]                        bram_lr.ADDR_A2_i[11] bram_lr.ADDR_B1_i[11] bram_lr.ADDR_B2_i[11] bram_lr.WDATA_B2_i[17] bram_lr.ADDR_B1_i[14] bram_lr.ADDR_B2_i[13]">
+           </complete>
+        <complete name="crossbar12" input="bram.IS0 bram.IS1 bram.IS2" output="bram_lr.REN_A1_i bram_lr.REN_A2_i bram_lr.WEN_A1_i bram_lr.WEN_A2_i bram_lr.BE_A1_i[0] bram_lr.BE_A1_i[1] bram_lr.BE_A2_i[0] bram_lr.BE_A2_i[1]                        bram_lr.REN_B1_i bram_lr.REN_B2_i bram_lr.WEN_B1_i bram_lr.WEN_B2_i bram_lr.BE_B1_i[0] bram_lr.BE_B1_i[1] bram_lr.BE_B2_i[0] bram_lr.BE_B2_i[1]                        bram_lr.FLUSH1_i bram_lr.FLUSH2_i">
+           </complete>
+      </interconnect>
+    </pb_type>
+    <!-- bram -->
+  </complexblocklist>
+  <layout tileable="true" through_channel="true">
+    <fixed_layout name="castor10x8_heterogeneous" width="12" height="10">
+      <fill type="clb" priority="10"/>
+      <region type="dsp" startx="4" endx="4" starty="2" endy="H-3" priority="30"/>
+      <region type="bram" startx="7" endx="7" starty="2" endy="H-3" priority="30"/>
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_left" x="1" y="1" priority="94"/> -->
+      <!-- <single type="io_left" x="1" y="H-2" priority="95"/> -->
+      <!-- <single type="io_right" x="W-2" y="1" priority="96"/> -->
+      <!-- <single type="io_right" x="W-2" y="H-2" priority="97"/> -->
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+    </fixed_layout>
+    <fixed_layout name="castor62x44_heterogeneous" width="64" height="46">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="11" starty="2" priority="20"/>
+      <col type="dsp" startx="23" starty="2" priority="20"/>
+      <col type="dsp" startx="35" starty="2" priority="20"/>
+      <col type="dsp" startx="47" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="16" starty="2" priority="20"/>
+      <col type="bram" startx="28" starty="2" priority="20"/>
+      <col type="bram" startx="40" starty="2" priority="20"/>
+      <col type="bram" startx="52" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor82x68_heterogeneous_real" width="84" height="70">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="15" starty="2" priority="20"/>
+      <col type="dsp" startx="23" starty="2" priority="20"/>
+      <col type="dsp" startx="31" starty="2" priority="20"/>
+      <col type="dsp" startx="39" starty="2" priority="20"/>
+      <col type="dsp" startx="47" starty="2" priority="20"/>
+      <col type="dsp" startx="55" starty="2" priority="20"/>
+      <col type="dsp" startx="63" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="27" starty="2" priority="20"/>
+      <col type="bram" startx="35" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="51" starty="2" priority="20"/>
+      <col type="bram" startx="59" starty="2" priority="20"/>
+      <col type="bram" startx="67" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor82x68_heterogeneous" width="106" height="70">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="12" starty="2" priority="20"/>
+      <col type="dsp" startx="24" starty="2" priority="20"/>
+      <col type="dsp" startx="36" starty="2" priority="20"/>
+      <col type="dsp" startx="48" starty="2" priority="20"/>
+      <col type="dsp" startx="57" starty="2" priority="20"/>
+      <col type="dsp" startx="69" starty="2" priority="20"/>
+      <col type="dsp" startx="81" starty="2" priority="20"/>
+      <col type="dsp" startx="93" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="7" starty="2" priority="20"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="74" starty="2" priority="20"/>
+      <col type="bram" startx="86" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor104x68_heterogeneous" width="106" height="70">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="12" starty="2" priority="20"/>
+      <col type="dsp" startx="24" starty="2" priority="20"/>
+      <col type="dsp" startx="36" starty="2" priority="20"/>
+      <col type="dsp" startx="48" starty="2" priority="20"/>
+      <col type="dsp" startx="57" starty="2" priority="20"/>
+      <col type="dsp" startx="69" starty="2" priority="20"/>
+      <col type="dsp" startx="81" starty="2" priority="20"/>
+      <col type="dsp" startx="93" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="7" starty="2" priority="20"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="74" starty="2" priority="20"/>
+      <col type="bram" startx="86" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>
+    </fixed_layout>
+  </layout>
+</architecture>
