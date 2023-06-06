@@ -2746,7 +2746,7 @@
       <col type="bram" startx="40" starty="2" priority="20"/>
       <col type="bram" startx="52" starty="2" priority="20"/>
     </fixed_layout>
-    <fixed_layout name="castor82x68_heterogeneous" width="84" height="70">
+    <fixed_layout name="castor82x68_heterogeneous_real" width="84" height="70">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
       <row type="io_bottom" starty="1" priority="91"/>
@@ -2777,6 +2777,74 @@
       <col type="bram" startx="51" starty="2" priority="20"/>
       <col type="bram" startx="59" starty="2" priority="20"/>
       <col type="bram" startx="67" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor82x68_heterogeneous" width="106" height="70">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="12" starty="2" priority="20"/>
+      <col type="dsp" startx="24" starty="2" priority="20"/>
+      <col type="dsp" startx="36" starty="2" priority="20"/>
+      <col type="dsp" startx="48" starty="2" priority="20"/>
+      <col type="dsp" startx="57" starty="2" priority="20"/>
+      <col type="dsp" startx="69" starty="2" priority="20"/>
+      <col type="dsp" startx="81" starty="2" priority="20"/>
+      <col type="dsp" startx="93" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="7" starty="2" priority="20"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="74" starty="2" priority="20"/>
+      <col type="bram" startx="86" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor104x68_heterogeneous" width="106" height="70">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="12" starty="2" priority="20"/>
+      <col type="dsp" startx="24" starty="2" priority="20"/>
+      <col type="dsp" startx="36" starty="2" priority="20"/>
+      <col type="dsp" startx="48" starty="2" priority="20"/>
+      <col type="dsp" startx="57" starty="2" priority="20"/>
+      <col type="dsp" startx="69" starty="2" priority="20"/>
+      <col type="dsp" startx="81" starty="2" priority="20"/>
+      <col type="dsp" startx="93" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="7" starty="2" priority="20"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="74" starty="2" priority="20"/>
+      <col type="bram" startx="86" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
   </layout>
 </architecture>
