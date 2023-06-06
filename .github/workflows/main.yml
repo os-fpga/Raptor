@@ -144,6 +144,11 @@ jobs:
         path: |
           ${{ github.workspace }}/build/test/
           ${{ github.workspace }}/build/tests/
+    - name: Print server resource
+      if: success() || failure()
+      run: |
+        df -h
+        du -sch *
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
