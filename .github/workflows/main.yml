@@ -94,13 +94,26 @@ jobs:
         which $CC && $CC --version
         which $CXX && $CXX --version
 
+    - name: free disk space
+      run: |
+        du -sch *
+        df -h
+        sudo swapoff -a
+        sudo rm -f /swapfile
+        sudo apt clean
+        docker rmi $(docker image ls -aq)
+        sudo apt-get autoremove -y >/dev/null 2>&1
+        sudo apt-get autoclean -y >/dev/null 2>&1
+        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
+        df -h
+
     - name: Test Release
       if: matrix.mode == 'test'
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
         make release test/batch_gen2
-
+        
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
@@ -144,6 +157,11 @@ jobs:
         path: |
           ${{ github.workspace }}/build/test/
           ${{ github.workspace }}/build/tests/
+    - name: Print server resource
+      if: success() || failure()
+      run: |
+        df -h
+        du -sch *
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
