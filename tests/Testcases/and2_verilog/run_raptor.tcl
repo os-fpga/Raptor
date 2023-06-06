@@ -38,6 +38,7 @@ puts "Compiling $project_name..."
 analyze
 synthesize delay
 simulate gate icarus
+pnr_options --read_vpr_constraints and2_part.xml
 packing
 place
 route
