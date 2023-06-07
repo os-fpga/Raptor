@@ -444,13 +444,13 @@
   </direct_connection>
   <tile_annotations>
     <global_port name="clk" is_clock="true" default_val="0">
-      <tile name="clb" port="clk[0:7]" x="-1" y="-1"/>
-      <tile name="io_top" port="clk[0:7]" x="-1" y="-1"/>
-      <tile name="io_right" port="clk[0:7]" x="-1" y="-1"/>
-      <tile name="io_bottom" port="clk[0:7]" x="-1" y="-1"/>
-      <tile name="io_left" port="clk[0:7]" x="-1" y="-1"/>
-      <tile name="dsp" port="clk[0:7]" x="-1" y="-1"/>
-      <tile name="bram" port="clk[0:7]" x="-1" y="-1"/>
+      <tile name="clb" port="clk[0:15]" x="-1" y="-1"/>
+      <tile name="io_top" port="clk[0:15]" x="-1" y="-1"/>
+      <tile name="io_right" port="clk[0:15]" x="-1" y="-1"/>
+      <tile name="io_bottom" port="clk[0:15]" x="-1" y="-1"/>
+      <tile name="io_left" port="clk[0:15]" x="-1" y="-1"/>
+      <tile name="dsp" port="clk[0:15]" x="-1" y="-1"/>
+      <tile name="bram" port="clk[0:15]" x="-1" y="-1"/>
     </global_port>
   </tile_annotations>
   <pb_type_annotations>
