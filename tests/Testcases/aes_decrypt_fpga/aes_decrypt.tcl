@@ -9,7 +9,6 @@ synth_options -effort high
 analyze
 message_severity VERI-1209 IGNORE
 synthesize delay
-pnr_options --inner_num 3 --read_vpr_constraints aes_decrypt.part
 packing
 place
 route
