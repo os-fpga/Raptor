@@ -815,9 +815,9 @@
     <connection_block input_switch_name="ipin_cblock"/>
   </device>
   <switchlist>
-    <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="1.91784e-10" mux_trans_size="1.222260" buf_size="auto"/>
-    <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="9.14e-11" mux_trans_size="2.630740" buf_size="27.645901"/>
-    <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.784e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="ipin_cblock" R="0." Cout="0." Cin="0" Tdel="1.007e-10" mux_trans_size="1.222260" buf_size="auto"/>
+    <switch type="mux" name="L1_mux" R="0." Cin=".77e-15" Cout="0." Tdel="6.096e-11" mux_trans_size="2.630740" buf_size="27.645901"/>
+    <switch type="mux" name="L4_mux" R="0." Cin=".77e-15" Cout="0." Tdel="1.189e-10" mux_trans_size="2.630740" buf_size="27.645901"/>
   </switchlist>
   <segmentlist>
     <!-- GIVE a specific name for the segment! OpenFPGA appreciate that! -->
@@ -1111,48 +1111,48 @@
                 <output name="lut5_out" num_pins="2"/>
                 <output name="lut6_out" num_pins="1"/>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
-                           2.37077e-10
-                           3.35531e-10
-                           2.32502e-10
-                           3.09179e-10
-                           1.75772e-10
-                           1.40727e-10
+                           1.725e-10
+                           1.517e-10
+                           1.026e-10
+                           9.025e-11
+                           5.393e-11
+                           2.51e-11
                         </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:5]" out_port="frac_lut6.lut6_out">
-                           1.21878e-10
-                           1.6836e-10
-                           1.20323e-10
-                           1.61406e-10
-                           9.0768e-11
-                           6.96315e-11
+                           1.323e-10
+                           1.192e-10
+                           7.65e-11
+                           7.285e-11
+                           3.868e-11
+                           1.744e-11
                         </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
-                           1.16846e-10
-                           2.30306e-10
-                           1.1712e-10
-                           1.9883e-10
-                           6.34095e-11
+                           2.181e-10
+                           1.969e-10
+                           1.478e-10
+                           1.355e-10
+                           9.919e-11
                         </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[0]">
-                           6.08475e-11
-                           1.07055e-10
-                           6.23115e-11
-                           9.6807e-11
-                           2.04045e-11
+                           1.544e-10
+                           1.436e-10
+                           1.011e-10
+                           9.903e-11
+                           6.486e-11
                         </delay_matrix>
                 <delay_matrix type="max" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
-                           1.16846e-10
-                           2.30306e-10
-                           1.1712e-10
-                           1.9883e-10
-                           6.34095e-11
+                           2.181e-10
+                           1.969e-10
+                           1.478e-10
+                           1.355e-10
+                           9.919e-11
                         </delay_matrix>
                 <delay_matrix type="min" in_port="frac_lut6.in[0:4]" out_port="frac_lut6.lut5_out[1]">
-                           6.08475e-11
-                           1.07055e-10
-                           6.23115e-11
-                           9.6807e-11
-                           2.04045e-11
+                           1.544e-10
+                           1.436e-10
+                           1.011e-10
+                           9.903e-11
+                           6.486e-11
                         </delay_matrix>
                 <!--                        <delay_matrix type="max" in_port="frac_lut6.in[0:3]" out_port="frac_lut6.lut4_out[0]">
                            8.0337e-11
@@ -1216,7 +1216,7 @@
                 <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
                 <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
                 <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-                <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+                <delay_constant max="1.993e-11" min="1.816e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
               </pb_type>
               <!-- adder_carry -->
               <pb_type name="ff_bypass" num_pb="2">
@@ -1302,20 +1302,20 @@
                 <input name="in" num_pins="6" port_class="lut_in"/>
                 <output name="out" num_pins="1" port_class="lut_out"/>
                 <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
-                           2.37077e-10
-                           3.35531e-10
-                           2.32502e-10
-                           3.09179e-10
-                           1.75772e-10
-                           1.40727e-10
+                           1.725e-10
+                           1.517e-10
+                           1.026e-10
+                           9.025e-11
+                           5.393e-11
+                           2.51e-11
                      </delay_matrix>
                 <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
-                        1.21878e-10
-                        1.6836e-10
-                        1.20323e-10
-                        1.61406e-10
-                        9.0768e-11
-                        6.96315e-11
+                        1.323e-10
+                        1.192e-10
+                        7.65e-11
+                        7.285e-11
+                        3.868e-11
+                        1.744e-11
               </delay_matrix>
               </pb_type>
               <interconnect>
@@ -1340,20 +1340,20 @@
                 <input name="in" num_pins="6" port_class="lut_in"/>
                 <output name="out" num_pins="1" port_class="lut_out"/>
                 <delay_matrix type="max" in_port="lut6.in" out_port="lut6.out">
-                            2.37077e-10
-                            3.35531e-10
-                            2.32502e-10
-                            3.09179e-10
-                            1.75772e-10
-                            1.40727e-10
+                            1.725e-10
+                            1.517e-10
+                            1.026e-10
+                            9.025e-11
+                            5.393e-11
+                            2.51e-11
                         </delay_matrix>
                 <delay_matrix type="min" in_port="lut6.in" out_port="lut6.out">
-                            1.21878e-10
-                            1.6836e-10
-                            1.20323e-10
-                            1.61406e-10
-                            9.0768e-11
-                            6.96315e-11
+                            1.323e-10
+                            1.192e-10
+                            7.65e-11
+                            7.285e-11
+                            3.868e-11
+                            1.744e-11
                         </delay_matrix>
               </pb_type>
               <!-- lut6 -->
@@ -1447,18 +1447,18 @@
                 <output name="out" num_pins="1" port_class="lut_out"/>
                 <!-- LUT timing using delay matrix -->
                 <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
-                                 1.16846e-10
-                                 2.30306e-10
-                                 1.1712e-10
-                                 1.9883e-10
-                                 6.34095e-11
+                                 2.181e-10
+                                 1.969e-10
+                                 1.478e-10
+                                 1.355e-10
+                                 9.919e-11
                               </delay_matrix>
                 <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
-                                 6.08475e-11
-                                 1.07055e-10
-                                 6.23115e-11
-                                 9.6807e-11
-                                 2.04045e-11
+                                 1.544e-10
+                                 1.436e-10
+                                 1.011e-10
+                                 9.903e-11
+                                 6.486e-11
                               </delay_matrix>
               </pb_type>
               <!-- lut5 -->
@@ -1557,18 +1557,18 @@
                 <output name="out" num_pins="1" port_class="lut_out"/>
                 <!-- LUT timing using delay matrix -->
                 <delay_matrix type="max" in_port="lut5.in" out_port="lut5.out">
-                                 1.16846e-10
-                                 2.30306e-10
-                                 1.1712e-10
-                                 1.9883e-10
-                                 6.34095e-11
+                                 2.181e-10
+                                 1.969e-10
+                                 1.478e-10
+                                 1.355e-10
+                                 9.919e-11
                               </delay_matrix>
                 <delay_matrix type="min" in_port="lut5.in" out_port="lut5.out">
-                                 6.08475e-11
-                                 1.07055e-10
-                                 6.23115e-11
-                                 9.6807e-11
-                                 2.04045e-11
+                                 1.544e-10
+                                 1.436e-10
+                                 1.011e-10
+                                 9.903e-11
+                                 6.486e-11
                               </delay_matrix>
               </pb_type>
               <!-- lut5 -->
@@ -1583,7 +1583,7 @@
                 <delay_constant max="3.6966e-11" min="1.8483e-11" in_port="adder_carry.cin" out_port="adder_carry.sumout"/>
                 <delay_constant max="2.8365e-11" min="1.41825e-11" in_port="adder_carry.p" out_port="adder_carry.cout"/>
                 <delay_constant max="3.843e-11" min="1.9215e-11" in_port="adder_carry.g" out_port="adder_carry.cout"/>
-                <delay_constant max="2.756e-11" min="2.528e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
+                <delay_constant max="1.993e-11" min="1.816e-11" in_port="adder_carry.cin" out_port="adder_carry.cout"/>
               </pb_type>
               <pb_type name="ff" num_pb="1">
                 <input name="D" num_pins="1"/>
@@ -1755,30 +1755,30 @@
       <interconnect>
         <!-- clb to clb_lr -->
         <complete name="crossbar0" input="clb.I00 clb.I30" output="clb_lr.in[7:0]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[7:0]"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[7:0]"/>
         </complete>
         <complete name="crossbar1" input="clb.I10 clb.I20" output="clb_lr.in[15:8]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[15:8]"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[15:8]"/>
         </complete>
         <complete name="crossbar2" input="clb.I00 clb.I20" output="clb_lr.in[23:16]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I20" out_port="clb_lr.in[23:16]"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I20" out_port="clb_lr.in[23:16]"/>
         </complete>
         <complete name="crossbar3" input="clb.I10 clb.I30" output="clb_lr.in[31:24]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I30" out_port="clb_lr.in[31:24]"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I30" out_port="clb_lr.in[31:24]"/>
         </complete>
         <complete name="crossbar4" input="clb.I00 clb.I30" output="clb_lr.in[39:32]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[39:32]"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[39:32]"/>
         </complete>
         <complete name="crossbar5" input="clb.I10 clb.I20" output="clb_lr.in[47:40]">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[47:40]"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[47:40]"/>
         </complete>
         <complete name="clks" input="clb.clk" output="clb_lr.clk">     
             </complete>
         <complete name="crossbar6" input="clb.IS0" output="clb_lr.enable">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="clb_lr.enable"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.IS0" out_port="clb_lr.enable"/>
         </complete>
         <complete name="crossbar7" input="clb.IS0" output="clb_lr.reset">
-          <delay_constant max="1.55825e-10" min="2.0313e-11" in_port="clb.IS0" out_port="clb_lr.reset"/>
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.IS0" out_port="clb_lr.reset"/>
         </complete>
         <direct name="clbouts1" input="clb_lr.out[7:0]" output="clb.O0[7:0]"/>
         <direct name="clbouts2" input="clb_lr.out[15:8]" output="clb.O0[15:8]"/>
