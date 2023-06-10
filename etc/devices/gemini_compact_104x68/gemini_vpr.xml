@@ -1754,23 +1754,23 @@
       <!-- clb_lr -->
       <interconnect>
         <!-- clb to clb_lr -->
-        <complete name="crossbar0" input="clb.I00 clb.I30" output="clb_lr.in[7:0]">
-          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[7:0]"/>
+        <complete name="crossbar0" input="clb.I00 clb.I30 clb_lr.out[3:0]" output="clb_lr.in[7:0]">
+         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30 clb_lr.out[3:0]" out_port="clb_lr.in[7:0]"/>
+         </complete>
+        <complete name="crossbar1" input="clb.I10 clb.I20 clb_lr.out[7:4]" output="clb_lr.in[15:8]">
+         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20   clb_lr.out[7:4]" out_port="clb_lr.in[15:8]"/>
+         </complete>
+        <complete name="crossbar2" input="clb.I00 clb.I20 clb_lr.out[11:8]" output="clb_lr.in[23:16]">
+         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I20 clb_lr.out[11:8]" out_port="clb_lr.in[23:16]"/>
+         </complete>
+        <complete name="crossbar3" input="clb.I10 clb.I30 clb_lr.out[15:12]" output="clb_lr.in[31:24]">
+         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I30 clb_lr.out[15:12]" out_port="clb_lr.in[31:24]"/>
         </complete>
-        <complete name="crossbar1" input="clb.I10 clb.I20" output="clb_lr.in[15:8]">
-          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[15:8]"/>
+        <complete name="crossbar4" input="clb.I00 clb.I30 clb_lr.out[19:16]" output="clb_lr.in[39:32]">
+         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30 clb_lr.out[19:16]" out_port="clb_lr.in[39:32]"/>
         </complete>
-        <complete name="crossbar2" input="clb.I00 clb.I20" output="clb_lr.in[23:16]">
-          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I20" out_port="clb_lr.in[23:16]"/>
-        </complete>
-        <complete name="crossbar3" input="clb.I10 clb.I30" output="clb_lr.in[31:24]">
-          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I30" out_port="clb_lr.in[31:24]"/>
-        </complete>
-        <complete name="crossbar4" input="clb.I00 clb.I30" output="clb_lr.in[39:32]">
-          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[39:32]"/>
-        </complete>
-        <complete name="crossbar5" input="clb.I10 clb.I20" output="clb_lr.in[47:40]">
-          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[47:40]"/>
+        <complete name="crossbar5" input="clb.I10 clb.I20 clb_lr.out[23:20]" output="clb_lr.in[47:40]">
+         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20 clb_lr.out[23:20]" out_port="clb_lr.in[47:40]"/>
         </complete>
         <complete name="clks" input="clb.clk" output="clb_lr.clk">     
             </complete>
