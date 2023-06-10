@@ -248,7 +248,7 @@
         <internal type="bitstream_settings" file="gemini_compact_104x68/bitstream_setting.xml"/>
         <internal type="sim_settings" file="gemini_compact_104x68/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="gemini_compact_104x68/fpga_repack_constraints.xml"/>
-        <internal type="fabric_key" file="gemini_compact_104x68/fabric_key.xml"/>
+        <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_104x68/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_104x68/Gemini_Pin_Table.csv"/>
