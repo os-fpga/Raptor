@@ -2909,20 +2909,20 @@
       <fill type="clb" priority="10"/>
       <!--Insert DSP column(s)-->
       <col type="dsp" startx="14" starty="2" priority="20"/>
-      <col type="dsp" startx="27" starty="2" priority="20"/>
+      <col type="dsp" startx="28" starty="2" priority="20"/>
       <col type="dsp" startx="38" starty="2" priority="20"/>
       <col type="dsp" startx="46" starty="2" priority="20"/>
-      <col type="dsp" startx="58" starty="2" priority="20"/>
-      <col type="dsp" startx="66" starty="2" priority="20"/>
-      <col type="dsp" startx="78" starty="2" priority="20"/>
+      <col type="dsp" startx="59" starty="2" priority="20"/>
+      <col type="dsp" startx="67" starty="2" priority="20"/>
+      <col type="dsp" startx="77" starty="2" priority="20"/>
       <col type="dsp" startx="91" starty="2" priority="20"/>
       <!--Insert BRAM column(s)-->
       <col type="bram" startx="7" starty="2" priority="20"/>
       <col type="bram" startx="21" starty="2" priority="20"/>
       <col type="bram" startx="42" starty="2" priority="20"/>
       <col type="bram" startx="50" starty="2" priority="20"/>
-      <col type="bram" startx="54" starty="2" priority="20"/>
-      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="55" starty="2" priority="20"/>
+      <col type="bram" startx="63" starty="2" priority="20"/>
       <col type="bram" startx="84" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
