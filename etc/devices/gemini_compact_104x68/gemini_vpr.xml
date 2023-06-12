@@ -1754,23 +1754,23 @@
       <!-- clb_lr -->
       <interconnect>
         <!-- clb to clb_lr -->
-        <complete name="crossbar0" input="clb.I00 clb.I30 clb_lr.out[3:0]" output="clb_lr.in[7:0]">
-         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30 clb_lr.out[3:0]" out_port="clb_lr.in[7:0]"/>
-         </complete>
-        <complete name="crossbar1" input="clb.I10 clb.I20 clb_lr.out[7:4]" output="clb_lr.in[15:8]">
-         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20   clb_lr.out[7:4]" out_port="clb_lr.in[15:8]"/>
-         </complete>
-        <complete name="crossbar2" input="clb.I00 clb.I20 clb_lr.out[11:8]" output="clb_lr.in[23:16]">
-         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I20 clb_lr.out[11:8]" out_port="clb_lr.in[23:16]"/>
-         </complete>
-        <complete name="crossbar3" input="clb.I10 clb.I30 clb_lr.out[15:12]" output="clb_lr.in[31:24]">
-         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I30 clb_lr.out[15:12]" out_port="clb_lr.in[31:24]"/>
+        <complete name="crossbar0" input="clb.I00 clb.I30" output="clb_lr.in[7:0]">
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[7:0]"/>
         </complete>
-        <complete name="crossbar4" input="clb.I00 clb.I30 clb_lr.out[19:16]" output="clb_lr.in[39:32]">
-         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30 clb_lr.out[19:16]" out_port="clb_lr.in[39:32]"/>
+        <complete name="crossbar1" input="clb.I10 clb.I20" output="clb_lr.in[15:8]">
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[15:8]"/>
         </complete>
-        <complete name="crossbar5" input="clb.I10 clb.I20 clb_lr.out[23:20]" output="clb_lr.in[47:40]">
-         <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20 clb_lr.out[23:20]" out_port="clb_lr.in[47:40]"/>
+        <complete name="crossbar2" input="clb.I00 clb.I20" output="clb_lr.in[23:16]">
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I20" out_port="clb_lr.in[23:16]"/>
+        </complete>
+        <complete name="crossbar3" input="clb.I10 clb.I30" output="clb_lr.in[31:24]">
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I30" out_port="clb_lr.in[31:24]"/>
+        </complete>
+        <complete name="crossbar4" input="clb.I00 clb.I30" output="clb_lr.in[39:32]">
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I00 clb.I30" out_port="clb_lr.in[39:32]"/>
+        </complete>
+        <complete name="crossbar5" input="clb.I10 clb.I20" output="clb_lr.in[47:40]">
+          <delay_constant max="8.513e-11" min="6.63e-11" in_port="clb.I10 clb.I20" out_port="clb_lr.in[47:40]"/>
         </complete>
         <complete name="clks" input="clb.clk" output="clb_lr.clk">     
             </complete>
@@ -2908,22 +2908,22 @@
       <!--Default to clb-->
       <fill type="clb" priority="10"/>
       <!--Insert DSP column(s)-->
-      <col type="dsp" startx="14" starty="2" priority="20"/>
-      <col type="dsp" startx="28" starty="2" priority="20"/>
-      <col type="dsp" startx="38" starty="2" priority="20"/>
-      <col type="dsp" startx="46" starty="2" priority="20"/>
-      <col type="dsp" startx="59" starty="2" priority="20"/>
-      <col type="dsp" startx="67" starty="2" priority="20"/>
-      <col type="dsp" startx="77" starty="2" priority="20"/>
-      <col type="dsp" startx="91" starty="2" priority="20"/>
+      <col type="dsp" startx="12" starty="2" priority="20"/>
+      <col type="dsp" startx="24" starty="2" priority="20"/>
+      <col type="dsp" startx="36" starty="2" priority="20"/>
+      <col type="dsp" startx="48" starty="2" priority="20"/>
+      <col type="dsp" startx="57" starty="2" priority="20"/>
+      <col type="dsp" startx="69" starty="2" priority="20"/>
+      <col type="dsp" startx="81" starty="2" priority="20"/>
+      <col type="dsp" startx="93" starty="2" priority="20"/>
       <!--Insert BRAM column(s)-->
       <col type="bram" startx="7" starty="2" priority="20"/>
-      <col type="bram" startx="21" starty="2" priority="20"/>
-      <col type="bram" startx="42" starty="2" priority="20"/>
-      <col type="bram" startx="50" starty="2" priority="20"/>
-      <col type="bram" startx="55" starty="2" priority="20"/>
-      <col type="bram" startx="63" starty="2" priority="20"/>
-      <col type="bram" startx="84" starty="2" priority="20"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="62" starty="2" priority="20"/>
+      <col type="bram" startx="74" starty="2" priority="20"/>
+      <col type="bram" startx="86" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
   </layout>
