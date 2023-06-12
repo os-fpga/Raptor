@@ -1904,8 +1904,8 @@
             <input name="unsigned_b" num_pins="1"/>
             <input name="feedback" num_pins="3"/>
             <output name="z" num_pins="38"/>
-            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
-            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="1.21639e-09" min="4.76801e-10" in_port="RS_DSP_MULT.a" out_port="RS_DSP_MULT.z"/>
+            <delay_constant max="1.21464e-09" min="6.65088e-10" in_port="RS_DSP_MULT.b" out_port="RS_DSP_MULT.z"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULT.a"/>
@@ -2173,10 +2173,10 @@
             <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.b" clock="clk"/>
             <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" clock="clk"/>
             <T_clock_to_Q max="1.83e-10" port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" clock="clk"/>
-            <delay_constant max="3.01639e-09" min="4.76801e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
-            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
-            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
-            <delay_constant max="2.91464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="1.21639e-09" min="4.76801e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.a" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="1.21464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.b" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="1.21464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.subtract" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
+            <delay_constant max="1.21464e-09" min="6.65088e-10" in_port="RS_DSP_MULTADD_REGIN_REGOUT.acc_fir" out_port="RS_DSP_MULTADD_REGIN_REGOUT.z"/>
           </pb_type>
           <interconnect>
             <direct name="direct1" input="dsp_lr.a_i" output="RS_DSP_MULTADD_REGIN_REGOUT.a"/>
