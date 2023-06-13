@@ -2908,23 +2908,23 @@
       <!--Default to clb-->
       <fill type="clb" priority="10"/>
       <!--Insert DSP column(s)-->
-      <col type="dsp" startx="12" starty="2" priority="20"/>
-      <col type="dsp" startx="24" starty="2" priority="20"/>
-      <col type="dsp" startx="36" starty="2" priority="20"/>
-      <col type="dsp" startx="48" starty="2" priority="20"/>
-      <col type="dsp" startx="57" starty="2" priority="20"/>
-      <col type="dsp" startx="69" starty="2" priority="20"/>
-      <col type="dsp" startx="81" starty="2" priority="20"/>
-      <col type="dsp" startx="93" starty="2" priority="20"/>
+      <col type="dsp" startx="14" starty="2" priority="20"/>
+      <col type="dsp" startx="28" starty="2" priority="20"/>
+      <col type="dsp" startx="38" starty="2" priority="20"/>
+      <col type="dsp" startx="46" starty="2" priority="20"/>
+      <col type="dsp" startx="59" starty="2" priority="20"/>
+      <col type="dsp" startx="67" starty="2" priority="20"/>
+      <col type="dsp" startx="77" starty="2" priority="20"/>
+      <col type="dsp" startx="91" starty="2" priority="20"/>
       <!--Insert BRAM column(s)-->
       <col type="bram" startx="7" starty="2" priority="20"/>
-      <col type="bram" startx="19" starty="2" priority="20"/>
-      <col type="bram" startx="31" starty="2" priority="20"/>
-      <col type="bram" startx="43" starty="2" priority="20"/>
-      <col type="bram" startx="62" starty="2" priority="20"/>
-      <col type="bram" startx="74" starty="2" priority="20"/>
-      <col type="bram" startx="86" starty="2" priority="20"/>
-      <col type="bram" startx="98" starty="2" priority="20"/>
+      <col type="bram" startx="21" starty="2" priority="20"/>
+      <col type="bram" startx="42" starty="2" priority="20"/>
+      <col type="bram" startx="50" starty="2" priority="20"/>
+      <col type="bram" startx="55" starty="2" priority="20"/>
+      <col type="bram" startx="63" starty="2" priority="20"/>
+      <col type="bram" startx="84" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>    
     </fixed_layout>
     <fixed_layout name="castor104x86_heterogeneous" width="106" height="88">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
