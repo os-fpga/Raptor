@@ -286,6 +286,8 @@ if (PRODUCTION_BUILD)
   target_link_libraries(raptor-bin PUBLIC rs_licenseManager)
 endif()
 
+add_subdirectory(src/ProgrammerGui)
+
 if (PRODUCTION_BUILD)
   add_dependencies(raptor-bin rs_licenseManager)
   link_libraries(raptor-bin rs_licenseManager)
