@@ -2927,4 +2927,40 @@
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
   </layout>
+  <fixed_layout name="castor104x86_heterogeneous" width="106" height="88">
+      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
+      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <col type="dsp" startx="14" starty="2" priority="20"/>
+      <col type="dsp" startx="28" starty="2" priority="20"/>
+      <col type="dsp" startx="38" starty="2" priority="20"/>
+      <col type="dsp" startx="46" starty="2" priority="20"/>
+      <col type="dsp" startx="59" starty="2" priority="20"/>
+      <col type="dsp" startx="67" starty="2" priority="20"/>
+      <col type="dsp" startx="77" starty="2" priority="20"/>
+      <col type="dsp" startx="91" starty="2" priority="20"/>
+      <!--Insert BRAM column(s)-->
+      <col type="bram" startx="7" starty="2" priority="20"/>
+      <col type="bram" startx="21" starty="2" priority="20"/>
+      <col type="bram" startx="33" starty="2" priority="20"/>
+      <col type="bram" startx="42" starty="2" priority="20"/>
+      <col type="bram" startx="50" starty="2" priority="20"/>
+      <col type="bram" startx="55" starty="2" priority="20"/>
+      <col type="bram" startx="63" starty="2" priority="20"/>
+      <col type="bram" startx="72" starty="2" priority="20"/>
+      <col type="bram" startx="84" starty="2" priority="20"/>
+      <col type="bram" startx="98" starty="2" priority="20"/>
+    </fixed_layout>  
 </architecture>
