@@ -28,12 +28,17 @@ RULE_MESSAGES ?= on
 
 release: run-cmake-release
 	cmake --build build -j $(CPU_CORES)
+	gunzip build/share/raptor/etc/devices/gemini_compact_10x8/bitstream_cache.bin.gz
+	gunzip build/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin.gz
+
 
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
 
 debug: run-cmake-debug
 	cmake --build dbuild -j $(CPU_CORES)
+	gunzip dbuild/share/raptor/etc/devices/gemini_compact_10x8/bitstream_cache.bin.gz
+	gunzip dbuild/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin.gz
 
 run-cmake-release:
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DPRODUCTION_DEVICES=${PRODUCTION_DEVICES} $(ADDITIONAL_CMAKE_OPTIONS) -S . -B build
@@ -88,9 +93,13 @@ install: release
 	cmake --install build
 	$(PREFIX)/share/envs/litex/bin/python3 gen_rel_device.py --production_devices ${PRODUCTION_DEVICES} --xml_filepath $(PREFIX)/share/raptor/etc/device.xml --devices_dirs_path $(PREFIX)/share/raptor/etc/devices
 	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
+	gunzip $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8/bitstream_cache.bin.gz
+	gunzip $(PREFIX)/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin.gz
 else
 install: release
 	cmake --install build
+	gunzip $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8/bitstream_cache.bin.gz
+	gunzip $(PREFIX)/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin.gz
 endif
 
 test_install_mac:
