@@ -2926,7 +2926,8 @@
       <col type="bram" startx="84" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
-    <fixed_layout name="castor104x86_heterogeneous" width="106" height="88">
+  </layout>
+  <fixed_layout name="castor104x86_heterogeneous" width="106" height="88">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
       <row type="io_bottom" starty="1" priority="91"/>
@@ -2962,5 +2963,4 @@
       <col type="bram" startx="84" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>  
-  </layout>
 </architecture>
