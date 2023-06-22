@@ -38,6 +38,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Checkout code
       uses: actions/checkout@v3

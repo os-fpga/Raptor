@@ -56,6 +56,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Checkout code
       uses: actions/checkout@v3
@@ -220,6 +221,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Checkout code
       uses: actions/checkout@v3
@@ -307,7 +309,7 @@ jobs:
       run: |
         source /opt/rh/devtoolset-11/enable
         mkdir /opt/instl_dir
-        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES="1GE75 1VG50"
+        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES="1GE100-ES1 1GE124-L"
         make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc examples FOEDAG_rs
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
         cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
@@ -392,6 +394,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Git pull
       uses: actions/checkout@v3
@@ -544,6 +547,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - uses: actions/checkout@v3
 
@@ -636,6 +640,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - uses: actions/checkout@v3
 
@@ -732,6 +737,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - uses: actions/checkout@v3
 
@@ -832,6 +838,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Checkout code
       uses: actions/checkout@v3
