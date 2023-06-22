@@ -26,11 +26,16 @@ ADDITIONAL_CMAKE_OPTIONS ?=
 # to detect actual warnings and errors  in the build output.
 RULE_MESSAGES ?= on
 
+ifeq ($(PRODUCTION_BUILD),1)
+release: run-cmake-release
+	cmake --build build -j $(CPU_CORES)
+	gunzip -f build/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin.gz
+else
 release: run-cmake-release
 	cmake --build build -j $(CPU_CORES)
 	gunzip -f build/share/raptor/etc/devices/gemini_compact_10x8/bitstream_cache.bin.gz
 	gunzip -f build/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin.gz
-
+endif
 
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
