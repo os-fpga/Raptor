@@ -33,8 +33,6 @@
 		<key id="30" name="grid_io_left" value="0" alias="grid_io_left_1__1_" column="2" row="2"/>
 		<key id="31" name="sb_1__0_" value="1" alias="sb_2__0_" column="5" row="1"/>
 		<key id="32" name="cby_1__1_" value="8" alias="cby_2__1_" column="5" row="2"/>
-	</region>
-	<region id="1">
 		<key id="33" name="grid_io_bottom" value="0" alias="grid_io_bottom_2__1_" column="4" row="2"/>
 		<key id="34" name="sb_1__0_" value="2" alias="sb_3__0_" column="7" row="1"/>
 		<key id="35" name="cby_1__1_" value="10" alias="cby_3__1_" column="7" row="2"/>
@@ -68,8 +66,6 @@
 		<key id="63" name="cbx_1__1_" value="22" alias="cbx_9__1_" column="18" row="3"/>
 		<key id="64" name="cby_2__2_" value="42" alias="cby_9__2_" column="19" row="4"/>
 		<key id="65" name="grid_clb" value="30" alias="grid_clb_9__2_" column="18" row="4"/>
-	</region>
-	<region id="2">
 		<key id="66" name="sb_1__1_" value="7" alias="sb_8__1_" column="17" row="3"/>
 		<key id="67" name="cbx_1__1_" value="20" alias="cbx_8__1_" column="16" row="3"/>
 		<key id="68" name="cby_2__2_" value="36" alias="cby_8__2_" column="17" row="4"/>
@@ -103,8 +99,6 @@
 		<key id="96" name="cby_1__1_" value="1" alias="cby_1__2_" column="3" row="4"/>
 		<key id="97" name="grid_io_left" value="1" alias="grid_io_left_1__2_" column="2" row="4"/>
 		<key id="98" name="sb_1__2_" value="0" alias="sb_1__2_" column="3" row="5"/>
-	</region>
-	<region id="3">
 		<key id="99" name="cbx_1__1_" value="1" alias="cbx_1__2_" column="2" row="5"/>
 		<key id="100" name="cby_1__1_" value="2" alias="cby_1__3_" column="3" row="6"/>
 		<key id="101" name="grid_io_left" value="2" alias="grid_io_left_1__3_" column="2" row="6"/>
@@ -138,8 +132,6 @@
 		<key id="129" name="cbx_2__2_" value="42" alias="cbx_9__2_" column="18" row="5"/>
 		<key id="130" name="cby_2__2_" value="43" alias="cby_9__3_" column="19" row="6"/>
 		<key id="131" name="grid_clb" value="31" alias="grid_clb_9__3_" column="18" row="6"/>
-	</region>
-	<region id="4">
 		<key id="132" name="sb_10__1_" value="1" alias="sb_10__2_" column="21" row="5"/>
 		<key id="133" name="cbx_1__1_" value="25" alias="cbx_10__2_" column="20" row="5"/>
 		<key id="134" name="cby_1__1_" value="26" alias="cby_10__3_" column="21" row="6"/>
@@ -173,8 +165,6 @@
 		<key id="162" name="sb_2__2_" value="7" alias="sb_3__3_" column="7" row="7"/>
 		<key id="163" name="cbx_2__2_" value="7" alias="cbx_3__3_" column="6" row="7"/>
 		<key id="164" name="cby_2__2_" value="8" alias="cby_3__4_" column="7" row="8"/>
-	</region>
-	<region id="5">
 		<key id="165" name="grid_clb" value="8" alias="grid_clb_3__4_" column="6" row="8"/>
 		<key id="166" name="sb_2__2_" value="1" alias="sb_2__3_" column="5" row="7"/>
 		<key id="167" name="cbx_2__2_" value="1" alias="cbx_2__3_" column="4" row="7"/>
@@ -208,8 +198,6 @@
 		<key id="195" name="cbx_2__2_" value="26" alias="cbx_6__4_" column="12" row="9"/>
 		<key id="196" name="cby_2__2_" value="27" alias="cby_6__5_" column="13" row="10"/>
 		<key id="197" name="grid_clb" value="21" alias="grid_clb_6__5_" column="12" row="10"/>
-	</region>
-	<region id="6">
 		<key id="198" name="sb_2__2_" value="32" alias="sb_7__4_" column="15" row="9"/>
 		<key id="199" name="cbx_2__2_" value="32" alias="cbx_7__4_" column="14" row="9"/>
 		<key id="200" name="cby_2__2_" value="33" alias="cby_7__5_" column="15" row="10"/>
@@ -243,8 +231,6 @@
 		<key id="228" name="cby_2__2_" value="34" alias="cby_7__6_" column="15" row="12"/>
 		<key id="229" name="sb_2__2_" value="27" alias="sb_6__5_" column="13" row="11"/>
 		<key id="230" name="cbx_2__2_" value="27" alias="cbx_6__5_" column="12" row="11"/>
-	</region>
-	<region id="7">
 		<key id="231" name="cby_2__2_" value="28" alias="cby_6__6_" column="13" row="12"/>
 		<key id="232" name="grid_clb" value="22" alias="grid_clb_6__6_" column="12" row="12"/>
 		<key id="233" name="sb_2__2_" value="21" alias="sb_5__5_" column="11" row="11"/>
@@ -278,8 +264,6 @@
 		<key id="261" name="cbx_2__2_" value="10" alias="cbx_3__6_" column="6" row="13"/>
 		<key id="262" name="cby_2__2_" value="11" alias="cby_3__7_" column="7" row="14"/>
 		<key id="263" name="grid_clb" value="11" alias="grid_clb_3__7_" column="6" row="14"/>
-	</region>
-	<region id="8">
 		<key id="264" name="sb_2__2_" value="16" alias="sb_4__6_" column="9" row="13"/>
 		<key id="265" name="cbx_2__2_" value="16" alias="cbx_4__6_" column="8" row="13"/>
 		<key id="266" name="cby_2__2_" value="17" alias="cby_4__7_" column="9" row="14"/>
@@ -313,8 +297,6 @@
 		<key id="294" name="sb_2__2_" value="47" alias="sb_9__7_" column="19" row="15"/>
 		<key id="295" name="cbx_2__2_" value="47" alias="cbx_9__7_" column="18" row="15"/>
 		<key id="296" name="cby_1__1_" value="23" alias="cby_9__8_" column="19" row="16"/>
-	</region>
-	<region id="9">
 		<key id="297" name="grid_io_top" value="7" alias="grid_io_top_9__8_" column="18" row="16"/>
 		<key id="298" name="sb_2__2_" value="41" alias="sb_8__7_" column="17" row="15"/>
 		<key id="299" name="cbx_2__2_" value="41" alias="cbx_8__7_" column="16" row="15"/>
