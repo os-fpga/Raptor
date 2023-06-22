@@ -38,19 +38,18 @@
         <resource type="dsp" num="224" label="DSPs"/>
         <resource type="carry_length" num="672"/>
         <internal type="tag_version" name="v1.6.142"/>
-        <internal type="vpr_arch" file="gemini_compact_104x68/gemini_vpr.xml"/>
+        <internal type="vpr_arch" file="gemini_compact_104x86/gemini_vpr.xml"/>
         <internal type="device_size" name="castor104x86_heterogeneous"/>
         <internal type="lut_size" num="6"/>
         <internal type="channel_width" num="160"/>
-        <internal type="openfpga_arch" file="gemini_compact_104x68/gemini_openfpga.xml"/>
-        <internal type="bitstream_settings" file="gemini_compact_104x68/bitstream_setting.xml"/>
-        <internal type="sim_settings" file="gemini_compact_104x68/fixed_sim_openfpga.xml"/>
-        <internal type="repack_settings" file="gemini_compact_104x68/fpga_repack_constraints.xml"/>
-        <internal type="bitstream_cache" file="gemini_compact_104x86/bitstream_cache.bin"/>
+        <internal type="openfpga_arch" file="gemini_compact_104x86/gemini_openfpga.xml"/>
+        <internal type="bitstream_settings" file="gemini_compact_104x86/bitstream_setting.xml"/>
+        <internal type="sim_settings" file="gemini_compact_104x86/fixed_sim_openfpga.xml"/>
+        <internal type="repack_settings" file="gemini_compact_104x86/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
-        <internal type="pcf_xml" file="gemini_compact_104x68/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_104x68/Gemini_Pin_Table.csv"/>
+        <internal type="pcf_xml" file="gemini_compact_104x86/pin_constraints.xml"/>
+        <internal type="pinmap_csv" file="gemini_compact_104x86/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -305,19 +304,18 @@
         <resource type="dsp" num="224" label="DSPs"/>
         <resource type="carry_length" num="672"/>
         <internal type="tag_version" name="v1.6.142"/>
-        <internal type="vpr_arch" file="gemini_compact_104x68/gemini_vpr.xml"/>
+        <internal type="vpr_arch" file="gemini_compact_104x86/gemini_vpr.xml"/>
         <internal type="device_size" name="castor104x86_heterogeneous"/>
         <internal type="lut_size" num="6"/>
         <internal type="channel_width" num="160"/>
-        <internal type="openfpga_arch" file="gemini_compact_104x68/gemini_openfpga.xml"/>
-        <internal type="bitstream_settings" file="gemini_compact_104x68/bitstream_setting.xml"/>
-        <internal type="sim_settings" file="gemini_compact_104x68/fixed_sim_openfpga.xml"/>
-        <internal type="repack_settings" file="gemini_compact_104x68/fpga_repack_constraints.xml"/>
-        <internal type="bitstream_cache" file="gemini_compact_104x86/bitstream_cache.bin"/>
+        <internal type="openfpga_arch" file="gemini_compact_104x86/gemini_openfpga.xml"/>
+        <internal type="bitstream_settings" file="gemini_compact_104x86/bitstream_setting.xml"/>
+        <internal type="sim_settings" file="gemini_compact_104x86/fixed_sim_openfpga.xml"/>
+        <internal type="repack_settings" file="gemini_compact_104x86/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
-        <internal type="pcf_xml" file="gemini_compact_104x68/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_104x68/Gemini_Pin_Table.csv"/>
+        <internal type="pcf_xml" file="gemini_compact_104x86/pin_constraints.xml"/>
+        <internal type="pinmap_csv" file="gemini_compact_104x86/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>

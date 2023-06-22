@@ -93,7 +93,6 @@ install: release
 	cmake --install build
 	$(PREFIX)/share/envs/litex/bin/python3 gen_rel_device.py --production_devices ${PRODUCTION_DEVICES} --xml_filepath $(PREFIX)/share/raptor/etc/device.xml --devices_dirs_path $(PREFIX)/share/raptor/etc/devices
 	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
-	gunzip -f $(PREFIX)/share/raptor/etc/devices/gemini_compact_10x8/bitstream_cache.bin.gz
 	gunzip -f $(PREFIX)/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin.gz
 else
 install: release
@@ -183,6 +182,14 @@ test/batch_gen2: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
+
+build_caches: run-cmake-release
+	./build/bin/raptor --batch --mute --script tests/Build/cache_10x8/run_raptor.tcl
+	cp build/share/raptor/etc/devices/gemini_compact_10x8/bitstream_cache.bin etc/devices/gemini_compact_10x8/ 
+	gzip -f etc/devices/gemini_compact_10x8/bitstream_cache.bin
+	./build/bin/raptor --batch --mute --script tests/Build/cache_104x68/run_raptor.tcl
+	cp build/share/raptor/etc/devices/gemini_compact_104x68/bitstream_cache.bin etc/devices/gemini_compact_104x68/ 
+	gzip -f etc/devices/gemini_compact_104x68/bitstream_cache.bin
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
