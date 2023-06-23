@@ -150,7 +150,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 7)
-set(VERSION_PATCH 19)
+set(VERSION_PATCH 20)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -285,6 +285,8 @@ if (PRODUCTION_BUILD)
   target_include_directories(raptor-bin PUBLIC ${FLEX_LM_SRC_DIR})
   target_link_libraries(raptor-bin PUBLIC rs_licenseManager)
 endif()
+
+add_subdirectory(src/ProgrammerGui)
 
 if (PRODUCTION_BUILD)
   add_dependencies(raptor-bin rs_licenseManager)
@@ -659,7 +661,6 @@ install(
 )
 
 install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink  ../../../../bin/gtkwave/bin/lib/tcl8.6/tk8.6   ${CMAKE_INSTALL_PREFIX}/share/raptor/tcl8.6.12/library/tk8.6)")
-
 
 #install(
 #  EXPORT Raptor

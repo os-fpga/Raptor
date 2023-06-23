@@ -72,6 +72,7 @@ int main(int argc, char** argv) {
       "MPW1", new FOEDAG::MPW1Loader{nullptr});
   if (opcompiler) {
     std::filesystem::path binpath = foedag->Context()->BinaryPath();
+    context->ProgrammerGuiPath(binpath / "programmer");
     std::filesystem::path datapath = foedag->Context()->DataPath();
     std::filesystem::path analyzePath = binpath / "analyze";
     std::filesystem::path yosysPath = binpath / "yosys";
