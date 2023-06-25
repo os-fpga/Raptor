@@ -133,6 +133,34 @@ jobs:
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
 
+    - name: build cache
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      run: |
+        make build_caches
+
+    - name: Is bitstream cache change !!!
+      id: bitstream_cache_change
+      run: |
+        bit_c_diff=`git diff  --name-status -- '*.bin.gz'`
+        echo $bit_c_diff
+        if [ ! -z "$bit_c_diff" ]
+        then
+           echo "bit_c_changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "nothing change in bin cache files"
+        fi
+
+    - name: Add and Push bin cache
+      if: contains(steps.bitstream_cache_change.outputs.bit_c_changed, 'true')
+      uses: GuillaumeFalourd/git-commit-push@v1.3
+      with:
+        email: nadeem.yaseen@rapidsilicon.com
+        name: nadeemyaseen-rs
+        commit_message: Added bin cache files from ${{ github.event.client_payload.new_tag }}
+        files: "*.bin.gz"
+        target_branch: xml_${{ github.event.client_payload.new_tag }}
+
+
 #    - name: automerge XMLs PR
 #      uses: "pascalgn/automerge-action@v0.15.6"
 #      env:
