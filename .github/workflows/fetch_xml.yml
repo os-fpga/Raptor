@@ -139,6 +139,7 @@ jobs:
         make build_caches
 
     - name: Is bitstream cache change !!!
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
       id: bitstream_cache_change
       run: |
         bit_c_diff=`git diff  --name-status -- '*.bin.gz'`
