@@ -1379,7 +1379,9 @@
                     <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
                   </pb_type>
                   <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D">
+                     <pack_pattern name="lut6-out1" in_port="ff.D" out_port="DFFRE.D"/>
+                   </direct>
                     <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
                     <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
                     <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
@@ -1402,7 +1404,9 @@
                     <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
                   </pb_type>
                   <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
+                   <direct name="D_to_D" input="ff.D" output="DFFNRE.D">
+                     <pack_pattern name="lut6-out2" in_port="ff.D" out_port="DFFNRE.D"/>
+                   </direct>                   
                     <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
                     <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
                     <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
@@ -1414,7 +1418,8 @@
               <interconnect>
                 <direct name="direct1" input="ble6.in" output="lut6[0:0].in"/>
                 <direct name="direct2" input="lut6.out" output="ff.D">
-                  <pack_pattern name="lut6-out" in_port="lut6.out" out_port="ff.D"/>
+                  <pack_pattern name="lut6-out1" in_port="lut6.out" out_port="ff.D"/>
+                  <pack_pattern name="lut6-out2" in_port="lut6.out" out_port="ff.D"/>
                 </direct>
                 <direct name="direct3" input="ble6.clk" output="ff.clk"/>
                 <direct name="direct5" input="ble6.reset" output="ff.R"/>
@@ -1484,7 +1489,9 @@
                     <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
                   </pb_type>
                   <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D"/>
+                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D">
+                     <pack_pattern name="lut5-out1" in_port="ff.D" out_port="DFFNRE.D"/>
+                   </direct>
                     <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
                     <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
                     <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
@@ -1507,7 +1514,9 @@
                     <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFRE.Q" clock="C"/>
                   </pb_type>
                   <interconnect>
-                    <direct name="D_to_D" input="ff.D" output="DFFRE.D"/>
+                    <direct name="D_to_D" input="ff.D" output="DFFRE.D">
+                      <pack_pattern name="lut5-out2" in_port="ff.D" out_port="DFFRE.D"/>
+                    </direct>
                     <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
                     <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
                     <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
@@ -1519,7 +1528,8 @@
               <interconnect>
                 <direct name="direct1a" input="ble5.in" output="lut5.in"/>
                 <direct name="direct2a" input="lut5.out" output="ff.D">
-                  <pack_pattern name="lut5-out" in_port="lut5.out" out_port="ff.D"/>
+                  <pack_pattern name="lut5-out1" in_port="lut5.out" out_port="ff.D"/>
+                  <pack_pattern name="lut5-out2" in_port="lut5.out" out_port="ff.D"/>
                 </direct>
                 <direct name="direct3a" input="ble5.clk" output="ff.clk"/>
                 <direct name="direct5a" input="ble5.reset" output="ff.R"/>
@@ -2947,8 +2957,7 @@
       <col type="bram" startx="84" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
-  </layout>
-  <fixed_layout name="castor104x86_heterogeneous" width="106" height="88">
+    <fixed_layout name="castor104x86_heterogeneous" width="106" height="88">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
       <row type="io_bottom" starty="1" priority="91"/>
@@ -2984,4 +2993,5 @@
       <col type="bram" startx="84" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>  
+  </layout>
 </architecture>
