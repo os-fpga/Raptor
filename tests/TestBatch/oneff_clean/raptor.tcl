@@ -18,8 +18,9 @@ analyze
 
 # RTL Simulation
 simulate rtl verilator syn_tb_rtl.fst
-set path [pwd]/oneff_gemini_clean
-set exists [file exists $path/syn_tb_rtl.fst]
+set projName oneff_gemini_clean
+set simRtlPath [pwd]/$projName/$projName.runs/run_1/synth_1/simulate_rtl
+set exists [file exists $simRtlPath/syn_tb_rtl.fst]
 if {$exists != 1} { puts "syn_tb_rtl.fst does not exists"; exit 1 }
 
 
@@ -28,7 +29,8 @@ synthesize delay
 
 # Post-Synthesis gate-level Simulation
 simulate gate verilator syn_tb_gate.fst
-set exists [file exists $path/syn_tb_gate.fst]
+set simGatePath [pwd]/$projName/$projName.runs/run_1/synth_1/simulate_gate
+set exists [file exists $simGatePath/syn_tb_gate.fst]
 if {$exists != 1} { puts "syn_tb_gate.fst does not exists"; exit 1 }
 
 # Pack/Place/Route
@@ -38,7 +40,8 @@ route
 
 # Post-Route Simulation
 simulate pnr verilator syn_tb_pnr.fst
-set exists [file exists $path/syn_tb_pnr.fst]
+set simPnrPath [pwd]/$projName/$projName.runs/run_1/synth_1/simulate_pnr
+set exists [file exists $simPnrPath/syn_tb_pnr.fst]
 if {$exists != 1} { puts "syn_tb_pnr.fst does not exists"; exit 1 }
 
 # Static Timing Analysis
@@ -57,13 +60,13 @@ simulate pnr clean
 #simulate bitstream_bd clean
 
 # check is files exist
-set exists [file exists $path/syn_tb_rtl.fst]
+set exists [file exists $simRtlPath/syn_tb_rtl.fst]
 if {$exists != 0} { puts "syn_tb_rtl.fst exists"; exit 1 }
-set exists [file exists $path/syn_tb_gate.fst]
+set exists [file exists $simGatePath/syn_tb_gate.fst]
 if {$exists != 0} { puts "syn_tb_gate.fst exists"; exit 1 }
-set exists [file exists $path/syn_tb_pnr.fst]
+set exists [file exists $simPnrPath/syn_tb_pnr.fst]
 if {$exists != 0} { puts "syn_tb_pnr.fst exists"; exit 1 }
-set exists [file exists $path/syn_tb_bitstream.fst]
+#set exists [file exists $path/syn_tb_bitstream.fst]
 #if {$exists != 0} { puts "syn_tb_bitstream.fst exists"; exit 1 }
 
 
