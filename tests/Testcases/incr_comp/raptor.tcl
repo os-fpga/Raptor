@@ -15,13 +15,14 @@ set_top_module and2
 synthesize clean
 synthesize
 
-file copy -force $projName/incr_comp_post_synth.blif $projName/incr_comp_post_synth.blif1
+set blifPath $projName/$projName.runs/run_1/synth_1/synthesis
+file copy -force $blifPath/incr_comp_post_synth.blif $blifPath/incr_comp_post_synth.blif1
 # wait 1 sec since mtime will be the same for $tempFile and *.blif
 after 1000
 copyContent $script_path/and2_modified.v $tempFile
 synthesize
-file copy -force $projName/incr_comp_post_synth.blif $projName/incr_comp_post_synth.blif2
-set diffresult [catch {exec sh -c "diff $projName/incr_comp_post_synth.blif1 $projName/incr_comp_post_synth.blif2"} diffresult] 
+file copy -force $blifPath/incr_comp_post_synth.blif $blifPath/incr_comp_post_synth.blif2
+set diffresult [catch {exec sh -c "diff $blifPath/incr_comp_post_synth.blif1 $blifPath/incr_comp_post_synth.blif2"} diffresult] 
 if {$diffresult == 0} {
     error "Synthesis didn't resynthesized"
 }
