@@ -15,7 +15,7 @@ add_design_file -V_2001 ./Src/and2.v
 set_top_module and2
 add_constraint_file constraints.sdc
 # Simulation
-add_simulation_file ./Src/testbench_and2.v
+add_simulation_file -SV_2012 ./Src/testbench_and2.v  
 set_top_testbench testbench_and2
 # Device target
 target_device GEMINI_COMPACT_10x8
@@ -36,6 +36,7 @@ simulate rtl icarus
 # Compilation
 puts "Compiling $project_name..."
 analyze
+#synth_options -inferred_io
 synthesize delay
 simulate gate icarus
 pnr_options --read_vpr_constraints and2_part.xml
