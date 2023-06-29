@@ -99,6 +99,7 @@ install: release
 	$(PREFIX)/share/envs/litex/bin/python3 gen_rel_device.py --production_devices ${PRODUCTION_DEVICES} --xml_filepath $(PREFIX)/share/raptor/etc/device.xml --devices_dirs_path $(PREFIX)/share/raptor/etc/devices
 	mv $(PREFIX)/share/raptor/etc/settings/messages/suppress-rel.json $(PREFIX)/share/raptor/etc/settings/messages/suppress.json
 	gunzip -f $(PREFIX)/share/raptor/etc/devices/1GE100-ES1/bitstream_cache.bin.gz
+	rm -rf $(PREFIX)/share/raptor/sim_models/rapidsilicon/genesis3/RS_PRIMITIVES/IO/IO_MODELS
 else
 install: release
 	cmake --install build
