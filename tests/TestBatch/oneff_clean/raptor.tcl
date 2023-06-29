@@ -6,12 +6,12 @@ add_constraint_file pin_mapping.pin
 add_constraint_file constraints.sdc
 
 # Testbench
-add_simulation_file -SV_2009 syn_tb.v
+add_simulation_file -SV_2012 syn_tb.v
 add_simulation_file sim_main.cpp
 set_top_testbench syn_tb
 
 # Device target
-target_device GEMINI_10x8
+target_device GEMINI_COMPACT_10x8
 
 # Compilation/Simulation
 analyze
