@@ -15,7 +15,7 @@ set_top_module and2
 synthesize clean
 synthesize
 
-set blifPath $projName/$projName.runs/run_1/synth_1/synthesis
+set blifPath $projName/run_1/synth_1_1/synthesis
 file copy -force $blifPath/incr_comp_post_synth.blif $blifPath/incr_comp_post_synth.blif1
 # wait 1 sec since mtime will be the same for $tempFile and *.blif
 after 1000
