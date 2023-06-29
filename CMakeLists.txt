@@ -765,7 +765,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/cell_sim_blackbox.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
    #Genesis3 Sim Model
-      COMMAND ${CMAKE_COMMAND} -E remove_directory ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis3/RS_PRIMITIVES/FPGA_PRIMITIVE_TEST_CASE
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis3/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
