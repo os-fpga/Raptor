@@ -136,7 +136,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        mixed                  : Optimize for area and performance (default)
      clean                    : Deletes files generated from this task
 <engineering>
-   synthesis_type Yosys/QL/RS : Selects Synthesis type
    custom_synth_script <file> : Uses a custom Yosys templatized script
 </engineering>
 
