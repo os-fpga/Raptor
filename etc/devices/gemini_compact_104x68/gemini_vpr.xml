@@ -1380,8 +1380,8 @@
                   </pb_type>
                   <interconnect>
                     <direct name="D_to_D" input="ff.D" output="DFFRE.D">
-                     <pack_pattern name="lut6-out1" in_port="ff.D" out_port="DFFRE.D"/>
-                   </direct>
+                      <pack_pattern name="lut6-out1" in_port="ff.D" out_port="DFFRE.D"/>
+                    </direct>
                     <direct name="R_to_R" input="ff.R" output="DFFRE.R"/>
                     <direct name="E_to_E" input="ff.E" output="DFFRE.E"/>
                     <direct name="Q_to_Q" input="DFFRE.Q" output="ff.Q"/>
@@ -1404,9 +1404,9 @@
                     <T_clock_to_Q min="2.8914e-11" max="1.53995e-10" port="DFFNRE.Q" clock="C"/>
                   </pb_type>
                   <interconnect>
-                   <direct name="D_to_D" input="ff.D" output="DFFNRE.D">
-                     <pack_pattern name="lut6-out2" in_port="ff.D" out_port="DFFNRE.D"/>
-                   </direct>                   
+                    <direct name="D_to_D" input="ff.D" output="DFFNRE.D">
+                      <pack_pattern name="lut6-out2" in_port="ff.D" out_port="DFFNRE.D"/>
+                    </direct>
                     <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
                     <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
                     <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
@@ -1490,8 +1490,8 @@
                   </pb_type>
                   <interconnect>
                     <direct name="D_to_D" input="ff.D" output="DFFNRE.D">
-                     <pack_pattern name="lut5-out1" in_port="ff.D" out_port="DFFNRE.D"/>
-                   </direct>
+                      <pack_pattern name="lut5-out1" in_port="ff.D" out_port="DFFNRE.D"/>
+                    </direct>
                     <direct name="R_to_R" input="ff.R" output="DFFNRE.R"/>
                     <direct name="E_to_E" input="ff.E" output="DFFNRE.E"/>
                     <direct name="Q_to_Q" input="DFFNRE.Q" output="ff.Q"/>
@@ -2810,27 +2810,6 @@
       <col type="EMPTY" startx="W-1" priority="102"/>
       <col type="EMPTY" startx="0" priority="104"/>
     </fixed_layout>
-    <fixed_layout name="21x23" width="23" height="25">
-      <!--Mini Castor array complete with DSP and BRAM-->
-      <!--Perimeter of 'io' blocks with 'EMPTY' blocks at corners-->
-      <row type="io_top" starty="H-2" priority="100"/>
-      <row type="io_bottom" starty="1" priority="100"/>
-      <col type="io_left" startx="1" priority="100"/>
-      <col type="io_right" startx="W-2" priority="100"/>
-      <corners type="EMPTY" priority="101"/>
-      <row type="EMPTY" starty="H-1" priority="101"/>
-      <col type="EMPTY" startx="W-1" priority="102"/>
-      <row type="EMPTY" starty="0" priority="103"/>
-      <col type="EMPTY" startx="0" priority="104"/>
-      <!--Fill with 'clb'-->
-      <fill type="clb" priority="10"/>
-      <!--Overlay with 'dsp'-->
-      <col type="dsp" startx="9" starty="2" priority="30"/> 
-      <col type="dsp" startx="13" starty="2" priority="30"/> 
-      <!--Overlay with 'bram'-->
-      <col type="bram" startx="5" starty="2" priority="20"/>
-      <col type="bram" startx="17" starty="2" priority="20"/>
-    </fixed_layout>
     <fixed_layout name="castor62x44_heterogeneous" width="64" height="46">
       <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
@@ -2985,13 +2964,15 @@
       <col type="bram" startx="7" starty="2" priority="20"/>
       <col type="bram" startx="21" starty="2" priority="20"/>
       <col type="bram" startx="33" starty="2" priority="20"/>
+      <!--extra w.r.t. 104x68-->
       <col type="bram" startx="42" starty="2" priority="20"/>
       <col type="bram" startx="50" starty="2" priority="20"/>
       <col type="bram" startx="55" starty="2" priority="20"/>
       <col type="bram" startx="63" starty="2" priority="20"/>
       <col type="bram" startx="72" starty="2" priority="20"/>
+      <!--extra w.r.t. 104x68-->
       <col type="bram" startx="84" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
-    </fixed_layout>  
+    </fixed_layout>
   </layout>
 </architecture>
