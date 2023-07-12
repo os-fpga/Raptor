@@ -101,7 +101,7 @@ module oserdes_4_to_1 (
 	.O(pll_fabric_clock));
 
   (* src = "oserdes_4_to_1_rtl.v:19" *)
-  DFFRE Q_0_inst (
+  dffre Q_0_inst (
     .D(D_i_buf[0]),
 	.R(1'b0),
 	.E(1'b1),
@@ -109,7 +109,7 @@ module oserdes_4_to_1 (
 	.Q(oserdes_in[0]));
 
   (* src = "oserdes_4_to_1_rtl.v:19" *)
-  DFFRE Q_1_inst (
+  dffre Q_1_inst (
     .D(D_i_buf[1]),
 	.R(1'b0),
 	.E(1'b1),
@@ -117,7 +117,7 @@ module oserdes_4_to_1 (
 	.Q(oserdes_in[1]));
 
   (* src = "oserdes_4_to_1_rtl.v:19" *)
-  DFFRE Q_2_inst (
+  dffre Q_2_inst (
     .D(D_i_buf[2]),
 	.R(1'b0),
 	.E(1'b1),
@@ -125,7 +125,7 @@ module oserdes_4_to_1 (
 	.Q(oserdes_in[2]));
 
   (* src = "oserdes_4_to_1_rtl.v:19" *)
-  DFFRE Q_3_inst (
+  dffre Q_3_inst (
     .D(D_i_buf[3]),
 	.R(1'b0),
 	.E(1'b1),
