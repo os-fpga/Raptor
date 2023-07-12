@@ -14,7 +14,7 @@ create_design $project_name -type gate-level
 target_device GEMINI_COMPACT_10x8
 pnr_netlist_lang verilog
 read_netlist o_serdes_4_to_1_gate.v
-#add_constraint_file constraints.sdc
+add_constraint_file o_serdes_4_to_1.sdc
 
 # Compilation
 puts "Compiling $project_name..."
