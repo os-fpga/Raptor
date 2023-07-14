@@ -40,12 +40,11 @@ analyze
 synthesize delay
 simulate gate icarus
 
-
 packing
 place
 route
 sta
-#simulate pnr icarus
+simulate pnr icarus
 
 bitstream 
 
