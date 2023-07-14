@@ -22,8 +22,8 @@ route
 route
 
 # Static Timing Analysis
-sta opensta
-sta opensta
+sta
+sta
 
 # Bitstream Generation
 bitstream
