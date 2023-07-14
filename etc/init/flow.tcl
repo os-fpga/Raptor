@@ -19,13 +19,13 @@ proc area_flow { } {
     sta
 }
 
-proc congestion_flow { {uniform_congestion "uniform"} } {
+proc congestion_flow { {congestion_type "uniform"} } {
     synthesize delay
     packing_options -clb_packing timing_driven
-    if {$uniform_congestion == "uniform"} {
+    if {$congestion_type == "uniform"} {
         # Uniform congestion mitigation
         pnr_options --target_ext_pin_util clb:0.4 dsp:1.0,1.0 bram:1.0,1.0 0.8
-    } elseif {$uniform_congestion == "hotspot"} { {
+    } elseif {$congestion_type == "hotspot"} { {
         # Hotspot congestion mitigation
         pnr_options --place_algorithm congestion_aware --congest_tradeoff 160 --alpha_clustering 0.5
     } else {
