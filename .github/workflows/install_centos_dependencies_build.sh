@@ -88,3 +88,4 @@ else
   cd ..
 fi
 yum clean all
+rm -rf qt-everywhere-src-5.15.4.tar.xz qt-everywhere-src-5.15.4
