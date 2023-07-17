@@ -140,6 +140,12 @@ module LUT_K #(
     specify
         (in *> out) = "";
     endspecify
+`else
+    specparam T1 = 3,
+            T2 = 2;
+    specify
+        (in *> out) = (T1, T2);
+    endspecify
 `endif
    
     assign out = LUT_MASK[in];
@@ -161,6 +167,16 @@ module DFF #(
         $setup(D, posedge clk, "");
         $hold(posedge clk, D, "");
     endspecify
+`else
+   specparam T1 = 3,
+            T2 = 2;
+   specparam tSetup = 1;
+   specparam tHold = 1;
+   specify
+        (clk => Q) = (T1, T2);
+        $setup(D, posedge clk,  tSetup);
+        $hold(posedge clk, D, tHold);
+    endspecify
 `endif
 
     initial begin
@@ -180,7 +196,13 @@ module fpga_interconnect(
 
 `ifndef IVERILOG   
     specify
-        (datain=>dataout)="";
+       (datain=>dataout)="";
+    endspecify
+`else
+   specparam T1 = 3,
+            T2 = 2;
+    specify
+       (datain=>dataout) = (T1, T2);
     endspecify
 `endif
 
