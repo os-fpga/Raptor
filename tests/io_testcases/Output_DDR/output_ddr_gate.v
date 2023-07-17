@@ -55,7 +55,7 @@ module output_ddr (
 	.O(CLK_clk_buf));
 
   (* src = "output_ddr_rtl.v:14" *)
-  DFFRE q_reg_0_inst (
+  dffre q_reg_0_inst (
     .D(D_0_i_buf),
 	.R(1'b0),
 	.E(1'b1),
@@ -63,7 +63,7 @@ module output_ddr (
 	.Q(q_reg[0]));
 
   (* src = "output_ddr_rtl.v:14" *)
-  DFFRE q_reg_1_inst (
+  dffre q_reg_1_inst (
     .D(D_1_i_buf),
 	.R(1'b0),
 	.E(1'b1),
