@@ -15,7 +15,6 @@
         <internal type="bitstream_settings" file="1GE100-ES1/bitstream_setting.xml"/>
         <internal type="sim_settings" file="1GE100-ES1/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="1GE100-ES1/fpga_repack_constraints.xml"/>
-        <internal type="bitstream_cache" file="1GE100-ES1/bitstream_cache.bin"/>
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="1GE100-ES1/pin_constraints.xml"/>
@@ -374,7 +373,6 @@
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_10x8/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_10x8/Gemini_Pin_Table.csv"/>
-        <internal type="bitstream_cache" file="gemini_compact_10x8/bitstream_cache.bin"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
