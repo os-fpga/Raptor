@@ -133,11 +133,6 @@ jobs:
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
 
-    - name: build cache
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-      run: |
-        make build_caches
-
     - name: Is bitstream cache change !!!
       if: contains(steps.xml_change.outputs.xml_changed, 'true')
       id: bitstream_cache_change
