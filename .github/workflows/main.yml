@@ -226,44 +226,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
         
-    - name: Download workflow artifact
-      if: matrix.mode == 'test' || matrix.mode =='regression'
-      uses: dawidd6/action-download-artifact@v2.24.3
-      with:
-        workflow: main.yml
-        name: buildqt5-centos7-gcc
-        check_artifacts: true
-        search_artifacts: true
-        github_token: ${{ secrets.QT_DOWNLOAD }}
-        repo: ${{ github.repository }}
-        #run_number: 2555
-        skip_unpack: true
-        branch: main
-        #workflow_conclusion: success
-        
     - name: Install dependencies and build QT
       run: |
         bash .github/workflows/install_centos_dependencies_build.sh
-#        bash .github/workflows/install_litex_centos.sh
-
-    - name: Prepare QT build artifacts
-      if: matrix.mode == 'test'
-      run: |
-        mkdir build
-        tar czvfp buildqt5-centos7-gcc.tgz buildqt5
-
-    - name: Archive QT build artifacts
-      if: matrix.mode == 'test' 
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: buildqt5-centos7-gcc
-        path: buildqt5-centos7-gcc.tgz
-
-    - name: Remove QT tar file.
-      run: |
-        rm -rf buildqt5-centos7-gcc.tgz
-        rm -rf buildqt5-centos7-gcc.zip
-        rm -rf buildqt5
+#        bash .github/workflows/install_litex_centos.sh 
 
     - name: Show shell configuration
       run: |
