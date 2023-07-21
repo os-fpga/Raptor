@@ -6,7 +6,7 @@ on:
 
 jobs:
   linux-gcc:
-    name: ${{ matrix.mode }}
+    name: ubuntu-${{ matrix.mode }}
 
     runs-on: ubuntu-20.04
     defaults:
@@ -17,6 +17,8 @@ jobs:
       matrix:
         mode:
         - test
+        - test/batch
+        - test/batch_gen2
         - regression
 #        - coverage
         - install
@@ -112,9 +114,17 @@ jobs:
       if: matrix.mode == 'test'
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+
+    - name: test/batch Release
+      if: matrix.mode == 'test/batch'
+      run: |
         make release test/batch
+
+    - name: test/batch_gen2 Release
+      if: matrix.mode == 'test/batch_gen2'
+      run: |
         make release test/batch_gen2
-        
+
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
@@ -166,7 +176,7 @@ jobs:
 
 # Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
   centos7-gcc:
-    name:  ${{ matrix.mode }}
+    name:  centos7-${{ matrix.mode }}
 
     runs-on: ubuntu-20.04
     container:
