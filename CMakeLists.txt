@@ -112,6 +112,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   add_subdirectory(${VERIFIC_HOME})
 endif()
 
+get_filename_component(VERI_PRUNE_SRC_DIR "Raptor_Tools/gatelevel_readers/veri_prune"
+REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+add_subdirectory(${VERI_PRUNE_SRC_DIR})
+
 get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 add_subdirectory(${READ_VERILOG_SRC_DIR})
@@ -150,7 +154,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 7)
-set(VERSION_PATCH 34)
+set(VERSION_PATCH 36)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
