@@ -55,7 +55,7 @@
         <Run Name="imple_1" Type="Implementation" SrcSet="sources_1" ConstrsSet="constrs_1" State="current" SynthRun="synth_1"/>
         <Run Name="synth_1" Type="Synthesis" SrcSet="sources_1" ConstrsSet="constrs_1" State="current" SynthRun="">
             <Option Name="Compilation Flow" Val="Classic Flow"/>
-            <Option Name="Device" Val="1GE75"/>
+            <Option Name="Device" Val="1GE100-ES1"/>
             <Option Name="LanguageVersion" Val="SYSTEMVERILOG_2005"/>
             <Option Name="TargetLanguage" Val="VERILOG"/>
         </Run>
