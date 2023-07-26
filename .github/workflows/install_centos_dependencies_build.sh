@@ -3,9 +3,9 @@ set -e
 yum update -y
 yum group install -y "Development Tools" 
 yum install -y epel-release 
-curl -C - -O https://cmake.org/files/v3.15/cmake-3.15.7-Linux-x86_64.tar.gz
-tar xzf cmake-3.15.7-Linux-x86_64.tar.gz
-ln -s $PWD/cmake-3.15.7-Linux-x86_64/bin/cmake /usr/bin/cmake
+curl -C - -O https://cmake.org/files/v3.16/cmake-3.16.9-Linux-x86_64.tar.gz
+tar xzf cmake-3.16.9-Linux-x86_64.tar.gz
+ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/cmake /usr/bin/cmake
 yum install -y openssh-server openssh-clients
 yum install -y centos-release-scl-rh
 yum install -y devtoolset-11
@@ -50,7 +50,7 @@ yum install -y zip unzip
 yum install -y gtk3-devel
 yum install -y openssl-devel
 
-ln -s $PWD/cmake-3.15.7-Linux-x86_64/bin/ctest /usr/bin/ctest
+ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/ctest /usr/bin/ctest
 echo 'QMAKE_CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV
 echo 'QMAKE_CXX=/opt/rh/devtoolset-11/root/usr/bin/g++' >> $GITHUB_ENV
 echo 'PATH=/usr/local/Qt-5.15.4/bin:/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
