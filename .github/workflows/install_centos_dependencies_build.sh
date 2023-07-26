@@ -4,7 +4,7 @@ yum update -y
 yum group install -y "Development Tools" 
 yum install -y epel-release 
 curl -C - -O https://cmake.org/files/v3.16/cmake-3.16.9-Linux-x86_64.tar.gz
-tar xzf cmake-3.16.9-Linux-x86_64.tar.gz
+tar xvzf cmake-3.16.9-Linux-x86_64.tar.gz
 ln -s $PWD/cmake-3.16.9-Linux-x86_64.tar.gz/bin/cmake /usr/bin/cmake
 yum install -y openssh-server openssh-clients
 yum install -y centos-release-scl-rh
