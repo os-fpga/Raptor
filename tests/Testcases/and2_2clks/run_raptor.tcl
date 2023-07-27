@@ -37,6 +37,7 @@ simulate rtl icarus
 # Compilation
 puts "Compiling $project_name..."
 analyze
+synth_options -inferred_io
 synthesize delay
 simulate gate icarus
 

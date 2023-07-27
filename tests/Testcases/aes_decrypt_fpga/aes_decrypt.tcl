@@ -9,6 +9,8 @@ synth_options -effort high
 analyze
 message_severity VERI-1209 IGNORE
 synthesize delay
+power
+
 packing
 place
 route
