@@ -43,7 +43,8 @@ pnr_options --read_vpr_constraints and2_part.xml
 packing
 place
 route
-sta 
+sta
+power
 bitstream 
 simulate pnr icarus
 
