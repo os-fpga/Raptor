@@ -593,6 +593,9 @@ install(
 install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
 
+install(
+      FILES FOEDAG_rs/src/Compiler/get_power_data.tcl DESTINATION ${CMAKE_INSTALL_BINDIR})
+
 # Genesis Simulation models
 install(
       DIRECTORY ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
@@ -781,6 +784,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis3/cell_sim_blackbox.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
+      COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/FOEDAG_rs/src/Compiler/get_power_data.tcl ${CMAKE_CURRENT_BINARY_DIR}/bin
 
 )
 
