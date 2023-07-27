@@ -81,7 +81,8 @@ int main(int argc, char** argv) {
     std::filesystem::path pinConvPath = binpath / "pin_c";
     std::filesystem::path staPath = binpath / "sta";
     std::filesystem::path starsPath = binpath / "stars";
-    std::filesystem::path tclPath = binpath / ".." / "FOEDAG_rs" / "FOEDAG" / "bin" / "tclsh8.6";
+    std::filesystem::path tclPath =
+        binpath / ".." / "FOEDAG_rs" / "FOEDAG" / "bin" / "tclsh8.6";
     std::filesystem::path powerPath = binpath / "get_power_data.tcl";
     std::filesystem::path raptorPath = binpath / ExecutableName;
     std::filesystem::path bitstreamSettingPath =
