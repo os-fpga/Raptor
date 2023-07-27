@@ -11,12 +11,11 @@ set project_name AES_DECRYPT_GATE
 puts "Creating $project_name..."
 create_design $project_name -type gate-level
 target_device 1GE100-ES1
-read_netlist decrypt_top.blif
+read_netlist decrypt_top.v
 add_constraint_file constraints.sdc
 
 # Compilation
 puts "Compiling $project_name..."
-pnr_netlist_lang blif
 packing
 place
 route
