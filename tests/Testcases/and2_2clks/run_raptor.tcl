@@ -39,6 +39,7 @@ puts "Compiling $project_name..."
 analyze
 #synth_options -inferred_io
 synthesize delay
+power
 simulate gate icarus
 
 packing
