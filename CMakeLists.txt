@@ -154,7 +154,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 7)
-set(VERSION_PATCH 39)
+set(VERSION_PATCH 40)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -594,6 +594,17 @@ install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
 
 install(
+      DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+      DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        
+install(
+      FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/tclsh8.6 DESTINATION ${CMAKE_INSTALL_BINDIR}
+      PERMISSIONS
+    OWNER_READ OWNER_EXECUTE OWNER_WRITE
+    GROUP_READ GROUP_EXECUTE
+    WORLD_READ WORLD_EXECUTE)
+
+install(
       FILES FOEDAG_rs/src/Compiler/get_power_data.tcl DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # Genesis Simulation models
@@ -837,4 +848,13 @@ else ()
         COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/src/.raptorenv_lin64.sh
           ${CMAKE_CURRENT_BINARY_DIR})
+  add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "copy tclsh8.6"
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/tclsh8.6
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+        ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6
+        )        
 endif()

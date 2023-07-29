@@ -8,7 +8,6 @@ add_constraint_file constraints.sdc
 set_top_module vex_soc
 synth_options -effort high -carry none
 synthesize delay
-pnr_options --gen_post_synthesis_netlist on
 packing
 global_placement
 place
