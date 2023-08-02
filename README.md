@@ -48,7 +48,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      <project type>           : rtl (Default), gate-level
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
-   target_device <name>       : Targets a device with <name> (default is 1GE75)
+   target_device <name>       : Targets a device with <name>
    add_design_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
        <type>                 : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -VHDL_2019, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017, default auto-detect 
        -work <libName>        : Compiles the compilation unit into library <libName>, default is "work"
