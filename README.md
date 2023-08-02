@@ -1,5 +1,3 @@
-[![main](https://github.com/RapidSilicon/Raptor/actions/workflows/main.yml/badge.svg)](https://github.com/RapidSilicon/Raptor/actions/workflows/main.yml)
-
 # Raptor Preview Release
 
 Rapid Silicon Raptor Design Suite
@@ -9,7 +7,7 @@ It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
 ## INSTALLATION
 
-See [`Install Raptor`](INSTALL.md)
+See the Raptor Quick Start Guide
 
 ## LICENSING
 
