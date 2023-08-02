@@ -1,18 +1,29 @@
-/////////////////////////////////////////
-//  Functionality: 2-input AND 
-//  Author:        Xifan Tang
-////////////////////////////////////////
-// `timescale 1ns / 1ps
+`timescale 1ns / 1ps
+////////////////////////////////////////////////////////
+// Rapid Silicon Raptor Example Design                //
+// and2_verilog                                       //
+// and2.v - Top-level file of simple 2-input AND gate //
+////////////////////////////////////////////////////////
 
-module and2(
-  a,
-  b,
-  c);
+module and2 (
+  input a,
+  input b,
+  input clk,
+  input reset,
+  output reg c = 1'b0
+);
 
-input wire a;
-input wire b;
-output wire c;
+  reg a_reg, b_reg  = 1'b0;
 
-assign c = a & b;
+  always@(posedge clk)
+    if (reset) begin
+      a_reg <= 1'b0;
+      b_reg <= 1'b0;
+      c     <= 1'b0;
+    end else begin
+      a_reg <= a;
+      b_reg <= b;
+      c     <= a_reg & b_reg;
+    end
 
 endmodule
