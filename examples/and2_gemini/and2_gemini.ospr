@@ -30,7 +30,7 @@
         </FileSet>
         <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="/and2_gemini.srcs/sim_1">
             <File Path="$OSRCDIR/and2_gemini.srcs/sim_1/testbench_and2.v"/>
-            <Group Id="7" Name="" Files="$OSRCDIR/and2_gemini.srcs/sim_1/testbench_and2.v" LibCommand="" LibName=""/>
+            <Group Id="11" Name="" Files="$OSRCDIR/and2_gemini.srcs/sim_1/testbench_and2.v" LibCommand="" LibName=""/>
             <Config>
                 <Option Name="TopModule" Val="testbench_and2"/>
                 <Option Name="TopModuleLib" Val=""/>
@@ -72,5 +72,5 @@
         <Task ID="34" Status="0" Enable="1"/>
         <Task ID="37" Status="0" Enable="1"/>
     </Tasks>
-    <Compiler Version="0.0.0" CompilerState="1"/>
+    <Compiler Version="0.0.0" CompilerState="2"/>
 </Project>
