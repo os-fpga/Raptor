@@ -26,10 +26,7 @@
     </IpConfig>
     <FileSets>
         <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="/and2_gemini.srcs/constrs_1">
-            <File Path="$OSRCDIR/../../tests/tcl_examples/and2_verilog/constraints.sdc"/>
-            <Config>
-                <Option Name="TargetConstrsFile" Val="constraints.sdc"/>
-            </Config>
+            <File Path="$OSRCDIR/and2_gemini.srcs/constrs_1/constraints.sdc"/>
         </FileSet>
         <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="/and2_gemini.srcs/sim_1">
             <File Path="$OSRCDIR/and2_gemini.srcs/sim_1/testbench_and2.v"/>
