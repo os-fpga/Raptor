@@ -1,4 +1,9 @@
-# -name is used for creating virtual clock and for actual clock -name option will not be used
-#create_clock -period 2.5 clk
-#set_input_delay 1 -clock clk [get_ports {*}]
-#set_output_delay 1 -clock clk [get_ports {*}]
+# SDC file example
+
+# Setting a clock frequency of 200 MHz (5nS period)
+create_clock -period 5 clk
+set_input_delay -max 0 -clock clk [get_ports {a}] 
+set_input_delay -max 0 -clock clk [get_ports {b}]
+set_input_delay -max 0 -clock clk [get_ports {reset}]
+set_output_delay -max 0 -clock clk [get_ports {c}]
+
