@@ -9,6 +9,12 @@ on:
         description: 'Release date of Raptor in format -v YYYY.MM'
         default: ""
         type: string
+      Production_Devices:
+        description: 'Name of production devices separated by space'
+        default: ""
+        type: string
+env:
+    PRODUCTION_DEVICES: "1GE100-ES1"
 
 jobs:
   linux-gcc:
@@ -90,6 +96,13 @@ jobs:
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
         echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
         echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+        event_type=`echo ${{ github.event_name }}`
+        if [ $event_type == 'workflow_dispatch' ]
+        then
+              echo 'p_devices=${{ inputs.Production_Devices }}' >> $GITHUB_ENV
+        else
+              echo 'p_devices=$PRODUCTION_DEVICES' >> $GITHUB_ENV
+        fi
 
     - name: Show shell configuration
       run: |
@@ -102,6 +115,7 @@ jobs:
         which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
         which $CC && $CC --version
         which $CXX && $CXX --version
+        echo -e "Production devices are\n\t$p_devices"
 
     - name: free disk space
       run: |
@@ -144,7 +158,7 @@ jobs:
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release PRODUCTION_BUILD=1 PRODUCTION_DEVICES="1GE100-ES1"
+        make release PRODUCTION_BUILD=1 PRODUCTION_DEVICES="${{ env.p_devices }}"
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
@@ -266,6 +280,12 @@ jobs:
         echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
         echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
         echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+        if [ $event_type == 'workflow_dispatch' ]
+        then
+              echo 'p_devices=${{ inputs.Production_Devices }}' >> $GITHUB_ENV
+        else
+              echo 'p_devices=$PRODUCTION_DEVICES' >> $GITHUB_ENV
+        fi
 
     - name: Configure git
       run: |
@@ -289,9 +309,10 @@ jobs:
       # Change ref head to deploy using a different branch.
       if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
       run: |
+        echo -e "Production devices are\n\t$p_devices"
         source /opt/rh/devtoolset-11/enable
         mkdir /opt/instl_dir
-        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES="1GE100-ES1"
+        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES="${{ env.p_devices }}"
         make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc examples FOEDAG_rs
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
         cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir ${{ inputs.Release_Date }}
