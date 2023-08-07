@@ -53,9 +53,10 @@ jobs:
     - name:  Unzip and copy all the files
       run: |
           echo "payload: ${{ github.event.client_payload.new_release }}"
-          for file in $(ls -1 $source/sw_*.tar.gz)
+          for file in $(ls -1 $GITHUB_WORKSPACE/sw_*.tar.gz)
           do
-          tar -zxvf $file
+          echo $file
+          tar -xvf $file
           done
           ls -l 
 
@@ -72,98 +73,96 @@ jobs:
           echo "nothing changed in XML files"
         fi
 
-#    - name: Add and Push
-#      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-#      uses: GuillaumeFalourd/git-commit-push@v1.3
-#      with:
-#        email: nadeem.yaseen@rapidsilicon.com
-#        name: nadeemyaseen-rs
-#        commit_message: Added XMLs files from ${{ github.event.client_payload.new_tag }}
-#        files: "*.xml"
-#        target_branch: xml_${{ github.event.client_payload.new_tag }}
-#
-## if above step pass then create PR.          
-#    - name: Create PR
-#      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-#      uses: repo-sync/pull-request@v2
-#      with:
-#          source_branch: xml_${{ github.event.client_payload.new_tag }}                                # branch having xmls files
-#          destination_branch: "main"                                                                   # name of branch on which PR go
-#          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main. "               # Title of pull request
-#          pr_body: "An automated PR to checkin New XMLs tag. Click on link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
-#          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
-#          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
-#          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
-#          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#
-#    - name: Install dependencies
-#      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-#      run: |
-#        bash .github/workflows/install_ubuntu_dependencies_build.sh
-##        bash .github/workflows/install_litex_ubuntu.sh
-#
-#    - name: Use ccache
-#      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-#      uses: hendrikmuhs/ccache-action@v1.2.3
-#      with:
-#        key: linux-${{ matrix.mode }}
-#
-#    - name: Configure shell
-#      run: |
-#        echo 'CC=gcc-11' >> $GITHUB_ENV
-#        echo 'CXX=g++-11' >> $GITHUB_ENV
-#        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
-#        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
-#        echo "$PREFIX" >> $GITHUB_PATH
-#        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
-#        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
-#        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
-#        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
-#
-#    - name: Show shell configuration
-#      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-#      run: |
-#        env
-#        which cmake && cmake --version
-#        which make && make --version
-#        which swig && swig -version
-#        which python && python --version
-#        which ninja && ninja --version
-#        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
-#        which $CC && $CC --version
-#        which $CXX && $CXX --version
-#
-#    - name: Test Release
-#      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-#      run: |
-#        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
-#        make release test/batch
-#
-#    - name: Is bitstream cache change !!!
-#      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-#      id: bitstream_cache_change
-#      run: |
-#        bit_c_diff=`git diff  --name-status -- '*.bin.gz'`
-#        echo $bit_c_diff
-#        if [ ! -z "$bit_c_diff" ]
-#        then
-#           echo "bit_c_changed=true" >> $GITHUB_OUTPUT
-#        else
-#          echo "nothing change in bin cache files"
-#        fi
-#
-#    - name: Add and Push bin cache
-#      if: contains(steps.bitstream_cache_change.outputs.bit_c_changed, 'true')
-#      uses: GuillaumeFalourd/git-commit-push@v1.3
-#      with:
-#        email: nadeem.yaseen@rapidsilicon.com
-#        name: nadeemyaseen-rs
-#        commit_message: Added bin cache files from ${{ github.event.client_payload.new_tag }}
-#        files: "*.bin.gz"
-#        target_branch: xml_${{ github.event.client_payload.new_tag }}
+    - name: Add and Push
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      uses: GuillaumeFalourd/git-commit-push@v1.3
+      with:
+        email: nadeem.yaseen@rapidsilicon.com
+        name: nadeemyaseen-rs
+        commit_message: Added XMLs files from ${{ github.event.client_payload.new_release }}
+        files: "*.xml"
+        target_branch: xml_${{ github.event.client_payload.new_release }}
 
-################################################################################################################################
+# if above step pass then create PR.          
+    - name: Create PR
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      uses: repo-sync/pull-request@v2
+      with:
+          source_branch: xml_${{ github.event.client_payload.new_release }}                                # branch having xmls files
+          destination_branch: "main"                                                                   # name of branch on which PR go
+          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_body: "An automated PR to check in New XMLs Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
+          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
+          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
+          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Install dependencies
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      run: |
+        bash .github/workflows/install_ubuntu_dependencies_build.sh
+#        bash .github/workflows/install_litex_ubuntu.sh
+
+    - name: Use ccache
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      uses: hendrikmuhs/ccache-action@v1.2.3
+      with:
+        key: linux-${{ matrix.mode }}
+
+    - name: Configure shell
+      run: |
+        echo 'CC=gcc-11' >> $GITHUB_ENV
+        echo 'CXX=g++-11' >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
+        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+
+    - name: Show shell configuration
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which ninja && ninja --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        which $CC && $CC --version
+        which $CXX && $CXX --version
+
+    - name: Test Release
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      run: |
+        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+        make release test/batch
+
+    - name: Is bitstream cache change !!!
+      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      id: bitstream_cache_change
+      run: |
+        bit_c_diff=`git diff  --name-status -- '*.bin.gz'`
+        echo $bit_c_diff
+        if [ ! -z "$bit_c_diff" ]
+        then
+           echo "bit_c_changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "nothing changed in bin cache files"
+        fi
+
+    - name: Add and Push bin cache
+      if: contains(steps.bitstream_cache_change.outputs.bit_c_changed, 'true')
+      uses: GuillaumeFalourd/git-commit-push@v1.3
+      with:
+        email: nadeem.yaseen@rapidsilicon.com
+        name: nadeemyaseen-rs
+        commit_message: Added bin cache files from ${{ github.event.client_payload.new_release }}
+        files: "*.bin.gz"
+        target_branch: xml_${{ github.event.client_payload.new_release }}
 
 
 #    - name: automerge XMLs PR
