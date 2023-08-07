@@ -163,7 +163,6 @@ jobs:
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl 
-        cat /home/runner/work/Raptor/Raptor/build/share/raptor/etc/device.xml
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
