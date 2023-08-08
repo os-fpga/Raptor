@@ -63,7 +63,7 @@ jobs:
     - name: Check changes are XML related
       id: xml_change
       run: |
-        bash copy_arch.sh
+        bash .github/copy_arch.sh
         xml_diff=`git diff  --name-status -- '*.xml'`
         echo $xml_diff
         if [ ! -z "$xml_diff" ]
@@ -90,7 +90,7 @@ jobs:
       with:
           source_branch: xml_${{ github.event.client_payload.new_release }}                                # branch having xmls files
           destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_title: "Pulling XMLs release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
           pr_body: "An automated PR to check in New XMLs Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
