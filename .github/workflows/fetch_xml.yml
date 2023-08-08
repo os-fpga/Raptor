@@ -60,10 +60,13 @@ jobs:
           done
           ls -l 
 
+    - name: Copy XMLs files
+      run: |
+          bash .github/copy_arch.sh
+
     - name: Check changes are XML related
       id: xml_change
       run: |
-        bash .github/copy_arch.sh
         xml_diff=`git diff  --name-status -- '*.xml'`
         echo $xml_diff
         if [ ! -z "$xml_diff" ]
@@ -80,7 +83,7 @@ jobs:
         email: nadeem.yaseen@rapidsilicon.com
         name: nadeemyaseen-rs
         commit_message: Added XMLs files from ${{ github.event.client_payload.new_release }}
-        files: "*.xml"
+        files: "etc/**/*.xml"
         target_branch: xml_${{ github.event.client_payload.new_release }}
 
 # if above step pass then create PR.          

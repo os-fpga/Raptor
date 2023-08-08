@@ -23,3 +23,6 @@
 [[ -e openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA104x68_gemini_compact_pnr/fabric_task/flow_inputs/bitstream_setting.xml  ]] && cp openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA104x68_gemini_compact_pnr/fabric_task/flow_inputs/bitstream_setting.xml  etc/devices/gemini_compact_104x86/bitstream_setting.xml
 [[ -e openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA104x68_gemini_compact_pnr/fabric_task/flow_inputs/fpga_repack_constraints.xml ]] && cp openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA104x68_gemini_compact_pnr/fabric_task/flow_inputs/fpga_repack_constraints.xml  etc/devices/gemini_compact_104x86/fpga_repack_constraints.xml
 [[ -e openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA104x68_gemini_compact_pnr/fabric_task/flow_inputs/openfpga_arch_annotated.xml ]] && cp openfpga-pd-castor-rs/k6n8_TSMC16nm_7.5T/FPGA104x68_gemini_compact_pnr/fabric_task/flow_inputs/openfpga_arch_annotated.xml etc/devices/gemini_compact_104x86/gemini_openfpga.xml
+
+echo "Done Copying"
+
