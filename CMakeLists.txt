@@ -704,7 +704,7 @@ if (PRODUCTION_BUILD)
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/etc/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND python3 ${PROJECT_SOURCE_DIR}/gen_rel_device.py --production_devices ${PRODUCTION_DEVICES} --xml_filepath ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml --devices_dirs_path ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices
+      COMMAND python3 ${PROJECT_SOURCE_DIR}/gen_rel_device.py --production_devices "${PRODUCTION_DEVICES}" --xml_filepath ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml --devices_dirs_path ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices --examples_path  ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples
       COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress-rel.json
       ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress.json)
 else()
