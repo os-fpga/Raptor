@@ -51,9 +51,9 @@ ports:
    I:
      dir: input
      desc: Data input
-   T:
+   OE:
      dir: input
-     desc: Tri-state output
+     desc: 
    O:
      dir: output
      desc: Data output (connect to top-level port)

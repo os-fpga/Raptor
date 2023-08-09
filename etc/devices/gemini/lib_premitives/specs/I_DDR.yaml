@@ -54,9 +54,15 @@ ports:
    R:
      dir: input
      desc: Active-low asynchrnous reset
-   E:
+   DLY_ADJ:
      dir: input
-     desc: Active-high enable
+     desc: 
+   DLY_LD:
+     dir: input
+     desc: 
+   DLY_INC:
+     dir: input
+     desc: 
    C:
      dir: input
      desc: Clock input

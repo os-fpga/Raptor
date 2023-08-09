@@ -51,9 +51,12 @@ ports:
    I:
      dir: input
      desc: Data input
-   T:
+   OE:
      dir: input
-     desc: Tri-state output
+     desc: 
+   C:
+     dir: input
+     desc: Clock input
    O_P:
      dir: output
      desc: Data positive output (connect to top-level port)

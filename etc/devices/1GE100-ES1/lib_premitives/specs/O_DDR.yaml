@@ -60,6 +60,15 @@ ports:
    C:
      dir: input
      desc: Clock
+   DLY_ADJ:
+     dir: input
+     desc: 
+   DLY_LD:
+     dir: input
+     desc: 
+   DLY_INC:
+     dir: input
+     desc: 
    Q:
      dir: output
      desc: Data output (connect to output port, buffer or O_DELAY)
