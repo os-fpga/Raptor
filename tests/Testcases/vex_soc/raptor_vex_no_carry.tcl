@@ -12,6 +12,6 @@ packing
 global_placement
 place
 route
-sta
+sta opensta
 power
 bitstream
