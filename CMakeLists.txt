@@ -154,7 +154,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 7)
-set(VERSION_PATCH 49)
+set(VERSION_PATCH 50)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -164,6 +164,9 @@ execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 message(STATUS "GIT_HASH = ${GIT_HASH}")
+set(VERSION_MAJOR_COM 0)
+set(VERSION_MINOR_COM 7)
+set(VERSION_PATCH_COM 22)
 configure_file(raptor_version.h.in ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/foedag_version.h)
 
 # Require swig 3
