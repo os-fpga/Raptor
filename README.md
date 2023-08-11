@@ -44,8 +44,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Project ---
 ---------------
-   create_design <name> ?-type <project type>? : Creates a design with <name> name
+   create_design <name> ?clean? ?-type <project type>? : Creates a design with <name> name
      <project type>           : rtl (Default), gate-level
+     clean                    : If project folder already exists, remove recursively folder content
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
    target_device <name>       : Targets a device with <name>
