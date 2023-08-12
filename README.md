@@ -44,9 +44,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Project ---
 ---------------
-   create_design <name> ?clean? ?-type <project type>? : Creates a design with <name> name
+   create_design <name> ?-type <project type>? : Creates a design with <name> name
      <project type>           : rtl (Default), gate-level
-     clean                    : If project folder already exists, remove recursively folder content
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
    target_device <name>       : Targets a device with <name>
@@ -156,7 +155,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        free                   : No automatic pin assignment
    place ?clean?              : Placer
      clean                    : Deletes files generated from this task
-   pnr_options <option list>  : PnR Options
 
 -------------
 --- Route ---
@@ -175,6 +173,21 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 -----------------
    bitstream ?clean?          : Bitstream generation
      clean                    : Deletes files generated from this task
+
+---------------------------------
+--- Implementation Strategy   ---
+---------------------------------
+timing_flow <"default" | "analytic"> : Timing driven compilation flow. This proc performs a series of steps in the design flow to achieve timing-driven placement and routing.
+  "analytic"                   : Use timing-driven analytic placement as initial placement. The result is then passed through the simulated annealing (SA) placer.
+  "default"                    : Uses VPR's default initial placer (default)
+
+routability_flow <number_of_molecules_in_partition, hmetisPath> : Routability driven compilation flow. This proc accepts two optional arguments:
+  number_of_molecules_in_partition <int>: Average number of molecules in each cluster (default is 200).
+  hmetisPath <file>            : The path to the hmetis executable (default is "~/bin/hmetis")
+  
+congestion_flow <congestion_type> : Congestion driven compilation flow
+  "uniform"                    : For uniformely congested high utilization designs
+  "hotspot"                    : For hotspots of congestion in moderately utilized designs
 
 ---------------
 --- Program ---
