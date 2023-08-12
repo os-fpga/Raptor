@@ -1,0 +1,69 @@
+# Periphery Primitives Parameters and Properties (P4)
+#
+# This file contains the list of Verilog parameters and SDC properties that are
+# allowed for periphery primitives.
+#
+# See https://rapidsilicon.atlassian.net/wiki/spaces/RS/pages/214368265/Periphery+Primitive+Parameters+and+Properties+Definitions+P4DEF for more details
+#
+# The name needs to match the filename root
+# name: <primitive name>
+# desc: <optional description>
+#
+# ports:
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#
+# # set as Verilog parameter
+# parameters:
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>  
+#
+# # set in SDC or by synthesis attribute
+# properties:
+#    <property_name>:
+#        desc: <description>
+#        values: 
+#          - <enum_name>
+#          - <enum_name>
+#    <property_name>:
+#        desc: <description>
+#          - <enum_name>
+#          - <enum_name>
+#
+# primitive name should match the filename root.
+name: SOC_FPGA_INTF_GPIO
+desc: SOC GPIO connection
+detailed_desc: Allows use of SOC I/O as general purpose I/O from the FPGA
+category: periphery
+
+ports:
+   GPIO:
+     dir: inout
+     desc: GPIO (connect to top-level ports)
+   GPIO_I:
+     dir: output
+     desc: GPIO input
+   GPIO_O:
+     dir: input
+     desc: GPIO output
+   GPIO_T:
+     dir: input
+     desc: GPIO tri-state enable
+   GPIO_CLK:
+     dir: input
+     desc: GPIO clock
+   GPIO_RST_N:
+     dir: input
+     desc: GPIO reset

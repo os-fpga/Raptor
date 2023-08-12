@@ -1,0 +1,89 @@
+# Periphery Primitives Parameters and Properties (P4)
+#
+# This file contains the list of Verilog parameters and SDC properties that are
+# allowed for periphery primitives.
+#
+# See https://rapidsilicon.atlassian.net/wiki/spaces/RS/pages/214368265/Periphery+Primitive+Parameters+and+Properties+Definitions+P4DEF for more details
+#
+# The name needs to match the filename root
+# name: <primitive name>
+# desc: <optional description>
+#
+# ports:
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#
+# # set as Verilog parameter
+# parameters:
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>  
+#
+# # set in SDC or by synthesis attribute
+# properties:
+#    <property_name>:
+#        desc: <description>
+#        values: 
+#          - <enum_name>
+#          - <enum_name>
+#    <property_name>:
+#        desc: <description>
+#          - <enum_name>
+#          - <enum_name>
+#
+# primitive name should match the filename root.
+name: I_DELAY
+desc: Input Delay
+detailed_desc: Programmable and adjustable 64-TAP delay line on the input path
+category: periphery
+
+ports:
+   I:
+     dir: input
+     desc: Data Input (Connect to input port or buffer)
+     detailed_desc:  Input to the delay line.  Connect this either to an input buffer or directly to a top-level port in the design.
+   DLY_LOAD:
+     dir: input
+     desc: Delay load input
+     detailed_desc:  This control signal when active loads the delay specified using the "DELAY" parameter. This signal has priority over 'DLY_ADJ'.
+   DLY_ADJ:
+     dir: input
+     desc: Delay adjust input
+     detailed_desc:  This control signal when active increments/decrements the TAP delay value by one. The increment/decrement depends upon the state of the control signal 'DLY_INCDEC'.
+   DLY_INCDEC:
+     dir: input
+     desc: Delay increment / decrement input
+     detailed_desc:  Specifies whether TAP will be incremented (high) or decremented (low) when DLY_ADJ is active.
+   DLY_TAP_VALUE:
+     dir: output
+     desc: Delay tap value output
+     detailed_desc: Provides the current value of the tap delay.
+   CLK_IN:
+     dir: input
+     desc: Clock input
+     detailed_desc:  Clock input to component
+   O:
+     dir: output
+     desc: Data output
+     detailed_desc:  Output from the delay line.  Connect to I_SERDES, I_DDR or fabric logic.
+
+# set as Verilog parameter in netlist    
+parameters:
+    DELAY:
+      desc: TAP delay value (0-63)
+      detailed_desc: Specifies initial TAP as well as the TAP value used when DLY_LOAD is asserted.
+      type: integer
+      default: 0
+      range: 0 .. 63
+
