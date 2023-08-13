@@ -4,16 +4,6 @@
 #
 # ------------------------------------------
 
-# ------------------------------------------
-# # Timing driven compilation flow
-# proc timing_flow { } {
-#     synthesize delay 
-#     packing_options -clb_packing timing_driven
-#     packing
-#     place
-#     route
-#     sta
-# }
 
 # ------------------------------------------
 # Area driven compilation flow
@@ -59,8 +49,9 @@ proc congestion_flow { {congestion_type "uniform"} } {
 proc timing_flow { {initial_placer_type "default"} } {
     synthesize delay 
     packing_options -clb_packing timing_driven
-    if {$initial_placer_type == "analytic"}
+    if {$initial_placer_type == "analytic"} {
         pnr_options --enable_cascade_placer true
+    }
     packing
     place
     route
