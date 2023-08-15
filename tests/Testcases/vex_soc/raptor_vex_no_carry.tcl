@@ -6,10 +6,10 @@ add_library_ext .v .sv
 add_design_file rtl/vex_soc.v
 add_constraint_file constraints.sdc
 set_top_module vex_soc
+analyze
 synth_options -effort high -carry none
 synthesize delay
 packing
-global_placement
 place
 route
 sta opensta
