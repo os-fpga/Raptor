@@ -45,7 +45,7 @@ packing
 place
 route
 sta
-#power
+power
 bitstream 
 simulate pnr icarus
 
