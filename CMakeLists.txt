@@ -153,8 +153,8 @@ add_subdirectory(IP_Catalog)
 
 # Raptor version
 set(VERSION_MAJOR 0)
-set(VERSION_MINOR 7)
-set(VERSION_PATCH 43)
+set(VERSION_MINOR 8)
+set(VERSION_PATCH 0)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -164,6 +164,9 @@ execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 message(STATUS "GIT_HASH = ${GIT_HASH}")
+set(VERSION_MAJOR_COM 0)
+set(VERSION_MINOR_COM 7)
+set(VERSION_PATCH_COM 22)
 configure_file(raptor_version.h.in ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/foedag_version.h)
 
 # Require swig 3
@@ -705,7 +708,7 @@ if (PRODUCTION_BUILD)
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/etc/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/
-      COMMAND python3 ${PROJECT_SOURCE_DIR}/gen_rel_device.py --production_devices ${PRODUCTION_DEVICES} --xml_filepath ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml --devices_dirs_path ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices
+      COMMAND python3 ${PROJECT_SOURCE_DIR}/gen_rel_device.py --production_devices "${PRODUCTION_DEVICES}" --xml_filepath ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/device.xml --devices_dirs_path ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/devices --examples_path  ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/examples
       COMMAND ${CMAKE_COMMAND} -E rename ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress-rel.json
       ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/settings/messages/suppress.json)
 else()

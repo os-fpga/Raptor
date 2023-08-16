@@ -13,6 +13,7 @@ create_design $project_name
 add_design_file -V_2001 ./Src/and2.v
 # Top-module can automatically be indentified or implicitly specified here
 set_top_module and2
+add_constraint_file pin_mapping.pin
 add_constraint_file constraints.sdc
 # Simulation
 add_simulation_file -SV_2012 ./Src/testbench_and2.v  
@@ -44,7 +45,7 @@ packing
 place
 route
 sta
-#power
+power
 bitstream 
 simulate pnr icarus
 

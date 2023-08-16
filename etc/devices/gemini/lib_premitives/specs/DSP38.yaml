@@ -1,0 +1,133 @@
+# Periphery Primitives Parameters and Properties (P4)
+#
+# This file contains the list of Verilog parameters and SDC properties that are
+# allowed for periphery primitives.
+#
+# See https://rapidsilicon.atlassian.net/wiki/spaces/RS/pages/214368265/Periphery+Primitive+Parameters+and+Properties+Definitions+P4DEF for more details
+#
+# The name needs to match the filename root
+# name: <primitive name>
+# desc: <optional description>
+#
+# ports:
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#
+# # set as Verilog parameter
+# parameters:
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>  
+#
+# # set in SDC or by synthesis attribute
+# properties:
+#    <property_name>:
+#        desc: <description>
+#        values: 
+#          - <enum_name>
+#          - <enum_name>
+#    <property_name>:
+#        desc: <description>
+#          - <enum_name>
+#          - <enum_name>
+#
+# primitive name should match the filename root.
+name: DSP38
+desc: Paramatizable 20x18-bit multiplier accumulator
+category: core_fabric
+
+ports:
+   A:
+     dir: input
+     desc: 20-bit data input for multipluier or accumulator loading
+   B:
+     dir: input
+     desc: 18-bit data input for multiplication
+   ACC_FIR:
+     dir: input
+     desc: 6-bit left shift A input
+   Z:
+     dir: output
+     desc: 38-bit data output
+   DLY_B:
+     dir: output
+     desc: 18-bit B registered output
+   CLK:
+     dir: input
+     desc: Clock
+   RESET:
+     dir: input
+     desc: 
+   FEEDBACK:
+     dir: input
+     desc: 3-bit feedback input selects coefficient
+   LOAD_ACC:
+     dir: input
+     desc: Load accumulator input
+   UNSIGNED_A:
+     dir: input
+     desc: Selects signed or unsigned data for A input
+   UNSIGNED_B:
+     dir: input
+     desc: Selects signed or unsigned data for B input
+   SATURATE_ENABLE:
+     dir: input
+     desc: Saturate enable
+   SHIFT_RIGHT:
+     dir: input
+     desc: 6-bit Shift right
+   ROUND:
+     dir: input
+     desc: Round 
+   SUBTRACT:
+     dir: input
+     desc: Add or subtract 
+
+parameters:
+    DSP_MODE:
+      desc: DSp arithmetic mode (MULTIPLY/MULTIPLY_ACCUMULATE)
+      default: "MULTIPLY_ACCUMULATE"
+      values:
+        - "MULTIPLY"
+        - "MULTIPLY_ADD_SUB"
+        - "MULTIPLY_ACCUMULATE"
+    COEFF_0:
+      desc: 20-bit A input coefficient 0
+      default: 20'h00000
+      vector: 20
+    COEFF_1:
+      desc: 20-bit A input coefficient 1
+      default: 20'h00000
+      vector: 20
+    COEFF_2:
+      desc: 20-bit A input coefficient 2
+      default: 20'h00000
+      vector: 20
+    COEFF_3:
+      desc: 20-bit A input coefficient 3
+      default: 20'h00000
+      vector: 20
+    OUTPUT_REG_EN:
+      desc: Enable output register (TRUE/FALSE)
+      detailed_desc:  Specifies the use of an output register.  This is igniored in MULTIPLY_ACCUMULTAE DSP mode.
+      default: "TRUE"
+      values:
+        - "TRUE"
+        - "FALSE"
+    INPUT_REG_EN:
+      desc: Enable input register (TRUE/FALSE)
+      default: "TRUE"
+      values:
+        - "TRUE"
+        - "FALSE"

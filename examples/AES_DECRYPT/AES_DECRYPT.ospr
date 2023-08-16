@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--                                                   -->
 <!--Copyright (c) 2021-2022 The Open-Source FPGA Foundation.-->
-<Project Version="0.2.27">
+<Project Version="0.7.47">
     <Configuration>
         <Option Name="ID" Val="20221011211004105"/>
         <Option Name="ActiveSimSet" Val="sim_1"/>
-        <Option Name="Project Type" Val="RTL"/>
+        <Option Name="Project Type" Val="0"/>
     </Configuration>
     <CompilerConfig>
         <Opt Name="LibPath" Val=""/>
@@ -13,9 +13,16 @@
         <Opt Name="LibExt" Val=""/>
         <Opt Name="Macro" Val=""/>
     </CompilerConfig>
+    <SimulationConfig>
+        <Opt Name="LibPath" Val=""/>
+        <Opt Name="IncludePath" Val=""/>
+        <Opt Name="LibExt" Val=""/>
+        <Opt Name="Macro" Val=""/>
+    </SimulationConfig>
     <IpConfig>
         <Option Name="InstancePaths" Val=""/>
         <Option Name="CatalogPaths" Val=""/>
+        <Option Name="InstanceCmds" Val=""/>
     </IpConfig>
     <FileSets>
         <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="/AES_DECRYPT.srcs/constrs_1">
@@ -56,26 +63,27 @@
         <Run Name="synth_1" Type="Synthesis" SrcSet="sources_1" ConstrsSet="constrs_1" State="current" SynthRun="">
             <Option Name="Compilation Flow" Val="Classic Flow"/>
             <Option Name="Device" Val="1GE100-ES1"/>
+            <Option Name="Family" Val="Gemini"/>
             <Option Name="LanguageVersion" Val="SYSTEMVERILOG_2005"/>
+            <Option Name="Package" Val="F784"/>
+            <Option Name="Series" Val="Gemini"/>
             <Option Name="TargetLanguage" Val="VERILOG"/>
         </Run>
     </Runs>
     <Tasks Version="0.0.0">
-        <Task ID="0" Status="0"/>
-        <Task ID="1" Status="0"/>
-        <Task ID="4" Status="0"/>
-        <Task ID="5" Status="0"/>
-        <Task ID="6" Status="0"/>
-        <Task ID="8" Status="0"/>
-        <Task ID="10" Status="0"/>
-        <Task ID="13" Status="0"/>
-        <Task ID="14" Status="0"/>
-        <Task ID="15" Status="0"/>
-        <Task ID="18" Status="0"/>
-        <Task ID="19" Status="0"/>
-        <Task ID="20" Status="0"/>
-        <Task ID="21" Status="0"/>
-        <Task ID="23" Status="0"/>
+        <Task ID="0" Status="0" Enable="1"/>
+        <Task ID="1" Status="0" Enable="1"/>
+        <Task ID="6" Status="0" Enable="1"/>
+        <Task ID="10" Status="0" Enable="1"/>
+        <Task ID="15" Status="0" Enable="1"/>
+        <Task ID="19" Status="0" Enable="1"/>
+        <Task ID="20" Status="0" Enable="1"/>
+        <Task ID="21" Status="0" Enable="0"/>
+        <Task ID="23" Status="0" Enable="1"/>
+        <Task ID="28" Status="0" Enable="1"/>
+        <Task ID="31" Status="0" Enable="1"/>
+        <Task ID="34" Status="0" Enable="1"/>
+        <Task ID="37" Status="0" Enable="1"/>
     </Tasks>
-    <Compiler Version="0.0.0" CompilerState="10"/>
+    <Compiler Version="0.0.0" CompilerState="2"/>
 </Project>

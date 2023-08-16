@@ -3,7 +3,7 @@ name: 'Fetch and Test XML changes'
 on:
   #push:
   repository_dispatch:
-    types: [digest_latest_Arch]
+    types: [digest_latest_Release]
 
 jobs:
   XML_Digest_and_test:
@@ -11,8 +11,6 @@ jobs:
     defaults:
       run:
         shell: bash
-    strategy:
-      fail-fast: false
     steps:
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
@@ -43,15 +41,28 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Checkout openfpga-pd-castor-rs
-      run: |
-          git clone git@github.com:RapidSilicon/openfpga-pd-castor-rs.git
+    - name: Download Latest Release
+      uses: robinraju/release-downloader@v1.8
+      with:
+        repository: "RapidSilicon/geminiplusproduct"
+        latest: true
+        tarBall: true
+        zipBall: true
+        token: "${{ secrets.OPENFPGA_CASTOR_XML_MERGE }}"
 
-    - name:  checkout tag and copy Arch files
+    - name:  Unzip and copy all the files
       run: |
-          echo "payload: ${{ github.event.client_payload.new_tag }}"
-          cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
-          #cd openfpga-pd-castor-rs && git checkout ${{ github.event.client_payload.new_tag }} && cd - && bash .github/copy_arch.sh
+          echo "payload: ${{ github.event.client_payload.new_release }}"
+          for file in $(ls -1 $GITHUB_WORKSPACE/sw_*.tar.gz)
+          do
+          echo $file
+          tar -xvf $file
+          done
+          ls -l 
+
+    - name: Copy XMLs files
+      run: |
+          bash .github/copy_arch.sh
 
     - name: Check changes are XML related
       id: xml_change
@@ -62,7 +73,7 @@ jobs:
         then
            echo "xml_changed=true" >> $GITHUB_OUTPUT
         else
-          echo "nothing change in XML files"
+          echo "nothing changed in XML files"
         fi
 
     - name: Add and Push
@@ -71,19 +82,19 @@ jobs:
       with:
         email: nadeem.yaseen@rapidsilicon.com
         name: nadeemyaseen-rs
-        commit_message: Added XMLs files from ${{ github.event.client_payload.new_tag }}
-        files: "*.xml"
-        target_branch: xml_${{ github.event.client_payload.new_tag }}
+        commit_message: Added XMLs files from ${{ github.event.client_payload.new_release }}
+        files: "etc/**/*.xml"
+        target_branch: xml_${{ github.event.client_payload.new_release }}
 
 # if above step pass then create PR.          
     - name: Create PR
       if: contains(steps.xml_change.outputs.xml_changed, 'true')
       uses: repo-sync/pull-request@v2
       with:
-          source_branch: xml_${{ github.event.client_payload.new_tag }}                                # branch having xmls files
+          source_branch: xml_${{ github.event.client_payload.new_release }}                                # branch having xmls files
           destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling XMLs ${{ github.event.client_payload.new_tag }} into main. "               # Title of pull request
-          pr_body: "An automated PR to checkin New XMLs tag. Click on link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+          pr_title: "Pulling XMLs release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_body: "An automated PR to check in New XMLs Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
           pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
@@ -143,7 +154,7 @@ jobs:
         then
            echo "bit_c_changed=true" >> $GITHUB_OUTPUT
         else
-          echo "nothing change in bin cache files"
+          echo "nothing changed in bin cache files"
         fi
 
     - name: Add and Push bin cache
@@ -152,9 +163,9 @@ jobs:
       with:
         email: nadeem.yaseen@rapidsilicon.com
         name: nadeemyaseen-rs
-        commit_message: Added bin cache files from ${{ github.event.client_payload.new_tag }}
+        commit_message: Added bin cache files from ${{ github.event.client_payload.new_release }}
         files: "*.bin.gz"
-        target_branch: xml_${{ github.event.client_payload.new_tag }}
+        target_branch: xml_${{ github.event.client_payload.new_release }}
 
 
 #    - name: automerge XMLs PR
