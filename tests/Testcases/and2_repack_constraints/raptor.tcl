@@ -1,5 +1,5 @@
 # Design
-create_design and2_reg_gemini
+create_design and2_repack_constr
 add_design_file ./rtl/and2.sv
 set_top_module reg_and2
 add_constraint_file pin_mapping.pin
