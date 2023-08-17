@@ -294,6 +294,7 @@ if (PRODUCTION_BUILD)
 endif()
 
 add_subdirectory(src/ProgrammerGui)
+add_subdirectory(src/ConfigurationRaptor)
 
 if (PRODUCTION_BUILD)
   add_dependencies(raptor-bin rs_licenseManager)
