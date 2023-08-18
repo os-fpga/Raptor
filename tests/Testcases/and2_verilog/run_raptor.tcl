@@ -19,7 +19,7 @@ add_constraint_file constraints.sdc
 add_simulation_file -SV_2012 ./Src/testbench_and2.v  
 set_top_testbench testbench_and2
 # Device target
-target_device 1GE100-ES1
+target_device GEMINI_COMPACT_10x8
 
 # RTL Simulation
 simulate rtl icarus
@@ -44,7 +44,7 @@ pnr_options --read_vpr_constraints and2_part.xml
 packing
 place
 route
-sta opensta
+sta
 power
 bitstream 
 simulate pnr icarus
