@@ -49,6 +49,8 @@ yum install -y ninja-build
 yum install -y zip unzip
 yum install -y gtk3-devel
 yum install -y openssl-devel
+yum install -y libusbx-devel libusb-devel
+yum install -y pkgconfig
 
 ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/ctest /usr/bin/ctest
 echo 'QMAKE_CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV

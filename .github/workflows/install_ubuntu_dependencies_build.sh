@@ -36,7 +36,9 @@ sudo apt install -y \
   autoconf \
   libgtk-3-dev \
   ninja-build \
-  libssl-dev
+  libssl-dev \
+  libusb-1.0-0-dev \
+  pkg-config
 # qtdeclarative5-dev
 
 sudo apt -y install lsb-core
