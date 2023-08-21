@@ -129,6 +129,9 @@ add_subdirectory("Raptor_Tools/python_tools")
 add_subdirectory("Raptor_Tools/HDL_simulator")
 
 add_subdirectory(FOEDAG_rs)
+# add mt-kahpar after FOEDAG as we need to provide googletest
+add_subdirectory("Raptor_Tools/graph_partition")
+
 if (APPLE)
     option(BUILD_YOSYS_PLUGINS OFF) # Currently yosys-plugins doesn't build on MacOS
 endif()

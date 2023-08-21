@@ -36,6 +36,7 @@ sudo apt install -y \
   autoconf \
   libgtk-3-dev \
   ninja-build \
+  libhwloc-dev \
   libssl-dev
 # qtdeclarative5-dev
 
