@@ -851,7 +851,7 @@ jobs:
         sudo apt-get update -qq && sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
         sudo apt -qq -y install clang-tidy-12 \
                                 g++-11 tclsh  default-jre cmake \
-                                uuid-dev build-essential xorg \
+                                uuid-dev build-essential xorg  libhwloc-dev \
                                 qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev xvfb
 
     - name: Use ccache
