@@ -167,8 +167,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ------------------------------
 --- Static Timing Analysis ---
 ------------------------------
-   sta ?clean?                : Statistical Timing Analysis
+   sta ?clean? ?opensta?      : Statistical Timing Analysis
      clean                    : Deletes files generated from this task
+     opensta                  : Use OpenSTA tool for timing analysis
 
 ------------------------------
 --- Power Analysis -----------
