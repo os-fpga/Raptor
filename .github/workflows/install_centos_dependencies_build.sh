@@ -48,7 +48,7 @@ yum install -y zlib-devel
 yum install -y ninja-build
 yum install -y zip unzip
 yum install -y gtk3-devel
-yum install -y openssl-devel
+yum install -y openssl-devel hwloc-devel
 yum install -y libusbx-devel libusb-devel
 yum install -y pkgconfig
 

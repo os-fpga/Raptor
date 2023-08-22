@@ -37,6 +37,8 @@ sudo apt install -y \
   libgtk-3-dev \
   ninja-build \
   libssl-dev \
+  libhwloc-dev \
+  libssl-dev \
   libusb-1.0-0-dev \
   pkg-config
 # qtdeclarative5-dev
