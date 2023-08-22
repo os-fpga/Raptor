@@ -36,7 +36,6 @@ sudo apt install -y \
   autoconf \
   libgtk-3-dev \
   ninja-build \
-  libssl-dev \
   libhwloc-dev \
   libssl-dev \
   libusb-1.0-0-dev \
