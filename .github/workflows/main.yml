@@ -852,7 +852,7 @@ jobs:
         sudo apt -qq -y install clang-tidy-12 \
                                 g++-11 tclsh  default-jre cmake \
                                 uuid-dev build-essential xorg  libhwloc-dev \
-                                qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev xvfb
+                                qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev xvfb \
                                 libusb-1.0-0-dev pkg-config
 
     - name: Use ccache
