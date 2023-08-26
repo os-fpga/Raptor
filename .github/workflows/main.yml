@@ -80,6 +80,11 @@ jobs:
         bash .github/workflows/install_ubuntu_dependencies_build.sh
 #        bash .github/workflows/install_litex_ubuntu.sh
 
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
+
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.3
       with:
@@ -261,6 +266,12 @@ jobs:
         bash .github/workflows/install_centos_dependencies_build.sh
 #        bash .github/workflows/install_litex_centos.sh 
 
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
+
+
     - name: Show shell configuration
       run: |
         env
@@ -405,6 +416,11 @@ jobs:
     - name: Install core dependencies
       run: choco install -y swig --side-by-side --version=3.0.12
       shell: powershell
+
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
 
     - name: Setup Msys2
       uses: msys2/setup-msys2@v2
@@ -625,6 +641,11 @@ jobs:
       with:
         python-version: 3.8
 
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
+
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
       with: 
@@ -716,6 +737,11 @@ jobs:
     - uses: actions/setup-python@v4.3.0
       with:
         python-version: 3.8
+
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v3.0.0
