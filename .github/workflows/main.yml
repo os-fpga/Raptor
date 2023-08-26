@@ -521,6 +521,11 @@ jobs:
         python-version: 3.8
         architecture: x64
 
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
+
     - name: Install Qt
       uses: jurplel/install-qt-action@v3.0.0
 
