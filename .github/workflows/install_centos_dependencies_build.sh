@@ -1,5 +1,6 @@
 set -e
 # Install required dependencies for CentOS systems
+yum install -y https://repo.ius.io/ius-release-el7.rpm
 yum update -y
 yum group install -y "Development Tools" 
 yum install -y epel-release 
