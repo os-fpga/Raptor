@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
   } else {
     opcompiler = new FOEDAG::CompilerRS();
     compiler = opcompiler;
-    compiler->SetUseVerific(true);
+    compiler->SetParserType(FOEDAG::Compiler::ParserType::Verific);
     FOEDAG::addTclArgFns("CompilerRs_Synthesis",
                          {FOEDAG::TclArgs_setRsSynthesisOptions,
                           FOEDAG::TclArgs_getRsSynthesisOptions});
