@@ -25,7 +25,7 @@ yum install -y gperftools gperftools-devel
 yum install -y uuid-devel
 yum install -y valgrind
 yum install -y python3
-yum install python34-setuptools
+yum install -y python34-setuptools
 easy_install-3.4 pip
 pip3 install orderedmultidict
 pip3 install psutil
