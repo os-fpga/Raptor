@@ -24,11 +24,12 @@ yum install -y google-perftools
 yum install -y gperftools gperftools-devel
 yum install -y uuid-devel
 yum install -y valgrind
-yum install -y python3
-yum install -y python34-setuptools
-easy_install-3.4 pip
+
+yum install -y python36u python36u-libs python36u-devel python36u-pip
+
 pip3 install orderedmultidict
 pip3 install psutil
+
 yum install -y xorg-x11-server-Xorg xorg-x11-xauth xorg-x11-apps 
 yum install -y xorg-x11-server-Xvfb
 yum install -y mesa-libGL-devel
