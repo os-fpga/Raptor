@@ -266,12 +266,6 @@ jobs:
         bash .github/workflows/install_centos_dependencies_build.sh
 #        bash .github/workflows/install_litex_centos.sh 
 
-    - name: Setup Python Packages
-      run: |
-        pip3 install orderedmultidict
-        pip3 install psutil
-
-
     - name: Show shell configuration
       run: |
         env
