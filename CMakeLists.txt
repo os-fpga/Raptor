@@ -128,7 +128,7 @@ add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
 add_subdirectory("Raptor_Tools/HDL_simulator")
 add_subdirectory("Raptor_Tools/surelog_sv_plugin")
-add_dependencies(sv_plugin_build yosys)
+add_dependencies(dummy_lib yosys)
 
 add_subdirectory(FOEDAG_rs)
 # add mt-kahpar after FOEDAG as we need to provide googletest
