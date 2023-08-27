@@ -38,7 +38,7 @@ simulate rtl icarus
 puts "Compiling $project_name..."
 analyze
 #synth_options -inferred_io
-parser_type surelog
+#parser_type surelog
 synthesize delay
 simulate gate icarus
 pnr_options --read_vpr_constraints and2_part.xml
