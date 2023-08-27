@@ -21,7 +21,7 @@ yum install -y readline-devel
 yum remove -y swig
 yum install -y swig3
 yum install -y which
-yum install java-11-openjdk-devel
+yum install -y java-11-openjdk-devel
 yum install -y google-perftools
 yum install -y gperftools gperftools-devel
 yum install -y uuid-devel
