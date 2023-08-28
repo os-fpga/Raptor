@@ -1,11 +1,12 @@
 set -e
 # Install required dependencies for CentOS systems
+yum install -y https://repo.ius.io/ius-release-el7.rpm
 yum update -y
 yum group install -y "Development Tools" 
 yum install -y epel-release 
-curl -C - -O https://cmake.org/files/v3.16/cmake-3.16.9-Linux-x86_64.tar.gz
-tar xzf cmake-3.16.9-Linux-x86_64.tar.gz
-ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/cmake /usr/bin/cmake
+curl -C - -O https://cmake.org/files/v3.20/cmake-3.20.0-linux-x86_64.tar.gz
+tar xzf cmake-3.20.0-linux-x86_64.tar.gz
+ln -s $PWD/cmake-3.20.0-linux-x86_64/bin/cmake /usr/bin/cmake
 yum install -y openssh-server openssh-clients
 yum install -y centos-release-scl-rh
 yum install -y devtoolset-11
@@ -20,11 +21,17 @@ yum install -y readline-devel
 yum remove -y swig
 yum install -y swig3
 yum install -y which
+yum install -y java-11-openjdk-devel
 yum install -y google-perftools
 yum install -y gperftools gperftools-devel
 yum install -y uuid-devel
 yum install -y valgrind
-yum install -y python3
+
+yum install -y python36u python36u-libs python36u-devel python36u-pip
+
+pip3 install orderedmultidict
+pip3 install psutil
+
 yum install -y xorg-x11-server-Xorg xorg-x11-xauth xorg-x11-apps 
 yum install -y xorg-x11-server-Xvfb
 yum install -y mesa-libGL-devel
