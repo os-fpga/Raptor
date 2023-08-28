@@ -127,8 +127,6 @@ add_subdirectory(${READ_EDIF_SRC_DIR})
 add_subdirectory("Raptor_Tools/psta-rel")
 add_subdirectory("Raptor_Tools/python_tools")
 add_subdirectory("Raptor_Tools/HDL_simulator")
-add_subdirectory("Raptor_Tools/surelog_sv_plugin")
-add_dependencies(dummy_lib yosys)
 
 add_subdirectory(FOEDAG_rs)
 # add mt-kahpar after FOEDAG as we need to provide googletest
@@ -142,6 +140,10 @@ if (NOT APPLE)
     # Disable yosys_verific_rs till EDA-799 is resolved.
     add_subdirectory(yosys_verific_rs)
 endif()
+
+add_subdirectory("Raptor_Tools/surelog_sv_plugin")
+add_dependencies(sv_plugin_build yosys)
+
 
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
    set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
