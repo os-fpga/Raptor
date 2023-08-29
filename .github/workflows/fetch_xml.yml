@@ -11,6 +11,15 @@ jobs:
     defaults:
       run:
         shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        updates:
+        - xml
+        - ric
+    env:
+      MODE: ${{ matrix.updates }}
+  
     steps:
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
@@ -40,6 +49,25 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: switch to branch
+      run: |
+            git branch -a 
+            BRANCH='${{ matrix.updates }}_${{ github.event.client_payload.new_release }}'
+            set +e
+            git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
+            EXIT_CODE=$?
+            if [[ $EXIT_CODE == '0' ]]; then
+                echo "Git branch '$BRANCH' exists in the remote repository"
+                main_last_commit=`git log -1 --pretty=format:"%H"`
+                git checkout ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
+                git pull origin ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
+                git reset --hard $main_last_commit
+            elif [[ $EXIT_CODE == '2' ]]; then
+                echo "Git branch '$BRANCH' does not exist in the remote repository"
+            fi
 
     - name: Download Latest Release
       uses: robinraju/release-downloader@v1.8
@@ -53,7 +81,7 @@ jobs:
     - name:  Unzip and copy all the files
       run: |
           echo "payload: ${{ github.event.client_payload.new_release }}"
-          for file in $(ls -1 $GITHUB_WORKSPACE/sw_*.tar.gz)
+          for file in $(ls -1 $GITHUB_WORKSPACE/*.tar.gz)
           do
           echo $file
           tar -xvf $file
@@ -64,37 +92,58 @@ jobs:
       run: |
           bash .github/copy_arch.sh
 
-    - name: Check changes are XML related
-      id: xml_change
+    - name: set the extension
       run: |
-        xml_diff=`git diff  --name-status -- '*.xml'`
-        echo $xml_diff
-        if [ ! -z "$xml_diff" ]
+        case "${{ matrix.updates }}" in
+            "ric")
+                echo "updates are from ${{ matrix.updates }}"
+                extension=tcl
+                echo "EXTENSION=$extension" >> $GITHUB_ENV
+                echo "path_to_commit=etc/**/**/*.tcl" >> $GITHUB_ENV
+                ;;
+            "xml")
+                echo "updates are from ${{ matrix.updates }}"
+                extension=xml
+                echo "EXTENSION=$extension" >> $GITHUB_ENV
+                echo "path_to_commit=etc/**/*.xml" >> $GITHUB_ENV
+                ;;
+            *)
+                echo "Invalid value: ${{ matrix.updates }}"
+                ;;
+        esac
+
+    - name: Check changes are related
+      id: is_change
+      run: |
+        any_diff=`git diff  --name-status -- '*.${{ env.EXTENSION }}'`
+        echo $any_diff
+        if [ ! -z "$any_diff" ]
         then
-           echo "xml_changed=true" >> $GITHUB_OUTPUT
+           echo "has_changed=true" >> $GITHUB_OUTPUT
         else
-          echo "nothing changed in XML files"
+          echo "nothing changed in ${{ matrix.updates }} files"
         fi
 
-    - name: Add and Push
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+    - name: Add and Push files
+      if: contains(steps.is_change.outputs.has_changed, 'true')
       uses: GuillaumeFalourd/git-commit-push@v1.3
       with:
         email: nadeem.yaseen@rapidsilicon.com
         name: nadeemyaseen-rs
-        commit_message: Added XMLs files from ${{ github.event.client_payload.new_release }}
-        files: "etc/**/*.xml"
-        target_branch: xml_${{ github.event.client_payload.new_release }}
+        commit_message: Added ${{ matrix.updates }} files from ${{ github.event.client_payload.new_release }}
+        files: "${{ env.path_to_commit }}"
+        target_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
+        force: true
 
 # if above step pass then create PR.          
     - name: Create PR
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true')
       uses: repo-sync/pull-request@v2
       with:
-          source_branch: xml_${{ github.event.client_payload.new_release }}                                # branch having xmls files
+          source_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}                                # branch having xmls files
           destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling XMLs release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
-          pr_body: "An automated PR to check in New XMLs Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+          pr_title: "Pulling ${{ matrix.updates }} release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_body: "An automated PR to check in New ${{ matrix.updates }} Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
           pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
@@ -102,13 +151,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install dependencies
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
 #        bash .github/workflows/install_litex_ubuntu.sh
 
     - name: Use ccache
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true')
       uses: hendrikmuhs/ccache-action@v1.2.3
       with:
         key: linux-${{ matrix.mode }}
@@ -126,7 +175,7 @@ jobs:
         echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
 
     - name: Show shell configuration
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
         env
         which cmake && cmake --version
@@ -139,34 +188,10 @@ jobs:
         which $CXX && $CXX --version
 
     - name: Test Release
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
         make release test/batch
-
-    - name: Is bitstream cache change !!!
-      if: contains(steps.xml_change.outputs.xml_changed, 'true')
-      id: bitstream_cache_change
-      run: |
-        bit_c_diff=`git diff  --name-status -- '*.bin.gz'`
-        echo $bit_c_diff
-        if [ ! -z "$bit_c_diff" ]
-        then
-           echo "bit_c_changed=true" >> $GITHUB_OUTPUT
-        else
-          echo "nothing changed in bin cache files"
-        fi
-
-    - name: Add and Push bin cache
-      if: contains(steps.bitstream_cache_change.outputs.bit_c_changed, 'true')
-      uses: GuillaumeFalourd/git-commit-push@v1.3
-      with:
-        email: nadeem.yaseen@rapidsilicon.com
-        name: nadeemyaseen-rs
-        commit_message: Added bin cache files from ${{ github.event.client_payload.new_release }}
-        files: "*.bin.gz"
-        target_branch: xml_${{ github.event.client_payload.new_release }}
-
 
 #    - name: automerge XMLs PR
 #      uses: "pascalgn/automerge-action@v0.15.6"
