@@ -156,6 +156,12 @@ jobs:
         bash .github/workflows/install_ubuntu_dependencies_build.sh
 #        bash .github/workflows/install_litex_ubuntu.sh
 
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
+
+
     - name: Use ccache
       if: contains(steps.is_change.outputs.has_changed, 'true')
       uses: hendrikmuhs/ccache-action@v1.2.3
