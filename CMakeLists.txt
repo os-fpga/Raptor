@@ -141,6 +141,10 @@ if (NOT APPLE)
     add_subdirectory(yosys_verific_rs)
 endif()
 
+add_subdirectory("Raptor_Tools/surelog_sv_plugin")
+add_dependencies(sv_plugin_build yosys)
+
+
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
    set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
    set(OPENFPGA_WITH_TEST OFF CACHE BOOL "Disable OpenFPGA tests" FORCE)
@@ -157,7 +161,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 8)
-set(VERSION_PATCH 7)
+set(VERSION_PATCH 8)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
