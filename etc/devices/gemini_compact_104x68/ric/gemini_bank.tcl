@@ -1,24 +1,27 @@
 ####################################
 # Gearbox block definition 
 ####################################
-source gbox_top.tcl
-source fclk_mux.tcl
-source hp_pgen.tcl
-source hv_pgen.tcl
-source pll_refmux.tcl
-source pll.tcl
-source rc_osc_50mhz.tcl
-source root_bank_clkmux.tcl
-source root_mux.tcl
-source gbox_hp_40x3.tcl
-source gbox_hv_40x3_vl.tcl
-source gbox_hv_40x3_vr.tcl
+
+set script_directory [file dirname [info script]]
+
+source [file join $script_directory "gbox_top.tcl"]
+source [file join $script_directory "fclk_mux.tcl"]
+source [file join $script_directory "hp_pgen.tcl"]
+source [file join $script_directory "hv_pgen.tcl"]
+source [file join $script_directory "pll_refmux.tcl"]
+source [file join $script_directory "pll.tcl"]
+source [file join $script_directory "rc_osc_50mhz.tcl"]
+source [file join $script_directory "root_bank_clkmux.tcl"]
+source [file join $script_directory "root_mux.tcl"]
+source [file join $script_directory "gbox_hp_40x3.tcl"]
+source [file join $script_directory "gbox_hv_40x3_vl.tcl"]
+source [file join $script_directory "gbox_hv_40x3_vr.tcl"]
 #
 # gbox_ioc_cfg.tcl is an alternate methodlogy
 # to ignore addresses below and forcibly link up
 # config chains in an non-overlapping manner.
 # But we are not using that methodology.
-#   source gbox_ioc_cfg.tcl
+#   source [file join $script_directory "gbox_ioc_cfg.tcl"]
 
 ####################################
 define_block -name GEMINI_BANK
@@ -29,7 +32,7 @@ set IO_CHAIN_GBOX_VL_START [expr $IO_CHAIN_GBOX_HP_START + $IO_CHAIN_GBOX_HP_40X
 
 set IO_CHAIN_GEMINI_BANK_SIZE [expr $IO_CHAIN_GBOX_VL_START + $IO_CHAIN_GBOX_HV_40X3_VL_SIZE]
 
-puts "IO_CHAIN_GEMINI_BANK_SIZE = $IO_CHAIN_GEMINI_BANK_SIZE"
+#puts"IO_CHAIN_GEMINI_BANK_SIZE = $IO_CHAIN_GEMINI_BANK_SIZE"
 
 ####################################
 # If we used the gbox_ioc_cfg.tcl, we would need to instantiate that RIC module.
@@ -211,13 +214,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HV_40X3_VL.u_HV_GBOX_BK0_A_$i
     set bank_name BANK_VL_1_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HV_40X3_VL.u_HV_GBOX_BK0_B_$i
     set bank_name BANK_VL_1_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 # BANK_VL_2_*
@@ -226,13 +229,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HV_40X3_VL.u_HV_GBOX_BK1_A_$i
     set bank_name BANK_VL_2_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HV_40X3_VL.u_HV_GBOX_BK1_B_$i
     set bank_name BANK_VL_2_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 # BANK_VL_3_*
@@ -241,13 +244,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HV_40X3_VL.u_HV_GBOX_BK2_A_$i
     set bank_name BANK_VL_3_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HV_40X3_VL.u_HV_GBOX_BK2_B_$i
     set bank_name BANK_VL_3_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 
@@ -258,13 +261,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HV_40X3_VR.u_HV_GBOX_BK0_A_$i
     set bank_name BANK_VR_1_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
-    puts "map_model_user_names -model_name $model_name -user_name $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
+    #puts"map_model_user_names -model_name $model_name -user_name $cust_name"
     incr BANK_INDEX
     set model_name u_GBOX_HV_40X3_VR.u_HV_GBOX_BK0_B_$i
     set bank_name BANK_VR_1_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 # BANK_VR_2_*
@@ -273,13 +276,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HV_40X3_VR.u_HV_GBOX_BK1_A_$i
     set bank_name BANK_VR_2_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HV_40X3_VR.u_HV_GBOX_BK1_B_$i
     set bank_name BANK_VR_2_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 # BANK_VR_3_*
@@ -288,13 +291,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HV_40X3_VR.u_HV_GBOX_BK2_A_$i
     set bank_name BANK_VR_3_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HV_40X3_VR.u_HV_GBOX_BK2_B_$i
     set bank_name BANK_VR_3_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 
@@ -305,13 +308,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HP_40X3.u_HP_GBOX_BK0_A_$i
     set bank_name BANK_H_1_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HP_40X3.u_HV_GBOX_BK0_B_$i
     set bank_name BANK_H_1_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 
@@ -321,13 +324,13 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HP_40X3.u_HP_GBOX_BK1_A_$i
     set bank_name BANK_H_2_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HP_40X3.u_HV_GBOX_BK1_B_$i
     set bank_name BANK_H_2_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
 
@@ -337,12 +340,12 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     set model_name u_GBOX_HP_40X3.u_HP_GBOX_BK2_A_$i
     set bank_name BANK_H_3_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
     set model_name u_GBOX_HP_40X3.u_HV_GBOX_BK2_B_$i
     set bank_name BANK_H_3_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
-    puts "$model_name, $bank_name, $cust_name"
+    #puts"$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
 }
