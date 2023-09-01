@@ -15,5 +15,6 @@ add_include_path rapidsilicon/ip/axil_gpio/v1_0/axil_gpio_wrapper/src/
 add_library_ext .v .sv
 
 set_top_module axil_gpio_wrapper
+parser_type surelog
 synth delay
 

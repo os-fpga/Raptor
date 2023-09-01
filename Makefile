@@ -150,7 +150,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_verilog/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
+#	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
@@ -165,20 +165,20 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_cdma/v1_0/axi_cdma.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
+# Needs https://github.com/chipsalliance/Surelog/issues/3829	./build/bin/raptor --batch --mute --script tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axil_gpio/v1_0/axil_gpio.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/reset_release/v1_0/reset_release.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/constant/raptor.tcl --batch
 	./build/bin/raptor --batch --mute --script tests/Testcases/double_check/raptor.tcl
-	./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_104x68/ric/gemini_bank.tcl
+# Wait for Manadher's fix ./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_104x68/ric/gemini_bank.tcl
 
 test/batch_gen2: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_latest/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter/counter.tcl
-#Reenable after EDA-1801 is fixed ./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
 

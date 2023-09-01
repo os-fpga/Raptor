@@ -8,6 +8,7 @@ ipgenerate
 add_design_file ./rapidsilicon/ip/axis_adapter/v1_0/axis_adapter_wrapper/src/axis_adapter_wrapper.v
 add_library_path rapidsilicon/ip/axis_adapter/v1_0/axis_adapter_wrapper/src/
 set_top_module axis_adapter_wrapper
+parser_type surelog
 synth delay
 
 
