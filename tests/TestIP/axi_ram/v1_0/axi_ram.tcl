@@ -12,5 +12,6 @@ ipgenerate
 add_design_file ./rapidsilicon/ip/axi_ram/v1_0/axi_ram_wrapper/src/axi_ram_wrapper.v
 add_library_path rapidsilicon/ip/axi_ram/v1_0/axi_ram_wrapper/src/
 set_top_module axi_ram_wrapper
+parser_type surelog
 synth delay
 

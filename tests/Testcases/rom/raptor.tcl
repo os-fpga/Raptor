@@ -4,7 +4,7 @@ add_design_file top.v
 set_top_module SBox
 
 # Device target
-target_device 1GE100
+target_device 1GE100-ES1
 # Compilation
 analyze
 synthesize delay

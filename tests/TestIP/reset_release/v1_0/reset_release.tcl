@@ -12,5 +12,6 @@ ipgenerate
 add_design_file ./rapidsilicon/ip/reset_release/v1_0/reset_release_wrapper/src/reset_release_wrapper.v
 add_library_path rapidsilicon/ip/reset_release/v1_0/reset_release_wrapper/src/
 set_top_module reset_release_wrapper
+parser_type surelog
 synth delay
 
