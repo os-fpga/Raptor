@@ -20,6 +20,7 @@ simulation_options "ghdl" "simulation" "--stop-time=1000ns"
 simulate "rtl" "ghdl" syn_tb_rtl.fst
 
 # Synthesis
+parser_type ghdl
 pnr_netlist_lang vhdl
 synthesize delay
 
