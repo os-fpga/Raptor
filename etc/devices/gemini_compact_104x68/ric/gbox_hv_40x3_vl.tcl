@@ -1,11 +1,6 @@
 ####################################
 # Gearbox block definition 
 ####################################
-#source gbox_top.tcl
-#source fclk_mux.tcl
-#source hv_pgen.tcl
-#source root_bank_clkmux.tcl
-####################################
 define_block -name GBOX_HV_40X3_VL 
 
 ####################################
@@ -34,7 +29,7 @@ set IO_CHAIN_GBOX_ROOT_BANK_MUX_START [expr $IO_CHAIN_GBOX_VCO_FAST_START + $IO_
 
 set IO_CHAIN_GBOX_HV_40X3_VL_SIZE [expr $IO_CHAIN_GBOX_ROOT_BANK_MUX_START + $NUM_BANKS * $IO_CHAIN_GBOX_ROOT_BANK_MUX_SIZE]
 
-#puts "IO_CHAIN_GBOX_HV_40X3_VL_SIZE = $IO_CHAIN_GBOX_HV_40X3_VL_SIZE"
+# puts "IO_CHAIN_GBOX_HV_40X3_VL_SIZE = $IO_CHAIN_GBOX_HV_40X3_VL_SIZE"
 
 #
 # Start at the MSB

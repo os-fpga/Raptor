@@ -1,15 +1,6 @@
 ####################################
 # Gearbox block definition 
 ####################################
-#source gbox_top.tcl
-#source fclk_mux.tcl
-#source hp_pgen.tcl
-#source pll_refmux.tcl
-#source pll.tcl
-#source rc_osc_50mhz.tcl
-#source root_bank_clkmux.tcl
-#source root_mux.tcl
-####################################
 define_block -name GBOX_HP_40X3 
 
 ####################################
@@ -57,7 +48,7 @@ set IO_CHAIN_GBOX_PLLREF_MUX3_START [expr $IO_CHAIN_GBOX_PLL3_START + $IO_CHAIN_
 
 set IO_CHAIN_GBOX_HP_40X3_SIZE [expr $IO_CHAIN_GBOX_PLLREF_MUX3_START + $IO_CHAIN_GBOX_PLLREF_MUX_SIZE]
 
-#puts "IO_CHAIN_GBOX_HP_40X3_SIZE = $IO_CHAIN_GBOX_HP_40X3_SIZE"
+# puts "IO_CHAIN_GBOX_HP_40X3_SIZE = $IO_CHAIN_GBOX_HP_40X3_SIZE"
 
 #set IO_CHAIN_GBOX_PLL_START 0
 #set IO_CHAIN_GBOX_OSC_START 416
@@ -77,13 +68,13 @@ set IO_CHAIN_GBOX_HP_40X3_SIZE [expr $IO_CHAIN_GBOX_PLLREF_MUX3_START + $IO_CHAI
 # 4 sets of PLLREF_MUX/PLL 
 ###############################################################################
 create_instance -block PLLREF_MUX -name u_gbox_pll_refmux_3      -logic_address $IO_CHAIN_GBOX_PLLREF_MUX3_START -parent GBOX_HP_40X3
-create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_3 -logic_address $IO_CHAIN_GBOX_PLL3_START        -parent GBOX_HP_40X3
+create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_3 -logic_address $IO_CHAIN_GBOX_PLL3_START        -parent GBOX_HP_40X3 -location [list 104 0 2]
 create_instance -block PLLREF_MUX -name u_gbox_pll_refmux_2      -logic_address $IO_CHAIN_GBOX_PLLREF_MUX2_START -parent GBOX_HP_40X3
-create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_2 -logic_address $IO_CHAIN_GBOX_PLL2_START        -parent GBOX_HP_40X3
+create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_2 -logic_address $IO_CHAIN_GBOX_PLL2_START        -parent GBOX_HP_40X3 -location [list 70 0 2]
 create_instance -block PLLREF_MUX -name u_gbox_pll_refmux_1      -logic_address $IO_CHAIN_GBOX_PLLREF_MUX1_START -parent GBOX_HP_40X3
-create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_1 -logic_address $IO_CHAIN_GBOX_PLL1_START        -parent GBOX_HP_40X3
+create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_1 -logic_address $IO_CHAIN_GBOX_PLL1_START        -parent GBOX_HP_40X3 -location [list 35 0 2]
 create_instance -block PLLREF_MUX -name u_gbox_pll_refmux_0      -logic_address $IO_CHAIN_GBOX_PLLREF_MUX0_START -parent GBOX_HP_40X3
-create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_0 -logic_address $IO_CHAIN_GBOX_PLL0_START        -parent GBOX_HP_40X3
+create_instance -block PLL        -name u_gbox_PLLTS16FFCFRACF_0 -logic_address $IO_CHAIN_GBOX_PLL0_START        -parent GBOX_HP_40X3 -location [list 1 0 2]
 ###############################################################################
 # RC_OSC_50MHZ
 ###############################################################################
