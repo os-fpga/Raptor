@@ -30,3 +30,8 @@ cp -v gemini_plus_10x8/RIC/* etc/devices/gemini_compact_10x8/ric
 cp -v gemini_plus_104x68/RIC/* etc/devices/gemini_compact_104x68/ric
 
 echo "Done Copying RIC model files"
+
+cp -v gemini_plus_10x8/PinTable/GeminiPlus_Pin_Table_generated_10_8.csv etc/devices/gemini_compact_10x8/Gemini_Pin_Table.csv
+cp -v gemini_plus_104x68/PinTablePinTable_104x68/GeminiPlus_Pin_Table_generated.csv etc/devices/gemini_compact_104x68/Gemini_Pin_Table.csv
+
+echo "Done copying pin table"
