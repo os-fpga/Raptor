@@ -17,6 +17,7 @@ jobs:
         updates:
         - xml
         - ric
+        - pintable
     env:
       MODE: ${{ matrix.updates }}
   
@@ -109,6 +110,12 @@ jobs:
                 extension=xml
                 echo "EXTENSION=$extension" >> $GITHUB_ENV
                 echo "path_to_commit=etc/**/*.xml" >> $GITHUB_ENV
+                ;;
+            "pintable")
+                echo "updates are from ${{ matrix.updates }}"
+                extension=csv
+                echo "EXTENSION=$extension" >> $GITHUB_ENV
+                echo "path_to_commit=etc/**/*.csv" >> $GITHUB_ENV
                 ;;
             *)
                 echo "Invalid value: ${{ matrix.updates }}"
