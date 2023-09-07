@@ -243,7 +243,7 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
      fpga_status ?-c <cable name/index>? ?-d <device_index>? : Query FPGA Configuration Done and Configuration IsError status for a specify device
        -c <cable_name/index>    : Specify the cable name or index
        -d <device_index>        : Specify the device index
-     list_device ?-c <cable name/index>? : List all available devices or specific cable devices
+     list_device ?-c <cable name/index>? : List all available devices or specified cable devices
        -c <cable_name/index>    : Specify the cable name or index
      list_cable                 : List all connected USB programmer cables
 
