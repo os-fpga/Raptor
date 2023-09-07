@@ -12,5 +12,6 @@ ipgenerate
 add_design_file ./rapidsilicon/ip/axi2axilite_bridge/v1_0/axi2axilite_bridge_wrapper/src/axi2axilite_bridge_wrapper.v
 add_library_path rapidsilicon/ip/axi2axilite_bridge/v1_0/axi2axilite_bridge_wrapper/src/
 set_top_module axi2axilite_bridge_wrapper
+parser_type surelog
 synth delay
 

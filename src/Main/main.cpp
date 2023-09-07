@@ -24,7 +24,7 @@ namespace RS {
 QWidget* mainWindowBuilder(FOEDAG::Session* session) {
   FOEDAG::MainWindow* mainW = new FOEDAG::MainWindow{session};
   auto info = mainW->Info();
-  info.name = QString("%1").arg(ToolName);
+  info.name = QString("%1 %2").arg(Company, ToolName);
   info.url.clear();
   std::filesystem::path p{".."};
   p = p / "licenses" / "rs-eula.txt";

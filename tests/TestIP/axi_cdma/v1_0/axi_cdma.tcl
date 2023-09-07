@@ -12,5 +12,6 @@ ipgenerate
 add_design_file ./rapidsilicon/ip/axi_cdma/v1_0/axi_cdma_wrapper/src/axi_cdma_wrapper.v
 add_library_path rapidsilicon/ip/axi_cdma/v1_0/axi_cdma_wrapper/src/
 set_top_module axi_cdma_wrapper
+parser_type surelog
 synth delay
 
