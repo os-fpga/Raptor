@@ -226,12 +226,25 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
    diagnostic <type>          : Debug mode. Types: packer
 </engineering>
 
----------------
---- Program ---
----------------
-  program_device <-b> "<bitstream_file>" <-c> "<config_file>" <-n> "<index>" : Program the device via JTAG
-    -b <bitstream>            : Target bitstream file for loading
-    -c <config_file>          : Configuration file
-    -n <index>                : Index of device in JTAG chain
-    
+------------------
+--- Programmer ---
+------------------
+   programmer <command>           : A programmer tool allows you to program and configure FPGA devices via JTAG 
+     command                      : fpga_config, flash, fpga_status, list_device, list_cable
+     fpga_config -c <cable name/index> ?-d <device_index>? <bitstream_file> : Program the FPGA device via JTAG
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+       <bitstream_file>         : Bitstream file to program
+     flash -c <cable name/index> ?-d <device_index>? ?-o <operations>? <bitstream_file> : Program the Flash via JTAG
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+       -o <operations>          : Specify the operations to perform on the flash (Valid operations: program)
+       <bitstream_file>         : Bitstream file to program
+     fpga_status ?-c <cable name/index>? ?-d <device_index>? : Query FPGA Configuration Done and Configuration IsError status for a specify device
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+     list_device ?-c <cable name/index>? : List all available devices or specific cable devices
+       -c <cable_name/index>    : Specify the cable name or index
+     list_cable                 : List all connected USB programmer cables
+
 -----------------------------------------------
