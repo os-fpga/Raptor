@@ -309,7 +309,6 @@ if (PRODUCTION_BUILD)
   target_link_libraries(raptor-bin PUBLIC rs_licenseManager)
 endif()
 
-add_subdirectory(src/ProgrammerGui)
 add_subdirectory(src/ConfigurationRaptor)
 
 if (PRODUCTION_BUILD)
@@ -395,6 +394,7 @@ add_custom_command(TARGET raptor POST_BUILD
           ${CMAKE_CURRENT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/init.tcl
           ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6/init.tcl)
 
+add_dependencies(raptor programmer-bin)
 # Explicit lib build order
 add_dependencies(raptor raptor_gui)
 if (NOT APPLE)
@@ -854,6 +854,9 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/programmer
         ${CMAKE_CURRENT_BINARY_DIR}/bin/)
   add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "rename raptor binary as raptor.exe"
@@ -876,5 +879,5 @@ else ()
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
         ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6
-        )        
+        )
 endif()
