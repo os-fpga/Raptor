@@ -71,7 +71,7 @@
       <port type="input" prefix="s" lib_name="S" size="1"/>
       <port type="output" prefix="out" lib_name="Z" size="1"/>
     </circuit_model>
-    <circuit_model type="gate" name="dti_16f_7p5t_90c_ckmux21x2" prefix="dti_16f_7p5t_90c_ckmux21x2" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
+    <circuit_model type="gate" name="dti_lvt_16f_7p5t_90c_ckmux21x2" prefix="dti_lvt_16f_7p5t_90c_ckmux21x2" verilog_netlist="./SRC/sc_verilog/dti_tm16ffc_90c_7p5t_stdcells_rev1p0p0.v">
       <design_technology type="cmos" topology="MUX2"/>
       <device_technology device_model_name="logic"/>
       <input_buffer exist="false"/>
@@ -215,7 +215,7 @@
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
       <input_buffer exist="false"/>
       <output_buffer exist="false"/>
-      <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_ckmux21x2"/>
+      <pass_gate_logic circuit_model_name="dti_lvt_16f_7p5t_90c_ckmux21x2"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
       <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
