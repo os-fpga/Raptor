@@ -19,7 +19,8 @@
 
 cmake_minimum_required(VERSION 3.15)
 
-project(compiler LANGUAGES CXX)
+set (project raptor-programmer-gui)
+project(${project} LANGUAGES CXX)
 
 if (PRODUCTION_BUILD)
   message("Production Build type set to ON")
@@ -46,12 +47,11 @@ set (SRC_CPP_LIST
 )
 
 if(MSVC)
-  add_executable(programmer-bin ${SRC_CPP_LIST})
-  set_property(TARGET programmer-bin PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-  set_property(TARGET programmer-bin PROPERTY COMPILER_FLAGS /DSTATIC_BUILD)
+  add_executable(${project} ${SRC_CPP_LIST})
+  set_property(TARGET ${project} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+  set_property(TARGET ${project} PROPERTY COMPILER_FLAGS /DSTATIC_BUILD)
 else()
-  add_executable(programmer-bin ${SRC_CPP_LIST})
+  add_executable(${project} ${SRC_CPP_LIST})
 endif()
-set_target_properties(programmer-bin PROPERTIES OUTPUT_NAME programmer)
-target_link_libraries(programmer-bin programmer-gui)
-
+set_target_properties(${project} PROPERTIES OUTPUT_NAME programmer)
+target_link_libraries(${project} programmer-gui raptor_gui foedagcore)
