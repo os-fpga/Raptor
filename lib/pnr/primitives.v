@@ -152,6 +152,58 @@ module LUT_K #(
 
 endmodule
 
+//------------------------------------------------------------------------------
+// Rising-edge D-flip-flop with
+// active-Low asynchronous reset and
+// active-high enable
+//------------------------------------------------------------------------------
+module dffre(
+    input D,
+    input R,
+    input E,
+    (* clkbuf_sink *)
+    input C,
+    output reg Q
+);
+`ifndef VCS_MODE
+parameter INIT_VALUE = 1'b0;
+initial begin
+    Q = INIT_VALUE;
+end
+`endif
+    always @(posedge C or negedge R)
+        if (R == 1'b0)
+            Q <= 1'b0;
+        else if (E == 1'b1)
+            Q <= D;
+endmodule
+
+//------------------------------------------------------------------------------
+// Falling-edge D-flip-flop with
+// active-Low asynchronous reset and
+// active-high enable
+//------------------------------------------------------------------------------
+module dffnre(
+    input D,
+    input R,
+    input E,
+    (* clkbuf_sink *)
+    input C,
+    output reg Q
+);
+`ifndef VCS_MODE
+parameter INIT_VALUE = 1'b0;
+initial begin
+    Q = INIT_VALUE;
+end
+`endif
+    always @(negedge C or negedge R)
+        if (R == 1'b0)
+            Q <= 1'b0;
+        else if (E == 1'b1)
+            Q <= D;
+endmodule
+
 //D-FlipFlop module
 module DFF #(
     parameter INITIAL_VALUE=1'b0    
