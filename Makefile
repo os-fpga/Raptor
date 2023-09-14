@@ -179,6 +179,7 @@ test/batch_gen2: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter/counter.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/counter_mixed/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
 
