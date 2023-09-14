@@ -1,0 +1,10 @@
+
+set_property mode Mode_BP_SDR_A_RX HP_1_CC_28_14P
+set_pin_loc reset HP_1_CC_28_14P
+
+set_property mode Mode_RATE_4_A_TX HP_1_24_12P
+set_pin_loc counter[0] HP_1_24_12P f2g_tx_out[0]_A
+set_pin_loc counter[1] HP_1_24_12P f2g_tx_out[1]_A
+set_pin_loc counter[2] HP_1_24_12P f2g_tx_out[2]_A
+set_pin_loc counter[3] HP_1_24_12P f2g_tx_out[3]_A
+
