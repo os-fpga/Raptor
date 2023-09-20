@@ -144,6 +144,7 @@ endif()
 add_subdirectory("Raptor_Tools/surelog_sv_plugin")
 add_dependencies(sv_plugin_build yosys)
 
+include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/libs/external/boost)
 
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
    set(OPENFPGA_WITH_YOSYS OFF CACHE BOOL "Disable building Yosys in OpenFPGA" FORCE)
