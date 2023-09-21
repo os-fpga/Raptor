@@ -141,8 +141,7 @@ if (NOT APPLE)
     add_subdirectory(yosys_verific_rs)
 endif()
 
-add_subdirectory("Raptor_Tools/surelog_sv_plugin")
-add_dependencies(sv_plugin_build yosys)
+add_subdirectory("Raptor_Tools/parser_plugins")
 
 include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/libs/external/boost)
 
