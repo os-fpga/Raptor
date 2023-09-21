@@ -112,6 +112,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   add_subdirectory(${VERIFIC_HOME})
 endif()
 
+get_filename_component(VERIFY_SYNTH_PORTS_SRC_DIR "Raptor_Tools/gatelevel_readers/verify_synth_ports"
+REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+add_subdirectory(${VERIFY_SYNTH_PORTS_SRC_DIR})
+
 get_filename_component(VERI_PRUNE_SRC_DIR "Raptor_Tools/gatelevel_readers/veri_prune"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 add_subdirectory(${VERI_PRUNE_SRC_DIR})
@@ -836,6 +840,9 @@ else ()
       COMMAND echo "Copying Analyze in bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/Raptor_Tools/gatelevel_readers/verify_synth_ports/verify_synth_ports
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND echo "Copying vhdl_packages in share dir"
       COMMAND ${CMAKE_COMMAND} -E copy_directory
