@@ -16,13 +16,13 @@ synthesize clean
 synthesize
 
 set blifPath $projName/run_1/synth_1_1/synthesis
-file copy -force $blifPath/incr_comp_post_synth.blif $blifPath/incr_comp_post_synth.blif1
+file copy -force $blifPath/incr_comp_post_synth.eblif $blifPath/incr_comp_post_synth.eblif1
 # wait 1 sec since mtime will be the same for $tempFile and *.blif
 after 1000
 copyContent $script_path/and2_modified.v $tempFile
 synthesize
-file copy -force $blifPath/incr_comp_post_synth.blif $blifPath/incr_comp_post_synth.blif2
-set diffresult [catch {exec sh -c "diff $blifPath/incr_comp_post_synth.blif1 $blifPath/incr_comp_post_synth.blif2"} diffresult] 
+file copy -force $blifPath/incr_comp_post_synth.eblif $blifPath/incr_comp_post_synth.eblif2
+set diffresult [catch {exec sh -c "diff $blifPath/incr_comp_post_synth.eblif1 $blifPath/incr_comp_post_synth.eblif2"} diffresult] 
 if {$diffresult == 0} {
     error "Synthesis didn't resynthesized"
 }
