@@ -26,21 +26,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "Configuration/CFGCompiler/CFGCompiler.h"
 #include "Main/Foedag.h"
 #include "ProgrammerGui/ProgrammerMain.h"
-#include "Utils/FileUtils.h"
 
 #define Company "Rapid Silicon"
 #define ToolName "Rapid Programmer"
 #define ExecutableName "raptor"
 
 QWidget* mainWindowBuilder(FOEDAG::Session* session) {
-  auto m = new FOEDAG::ProgrammerMain{};
-  m->setWindowTitle(ToolName);
-  std::filesystem::path dataDir =
-      session->GetCompiler()->GetConfigFileSearchDirectory();
-  auto files = FOEDAG::FileUtils::FindFilesByExtension(dataDir, ".cfg");
-  if (!files.empty())
-    m->setCfgFile(QString::fromStdString(files.front().string()));
-  return m;
+  return new FOEDAG::ProgrammerMain{};
 }
 
 void registerAllCommands(QWidget* widget, FOEDAG::Session* session) {

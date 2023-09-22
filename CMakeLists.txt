@@ -145,8 +145,7 @@ if (NOT APPLE)
     add_subdirectory(yosys_verific_rs)
 endif()
 
-add_subdirectory("Raptor_Tools/surelog_sv_plugin")
-add_dependencies(sv_plugin_build yosys)
+add_subdirectory("Raptor_Tools/parser_plugins")
 
 include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/libs/external/boost)
 
@@ -166,7 +165,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 8)
-set(VERSION_PATCH 27)
+set(VERSION_PATCH 28)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
