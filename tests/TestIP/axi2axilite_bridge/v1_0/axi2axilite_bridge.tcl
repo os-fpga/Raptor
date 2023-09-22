@@ -3,7 +3,7 @@ create_design axi2axilite_bridge_prj
 target_device 1GE100
 
 #Configuring axi2axilite_bridge_v1_0 IP 
-configure_ip axi2axilite_bridge_v1_0 -mod_name axi2axilite_bridge_wrapper -Pdata_width=64 -Paddr_width=8 -out_file ./axi2axilite_bridge_wrapper.v
+configure_ip axi2axilite_bridge_v1_0 -mod_name axi2axilite_bridge_wrapper -Pdata_width=64 -Paddr_width=8 -out_file ./axi2axilite_bridge_wrapper
 
 #Generate IP
 ipgenerate
