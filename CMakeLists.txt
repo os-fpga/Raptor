@@ -4,6 +4,8 @@
 
 cmake_minimum_required(VERSION 3.15)
 
+option(ENABLE_VERIFIC "Enable Verific frontend" OFF)
+
 set (BUILD_TYPE_STRING Engineering)
 if (PRODUCTION_BUILD)
   message("Production Build type set to ON")
@@ -165,7 +167,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 8)
-set(VERSION_PATCH 29)
+set(VERSION_PATCH 30)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -836,17 +838,22 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND echo "Copying Analyze in bin dir"
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/Raptor_Tools/gatelevel_readers/verify_synth_ports/verify_synth_ports
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND echo "Copying vhdl_packages in share dir"
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages
-          ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages)
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/)
+
+  if (ENABLE_VERIFIC)
+     add_custom_command(TARGET raptor-bin POST_BUILD
+          COMMAND echo "Copying Analyze in bin dir"
+          COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/bin/analyze
+            ${CMAKE_CURRENT_BINARY_DIR}/bin/
+          COMMAND echo "Copying vhdl_packages in share dir"
+          COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_CURRENT_BINARY_DIR}/yosys_verific_rs/analyze/share/verific/vhdl_packages
+            ${CMAKE_CURRENT_BINARY_DIR}/share/verific/vhdl_packages)
+  endif()
+  
 
   add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Copying VPR and OpenFPGA in bin dir"
