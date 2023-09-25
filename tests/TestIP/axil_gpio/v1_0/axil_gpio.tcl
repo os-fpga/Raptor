@@ -3,7 +3,7 @@ create_design axil_gpio_prj
 target_device 1GE100
 
 #Configuring axil_gpio_v1_0 IP 
-configure_ip axil_gpio_v1_0 -mod_name axil_gpio_wrapper -Pdata_width=32 -Paddr_width=16 -out_file ./axil_gpio_wrapper.v
+configure_ip axil_gpio_v1_0 -mod_name axil_gpio_wrapper -Pdata_width=32 -Paddr_width=16 -out_file ./axil_gpio_wrapper
 
 #Generate IP
 ipgenerate
