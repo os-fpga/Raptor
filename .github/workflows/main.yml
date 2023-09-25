@@ -151,7 +151,7 @@ jobs:
       run: |
         make release test/batch_gen2
 
-    - name: test/batch_gen2 Release
+    - name: test/solver
       if: matrix.mode == 'solver'
       run: |
         make solver/tests 
