@@ -312,8 +312,7 @@ jobs:
     - name: Create Tar Exe
       id: packing_ok
       # Change ref head to deploy using a different branch.
-      #if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
-      if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 }}"  
+      if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
       run: |
         echo -e "Production devices are\n\t${{ env.p_devices }}"
         source /opt/rh/devtoolset-11/enable
