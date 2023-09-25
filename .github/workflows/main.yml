@@ -317,7 +317,7 @@ jobs:
         echo -e "Production devices are\n\t${{ env.p_devices }}"
         source /opt/rh/devtoolset-11/enable
         mkdir /opt/instl_dir
-        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=${{ env.p_devices }} ${{ inputs.Release_Date }}
+        make clean && make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=${{ env.p_devices }} ${{ inputs.Release_Date }}
         make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc examples FOEDAG_rs
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
         cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir 
