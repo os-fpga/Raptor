@@ -36,6 +36,7 @@ jobs:
         - install
         - valgrind
         - production
+        - solver
     env:
       MODE: ${{ matrix.mode }}
 
@@ -150,6 +151,11 @@ jobs:
       run: |
         make release test/batch_gen2
 
+    - name: test/batch_gen2 Release
+      if: matrix.mode == 'solver'
+      run: |
+        make solver/tests 
+
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
@@ -186,13 +192,14 @@ jobs:
         make test_install
 
     - name: Archive regression artifacts
-      if: matrix.mode == 'regression' && always()
+      if: matrix.mode == 'test/batch_gen2' && always()
       uses: actions/upload-artifact@v3.1.0
       with:
         name: raptor_gui-linux-gcc-regression
         path: |
-          ${{ github.workspace }}/build/test/
-          ${{ github.workspace }}/build/tests/
+          ${{ github.workspace }}/build/share/raptor
+          ${{ github.workspace }}/tests/
+
     - name: Print server resource
       if: success() || failure()
       run: |
