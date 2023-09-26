@@ -222,6 +222,7 @@ jobs:
         mode:
         - test
         - regression
+        - production
 
     env:
       MODE: ${{ matrix.mode }}
@@ -314,31 +315,29 @@ jobs:
       run: |
         make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
         make regression
-        echo "::set-output name=exit_code::$?"
 
-    - name: Create Tar Exe
-      id: packing_ok
+    - name: Production Build
       # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'regression' && steps.reg_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
       run: |
         echo -e "Production devices are\n\t${{ env.p_devices }}"
         source /opt/rh/devtoolset-11/enable
         mkdir /opt/instl_dir
-        make clean && make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=${{ env.p_devices }} ${{ inputs.Release_Date }}
-        make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc examples FOEDAG_rs
+        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=${{ env.p_devices }} ${{ inputs.Release_Date }}
+        export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
+        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl 
+        make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc examples FOEDAG_rs Backend
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
         cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir 
-        echo "::set-output name=exit_code::$?" 
 
     - name: Print server resource
       if: success() || failure()
       run: |
-        df -h
-  
+        df -h  
 
     - name: Check FTP server status
       # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'regression' && steps.packing_ok.outputs.exit_code == 0 && github.ref == 'refs/heads/main' }}"
+      if: "${{ matrix.mode == 'regression' && github.ref == 'refs/heads/main' }}"
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.FTP_IP }}
