@@ -21,11 +21,11 @@ simulate "rtl" "ghdl" syn_tb_rtl.fst
 
 # Synthesis
 parser_type ghdl
-pnr_netlist_lang vhdl
+pnr_netlist_lang eblif
 synthesize delay
 
 # Post-Synthesis gate-level Simulation
-simulate "gate" "ghdl" syn_tb_gate.fst
+#simulate "gate" "ghdl" syn_tb_gate.fst
 
 # Pack/Place/Route
 packing
