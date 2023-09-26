@@ -327,7 +327,7 @@ jobs:
         make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=${{ env.p_devices }} ${{ inputs.Release_Date }}
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl 
-        make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc examples FOEDAG_rs
+        make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc examples FOEDAG_rs Backend
         export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
         cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir 
 
