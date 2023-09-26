@@ -318,8 +318,7 @@ jobs:
 
     - name: Production Build
       # Change ref head to deploy using a different branch.
-      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
-      if: "${{ matrix.mode == 'production' }}"
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
       run: |
         echo -e "Production devices are\n\t${{ env.p_devices }}"
         source /opt/rh/devtoolset-11/enable
