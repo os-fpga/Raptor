@@ -17,7 +17,5 @@ and non-disclosure agreement without the prior written consent of the licensor.
 
 Portions of Raptor Design Suite are utilized under the following third-party copyright notices:
 
-(c) Copyright 1999 - 2022 Verific Design Automation Inc. All rights reserved.
-
 Parallax Static Timing Analyzer Copyright (c) 2021, Parallax Software, Inc. All rights reserved.
 *********************************************************************************/
