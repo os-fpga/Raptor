@@ -219,12 +219,6 @@ SIL Open Font License 1.1
 SPDX Identifier: OFL-1.1
 License Text: ./licenses/ofl-1.1.xml
 
-
-OpenSTA License
-========================================
-SPDX Identifier:
-License Text: ./licenses/opensta.txt
-
 PostgreSQL License
 ========================================
 SPDX Identifier: PostgreSQL
