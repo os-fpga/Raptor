@@ -102,29 +102,34 @@ if (PRODUCTION_BUILD)
         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
   add_subdirectory("Raptor_Tools/Flex_LM")
 endif()
-get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
-    REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
-message("VERIFIC_HOME: ${VERIFIC_HOME}")
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-  execute_process(
-	  COMMAND ${CMAKE_MAKE_PROGRAM} clean
-	  WORKING_DIRECTORY ${VERIFIC_HOME}
-      )
 
-  add_subdirectory(${VERIFIC_HOME})
+if(ENABLE_VERIFIC)
+  get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
+      REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+  message("VERIFIC_HOME: ${VERIFIC_HOME}")
+  if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    execute_process(
+  	  COMMAND ${CMAKE_MAKE_PROGRAM} clean
+  	  WORKING_DIRECTORY ${VERIFIC_HOME}
+        )
+
+    add_subdirectory(${VERIFIC_HOME})
+  endif()
 endif()
 
 get_filename_component(VERIFY_SYNTH_PORTS_SRC_DIR "Raptor_Tools/gatelevel_readers/verify_synth_ports"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 add_subdirectory(${VERIFY_SYNTH_PORTS_SRC_DIR})
 
-get_filename_component(VERI_PRUNE_SRC_DIR "Raptor_Tools/gatelevel_readers/veri_prune"
-REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
-add_subdirectory(${VERI_PRUNE_SRC_DIR})
+if (ENABLE_VERIFIC)
+  get_filename_component(VERI_PRUNE_SRC_DIR "Raptor_Tools/gatelevel_readers/veri_prune"
+  REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+  add_subdirectory(${VERI_PRUNE_SRC_DIR})
 
-get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
-REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
-add_subdirectory(${READ_VERILOG_SRC_DIR})
+  get_filename_component(READ_VERILOG_SRC_DIR "Raptor_Tools/gatelevel_readers/read_verilog"
+  REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
+  add_subdirectory(${READ_VERILOG_SRC_DIR})
+endif()
 
 get_filename_component(READ_EDIF_SRC_DIR "Raptor_Tools/gatelevel_readers/read_edif"
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
