@@ -895,5 +895,12 @@ else ()
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
         ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6
-        )        
+        )
+  if (PRODUCTION_BUILD)
+     add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "Remove OpenSTA from Production build"
+        COMMAND ${CMAKE_COMMAND} -E rm
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/sta
+        )
+  endif()
 endif()
