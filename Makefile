@@ -165,7 +165,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi_cdma/v1_0/axi_cdma.tcl
-#	./build/bin/raptor --batch --mute --script tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
+	./build/bin/raptor --batch --mute --script tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axil_gpio/v1_0/axil_gpio.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/reset_release/v1_0/reset_release.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
