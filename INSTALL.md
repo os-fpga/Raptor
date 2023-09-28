@@ -7,7 +7,6 @@ Raptor is the Rapid Silicon complete FPGA EDA design environment.  The primary u
 * Yosys - https://github.com/YosysHQ/yosys
 * ABC - https://github.com/berkeley-abc/abc
 * VPR - https://github.com/verilog-to-routing
-* OpenSTA - https://github.com/The-OpenROAD-Project/OpenSTA
 * OpenFPGA - https://github.com/lnis-uofu/OpenFPGA
 
 ----
