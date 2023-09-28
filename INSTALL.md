@@ -5,7 +5,6 @@ Raptor is the Rapid Silicon complete FPGA EDA design environment.  The primary u
 * FOEDAG - https://github.com/os-fpga/FOEDAG
 * LiteX - https://github.com/enjoy-digital/litex
 * Yosys - https://github.com/YosysHQ/yosys
-* Verific (Proprietary, License Controlled) - https://www.verific.com/
 * ABC - https://github.com/berkeley-abc/abc
 * VPR - https://github.com/verilog-to-routing
 * OpenSTA - https://github.com/The-OpenROAD-Project/OpenSTA
