@@ -144,7 +144,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ---------------
 --- Packing ---
 ---------------
-   pnr_netlist_lang <format>  : Chooses post-synthesis netlist format, (blif, edif, verilog, vhdl)
+   pnr_netlist_lang <format>  : Chooses post-synthesis netlist format, (blif, eblif, edif, verilog, vhdl)
    packing_options <option list>: Packing options
      -clb_packing <directive> : Performance optimization flags (auto, dense, timing_driven)
        auto                   : CLB packing automatically determined (default)
