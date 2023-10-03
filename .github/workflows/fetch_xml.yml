@@ -73,7 +73,7 @@ jobs:
     - name: Download Latest Release
       uses: robinraju/release-downloader@v1.8
       with:
-        repository: "RapidSilicon/geminiplusproduct"
+        repository: "RapidSilicon/SpicaProduct"
         latest: true
         tarBall: true
         zipBall: true

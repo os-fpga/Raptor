@@ -6,7 +6,7 @@ add_constraint_file pin_mapping.pin
 add_constraint_file constraints.sdc
 
 # Device target
-target_device GEMINI_COMPACT_10x8
+target_device GEMINI_COMPACT_62x44
 # Compilation
 analyze
 synthesize delay
