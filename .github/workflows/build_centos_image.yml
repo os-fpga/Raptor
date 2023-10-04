@@ -1,8 +1,8 @@
 name: Create and publish a CentOS 7 Docker image
 on:
     push:
-        paths:
-          - .github/workflows/install_centos_dependencies_build.sh
+#        paths:
+#          - .github/workflows/install_centos_dependencies_build.sh
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: centos7_${{ github.repository }}_img

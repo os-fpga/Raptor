@@ -1,5 +1,6 @@
 FROM centos:7
 COPY . .github/workflows/install_centos_dependencies_build.sh
+RUN ls -la
 RUN chmod +x install_centos_dependencies_build.sh && ./install_centos_dependencies_build.sh
 ENV CC=/opt/rh/devtoolset-11/root/usr/bin/gcc
 ENV CXX=/opt/rh/devtoolset-11/root/usr/bin/g++
