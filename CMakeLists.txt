@@ -896,6 +896,12 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
         ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6
         )
+  add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "copy tclsh8.6.so"
+        COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/libtcl8.6.so
+           ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib
+	      )        
   if (PRODUCTION_BUILD)
      add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "Remove OpenSTA from Production build"
