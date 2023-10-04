@@ -109,7 +109,7 @@ jobs:
                 echo "updates are from ${{ matrix.updates }}"
                 extension=xml
                 echo "EXTENSION=$extension" >> $GITHUB_ENV
-                echo "path_to_commit=etc/**/*.xml" >> $GITHUB_ENV
+                echo "path_to_commit=etc/**/*.xml etc/*.xml" >> $GITHUB_ENV
                 ;;
             "pintable")
                 echo "updates are from ${{ matrix.updates }}"
