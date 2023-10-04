@@ -301,7 +301,7 @@ jobs:
     - name: Checkout Subsystem
       run: |
         make run-cmake-release
-        echo -e "Production devices are\n\t${{ env.p_devices }}"
+        echo "${{ env.p_devices }}" > production_devices
 
     - name: Show shell configuration
       uses: addnab/docker-run-action@v3
@@ -350,8 +350,12 @@ jobs:
         run: |
             cd work && make clean
             source /opt/rh/devtoolset-11/enable
-            echo -e "Production devices are\n\t${{ env.p_devices }}"
+            p_device=`cat production_devices`
+            echo $p_device
             mkdir /opt/instl_dir
+            make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device ${{ inputs.Release_Date }}
+            export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
+            ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl
 
 
 
