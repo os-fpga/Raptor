@@ -1,7 +1,7 @@
 FROM centos:7
-COPY . .github/workflows/install_centos_dependencies_build.sh
-RUN chmod +x .github/workflows/install_centos_dependencies_build.sh 
-RUN ls -la && bash .github/workflows/install_centos_dependencies_build.sh
+COPY .github/workflows/install_centos_dependencies_build.sh .
+RUN chmod +x install_centos_dependencies_build.sh 
+RUN ls -la && bash install_centos_dependencies_build.sh
 RUN yum clean all
 ENV CC=/opt/rh/devtoolset-11/root/usr/bin/gcc
 ENV CXX=/opt/rh/devtoolset-11/root/usr/bin/g++
