@@ -34,3 +34,7 @@ cp -v gemini_plus_10x8/PinTable/GeminiPlus_Pin_Table_generated_10_8.csv etc/devi
 cp -v gemini_plus_104x68/PinTablePinTable_104x68/GeminiPlus_Pin_Table_generated.csv etc/devices/gemini_compact_104x68/Gemini_Pin_Table.csv
 cp -v spica_62x44/PinTablePinTable_104x68/Virgo_Pin_Table_generated.csv etc/devices/gemini_compact_62x44/Gemini_Pin_Table.csv
 echo "Done copying pin table"
+
+cp -v raptor/etc/device.xml etc/device.xml
+echo "Done copying device.xml"
+
