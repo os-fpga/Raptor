@@ -60,9 +60,6 @@ yum install -y libusbx-devel libusb-devel
 yum install -y pkgconfig
 
 ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/ctest /usr/bin/ctest
-echo 'QMAKE_CC=/opt/rh/devtoolset-11/root/usr/bin/gcc' >> $GITHUB_ENV
-echo 'QMAKE_CXX=/opt/rh/devtoolset-11/root/usr/bin/g++' >> $GITHUB_ENV
-echo 'PATH=/usr/local/Qt-5.15.4/bin:/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
 
 echo "Downloading QT..."
 curl -L https://github.com/RapidSilicon/post_build_artifacts/releases/download/v0.1/Qt_5.15.4.tar.gz --output qt-everywhere-src-5.15.4.tar.gz
