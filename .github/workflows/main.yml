@@ -262,8 +262,7 @@ jobs:
         sudo swapoff -a
         sudo rm -f /swapfile
         sudo apt clean
-        docker rmi $(docker image ls -aq)
-        docker pull 94351b:acbdd62effef4b24a96f5748419b368b
+        docker rmi $(docker image ls -aq |  sed '1d')
         sudo apt-get autoremove -y >/dev/null 2>&1
         sudo apt-get autoclean -y >/dev/null 2>&1
         sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
