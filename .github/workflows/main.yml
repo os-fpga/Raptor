@@ -290,7 +290,7 @@ jobs:
     - name: Checkout Subsystem
       run: |
         set +e
-        make run-cmake-release ONLY_CHECKOUT_SUBSYSTEMS=ON
+        make run-cmake-release
         echo "Done"
 
     - name: Show shell configuration
