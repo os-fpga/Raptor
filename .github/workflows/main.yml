@@ -299,6 +299,7 @@ jobs:
         shell: bash
         image: ghcr.io/rapidsilicon/raptor:centos_with_docker
         run: |
+          source /opt/rh/devtoolset-11/enable
           cmake --version
           gcc --version         
 
@@ -310,9 +311,8 @@ jobs:
         image: ghcr.io/rapidsilicon/raptor:centos_with_docker
         options: -v ${{ github.workspace }}:/work
         run: |
-            ls -l
-            cd work
-            ls -l
+            source /opt/rh/devtoolset-11/enable  
+            cd work && make clean
             make release test/batch
 
     - name: Regression
@@ -323,20 +323,23 @@ jobs:
         image: ghcr.io/rapidsilicon/raptor:centos_with_docker
         options: -v ${{ github.workspace }}:/work 
         run: |
-            cd work
-            ls -l
+            source /opt/rh/devtoolset-11/enable        
+            cd work && make clean
             make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
             make regression             
 
     - name: Production Build
       # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      if: "${{ matrix.mode == 'production' }}"
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
         image: ghcr.io/rapidsilicon/raptor:centos_with_docker
         options: -v ${{ github.workspace }}:/work -e PRODUCTION_DEVICES=${{ env.p_devices }}
         run: |
+            cd work && make clean
+            source /opt/rh/devtoolset-11/enable
             echo -e "Production devices are\n\t$PRODUCTION_DEVICES"
             mkdir /opt/instl_dir
 
@@ -358,7 +361,8 @@ jobs:
 
     - name: Check FTP server status
       # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      if: "${{ matrix.mode == 'production' }}"
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.FTP_IP }}
@@ -366,19 +370,19 @@ jobs:
         key: ${{ secrets.FTP_KEY }}
         port: ${{ secrets.FTP_PORT }}
         script: whoami
-#
-#    - name: Deploy
-#      # Change ref head to deploy using a different branch.
-#      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main'}}"
-#      #if: "${{ matrix.mode == 'regression'}}"
-#      uses: appleboy/scp-action@master
-#      with:
-#         host: ${{ secrets.FTP_IP }}
-#         username: ${{ secrets.FTP_USER }}
-#         key: ${{ secrets.FTP_KEY }}
-#         port: ${{ secrets.FTP_PORT }}
-#         source: "./Raptor_Tools/upload/*"
-#         target: "/home/rsbuilder/Raptor"
+
+    - name: Deploy
+      # Change ref head to deploy using a different branch.
+      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main'}}"
+      if: "${{ matrix.mode == 'production'}}"
+      uses: appleboy/scp-action@master
+      with:
+         host: ${{ secrets.FTP_IP }}
+         username: ${{ secrets.FTP_USER }}
+         key: ${{ secrets.FTP_KEY }}
+         port: ${{ secrets.FTP_PORT }}
+         source: "./Raptor_Tools/upload/*"
+         target: "/home/rsbuilder/Raptor"
        
 
 # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
