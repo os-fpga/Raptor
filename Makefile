@@ -121,10 +121,10 @@ test_install:
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/sasc_testcase/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_verilog/run_raptor.tcl
 
-test/gui: run-cmake-debug
+test/gui: 
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
-# This test is broken, reactivate when fixed: $(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
+	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
 
 test/rs: run-cmake-release
 	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
