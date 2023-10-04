@@ -266,7 +266,7 @@ jobs:
         before=$(docker image ls -q)
         echo $before
         echo " "
-        after=$(docker image ls -q |  sed '1d')
+        after=$(docker image ls -q |  sed '1d' |  sed '1d')
         echo $after
         docker rmi $after
         sudo apt-get autoremove -y >/dev/null 2>&1
