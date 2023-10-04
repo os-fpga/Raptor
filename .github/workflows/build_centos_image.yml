@@ -38,5 +38,5 @@ jobs:
           context: .
           file: .github/workflows/Dockerfile
           push: true
-          tags: ${{ github.sha }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
