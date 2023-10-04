@@ -35,7 +35,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5.0.0
         with:
-          context: .github/workflows
+          context: .
+          file: .github/workflows/Dockerfile
           push: true
           tags: latest
           labels: ${{ steps.meta.outputs.labels }}
