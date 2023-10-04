@@ -287,12 +287,21 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3       
+
+    - name: Configure shell
+      run: |
+          event_type=`echo ${{ github.event_name }}`
+          if [ $event_type == 'workflow_dispatch' ]
+          then
+                echo 'p_devices="${{ inputs.Production_Devices }}"' >> $GITHUB_ENV
+          else
+                echo 'p_devices="$PRODUCTION_DEVICES"' >> $GITHUB_ENV
+          fi    
       
     - name: Checkout Subsystem
       run: |
-        set +e
         make run-cmake-release
-        echo "Done"
+        echo -e "Production devices are\n\t${{ env.p_devices }}"
 
     - name: Show shell configuration
       uses: addnab/docker-run-action@v3
@@ -343,6 +352,7 @@ jobs:
             source /opt/rh/devtoolset-11/enable
             echo -e "Production devices are\n\t$PRODUCTION_DEVICES"
             mkdir /opt/instl_dir
+            
 
 
 #      run: |
