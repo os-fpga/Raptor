@@ -256,6 +256,19 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
           ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
+    - name: free disk space
+      run: |
+        du -sch *
+        df -h
+        sudo swapoff -a
+        sudo rm -f /swapfile
+        sudo apt clean
+        docker rmi $(docker image ls -aq)
+        sudo apt-get autoremove -y >/dev/null 2>&1
+        sudo apt-get autoclean -y >/dev/null 2>&1
+        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
+        df -h
+
     - name: Log in to the Container registry
       uses: docker/login-action@v3.0.0
       with:
@@ -267,14 +280,7 @@ jobs:
       run: docker pull ghcr.io/rapidsilicon/raptor:centos_with_docker    
 
     - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Show shell configuration
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/rapidsilicon/raptor:centos_with_docker
-        run: cmake --version        
+      uses: actions/checkout@v3       
       
     - name: Checkout Subsystem
       run: |
@@ -282,47 +288,79 @@ jobs:
         make run-cmake-release ONLY_CHECKOUT_SUBSYSTEMS=ON
         echo "Done"
 
-#    - name: Test
-#      if: matrix.mode == 'test'
+    - name: Show shell configuration
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/rapidsilicon/raptor:centos_with_docker
+        run: |
+          cmake --version
+          gcc --version         
+
+    - name: Test
+      if: matrix.mode == 'test'
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/rapidsilicon/raptor:centos_with_docker
+        options: -v ${{ github.workspace }}:/work
+        run: |
+            ls -l
+            cd work
+            ls -l
+            make release test/batch
+
+    - name: Regression
+      if: matrix.mode == 'regression'
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/rapidsilicon/raptor:centos_with_docker
+        options: -v ${{ github.workspace }}:/work 
+        run: |
+            cd work
+            ls -l
+            make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
+            make regression             
+
+    - name: Production Build
+      # Change ref head to deploy using a different branch.
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/rapidsilicon/raptor:centos_with_docker
+        options: -v ${{ github.workspace }}:/work -e PRODUCTION_DEVICES=${{ env.p_devices }}
+        run: |
+            echo -e "Production devices are\n\t$PRODUCTION_DEVICES"
+            mkdir /opt/instl_dir
+
+
 #      run: |
-#        make release test/batch
-#
-#    - name: Regression
-#      id: reg_ok
-#      if: matrix.mode == 'regression'
-#      run: |
-#        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
-#        make regression
-#
-#    - name: Production Build
-#      # Change ref head to deploy using a different branch.
-#      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
-#      run: |
-#        echo -e "Production devices are\n\t${{ env.p_devices }}"
 #        source /opt/rh/devtoolset-11/enable
-#        mkdir /opt/instl_dir
+#        
 #        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=${{ env.p_devices }} ${{ inputs.Release_Date }}
 #        export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
 #        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl 
 #        make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc tests examples FOEDAG_rs IP_Catalog Backend
 #        export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
 #        cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir 
-#
-#    - name: Print server resource
-#      if: success() || failure()
-#      run: |
-#        df -h  
-#
-#    - name: Check FTP server status
-#      # Change ref head to deploy using a different branch.
-#      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
-#      uses: appleboy/ssh-action@master
-#      with:
-#        host: ${{ secrets.FTP_IP }}
-#        username: ${{ secrets.FTP_USER }}
-#        key: ${{ secrets.FTP_KEY }}
-#        port: ${{ secrets.FTP_PORT }}
-#        script: whoami
+
+    - name: Print server resource
+      if: success() || failure()
+      run: |
+        df -h  
+
+    - name: Check FTP server status
+      # Change ref head to deploy using a different branch.
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.FTP_IP }}
+        username: ${{ secrets.FTP_USER }}
+        key: ${{ secrets.FTP_KEY }}
+        port: ${{ secrets.FTP_PORT }}
+        script: whoami
 #
 #    - name: Deploy
 #      # Change ref head to deploy using a different branch.

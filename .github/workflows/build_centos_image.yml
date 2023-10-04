@@ -3,6 +3,7 @@ on:
     push:
         paths:
           - .github/workflows/install_centos_dependencies_build.sh
+          - .github/workflows/Dockerfile
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
