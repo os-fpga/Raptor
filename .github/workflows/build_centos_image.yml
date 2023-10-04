@@ -5,7 +5,7 @@ on:
 #          - .github/workflows/install_centos_dependencies_build.sh
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: centos7_raptor_img
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-image:
@@ -38,5 +38,5 @@ jobs:
           context: .
           file: .github/workflows/Dockerfile
           push: true
-          tags: latest
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
