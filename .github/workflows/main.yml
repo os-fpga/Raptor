@@ -262,10 +262,11 @@ jobs:
         sudo swapoff -a
         sudo rm -f /swapfile
         sudo apt clean
-        before=$(docker image ls -aq)
+        docker image ls
+        before=$(docker image ls -q)
         echo $before
         echo " "
-        after=$(docker image ls -aq |  sed '1d')
+        after=$(docker image ls -q |  sed '1d')
         echo $after
         sudo apt-get autoremove -y >/dev/null 2>&1
         sudo apt-get autoclean -y >/dev/null 2>&1
