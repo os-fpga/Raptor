@@ -258,7 +258,6 @@ jobs:
 
     - name: free disk space
       run: |
-        du -sch *
         df -h
         sudo swapoff -a
         sudo rm -f /swapfile
