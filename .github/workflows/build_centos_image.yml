@@ -5,7 +5,7 @@ on:
 #          - .github/workflows/install_centos_dependencies_build.sh
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: centos7_${{ github.repository }}_img
+  IMAGE_NAME: centos7_raptor_img
 
 jobs:
   build-and-push-image:
@@ -14,6 +14,12 @@ jobs:
       contents: read
       packages: write
     steps:
+
+      - name: Cancel previous
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}        
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -21,7 +27,7 @@ jobs:
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
+          username: RapidSilicon
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
@@ -35,5 +41,5 @@ jobs:
         with:
           context: .github/workflows
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: latest
           labels: ${{ steps.meta.outputs.labels }}
