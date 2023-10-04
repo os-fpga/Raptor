@@ -346,13 +346,13 @@ jobs:
       with:
         shell: bash
         image: ghcr.io/rapidsilicon/raptor:centos_with_docker
-        options: -v ${{ github.workspace }}:/work -e PRODUCTION_DEVICES=${{ env.p_devices }}
+        options: -v ${{ github.workspace }}:/work
         run: |
             cd work && make clean
             source /opt/rh/devtoolset-11/enable
-            echo -e "Production devices are\n\t$PRODUCTION_DEVICES"
+            echo -e "Production devices are\n\t${{ env.p_devices }}"
             mkdir /opt/instl_dir
-            
+
 
 
 #      run: |
