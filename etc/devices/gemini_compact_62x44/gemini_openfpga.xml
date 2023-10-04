@@ -163,7 +163,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf" prefix="mux_tree_tapbuf" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -172,7 +172,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L1SB" prefix="mux_tree_tapbuf_L1SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -181,7 +181,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_tree_tapbuf_L4SB" prefix="mux_tree_tapbuf_L4SB" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -190,7 +190,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_io" prefix="mux_1level_io" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -199,7 +199,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
     </circuit_model>
     <circuit_model type="mux" name="mux_1level_fabric" prefix="mux_1level_fabric" dump_structural_verilog="true">
       <design_technology type="cmos" structure="tree" add_const_input="false"/>
@@ -208,7 +208,7 @@
       <pass_gate_logic circuit_model_name="dti_16f_7p5t_90c_mux21x1"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
     </circuit_model>
     <!-- balanced clock mux -->
     <circuit_model type="mux" name="clock_mux" prefix="clock_mux" is_default="false" dump_structural_verilog="true">
@@ -218,7 +218,7 @@
       <pass_gate_logic circuit_model_name="dti_lvt_16f_7p5t_90c_ckmux21x2"/>
       <port type="input" prefix="in" size="1"/>
       <port type="output" prefix="out" size="1"/>
-      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_CCFF"/>
+      <port type="sram" prefix="sram" size="1" circuit_model_name="RS_LATCH"/>
     </circuit_model>
     <circuit_model type="lut" name="frac_lut6" prefix="frac_lut6" dump_structural_verilog="true" is_default="true">
       <design_technology type="cmos" fracturable_lut="true"/>
@@ -291,7 +291,7 @@
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="clk" lib_name="CK" size="1" is_global="false" default_val="0"/>
       <!-- <port type="input" prefix="scan_mode" lib_name="SCAN_MODE" size="1" is_global="true" default_val="0"/> -->
-      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="1"/>
+      <port type="sram" prefix="mode" lib_name="MODE_SEL" size="1" mode_select="true" circuit_model_name="RS_LATCH" default_val="1"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="QL_XOR_MUX2" prefix="QL_XOR_MUX2" verilog_netlist="./SRC/CustomModules/ql_xor_mux2.v">
       <design_technology type="cmos"/>
@@ -333,7 +333,7 @@
       <port type="input" prefix="E" lib_name="E" size="1"/>
       <port type="output" prefix="Q" lib_name="Q" size="1"/>
       <port type="clock" prefix="C" lib_name="C" size="1" is_global="false" default_val="0"/>
-      <port type="sram" prefix="mode" size="1" mode_select="true" circuit_model_name="RS_CCFF" default_val="0"/>
+      <port type="sram" prefix="mode" size="1" mode_select="true" circuit_model_name="RS_LATCH" default_val="0"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="QL_DSP" prefix="QL_DSP" is_default="true" verilog_netlist="./SRC/CustomModules/rs_dsp.v">
       <design_technology type="cmos"/>
@@ -359,7 +359,7 @@
       <port type="input" prefix="scan_en" lib_name="scan_en" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="sc_out" lib_name="scan_o" size="3"/>
       <port type="input" prefix="scan_mode" lib_name="scan_mode" size="1" is_global="true" default_val="0"/>
-      <port type="sram" prefix="mode" size="85" mode_select="true" circuit_model_name="RS_CCFF" default_val="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+      <port type="sram" prefix="mode" size="85" mode_select="true" circuit_model_name="RS_LATCH" default_val="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
     </circuit_model>
     <circuit_model type="hard_logic" name="QL_BRAM" prefix="QL_BRAM" verilog_netlist="./SRC/CustomModules/rs_bram.v">
       <design_technology type="cmos"/>
@@ -411,7 +411,7 @@
       <port type="output" prefix="PL_ADDR_o" size="32"/>
       <port type="output" prefix="PL_DATA_o" size="36"/>
       <port type="input" prefix="global_resetn" lib_name="global_resetn" size="1" is_global="true"/>
-      <port type="sram" prefix="mode" size="84" mode_select="true" circuit_model_name="RS_CCFF" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+      <port type="sram" prefix="mode" size="84" mode_select="true" circuit_model_name="RS_LATCH" default_val="000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
       <port type="input" prefix="sc_in" lib_name="SCAN_i" size="6"/>
       <port type="input" prefix="scan_en" lib_name="SCAN_EN_i" size="1" is_global="true" default_val="0"/>
       <port type="output" prefix="sc_out" lib_name="SCAN_o" size="6"/>
@@ -419,7 +419,9 @@
     </circuit_model>
   </circuit_library>
   <configuration_protocol>
-    <organization type="scan_chain" circuit_model_name="RS_CCFF" num_regions="62">
+    <organization type="ql_memory_bank" circuit_model_name="RS_LATCH">
+      <bl protocol="flatten"/>
+      <wl protocol="flatten"/>
     </organization>
   </configuration_protocol>
   <connection_block>
@@ -607,11 +609,11 @@
     <pb_type name="bram">
       <interconnect name="crossbar_clk" circuit_model_name="clock_mux"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000110">
       <port name="sc_in" physical_mode_port="sc_in"/>
       <port name="sc_out" physical_mode_port="sc_out"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
+    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000110">
       <port name="WEN_A1" physical_mode_port="WEN_A1_i"/>
       <port name="WEN_B1" physical_mode_port="WEN_B1_i"/>
       <port name="BE_A1" physical_mode_port="BE_A1_i"/>
