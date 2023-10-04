@@ -256,23 +256,31 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
           ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
+    - name: Log in to the Container registry
+      uses: docker/login-action@v3.0.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}          
+
+    - name: pull the CentOS image
+      run: docker pull ghcr.io/rapidsilicon/raptor:centos_with_docker    
+
     - name: Checkout code
       uses: actions/checkout@v3
-        
+
+    - name: Show shell configuration
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/rapidsilicon/raptor:centos_with_docker
+        run: cmake --version        
+      
     - name: Checkout Subsystem
       run: |
         set +e
         make run-cmake-release ONLY_CHECKOUT_SUBSYSTEMS=ON
         echo "Done"
-
-    - name: Show shell configuration
-      uses: addnab/docker-run-action@v3
-      with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: gcr.io
-        image: ghcr.io/rapidsilicon/raptor:centos_with_docker
-        run: cmake --version  
 
 #    - name: Test
 #      if: matrix.mode == 'test'
