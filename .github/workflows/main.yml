@@ -266,8 +266,9 @@ jobs:
         before=$(docker image ls -q)
         echo $before
         echo " "
-        after=$(docker image ls -q |  sed '1d')
+        after=$(docker image ls -q |  sed '2d')
         echo $after
+        docker rmi $after
         sudo apt-get autoremove -y >/dev/null 2>&1
         sudo apt-get autoclean -y >/dev/null 2>&1
         sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
@@ -286,11 +287,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3       
       
-#    - name: Checkout Subsystem
-#      run: |
-#        set +e
-#        make run-cmake-release ONLY_CHECKOUT_SUBSYSTEMS=ON
-#        echo "Done"
+    - name: Checkout Subsystem
+      run: |
+        set +e
+        make run-cmake-release ONLY_CHECKOUT_SUBSYSTEMS=ON
+        echo "Done"
 
     - name: Show shell configuration
       uses: addnab/docker-run-action@v3
