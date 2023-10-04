@@ -1,5 +1,5 @@
 FROM centos:7
-COPY ../workflows/install_centos_dependencies_build.sh .
+COPY install_centos_dependencies_build.sh .
 RUN chmod +x install_centos_dependencies_build.sh 
 RUN ls -la && bash install_centos_dependencies_build.sh
 RUN yum clean all
