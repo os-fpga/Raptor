@@ -342,8 +342,8 @@ jobs:
 
     - name: Production Build
       # Change ref head to deploy using a different branch.
-      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
-      if: "${{ matrix.mode == 'production' }}"
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      #if: "${{ matrix.mode == 'production' }}"
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
@@ -370,8 +370,8 @@ jobs:
 
     - name: Check FTP server status
       # Change ref head to deploy using a different branch.
-      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
-      if: "${{ matrix.mode == 'production' }}"
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
+      #if: "${{ matrix.mode == 'production' }}"
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.FTP_IP }}
@@ -382,8 +382,8 @@ jobs:
 
     - name: Deploy
       # Change ref head to deploy using a different branch.
-      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main'}}"
-      if: "${{ matrix.mode == 'production'}}"
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main'}}"
+      #if: "${{ matrix.mode == 'production'}}"
       uses: appleboy/scp-action@master
       with:
          host: ${{ secrets.FTP_IP }}
