@@ -269,10 +269,10 @@ jobs:
         after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d')
         echo $after
         docker rmi $after
-        sudo apt-get autoremove -y >/dev/null 2>&1
-        sudo apt-get autoclean -y >/dev/null 2>&1
         sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
         sudo apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libhwloc-dev libssl-dev libusb-1.0-0-dev
+        sudo apt-get autoremove -y >/dev/null 2>&1
+        sudo apt-get autoclean -y >/dev/null 2>&1
         df -h
 
     - name: Log in to the Container registry
