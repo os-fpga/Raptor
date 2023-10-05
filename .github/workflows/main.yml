@@ -302,6 +302,7 @@ jobs:
       run: |
         make run-cmake-release
         echo "${{ env.p_devices }}" > production_devices
+        echo ${{ inputs.Release_Date }} > input_release_date
 
     - name: Show shell configuration
       uses: addnab/docker-run-action@v3
@@ -335,8 +336,9 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
+            make regression 
             make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
-            make regression             
+                        
 
     - name: Production Build
       # Change ref head to deploy using a different branch.
@@ -351,23 +353,15 @@ jobs:
             cd work && make clean
             source /opt/rh/devtoolset-11/enable
             p_device=`cat production_devices`
+            r_d=`cat input_release_date`
             echo $p_device
+            echo "$r_d"
             mkdir /opt/instl_dir
-            make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device ${{ inputs.Release_Date }}
+            make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device $r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
             ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl
-
-
-
-#      run: |
-#        source /opt/rh/devtoolset-11/enable
-#        
-#        make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=${{ env.p_devices }} ${{ inputs.Release_Date }}
-#        export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
-#        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl 
-#        make clean && rm -rf yosys_verific_rs u-boot-rapidsi-dev zephyr-rapidsi-dev EmbeddedCommon-dev etc tests examples FOEDAG_rs IP_Catalog Backend
-#        export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
-#        cd $GITHUB_WORKSPACE/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir 
+            export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
+            cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
 
     - name: Print server resource
       if: success() || failure()
