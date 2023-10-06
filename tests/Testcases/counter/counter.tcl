@@ -5,9 +5,11 @@ set_top_module counter
 add_constraint_file constraints.sdc
 
 # Device target
-target_device GEMINI_10x8
+target_device GEMINI_COMPACT_10x8
 
+analyze
 # Compilation
+synth_options -effort high -carry all
 synthesize delay
 pin_loc_assign_method free
 packing
