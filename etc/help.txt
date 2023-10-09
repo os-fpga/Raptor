@@ -230,7 +230,7 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
 --- Programmer ---
 ------------------
    programmer <command>           : A programmer tool allows you to program and configure FPGA devices via JTAG 
-     command                      : fpga_config, flash, fpga_status, list_device, list_cable
+     command                      : fpga_config, flash, fpga_status, list_device, list_cable, otp
      fpga_config -c <cable name/index> ?-d <device_index>? <bitstream_file> : Program the FPGA device via JTAG
        -c <cable_name/index>    : Specify the cable name or index
        -d <device_index>        : Specify the device index
@@ -240,11 +240,19 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
        -d <device_index>        : Specify the device index
        -o <operations>          : Specify the operations to perform on the flash (Valid operations: program)
        <bitstream_file>         : Bitstream file to program
-     fpga_status ?-c <cable name/index>? ?-d <device_index>? : Query FPGA Configuration Done and Configuration IsError status for a specify device
+     fpga_status -c <cable name/index> -d <device_index> ?-v? : Query FPGA Configuration Done and Configuration IsError status for a specified device
        -c <cable_name/index>    : Specify the cable name or index
        -d <device_index>        : Specify the device index
-     list_device ?-c <cable name/index>? : List all available devices or specified cable devices
+       -v                       : Verbose mode. Display additional information of fpga_status output
+     list_device ?-c <cable name/index>? ?-v?: List all available devices or specified cable devices
        -c <cable_name/index>    : Specify the cable name or index
-     list_cable                 : List all connected USB programmer cables
+       -v                       : Verbose mode. Display additional information of list_device output
+     list_cable ?-v?            : List all connected USB programmer cables
+       -v                       : Verbose mode. Display additional information of list_cable output
+     otp -c <cable name/index> -d <device_index> ?-y? <bitstream_file> : Program the device OTP via JTAG. WARNING: OTP programming is not reversible once programmed successfully.
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+       -y                       : Indicate the consesus of the user to proceed with OTP programming.
+       <bitstream_file>         : Bitstream file to program
 
 -----------------------------------------------
