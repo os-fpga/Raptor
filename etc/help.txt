@@ -240,7 +240,7 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
        -d <device_index>        : Specify the device index
        -o <operations>          : Specify the operations to perform on the flash (Valid operations: program)
        <bitstream_file>         : Bitstream file to program
-     fpga_status -c <cable name/index> -d <device_index> : Query FPGA Configuration Done and Configuration IsError status for a specified device
+     fpga_status -c <cable name/index> -d <device_index> ?-v? : Query FPGA Configuration Done and Configuration IsError status for a specified device
        -c <cable_name/index>    : Specify the cable name or index
        -d <device_index>        : Specify the device index
        -v                       : Verbose mode. Display additional information of fpga_status output
