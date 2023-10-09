@@ -233,14 +233,14 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="Virgo-TC" series="Virgo" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
-        <resource type="io" num="260" label="I/O"/>
-        <resource type="lut" num="21824" label="LUT6s"/>
-        <resource type="ff" num="43648" label="FFs"/>
-        <resource type="bram" num="56" label="36K BRAMs"/>
-        <resource type="dsp" num="56" label="DSPs"/>
+     <device name="1GVTC" series="Virgo" family="Gemini" package="F484A" pin_count="272" speedgrade="-1" core_voltage="0.8V">
+        <resource type="io" num="240" label="I/O"/>
+        <resource type="lut" num="17472" label="LUT6s"/>
+        <resource type="ff" num="34944" label="FFs"/>
+        <resource type="bram" num="84" label="36K BRAMs"/>
+        <resource type="dsp" num="84" label="DSPs"/>
         <resource type="carry_length" num="336"/>
-        <internal type="tag_version" name="v1.6.184"/>
+        <internal type="tag_version" name="v1.6.204"/>
         <internal type="vpr_arch" file="gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -249,7 +249,7 @@
         <internal type="bitstream_settings" file="gemini_compact_62x44/bitstream_setting.xml"/>
         <internal type="sim_settings" file="gemini_compact_62x44/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="gemini_compact_62x44/fpga_repack_constraints.xml"/>
-        <internal type="fabric_key" file="gemini_compact_62x44/fabric_key.xml"/>
+        <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_62x44/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_62x44/Gemini_Pin_Table.csv"/>
