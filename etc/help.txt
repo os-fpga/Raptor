@@ -57,6 +57,14 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    verific_parser <on/off>    : Turns on/off Verific Parser
 </engineering>
 
+--------------------
+--- Design query ---
+--------------------
+   all_inputs                 : Return all input ports for the current design.
+   all_outputs                : Return all output ports for the current design.
+   get_ports <pattern>        : Return all ports for the current design that match a specified pattern. If pattern is empty, get_ports returns empty string.
+       <pattern>              : Examples of supported patterns: {*}, {cl*}, {d[0]}, {clock}, {clock1 clock2}
+
 -------------------
 --- Constraints ---
 -------------------
