@@ -260,7 +260,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="true"/>
+        <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
      <device name="GEMINI_COMPACT_104x68" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
