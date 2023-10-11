@@ -141,6 +141,8 @@ add_subdirectory("Raptor_Tools/HDL_simulator")
 
 add_subdirectory(FOEDAG_rs)
 # add mt-kahpar after FOEDAG as we need to provide googletest
+set(KAHYPAR_ENABLE_ARCH_COMPILE_OPTIMIZATIONS OFF CACHE BOOL "Disable -mtune=native in KaHyPar" FORCE)
+set(KAHYPAR_ADD_ADDRESS_SANITIZER OFF CACHE BOOL "Disable ASAN in KaHyPar" FORCE)
 add_subdirectory("Raptor_Tools/graph_partition")
 
 if (APPLE)
@@ -172,7 +174,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 8)
-set(VERSION_PATCH 38)
+set(VERSION_PATCH 39)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
