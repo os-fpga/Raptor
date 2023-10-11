@@ -141,8 +141,6 @@ add_subdirectory("Raptor_Tools/HDL_simulator")
 
 add_subdirectory(FOEDAG_rs)
 # add mt-kahpar after FOEDAG as we need to provide googletest
-set(KAHYPAR_ENABLE_ARCH_COMPILE_OPTIMIZATIONS OFF CACHE BOOL "Disable -mtune=native in KaHyPar" FORCE)
-set(KAHYPAR_ADD_ADDRESS_SANITIZER OFF CACHE BOOL "Disable ASAN in KaHyPar" FORCE)
 add_subdirectory("Raptor_Tools/graph_partition")
 
 if (APPLE)
