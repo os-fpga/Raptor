@@ -159,7 +159,7 @@
         <internal type="bitstream_settings" file="gemini_compact_62x44/bitstream_setting.xml"/>
         <internal type="sim_settings" file="gemini_compact_62x44/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="gemini_compact_62x44/fpga_repack_constraints.xml"/>
-        <internal type="fabric_key" file="gemini_compact_62x44/fabric_key.xml"/>
+        <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_62x44/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_62x44/Gemini_Pin_Table.csv"/>
@@ -260,7 +260,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="true"/>
+        <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
      <device name="GEMINI_COMPACT_104x68" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
@@ -339,7 +339,7 @@
         <internal type="bitstream_settings" file="gemini_compact_62x44/bitstream_setting.xml"/>
         <internal type="sim_settings" file="gemini_compact_62x44/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="gemini_compact_62x44/fpga_repack_constraints.xml"/>
-        <internal type="fabric_key" file="gemini_compact_62x44/fabric_key.xml"/>
+        <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_62x44/pin_constraints.xml"/>
         <internal type="pinmap_csv" file="gemini_compact_62x44/Gemini_Pin_Table.csv"/>
