@@ -70,6 +70,14 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    script_path                : Returns the path of the Tcl script passed with --script
    max_threads <-1/[2:64]>    : Maximum number of threads to be used (-1 is for automatic selection)
 
+--------------------
+--- Design query ---
+--------------------
+   all_inputs                 : Return all input ports for the current design.
+   all_outputs                : Return all output ports for the current design.
+   get_ports <pattern>        : Return all ports for the current design that match a specified pattern. If pattern is empty, get_ports returns empty string.
+       <pattern>              : Examples of supported patterns: {*}, {cl*}, {d[0]}, {clock}, {clock1 clock2}
+
 -------------------
 --- Constraints ---
 -------------------
