@@ -609,11 +609,11 @@
     <pb_type name="bram">
       <interconnect name="crossbar_clk" circuit_model_name="clock_mux"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000110">
+    <pb_type name="bram.bram_lr[physical].bram_phy" circuit_model_name="QL_BRAM" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="sc_in" physical_mode_port="sc_in"/>
       <port name="sc_out" physical_mode_port="sc_out"/>
     </pb_type>
-    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000110">
+    <pb_type name="bram.bram_lr[mem_36K_tdp].mem_36K" physical_pb_type_name="bram.bram_lr[physical].bram_phy" mode_bits="000000000000000000000000000000000000000000000000000000000000000000000000000000000000">
       <port name="WEN_A1" physical_mode_port="WEN_A1_i"/>
       <port name="WEN_B1" physical_mode_port="WEN_B1_i"/>
       <port name="BE_A1" physical_mode_port="BE_A1_i"/>
