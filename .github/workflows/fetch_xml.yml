@@ -109,13 +109,13 @@ jobs:
                 echo "updates are from ${{ matrix.updates }}"
                 extension=xml
                 echo "EXTENSION=$extension" >> $GITHUB_ENV
-                echo "path_to_commit=etc/**/*.xml etc/*.xml" >> $GITHUB_ENV
+                echo "path_to_commit=etc/devices/**/*.xml etc/device.xml" >> $GITHUB_ENV
                 ;;
             "pintable")
                 echo "updates are from ${{ matrix.updates }}"
                 extension=csv
                 echo "EXTENSION=$extension" >> $GITHUB_ENV
-                echo "path_to_commit=etc/**/*.csv" >> $GITHUB_ENV
+                echo "path_to_commit=etc/devices/**/*.csv" >> $GITHUB_ENV
                 ;;
             *)
                 echo "Invalid value: ${{ matrix.updates }}"
