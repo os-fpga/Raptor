@@ -79,7 +79,7 @@ jobs:
     - name: Checkout submodules
       run: |
         echo "Checkout Raptor_Tools"
-        git submodule update --depth 1 --init --recursive --checkout \
+        git submodule update --depth 1 --init --checkout \
           Raptor_Tools \
           ;
         git submodule sync
