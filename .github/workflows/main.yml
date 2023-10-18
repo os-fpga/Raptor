@@ -75,11 +75,14 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        submodules: recursive
-        
+
     - name: Checkout submodules
       run: |
+        cd Raptor_Tools
+        git submodule sync
+        git submodule update --depth 1 --init --recursive --checkout \
+          ./parser_plugins/synlig_plugin \
+          ;  
         cd Raptor_Tools/parser_plugins/synlig_plugin
         git submodule sync
         git submodule update --depth 3 --init --recursive --checkout \
@@ -296,7 +299,7 @@ jobs:
       run: docker pull ghcr.io/rapidsilicon/raptor:centos_with_docker    
 
     - name: Checkout code
-      uses: actions/checkout@v3       
+      uses: actions/checkout@v3
       with:
         submodules: recursive
         
@@ -881,11 +884,14 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        submodules: recursive
 
     - name: Checkout submodules
       run: |
+        cd Raptor_Tools
+        git submodule sync
+        git submodule update --depth 1 --init --recursive --checkout \
+          ./parser_plugins/synlig_plugin \
+          ;  
         cd Raptor_Tools/parser_plugins/synlig_plugin
         git submodule sync
         git submodule update --depth 3 --init --recursive --checkout \
@@ -938,11 +944,14 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        submodules: recursive
-        
+
     - name: Checkout submodules
       run: |
+        cd Raptor_Tools
+        git submodule sync
+        git submodule update --depth 1 --init --recursive --checkout \
+          ./parser_plugins/synlig_plugin \
+          ;  
         cd Raptor_Tools/parser_plugins/synlig_plugin
         git submodule sync
         git submodule update --depth 3 --init --recursive --checkout \
