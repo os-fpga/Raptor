@@ -76,25 +76,25 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Checkout submodules
-      run: |
-        echo "Checkout Raptor_Tools"
-        git submodule update --depth 1 --init --checkout \
-          Raptor_Tools \
-          ;
-        git submodule sync
-        cd Raptor_Tools
-        echo "Checkout parser_plugins/synlig_plugin"
-        git submodule sync
-        git submodule update --depth 1 --init --checkout \
-          ./parser_plugins/synlig_plugin \
-          ;  
-        cd parser_plugins/synlig_plugin
-        git submodule sync
-        echo "Checkout parser_plugins/synlig_plugin/surelog, yosys"
-        git submodule update --depth 3 --init --recursive --checkout \
-          ./third_party/{surelog,yosys} \
-          ;
+#    - name: Checkout submodules
+#      run: |
+#        echo "Checkout Raptor_Tools"
+#        git submodule update --depth 1 --init --checkout \
+#          Raptor_Tools \
+#          ;
+#        git submodule sync
+#        cd Raptor_Tools
+#        echo "Checkout parser_plugins/synlig_plugin"
+#        git submodule sync
+#        git submodule update --depth 1 --init --checkout \
+#          ./parser_plugins/synlig_plugin \
+#          ;  
+#        cd parser_plugins/synlig_plugin
+#        git submodule sync
+#        echo "Checkout parser_plugins/synlig_plugin/surelog, yosys"
+#        git submodule update --depth 3 --init --recursive --checkout \
+#          ./third_party/{surelog,yosys} \
+#          ;
 
     - name: Install dependencies
       run: |
@@ -159,37 +159,37 @@ jobs:
     - name: Test Release
       if: matrix.mode == 'test'
       run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+        make release UPDATE_SUBMODULES=ON ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
 
     - name: test/batch Release
       if: matrix.mode == 'test/batch'
       run: |
-        make release test/batch
+        make release UPDATE_SUBMODULES=ON test/batch
 
     - name: test/batch_gen2 Release
       if: matrix.mode == 'test/batch_gen2'
       run: |
-        make release test/batch_gen2
+        make release UPDATE_SUBMODULES=ON test/batch_gen2
 
     - name: test/solver
       if: matrix.mode == 'solver'
       run: |
-        make solver/tests 
+        make UPDATE_SUBMODULES=ON solver/tests 
 
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
-        make regression
+        make UPDATE_SUBMODULES=ON regression
 
     - name: Coverage
       if: matrix.mode == 'coverage'
       run: |
-        make debug coverage-build/raptor_gui.coverage
+        make UPDATE_SUBMODULES=ON debug coverage-build/raptor_gui.coverage
 
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release PRODUCTION_BUILD=1 PRODUCTION_DEVICES=${{ env.p_devices }}
+        make release UPDATE_SUBMODULES=ON PRODUCTION_BUILD=1 PRODUCTION_DEVICES=${{ env.p_devices }}
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
@@ -198,7 +198,7 @@ jobs:
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
       run: |
-        make debug
+        make UPDATE_SUBMODULES=ON debug
         make debug test/unittest-d
         make debug test/gui
         make debug test/valgrind
@@ -206,7 +206,7 @@ jobs:
     - name: Install Test
       if: matrix.mode == 'install'
       run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make UPDATE_SUBMODULES=ON release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         make install
         make clean   # make sure we only see installation artifacts
         make test_install
@@ -307,23 +307,6 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
-        
-    - name: Checkout submodules
-      run: |
-        git submodule update --depth 1 --init --checkout \
-          Raptor_Tools \
-          ;
-        git submodule sync      
-        cd Raptor_Tools
-        git submodule sync
-        git submodule update --depth 1 --init --checkout \
-          ./parser_plugins/synlig_plugin \
-          ;  
-        cd parser_plugins/synlig_plugin
-        git submodule sync
-        git submodule update --depth 3 --init --recursive --checkout \
-          ./third_party/{surelog,yosys} \
-          ;
 
     - name: Configure shell
       run: |
@@ -945,23 +928,6 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Checkout submodules
-      run: |
-        git submodule update --depth 1 --init --checkout \
-          Raptor_Tools \
-          ;
-        git submodule sync
-        cd Raptor_Tools
-        git submodule sync
-        git submodule update --depth 1 --init --checkout \
-          ./parser_plugins/synlig_plugin \
-          ;  
-        cd parser_plugins/synlig_plugin
-        git submodule sync
-        git submodule update --depth 3 --init --recursive --checkout \
-          ./third_party/{surelog,yosys} \
-          ;
 
     - name: Install Dependencies
       run: |
