@@ -76,6 +76,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Checkout submodules
+      run: |
+        cd Raptor_Tools/parser_plugins/synlig_plugin
+        git submodule sync
+        git submodule update --depth 3 --init --recursive --checkout \
+          ./third_party/{surelog,yosys} \
+          ;
+
     - name: Install dependencies
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
@@ -287,6 +295,14 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3       
+
+    - name: Checkout submodules
+      run: |
+        cd Raptor_Tools/parser_plugins/synlig_plugin
+        git submodule sync
+        git submodule update --depth 3 --init --recursive --checkout \
+          ./third_party/{surelog,yosys} \
+          ;
 
     - name: Configure shell
       run: |
@@ -864,6 +880,14 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Checkout submodules
+      run: |
+        cd Raptor_Tools/parser_plugins/synlig_plugin
+        git submodule sync
+        git submodule update --depth 3 --init --recursive --checkout \
+          ./third_party/{surelog,yosys} \
+          ;
+
     - name: Install Dependencies
       run: |
         sudo apt-get install clang-format
@@ -910,6 +934,14 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
+
+    - name: Checkout submodules
+      run: |
+        cd Raptor_Tools/parser_plugins/synlig_plugin
+        git submodule sync
+        git submodule update --depth 3 --init --recursive --checkout \
+          ./third_party/{surelog,yosys} \
+          ;
 
     - name: Install Dependencies
       run: |
