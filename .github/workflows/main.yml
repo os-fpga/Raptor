@@ -896,23 +896,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Checkout submodules
-      run: |
-        git submodule update --depth 1 --init --recursive --checkout \
-          Raptor_Tools \
-          ;
-        git submodule sync
-        cd Raptor_Tools
-        git submodule sync
-        git submodule update --depth 1 --init --recursive --checkout \
-          ./parser_plugins/synlig_plugin \
-          ;  
-        cd parser_plugins/synlig_plugin
-        git submodule sync
-        git submodule update --depth 3 --init --recursive --checkout \
-          ./third_party/{surelog,yosys} \
-          ;
-
     - name: Install Dependencies
       run: |
         sudo apt-get install clang-format
