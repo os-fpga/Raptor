@@ -84,7 +84,7 @@ jobs:
         git submodule sync
         cd Raptor_Tools
         git submodule sync
-        git submodule update --depth 1 --init --recursive --checkout \
+        git submodule update --depth 1 --init --checkout \
           ./parser_plugins/synlig_plugin \
           ;  
         cd parser_plugins/synlig_plugin
@@ -313,7 +313,7 @@ jobs:
         git submodule sync      
         cd Raptor_Tools
         git submodule sync
-        git submodule update --depth 1 --init --recursive --checkout \
+        git submodule update --depth 1 --init --checkout \
           ./parser_plugins/synlig_plugin \
           ;  
         cd parser_plugins/synlig_plugin
@@ -951,7 +951,7 @@ jobs:
         git submodule sync
         cd Raptor_Tools
         git submodule sync
-        git submodule update --depth 1 --init --recursive --checkout \
+        git submodule update --depth 1 --init --checkout \
           ./parser_plugins/synlig_plugin \
           ;  
         cd parser_plugins/synlig_plugin
