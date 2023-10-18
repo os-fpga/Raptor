@@ -78,17 +78,20 @@ jobs:
 
     - name: Checkout submodules
       run: |
+        echo "Checkout Raptor_Tools"
         git submodule update --depth 1 --init --recursive --checkout \
           Raptor_Tools \
           ;
         git submodule sync
         cd Raptor_Tools
+        echo "Checkout parser_plugins/synlig_plugin"
         git submodule sync
         git submodule update --depth 1 --init --checkout \
           ./parser_plugins/synlig_plugin \
           ;  
         cd parser_plugins/synlig_plugin
         git submodule sync
+        echo "Checkout parser_plugins/synlig_plugin/surelog, yosys"
         git submodule update --depth 3 --init --recursive --checkout \
           ./third_party/{surelog,yosys} \
           ;
