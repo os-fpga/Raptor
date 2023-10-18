@@ -83,7 +83,7 @@ jobs:
         git submodule update --depth 1 --init --recursive --checkout \
           ./parser_plugins/synlig_plugin \
           ;  
-        cd Raptor_Tools/parser_plugins/synlig_plugin
+        cd parser_plugins/synlig_plugin
         git submodule sync
         git submodule update --depth 3 --init --recursive --checkout \
           ./third_party/{surelog,yosys} \
@@ -300,12 +300,15 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        submodules: recursive
         
     - name: Checkout submodules
       run: |
-        cd Raptor_Tools/parser_plugins/synlig_plugin
+        cd Raptor_Tools
+        git submodule sync
+        git submodule update --depth 1 --init --recursive --checkout \
+          ./parser_plugins/synlig_plugin \
+          ;  
+        cd parser_plugins/synlig_plugin
         git submodule sync
         git submodule update --depth 3 --init --recursive --checkout \
           ./third_party/{surelog,yosys} \
@@ -892,7 +895,7 @@ jobs:
         git submodule update --depth 1 --init --recursive --checkout \
           ./parser_plugins/synlig_plugin \
           ;  
-        cd Raptor_Tools/parser_plugins/synlig_plugin
+        cd parser_plugins/synlig_plugin
         git submodule sync
         git submodule update --depth 3 --init --recursive --checkout \
           ./third_party/{surelog,yosys} \
@@ -952,7 +955,7 @@ jobs:
         git submodule update --depth 1 --init --recursive --checkout \
           ./parser_plugins/synlig_plugin \
           ;  
-        cd Raptor_Tools/parser_plugins/synlig_plugin
+        cd parser_plugins/synlig_plugin
         git submodule sync
         git submodule update --depth 3 --init --recursive --checkout \
           ./third_party/{surelog,yosys} \
