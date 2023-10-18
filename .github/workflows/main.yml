@@ -77,7 +77,6 @@ jobs:
       uses: actions/checkout@v3
       with:
         submodules: recursive
-        fetch-depth: 0
         
     - name: Checkout submodules
       run: |
@@ -300,7 +299,6 @@ jobs:
       uses: actions/checkout@v3       
       with:
         submodules: recursive
-        fetch-depth: 0
         
     - name: Checkout submodules
       run: |
@@ -885,7 +883,6 @@ jobs:
       uses: actions/checkout@v3
       with:
         submodules: recursive
-        fetch-depth: 0
 
     - name: Checkout submodules
       run: |
@@ -943,7 +940,6 @@ jobs:
       uses: actions/checkout@v3
       with:
         submodules: recursive
-        fetch-depth: 0
         
     - name: Checkout submodules
       run: |
