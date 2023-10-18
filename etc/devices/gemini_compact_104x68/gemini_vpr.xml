@@ -965,11 +965,10 @@
         <interconnect>
           <complete name="io_output-clk" input="io.clk" output="io_output.clk">      
                   
-          </complete>
-          <direct name="io_output-f2a_i" input="io.f2a_i" output="io_output.f2a_i"/>
-          <!--direct name="io_output-f2a_i" input="io.f2a_i" output="io_output.f2a_i">
+               </complete>
+          <direct name="io_output-f2a_i" input="io.f2a_i" output="io_output.f2a_i">
             <delay_constant max="7.1e-10" min="5e-10" in_port="io.f2a_i" out_port="io_output.f2a_i"/>
-          </direct-->
+          </direct>
         </interconnect>
       </mode>
       <mode name="io_input">
@@ -1032,10 +1031,9 @@
           </interconnect>
         </pb_type>
         <interconnect>
-          <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o"/>
-          <!--direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o">
+          <direct name="io-a2f_o" input="io_input.a2f_o" output="io.a2f_o">
             <delay_constant max="8.4e-10" min="7.6e-10" in_port="io_input.a2f_o" out_port="io.a2f_o"/>
-          </direct-->
+          </direct>
           <complete name="io_input-clk" input="io.clk" output="io_input.clk">      
                   
                </complete>
