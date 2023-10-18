@@ -78,6 +78,9 @@ jobs:
 
     - name: Checkout submodules
       run: |
+        git submodule update --depth 1 --init --recursive --checkout \
+          Raptor_Tools \
+          ;
         git submodule sync
         cd Raptor_Tools
         git submodule sync
@@ -304,6 +307,9 @@ jobs:
         
     - name: Checkout submodules
       run: |
+        git submodule update --depth 1 --init --recursive --checkout \
+          Raptor_Tools \
+          ;
         git submodule sync      
         cd Raptor_Tools
         git submodule sync
@@ -892,6 +898,9 @@ jobs:
 
     - name: Checkout submodules
       run: |
+        git submodule update --depth 1 --init --recursive --checkout \
+          Raptor_Tools \
+          ;
         git submodule sync
         cd Raptor_Tools
         git submodule sync
@@ -953,6 +962,9 @@ jobs:
 
     - name: Checkout submodules
       run: |
+        git submodule update --depth 1 --init --recursive --checkout \
+          Raptor_Tools \
+          ;
         git submodule sync
         cd Raptor_Tools
         git submodule sync
