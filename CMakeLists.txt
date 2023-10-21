@@ -428,6 +428,8 @@ endif()
 # Make sure openocd_cmake build is done before raptor
 add_dependencies(raptor rs_openocd_extract_config_and_openocd)
 
+add_dependencies(synlig_build yosys)
+
 if (APPLE)
   # In macOS, it is necessary to add the correct @rpath to the executable for
   # finding python dynamic libraries ref: https://gitlab.kitware.com/cmake/cmake/-/issues/21293
