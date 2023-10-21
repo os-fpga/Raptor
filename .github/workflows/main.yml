@@ -139,37 +139,37 @@ jobs:
     - name: Test Release
       if: matrix.mode == 'test'
       run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+        make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
 
     - name: test/batch Release
       if: matrix.mode == 'test/batch'
       run: |
-        make release test/batch
+        make release CPU_CORES=2 test/batch
 
     - name: test/batch_gen2 Release
       if: matrix.mode == 'test/batch_gen2'
       run: |
-        make release test/batch_gen2
+        make release CPU_CORES=2 test/batch_gen2
 
     - name: test/solver
       if: matrix.mode == 'solver'
       run: |
-        make solver/tests 
+        make CPU_CORES=2 solver/tests 
 
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
-        make regression
+        make regression CPU_CORES=2
 
     - name: Coverage
       if: matrix.mode == 'coverage'
       run: |
-        make debug coverage-build/raptor_gui.coverage
+        make debug CPU_CORES=2 coverage-build/raptor_gui.coverage
 
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release PRODUCTION_BUILD=1 PRODUCTION_DEVICES=${{ env.p_devices }}
+        make release CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=${{ env.p_devices }}
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
@@ -178,7 +178,7 @@ jobs:
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
       run: |
-        make debug
+        make debug CPU_CORES=2 
         make debug test/unittest-d
         make debug test/gui
         make debug test/valgrind
@@ -186,7 +186,7 @@ jobs:
     - name: Install Test
       if: matrix.mode == 'install'
       run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         make install
         make clean   # make sure we only see installation artifacts
         make test_install
@@ -300,7 +300,7 @@ jobs:
       
     - name: Checkout Subsystem
       run: |
-        make run-cmake-release
+        make run-cmake-release CPU_CORES=2 
         echo "${{ env.p_devices }}" > production_devices
         echo ${{ inputs.Release_Date }} > input_release_date
 
@@ -324,7 +324,7 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable  
             cd work && make clean
-            make release test/batch
+            make release test/batch CPU_CORES=2 
 
     - name: Regression
       if: matrix.mode == 'regression'
@@ -336,8 +336,8 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
-            make regression 
-            make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
+            make regression CPU_CORES=2 
+            make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
                         
 
     - name: Production Build
@@ -357,7 +357,7 @@ jobs:
             echo $p_device
             echo "$r_d"
             mkdir /opt/instl_dir
-            make install PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device $r_d
+            make install CPU_CORES=2 PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device $r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
             ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
@@ -633,7 +633,7 @@ jobs:
         where python && python --version
         where ninja && ninja --version
 
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         if %errorlevel% neq 0 exit /b %errorlevel%
         make install
         if %errorlevel% neq 0 exit /b %errorlevel%
@@ -746,16 +746,16 @@ jobs:
 
     - name: Build
       run: |
-        make release
-        make install
+        make release CPU_CORES=2 
+        make install CPU_CORES=2 
 
     - name: Unit tests
       run: |
-        make test_install_mac
+        make test_install_mac CPU_CORES=2 
 
     - name: Regression tests
       run: |
-        make regression
+        make regression CPU_CORES=2 
 
   macos-clang:
     if: ${{ false }}  # disable till EDA-802 is fixed
@@ -841,18 +841,18 @@ jobs:
 
     - name: Build
       run: |
-        make release
-        make install
+        make release CPU_CORES=2 
+        make install CPU_CORES=2 
 
     - name: Unit tests
       run: |
-        make test_install_mac
+        make test_install_mac CPU_CORES=2 
         make test/unittest
         make XVFB="" debug test/gui_mac
 
     - name: Regression tests
       run: |
-        make regression
+        make regression CPU_CORES=2 
 
   CodeFormatting:
     runs-on: ubuntu-20.04
@@ -932,7 +932,7 @@ jobs:
 
     - name: Prepare source
       run: |
-        make run-cmake-release
+        make run-cmake-release CPU_CORES=2 
         ln -s build/compile_commands.json .
 
     - name: Run clang tidy
