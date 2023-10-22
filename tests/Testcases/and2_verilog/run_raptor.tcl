@@ -36,6 +36,7 @@ simulate rtl icarus
 
 # Compilation
 puts "Compiling $project_name..."
+parser_type surelog
 analyze
 #synth_options -inferred_io
 #parser_type surelog

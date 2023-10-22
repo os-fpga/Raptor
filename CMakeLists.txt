@@ -172,7 +172,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 8)
-set(VERSION_PATCH 43)
+set(VERSION_PATCH 44)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -427,6 +427,8 @@ endif()
 
 # Make sure openocd_cmake build is done before raptor
 add_dependencies(raptor rs_openocd_extract_config_and_openocd)
+
+add_dependencies(synlig_build yosys)
 
 if (APPLE)
   # In macOS, it is necessary to add the correct @rpath to the executable for
