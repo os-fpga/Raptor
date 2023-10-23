@@ -10,7 +10,6 @@ sudo apt install -y \
   build-essential \
   swig \
   google-perftools \
-  libgoogle-perftools-dev \
   uuid-dev \
   lcov \
   valgrind \
@@ -43,6 +42,9 @@ sudo apt install -y \
 # qtdeclarative5-dev
 
 sudo apt -y install lsb-core
+
+sudo apt install -y libunwind-dev
+sudo apt install -y --no-install-recommends libgoogle-perftools-dev
 
 sudo ln -sf /usr/bin/g++-11 /usr/bin/g++
 sudo ln -sf /usr/bin/gcc-11 /usr/bin/gcc
