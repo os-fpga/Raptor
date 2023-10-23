@@ -20,7 +20,7 @@ jobs:
   linux-gcc:
     name: ubuntu-${{ matrix.mode }}
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -144,7 +144,7 @@ jobs:
     - name: test/batch Release
       if: matrix.mode == 'test/batch'
       run: |
-        make release CPU_CORES=2 test/batch
+        make release CPU_CORES=2 test/batch 
 
     - name: test/batch_gen2 Release
       if: matrix.mode == 'test/batch_gen2'
