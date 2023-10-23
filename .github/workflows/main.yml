@@ -146,6 +146,11 @@ jobs:
       run: |
         make release CPU_CORES=2 test/batch
 
+    - name: test/batch Release run
+      if: matrix.mode == 'test/batch'
+      run: |
+        make CPU_CORES=2 test/batch
+
     - name: test/batch_gen2 Release
       if: matrix.mode == 'test/batch_gen2'
       run: |
