@@ -20,7 +20,7 @@ jobs:
   linux-gcc:
     name: ubuntu-${{ matrix.mode }}
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
