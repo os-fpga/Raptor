@@ -1,0 +1,78 @@
+
+<!--
+////////////////////////////////////////////////////////////////////////////////
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM DO NOT EDIT
+////////////////////////////////////////////////////////////////////////////////
+-->
+<!-- This file should be created for each benchamrks independetly-->
+<!-- It maps the clock nets from design file to the physical pin of the tile -->
+<!-- This file just provides the default implementation -->
+<repack_design_constraints>
+    <pin_constraint pb_type="clb" pin="clk[0]" net="clock0"/>
+    <pin_constraint pb_type="clb" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[3]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[4]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[5]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[6]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[7]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[8]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[9]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[10]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[11]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[12]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[13]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[14]" net="OPEN"/>
+    <pin_constraint pb_type="clb" pin="clk[15]" net="OPEN"/>
+
+    <pin_constraint pb_type="io" pin="clk[0]" net="clock0"/>
+    <pin_constraint pb_type="io" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[3]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[4]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[5]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[6]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[7]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[8]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[9]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[10]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[11]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[12]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[13]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[14]" net="OPEN"/>
+    <pin_constraint pb_type="io" pin="clk[15]" net="OPEN"/>
+
+    <pin_constraint pb_type="dsp" pin="clk[0]" net="clock0"/>
+    <pin_constraint pb_type="dsp" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[3]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[4]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[5]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[6]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[7]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[8]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[9]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[10]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[11]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[12]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[13]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[14]" net="OPEN"/>
+    <pin_constraint pb_type="dsp" pin="clk[15]" net="OPEN"/>
+
+    <pin_constraint pb_type="bram" pin="clk[0]" net="clock0"/>
+    <pin_constraint pb_type="bram" pin="clk[1]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[2]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[3]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[4]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[5]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[6]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[7]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[8]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[9]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[10]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[11]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[12]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[13]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[14]" net="OPEN"/>
+    <pin_constraint pb_type="bram" pin="clk[15]" net="OPEN"/>
+</repack_design_constraints>

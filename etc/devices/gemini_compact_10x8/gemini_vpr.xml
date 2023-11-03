@@ -2978,6 +2978,161 @@
       <col type="bram" startx="84" starty="2" priority="20"/>
       <col type="bram" startx="98" starty="2" priority="20"/>
     </fixed_layout>
+    <fixed_layout name="castor188x128_heterogeneous" width="190" height="130">
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <fill type="clb" priority="10"/>
+      <col type="bram" startx="13" starty="2" priority="20"/>
+      <col type="dsp" startx="19" starty="2" priority="20"/>
+      <col type="bram" startx="25" starty="2" priority="20"/>
+      <col type="dsp" startx="31" starty="2" priority="20"/>
+      <col type="bram" startx="37" starty="2" priority="20"/>
+      <col type="dsp" startx="43" starty="2" priority="20"/>
+      <col type="bram" startx="49" starty="2" priority="20"/>
+      <col type="dsp" startx="55" starty="2" priority="20"/>
+      <col type="bram" startx="61" starty="2" priority="20"/>
+      <col type="dsp" startx="67" starty="2" priority="20"/>
+      <col type="bram" startx="73" starty="2" priority="20"/>
+      <col type="dsp" startx="79" starty="2" priority="20"/>
+      <col type="bram" startx="85" starty="2" priority="20"/>
+      <col type="dsp" startx="91" starty="2" priority="20"/>
+      <!--mirror point-->
+      <col type="dsp" startx="98" starty="2" priority="20"/>
+      <col type="bram" startx="104" starty="2" priority="20"/>
+      <col type="dsp" startx="110" starty="2" priority="20"/>
+      <col type="bram" startx="116" starty="2" priority="20"/>
+      <col type="dsp" startx="122" starty="2" priority="20"/>
+      <col type="bram" startx="128" starty="2" priority="20"/>
+      <col type="dsp" startx="134" starty="2" priority="20"/>
+      <col type="bram" startx="140" starty="2" priority="20"/>
+      <col type="dsp" startx="146" starty="2" priority="20"/>
+      <col type="bram" startx="152" starty="2" priority="20"/>
+      <col type="dsp" startx="158" starty="2" priority="20"/>
+      <col type="bram" startx="164" starty="2" priority="20"/>
+      <col type="dsp" startx="170" starty="2" priority="20"/>
+      <col type="bram" startx="176" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor266x182_heterogeneous" width="268" height="184">
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <fill type="clb" priority="10"/>
+      <col type="bram" startx="16" starty="2" priority="20"/>
+      <col type="dsp" startx="22" starty="2" priority="20"/>
+      <col type="bram" startx="28" starty="2" priority="20"/>
+      <col type="dsp" startx="34" starty="2" priority="20"/>
+      <col type="bram" startx="40" starty="2" priority="20"/>
+      <col type="dsp" startx="46" starty="2" priority="20"/>
+      <col type="bram" startx="52" starty="2" priority="20"/>
+      <col type="dsp" startx="58" starty="2" priority="20"/>
+      <col type="bram" startx="64" starty="2" priority="20"/>
+      <col type="bram" startx="70" starty="2" priority="20"/>
+      <col type="dsp" startx="76" starty="2" priority="20"/>
+      <col type="bram" startx="82" starty="2" priority="20"/>
+      <col type="dsp" startx="88" starty="2" priority="20"/>
+      <col type="bram" startx="94" starty="2" priority="20"/>
+      <col type="dsp" startx="100" starty="2" priority="20"/>
+      <col type="bram" startx="106" starty="2" priority="20"/>
+      <col type="dsp" startx="112" starty="2" priority="20"/>
+      <col type="bram" startx="118" starty="2" priority="20"/>
+      <col type="dsp" startx="124" starty="2" priority="20"/>
+      <col type="bram" startx="130" starty="2" priority="20"/>
+      <!--mirror point-->
+      <col type="bram" startx="137" starty="2" priority="20"/>
+      <col type="dsp" startx="143" starty="2" priority="20"/>
+      <col type="bram" startx="149" starty="2" priority="20"/>
+      <col type="dsp" startx="155" starty="2" priority="20"/>
+      <col type="bram" startx="161" starty="2" priority="20"/>
+      <col type="dsp" startx="167" starty="2" priority="20"/>
+      <col type="bram" startx="173" starty="2" priority="20"/>
+      <col type="dsp" startx="179" starty="2" priority="20"/>
+      <col type="bram" startx="185" starty="2" priority="20"/>
+      <col type="dsp" startx="191" starty="2" priority="20"/>
+      <col type="bram" startx="197" starty="2" priority="20"/>
+      <col type="bram" startx="203" starty="2" priority="20"/>
+      <col type="dsp" startx="209" starty="2" priority="20"/>
+      <col type="bram" startx="215" starty="2" priority="20"/>
+      <col type="dsp" startx="221" starty="2" priority="20"/>
+      <col type="bram" startx="227" starty="2" priority="20"/>
+      <col type="dsp" startx="233" starty="2" priority="20"/>
+      <col type="bram" startx="239" starty="2" priority="20"/>
+      <col type="dsp" startx="245" starty="2" priority="20"/>
+      <col type="bram" startx="251" starty="2" priority="20"/>
+    </fixed_layout>
+    <fixed_layout name="castor320x218_heterogeneous" width="322" height="220">
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <fill type="clb" priority="10"/>
+      <col type="bram" startx="19" starty="2" priority="20"/>
+      <col type="dsp" startx="25" starty="2" priority="20"/>
+      <col type="bram" startx="31" starty="2" priority="20"/>
+      <col type="dsp" startx="37" starty="2" priority="20"/>
+      <col type="bram" startx="43" starty="2" priority="20"/>
+      <col type="dsp" startx="49" starty="2" priority="20"/>
+      <col type="bram" startx="55" starty="2" priority="20"/>
+      <col type="dsp" startx="61" starty="2" priority="20"/>
+      <col type="bram" startx="67" starty="2" priority="20"/>
+      <col type="dsp" startx="73" starty="2" priority="20"/>
+      <col type="bram" startx="79" starty="2" priority="20"/>
+      <col type="bram" startx="85" starty="2" priority="20"/>
+      <col type="dsp" startx="91" starty="2" priority="20"/>
+      <col type="bram" startx="97" starty="2" priority="20"/>
+      <col type="dsp" startx="103" starty="2" priority="20"/>
+      <col type="bram" startx="109" starty="2" priority="20"/>
+      <col type="dsp" startx="115" starty="2" priority="20"/>
+      <col type="bram" startx="121" starty="2" priority="20"/>
+      <col type="dsp" startx="127" starty="2" priority="20"/>
+      <col type="bram" startx="133" starty="2" priority="20"/>
+      <col type="dsp" startx="139" starty="2" priority="20"/>
+      <col type="bram" startx="145" starty="2" priority="20"/>
+      <col type="dsp" startx="151" starty="2" priority="20"/>
+      <col type="bram" startx="157" starty="2" priority="20"/>
+      <!--mirror point-->
+      <col type="bram" startx="164" starty="2" priority="20"/>
+      <col type="dsp" startx="170" starty="2" priority="20"/>
+      <col type="bram" startx="176" starty="2" priority="20"/>
+      <col type="dsp" startx="182" starty="2" priority="20"/>
+      <col type="bram" startx="188" starty="2" priority="20"/>
+      <col type="dsp" startx="194" starty="2" priority="20"/>
+      <col type="bram" startx="200" starty="2" priority="20"/>
+      <col type="dsp" startx="206" starty="2" priority="20"/>
+      <col type="bram" startx="212" starty="2" priority="20"/>
+      <col type="dsp" startx="218" starty="2" priority="20"/>
+      <col type="bram" startx="224" starty="2" priority="20"/>
+      <col type="dsp" startx="230" starty="2" priority="20"/>
+      <col type="bram" startx="236" starty="2" priority="20"/>
+      <col type="bram" startx="242" starty="2" priority="20"/>
+      <col type="dsp" startx="248" starty="2" priority="20"/>
+      <col type="bram" startx="254" starty="2" priority="20"/>
+      <col type="dsp" startx="260" starty="2" priority="20"/>
+      <col type="bram" startx="266" starty="2" priority="20"/>
+      <col type="dsp" startx="272" starty="2" priority="20"/>
+      <col type="bram" startx="278" starty="2" priority="20"/>
+      <col type="dsp" startx="284" starty="2" priority="20"/>
+      <col type="bram" startx="290" starty="2" priority="20"/>
+      <col type="dsp" startx="296" starty="2" priority="20"/>
+      <col type="bram" startx="302" starty="2" priority="20"/>
+    </fixed_layout>
   </layout>
   <auto_layout aspect_ratio="1.53">
     <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
