@@ -252,7 +252,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_62x44/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_62x44/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini_compact_62x44/Virgo_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -260,7 +260,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="true"/>
+        <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
      <device name="GEMINI_COMPACT_104x68" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
@@ -372,7 +372,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_10x8/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_10x8/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini_compact_10x8/Virgo_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -380,7 +380,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="true"/>
+        <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
     <device name="GEMINI_LEGACY" series="Gemini" family="Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
@@ -543,8 +543,8 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>  
-    <device name="1G250-ES1" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
-        <resource type="io" num="TBD"/>
+    <device name="1OR250" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
+        <resource type="io" num="360"/>
         <resource type="lut" num="159264"/>
         <resource type="ff" num="318528"/>
         <resource type="bram" num="588"/>
@@ -561,7 +561,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_188x128/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemin_compact_188x128/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini_compact_188x128/Virgo_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -572,7 +572,7 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
-    <device name="1G500-ES1" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
+    <device name="1LY500" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="480"/>
         <resource type="lut" num="322560"/>
         <resource type="ff" num="645120"/>
@@ -590,7 +590,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_266x182/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemin_compact_266x182/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini_compact_266x182/Virgo_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -601,8 +601,8 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
-    <device name="1G750-ES1" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
-        <resource type="io" num="640"/>
+    <device name="1LY750" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
+        <resource type="io" num="600"/>
         <resource type="lut" num="466560"/>
         <resource type="ff" num="933120"/>
         <resource type="bram" num="1872"/>
@@ -619,7 +619,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_320x218/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemin_compact_320x218/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini_compact_320x218/Virgo_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
