@@ -1,10 +1,11 @@
 # -*- mode:cmake -*-
 
-# Copyright 2021-2022 The RapidSilicon team
+# Copyright 2021-2023 The RapidSilicon team
 
 cmake_minimum_required(VERSION 3.15)
 
 option(ENABLE_VERIFIC "Enable Verific frontend" OFF)
+option(ENABLE_OPENSTA "Enable OpenSTA" OFF)
 
 set (BUILD_TYPE_STRING Engineering)
 if (PRODUCTION_BUILD)
@@ -135,7 +136,10 @@ get_filename_component(READ_EDIF_SRC_DIR "Raptor_Tools/gatelevel_readers/read_ed
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 add_subdirectory(${READ_EDIF_SRC_DIR})
 
-add_subdirectory("Raptor_Tools/psta-rel")
+if (ENABLE_OPENSTA)
+  add_subdirectory("Raptor_Tools/psta-rel")
+endif()
+
 add_subdirectory("Raptor_Tools/python_tools")
 add_subdirectory("Raptor_Tools/HDL_simulator")
 
@@ -413,7 +417,10 @@ if (NOT APPLE)
     add_dependencies(raptor-bin abc)
     add_dependencies(raptor-bin de)
 endif()
-add_dependencies(raptor-bin sta)
+
+if (ENABLE_OPENSTA)
+  add_dependencies(raptor-bin sta)
+endif()
 
 if (WIN OR APPLE)
 else ()
@@ -753,7 +760,14 @@ else()
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/)
 endif()
 
-
+if (ENABLE_OPENSTA)
+  add_custom_command(TARGET raptor-bin POST_BUILD
+      COMMAND echo "Copy OpenSTA"
+      COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      )
+endif()
 
 add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir"
@@ -777,9 +791,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/tcl_examples/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/psta-rel/app/sta
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil
           ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
@@ -904,10 +915,10 @@ else ()
           ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/libtcl8.6.so
            ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib
 	      )        
-  if (PRODUCTION_BUILD)
+  if (PRODUCTION_BUILD AND (NOT ENABLE_OPENSTA))
      add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "Remove OpenSTA from Production build"
-        COMMAND ${CMAKE_COMMAND} -E rm
+        COMMAND ${CMAKE_COMMAND} -E rm -f
           ${CMAKE_CURRENT_BINARY_DIR}/bin/sta
         )
   endif()
