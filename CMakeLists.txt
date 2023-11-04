@@ -918,7 +918,7 @@ else ()
   if (PRODUCTION_BUILD AND (NOT ENABLE_OPENSTA))
      add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "Remove OpenSTA from Production build"
-        COMMAND ${CMAKE_COMMAND} -E rm
+        COMMAND ${CMAKE_COMMAND} -E rm -f
           ${CMAKE_CURRENT_BINARY_DIR}/bin/sta
         )
   endif()
