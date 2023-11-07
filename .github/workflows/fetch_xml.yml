@@ -134,7 +134,7 @@ jobs:
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
-        sudo apt-get install xmlstarlet
+        sudo apt-get install -y xmlstarlet
 #        bash .github/workflows/install_litex_ubuntu.sh
 
     - name: Setup Python Packages
