@@ -7,7 +7,7 @@ on:
 
 jobs:
   XML_Digest_and_test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -190,6 +190,7 @@ jobs:
 
                 xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
                 echo "./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> raptor_run
+                echo "echo \"########################################\"" >> raptor_run
                 done
          done
 
