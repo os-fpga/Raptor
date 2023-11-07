@@ -89,10 +89,6 @@ jobs:
           done
           ls -l 
 
-    - name: Copy XMLs files
-      run: |
-          bash .github/copy_arch.sh
-
     - name: show status
       run: git status
 
@@ -125,7 +121,7 @@ jobs:
     - name: Check changes are related
       id: is_change
       run: |
-        any_diff=`git diff  --name-status -- '*.${{ env.EXTENSION }}'`
+        any_diff=`git status --porcelain '*.${{ env.EXTENSION }}'`
         echo $any_diff
         if [ ! -z "$any_diff" ]
         then
@@ -134,36 +130,11 @@ jobs:
           echo "nothing changed in ${{ matrix.updates }} files"
         fi
 
-    - name: Add and Push files
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      uses: GuillaumeFalourd/git-commit-push@v1.3
-      with:
-        email: nadeem.yaseen@rapidsilicon.com
-        name: nadeemyaseen-rs
-        commit_message: Added ${{ matrix.updates }} files from ${{ github.event.client_payload.new_release }}
-        files: "${{ env.path_to_commit }}"
-        target_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
-        force: true
-
-# if above step pass then create PR.          
-    - name: Create PR
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      uses: repo-sync/pull-request@v2
-      with:
-          source_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}                                # branch having xmls files
-          destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling ${{ matrix.updates }} release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
-          pr_body: "An automated PR to check in New ${{ matrix.updates }} Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
-          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
-          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
-          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
-          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Install dependencies
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
         bash .github/workflows/install_ubuntu_dependencies_build.sh
+        sudo apt-get install -y xmlstarlet
 #        bash .github/workflows/install_litex_ubuntu.sh
 
     - name: Setup Python Packages
@@ -175,7 +146,7 @@ jobs:
       if: contains(steps.is_change.outputs.has_changed, 'true')
       uses: hendrikmuhs/ccache-action@v1.2.3
       with:
-        key: linux-${{ matrix.mode }}
+        key: linux-${{ matrix.updates }}
 
     - name: Configure shell
       run: |
@@ -202,11 +173,52 @@ jobs:
         which $CC && $CC --version
         which $CXX && $CXX --version
 
-    - name: Test Release
+    - name: Build Raptor
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
-        make release test/batch
+        make release
+
+    - name: Run Test
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+         changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
+         echo ""
+         echo "Change folder are $changes_in"
+         echo ""
+         for c in $changes_in
+         do
+           d=`xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml`
+           echo "###############################################"
+           echo "####     Device is $d      ####"
+           echo "###############################################"
+           ./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl
+         done
+
+    - name: Add and Push files
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      uses: GuillaumeFalourd/git-commit-push@v1.3
+      with:
+        email: nadeem.yaseen@rapidsilicon.com
+        name: nadeemyaseen-rs
+        commit_message: Added ${{ matrix.updates }} files from ${{ github.event.client_payload.new_release }}
+        files: "${{ env.path_to_commit }}"
+        target_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
+        force: true
+
+# if above step pass then create PR.          
+    - name: Create PR
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      uses: repo-sync/pull-request@v2
+      with:
+          source_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}                                # branch having xmls files
+          destination_branch: "main"                                                                   # name of branch on which PR go
+          pr_title: "Pulling ${{ matrix.updates }} release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_body: "An automated PR to check in New ${{ matrix.updates }} Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
+          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
+          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
+          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #    - name: automerge XMLs PR
 #      uses: "pascalgn/automerge-action@v0.15.6"
