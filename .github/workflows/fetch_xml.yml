@@ -178,7 +178,7 @@ jobs:
       run: |
         make release
 
-    - name: Run Test
+    - name: Extract device name
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
          changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
@@ -187,12 +187,18 @@ jobs:
          echo ""
          for c in $changes_in
          do
-           d=`xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml`
-           echo "###############################################"
-           echo "####     Device is $d      ####"
-           echo "###############################################"
-           ./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl
+
+                xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
+                echo "./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> raptor_run
+                done
          done
+
+    - name: Run test
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+        cat raptor_run
+        chmod +x raptor_run
+        ./raptor_run
 
     - name: Add and Push files
       if: contains(steps.is_change.outputs.has_changed, 'true')
