@@ -19,7 +19,7 @@ analyze
 # RTL Simulation
 simulate rtl verilator syn_tb_rtl.fst
 set projName oneff_gemini_clean
-set basePath [pwd]/$projName/run_1/synth_1_1
+set basePath [pwd]/$projName/run_1/
 set simRtlPath $basePath/simulate_rtl
 set exists [file exists $simRtlPath/syn_tb_rtl.fst]
 if {$exists != 1} { puts "syn_tb_rtl.fst does not exists"; exit 1 }
@@ -30,7 +30,7 @@ synthesize delay
 
 # Post-Synthesis gate-level Simulation
 simulate gate verilator syn_tb_gate.fst
-set simGatePath $basePath/simulate_gate
+set simGatePath $basePath/synth_1_1/simulate_gate
 set exists [file exists $simGatePath/syn_tb_gate.fst]
 if {$exists != 1} { puts "syn_tb_gate.fst does not exists"; exit 1 }
 
@@ -41,7 +41,7 @@ route
 
 # Post-Route Simulation
 simulate pnr verilator syn_tb_pnr.fst
-set simPnrPath $basePath/simulate_pnr
+set simPnrPath $basePath/synth_1_1/impl_1_1_1/simulate_pnr
 set exists [file exists $simPnrPath/syn_tb_pnr.fst]
 if {$exists != 1} { puts "syn_tb_pnr.fst does not exists"; exit 1 }
 
