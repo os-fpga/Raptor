@@ -196,8 +196,8 @@ else()
 endif()
 message(STATUS "The version is ::: ${RELEASE_VERSION}")
 set(VERSION_MAJOR_COM 0)
-set(VERSION_MINOR_COM 7)
-set(VERSION_PATCH_COM 22)
+set(VERSION_MINOR_COM 8)
+set(VERSION_PATCH_COM 55)
 configure_file(raptor_version.h.in ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/foedag_version.h)
 
 # Require swig 3

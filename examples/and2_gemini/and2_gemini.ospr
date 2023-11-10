@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--                                                   -->
 <!--Copyright (c) 2021-2022 The Open-Source FPGA Foundation.-->
-<Project Version="0.7.44">
+<Project Version="0.8.55">
     <Configuration>
         <Option Name="ID" Val="20230802121343313"/>
         <Option Name="ActiveSimSet" Val="sim_1"/>
@@ -26,19 +26,19 @@
     </IpConfig>
     <FileSets>
         <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="/and2_gemini.srcs/constrs_1">
-            <File Path="$OSRCDIR/and2_gemini.srcs/constrs_1/constraints.sdc"/>
+            <File Path="$OSRCDIR/run_1/and2_gemini.srcs/constrs_1/constraints.sdc"/>
         </FileSet>
         <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="/and2_gemini.srcs/sim_1">
-            <File Path="$OSRCDIR/and2_gemini.srcs/sim_1/testbench_and2.v"/>
-            <Group Id="11" Name="" Files="$OSRCDIR/and2_gemini.srcs/sim_1/testbench_and2.v" LibCommand="" LibName=""/>
+            <File Path="$OSRCDIR/run_1/and2_gemini.srcs/sim_1/testbench_and2.v"/>
+            <Group Id="11" Name="" Files="$OSRCDIR/run_1/and2_gemini.srcs/sim_1/testbench_and2.v" LibCommand="" LibName=""/>
             <Config>
                 <Option Name="TopModule" Val="testbench_and2"/>
                 <Option Name="TopModuleLib" Val=""/>
             </Config>
         </FileSet>
         <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="/and2_gemini.srcs/sources_1">
-            <File Path="$OSRCDIR/and2_gemini.srcs/sources_1/and2.v"/>
-            <Group Id="7" Name="" Files="$OSRCDIR/and2_gemini.srcs/sources_1/and2.v" LibCommand="" LibName=""/>
+            <File Path="$OSRCDIR/run_1/and2_gemini.srcs/sources_1/and2.v"/>
+            <Group Id="7" Name="" Files="$OSRCDIR/run_1/and2_gemini.srcs/sources_1/and2.v" LibCommand="" LibName=""/>
             <Config>
                 <Option Name="TopModule" Val="and2"/>
                 <Option Name="TopModuleLib" Val=""/>
@@ -58,7 +58,7 @@
         </Run>
     </Runs>
     <Tasks Version="0.0.0">
-        <Task ID="0" Status="2" Enable="1"/>
+        <Task ID="0" Status="0" Enable="1"/>
         <Task ID="1" Status="0" Enable="1"/>
         <Task ID="6" Status="0" Enable="1"/>
         <Task ID="10" Status="0" Enable="1"/>
@@ -72,5 +72,5 @@
         <Task ID="34" Status="0" Enable="1"/>
         <Task ID="37" Status="0" Enable="1"/>
     </Tasks>
-    <Compiler Version="0.0.0" CompilerState="2"/>
+    <Compiler Version="0.0.0" CompilerState="1"/>
 </Project>
