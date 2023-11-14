@@ -1,0 +1,117 @@
+{
+  "openfpga": {
+    "default": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "area": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "performance": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    }
+  },
+  "vivado": {
+    "default": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "area": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "performance": {
+      "clk": {
+        "frequency": 8.889,
+        "input_delay": 1,
+        "output_delay": 1
+      }
+    }
+  },
+  "quartus": {
+    "default": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "area": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "performance": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    }
+  },
+  "diamond": {
+    "default": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "area": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "performance": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    }
+  },
+  "General": {
+    "default": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "area": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    },
+    "performance": {
+      "clk": {
+        "frequency": null,
+        "input_delay": null,
+        "output_delay": null
+      }
+    }
+  }
+}

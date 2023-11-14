@@ -1,0 +1,550 @@
+Group,Bump/Pin Name,Customer Name,Ball ID,Bump center_x,Bump center_y,Ball center_x,Ball center_y,IO_tile_pin,IO_tile_pin_x,IO_tile_pin_y,IO_tile_pin_z,EFPGA_PIN,Fullchip_NAME,MODE_BP_DIR_A_TX,MODE_BP_SDR_A_TX,MODE_BP_DDR_A_TX,MODE_RATE_3_A_TX,MODE_RATE_4_A_TX,MODE_RATE_5_A_TX,MODE_RATE_6_A_TX,MODE_RATE_7_A_TX,MODE_RATE_8_A_TX,MODE_RATE_9_A_TX,MODE_RATE_10_A_TX,MODE_BP_DIR_B_TX,MODE_BP_SDR_B_TX,MODE_BP_DDR_B_TX,MODE_RATE_3_B_TX,MODE_RATE_4_B_TX,MODE_RATE_5_B_TX,MODE_BP_DIR_A_RX,MODE_BP_SDR_A_RX,MODE_BP_DDR_A_RX,MODE_RATE_3_A_RX,MODE_RATE_4_A_RX,MODE_RATE_5_A_RX,MODE_RATE_6_A_RX,MODE_RATE_7_A_RX,MODE_RATE_8_A_RX,MODE_RATE_9_A_RX,MODE_RATE_10_A_RX,MODE_BP_DIR_B_RX,MODE_BP_SDR_B_RX,MODE_BP_DDR_B_RX,MODE_RATE_3_B_RX,MODE_RATE_4_B_RX,MODE_RATE_5_B_RX,MODE_MIPI,MODE_GPIO,MODE_UART0,MODE_UART1,MODE_I2C,MODE_SPI0,MODE_PWM,MODE_DDR,MODE_USB,MODE_ETH,Ref clock,BANK,ALT Function,Debug Mode,Scan Mode,Mbist Mode,Type,Direction,Voltage,Power Pad,Discription,Voltage2,Remark,Identifier,Customer Internal Name,Main Function,IS_FPGA_GPIO
+GPIO,GPIO_A_0,BOOT_CONFIG_DONE_GPIO_0,D5,6150,5967.8,21000,21000,FPGA_2_8_32,2,8,32,F2A_8240,fpga_pad_i[0],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_clk_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO0,SOC_GPIO0_O,SoC GPIO[0],Y
+GPIO,GPIO_A_1,BOOT_CONFIG_ERROR_GPIO_1,C3,6280,5967.8,22000,21000,FPGA_2_8_33,2,8,33,F2A_8241,fpga_pad_i[1],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_data_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO1,SOC_GPIO1_O,SoC GPIO[1],Y
+GPIO,GPIO_A_2,BOOT_UART_TX_GPIO_2,D6,5825,5855.2,23000,21000,FPGA_2_8_34,2,8,34,F2A_8242,fpga_pad_i[2],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_cmd_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO2,SOC_GPIO2_O,SoC GPIO[2],Y
+GPIO,GPIO_A_3,BOOT_UART_RX_GPIO_3,C5,5955,5855.2,24000,21000,FPGA_2_8_35,2,8,35,F2A_8243,fpga_pad_i[3],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_clk_i,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO3,SOC_GPIO3_O,SoC GPIO[3],Y
+GPIO,GPIO_A_4,BOOT_SPI_CS_GPIO_4,C4,6085,5855.2,25000,21000,FPGA_2_8_36,2,8,36,F2A_8244,fpga_pad_i[4],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_data_i,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO4,SOC_GPIO4_O,SoC GPIO[4],Y
+GPIO,GPIO_A_5,BOOT_SPI_MOSI_DQ0_GPIO_5,C7,6215,5855.2,26000,21000,FPGA_2_8_37,2,8,37,F2A_8245,fpga_pad_i[5],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_rst_n,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO5,SOC_GPIO5_O,SoC GPIO[5],Y
+GPIO,GPIO_A_6,BOOT_SPI_MISO_DQ1_GPIO_6,D8,6345,5855.2,27000,21000,FPGA_2_8_38,2,8,38,F2A_8246,fpga_pad_i[6],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,CONFIG_DONE,CONFIG_DONE,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO6_CONFIG_DONE,SOC_GPIO6_O,SoC GPIO[6],Y
+GPIO,GPIO_A_7,BOOT_SPI_DQ2_GPIO_7,C6,5760,5742.6,18000,22000,FPGA_2_8_39,2,8,39,F2A_8247,fpga_pad_i[7],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,CONFIG_ERROR,CONFIG_ERROR,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO7_CONFIG_ERROR,SOC_GPIO7_O,SoC GPIO[7],Y
+GPIO,GPIO_B_0,SOC_UART0_TX_8,F4,6345,5630,27000,22000,FPGA_2_8_40,2,8,40,F2A_8248,fpga_pad_i[8],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,,,,sys_clk,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,UART0_TX,SOC_GPIO8_O,UART0_TX,Y
+GPIO,GPIO_B_1,SOC_UART0_RX_9,F5,5760,5517.4,18000,23000,FPGA_2_8_41,2,8,41,F2A_8249,fpga_pad_i[9],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,,,,sys_clk,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,UART0_RX,SOC_GPIO9_O,UART0_RX,Y
+GPIO,GPIO_B_2,SOC_GPIO8_UART1_TX_10,E7,5890,5517.4,19000,23000,FPGA_2_8_42,2,8,42,F2A_8250,fpga_pad_i[10],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,Y,,,,,,,sys_clk,,UART1_TX,Debug_0(AFReady),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO8_UART1_TX,SOC_GPIO10_O,SoC GPIO[8],Y
+GPIO,GPIO_B_3,SOC_GPIO9_UART1_RX_11,E6,6020,5517.4,20000,23000,FPGA_2_8_43,2,8,43,F2A_8251,fpga_pad_i[11],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,Y,,,,,,,sys_clk,,UART1_RX,Debug_1(AFValid),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO9_UART1_RX,SOC_GPIO11_O,SoC GPIO[9],Y
+GPIO,GPIO_B_4,SOC_SPI_CS_12,E5,6150,5517.4,21000,23000,FPGA_2_8_44,2,8,44,F2A_8252,fpga_pad_i[12],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_2(ATBytes),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_CS,SOC_GPIO12_O,SPI_CS,Y
+GPIO,GPIO_B_5,SOC_GPIO10_13,E4,6280,5517.4,22000,23000,FPGA_2_8_45,2,8,45,F2A_8253,fpga_pad_i[13],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_3(ATData[0]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO10,SOC_GPIO13_O,SoC GPIO[10],Y
+GPIO,GPIO_B_6,SOC_SPI_MOSI_14,E3,5825,5404.8,23000,23000,FPGA_2_8_46,2,8,46,F2A_8254,fpga_pad_i[14],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_4(ATData[1]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_MOSI,SOC_GPIO14_O,SPI_MOSI (DQ0),Y
+GPIO,GPIO_B_7,SOC_SPI_MISO_15,F3,5955,5404.8,24000,23000,FPGA_2_8_47,2,8,47,F2A_8255,fpga_pad_i[15],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_5(ATData[2]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_MISO,SOC_GPIO15_O,SPI_MISO (DQ1),Y
+GPIO,GPIO_B_8,SOC_SPI_DQ2_16,D3,6085,5404.8,25000,23000,FPGA_3_8_24,3,8,24,F2A_8088,fpga_pad_i[16],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_6(ATData[3]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_DQ2,SOC_GPIO16_O,SPI_DQ2,Y
+GPIO,GPIO_B_9,SOC_SPI_DQ3_17,E2,6215,5404.8,26000,23000,FPGA_3_8_25,3,8,25,F2A_8089,fpga_pad_i[17],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_7(ATData[4]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_DQ3,SOC_GPIO17_O,SPI_DQ3,Y
+GPIO,GPIO_B_10,SOC_GPIO11_18,F6,6345,5404.8,27000,23000,FPGA_3_8_26,3,8,26,F2A_8090,fpga_pad_i[18],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_8(ATData[5]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO11,SOC_GPIO18_O,SoC GPIO[11],Y
+GPIO,GPIO_B_11,SOC_I2C_SDA_19,F7,5760,5292.2,18000,24000,FPGA_3_8_27,3,8,27,F2A_8091,fpga_pad_i[19],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,Y,,,,,,sys_clk,,,Debug_9(ATData[6]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,I2C_SDA,SOC_GPIO19_O,I2C_SDA,Y
+GPIO,GPIO_B_12,SOC_GPIO12_20,F8,5890,5292.2,19000,24000,FPGA_3_8_28,3,8,28,F2A_8092,fpga_pad_i[20],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_10(ATData[7]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO12,SOC_GPIO20_O,SoC GPIO[12] (SW0),Y
+GPIO,GPIO_B_13,SOC_GPIO13_21,D2,6020,5292.2,20000,24000,FPGA_3_8_29,3,8,29,F2A_8093,fpga_pad_i[21],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_11(ATData[8]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO13,SOC_GPIO21_O,SoC GPIO[13] (SW1),Y
+GPIO,GPIO_B_14,SOC_GPIO14_22,G8,6150,5292.2,21000,24000,FPGA_3_8_30,3,8,30,F2A_8094,fpga_pad_i[22],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_12(ATData[9]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO14,SOC_GPIO22_O,SoC GPIO[14] (SW2),Y
+GPIO,GPIO_B_15,SOC_GPIO15_23,E8,6280,5292.2,22000,24000,FPGA_3_8_31,3,8,31,F2A_8095,fpga_pad_i[23],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_13(ATData[10]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO15,SOC_GPIO23_O,SoC GPIO[15] (SW3),Y
+GPIO,GPIO_C_0,SOC_GPIO16_PWM0_24,H8,5825,5179.6,23000,24000,FPGA_3_8_32,3,8,32,F2A_8096,fpga_pad_i[24],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,sys_clk,,gpt_pwm_0,Debug_14(ATData[11]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO16_PWM0,SOC_GPIO24_O,SoC GPIO[16],Y
+GPIO,GPIO_C_1,SOC_GPIO17_PWM1_25,E1,5955,5179.6,24000,24000,FPGA_3_8_33,3,8,33,F2A_8097,fpga_pad_i[25],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_1,Debug_15(ATData[12]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO17_PWM1,SOC_GPIO25_O,SoC GPIO[17],Y
+GPIO,GPIO_C_2,SOC_GPIO18_PWM2_26,H3,6085,5179.6,25000,24000,FPGA_3_8_34,3,8,34,F2A_8098,fpga_pad_i[26],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_2,Debug_16(ATData[13]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO18_PWM2,SOC_GPIO26_O,SoC GPIO[18],Y
+GPIO,GPIO_C_3,SOC_GPIO19_PWM3_27,H4,6215,5179.6,26000,24000,FPGA_3_8_35,3,8,35,F2A_8099,fpga_pad_i[27],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_3,Debug_17(ATData[14]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO19_PWM3,SOC_GPIO27_O,SoC GPIO[19],Y
+GPIO,GPIO_C_4,SOC_GPIO20_UART0_CTS_28,G3,6345,5179.6,27000,24000,FPGA_3_8_36,3,8,36,F2A_8100,fpga_pad_i[28],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART0_CTS,Debug_18(ATData[15]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO20_UART0_CTS,SOC_GPIO28_O,SoC GPIO[20],Y
+GPIO,GPIO_C_5,SOC_GPIO21_UART0_RTS_29,H7,5760,5067,18000,25000,FPGA_3_8_37,3,8,37,F2A_8101,fpga_pad_i[29],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART0_RTS,Debug_19(ATId[0]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO21_UART0_RTS,SOC_GPIO29_O,SoC GPIO[21],Y
+GPIO,GPIO_C_6,SOC_GPIO22_UART1_CTS_30,G2,5890,5067,19000,25000,FPGA_3_8_38,3,8,38,F2A_8102,fpga_pad_i[30],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART1_CTS,Debug_20(ATId[1]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO22_UART1_CTS,SOC_GPIO30_O,SoC GPIO[22],Y
+GPIO,GPIO_C_7,SOC_GPIO23_UART1_RTS_31,H6,6020,5067,20000,25000,FPGA_3_8_39,3,8,39,F2A_8103,fpga_pad_i[31],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART1_RTS,Debug_21(ATId[2]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO23_UART1_RTS,SOC_GPIO31_O,SoC GPIO[23],Y
+GPIO,GPIO_C_8,SOC_GPIO24_32,H1,6150,5067,21000,25000,FPGA_3_8_40,3,8,40,F2A_8104,fpga_pad_i[32],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_22(ATId[3]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO24,SOC_GPIO32_O,SoC GPIO[24],Y
+GPIO,GPIO_C_9,SOC_GPIO25_33,H5,6280,5067,22000,25000,FPGA_3_8_41,3,8,41,F2A_8105,fpga_pad_i[33],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_23(ATId[4]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO25,SOC_GPIO33_O,SoC GPIO[25] ,Y
+GPIO,GPIO_C_10,SOC_GPIO26_34,G6,5825,4954.4,23000,25000,FPGA_3_8_42,3,8,42,F2A_8106,fpga_pad_i[34],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_24(ATId[5]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO26,SOC_GPIO34_O,SoC GPIO[26],Y
+GPIO,GPIO_C_11,SOC_GPIO27_35,J8,5955,4954.4,24000,25000,FPGA_3_8_43,3,8,43,F2A_8107,fpga_pad_i[35],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_25(ATId[6]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO27,SOC_GPIO35_O,SoC GPIO[27],Y
+GPIO,GPIO_C_12,SOC_GPIO28_36,F2,6085,4954.4,25000,25000,FPGA_3_8_44,3,8,44,F2A_8108,fpga_pad_i[36],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_26(ATReady),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO28,SOC_GPIO36_O,SoC GPIO[28],Y
+GPIO,GPIO_C_13,SOC_GPIO29_37,G5,6215,4954.4,26000,25000,FPGA_3_8_45,3,8,45,F2A_8109,fpga_pad_i[37],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_27(ATValid),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO29,SOC_GPIO37_O,SoC GPIO[29],Y
+GPIO,GPIO_C_14,SOC_GPIO30_38,F1,6345,4954.4,27000,25000,FPGA_3_8_46,3,8,46,F2A_8110,fpga_pad_i[38],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO30,SOC_GPIO38_O,SoC GPIO[30],Y
+GPIO,GPIO_C_15,SOC_GPIO31_39,H2,5760,4841.8,18000,26000,FPGA_3_8_47,3,8,47,F2A_8111,fpga_pad_i[39],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO31,SOC_GPIO39_O,SoC GPIO[31],Y
+GPIO,GPIO_A_0,BOOT_CONFIG_DONE_GPIO_0,D5,6150,5967.8,21000,21000,FPGA_5_8_0,5,8,0,A2F_8576,fpga_pad_c[0],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_clk_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO0,SOC_GPIO0_I,SoC GPIO[0],Y
+GPIO,GPIO_A_1,BOOT_CONFIG_ERROR_GPIO_1,C3,6280,5967.8,22000,21000,FPGA_5_8_1,5,8,1,A2F_8577,fpga_pad_c[1],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_data_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO1,SOC_GPIO1_I,SoC GPIO[1],Y
+GPIO,GPIO_A_2,BOOT_UART_TX_GPIO_2,D6,5825,5855.2,23000,21000,FPGA_5_8_2,5,8,2,A2F_8578,fpga_pad_c[2],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_cmd_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO2,SOC_GPIO2_I,SoC GPIO[2],Y
+GPIO,GPIO_A_3,BOOT_UART_RX_GPIO_3,C5,5955,5855.2,24000,21000,FPGA_5_8_3,5,8,3,A2F_8579,fpga_pad_c[3],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_clk_i,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO3,SOC_GPIO3_I,SoC GPIO[3],Y
+GPIO,GPIO_A_4,BOOT_SPI_CS_GPIO_4,C4,6085,5855.2,25000,21000,FPGA_5_8_4,5,8,4,A2F_8496,fpga_pad_c[4],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_data_i,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO4,SOC_GPIO4_I,SoC GPIO[4],Y
+GPIO,GPIO_A_5,BOOT_SPI_MOSI_DQ0_GPIO_5,C7,6215,5855.2,26000,21000,FPGA_5_8_5,5,8,5,A2F_8497,fpga_pad_c[5],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_rst_n,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO5,SOC_GPIO5_I,SoC GPIO[5],Y
+GPIO,GPIO_A_6,BOOT_SPI_MISO_DQ1_GPIO_6,D8,6345,5855.2,27000,21000,FPGA_5_8_6,5,8,6,A2F_8498,fpga_pad_c[6],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,CONFIG_DONE,CONFIG_DONE,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO6_CONFIG_DONE,SOC_GPIO6_I,SoC GPIO[6],Y
+GPIO,GPIO_A_7,BOOT_SPI_DQ2_GPIO_7,C6,5760,5742.6,18000,22000,FPGA_5_8_7,5,8,7,A2F_8499,fpga_pad_c[7],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,CONFIG_ERROR,CONFIG_ERROR,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO7_CONFIG_ERROR,SOC_GPIO7_I,SoC GPIO[7],Y
+GPIO,GPIO_B_0,SOC_UART0_TX_8,F4,6345,5630,27000,22000,FPGA_5_8_8,5,8,8,A2F_8500,fpga_pad_c[8],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,,,,sys_clk,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,UART0_TX,SOC_GPIO8_I,UART0_TX,Y
+GPIO,GPIO_B_1,SOC_UART0_RX_9,F5,5760,5517.4,18000,23000,FPGA_5_8_9,5,8,9,A2F_8501,fpga_pad_c[9],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,,,,sys_clk,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,UART0_RX,SOC_GPIO9_I,UART0_RX,Y
+GPIO,GPIO_B_2,SOC_GPIO8_UART1_TX_10,E7,5890,5517.4,19000,23000,FPGA_5_8_10,5,8,10,A2F_8502,fpga_pad_c[10],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,Y,,,,,,,sys_clk,,UART1_TX,Debug_0(AFReady),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO8_UART1_TX,SOC_GPIO10_I,SoC GPIO[8],Y
+GPIO,GPIO_B_3,SOC_GPIO9_UART1_RX_11,E6,6020,5517.4,20000,23000,FPGA_5_8_11,5,8,11,A2F_8503,fpga_pad_c[11],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,Y,,,,,,,sys_clk,,UART1_RX,Debug_1(AFValid),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO9_UART1_RX,SOC_GPIO11_I,SoC GPIO[9],Y
+GPIO,GPIO_B_4,SOC_SPI_CS_12,E5,6150,5517.4,21000,23000,FPGA_5_8_12,5,8,12,A2F_8504,fpga_pad_c[12],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_2(ATBytes),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_CS,SOC_GPIO12_I,SPI_CS,Y
+GPIO,GPIO_B_5,SOC_GPIO10_13,E4,6280,5517.4,22000,23000,FPGA_5_8_13,5,8,13,A2F_8505,fpga_pad_c[13],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_3(ATData[0]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO10,SOC_GPIO13_I,SoC GPIO[10],Y
+GPIO,GPIO_B_6,SOC_SPI_MOSI_14,E3,5825,5404.8,23000,23000,FPGA_5_8_14,5,8,14,A2F_8506,fpga_pad_c[14],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_4(ATData[1]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_MOSI,SOC_GPIO14_I,SPI_MOSI (DQ0),Y
+GPIO,GPIO_B_7,SOC_SPI_MISO_15,F3,5955,5404.8,24000,23000,FPGA_5_8_15,5,8,15,A2F_8507,fpga_pad_c[15],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_5(ATData[2]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_MISO,SOC_GPIO15_I,SPI_MISO (DQ1),Y
+GPIO,GPIO_B_8,SOC_SPI_DQ2_16,D3,6085,5404.8,25000,23000,FPGA_6_8_0,6,8,0,A2F_8352,fpga_pad_c[16],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_6(ATData[3]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_DQ2,SOC_GPIO16_I,SPI_DQ2,Y
+GPIO,GPIO_B_9,SOC_SPI_DQ3_17,E2,6215,5404.8,26000,23000,FPGA_6_8_1,6,8,1,A2F_8353,fpga_pad_c[17],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_7(ATData[4]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_DQ3,SOC_GPIO17_I,SPI_DQ3,Y
+GPIO,GPIO_B_10,SOC_GPIO11_18,F6,6345,5404.8,27000,23000,FPGA_6_8_2,6,8,2,A2F_8354,fpga_pad_c[18],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_8(ATData[5]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO11,SOC_GPIO18_I,SoC GPIO[11],Y
+GPIO,GPIO_B_11,SOC_I2C_SDA_19,F7,5760,5292.2,18000,24000,FPGA_6_8_3,6,8,3,A2F_8355,fpga_pad_c[19],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,Y,,,,,,sys_clk,,,Debug_9(ATData[6]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,I2C_SDA,SOC_GPIO19_I,I2C_SDA,Y
+GPIO,GPIO_B_12,SOC_GPIO12_20,F8,5890,5292.2,19000,24000,FPGA_6_8_4,6,8,4,A2F_8356,fpga_pad_c[20],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_10(ATData[7]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO12,SOC_GPIO20_I,SoC GPIO[12] (SW0),Y
+GPIO,GPIO_B_13,SOC_GPIO13_21,D2,6020,5292.2,20000,24000,FPGA_6_8_5,6,8,5,A2F_8357,fpga_pad_c[21],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_11(ATData[8]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO13,SOC_GPIO21_I,SoC GPIO[13] (SW1),Y
+GPIO,GPIO_B_14,SOC_GPIO14_22,G8,6150,5292.2,21000,24000,FPGA_6_8_6,6,8,6,A2F_8358,fpga_pad_c[22],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_12(ATData[9]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO14,SOC_GPIO22_I,SoC GPIO[14] (SW2),Y
+GPIO,GPIO_B_15,SOC_GPIO15_23,E8,6280,5292.2,22000,24000,FPGA_6_8_7,6,8,7,A2F_8359,fpga_pad_c[23],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_13(ATData[10]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO15,SOC_GPIO23_I,SoC GPIO[15] (SW3),Y
+GPIO,GPIO_C_0,SOC_GPIO16_PWM0_24,H8,5825,5179.6,23000,24000,FPGA_6_8_8,6,8,8,A2F_8360,fpga_pad_c[24],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,sys_clk,,gpt_pwm_0,Debug_14(ATData[11]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO16_PWM0,SOC_GPIO24_I,SoC GPIO[16],Y
+GPIO,GPIO_C_1,SOC_GPIO17_PWM1_25,E1,5955,5179.6,24000,24000,FPGA_6_8_9,6,8,9,A2F_8361,fpga_pad_c[25],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_1,Debug_15(ATData[12]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO17_PWM1,SOC_GPIO25_I,SoC GPIO[17],Y
+GPIO,GPIO_C_2,SOC_GPIO18_PWM2_26,H3,6085,5179.6,25000,24000,FPGA_6_8_10,6,8,10,A2F_8362,fpga_pad_c[26],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_2,Debug_16(ATData[13]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO18_PWM2,SOC_GPIO26_I,SoC GPIO[18],Y
+GPIO,GPIO_C_3,SOC_GPIO19_PWM3_27,H4,6215,5179.6,26000,24000,FPGA_6_8_11,6,8,11,A2F_8363,fpga_pad_c[27],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_3,Debug_17(ATData[14]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO19_PWM3,SOC_GPIO27_I,SoC GPIO[19],Y
+GPIO,GPIO_C_4,SOC_GPIO20_UART0_CTS_28,G3,6345,5179.6,27000,24000,FPGA_6_8_12,6,8,12,A2F_8280,fpga_pad_c[28],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART0_CTS,Debug_18(ATData[15]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO20_UART0_CTS,SOC_GPIO28_I,SoC GPIO[20],Y
+GPIO,GPIO_C_5,SOC_GPIO21_UART0_RTS_29,H7,5760,5067,18000,25000,FPGA_6_8_13,6,8,13,A2F_8281,fpga_pad_c[29],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART0_RTS,Debug_19(ATId[0]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO21_UART0_RTS,SOC_GPIO29_I,SoC GPIO[21],Y
+GPIO,GPIO_C_6,SOC_GPIO22_UART1_CTS_30,G2,5890,5067,19000,25000,FPGA_6_8_14,6,8,14,A2F_8282,fpga_pad_c[30],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART1_CTS,Debug_20(ATId[1]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO22_UART1_CTS,SOC_GPIO30_I,SoC GPIO[22],Y
+GPIO,GPIO_C_7,SOC_GPIO23_UART1_RTS_31,H6,6020,5067,20000,25000,FPGA_6_8_15,6,8,15,A2F_8283,fpga_pad_c[31],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART1_RTS,Debug_21(ATId[2]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO23_UART1_RTS,SOC_GPIO31_I,SoC GPIO[23],Y
+GPIO,GPIO_C_8,SOC_GPIO24_32,H1,6150,5067,21000,25000,FPGA_8_8_0,8,8,0,A2F_8284,fpga_pad_c[32],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_22(ATId[3]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO24,SOC_GPIO32_I,SoC GPIO[24],Y
+GPIO,GPIO_C_9,SOC_GPIO25_33,H5,6280,5067,22000,25000,FPGA_8_8_1,8,8,1,A2F_8285,fpga_pad_c[33],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_23(ATId[4]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO25,SOC_GPIO33_I,SoC GPIO[25] ,Y
+GPIO,GPIO_C_10,SOC_GPIO26_34,G6,5825,4954.4,23000,25000,FPGA_8_8_2,8,8,2,A2F_8286,fpga_pad_c[34],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_24(ATId[5]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO26,SOC_GPIO34_I,SoC GPIO[26],Y
+GPIO,GPIO_C_11,SOC_GPIO27_35,J8,5955,4954.4,24000,25000,FPGA_8_8_3,8,8,3,A2F_8287,fpga_pad_c[35],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_25(ATId[6]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO27,SOC_GPIO35_I,SoC GPIO[27],Y
+GPIO,GPIO_C_12,SOC_GPIO28_36,F2,6085,4954.4,25000,25000,FPGA_8_8_4,8,8,4,A2F_8288,fpga_pad_c[36],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_26(ATReady),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO28,SOC_GPIO36_I,SoC GPIO[28],Y
+GPIO,GPIO_C_13,SOC_GPIO29_37,G5,6215,4954.4,26000,25000,FPGA_8_8_5,8,8,5,A2F_8289,fpga_pad_c[37],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_27(ATValid),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO29,SOC_GPIO37_I,SoC GPIO[29],Y
+GPIO,GPIO_C_14,SOC_GPIO30_38,F1,6345,4954.4,27000,25000,FPGA_8_8_6,8,8,6,A2F_8290,fpga_pad_c[38],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO30,SOC_GPIO38_I,SoC GPIO[30],Y
+GPIO,GPIO_C_15,SOC_GPIO31_39,H2,5760,4841.8,18000,26000,FPGA_8_8_7,8,8,7,A2F_8291,fpga_pad_c[39],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO31,SOC_GPIO39_I,SoC GPIO[31],Y
+GPIO,GPIO_A_0,BOOT_CONFIG_DONE_GPIO_0,D5,6150,5967.8,21000,21000,FPGA_9_8_24,9,8,24,F2A_8384,fpga_pad_oen[0],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_clk_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO0,SOC_GPIO0_OE,SoC GPIO[0],Y
+GPIO,GPIO_A_1,BOOT_CONFIG_ERROR_GPIO_1,C3,6280,5967.8,22000,21000,FPGA_9_8_25,9,8,25,F2A_8385,fpga_pad_oen[1],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_data_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO1,SOC_GPIO1_OE,SoC GPIO[1],Y
+GPIO,GPIO_A_2,BOOT_UART_TX_GPIO_2,D6,5825,5855.2,23000,21000,FPGA_9_8_26,9,8,26,F2A_8386,fpga_pad_oen[2],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_cmd_o,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO2,SOC_GPIO2_OE,SoC GPIO[2],Y
+GPIO,GPIO_A_3,BOOT_UART_RX_GPIO_3,C5,5955,5855.2,24000,21000,FPGA_9_8_27,9,8,27,F2A_8387,fpga_pad_oen[3],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_clk_i,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO3,SOC_GPIO3_OE,SoC GPIO[3],Y
+GPIO,GPIO_A_4,BOOT_SPI_CS_GPIO_4,C4,6085,5855.2,25000,21000,FPGA_9_8_28,9,8,28,F2A_8388,fpga_pad_oen[4],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_data_i,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO4,SOC_GPIO4_OE,SoC GPIO[4],Y
+GPIO,GPIO_A_5,BOOT_SPI_MOSI_DQ0_GPIO_5,C7,6215,5855.2,26000,21000,FPGA_9_8_29,9,8,29,F2A_8389,fpga_pad_oen[5],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,dbg_fcb_icb_rst_n,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO5,SOC_GPIO5_OE,SoC GPIO[5],Y
+GPIO,GPIO_A_6,BOOT_SPI_MISO_DQ1_GPIO_6,D8,6345,5855.2,27000,21000,FPGA_9_8_30,9,8,30,F2A_8390,fpga_pad_oen[6],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,CONFIG_DONE,CONFIG_DONE,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO6_CONFIG_DONE,SOC_GPIO6_OE,SoC GPIO[6],Y
+GPIO,GPIO_A_7,BOOT_SPI_DQ2_GPIO_7,C6,5760,5742.6,18000,22000,FPGA_9_8_31,9,8,31,F2A_8391,fpga_pad_oen[7],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,CONFIG_ERROR,CONFIG_ERROR,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO7_CONFIG_ERROR,SOC_GPIO7_OE,SoC GPIO[7],Y
+GPIO,GPIO_B_0,SOC_UART0_TX_8,F4,6345,5630,27000,22000,FPGA_9_8_32,9,8,32,F2A_8392,fpga_pad_oen[8],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,,,,sys_clk,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,UART0_TX,SOC_GPIO8_OE,UART0_TX,Y
+GPIO,GPIO_B_1,SOC_UART0_RX_9,F5,5760,5517.4,18000,23000,FPGA_9_8_33,9,8,33,F2A_8393,fpga_pad_oen[9],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,,,,sys_clk,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,UART0_RX,SOC_GPIO9_OE,UART0_RX,Y
+GPIO,GPIO_B_2,SOC_GPIO8_UART1_TX_10,E7,5890,5517.4,19000,23000,FPGA_9_8_34,9,8,34,F2A_8394,fpga_pad_oen[10],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,Y,,,,,,,sys_clk,,UART1_TX,Debug_0(AFReady),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO8_UART1_TX,SOC_GPIO10_OE,SoC GPIO[8],Y
+GPIO,GPIO_B_3,SOC_GPIO9_UART1_RX_11,E6,6020,5517.4,20000,23000,FPGA_9_8_35,9,8,35,F2A_8395,fpga_pad_oen[11],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,Y,,,,,,,sys_clk,,UART1_RX,Debug_1(AFValid),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO9_UART1_RX,SOC_GPIO11_OE,SoC GPIO[9],Y
+GPIO,GPIO_B_4,SOC_SPI_CS_12,E5,6150,5517.4,21000,23000,FPGA_9_8_36,9,8,36,F2A_8396,fpga_pad_oen[12],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_2(ATBytes),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_CS,SOC_GPIO12_OE,SPI_CS,Y
+GPIO,GPIO_B_5,SOC_GPIO10_13,E4,6280,5517.4,22000,23000,FPGA_9_8_37,9,8,37,F2A_8397,fpga_pad_oen[13],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_3(ATData[0]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO10,SOC_GPIO13_OEN,SoC GPIO[10],Y
+GPIO,GPIO_B_6,SOC_SPI_MOSI_14,E3,5825,5404.8,23000,23000,FPGA_9_8_38,9,8,38,F2A_8398,fpga_pad_oen[14],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_4(ATData[1]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_MOSI,SOC_GPIO14_OEN,SPI_MOSI (DQ0),Y
+GPIO,GPIO_B_7,SOC_SPI_MISO_15,F3,5955,5404.8,24000,23000,FPGA_9_8_39,9,8,39,F2A_8399,fpga_pad_oen[15],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_5(ATData[2]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_MISO,SOC_GPIO15_OEN,SPI_MISO (DQ1),Y
+GPIO,GPIO_B_8,SOC_SPI_DQ2_16,D3,6085,5404.8,25000,23000,FPGA_9_8_40,9,8,40,F2A_8304,fpga_pad_oen[16],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_6(ATData[3]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_DQ2,SOC_GPIO16_OEN,SPI_DQ2,Y
+GPIO,GPIO_B_9,SOC_SPI_DQ3_17,E2,6215,5404.8,26000,23000,FPGA_9_8_41,9,8,41,F2A_8305,fpga_pad_oen[17],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,Y,,,,,sys_clk,,,Debug_7(ATData[4]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,SPI_DQ3,SOC_GPIO17_OEN,SPI_DQ3,Y
+GPIO,GPIO_B_10,SOC_GPIO11_18,F6,6345,5404.8,27000,23000,FPGA_9_8_42,9,8,42,F2A_8306,fpga_pad_oen[18],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_8(ATData[5]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO11,SOC_GPIO18_OEN,SoC GPIO[11],Y
+GPIO,GPIO_B_11,SOC_I2C_SDA_19,F7,5760,5292.2,18000,24000,FPGA_9_8_43,9,8,43,F2A_8307,fpga_pad_oen[19],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,Y,,,,,,sys_clk,,,Debug_9(ATData[6]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,I2C_SDA,SOC_GPIO19_OEN,I2C_SDA,Y
+GPIO,GPIO_B_12,SOC_GPIO12_20,F8,5890,5292.2,19000,24000,FPGA_9_8_44,9,8,44,F2A_8308,fpga_pad_oen[20],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_10(ATData[7]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO12,SOC_GPIO20_OEN,SoC GPIO[12] (SW0),Y
+GPIO,GPIO_B_13,SOC_GPIO13_21,D2,6020,5292.2,20000,24000,FPGA_9_8_45,9,8,45,F2A_8309,fpga_pad_oen[21],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_11(ATData[8]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO13,SOC_GPIO21_OEN,SoC GPIO[13] (SW1),Y
+GPIO,GPIO_B_14,SOC_GPIO14_22,G8,6150,5292.2,21000,24000,FPGA_9_8_46,9,8,46,F2A_8310,fpga_pad_oen[22],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_12(ATData[9]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO14,SOC_GPIO22_OEN,SoC GPIO[14] (SW2),Y
+GPIO,GPIO_B_15,SOC_GPIO15_23,E8,6280,5292.2,22000,24000,FPGA_9_8_47,9,8,47,F2A_8311,fpga_pad_oen[23],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,sys_clk,,,Debug_13(ATData[10]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO15,SOC_GPIO23_OEN,SoC GPIO[15] (SW3),Y
+GPIO,GPIO_C_0,SOC_GPIO16_PWM0_24,H8,5825,5179.6,23000,24000,FPGA_2_8_24,2,8,24,F2A_8312,fpga_pad_oen[24],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,sys_clk,,gpt_pwm_0,Debug_14(ATData[11]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO16_PWM0,SOC_GPIO24_OEN,SoC GPIO[16],Y
+GPIO,GPIO_C_1,SOC_GPIO17_PWM1_25,E1,5955,5179.6,24000,24000,FPGA_2_8_25,2,8,25,F2A_8313,fpga_pad_oen[25],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_1,Debug_15(ATData[12]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO17_PWM1,SOC_GPIO25_OEN,SoC GPIO[17],Y
+GPIO,GPIO_C_2,SOC_GPIO18_PWM2_26,H3,6085,5179.6,25000,24000,FPGA_2_8_26,2,8,26,F2A_8314,fpga_pad_oen[26],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_2,Debug_16(ATData[13]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO18_PWM2,SOC_GPIO26_OEN,SoC GPIO[18],Y
+GPIO,GPIO_C_3,SOC_GPIO19_PWM3_27,H4,6215,5179.6,26000,24000,FPGA_2_8_27,2,8,27,F2A_8315,fpga_pad_oen[27],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,Y,,,,,,gpt_pwm_3,Debug_17(ATData[14]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO19_PWM3,SOC_GPIO27_OEN,SoC GPIO[19],Y
+GPIO,GPIO_C_4,SOC_GPIO20_UART0_CTS_28,G3,6345,5179.6,27000,24000,FPGA_2_8_28,2,8,28,F2A_8316,fpga_pad_oen[28],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART0_CTS,Debug_18(ATData[15]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO20_UART0_CTS,SOC_GPIO28_OEN,SoC GPIO[20],Y
+GPIO,GPIO_C_5,SOC_GPIO21_UART0_RTS_29,H7,5760,5067,18000,25000,FPGA_2_8_29,2,8,29,F2A_8317,fpga_pad_oen[29],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART0_RTS,Debug_19(ATId[0]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO21_UART0_RTS,SOC_GPIO29_OEN,SoC GPIO[21],Y
+GPIO,GPIO_C_6,SOC_GPIO22_UART1_CTS_30,G2,5890,5067,19000,25000,FPGA_2_8_30,2,8,30,F2A_8318,fpga_pad_oen[30],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART1_CTS,Debug_20(ATId[1]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO22_UART1_CTS,SOC_GPIO30_OEN,SoC GPIO[22],Y
+GPIO,GPIO_C_7,SOC_GPIO23_UART1_RTS_31,H6,6020,5067,20000,25000,FPGA_2_8_31,2,8,31,F2A_8319,fpga_pad_oen[31],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,UART1_RTS,Debug_21(ATId[2]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO23_UART1_RTS,SOC_GPIO31_OEN,SoC GPIO[23],Y
+GPIO,GPIO_C_8,SOC_GPIO24_32,H1,6150,5067,21000,25000,FPGA_5_8_24,5,8,24,F2A_8320,fpga_pad_oen[32],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_22(ATId[3]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO24,SOC_GPIO32_OEN,SoC GPIO[24],Y
+GPIO,GPIO_C_9,SOC_GPIO25_33,H5,6280,5067,22000,25000,FPGA_5_8_25,5,8,25,F2A_8321,fpga_pad_oen[33],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_23(ATId[4]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO25,SOC_GPIO33_OEN,SoC GPIO[25] ,Y
+GPIO,GPIO_C_10,SOC_GPIO26_34,G6,5825,4954.4,23000,25000,FPGA_5_8_26,5,8,26,F2A_8322,fpga_pad_oen[34],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_24(ATId[5]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO26,SOC_GPIO34_OEN,SoC GPIO[26],Y
+GPIO,GPIO_C_11,SOC_GPIO27_35,J8,5955,4954.4,24000,25000,FPGA_5_8_27,5,8,27,F2A_8323,fpga_pad_oen[35],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_25(ATId[6]),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO27,SOC_GPIO35_OEN,SoC GPIO[27],Y
+GPIO,GPIO_C_12,SOC_GPIO28_36,F2,6085,4954.4,25000,25000,FPGA_5_8_28,5,8,28,F2A_8324,fpga_pad_oen[36],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_26(ATReady),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO28,SOC_GPIO36_OEN,SoC GPIO[28],Y
+GPIO,GPIO_C_13,SOC_GPIO29_37,G5,6215,4954.4,26000,25000,FPGA_5_8_29,5,8,29,F2A_8325,fpga_pad_oen[37],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,Debug_27(ATValid),,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO29,SOC_GPIO37_OEN,SoC GPIO[29],Y
+GPIO,GPIO_C_14,SOC_GPIO30_38,F1,6345,4954.4,27000,25000,FPGA_5_8_30,5,8,30,F2A_8326,fpga_pad_oen[38],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO30,SOC_GPIO38_OEN,SoC GPIO[30],Y
+GPIO,GPIO_C_15,SOC_GPIO31_39,H2,5760,4841.8,18000,26000,FPGA_5_8_31,5,8,31,F2A_8327,fpga_pad_oen[39],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,RS_HVIO_DIF_*,Inout,1.8/2.5/3.3V,N,General Purpose I/O,1.8V-3.3V,,GPIO31,SOC_GPIO39_OEN,SoC GPIO[31],Y
+FABRIC_CLK,,,,,,,,clk[0],0,1,-1,CLK2F,clk0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[1],1,1,-1,CLK2F,clk1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[2],2,1,-1,CLK2F,clk2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[3],3,1,-1,CLK2F,clk3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[4],4,1,-1,CLK2F,clk4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[5],5,1,-1,CLK2F,clk5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[6],6,1,-1,CLK2F,clk6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[7],7,1,-1,CLK2F,clk7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[8],8,1,-1,CLK2F,clk8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[9],9,1,-1,CLK2F,clk9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[10],10,1,-1,CLK2F,clk10,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[11],11,1,-1,CLK2F,clk11,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[12],12,1,-1,CLK2F,clk12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[13],13,1,-1,CLK2F,clk13,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[14],14,1,-1,CLK2F,clk14,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC_CLK,,,,,,,,clk[15],15,1,-1,CLK2F,clk15,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_2_0,1,2,0,A2F_72,g2f_trx_dly_tap[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_2_1,1,2,1,A2F_73,g2f_trx_dly_tap[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_2_2,1,2,2,A2F_74,g2f_trx_dly_tap[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_2_3,1,2,3,A2F_75,g2f_trx_dly_tap[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_2_4,1,2,4,A2F_76,g2f_trx_dly_tap[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_2_5,1,2,5,A2F_77,g2f_trx_dly_tap[5],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_2_6,1,2,6,A2F_78,g2f_rx_dpa_lock,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_2_7,1,2,7,A2F_79,g2f_rx_dpa_error,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_2_8,1,2,8,A2F_80,g2f_rx_dpa_phase[0],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_2_9,1,2,9,A2F_81,g2f_rx_dpa_phase[1],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_2_10,1,2,10,A2F_82,g2f_rx_dpa_phase[2],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_24,1,2,24,F2A_96,f2g_addr[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_25,1,2,25,F2A_97,f2g_addr[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_26,1,2,26,F2A_98,f2g_addr[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_27,1,2,27,F2A_99,f2g_addr[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_28,1,2,28,F2A_100,f2g_addr[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_29,1,2,29,F2A_101,f2g_trx_dly_ld,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_30,1,2,30,F2A_102,f2g_trx_dly_adj,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_31,1,2,31,F2A_103,f2g_trx_dly_inc,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_2_32,1,2,32,F2A_104,f2g_rx_bitslip_adj,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,.,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_3_0,1,3,0,A2F_144,g2f_rx_dvalid_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_3_1,1,3,1,A2F_145,g2f_rx_in[0]_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,460,40,1000,4000,FPGA_1_3_2,1,3,2,A2F_146,g2f_rx_in[1]_A,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_3,1,3,3,A2F_147,g2f_rx_in[2]_A,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_4,1,3,4,A2F_148,g2f_rx_in[3]_A,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_5,1,3,5,A2F_149,g2f_rx_in[4]_A,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_6,1,3,6,A2F_150,g2f_rx_in[5]_A,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_7,1,3,7,A2F_151,g2f_rx_in[6]_A,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_8,1,3,8,A2F_152,g2f_rx_in[7]_A,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_9,1,3,9,A2F_153,g2f_rx_in[8]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_10,1,3,10,A2F_154,g2f_rx_in[9]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,980,40,2000,1000,FPGA_1_3_11,1,3,11,A2F_155,g2f_rx_dvalid_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,70,40,1000,1000,FPGA_1_3_24,1,3,24,F2A_168,f2g_rx_sfifo_reset_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_25,1,3,25,F2A_169,f2g_rx_dpa_restart_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_26,1,3,26,F2A_170,f2g_trx_reset_n_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_27,1,3,27,F2A_171,f2g_in_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_28,1,3,28,F2A_172,f2g_tx_oe_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_29,1,3,29,F2A_173,f2g_tx_dvalid_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_30,1,3,30,F2A_174,f2g_tx_out[0]_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_31,1,3,31,F2A_175,f2g_tx_out[1]_A,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_32,1,3,32,F2A_176,f2g_tx_out[2]_A,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,200,40,1000,2000,FPGA_1_3_33,1,3,33,F2A_177,f2g_tx_out[3]_A,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_3_34,1,3,34,F2A_178,f2g_tx_out[4]_A,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_3_35,1,3,35,F2A_179,f2g_tx_out[5]_A,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_3_36,1,3,36,F2A_180,f2g_tx_out[6]_A,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,330,40,1000,3000,FPGA_1_3_37,1,3,37,F2A_181,f2g_tx_out[7]_A,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_38,1,3,38,F2A_182,f2g_tx_out[8]_A,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_39,1,3,39,F2A_183,f2g_tx_out[9]_A,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_1,HR_1_0_0P,P23,590,40,1000,5000,FPGA_1_3_40,1,3,40,F2A_184,f2g_tx_clk_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,720,40,1000,6000,FPGA_1_3_41,1,3,41,F2A_185,f2g_rx_sfifo_reset_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,720,40,1000,6000,FPGA_1_3_42,1,3,42,F2A_186,f2g_rx_dpa_restart_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,720,40,1000,6000,FPGA_1_3_43,1,3,43,F2A_187,f2g_trx_reset_n_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,720,40,1000,6000,FPGA_1_3_44,1,3,44,F2A_188,f2g_in_en_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,720,40,1000,6000,FPGA_1_3_45,1,3,45,F2A_189,f2g_tx_oe_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,720,40,1000,6000,FPGA_1_3_46,1,3,46,F2A_190,f2g_tx_dvalid_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_1_2,HR_1_1_0N,J22,720,40,1000,6000,FPGA_1_3_47,1,3,47,F2A_191,f2g_tx_clk_en_B,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_4_0,1,4,0,A2F_216,g2f_trx_dly_tap[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_4_1,1,4,1,A2F_217,g2f_trx_dly_tap[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_4_2,1,4,2,A2F_218,g2f_trx_dly_tap[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_4_3,1,4,3,A2F_219,g2f_trx_dly_tap[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_4_4,1,4,4,A2F_220,g2f_trx_dly_tap[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_4_5,1,4,5,A2F_221,g2f_trx_dly_tap[5],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_4_6,1,4,6,A2F_222,g2f_rx_dpa_lock,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_4_7,1,4,7,A2F_223,g2f_rx_dpa_error,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_4_8,1,4,8,A2F_224,g2f_rx_dpa_phase[0],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_4_9,1,4,9,A2F_225,g2f_rx_dpa_phase[1],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_4_10,1,4,10,A2F_226,g2f_rx_dpa_phase[2],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_24,1,4,24,F2A_240,f2g_addr[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_25,1,4,25,F2A_241,f2g_addr[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_26,1,4,26,F2A_242,f2g_addr[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_27,1,4,27,F2A_243,f2g_addr[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_28,1,4,28,F2A_244,f2g_addr[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_29,1,4,29,F2A_245,f2g_trx_dly_ld,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_30,1,4,30,F2A_246,f2g_trx_dly_adj,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_31,1,4,31,F2A_247,f2g_trx_dly_inc,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_4_32,1,4,32,F2A_248,f2g_rx_bitslip_adj,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,.,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_5_0,1,5,0,A2F_288,g2f_rx_dvalid_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_5_1,1,5,1,A2F_289,g2f_rx_in[0]_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,460,40,1000,4000,FPGA_1_5_2,1,5,2,A2F_290,g2f_rx_in[1]_A,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_3,1,5,3,A2F_291,g2f_rx_in[2]_A,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_4,1,5,4,A2F_292,g2f_rx_in[3]_A,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_5,1,5,5,A2F_293,g2f_rx_in[4]_A,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_6,1,5,6,A2F_294,g2f_rx_in[5]_A,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_7,1,5,7,A2F_295,g2f_rx_in[6]_A,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_8,1,5,8,A2F_296,g2f_rx_in[7]_A,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_9,1,5,9,A2F_297,g2f_rx_in[8]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_10,1,5,10,A2F_298,g2f_rx_in[9]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,980,40,2000,1000,FPGA_1_5_11,1,5,11,A2F_299,g2f_rx_dvalid_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,70,40,1000,1000,FPGA_1_5_24,1,5,24,F2A_312,f2g_rx_sfifo_reset_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_25,1,5,25,F2A_313,f2g_rx_dpa_restart_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_26,1,5,26,F2A_314,f2g_trx_reset_n_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_27,1,5,27,F2A_315,f2g_in_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_28,1,5,28,F2A_316,f2g_tx_oe_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_29,1,5,29,F2A_317,f2g_tx_dvalid_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_30,1,5,30,F2A_318,f2g_tx_out[0]_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_31,1,5,31,F2A_319,f2g_tx_out[1]_A,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_32,1,5,32,F2A_320,f2g_tx_out[2]_A,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,200,40,1000,2000,FPGA_1_5_33,1,5,33,F2A_321,f2g_tx_out[3]_A,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_5_34,1,5,34,F2A_322,f2g_tx_out[4]_A,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_5_35,1,5,35,F2A_323,f2g_tx_out[5]_A,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_5_36,1,5,36,F2A_324,f2g_tx_out[6]_A,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,330,40,1000,3000,FPGA_1_5_37,1,5,37,F2A_325,f2g_tx_out[7]_A,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_38,1,5,38,F2A_326,f2g_tx_out[8]_A,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_39,1,5,39,F2A_327,f2g_tx_out[9]_A,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_1,HR_2_0_0P,T24,590,40,1000,5000,FPGA_1_5_40,1,5,40,F2A_328,f2g_tx_clk_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,720,40,1000,6000,FPGA_1_5_41,1,5,41,F2A_329,f2g_rx_sfifo_reset_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,720,40,1000,6000,FPGA_1_5_42,1,5,42,F2A_330,f2g_rx_dpa_restart_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,720,40,1000,6000,FPGA_1_5_43,1,5,43,F2A_331,f2g_trx_reset_n_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,720,40,1000,6000,FPGA_1_5_44,1,5,44,F2A_332,f2g_in_en_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,720,40,1000,6000,FPGA_1_5_45,1,5,45,F2A_333,f2g_tx_oe_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,720,40,1000,6000,FPGA_1_5_46,1,5,46,F2A_334,f2g_tx_dvalid_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VL_2_2,HR_2_1_0N,U23,720,40,1000,6000,FPGA_1_5_47,1,5,47,F2A_335,f2g_tx_clk_en_B,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_2_0,10,2,0,A2F_15396,g2f_trx_dly_tap[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_2_1,10,2,1,A2F_15397,g2f_trx_dly_tap[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_2_2,10,2,2,A2F_15398,g2f_trx_dly_tap[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_2_3,10,2,3,A2F_15399,g2f_trx_dly_tap[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_2_4,10,2,4,A2F_15400,g2f_trx_dly_tap[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_2_5,10,2,5,A2F_15401,g2f_trx_dly_tap[5],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_2_6,10,2,6,A2F_15402,g2f_rx_dpa_lock,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_2_7,10,2,7,A2F_15403,g2f_rx_dpa_error,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_2_8,10,2,8,A2F_15404,g2f_rx_dpa_phase[0],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_2_9,10,2,9,A2F_15405,g2f_rx_dpa_phase[1],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_2_10,10,2,10,A2F_15406,g2f_rx_dpa_phase[2],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_24,10,2,24,F2A_15420,f2g_addr[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_25,10,2,25,F2A_15421,f2g_addr[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_26,10,2,26,F2A_15422,f2g_addr[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_27,10,2,27,F2A_15423,f2g_addr[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_28,10,2,28,F2A_15424,f2g_addr[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_29,10,2,29,F2A_15425,f2g_trx_dly_ld,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_30,10,2,30,F2A_15426,f2g_trx_dly_adj,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_31,10,2,31,F2A_15427,f2g_trx_dly_inc,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_2_32,10,2,32,F2A_15428,f2g_rx_bitslip_adj,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,.,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_3_0,10,3,0,A2F_15324,g2f_rx_dvalid_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_3_1,10,3,1,A2F_15325,g2f_rx_in[0]_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,460,40,1000,4000,FPGA_10_3_2,10,3,2,A2F_15326,g2f_rx_in[1]_A,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_3,10,3,3,A2F_15327,g2f_rx_in[2]_A,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_4,10,3,4,A2F_15328,g2f_rx_in[3]_A,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_5,10,3,5,A2F_15329,g2f_rx_in[4]_A,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_6,10,3,6,A2F_15330,g2f_rx_in[5]_A,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_7,10,3,7,A2F_15331,g2f_rx_in[6]_A,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_8,10,3,8,A2F_15332,g2f_rx_in[7]_A,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_9,10,3,9,A2F_15333,g2f_rx_in[8]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_10,10,3,10,A2F_15334,g2f_rx_in[9]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,980,40,2000,1000,FPGA_10_3_11,10,3,11,A2F_15335,g2f_rx_dvalid_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,70,40,1000,1000,FPGA_10_3_24,10,3,24,F2A_15348,f2g_rx_sfifo_reset_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_25,10,3,25,F2A_15349,f2g_rx_dpa_restart_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_26,10,3,26,F2A_15350,f2g_trx_reset_n_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_27,10,3,27,F2A_15351,f2g_in_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_28,10,3,28,F2A_15352,f2g_tx_oe_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_29,10,3,29,F2A_15353,f2g_tx_dvalid_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_30,10,3,30,F2A_15354,f2g_tx_out[0]_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_31,10,3,31,F2A_15355,f2g_tx_out[1]_A,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_32,10,3,32,F2A_15356,f2g_tx_out[2]_A,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,200,40,1000,2000,FPGA_10_3_33,10,3,33,F2A_15357,f2g_tx_out[3]_A,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_3_34,10,3,34,F2A_15358,f2g_tx_out[4]_A,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_3_35,10,3,35,F2A_15359,f2g_tx_out[5]_A,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_3_36,10,3,36,F2A_15360,f2g_tx_out[6]_A,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,330,40,1000,3000,FPGA_10_3_37,10,3,37,F2A_15361,f2g_tx_out[7]_A,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_38,10,3,38,F2A_15362,f2g_tx_out[8]_A,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_39,10,3,39,F2A_15363,f2g_tx_out[9]_A,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_1,HR_3_0_0P,M3,590,40,1000,5000,FPGA_10_3_40,10,3,40,F2A_15364,f2g_tx_clk_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,720,40,1000,6000,FPGA_10_3_41,10,3,41,F2A_15365,f2g_rx_sfifo_reset_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,720,40,1000,6000,FPGA_10_3_42,10,3,42,F2A_15366,f2g_rx_dpa_restart_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,720,40,1000,6000,FPGA_10_3_43,10,3,43,F2A_15367,f2g_trx_reset_n_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,720,40,1000,6000,FPGA_10_3_44,10,3,44,F2A_15368,f2g_in_en_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,720,40,1000,6000,FPGA_10_3_45,10,3,45,F2A_15369,f2g_tx_oe_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,720,40,1000,6000,FPGA_10_3_46,10,3,46,F2A_15370,f2g_tx_dvalid_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_1_2,HR_3_1_0N,L7,720,40,1000,6000,FPGA_10_3_47,10,3,47,F2A_15371,f2g_tx_clk_en_B,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_4_0,10,4,0,A2F_15252,g2f_trx_dly_tap[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_4_1,10,4,1,A2F_15253,g2f_trx_dly_tap[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_4_2,10,4,2,A2F_15254,g2f_trx_dly_tap[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_4_3,10,4,3,A2F_15255,g2f_trx_dly_tap[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_4_4,10,4,4,A2F_15256,g2f_trx_dly_tap[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_4_5,10,4,5,A2F_15257,g2f_trx_dly_tap[5],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_4_6,10,4,6,A2F_15258,g2f_rx_dpa_lock,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_4_7,10,4,7,A2F_15259,g2f_rx_dpa_error,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_4_8,10,4,8,A2F_15260,g2f_rx_dpa_phase[0],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_4_9,10,4,9,A2F_15261,g2f_rx_dpa_phase[1],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_4_10,10,4,10,A2F_15262,g2f_rx_dpa_phase[2],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_24,10,4,24,F2A_15276,f2g_addr[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_25,10,4,25,F2A_15277,f2g_addr[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_26,10,4,26,F2A_15278,f2g_addr[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_27,10,4,27,F2A_15279,f2g_addr[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_28,10,4,28,F2A_15280,f2g_addr[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_29,10,4,29,F2A_15281,f2g_trx_dly_ld,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_30,10,4,30,F2A_15282,f2g_trx_dly_adj,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_31,10,4,31,F2A_15283,f2g_trx_dly_inc,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_4_32,10,4,32,F2A_15284,f2g_rx_bitslip_adj,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,.,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_5_0,10,5,0,A2F_15180,g2f_rx_dvalid_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_5_1,10,5,1,A2F_15181,g2f_rx_in[0]_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,460,40,1000,4000,FPGA_10_5_2,10,5,2,A2F_15182,g2f_rx_in[1]_A,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_3,10,5,3,A2F_15183,g2f_rx_in[2]_A,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_4,10,5,4,A2F_15184,g2f_rx_in[3]_A,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_5,10,5,5,A2F_15185,g2f_rx_in[4]_A,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_6,10,5,6,A2F_15186,g2f_rx_in[5]_A,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_7,10,5,7,A2F_15187,g2f_rx_in[6]_A,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_8,10,5,8,A2F_15188,g2f_rx_in[7]_A,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_9,10,5,9,A2F_15189,g2f_rx_in[8]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_10,10,5,10,A2F_15190,g2f_rx_in[9]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,980,40,2000,1000,FPGA_10_5_11,10,5,11,A2F_15191,g2f_rx_dvalid_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,70,40,1000,1000,FPGA_10_5_24,10,5,24,F2A_15204,f2g_rx_sfifo_reset_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_25,10,5,25,F2A_15205,f2g_rx_dpa_restart_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_26,10,5,26,F2A_15206,f2g_trx_reset_n_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_27,10,5,27,F2A_15207,f2g_in_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_28,10,5,28,F2A_15208,f2g_tx_oe_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_29,10,5,29,F2A_15209,f2g_tx_dvalid_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_30,10,5,30,F2A_15210,f2g_tx_out[0]_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_31,10,5,31,F2A_15211,f2g_tx_out[1]_A,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_32,10,5,32,F2A_15212,f2g_tx_out[2]_A,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,200,40,1000,2000,FPGA_10_5_33,10,5,33,F2A_15213,f2g_tx_out[3]_A,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_5_34,10,5,34,F2A_15214,f2g_tx_out[4]_A,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_5_35,10,5,35,F2A_15215,f2g_tx_out[5]_A,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_5_36,10,5,36,F2A_15216,f2g_tx_out[6]_A,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,330,40,1000,3000,FPGA_10_5_37,10,5,37,F2A_15217,f2g_tx_out[7]_A,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_38,10,5,38,F2A_15218,f2g_tx_out[8]_A,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_39,10,5,39,F2A_15219,f2g_tx_out[9]_A,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_1,HR_5_0_0P,V2,590,40,1000,5000,FPGA_10_5_40,10,5,40,F2A_15220,f2g_tx_clk_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,720,40,1000,6000,FPGA_10_5_41,10,5,41,F2A_15221,f2g_rx_sfifo_reset_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,720,40,1000,6000,FPGA_10_5_42,10,5,42,F2A_15222,f2g_rx_dpa_restart_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,720,40,1000,6000,FPGA_10_5_43,10,5,43,F2A_15223,f2g_trx_reset_n_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,720,40,1000,6000,FPGA_10_5_44,10,5,44,F2A_15224,f2g_in_en_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,720,40,1000,6000,FPGA_10_5_45,10,5,45,F2A_15225,f2g_tx_oe_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,720,40,1000,6000,FPGA_10_5_46,10,5,46,F2A_15226,f2g_tx_dvalid_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_VR_2_2,HR_5_1_0N,W8,720,40,1000,6000,FPGA_10_5_47,10,5,47,F2A_15227,f2g_tx_clk_en_B,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_2_1_0,2,1,0,A2F_21216,g2f_trx_dly_tap[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_2_1_1,2,1,1,A2F_21217,g2f_trx_dly_tap[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_2_1_2,2,1,2,A2F_21218,g2f_trx_dly_tap[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_2_1_3,2,1,3,A2F_21219,g2f_trx_dly_tap[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_2_1_4,2,1,4,A2F_21220,g2f_trx_dly_tap[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_2_1_5,2,1,5,A2F_21221,g2f_trx_dly_tap[5],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_2_1_6,2,1,6,A2F_21222,g2f_rx_dpa_lock,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_2_1_7,2,1,7,A2F_21223,g2f_rx_dpa_error,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_2_1_8,2,1,8,A2F_21224,g2f_rx_dpa_phase[0],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_2_1_9,2,1,9,A2F_21225,g2f_rx_dpa_phase[1],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_2_1_10,2,1,10,A2F_21226,g2f_rx_dpa_phase[2],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_24,2,1,24,F2A_21240,f2g_addr[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_25,2,1,25,F2A_21241,f2g_addr[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_26,2,1,26,F2A_21242,f2g_addr[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_27,2,1,27,F2A_21243,f2g_addr[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_28,2,1,28,F2A_21244,f2g_addr[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_29,2,1,29,F2A_21245,f2g_trx_dly_ld,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_30,2,1,30,F2A_21246,f2g_trx_dly_adj,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_31,2,1,31,F2A_21247,f2g_trx_dly_inc,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_2_1_32,2,1,32,F2A_21248,f2g_rx_bitslip_adj,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_3_1_0,3,1,0,A2F_21144,g2f_rx_dvalid_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_3_1_1,3,1,1,A2F_21145,g2f_rx_in[0]_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,460,40,1000,4000,FPGA_3_1_2,3,1,2,A2F_21146,g2f_rx_in[1]_A,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_3,3,1,3,A2F_21147,g2f_rx_in[2]_A,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_4,3,1,4,A2F_21148,g2f_rx_in[3]_A,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_5,3,1,5,A2F_21149,g2f_rx_in[4]_A,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_6,3,1,6,A2F_21150,g2f_rx_in[5]_A,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_7,3,1,7,A2F_21151,g2f_rx_in[6]_A,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_8,3,1,8,A2F_21152,g2f_rx_in[7]_A,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_9,3,1,9,A2F_21153,g2f_rx_in[8]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_10,3,1,10,A2F_21154,g2f_rx_in[9]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,980,40,2000,1000,FPGA_3_1_11,3,1,11,A2F_21155,g2f_rx_lp_dp,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,980,40,2000,1000,FPGA_3_1_12,3,1,12,A2F_21156,g2f_rx_lp_dn,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,980,40,2000,1000,FPGA_3_1_13,3,1,13,A2F_21157,g2f_rx_dvalid_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,70,40,1000,1000,FPGA_3_1_24,3,1,24,F2A_21168,f2g_rx_sfifo_reset_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_25,3,1,25,F2A_21169,f2g_rx_dpa_restart_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_26,3,1,26,F2A_21170,f2g_trx_reset_n_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_27,3,1,27,F2A_21171,f2g_in_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_28,3,1,28,F2A_21172,f2g_tx_oe_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_29,3,1,29,F2A_21173,f2g_tx_dvalid_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_30,3,1,30,F2A_21174,f2g_tx_out[0]_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_31,3,1,31,F2A_21175,f2g_tx_out[1]_A,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_32,3,1,32,F2A_21176,f2g_tx_out[2]_A,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,200,40,1000,2000,FPGA_3_1_33,3,1,33,F2A_21177,f2g_tx_out[3]_A,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_3_1_34,3,1,34,F2A_21178,f2g_tx_out[4]_A,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_3_1_35,3,1,35,F2A_21179,f2g_tx_out[5]_A,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_3_1_36,3,1,36,F2A_21180,f2g_tx_out[6]_A,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,330,40,1000,3000,FPGA_3_1_37,3,1,37,F2A_21181,f2g_tx_out[7]_A,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_38,3,1,38,F2A_21182,f2g_tx_out[8]_A,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_39,3,1,39,F2A_21183,f2g_tx_out[9]_A,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,590,40,1000,5000,FPGA_3_1_40,3,1,40,F2A_21184,f2g_tx_clk_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,720,40,1000,6000,FPGA_3_1_41,3,1,41,F2A_21185,f2g_trx_hs_en,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,720,40,1000,6000,FPGA_3_1_42,3,1,42,F2A_21186,f2g_trx_lp_en,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,720,40,1000,6000,FPGA_3_1_43,3,1,43,F2A_21187,f2g_tx_lp_dp,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,720,40,1000,6000,FPGA_3_1_44,3,1,44,F2A_21188,f2g_tx_lp_dn,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_1,HP_1_0_0P,AH18,720,40,1000,6000,FPGA_3_1_45,3,1,45,F2A_21189,f2g_rx_term_en,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,720,40,1000,6000,FPGA_3_1_46,3,1,46,F2A_21190,f2g_rx_sfifo_reset_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,720,40,1000,6000,FPGA_3_1_47,3,1,47,F2A_21191,f2g_rx_dpa_restart_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,720,40,1000,6000,FPGA_3_1_48,3,1,48,F2A_21192,f2g_trx_reset_n_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,720,40,1000,6000,FPGA_3_1_49,3,1,49,F2A_21193,f2g_in_en_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,720,40,1000,6000,FPGA_3_1_50,3,1,50,F2A_21194,f2g_tx_oe_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,720,40,1000,6000,FPGA_3_1_51,3,1,51,F2A_21195,f2g_tx_dvalid_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_1_2,HP_1_1_0N,AF21,720,40,1000,6000,FPGA_3_1_52,3,1,52,F2A_21196,f2g_tx_clk_en_B,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_5_1_0,5,1,0,A2F_21000,g2f_trx_dly_tap[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_5_1_1,5,1,1,A2F_21001,g2f_trx_dly_tap[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_5_1_2,5,1,2,A2F_21002,g2f_trx_dly_tap[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_5_1_3,5,1,3,A2F_21003,g2f_trx_dly_tap[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_5_1_4,5,1,4,A2F_21004,g2f_trx_dly_tap[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_5_1_5,5,1,5,A2F_21005,g2f_trx_dly_tap[5],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_5_1_6,5,1,6,A2F_21006,g2f_rx_dpa_lock,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_5_1_7,5,1,7,A2F_21007,g2f_rx_dpa_error,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_5_1_8,5,1,8,A2F_21008,g2f_rx_dpa_phase[0],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_5_1_9,5,1,9,A2F_21009,g2f_rx_dpa_phase[1],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_5_1_10,5,1,10,A2F_21010,g2f_rx_dpa_phase[2],,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_24,5,1,24,F2A_21024,f2g_addr[0],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_25,5,1,25,F2A_21025,f2g_addr[1],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_26,5,1,26,F2A_21026,f2g_addr[2],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_27,5,1,27,F2A_21027,f2g_addr[3],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_28,5,1,28,F2A_21028,f2g_addr[4],Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_29,5,1,29,F2A_21029,f2g_trx_dly_ld,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_30,5,1,30,F2A_21030,f2g_trx_dly_adj,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_31,5,1,31,F2A_21031,f2g_trx_dly_inc,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_5_1_32,5,1,32,F2A_21032,f2g_rx_bitslip_adj,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_6_1_0,6,1,0,A2F_20928,g2f_rx_dvalid_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_6_1_1,6,1,1,A2F_20929,g2f_rx_in[0]_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,460,40,1000,4000,FPGA_6_1_2,6,1,2,A2F_20930,g2f_rx_in[1]_A,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_3,6,1,3,A2F_20931,g2f_rx_in[2]_A,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_4,6,1,4,A2F_20932,g2f_rx_in[3]_A,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_5,6,1,5,A2F_20933,g2f_rx_in[4]_A,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_6,6,1,6,A2F_20934,g2f_rx_in[5]_A,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_7,6,1,7,A2F_20935,g2f_rx_in[6]_A,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_8,6,1,8,A2F_20936,g2f_rx_in[7]_A,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_9,6,1,9,A2F_20937,g2f_rx_in[8]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_10,6,1,10,A2F_20938,g2f_rx_in[9]_A,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,980,40,2000,1000,FPGA_6_1_11,6,1,11,A2F_20939,g2f_rx_lp_dp,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,980,40,2000,1000,FPGA_6_1_12,6,1,12,A2F_20940,g2f_rx_lp_dn,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,980,40,2000,1000,FPGA_6_1_13,6,1,13,A2F_20941,g2f_rx_dvalid_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,70,40,1000,1000,FPGA_6_1_24,6,1,24,F2A_20952,f2g_rx_sfifo_reset_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_25,6,1,25,F2A_20953,f2g_rx_dpa_restart_A,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_26,6,1,26,F2A_20954,f2g_trx_reset_n_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_27,6,1,27,F2A_20955,f2g_in_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_28,6,1,28,F2A_20956,f2g_tx_oe_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_29,6,1,29,F2A_20957,f2g_tx_dvalid_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_30,6,1,30,F2A_20958,f2g_tx_out[0]_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_31,6,1,31,F2A_20959,f2g_tx_out[1]_A,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_32,6,1,32,F2A_20960,f2g_tx_out[2]_A,,,,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,200,40,1000,2000,FPGA_6_1_33,6,1,33,F2A_20961,f2g_tx_out[3]_A,,,,,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_6_1_34,6,1,34,F2A_20962,f2g_tx_out[4]_A,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_6_1_35,6,1,35,F2A_20963,f2g_tx_out[5]_A,,,,,,,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_6_1_36,6,1,36,F2A_20964,f2g_tx_out[6]_A,,,,,,,,Y,Y,Y,Y,,,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,330,40,1000,3000,FPGA_6_1_37,6,1,37,F2A_20965,f2g_tx_out[7]_A,,,,,,,,,Y,Y,Y,,,,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_38,6,1,38,F2A_20966,f2g_tx_out[8]_A,,,,,,,,,,Y,Y,,,,,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_39,6,1,39,F2A_20967,f2g_tx_out[9]_A,,,,,,,,,,,Y,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,590,40,1000,5000,FPGA_6_1_40,6,1,40,F2A_20968,f2g_tx_clk_en_A,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,720,40,1000,6000,FPGA_6_1_41,6,1,41,F2A_20969,f2g_trx_hs_en,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,720,40,1000,6000,FPGA_6_1_42,6,1,42,F2A_20970,f2g_trx_lp_en,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,720,40,1000,6000,FPGA_6_1_43,6,1,43,F2A_20971,f2g_tx_lp_dp,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,720,40,1000,6000,FPGA_6_1_44,6,1,44,F2A_20972,f2g_tx_lp_dn,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_1,HP_2_0_0P,AH8,720,40,1000,6000,FPGA_6_1_45,6,1,45,F2A_20973,f2g_rx_term_en,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,720,40,1000,6000,FPGA_6_1_46,6,1,46,F2A_20974,f2g_rx_sfifo_reset_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,720,40,1000,6000,FPGA_6_1_47,6,1,47,F2A_20975,f2g_rx_dpa_restart_B,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,720,40,1000,6000,FPGA_6_1_48,6,1,48,F2A_20976,f2g_trx_reset_n_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,720,40,1000,6000,FPGA_6_1_49,6,1,49,F2A_20977,f2g_in_en_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,720,40,1000,6000,FPGA_6_1_50,6,1,50,F2A_20978,f2g_tx_oe_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,720,40,1000,6000,FPGA_6_1_51,6,1,51,F2A_20979,f2g_tx_dvalid_B,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+GBOX GPIO,Bank_H_2_2,HP_2_1_0N,AG6,720,40,1000,6000,FPGA_6_1_52,6,1,52,F2A_20980,f2g_tx_clk_en_B,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PUFF POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PUFF POWER PINS,PUFF_VDD2,VCC_PUF,J10,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PUFF POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,PLL_SOC_VDDHV,VCC_AUX,J13,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,PLL_G2_VDDHV,VCC_AUX,V12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PLL-5 POWER PINS,PLL_G1_VDDHV,VCC_AUX,V18,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+RC_OSC POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+RC_OSC POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+RC_OSC POWER PINS,RC_OSC_VDD18,VCC_RC_OSC,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_2_VDDIO,VCC_HR_IO_5,R9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_2_VDDIO,VCC_HR_IO_5,R9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_2_VDDIO,VCC_HR_IO_5,R9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_2_VDD1P8,VCC_HR_AUX_5,T10,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_1_VDDIO,VCC_HR_IO_4,L9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_1_VDDIO,VCC_HR_IO_4,L9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_1_VDDIO,VCC_HR_IO_4,L9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VR_1_VDD1P8,VCC_HR_AUX_4,M10,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_2_VDDIO,VCC_HR_IO_2,R20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_2_VDDIO,VCC_HR_IO_2,R20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_2_VDDIO,VCC_HR_IO_2,R20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_1_VDDIO,VCC_HR_IO_1,M20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_1_VDDIO,VCC_HR_IO_1,M20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_2_VDD1P8,VCC_HR_AUX_2,T19,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_1_VDDIO,VCC_HR_IO_1,M20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_VL_1_VDD1P8,VCC_HR_AUX_1,N19,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_2_VDDIO,VCC_HP_IO_2,Y12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_2_VDDIO,VCC_HP_IO_2,Y12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_2_VDDIO,VCC_HP_IO_2,Y12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_2_RCAL,HP_RCAL_2,W16,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_1_VDDIO,VCC_HP_IO_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_1_VDDIO,VCC_HP_IO_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_1_VDDIO,VCC_HP_IO_1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FABRIC 9-GPIO BANK POWER PINS,FABRIC_Bank_H_1_RCAL,HP_RCAL_1,Y20,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PVT CTRL POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PVT CTRL POWER PINS,PVT_CTRL_VDDO,VCC_SENSOR,L19,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+PVT CTRL POWER PINS,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_2_VDDIO,VCC_SOC_IO,G9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_2_VDDIO,VCC_SOC_IO,G9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_2_VDDIO,VCC_SOC_IO,G9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_2_VDD1P8,VCC_SOC_AUX,G11,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_1_VDDIO,VCC_BOOT_IO,F9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_1_VDDIO,VCC_BOOT_IO,F9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_1_VDDIO,VCC_BOOT_IO,F9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SOC HV IO BANK POWER PINS,SOC_GPIO_HV_1_VDD1P8,VCC_BOOT_AUX,F11,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+DIGITAL POWER,VDD,VCC_CORE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+DIGITAL GROUND,VSS,GND,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,10 +1,10 @@
 
-#set_property mode Mode_BP_SDR_A_RX HP_3_0_0P
-#set_pin_loc a HP_3_0_0P
+set_property mode Mode_BP_SDR_A_RX HR_3_0_0P
+set_pin_loc clock0 HR_3_0_0P
 
 set_property mode Mode_BP_SDR_A_RX HR_2_0_0P
 set_pin_loc reset HR_2_0_0P
 
-#set_property mode  Mode_BP_SDR_A_TX HR_4_20_10P
-#set_pin_loc c HR_4_20_10P
+set_property mode  Mode_BP_SDR_A_TX HR_5_0_0P
+set_pin_loc {q[0]} HR_5_0_0P
 

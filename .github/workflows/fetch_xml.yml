@@ -7,7 +7,7 @@ on:
 
 jobs:
   XML_Digest_and_test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
@@ -17,7 +17,6 @@ jobs:
         updates:
         - xml
         - ric
-        - pintable
     env:
       MODE: ${{ matrix.updates }}
   
@@ -89,10 +88,6 @@ jobs:
           done
           ls -l 
 
-    - name: Copy XMLs files
-      run: |
-          bash .github/copy_arch.sh
-
     - name: show status
       run: git status
 
@@ -109,13 +104,7 @@ jobs:
                 echo "updates are from ${{ matrix.updates }}"
                 extension=xml
                 echo "EXTENSION=$extension" >> $GITHUB_ENV
-                echo "path_to_commit=etc/devices/**/*.xml etc/device.xml" >> $GITHUB_ENV
-                ;;
-            "pintable")
-                echo "updates are from ${{ matrix.updates }}"
-                extension=csv
-                echo "EXTENSION=$extension" >> $GITHUB_ENV
-                echo "path_to_commit=etc/devices/**/*.csv" >> $GITHUB_ENV
+                echo "path_to_commit=etc/devices/**/*.xml etc/device.xml etc/devices/**/*.csv" >> $GITHUB_ENV
                 ;;
             *)
                 echo "Invalid value: ${{ matrix.updates }}"
@@ -125,7 +114,7 @@ jobs:
     - name: Check changes are related
       id: is_change
       run: |
-        any_diff=`git diff  --name-status -- '*.${{ env.EXTENSION }}'`
+        any_diff=`git status --porcelain '*.${{ env.EXTENSION }}'`
         echo $any_diff
         if [ ! -z "$any_diff" ]
         then
@@ -133,6 +122,77 @@ jobs:
         else
           echo "nothing changed in ${{ matrix.updates }} files"
         fi
+
+    - name: Install dependencies
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+        bash .github/workflows/install_ubuntu_dependencies_build.sh
+        sudo apt-get install -y xmlstarlet
+#        bash .github/workflows/install_litex_ubuntu.sh
+
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
+
+    - name: Use ccache
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      uses: hendrikmuhs/ccache-action@v1.2.3
+      with:
+        key: linux-${{ matrix.updates }}
+
+    - name: Configure shell
+      run: |
+        echo 'CC=gcc-11' >> $GITHUB_ENV
+        echo 'CXX=g++-11' >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
+        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+
+    - name: Show shell configuration
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which ninja && ninja --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        which $CC && $CC --version
+        which $CXX && $CXX --version
+
+    - name: Build Raptor
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+        make release
+
+    - name: Extract device name
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+         changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
+         echo ""
+         echo "Change folder are $changes_in"
+         echo ""
+         for c in $changes_in
+         do
+
+                xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
+                echo "./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> raptor_run
+                echo "echo \"########################################\"" >> raptor_run
+                done
+         done
+
+    - name: Run test
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+        cat raptor_run
+        chmod +x raptor_run
+        ./raptor_run
 
     - name: Add and Push files
       if: contains(steps.is_change.outputs.has_changed, 'true')
@@ -160,53 +220,20 @@ jobs:
           pr_allow_empty: true                                                            # Creates pull request even if there are no changes
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install dependencies
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      run: |
-        bash .github/workflows/install_ubuntu_dependencies_build.sh
-#        bash .github/workflows/install_litex_ubuntu.sh
-
-    - name: Setup Python Packages
-      run: |
-        pip3 install orderedmultidict
-        pip3 install psutil
-
-    - name: Use ccache
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      uses: hendrikmuhs/ccache-action@v1.2.3
+    - name: Create
+      if: failure () && contains(steps.is_change.outputs.has_changed, 'true')
+      uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
-        key: linux-${{ matrix.mode }}
+          project: EDA
+          issuetype: "Bug"
+          summary: "Smoke test fail on XML/CSV from release ${{ github.event.client_payload.new_release }}."
+          description: "In an attempt to merge the release ${{ github.event.client_payload.new_release }} in Raptor, the smoke test fails. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          extraFields: '{"assignee": { "id": "712020:63820c3b-2ac9-4f39-b263-9d19c1e5ebcd"}}'
+      env:
+            JIRA_BASE_URL: https://rapidsilicon.atlassian.net
+            JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
+            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-    - name: Configure shell
-      run: |
-        echo 'CC=gcc-11' >> $GITHUB_ENV
-        echo 'CXX=g++-11' >> $GITHUB_ENV
-        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
-        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
-        echo "$PREFIX" >> $GITHUB_PATH
-        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
-        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
-        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
-        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
-
-    - name: Show shell configuration
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      run: |
-        env
-        which cmake && cmake --version
-        which make && make --version
-        which swig && swig -version
-        which python && python --version
-        which ninja && ninja --version
-        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
-        which $CC && $CC --version
-        which $CXX && $CXX --version
-
-    - name: Test Release
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      run: |
-        make release ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
-        make release test/batch
 
 #    - name: automerge XMLs PR
 #      uses: "pascalgn/automerge-action@v0.15.6"
