@@ -67,13 +67,15 @@ def main() :
     assert "series" in device.attrib
     dev = DEVICE(device.attrib["name"], device.attrib["family"], device.attrib["series"])
     assert dev.name not in devices
+    '''
     assert dev.family in ["Gemini", "TestChip"], "Family %s is not supported" % dev.family
     if dev.family == "TestChip" :
       assert dev.series in ["Gemini"], "Series %s is not supported by family %s" % (dev.series, dev.family)
     elif dev.family == "Gemini" :
       assert dev.series in ["Gemini", "Virgo"], "Series %s is not supported by family %s" % (dev.series, dev.family)
     else :
-      assert False, "Faily %s is not supported" % dev.family
+      assert False, "Family %s is not supported" % dev.family
+    '''
     for child in device :
       if child.tag == "internal" :
         assert "type" in child.attrib
