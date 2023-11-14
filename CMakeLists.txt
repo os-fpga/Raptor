@@ -647,33 +647,36 @@ install(
 install(
       FILES FOEDAG_rs/src/Compiler/get_power_data.tcl DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-# Genesis Simulation models
-install(
+if (NOT PRODUCTION_BUILD)
+  # Genesis Simulation models
+  install(
       DIRECTORY ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
-install(
+  install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
-install(
+  install(
       FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
-install(
+  install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/cell_sim_blackbox.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
       
-# Genesis2 Simulation models
-install(
+  # Genesis2 Simulation models
+  install(
       DIRECTORY ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
-install(
+  install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
-install(
+  install(
       FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
-install(
+  install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/cell_sim_blackbox.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
+endif()
+
 
 # Genesis3 Simulation models
 install(
@@ -684,9 +687,6 @@ install(
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
 install(
       FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
-install(
-      FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis3/cell_sim_blackbox.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
 
 install(
@@ -835,9 +835,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis3/cell_sim_blackbox.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
       COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/FOEDAG_rs/src/Compiler/get_power_data.tcl ${CMAKE_CURRENT_BINARY_DIR}/bin
 
