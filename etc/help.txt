@@ -84,7 +84,7 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 ----------
    add_litex_ip_catalog <directory> : Browses directory for LiteX IP generators, adds the IP(s) to the IP Catalog
    ip_catalog ?<ip_name>?     : Lists all available IPs, and their parameters if <ip_name> is given 
-   ip_configure <IP_NAME> -mod_name <name> -out_file <filename> -version <ver_name> -P<param>="<value>"...
+   configure_ip <IP_NAME> -mod_name <name> -out_file <filename> -version <ver_name> -P<param>="<value>"...
                               : Configures an IP <IP_NAME> and generates the corresponding file with module name
    ipgenerate ?clean?         : Generates all IP instances set by ip_configure
      clean                    : Deletes files generated from this task
