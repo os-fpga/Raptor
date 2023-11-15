@@ -173,12 +173,12 @@
                 "options": [
                     "Random",
                     "In Define Order",
-                    "Free"
+                    "Pin Constraint Disabled"
                 ],
                 "optionsLookup": [
                     "random",
                     "in_define_order",
-                    "free"
+                    "pin_constraint_disabled"
                 ],
                 "layout": "horizontal",
                 "arg": "pin_assign_method"
