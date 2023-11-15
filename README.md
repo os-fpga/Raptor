@@ -158,10 +158,10 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 -------------
 --- Place ---
 -------------
-   pin_loc_assign_method <method>: Algortihm for automatic pin assignment (in_define_order, random, free)
+   pin_loc_assign_method <method>: Algortihm for automatic pin assignment (in_define_order, random, pin_constraint_disabled)
        in_define_order        : Port order pin assignment (default)
        random                 : Random pin assignment
-       free                   : No automatic pin assignment
+       pin_constraint_disabled: No automatic pin assignment
    place ?clean?              : Placer
      clean                    : Deletes files generated from this task
    pnr_options <option list>  : PnR Options
