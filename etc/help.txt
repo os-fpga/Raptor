@@ -263,4 +263,43 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
        -y                       : Indicate the consesus of the user to proceed with OTP programming.
        <bitstream_file>         : Bitstream file to program
 
+---------------------
+--- OCLA Debugger ---
+---------------------
+   debugger <command>
+     list_cable ?-v?            : List all connected USB cables
+       -v                       : Verbose mode. Display additional information of list_cable output
+     list_device ?-b <cable name/index>? ?-v?: List all available devices or specified cable devices
+       -b <cable_name/index>    : Specify the cable name or index
+       -v                       : Verbose mode. Display additional information of list_device output
+     info -b <cable name/index> : Examine all OCLA instances characteristic and current configuration on a specified cable
+       -b <cable_name/index>    : Specify the cable name or index
+     load -f <filepath>         : Start a debugging session with user design specified in a .bitasm file
+       -f                       : Specify user design .bitasm file to start debugging
+     unload                     : Stop the debugging session and clear the loaded OCLA information
+     config -b <cable_name/index> -i <n> ?--m <mode>? ?-t <bool>? ?-s <size>?: Configure the trigger mode and behaviors of a specified OCLA instance
+       -b <cable_name/index>    : Specify the cable name or index
+       -i <n>                   : Specify the index of the OCLA instance to configure
+       -m <mode>                : Configure the trigger mode of the OCLA instance
+       -s <size>                : Configure the number of samples data to acquire
+       -t <bool>                : Configure the global trigger Boolean condition
+     config_channel -b <cable_name/index> -i <n> -c <m> ?-t <type>? ?-e <event>? -p <signal name> ?-v value?: Configure a trigger channel type, event and probe signal to monitor in a specified OCLA instance
+       -b <cable_name/index>    : Specify the cable name or index
+       -i <n>                   : Specify the index of the OCLA instance to configure
+       -c <m>                   : Specify the channel to configure
+       -t <type>                : Configure the trigger type
+       -e <event>               : Configure the trigger event
+       -v <signal name>         : Compare value (Only required for value_compare trigger type)
+       -p <value>               : Configure a probe / signal to monitor
+     start -b <cable_name/index> -i <n> ?-t <seconds>? ?-o <output filepath>?: Start OCLA and show signal waveform in GTKWave when trigger hit
+       -b <cable_name/index>    : Specify the cable name or index
+       -i <n>                   : Specify the index of the OCLA instance to configure
+       -t <seconds>             : Specify command timeout in second
+       -o <output filepath>     : Specify the ouput filepath to write the FST waveform output
+     status -b <cable_name/index> -i <n>: Show current data available status of the IP 
+       -b <cable_name/index>    : Specify the cable name or index
+       -i <n>                   : Specify the index of the OCLA instance to configure
+     show_waveform ?-i <input filepath>?: Show signal waveform in a specified FST file in GTKWave 
+       -i <input filepath>      : Specific the input filepath to open in GTKWave
+
 -----------------------------------------------
