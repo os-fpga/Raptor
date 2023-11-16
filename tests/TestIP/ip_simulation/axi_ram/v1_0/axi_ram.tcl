@@ -1,5 +1,5 @@
 create_design axi_ram_prj
-target_device 1GE100
+target_device 1GE100-ES1
 
 set IP_PATH ./axi_ram_prj/axi_ram_prj.IPs
 
