@@ -1,24 +1,24 @@
 <device_list>
-     <device name="1GE100-ES1" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="1GE100-ES1" series="Gemini" family="Internal-Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400" label="I/O"/>
         <resource type="lut" num="45408" label="LUT6s"/>
         <resource type="ff" num="90816" label="FFs"/>
         <resource type="bram" num="176" label="36K BRAMs"/>
         <resource type="dsp" num="176" label="DSPs"/>
         <resource type="carry_length" num="528" label="Carry Length"/>
-        <internal type="tag_version" name="v1.6.184"/>
-        <internal type="vpr_arch" file="1GE100-ES1/gemini_vpr.xml"/>
+        <internal type="tag_version" name="v1.6.232"/>
+        <internal type="vpr_arch" file="gemini_compact_104x68/gemini_vpr.xml"/>
         <internal type="device_size" name="castor104x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
         <internal type="channel_width" num="160"/>
-        <internal type="openfpga_arch" file="1GE100-ES1/gemini_openfpga.xml"/>
-        <internal type="bitstream_settings" file="1GE100-ES1/bitstream_setting.xml"/>
-        <internal type="sim_settings" file="1GE100-ES1/fixed_sim_openfpga.xml"/>
-        <internal type="repack_settings" file="1GE100-ES1/fpga_repack_constraints.xml"/>
+        <internal type="openfpga_arch" file="gemini_compact_104x68/gemini_openfpga.xml"/>
+        <internal type="bitstream_settings" file="gemini_compact_104x68/bitstream_setting.xml"/>
+        <internal type="sim_settings" file="gemini_compact_104x68/fixed_sim_openfpga.xml"/>
+        <internal type="repack_settings" file="gemini_compact_104x68/fpga_repack_constraints.xml"/>
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
-        <internal type="pcf_xml" file="1GE100-ES1/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="1GE100-ES1/Gemini_Pin_Table.csv"/>
+        <internal type="pcf_xml" file="gemini_compact_104x68/pin_constraints.xml"/>
+        <internal type="pinmap_csv" file="gemini_compact_104x68/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -29,7 +29,7 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="1GE124-L" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="1GE124-L" series="Gemini" family="Internal-Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400" label="I/O"/>
         <resource type="lut" num="56448" label="LUT6s"/>
         <resource type="ff" num="112896" label="FFs"/>
@@ -59,14 +59,15 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="1GE100" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+<!--
+     <device name="1GE100" series="Gemini" family="Gemini" package="TBD" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400" label="I/O"/>
-        <resource type="lut" num="45408" label="LUT6s"/>
-        <resource type="ff" num="90816" label="FFs"/>
-        <resource type="bram" num="176" label="36K BRAMs"/>
-        <resource type="dsp" num="176" label="DSPs"/>
-        <resource type="carry_length" num="528" label="Carry Length"/>
-        <internal type="tag_version" name="v1.6.184"/>
+        <resource type="lut" num="63648" label="LUT6s"/>
+        <resource type="ff" num="127296" label="FFs"/>
+        <resource type="bram" num="260" label="36K BRAMs"/>
+        <resource type="dsp" num="208" label="DSPs"/>
+        <resource type="carry_length" num="624" label="Carry Length"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_104x68/gemini_vpr.xml"/>
         <internal type="device_size" name="castor104x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -87,35 +88,10 @@
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
         <internal type="pin_constraint_enabled" num="false"/>
-        <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
+        <internal type="vpr_opts" name="replace_with_correct_values_after_uncommenting"/>
      </device>
-     <device name="1GE3" series="Gemini" family="Gemini" package="F784" pin_count="1000" speedgrade="-1" core_voltage="0.8V">
-        <resource type="io" num="400" label="I/O"/>
-        <resource type="lut" num="3264" label="LUT6s"/>
-        <resource type="ff" num="6528" label="FFs"/>
-        <resource type="bram" num="12" label="36K BRAMs"/>
-        <resource type="dsp" num="16" label="DSPs"/>
-        <resource type="carry_length" num="192"/>
-        <internal type="vpr_arch" file="gemini_100K/gemini_vpr.xml"/>
-        <internal type="device_size" name="21x24"/>]
-        <internal type="lut_size" num="6"/>
-        <internal type="channel_width" num="192"/>
-        <internal type="openfpga_arch" file="gemini_100K/gemini_openfpga.xml"/>
-        <internal type="bitstream_settings" file="gemini_100K/bitstream_annotation.xml"/>
-        <internal type="sim_settings" file="gemini_100K/fixed_sim_openfpga.xml"/>
-        <internal type="repack_settings" file="gemini_100K/repack_design_constraint.xml"/>
-        <internal type="pinmap_xml" file=""/>
-        <internal type="pinmap_csv" file="gemini_100K/Gemini_Pin_Table.csv"/>
-        <internal type="plugin_lib" name="synth-rs"/>
-        <internal type="plugin_func" name="synth_rs"/>
-        <internal type="technology" name="genesis"/>
-        <internal type="synth_type" name="RS"/>
-        <internal type="synth_opts" name=""/>
-        <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
-        <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
-     </device>
-     <device name="1VE3" series="Gemini" family="Gemini" package="F784" pin_count="1000" speedgrade="-1" core_voltage="0.8V">
+-->
+     <device name="1VE3" series="Vega" family="Vega" package="F784" pin_count="1000" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400" label="I/O"/>
         <resource type="lut" num="2520" label="LUT6s"/>
         <resource type="ff" num="5040" label="FFs"/>
@@ -143,14 +119,14 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="1VG50" series="Virgo" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
+     <device name="1VG50" series="Virgo" family="Internal-Virgo" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="260" label="I/O"/>
         <resource type="lut" num="25600" label="LUT6s"/>
         <resource type="ff" num="51200" label="FFs"/>
         <resource type="bram" num="56" label="36K BRAMs"/>
         <resource type="dsp" num="56" label="DSPs"/>
         <resource type="carry_length" num="336"/>
-        <internal type="tag_version" name="v1.6.184"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -162,7 +138,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_62x44/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_62x44/Gemini_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file="gemini_compact_62x44/Virgo_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -173,44 +149,44 @@
         <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="1GE75" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="1GE75" series="Gemini" family="Gemini" package="F784A" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400" label="I/O"/>
-        <resource type="lut" num="34848" label="LUT6s"/>
-        <resource type="ff" num="69696" label="FFs"/>
-        <resource type="bram" num="154" label="36K BRAMs"/>
-        <resource type="dsp" num="154" label="DSPs"/>
-        <resource type="carry_length" num="528"/>
-        <internal type="tag_version" name="v1.6.184"/>
-        <internal type="vpr_arch" file="gemini_compact_82x68/gemini_vpr.xml"/>
-        <internal type="device_size" name="castor82x68_heterogeneous"/>
+        <resource type="lut" num="45408" label="LUT6s"/>
+        <resource type="ff" num="90816" label="FFs"/>
+        <resource type="bram" num="176" label="36K BRAMs"/>
+        <resource type="dsp" num="176" label="DSPs"/>
+        <resource type="carry_length" num="528" label="Carry Length"/>
+        <internal type="tag_version" name="v1.6.232"/>
+        <internal type="vpr_arch" file="gemini_compact_104x68/gemini_vpr.xml"/>
+        <internal type="device_size" name="castor104x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
         <internal type="channel_width" num="160"/>
-        <internal type="openfpga_arch" file="gemini_compact_82x68/gemini_openfpga.xml"/>
-        <internal type="bitstream_settings" file="gemini_compact_82x68/bitstream_setting.xml"/>
-        <internal type="sim_settings" file="gemini_compact_82x68/fixed_sim_openfpga.xml"/>
-        <internal type="repack_settings" file="gemini_compact_82x68/fpga_repack_constraints.xml"/>
-        <internal type="fabric_key" file="gemini_compact_82x68/fabric_key.xml"/>
+        <internal type="openfpga_arch" file="gemini_compact_104x68/gemini_openfpga.xml"/>
+        <internal type="bitstream_settings" file="gemini_compact_104x68/bitstream_setting.xml"/>
+        <internal type="sim_settings" file="gemini_compact_104x68/fixed_sim_openfpga.xml"/>
+        <internal type="repack_settings" file="gemini_compact_104x68/fpga_repack_constraints.xml"/>
+        <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
-        <internal type="pcf_xml" file="gemini_compact_82x68/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_82x68/Gemini_Pin_Table.csv"/>
+        <internal type="pcf_xml" file="gemini_compact_104x68/pin_constraints.xml"/>
+        <internal type="pinmap_csv" file="gemini_compact_104x68/Gemini_Pin_Table.csv"/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
         <internal type="technology" name="genesis3"/>
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
-        <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
+        <internal type="bitstream_enabled" num="true"/>
+        <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="GEMINI_COMPACT_82x68" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="GEMINI_COMPACT_82x68" series="Gemini" family="Internal-Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400"/>
         <resource type="lut" num="34848"/>
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
         <resource type="carry_length" num="528"/>
-        <internal type="tag_version" name="v1.6.184"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_104x68/gemini_vpr.xml"/>
         <internal type="device_size" name="castor104x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -233,14 +209,14 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="1GVTC" series="Virgo" family="Gemini" package="F484A" pin_count="272" speedgrade="-1" core_voltage="0.8V">
+     <device name="1GVTC" series="Virgo" family="Virgo" package="F484A" pin_count="272" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="240" label="I/O"/>
         <resource type="lut" num="17472" label="LUT6s"/>
         <resource type="ff" num="34944" label="FFs"/>
-        <resource type="bram" num="84" label="36K BRAMs"/>
-        <resource type="dsp" num="84" label="DSPs"/>
+        <resource type="bram" num="56" label="36K BRAMs"/>
+        <resource type="dsp" num="56" label="DSPs"/>
         <resource type="carry_length" num="336"/>
-        <internal type="tag_version" name="v1.6.204"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -260,17 +236,17 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
+        <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="GEMINI_COMPACT_104x68" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="GEMINI_COMPACT_104x68" series="Gemini" family="Internal-Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400" label="I/O"/>
         <resource type="lut" num="45408" label="LUT6s"/>
         <resource type="ff" num="90816" label="FFs"/>
         <resource type="bram" num="176" label="36K BRAMs"/>
         <resource type="dsp" num="176" label="DSPs"/>
         <resource type="carry_length" num="528"/>
-        <internal type="tag_version" name="v1.6.184"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_104x68/gemini_vpr.xml"/>
         <internal type="device_size" name="castor104x68_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -293,7 +269,7 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="GEMINI_COMPACT_104x86" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="GEMINI_COMPACT_104x86" series="Gemini" family="Internal-Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400" label="I/O"/>
         <resource type="lut" num="56448" label="LUT6s"/>
         <resource type="ff" num="112896" label="FFs"/>
@@ -323,14 +299,14 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="GEMINI_COMPACT_62x44" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="GEMINI_COMPACT_62x44" series="Gemini" family="Internal-Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400"/>
         <resource type="lut" num="34848"/>
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
         <resource type="carry_length" num="336"/>
-        <internal type="tag_version" name="v1.6.184"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -353,14 +329,14 @@
         <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-     <device name="GEMINI_COMPACT_10x8" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+     <device name="GEMINI_COMPACT_10x8" series="Virgo" family="Internal-Virgo" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400"/>
         <resource type="lut" num="34848"/>
         <resource type="ff" num="69696"/>
         <resource type="bram" num="154"/>
         <resource type="dsp" num="154"/>
         <resource type="carry_length" num="48"/>
-        <internal type="tag_version" name="v1.6.184"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_10x8/gemini_vpr.xml"/>
         <internal type="device_size" name="castor10x8_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -380,10 +356,10 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
+        <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
      </device>
-    <device name="GEMINI_LEGACY" series="Gemini" family="Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
+    <device name="GEMINI_LEGACY" series="Gemini" family="Internal-Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
         <resource type="io" num="525"/>
         <resource type="lut" num="100000"/>
         <resource type="ff" num="200000"/>
@@ -409,7 +385,7 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>
-    <device name="GEMINI_LEGACY_12x12" series="Gemini" family="Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
+    <device name="GEMINI_LEGACY_12x12" series="Gemini" family="Internal-Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
         <resource type="io" num="525"/>
         <resource type="lut" num="100000"/>
         <resource type="ff" num="200000"/>
@@ -435,7 +411,7 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>
-    <device name="MPW1" series="Gemini" family="TestChip" package="SBG484" pin_count="44" speedgrade="1" core_voltage="0.8V">
+    <device name="MPW1" series="Gemini" family="Internal-Gemini" package="SBG484" pin_count="44" speedgrade="1" core_voltage="0.8V">
         <resource type="io" num="44"/>
         <resource type="lut" num="160"/>
         <resource type="ff" num="320"/>
@@ -457,8 +433,7 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="synth_opts" name="-no_dsp -no_bram -no_adder"/>
     </device>
-
-    <device name="GEMINI" series="Gemini" family="Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
+    <device name="GEMINI" series="Gemini" family="Internal-Gemini" package="F784" pin_count="784" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="400"/>
         <resource type="lut" num="34848"/>
         <resource type="ff" num="69696"/>
@@ -486,13 +461,14 @@
         <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>
-    <device name="GEMINI_10x8" series="Gemini" family="Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
+    <device name="GEMINI_10x8" series="Gemini" family="Internal-Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
         <resource type="io" num="525"/>
         <resource type="lut" num="100000"/>
         <resource type="ff" num="200000"/>
         <resource type="bram" num="312"/>
         <resource type="dsp" num="312"/>
         <resource type="carry_length" num="48"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_10x8/gemini_vpr.xml"/>
         <internal type="device_size" name="castor10x8_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -514,7 +490,7 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>
-    <device name="GEMINI_4x4" series="Gemini" family="Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
+    <device name="GEMINI_4x4" series="Gemini" family="Internal-Gemini" package="FG676" pin_count="525" speedgrade="1" core_voltage="0.8V">
         <resource type="io" num="525"/>
         <resource type="lut" num="100000"/>
         <resource type="ff" num="200000"/>
@@ -543,13 +519,14 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on"/>
     </device>  
-    <device name="1OR250" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
+    <device name="1OR250" series="Orion" family="Orion" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="360"/>
         <resource type="lut" num="159264"/>
         <resource type="ff" num="318528"/>
         <resource type="bram" num="588"/>
         <resource type="dsp" num="588"/>
         <resource type="carry_length" num="1008"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_188x128/gemini_vpr.xml"/>
         <internal type="device_size" name="castor188x128_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -561,7 +538,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_188x128/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_188x128/Virgo_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file=""/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -572,13 +549,14 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
-    <device name="1LY500" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
+    <device name="1LY500" series="Lyra" family="Lyra" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="480"/>
         <resource type="lut" num="322560"/>
         <resource type="ff" num="645120"/>
         <resource type="bram" num="1320"/>
         <resource type="dsp" num="1080"/>
         <resource type="carry_length" num="1440"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_266x182/gemini_vpr.xml"/>
         <internal type="device_size" name="castor266x182_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -590,7 +568,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_266x182/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_266x182/Virgo_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file=""/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
@@ -601,13 +579,14 @@
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
-    <device name="1LY750" series="Gemini" family="Gemini" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
+    <device name="1LY750" series="Lyra" family="Lyra" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
         <resource type="io" num="600"/>
         <resource type="lut" num="466560"/>
         <resource type="ff" num="933120"/>
         <resource type="bram" num="1872"/>
         <resource type="dsp" num="1584"/>
         <resource type="carry_length" num="1728"/>
+        <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="gemini_compact_320x218/gemini_vpr.xml"/>
         <internal type="device_size" name="castor320x218_heterogeneous"/>
         <internal type="lut_size" num="6"/>
@@ -619,7 +598,7 @@
         <internal type="fabric_key" file=""/>
         <internal type="pinmap_xml" file=""/>
         <internal type="pcf_xml" file="gemini_compact_320x218/pin_constraints.xml"/>
-        <internal type="pinmap_csv" file="gemini_compact_320x218/Virgo_Pin_Table.csv"/>
+        <internal type="pinmap_csv" file=""/>
         <internal type="pb_pin_fixup" name=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
