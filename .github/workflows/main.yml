@@ -14,7 +14,7 @@ on:
         default: ""
         type: string
 env:
-    PRODUCTION_DEVICES: "1GE100-ES1"
+    PRODUCTION_DEVICES: "1GE75"
 
 jobs:
   linux-gcc:
