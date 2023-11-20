@@ -1,6 +1,6 @@
 create_design axis_adapter_prj
 
-target_device 1GE100
+target_device 1GE100-ES1
 
 #Configuring axis_adapter_v1_0 IP 
 configure_ip axis_adapter_v1_0 -mod_name axis_adapter_wrapper -Ps_data_width=32 -out_file ./axis_adapter_wrapper

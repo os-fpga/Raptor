@@ -1,5 +1,5 @@
 create_design vex_100K
-target_device 1GE100
+target_device 1GE100-ES1
 add_include_path ./
 add_library_path rtl/
 add_library_ext .v .sv
