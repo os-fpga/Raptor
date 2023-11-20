@@ -917,19 +917,15 @@ else ()
         COMMAND echo "remove GTKwave tcl8.6"
         COMMAND ${CMAKE_COMMAND} -E remove_directory
            ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
-	      )
-  add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "copy FOEDAG tcl8.6 to GTKwave"
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library
-           ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
-	      )
-  add_custom_command(TARGET raptor-bin POST_BUILD
+             ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library
+              ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
         COMMAND echo "copy GTKwave tk to GTKwave tcl8.6"
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tk
-           ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
-	      )        
+              ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tk8.6
+                 ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+           )       
   if (PRODUCTION_BUILD AND (NOT ENABLE_OPENSTA))
      add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "Remove OpenSTA from Production build"
