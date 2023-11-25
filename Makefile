@@ -184,7 +184,7 @@ test/batch_gen2: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
 
 solver/tests: release
-	./build/bin/raptor --batch  --script tests/Testcases/partitioner_and2_verilog/run_raptor.tcl
+	./build/bin/raptor --batch  --script tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
