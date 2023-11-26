@@ -632,15 +632,7 @@ install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
-
-#install(
-#      DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library
-#      DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6)
-#
-#install(
-#        DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tk
-#        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6)      
-#        
+       
 install(
       FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/tclsh8.6 DESTINATION ${CMAKE_INSTALL_BINDIR}
       PERMISSIONS
