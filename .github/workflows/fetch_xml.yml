@@ -169,7 +169,7 @@ jobs:
     - name: Build Raptor
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
-        make release
+        make release CPU_CORES=2
 
     - name: Extract device name
       if: contains(steps.is_change.outputs.has_changed, 'true')
