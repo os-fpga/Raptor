@@ -13,6 +13,9 @@ if (PRODUCTION_BUILD)
   set (PRODUCTION_BUILD_FLAG "-DPRODUCTION_BUILD=1")
   add_definitions(-DPRODUCTION_BUILD)
   set (BUILD_TYPE_STRING Production)
+  message(STATUS "Given Production devices are ${PRODUCTION_DEVICES}")
+else()
+  set (PRODUCTION_DEVICES "")
 endif(PRODUCTION_BUILD)
 
 # Detect build type, fallback to release and throw a warning if use didn't
