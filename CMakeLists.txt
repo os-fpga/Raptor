@@ -632,11 +632,7 @@ install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
-
-install(
-      DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
-      DESTINATION ${CMAKE_INSTALL_LIBDIR})
-        
+       
 install(
       FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/tclsh8.6 DESTINATION ${CMAKE_INSTALL_BINDIR}
       PERMISSIONS
@@ -898,20 +894,30 @@ else ()
           ${PROJECT_SOURCE_DIR}/src/.raptorenv_lin64.sh
           ${CMAKE_CURRENT_BINARY_DIR})
   add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "copy tclsh8.6"
+        COMMAND echo "copy FOEDAG tclsh8.6 to bin"
         COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/tclsh8.6
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
-        ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6
         )
   add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "copy tclsh8.6.so"
+        COMMAND echo "copy FOEDAG tclsh8.6.so to GTKwave"
         COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/libtcl8.6.so
            ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib
-	      )        
+	      )
+  add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "remove GTKwave tcl8.6"
+        COMMAND ${CMAKE_COMMAND} -E remove_directory
+           ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+        COMMAND echo "copy FOEDAG tcl8.6 to GTKwave"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+             ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library
+              ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+        COMMAND echo "copy GTKwave tk to GTKwave tcl8.6"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+              ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tk8.6
+                 ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+           )       
   if (PRODUCTION_BUILD AND (NOT ENABLE_OPENSTA))
      add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "Remove OpenSTA from Production build"
