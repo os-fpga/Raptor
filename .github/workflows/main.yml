@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       Release_Date:
-        description: 'Release date of Raptor in format -v YYYY.MM'
+        description: 'Release date of Raptor in format YYYY.MM'
         default: ""
         type: string
       Production_Devices:
@@ -14,7 +14,7 @@ on:
         default: ""
         type: string
 env:
-    PRODUCTION_DEVICES: "1GE75,IGVTC"  # comma separated devices name
+    PRODUCTION_DEVICES: "1GE75,1GVTC"  # comma separated devices name
 
 jobs:
   linux-gcc:
@@ -173,7 +173,8 @@ jobs:
         ./build/bin/raptor --version
         ./build/bin/Flex_LM/lmutil lmhostid
         export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
-        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device 1GE75
+        d_test=$(echo "${{ env.p_devices }}" | cut -d ',' -f 1)
+        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
@@ -341,8 +342,6 @@ jobs:
                         
 
     - name: Production Build
-      # Change ref head to deploy using a different branch.
-      #if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
       if: "${{ matrix.mode == 'production' }}"
       uses: addnab/docker-run-action@v3
       with:
@@ -356,10 +355,11 @@ jobs:
             r_d=`cat input_release_date`
             echo $p_device
             echo "$r_d"
+            d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
             make install CPU_CORES=2 PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
-            ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device 1GE75
+            ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt-5.15.4/lib:$LD_LIBRARY_PATH
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
             cat /opt/instl_dir/share/raptor/etc/device.xml
