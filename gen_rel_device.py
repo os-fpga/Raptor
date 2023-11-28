@@ -66,6 +66,7 @@ def main ():
     parser.add_argument('--examples_path',
                         type=str,default='1',metavar='',help='Path of devices directories', dest="examples")
     args = parser.parse_args()
+    args.rel_devices_list = [device.strip() for device in args.rel_devices_list[0].split(',')]
     print("Given Production Devices are:\n\t\t",args.rel_devices_list)
     print("XML file that will be update:\n\t\t",args.XML_filepath)
     print("directory from which not required devices directories will be removed:\n\t\t",args.devices_dirs)
@@ -75,3 +76,5 @@ def main ():
 
 if __name__ == "__main__":
     main()
+    
+    

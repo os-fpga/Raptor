@@ -13,6 +13,9 @@ if (PRODUCTION_BUILD)
   set (PRODUCTION_BUILD_FLAG "-DPRODUCTION_BUILD=1")
   add_definitions(-DPRODUCTION_BUILD)
   set (BUILD_TYPE_STRING Production)
+  message(STATUS "Given Production devices are ${PRODUCTION_DEVICES}")
+else()
+  set (PRODUCTION_DEVICES "")
 endif(PRODUCTION_BUILD)
 
 # Detect build type, fallback to release and throw a warning if use didn't
@@ -175,7 +178,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 9)
-set(VERSION_PATCH 2)
+set(VERSION_PATCH 3)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -334,6 +337,7 @@ endif()
 
 link_libraries(raptor-bin raptor_gui)
 link_libraries(raptor raptor_gui)
+add_dependencies(raptor-bin verify_synth_ports)
 
 if (MSVC)
   message("WINDOWS MODE")
@@ -631,11 +635,7 @@ install(
       FILES README.md DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/doc/)
 install(
       DIRECTORY FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library/ DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/tcl8.6.12/library/)
-
-install(
-      DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
-      DESTINATION ${CMAKE_INSTALL_LIBDIR})
-        
+       
 install(
       FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/tclsh8.6 DESTINATION ${CMAKE_INSTALL_BINDIR}
       PERMISSIONS
@@ -897,20 +897,30 @@ else ()
           ${PROJECT_SOURCE_DIR}/src/.raptorenv_lin64.sh
           ${CMAKE_CURRENT_BINARY_DIR})
   add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "copy tclsh8.6"
+        COMMAND echo "copy FOEDAG tclsh8.6 to bin"
         COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/bin/tclsh8.6
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
-        ${CMAKE_CURRENT_BINARY_DIR}/lib/tcl8.6
         )
   add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "copy tclsh8.6.so"
+        COMMAND echo "copy FOEDAG tclsh8.6.so to GTKwave"
         COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/libtcl8.6.so
            ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib
-	      )        
+	      )
+  add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND echo "remove GTKwave tcl8.6"
+        COMMAND ${CMAKE_COMMAND} -E remove_directory
+           ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+        COMMAND echo "copy FOEDAG tcl8.6 to GTKwave"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+             ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/tcl8.6.12/library
+              ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+        COMMAND echo "copy GTKwave tk to GTKwave tcl8.6"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+              ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tk8.6
+                 ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave/bin/lib/tcl8.6
+           )       
   if (PRODUCTION_BUILD AND (NOT ENABLE_OPENSTA))
      add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "Remove OpenSTA from Production build"
