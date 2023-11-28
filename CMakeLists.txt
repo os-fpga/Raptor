@@ -338,6 +338,7 @@ endif()
 
 link_libraries(raptor-bin raptor_gui)
 link_libraries(raptor raptor_gui)
+add_dependencies(raptor-bin verify_synth_ports)
 
 if (MSVC)
   message("WINDOWS MODE")
