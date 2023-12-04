@@ -190,7 +190,7 @@ jobs:
                 done
          done
     - name: generate files for each matrix job
-      run:
+      run: |
           num_devices=`wc -l < raptor_run`
           echo "Number of devices are $num_devices"
           if [ $num_devices -lt 18 ] 
@@ -324,7 +324,7 @@ jobs:
           name: Raptor_build
 
     - name: Run the test
-      run:
+      run: |
           tar -xzf build.tar.gz
           ls -l && cd build && ls -l
           if [ -f ./build/${{ matrix.tests }} ]
