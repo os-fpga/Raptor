@@ -321,6 +321,17 @@ jobs:
             fi
             git branch
 
+    - name: Install dependencies
+      run: |
+        bash .github/workflows/install_ubuntu_dependencies_build.sh
+        sudo apt-get install -y xmlstarlet
+#        bash .github/workflows/install_litex_ubuntu.sh
+
+    - name: Setup Python Packages
+      run: |
+        pip3 install orderedmultidict
+        pip3 install psutil
+
     - name: Download Raptor Build
       uses: actions/download-artifact@v3
       with:
