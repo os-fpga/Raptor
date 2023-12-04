@@ -191,7 +191,7 @@ jobs:
          done
     - name: generate files for each matrix job
       run:
-          num_devices=$(wc -l < "$1")
+          num_devices=$(wc -l < raptor_run)
           echo "Number of devices are $num_devices"
           if [ $num_devices -lt 18 ] 
           then
@@ -201,6 +201,7 @@ jobs:
               exit 1
           fi
           ls -l
+          tar -cvzf build build.tar.gz
 
     - name: Add and Push files
       if: contains(steps.is_change.outputs.has_changed, 'true')
@@ -217,7 +218,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: Raptor_build
-          path: ./build
+          path: build.tar.gz
 
     - name: Create Raptor Build Issue in Jira
       if: failure () && contains(steps.is_change.outputs.has_changed, 'true')
@@ -303,7 +304,8 @@ jobs:
 
     - name: switch to branch
       run: |
-            git branch -a 
+            git branch -a
+            git pull
             BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
             set +e
             git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
@@ -323,6 +325,7 @@ jobs:
 
     - name: Run the test
       run:
+          tar -xzf build.tar.gz
           ls -l && cd build && ls -l
           if [ -f ./build/${{ matrix.tests }} ]
           then
@@ -370,6 +373,7 @@ jobs:
     - name: switch to branch
       run: |
             git branch -a 
+            git pull
             BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
             set +e
             git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
