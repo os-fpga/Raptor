@@ -6,8 +6,10 @@ on:
     types: [digest_latest_Release]
 
 jobs:
-  XML_Digest_and_test:
+  XML_Digest_and_raptor_build:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.branch_name.outputs.b_name }}
     defaults:
       run:
         shell: bash
@@ -53,9 +55,11 @@ jobs:
         fetch-depth: 0
 
     - name: switch to branch
+      id: branch_name
       run: |
             git branch -a 
             BRANCH='${{ matrix.updates }}_${{ github.event.client_payload.new_release }}'
+            echo "b_name=$BRANCH" >> "$GITHUB_OUTPUT"
             set +e
             git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
             EXIT_CODE=$?
@@ -183,16 +187,20 @@ jobs:
 
                 xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
                 echo "./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> raptor_run
-                echo "echo \"########################################\"" >> raptor_run
                 done
          done
-
-    - name: Run test
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      run: |
-        cat raptor_run
-        chmod +x raptor_run
-        ./raptor_run
+    - name: generate files for each matrix job
+      run:
+          num_devices=$(wc -l < "$1")
+          echo "Number of devices are $num_devices"
+          if [ $num_devices -lt 18 ] 
+          then
+            cd build
+            split -d -l 1 ../raptor_run
+          else
+              exit 1
+          fi
+          ls -l
 
     - name: Add and Push files
       if: contains(steps.is_change.outputs.has_changed, 'true')
@@ -205,30 +213,234 @@ jobs:
         target_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
         force: true
 
-# if above step pass then create PR.          
+    - name: Upload Raptor Build
+      uses: actions/upload-artifact@v3
+      with:
+          name: Raptor_build
+          path: ./build
+
+    - name: Create Raptor Build Issue in Jira
+      if: failure () && contains(steps.is_change.outputs.has_changed, 'true')
+      uses: tomhjp/gh-action-jira-create@v0.1.3
+      with:
+          project: EDA
+          issuetype: "Bug"
+          summary: "Raptor build fail while digesting release ${{ github.event.client_payload.new_release }}."
+          description: "In an attempt to merge the release ${{ github.event.client_payload.new_release }} in Raptor, the Raptor compilation. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          extraFields: '{"assignee": { "id": "6239bc27a95758006959b14d"}}'
+      env:
+            JIRA_BASE_URL: https://rapidsilicon.atlassian.net
+            JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
+            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+
+  XML_Digest_and_test:
+    needs: XML_Digest_and_raptor_build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: true
+      matrix:
+        tests:
+        - x00
+        - x01
+        - x02
+        - x03
+        - x04
+        - x05
+        - x06
+        - x07
+        - x08
+        - x09
+        - x10
+        - x11
+        - x12
+        - x13
+        - x14
+        - x15
+        - x16
+        - x17
+        - x18
+        - x19
+        - x20
+        
+    env:
+        MODE: ${{ matrix.tests }}
+  
+    steps:
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: switch to branch
+      run: |
+            git branch -a 
+            BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
+            set +e
+            git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
+            EXIT_CODE=$?
+            if [[ $EXIT_CODE == '0' ]]; then
+                echo "Git branch '$BRANCH' exists in the remote repository"
+                git checkout $BRANCH
+            elif [[ $EXIT_CODE == '2' ]]; then
+                echo "Git branch '$BRANCH' does not exist in the remote repository"
+            fi
+            git branch
+
+    - name: Download Raptor Build
+      uses: actions/download-artifact@v3
+      with:
+          name: Raptor_build
+
+    - name: Run the test
+      run:
+          ls -l && cd build && ls -l
+          if [ -f ./build/${{ matrix.tests }} ]
+          then
+              bash ./build/${{ matrix.tests }}
+          else
+              echo "This test file ${{ matrix.tests }} does not exist so skipping it"
+          fi
+
+  XML_Digest_and_create_PR:
+    needs: [XML_Digest_and_test,XML_Digest_and_raptor_build]
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: switch to branch
+      run: |
+            git branch -a 
+            BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
+            set +e
+            git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
+            EXIT_CODE=$?
+            if [[ $EXIT_CODE == '0' ]]; then
+                echo "Git branch '$BRANCH' exists in the remote repository"
+                git checkout $BRANCH
+            elif [[ $EXIT_CODE == '2' ]]; then
+                echo "Git branch '$BRANCH' does not exist in the remote repository"
+            fi
+            git branch
+                      
     - name: Create PR
-      if: contains(steps.is_change.outputs.has_changed, 'true')
       uses: repo-sync/pull-request@v2
       with:
-          source_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}                                # branch having xmls files
+          source_branch: ${{needs.XML_Digest_and_raptor_build.outputs.output1}}                               # branch having xmls files
           destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling ${{ matrix.updates }} release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
-          pr_body: "An automated PR to check in New ${{ matrix.updates }} Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+          pr_title: "Pulling release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_body: "An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
           pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
           pr_allow_empty: true                                                            # Creates pull request even if there are no changes
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Create
-      if: failure () && contains(steps.is_change.outputs.has_changed, 'true')
+  XML_Digest_and_create_jira:
+    needs: XML_Digest_and_test
+    if: ${{ contains(join(needs.*.result, ','), 'fail') }}
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
+          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
+          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
+          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
+          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
+          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
+          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
+          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
+          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
+          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
+          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
+          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
+          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
+          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Create Jira on failing test
       uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
           project: EDA
           issuetype: "Bug"
           summary: "Smoke test fail on XML/CSV from release ${{ github.event.client_payload.new_release }}."
           description: "In an attempt to merge the release ${{ github.event.client_payload.new_release }} in Raptor, the smoke test fails. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          extraFields: '{"assignee": { "id": "712020:63820c3b-2ac9-4f39-b263-9d19c1e5ebcd"}}'
+         # extraFields: '{"assignee": { "id": "712020:63820c3b-2ac9-4f39-b263-9d19c1e5ebcd"}}'
+          extraFields: '{"assignee": { "id": "6239bc27a95758006959b14d"}}'
       env:
             JIRA_BASE_URL: https://rapidsilicon.atlassian.net
             JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
