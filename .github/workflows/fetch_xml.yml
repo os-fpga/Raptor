@@ -191,7 +191,7 @@ jobs:
          done
     - name: generate files for each matrix job
       run:
-          num_devices=$(wc -l < raptor_run)
+          num_devices=`wc -l < raptor_run`
           echo "Number of devices are $num_devices"
           if [ $num_devices -lt 18 ] 
           then
@@ -401,7 +401,7 @@ jobs:
 
   XML_Digest_and_create_jira:
     needs: XML_Digest_and_test
-    if: ${{ contains(join(needs.*.result, ','), 'fail') }}
+    if: ${{ contains(join(needs.*.result, ','), 'failure') }}
     runs-on: ubuntu-latest
   
     steps:
