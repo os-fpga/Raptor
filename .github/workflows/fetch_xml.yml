@@ -329,7 +329,7 @@ jobs:
     - name: Run the test
       run: |
           tar -xzf build.tar.gz
-          ls -l && cd build && ls -l
+          ls -l && cd build && ls -l && cd ..
           if [ -f ./build/${{ matrix.tests }} ]
           then
               bash ./build/${{ matrix.tests }}
