@@ -204,7 +204,7 @@ jobs:
           fi
           ls -l
 
-    - name: generate files for each matrix job
+    - name: Tar the Artifacts
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
           tar -cvzf  build.tar.gz build Raptor_Tools yosys_verific_rs         
@@ -245,6 +245,8 @@ jobs:
   XML_Digest_and_test:
     needs: XML_Digest_and_raptor_build
     runs-on: ubuntu-latest
+    outputs:
+      output3: ${{ steps.test_result_failure.outputs.test_fail }}
     defaults:
       run:
         shell: bash
@@ -341,18 +343,31 @@ jobs:
       with:
           name: Raptor_build
 
-    - name: Run the test
+    - name: Extract Raptor artifacts
       run: |
           tar -xzf build.tar.gz
-          ls -l && cd build && ls -l && cd ..
+          ls -l && cd build && ls -l        
+
+    - name: Run the test
+      run: |
           if [ -f ./build/${{ matrix.tests }} ]
           then
               bash ./build/${{ matrix.tests }}
           else
               echo "This test file ${{ matrix.tests }} does not exist so skipping it"
-          fi
+          fi         
 
-  XML_Digest_and_create_PR:
+    - name: Set the result
+      if: ${{ failure() }}
+      id: test_result_failure
+      run: |
+            echo "test_fail=fail" >> "$GITHUB_OUTPUT"
+
+# separate job for create PR and create jira because test job has matrix strategy and we need to set only one job output variable as result of job
+# The create jira job is set to run always and create PR job is run only when all the tests are passed.
+# Now if any matrix job fail then set the result step will run and then create jira job having step create jira will run otherwise it will be skipped. 
+
+  Create_PR:
     needs: [XML_Digest_and_test,XML_Digest_and_raptor_build]
     runs-on: ubuntu-latest
   
@@ -404,7 +419,7 @@ jobs:
             fi
             git branch
                       
-    - name: Create PR
+    - name: Create PR on pass test
       uses: repo-sync/pull-request@v2
       with:
           source_branch: ${{needs.XML_Digest_and_raptor_build.outputs.output1}}                               # branch having xmls files
@@ -415,11 +430,11 @@ jobs:
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
           pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
           pr_allow_empty: true                                                            # Creates pull request even if there are no changes
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}    
 
-  XML_Digest_and_create_jira:
-    needs: XML_Digest_and_test
-    if: ${{ contains(join(needs.*.result, ','), 'failure') }}
+  Create_Jira:
+    needs: [XML_Digest_and_test,XML_Digest_and_raptor_build]
+    if: ${{ always() }}
     runs-on: ubuntu-latest
   
     steps:
@@ -453,8 +468,9 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
-
+  
     - name: Create Jira on failing test
+      if: ${{ needs.XML_Digest_and_test.outputs.output3 == "fail" }}  
       uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
           project: EDA
@@ -466,8 +482,7 @@ jobs:
       env:
             JIRA_BASE_URL: https://rapidsilicon.atlassian.net
             JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
-            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-
+            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}            
 
 #    - name: automerge XMLs PR
 #      uses: "pascalgn/automerge-action@v0.15.6"
