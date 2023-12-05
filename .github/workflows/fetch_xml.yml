@@ -58,7 +58,7 @@ jobs:
       id: branch_name
       run: |
             git branch -a 
-            BRANCH='${{ matrix.updates }}_${{ github.event.client_payload.new_release }}'
+            BRANCH='${{ matrix.updates }}_0.9.16'
             echo "b_name=$BRANCH" >> "$GITHUB_OUTPUT"
             set +e
             git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
@@ -66,8 +66,8 @@ jobs:
             if [[ $EXIT_CODE == '0' ]]; then
                 echo "Git branch '$BRANCH' exists in the remote repository"
                 main_last_commit=`git log -1 --pretty=format:"%H"`
-                git checkout ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
-                git pull origin ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
+                git checkout ${{ matrix.updates }}_0.9.16
+                git pull origin ${{ matrix.updates }}_0.9.16
                 git reset --hard $main_last_commit
             elif [[ $EXIT_CODE == '2' ]]; then
                 echo "Git branch '$BRANCH' does not exist in the remote repository"
@@ -84,7 +84,7 @@ jobs:
 
     - name:  Unzip and copy all the files
       run: |
-          echo "payload: ${{ github.event.client_payload.new_release }}"
+          echo "payload: 0.9.16"
           for file in $(ls -1 $GITHUB_WORKSPACE/*.tar.gz)
           do
           echo $file
@@ -215,9 +215,9 @@ jobs:
       with:
         email: nadeem.yaseen@rapidsilicon.com
         name: nadeemyaseen-rs
-        commit_message: Added ${{ matrix.updates }} files from ${{ github.event.client_payload.new_release }}
+        commit_message: Added ${{ matrix.updates }} files from 0.9.16
         files: "${{ env.path_to_commit }}"
-        target_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}
+        target_branch: ${{ matrix.updates }}_0.9.16
         force: true
 
     - name: Upload Raptor Build
@@ -233,8 +233,8 @@ jobs:
       with:
           project: EDA
           issuetype: "Bug"
-          summary: "Raptor build fail while digesting release ${{ github.event.client_payload.new_release }}."
-          description: "In an attempt to merge the release ${{ github.event.client_payload.new_release }} in Raptor, the Raptor compilation. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          summary: "Raptor build fail while digesting release 0.9.16."
+          description: "In an attempt to merge the release 0.9.16 in Raptor, the Raptor compilation. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           extraFields: '{"assignee": { "id": "6239bc27a95758006959b14d"}}'
       env:
             JIRA_BASE_URL: https://rapidsilicon.atlassian.net
@@ -409,7 +409,7 @@ jobs:
       with:
           source_branch: ${{needs.XML_Digest_and_raptor_build.outputs.output1}}                               # branch having xmls files
           destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_title: "Pulling release 0.9.16 into main. "               # Title of pull request
           pr_body: "An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
           pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
           pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
@@ -459,8 +459,8 @@ jobs:
       with:
           project: EDA
           issuetype: "Bug"
-          summary: "Smoke test fail on XML/CSV from release ${{ github.event.client_payload.new_release }}."
-          description: "In an attempt to merge the release ${{ github.event.client_payload.new_release }} in Raptor, the smoke test fails. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          summary: "Smoke test fail on XML/CSV from release 0.9.16."
+          description: "In an attempt to merge the release 0.9.16 in Raptor, the smoke test fails. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
          # extraFields: '{"assignee": { "id": "712020:63820c3b-2ac9-4f39-b263-9d19c1e5ebcd"}}'
           extraFields: '{"assignee": { "id": "6239bc27a95758006959b14d"}}'
       env:
