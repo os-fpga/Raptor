@@ -1,7 +1,7 @@
 name: 'Fetch and Test XML changes'
 
 on:
-  #push:
+  push:
   repository_dispatch:
     types: [digest_latest_Release]
 
@@ -189,6 +189,7 @@ jobs:
                 echo "./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> raptor_run
                 done
          done
+
     - name: generate files for each matrix job
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
@@ -202,8 +203,11 @@ jobs:
               exit 1
           fi
           ls -l
-          cd ..
-          tar -cvzf  build.tar.gz build
+
+    - name: generate files for each matrix job
+      if: contains(steps.is_change.outputs.has_changed, 'true')
+      run: |
+          tar -cvzf  build.tar.gz build Raptor_Tools yosys_verific_rs         
 
     - name: Add and Push files
       if: contains(steps.is_change.outputs.has_changed, 'true')
