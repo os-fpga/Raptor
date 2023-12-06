@@ -271,7 +271,7 @@ jobs:
         echo $after
         docker rmi $after
         sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
-        sudo apt install -y qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev
+        sudo apt install -y qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev libusb-1.0-0-dev
         sudo apt-get autoremove -y >/dev/null 2>&1
         sudo apt-get autoclean -y >/dev/null 2>&1
         df -h
