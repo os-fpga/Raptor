@@ -320,7 +320,8 @@ jobs:
         run: |
           source /opt/rh/devtoolset-11/enable
           cmake --version
-          gcc --version         
+          gcc --version
+          ls -l /usr/local
 
     - name: Test
       if: matrix.mode == 'test'
