@@ -291,7 +291,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}          
 
     - name: pull the CentOS image
-      run: docker pull ghcr.io/rapidsilicon/raptor:centos_with_docker    
+      run: docker pull ghcr.io/rapidsilicon/raptor:qt6_ci_fixes    
 
     - name: Checkout code
       uses: actions/checkout@v3       
