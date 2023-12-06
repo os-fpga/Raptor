@@ -271,7 +271,7 @@ jobs:
         echo $after
         docker rmi $after
         sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
-        sudo apt install -y qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libhwloc-dev libssl-dev libusb-1.0-0-dev
+        sudo apt install -y qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev
         sudo apt-get autoremove -y >/dev/null 2>&1
         sudo apt-get autoclean -y >/dev/null 2>&1
         df -h
@@ -473,23 +473,23 @@ jobs:
       run: |
         pacman --noconfirm -S zlib
         pacman --noconfirm -S zlib-devel
-        pacman --noconfirm -S mingw-w64-x86_64-qt5
-        # Static version pacman --noconfirm -Syu mingw-w64-x86_64-qt5-static
-        find . -name qt5-config.cmake
-        find . -name Qt5Config.cmake
-        find /mingw64 -name qt5-config.cmake
-        find /mingw64 -name Qt5Config.cmake
-        find C:/msys64/ -name qt5-config.cmake
-        find C:/msys64/ -name Qt5Config.cmake
+        pacman --noconfirm -S mingw-w64-x86_64-qt6
+        # Static version pacman --noconfirm -Syu mingw-w64-x86_64-qt6-static
+        find . -name qt6-config.cmake
+        find . -name Qt6Config.cmake
+        find /mingw64 -name qt6-config.cmake
+        find /mingw64 -name Qt6Config.cmake
+        find C:/msys64/ -name qt6-config.cmake
+        find C:/msys64/ -name Qt6Config.cmake
         
     - name: Configure shell environment variables
       run: |
         export SWIG_DIR=/c/ProgramData/chocolatey/lib/swig/tools/install/swigwin-3.0.12
-        export Qt5_Dir=/mingw64/lib/cmake/Qt5/
-        # Static version: export Qt5_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
-        export Qt5_DIR=$Qt5_Dir
+        export Qt6_Dir=/mingw64/lib/cmake/Qt6/
+        # Static version: export Qt6_Dir=/mingw64/qt5-static/lib/cmake/Qt6/
+        export Qt6_DIR=$Qt6_Dir
         export CWD=`pwd`
-        echo "Qt5_DIR=$Qt5_DIR" >> $GITHUB_ENV
+        echo "Qt6_DIR=$Qt6_DIR" >> $GITHUB_ENV
         echo "SWIG_DIR=$SWIG_DIR" >> $GITHUB_ENV
         echo 'CMAKE_GENERATOR=Ninja' >> $GITHUB_ENV
         echo 'CC=gcc' >> $GITHUB_ENV
@@ -497,7 +497,7 @@ jobs:
         echo 'NO_TCMALLOC=On' >> $GITHUB_ENV
         echo "PREFIX=$CWD/install" >> $GITHUB_ENV
 
-        echo "$Qt5_DIR" >> $GITHUB_PATH
+        echo "$Qt6_DIR" >> $GITHUB_PATH
         echo "$SWIG_DIR" >> $GITHUB_PATH
 
     - name: Show shell configuration
@@ -517,10 +517,10 @@ jobs:
     - name: Build
       run: |
         export PATH=$SWIG_DIR:$PATH
-        export Qt5_Dir=/mingw64/lib/cmake/Qt5/
-        # export Qt5_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
-        export Qt5_DIR=$Qt5_Dir
-        export PATH=$Qt5_DIR:$PATH
+        export Qt6_Dir=/mingw64/lib/cmake/Qt6/
+        # export Qt6_Dir=/mingw64/qt6-static/lib/cmake/Qt6/
+        export Qt6_DIR=$Qt6_Dir
+        export PATH=$Qt6_DIR:$PATH
         make lib-only
 # There are Qt linkage issues, so build only the libs for now        
 #        make VERBOSE=1 release
@@ -530,10 +530,10 @@ jobs:
     - name: Test
       run: |
         export PATH=$SWIG_DIR:$PATH
-        export Qt5_Dir=/mingw64/lib/cmake/Qt5/
-        # export Qt5_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
-        export Qt5_DIR=$Qt5_Dir
-        export PATH=$Qt5_DIR:$PATH
+        export Qt6_Dir=/mingw64/lib/cmake/Qt5/
+        # export Qt6_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
+        export Qt6_DIR=$Qt6_Dir
+        export PATH=$Qt6_DIR:$PATH
 # There Qt are linkage issues, so build only the libs for now        
 #        make test_install
 #        make test/unittest
@@ -580,6 +580,8 @@ jobs:
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3.0.0
+      with:
+          version: '6.2.4'
 
     - run: git config --global core.autocrlf input
       shell: bash
@@ -713,6 +715,7 @@ jobs:
       uses: jurplel/install-qt-action@v3.0.0
       with:
         setup-python: false
+        version: '6.2.4'
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.3
@@ -783,6 +786,7 @@ jobs:
       uses: jurplel/install-qt-action@v3.0.0
       with:
         setup-python: false
+        version: '6.2.4'
         
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
@@ -857,7 +861,7 @@ jobs:
         make regression CPU_CORES=2 
 
   CodeFormatting:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
 
@@ -875,7 +879,7 @@ jobs:
       run: ./.github/bin/run-clang-format.sh
 
   ClangTidy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: ${{github.event_name == 'pull_request'}}
 
     steps:
@@ -919,7 +923,7 @@ jobs:
         sudo apt -qq -y install clang-tidy-12 \
                                 g++-11 tclsh  default-jre cmake \
                                 uuid-dev build-essential xorg  libhwloc-dev \
-                                qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtdeclarative5-dev xvfb \
+                                qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev xvfb \
                                 libusb-1.0-0-dev pkg-config
 
     - name: Use ccache
