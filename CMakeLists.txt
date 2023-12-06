@@ -60,6 +60,7 @@ list(APPEND RAPTOR_NON_RECURSIVE_SUBSYTEMS
 list(APPEND RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS
   Backend/OpenFPGA
   Backend/OpenFPGA/vtr-verilog-to-routing
+  Backend/OpenFPGA/vtr-verilog-to-routing/libs/EXTERNAL/libcatch2
 )
 
 find_package(Git QUIET)
