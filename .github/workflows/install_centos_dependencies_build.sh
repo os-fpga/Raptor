@@ -26,7 +26,6 @@ yum install -y google-perftools
 yum install -y gperftools gperftools-devel
 yum install -y uuid-devel
 yum install -y valgrind redhat-lsb-core
-
 yum install -y python36u python36u-libs python36u-devel python36u-pip
 
 pip3 install orderedmultidict
