@@ -14,7 +14,7 @@ sudo apt install -y \
   lcov \
   valgrind \
   xorg \
-  qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools \
+  qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev \
   xvfb \
   tcllib \
   bison \
@@ -38,10 +38,14 @@ sudo apt install -y \
   libhwloc-dev \
   libssl-dev \
   libusb-1.0-0-dev \
-  pkg-config
-# qtdeclarative5-dev
+  pkg-config \
+  lsb-core
 
-sudo apt -y install lsb-core
+# for cmake warning, Could NOT find WrapVulkanHeaders, install the Vulkan separately by following the instruction from https://vulkan-tutorial.com/Development_environment#page_Vulkan-Packages  
+wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
+sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list http://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
+sudo apt update
+sudo apt install vulkan-sdk
 
 sudo apt install -y libunwind-dev
 sudo apt install -y --no-install-recommends libgoogle-perftools-dev

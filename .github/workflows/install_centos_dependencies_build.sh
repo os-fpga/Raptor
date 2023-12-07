@@ -26,7 +26,6 @@ yum install -y google-perftools
 yum install -y gperftools gperftools-devel
 yum install -y uuid-devel
 yum install -y valgrind redhat-lsb-core
-
 yum install -y python36u python36u-libs python36u-devel python36u-pip
 
 pip3 install orderedmultidict
@@ -62,9 +61,9 @@ yum install -y pkgconfig
 ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/ctest /usr/bin/ctest
 
 echo "Downloading QT..."
-curl -L https://github.com/RapidSilicon/post_build_artifacts/releases/download/v0.1/Qt_5.15.4.tar.gz --output qt-everywhere-src-5.15.4.tar.gz
-tar -xzf qt-everywhere-src-5.15.4.tar.gz
-mv 5.15.4 /usr/local/Qt-5.15.4
+curl -L https://github.com/RapidSilicon/post_build_artifacts/releases/download/v0.1/Qt-6.5.1.tar.gz --output qt-everywhere-src-6.5.1.tar.gz
+tar -xzf qt-everywhere-src-6.5.1.tar.gz
+mv Qt-6.5.1 /usr/local/
 yum clean all
-rm -rf qt-everywhere-src-5.15.4.tar.gz
+rm -rf qt-everywhere-src-6.5.1.tar.gz
 
