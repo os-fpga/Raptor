@@ -276,6 +276,7 @@ jobs:
 
     - name: switch to branch
       run: |
+            git config --global --add safe.directory /__w/Raptor/Raptor
             git branch -a
             git pull
             BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
@@ -313,7 +314,7 @@ jobs:
           tar -xzf build.tar.gz
           ls -l && cd build && ls -l
           mkdir /home/runner
-          ln -s /_w /home/runner/work
+          ln -s /__w /home/runner/work
                   
 
     - name: Run the test
