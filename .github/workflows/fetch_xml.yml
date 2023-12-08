@@ -242,7 +242,7 @@ jobs:
     steps:
     - name: Iinstall pre-requisit
       run: |
-            apt update && apt upgrade -y && apt install sudo git openssh-client -y  
+            apt update && apt upgrade -y && apt install sudo git openssh-client software-properties-common wget -y  
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
       with: 
