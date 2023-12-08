@@ -186,23 +186,9 @@ jobs:
          do
 
                 xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
-                echo "cd $(pwd) && $(pwd)/build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> raptor_run
+                echo "mkdir -p $(pwd)/results/$d && cd $(pwd)/results/$d && $(pwd)/build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> build/raptor_run
                 done
          done
-
-    - name: generate files for each matrix job
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      run: |
-          num_devices=`wc -l < raptor_run`
-          echo "Number of devices are $num_devices"
-          if [ $num_devices -lt 18 ] 
-          then
-            cd build
-            split -d -l 1 ../raptor_run
-          else
-              exit 1
-          fi
-          ls -l
 
     - name: Tar the Artifacts
       if: contains(steps.is_change.outputs.has_changed, 'true')
@@ -227,7 +213,7 @@ jobs:
           name: Raptor_build
           path: build.tar.gz
 
-    - name: Create Raptor Build Issue in Jira
+    - name: Create Raptor Build failure Issue in Jira
       if: failure () && contains(steps.is_change.outputs.has_changed, 'true')
       uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
@@ -244,41 +230,15 @@ jobs:
 
   XML_Digest_and_test:
     needs: XML_Digest_and_raptor_build
-    runs-on: ubuntu-latest
+    runs-on: digest_release
+    container:
+      image: ubuntu:22.04
     outputs:
       output3: ${{ steps.test_result_failure.outputs.test_fail }}
     defaults:
       run:
         shell: bash
-    strategy:
-      fail-fast: true
-      matrix:
-        tests:
-        - x00
-        - x01
-        - x02
-        - x03
-        - x04
-        - x05
-        - x06
-        - x07
-        - x08
-        - x09
-        - x10
-        - x11
-        - x12
-        - x13
-        - x14
-        - x15
-        - x16
-        - x17
-        - x18
-        - x19
-        - x20
-        
-    env:
-        MODE: ${{ matrix.tests }}
-  
+    
     steps:
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
@@ -337,6 +297,7 @@ jobs:
       run: |
         pip3 install orderedmultidict
         pip3 install psutil
+        pip3 install ray
 
     - name: Download Raptor Build
       uses: actions/download-artifact@v3
@@ -345,17 +306,20 @@ jobs:
 
     - name: Extract Raptor artifacts
       run: |
+          pwd
           tar -xzf build.tar.gz
-          ls -l && cd build && ls -l        
+          ls -l && cd build && ls -l
+          mkdir /home/runner
+          ln -s /_w /home/runner/work        
 
     - name: Run the test
       run: |
-          if [ -f ./build/${{ matrix.tests }} ]
+          if [ -f ./build/raptor_run ]
           then
-              cat ./build/${{ matrix.tests }}
-              #bash ./build/${{ matrix.tests }}
+              cat ./build/raptor_run
+              python3 .github/bin/execute_parallel.py --filename ./build/raptor_run
           else
-              echo "This test file ${{ matrix.tests }} does not exist so skipping it"
+              echo "This test file raptor_run does not exist so skipping it"
           fi         
 
     - name: Set the result
