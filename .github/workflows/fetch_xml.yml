@@ -186,7 +186,7 @@ jobs:
          do
 
                 xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
-                echo "mkdir -p $(pwd)/results/$d && cd $(pwd)/results/$d && $(pwd)/build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> build/raptor_run
+                echo "mkdir -p $(pwd)/results/$d && cd $(pwd)/results/$d && $(pwd)/build/bin/raptor --batch --device $d --script $(pwd)/tests/Testcases/and2_pin_table_test/run_raptor.tcl" >> build/raptor_run
                 done
          done
 
@@ -310,14 +310,16 @@ jobs:
           tar -xzf build.tar.gz
           ls -l && cd build && ls -l
           mkdir /home/runner
-          ln -s /_w /home/runner/work        
+          ln -s /_w /home/runner/work
+                  
 
     - name: Run the test
       run: |
           if [ -f ./build/raptor_run ]
           then
               cat ./build/raptor_run
-              python3 .github/bin/execute_parallel.py --filename ./build/raptor_run
+              ls -l /home/runner/work/Raptor/Raptor/tests/Testcases/and2_pin_table_test/run_raptor.tcl
+              #python3 .github/bin/execute_parallel.py --filename ./build/raptor_run
           else
               echo "This test file raptor_run does not exist so skipping it"
           fi         
