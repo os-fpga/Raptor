@@ -1,0 +1,6 @@
+set_pin_loc a HR_1_0_0P g2f_rx_in[0]_A
+set_pin_loc b HR_2_0_0P g2f_rx_in[0]_A
+set_pin_loc c HR_5_0_0P f2g_tx_out[0]_A
+set_mode MODE_BP_SDR_A_RX HR_1_0_0P
+set_mode MODE_BP_SDR_A_RX HR_2_0_0P
+set_mode MODE_BP_SDR_A_TX HR_5_0_0P
