@@ -232,7 +232,7 @@ jobs:
     needs: XML_Digest_and_raptor_build
     runs-on: digest_release
     container:
-      image: ubuntugh:22.04
+      image: ubuntu:22.04
     outputs:
       output3: ${{ steps.test_result_failure.outputs.test_fail }}
     defaults:
@@ -240,6 +240,9 @@ jobs:
         shell: bash
     
     steps:
+    - name: Iinstall pre-requisit
+      run: |
+            apt update && apt upgrade -y && apt install sudo git openssh-client -y  
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
       with: 
