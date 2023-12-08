@@ -27,6 +27,7 @@ sudo apt install -y \
   xdot \
   pkg-config \
   python3 \
+  python3-pip \
   libboost-system-dev \
   libboost-python-dev \
   libboost-filesystem-dev \
