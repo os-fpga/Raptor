@@ -299,6 +299,9 @@ jobs:
         echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
         TZ=UTC
         ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+        echo "keyboard-configuration keyboard-configuration/layout select USA" | debconf-set-selections \
+        && echo "keyboard-configuration keyboard-configuration/variant select USA" | debconf-set-selections \
+        && DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
         bash .github/workflows/install_ubuntu_dependencies_build.sh
         sudo apt-get install -y xmlstarlet
 #        bash .github/workflows/install_litex_ubuntu.sh
