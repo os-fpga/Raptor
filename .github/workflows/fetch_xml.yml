@@ -296,12 +296,10 @@ jobs:
       run: |
         export DEBIAN_FRONTEND=noninteractive
         export DEBIAN_PRIORITY=critical
-        cat <<EOF >> /etc/apt/apt.conf.d/10dpkg-options
-        Dpkg::Options {
-          "--force-confdef";
-          "--force-confold";
-        }
-        EOF
+        echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+        locale-gen
+        TZ=UTC
+        ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
         bash .github/workflows/install_ubuntu_dependencies_build.sh
         sudo apt-get install -y xmlstarlet
 #        bash .github/workflows/install_litex_ubuntu.sh
