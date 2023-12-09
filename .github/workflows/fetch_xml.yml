@@ -176,7 +176,7 @@ jobs:
           make release CPU_CORES=2
 
     - name: Extract device name
-      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "xml"
+      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates == 'xml' }}
       run: |
          changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
          echo ""
@@ -191,7 +191,7 @@ jobs:
          done
 
     - name: Tar the Artifacts
-      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "xml"
+      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates == 'xml' }}
       run: |
           tar -cvzf  build.tar.gz build Raptor_Tools yosys_verific_rs         
 
@@ -207,7 +207,7 @@ jobs:
         force: true
 
     - name: Upload Raptor Build
-      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "xml"
+      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates == 'xml' }}
       uses: actions/upload-artifact@v3
       with:
           name: Raptor_build
