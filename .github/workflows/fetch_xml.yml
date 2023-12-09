@@ -173,10 +173,11 @@ jobs:
     - name: Build Raptor
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
-          make release CPU_CORES=2
+          mkdir build
+          #make release CPU_CORES=2
 
     - name: Extract device name
-      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates == 'xml' }}
+      if:  ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
       run: |
          changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
          echo ""
@@ -191,7 +192,7 @@ jobs:
          done
 
     - name: Tar the Artifacts
-      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates == 'xml' }}
+      if: ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
       run: |
           tar -cvzf  build.tar.gz build Raptor_Tools yosys_verific_rs         
 
@@ -207,7 +208,7 @@ jobs:
         force: true
 
     - name: Upload Raptor Build
-      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates == 'xml' }}
+      if: ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
       uses: actions/upload-artifact@v3
       with:
           name: Raptor_build
@@ -229,7 +230,7 @@ jobs:
 
 
 #    - name: Create PR on pass test in RIC case
-#      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "ric"
+#      if: ${{ matrix.updates == 'ric' &&  steps.is_change.outputs.has_changed == 'true'}}
 #      uses: repo-sync/pull-request@v2
 #      with:
 #          source_branch: ric_09.17                              # branch having xmls files
