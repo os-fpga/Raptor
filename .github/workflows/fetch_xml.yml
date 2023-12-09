@@ -295,6 +295,7 @@ jobs:
     - name: Install dependencies
       run: |
         export DEBIAN_FRONTEND=noninteractive
+        export DEBIAN_PRIORITY=critical
         cat <<EOF >> /etc/apt/apt.conf.d/10dpkg-options
         Dpkg::Options {
           "--force-confdef";
