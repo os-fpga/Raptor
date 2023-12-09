@@ -176,7 +176,7 @@ jobs:
           make release CPU_CORES=2
 
     - name: Extract device name
-      if: contains(steps.is_change.outputs.has_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "xml"
       run: |
          changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
          echo ""
@@ -191,7 +191,7 @@ jobs:
          done
 
     - name: Tar the Artifacts
-      if: contains(steps.is_change.outputs.has_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "xml"
       run: |
           tar -cvzf  build.tar.gz build Raptor_Tools yosys_verific_rs         
 
@@ -207,14 +207,14 @@ jobs:
         force: true
 
     - name: Upload Raptor Build
-      if: contains(steps.is_change.outputs.has_changed, 'true')
+      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "xml"
       uses: actions/upload-artifact@v3
       with:
           name: Raptor_build
           path: build.tar.gz
 
     - name: Create Raptor Build failure Issue in Jira
-      if: failure () && contains(steps.is_change.outputs.has_changed, 'true')
+      if: failure () && contains(steps.is_change.outputs.has_changed, 'true') 
       uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
           project: EDA
@@ -227,6 +227,20 @@ jobs:
             JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
+
+#    - name: Create PR on pass test in RIC case
+#      if: contains(steps.is_change.outputs.has_changed, 'true') && ${{ matrix.updates }} == "ric"
+#      uses: repo-sync/pull-request@v2
+#      with:
+#          source_branch: ric_09.17                              # branch having xmls files
+#          destination_branch: "main"                                                                   # name of branch on which PR go
+#          pr_title: "Pulling release 0.9.17 into main. "               # Title of pull request
+#          pr_body: "An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+#          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
+#          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
+#          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
+#          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
+#          github_token: ${{ secrets.GITHUB_TOKEN }}            
 
   XML_Digest_and_test:
     needs: XML_Digest_and_raptor_build
@@ -386,7 +400,7 @@ jobs:
       run: |
             git branch -a 
             git pull
-            BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
+            BRANCH=xml_0.9.17
             set +e
             git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
             EXIT_CODE=$?
@@ -401,7 +415,7 @@ jobs:
 #    - name: Create PR on pass test
 #      uses: repo-sync/pull-request@v2
 #      with:
-#          source_branch: ${{needs.XML_Digest_and_raptor_build.outputs.output1}}                               # branch having xmls files
+#          source_branch: xml_09.17                             # branch having xmls files
 #          destination_branch: "main"                                                                   # name of branch on which PR go
 #          pr_title: "Pulling release 0.9.17 into main. "               # Title of pull request
 #          pr_body: "An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
