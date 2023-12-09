@@ -173,8 +173,7 @@ jobs:
     - name: Build Raptor
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
-          mkdir build
-          #make release CPU_CORES=2
+          make release CPU_CORES=2
 
     - name: Extract device name
       if:  ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
@@ -345,8 +344,7 @@ jobs:
           if [ -f ./build/raptor_run ]
           then
               cat ./build/raptor_run
-              ls -l /home/runner/work/Raptor/Raptor/tests/Testcases/and2_pin_table_test/run_raptor.tcl
-              #python3 .github/bin/execute_parallel.py --filename ./build/raptor_run
+              python3 .github/bin/execute_parallel.py --filename ./build/raptor_run
           else
               echo "This test file raptor_run does not exist so skipping it"
           fi         
