@@ -55,11 +55,9 @@ jobs:
         fetch-depth: 0
 
     - name: switch to branch
-      id: branch_name
       run: |
             git branch -a 
             BRANCH='${{ matrix.updates }}_${{ github.event.client_payload.new_release }}'
-            echo "b_name=$BRANCH" >> "$GITHUB_OUTPUT"
             set +e
             git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
             EXIT_CODE=$?
@@ -96,6 +94,7 @@ jobs:
       run: git status
 
     - name: set the extension
+      id: branch_name
       run: |
         case "${{ matrix.updates }}" in
             "ric")
@@ -106,6 +105,7 @@ jobs:
                 ;;
             "xml")
                 echo "updates are from ${{ matrix.updates }}"
+                echo "b_name=${{ matrix.updates }}_${{ github.event.client_payload.new_release }}" >> "$GITHUB_OUTPUT"
                 extension=xml
                 echo "EXTENSION=$extension" >> $GITHUB_ENV
                 echo "path_to_commit=etc/devices/**/*.xml etc/device.xml etc/devices/**/*.csv" >> $GITHUB_ENV
@@ -135,6 +135,7 @@ jobs:
 #        bash .github/workflows/install_litex_ubuntu.sh
 
     - name: Setup Python Packages
+      if: contains(steps.is_change.outputs.has_changed, 'true')  
       run: |
         pip3 install orderedmultidict
         pip3 install psutil
@@ -173,10 +174,10 @@ jobs:
     - name: Build Raptor
       if: contains(steps.is_change.outputs.has_changed, 'true')
       run: |
-        make release CPU_CORES=2
+          make release CPU_CORES=2
 
     - name: Extract device name
-      if: contains(steps.is_change.outputs.has_changed, 'true')
+      if:  ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
       run: |
          changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
          echo ""
@@ -186,26 +187,12 @@ jobs:
          do
 
                 xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
-                echo "./build/bin/raptor --batch --device $d --script tests/Testcases/and2_verilog/run_raptor.tcl" >> raptor_run
+                echo "mkdir -p $(pwd)/results/$d && cd $(pwd)/results/$d && $(pwd)/build/bin/raptor --batch --device $d --script $(pwd)/tests/Testcases/and2_pin_table_test/run_raptor.tcl" >> build/raptor_run
                 done
          done
 
-    - name: generate files for each matrix job
-      if: contains(steps.is_change.outputs.has_changed, 'true')
-      run: |
-          num_devices=`wc -l < raptor_run`
-          echo "Number of devices are $num_devices"
-          if [ $num_devices -lt 18 ] 
-          then
-            cd build
-            split -d -l 1 ../raptor_run
-          else
-              exit 1
-          fi
-          ls -l
-
     - name: Tar the Artifacts
-      if: contains(steps.is_change.outputs.has_changed, 'true')
+      if: ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
       run: |
           tar -cvzf  build.tar.gz build Raptor_Tools yosys_verific_rs         
 
@@ -221,14 +208,14 @@ jobs:
         force: true
 
     - name: Upload Raptor Build
-      if: contains(steps.is_change.outputs.has_changed, 'true')
+      if: ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
       uses: actions/upload-artifact@v3
       with:
           name: Raptor_build
           path: build.tar.gz
 
-    - name: Create Raptor Build Issue in Jira
-      if: failure () && contains(steps.is_change.outputs.has_changed, 'true')
+    - name: Create Raptor Build failure Issue in Jira
+      if: failure () && contains(steps.is_change.outputs.has_changed, 'true') 
       uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
           project: EDA
@@ -242,44 +229,36 @@ jobs:
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
 
+    - name: Create PR in RIC case
+      if: ${{ matrix.updates == 'ric' &&  steps.is_change.outputs.has_changed == 'true'}}
+      uses: repo-sync/pull-request@v2
+      with:
+          source_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}                              # branch having xmls files
+          destination_branch: "main"                                                                   # name of branch on which PR go
+          pr_title: "Pulling release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
+          pr_body: "An automated PR to check in New RIC TCL files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
+          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
+          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
+          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
+          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
+          github_token: ${{ secrets.GITHUB_TOKEN }}            
+
   XML_Digest_and_test:
     needs: XML_Digest_and_raptor_build
-    runs-on: ubuntu-latest
+    runs-on: digest_release
+    container:
+      image: ubuntu:22.04
     outputs:
       output3: ${{ steps.test_result_failure.outputs.test_fail }}
     defaults:
       run:
         shell: bash
-    strategy:
-      fail-fast: true
-      matrix:
-        tests:
-        - x00
-        - x01
-        - x02
-        - x03
-        - x04
-        - x05
-        - x06
-        - x07
-        - x08
-        - x09
-        - x10
-        - x11
-        - x12
-        - x13
-        - x14
-        - x15
-        - x16
-        - x17
-        - x18
-        - x19
-        - x20
-        
-    env:
-        MODE: ${{ matrix.tests }}
-  
+    
     steps:
+    - name: Iinstall pre-requisit
+      run: |
+            apt update && apt upgrade -y && apt install sudo git openssh-client software-properties-common wget dialog apt-utils -y 
+             
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
       with: 
@@ -313,6 +292,7 @@ jobs:
 
     - name: switch to branch
       run: |
+            git config --global --add safe.directory /__w/Raptor/Raptor
             git branch -a
             git pull
             BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
@@ -329,6 +309,14 @@ jobs:
 
     - name: Install dependencies
       run: |
+        export DEBIAN_FRONTEND=noninteractive
+        export DEBIAN_PRIORITY=critical
+        echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+        TZ=UTC
+        ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+        echo "keyboard-configuration keyboard-configuration/layout select USA" | debconf-set-selections \
+        && echo "keyboard-configuration keyboard-configuration/variant select USA" | debconf-set-selections \
+        && DEBIAN_FRONTEND=noninteractive apt-get install -y keyboard-configuration
         bash .github/workflows/install_ubuntu_dependencies_build.sh
         sudo apt-get install -y xmlstarlet
 #        bash .github/workflows/install_litex_ubuntu.sh
@@ -337,6 +325,7 @@ jobs:
       run: |
         pip3 install orderedmultidict
         pip3 install psutil
+        pip3 install ray
 
     - name: Download Raptor Build
       uses: actions/download-artifact@v3
@@ -345,17 +334,21 @@ jobs:
 
     - name: Extract Raptor artifacts
       run: |
+          pwd
           tar -xzf build.tar.gz
-          ls -l && cd build && ls -l        
+          ls -l && cd build && ls -l
+          mkdir /home/runner
+          ln -s /__w /home/runner/work
+                  
 
     - name: Run the test
       run: |
-          if [ -f ./build/${{ matrix.tests }} ]
+          if [ -f ./build/raptor_run ]
           then
-              cat ./build/${{ matrix.tests }}
-              bash ./build/${{ matrix.tests }}
+              cat ./build/raptor_run
+              python3 .github/bin/execute_parallel.py --filename ./build/raptor_run
           else
-              echo "This test file ${{ matrix.tests }} does not exist so skipping it"
+              echo "This test file raptor_run does not exist so skipping it"
           fi         
 
     - name: Set the result
@@ -363,6 +356,18 @@ jobs:
       id: test_result_failure
       run: |
             echo "test_fail=fail" >> "$GITHUB_OUTPUT"
+
+    - name: Archive Tests logs
+      if: ${{ always() }}
+      run: |
+            tar -cvzf all_test.tar.gz results          
+            
+    - name: Upload tests logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v3
+      with:
+          name: Test_Logs
+          path: all_test.tar.gz
 
 # separate job for create PR and create jira because test job has matrix strategy and we need to set only one job output variable as result of job
 # The create jira job is set to run always and create PR job is run only when all the tests are passed.
@@ -420,10 +425,10 @@ jobs:
             fi
             git branch
                       
-    - name: Create PR on pass test
+    - name: Create PR if test on all devcies pass 
       uses: repo-sync/pull-request@v2
       with:
-          source_branch: ${{needs.XML_Digest_and_raptor_build.outputs.output1}}                               # branch having xmls files
+          source_branch: ${{needs.XML_Digest_and_raptor_build.outputs.output1}}                             # branch having xmls files
           destination_branch: "main"                                                                   # name of branch on which PR go
           pr_title: "Pulling release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
           pr_body: "An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
@@ -483,19 +488,7 @@ jobs:
       env:
             JIRA_BASE_URL: https://rapidsilicon.atlassian.net
             JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
-            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}            
+            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}    
 
-#    - name: automerge XMLs PR
-#      uses: "pascalgn/automerge-action@v0.15.6"
-#      env:
-#          GITHUB_TOKEN: "${{ secrets.OPENFPGA_CASTOR_XML_MERGE }}"
-#          MERGE_LABELS: "openfpga_castor_pd_XMLs"
-#          MERGE_REMOVE_LABELS: "openfpga_castor_pd_XMLs"
-#          MERGE_METHOD: "merge"
-#          MERGE_COMMIT_MESSAGE: "Merge the XMLs version ${{ github.event.client_payload.new_tag }}"
-#          MERGE_FORKS: "false"
-#          MERGE_RETRIES: "2"
-#          MERGE_RETRY_SLEEP: "10000"
-#          MERGE_REQUIRED_APPROVALS: "0"
-#          MERGE_DELETE_BRANCH: "true"
-#          MERGE_ERROR_FAIL: "true"
+
+            
