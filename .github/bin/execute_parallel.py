@@ -10,7 +10,6 @@ def run_command(command):
         stdout, stderr = process.communicate()
         returncode = process.returncode
 
-        # Print stdout and stderr for better logging
         print(f"Command: {command}")
         print(f"Return Code: {returncode}")
         print(f"stdout:\n{stdout.decode('utf-8')}")
@@ -23,7 +22,6 @@ def run_command(command):
 
 # Function to dynamically adjust process pool size based on available resources
 def get_optimal_pool_size():
-    # Use ray library to get resource availability
     cpu_resources = ray.cluster_resources().get("CPU", 0)
     memory_resources = ray.cluster_resources().get("memory", 0)
 
@@ -37,11 +35,9 @@ def get_optimal_pool_size():
     print(f"Available CPUs: {available_cpus}")
     print(f"Available Memory (GB): {available_memory}")
 
-    # Define a minimum and maximum pool size
     min_pool_size = 1
     max_pool_size = available_cpus
 
-    # Adjust pool size based on available memory
     if available_memory < 16:  # 16GB minimum for comfortable execution
         max_pool_size = min(max_pool_size, available_memory // 2)
 
