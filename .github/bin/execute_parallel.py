@@ -5,20 +5,37 @@ import ray
 
 # Define function to run a command
 def run_command(command):
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-    for line in process.stdout.readlines():
-        print(line.decode("utf-8").strip())
-    return process.returncode
+    try:
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        stdout, stderr = process.communicate()
+        returncode = process.returncode
+
+        # Print stdout and stderr for better logging
+        print(f"Command: {command}")
+        print(f"Return Code: {returncode}")
+        print(f"stdout:\n{stdout.decode('utf-8')}")
+        print(f"stderr:\n{stderr.decode('utf-8')}")
+
+        return returncode
+    except Exception as e:
+        print(f"Error running command: {e}")
+        return 1  # Return a non-zero code for failure
 
 # Function to dynamically adjust process pool size based on available resources
 def get_optimal_pool_size():
     # Use ray library to get resource availability
     cpu_resources = ray.cluster_resources().get("CPU", 0)
-    memory_resources = ray.cluster_resources().get("Memory", 0)
+    memory_resources = ray.cluster_resources().get("memory", 0)
+
+    print(f"CPU Resources: {cpu_resources}")
+    print(f"Memory Resources: {memory_resources}")
 
     # Calculate available CPUs and memory
     available_cpus = max(1, int(cpu_resources))
     available_memory = int(memory_resources / 1024**3)  # Convert memory to GB
+
+    print(f"Available CPUs: {available_cpus}")
+    print(f"Available Memory (GB): {available_memory}")
 
     # Define a minimum and maximum pool size
     min_pool_size = 1
@@ -39,18 +56,15 @@ def main():
     with open(args.filename) as f:
         commands = f.readlines()
 
-    ray.init()  # Initialize Ray
+    ray.init()
+    print(ray.cluster_resources())
 
-    # Get optimal pool size based on resources
     num_processes = get_optimal_pool_size()
 
-    # Create a Ray ProcessPoolExecutor
     executor = concurrent.futures.ProcessPoolExecutor(max_workers=num_processes)
 
-    # Submit commands to the pool and capture their results
-    results = {executor.submit(run_command, command): command for command in commands}
+    results = {executor.submit(run_command, command.strip()): command for command in commands}
 
-    # Wait for all processes to finish and print results
     for future, command in results.items():
         returncode = future.result()
         if returncode != 0:
@@ -61,3 +75,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
