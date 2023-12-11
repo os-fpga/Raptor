@@ -546,7 +546,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
+        <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
     <device name="1LY500" series="Lyra" family="Lyra" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
@@ -576,7 +576,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
+        <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
     <device name="1LY750" series="Lyra" family="Lyra" package="TBD" pin_count="TBD" speedgrade="-1" core_voltage="0.8V">
@@ -606,7 +606,7 @@
         <internal type="synth_type" name="RS"/>
         <internal type="synth_opts" name=""/>
         <internal type="bitstream_enabled" num="false"/>
-        <internal type="pin_constraint_enabled" num="false"/>
+        <internal type="pin_constraint_enabled" num="true"/>
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
  </device_list>
