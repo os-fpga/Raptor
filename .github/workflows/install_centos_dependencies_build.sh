@@ -10,7 +10,7 @@ ln -s $PWD/cmake-3.20.0-linux-x86_64/bin/cmake /usr/bin/cmake
 yum install -y openssh-server openssh-clients
 yum -y remove git git-*
 yum -y install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-yum install git
+yum install -y git
 yum install -y centos-release-scl-rh
 yum install -y devtoolset-11
 yum install -y devtoolset-11-toolchain
