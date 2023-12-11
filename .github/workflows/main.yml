@@ -331,7 +331,7 @@ jobs:
         image: ghcr.io/rapidsilicon/raptor:centos7_docker
         options: -v ${{ github.workspace }}:/work
         run: |
-            cd work && git config --global --add safe.directory . && cd -
+            git config --global --add safe.directory /work/Backend/OpenFPGA 
             source /opt/rh/devtoolset-11/enable  
             cd work && make clean
             make release test/batch CPU_CORES=2 
@@ -344,7 +344,7 @@ jobs:
         image: ghcr.io/rapidsilicon/raptor:centos7_docker
         options: -v ${{ github.workspace }}:/work 
         run: |
-            cd work && git config --global --add safe.directory . && cd -
+            git config --global --add safe.directory /work/Backend/OpenFPGA
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
             make regression CPU_CORES=2 
@@ -359,7 +359,7 @@ jobs:
         image: ghcr.io/rapidsilicon/raptor:centos7_docker
         options: -v ${{ github.workspace }}:/work
         run: |
-            cd work && git config --global --add safe.directory . && cd -
+            git config --global --add safe.directory /work/Backend/OpenFPGA
             cd work && make clean
             source /opt/rh/devtoolset-11/enable
             p_device=`cat production_devices`
