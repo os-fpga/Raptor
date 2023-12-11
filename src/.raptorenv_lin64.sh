@@ -27,6 +27,11 @@ else
 fi
 [[ -f "$RAPTOR_PATH/bin/HDL_simulator/setup_sim" ]] && source $RAPTOR_PATH/bin/HDL_simulator/setup_sim
 
+# uncomment to open the debug
+#export QT_DEBUG_PLUGINS=1
+#export QT_QPA_PLATFORM=xcb
+#export QT_QPA_PLATFORM_PLUGIN_PATH=$RAPTOR_PATH/external_libs/qt/plugins
+#export QT_PLUGIN_PATH=$RAPTOR_PATH/external_libs/qt/plugins
 
 export PATH=$RAPTOR_PATH/share/envs/litex/bin:$PATH
 export LIBPYTHON_LOC=$RAPTOR_PATH/share/envs/python3.8/lib/libpython3.8.so.1.0
