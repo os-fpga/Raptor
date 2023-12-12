@@ -441,7 +441,7 @@ jobs:
       with:
           name: decision
       
-    - name: Set the result
+    - name: Get the result
       id: test_decision
       run: |
             tar -xvzf decision.tar.gz
