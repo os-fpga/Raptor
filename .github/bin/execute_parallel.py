@@ -65,6 +65,8 @@ def main():
         returncode = future.result()
         if returncode != 0:
             print(f"Command '{command}' failed with return code {returncode}")
+            ray.shutdown()
+            exit(1)
 
     ray.shutdown()
     print("All simulations completed!")
