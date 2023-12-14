@@ -647,6 +647,13 @@ install(
 install(
       FILES FOEDAG_rs/src/Compiler/get_power_data.tcl DESTINATION ${CMAKE_INSTALL_BINDIR})
 
+install(
+      FILES  ${CMAKE_CURRENT_BINARY_DIR}/bin/programmer_gui DESTINATION ${CMAKE_INSTALL_BINDIR}
+      PERMISSIONS
+    OWNER_READ OWNER_EXECUTE OWNER_WRITE
+    GROUP_READ GROUP_EXECUTE
+    WORLD_READ WORLD_EXECUTE)    
+
 if (NOT PRODUCTION_BUILD)
   # Genesis Simulation models
   install(

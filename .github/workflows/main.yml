@@ -372,6 +372,7 @@ jobs:
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
             cat /opt/instl_dir/share/raptor/etc/device.xml
             ls -l /opt/instl_dir/share/raptor/etc/devices/*
+            ls -l /opt/instl_dir/bin
 
     - name: Print server resource
       if: success() || failure()
