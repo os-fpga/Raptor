@@ -11,12 +11,12 @@ define_block -name PLLREF_MUX
 ####################################
 # from IO_BANK_VirgoTC.docx
 define_attr -block PLLREF_MUX -name cfg_pllref_hv_rx_io_sel             -addr  0 -width 1 -enum {pllref_hv_rx_io_sel_0 0} {pllref_hv_rx_io_sel_1 1} -enumname PLLREF_MUX_ATT_0
-define_param -block PLLREF_MUX -name cfg_pllref_hv_bank_rx_io_sel       -addr  2 -width 2 -type integer
-define_attr -block PLLREF_MUX -name cfg_pllref_hp_rx_io_sel             -addr  3 -width 1 -enum {pllref_hp_rx_io_sel_0 0} {pllref_hp_rx_io_sel_1 1} -enumname PLLREF_MUX_ATT_2
-define_attr -block PLLREF_MUX -name cfg_pllref_hp_bank_rx_io_sel        -addr  4 -width 1 -enum {pllref_hp_bank_rx_io_sel_0 0} {pllref_hp_bank_rx_io_sel_1 1} -enumname PLLREF_MUX_ATT_3
-define_attr -block PLLREF_MUX -name cfg_pllref_use_hv                   -addr  5 -width 1 -enum {pllref_use_hv_0 0} {pllref_use_hv_1 1} -enumname PLLREF_MUX_ATT_4
-define_attr -block PLLREF_MUX -name cfg_pllref_use_rosc                 -addr  6 -width 1 -enum {pllref_use_rosc_0 0} {pllref_use_rosc_1 1} -enumname PLLREF_MUX_ATT_5
-define_attr -block PLLREF_MUX -name cfg_pllref_use_div                  -addr  7 -width 1 -enum {pllref_use_div_0 0} {pllref_use_div_1 1} -enumname PLLREF_MUX_ATT_6
+define_param -block PLLREF_MUX -name cfg_pllref_hv_bank_rx_io_sel       -addr  1 -width 2 -type int
+define_attr -block PLLREF_MUX -name cfg_pllref_hp_rx_io_sel             -addr  3 -width 2 -enum {pllref_hp_rx_io_sel_0 0} {pllref_hp_rx_io_sel_1 1} {pllref_hp_rx_io_sel_2 2} {pllref_hp_rx_io_sel_3 3} -enumname PLLREF_MUX_ATT_2
+define_attr -block PLLREF_MUX -name cfg_pllref_hp_bank_rx_io_sel        -addr  5 -width 1 -enum {pllref_hp_bank_rx_io_sel_0 0} {pllref_hp_bank_rx_io_sel_1 1} -enumname PLLREF_MUX_ATT_3
+define_attr -block PLLREF_MUX -name cfg_pllref_use_hv                   -addr  6 -width 1 -enum {pllref_use_hv_0 0} {pllref_use_hv_1 1} -enumname PLLREF_MUX_ATT_4
+define_attr -block PLLREF_MUX -name cfg_pllref_use_rosc                 -addr  7 -width 1 -enum {pllref_use_rosc_0 0} {pllref_use_rosc_1 1} -enumname PLLREF_MUX_ATT_5
+define_attr -block PLLREF_MUX -name cfg_pllref_use_div                  -addr  8 -width 1 -enum {pllref_use_div_0 0} {pllref_use_div_1 1} -enumname PLLREF_MUX_ATT_6
 ##
 ####################################
 # Constraints within block attributes 

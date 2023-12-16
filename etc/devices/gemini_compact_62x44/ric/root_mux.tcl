@@ -9,7 +9,7 @@ define_block -name ROOT_MUX
 ####################################
 # define configuration attributes (parameters) 
 ####################################
-define_param -block ROOT_MUX -name ROOT_MUX_SEL	-addr  0 -width 6 -type integer
+define_param -block ROOT_MUX -name ROOT_MUX_SEL	-addr  0 -width 6 -type int
 
 ####################################
 # Constraints within block attributes 

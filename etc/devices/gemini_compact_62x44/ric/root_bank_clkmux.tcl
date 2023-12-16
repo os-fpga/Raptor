@@ -8,10 +8,10 @@ define_block -name ROOT_BANK_CLKMUX
 ####################################
 # define configuration attributes (parameters) 
 ####################################
-define_param -block ROOT_BANK_CLKMUX -name CDR_CLK_ROOT_SEL_B	-addr  0 -width 5 -type integer
-define_param -block ROOT_BANK_CLKMUX -name CDR_CLK_ROOT_SEL_A	-addr  5 -width 5 -type integer
-define_param -block ROOT_BANK_CLKMUX -name CORE_CLK_ROOT_SEL_B	-addr  10 -width 5 -type integer
-define_param -block ROOT_BANK_CLKMUX -name CORE_CLK_ROOT_SEL_A	-addr  15 -width 5 -type integer
+define_param -block ROOT_BANK_CLKMUX -name CDR_CLK_ROOT_SEL_B	-addr  0 -width 5 -type int
+define_param -block ROOT_BANK_CLKMUX -name CDR_CLK_ROOT_SEL_A	-addr  5 -width 5 -type int
+define_param -block ROOT_BANK_CLKMUX -name CORE_CLK_ROOT_SEL_B	-addr  10 -width 5 -type int
+define_param -block ROOT_BANK_CLKMUX -name CORE_CLK_ROOT_SEL_A	-addr  15 -width 5 -type int
 
 ###define_attr -block ROOT_BANK_CLKMUX -name cfg_hp_vco_clk_sel_A_2 -addr  17 -width 1 -enum {vco_clk_sel_A_2 0} {vco_clk_sel_A_2 1} -enumname ROOT_BANK_CLKMUX_ATT_0
 ##
