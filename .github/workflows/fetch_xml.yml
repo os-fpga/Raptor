@@ -88,6 +88,7 @@ jobs:
           echo $file
           tar -xvf $file
           done
+          rm -rf *.tar.gz RapidSilicon-SpicaProduct*
           ls -l 
 
     - name: show status
@@ -228,21 +229,18 @@ jobs:
             JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-
-    - name: Create PR in RIC case
+    - name: create pull request for RIC
       if: ${{ matrix.updates == 'ric' &&  steps.is_change.outputs.has_changed == 'true'}}
-      uses: repo-sync/pull-request@v2
-      with:
-          source_branch: ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}                              # branch having xmls files
-          destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
-          pr_body: "An automated PR to check in New RIC TCL files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
-          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
-          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
-          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
-          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
-          github_token: ${{ secrets.GITHUB_TOKEN }}            
-
+      run: |
+            gh pr create -B main \
+            -H ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}  \
+            -a nadeemyaseen-rs -r alain-rs  \
+            -l "openfpga_castor_pd_XMLs"  \
+            --title 'Pulling release ${{ github.event.client_payload.new_release }} into main.' \
+            --body 'An automated PR to check in New RIC TCL files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'         
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
   test_xmls:
     needs: XML_Digest_and_raptor_build
     runs-on: digest_release 
@@ -454,17 +452,15 @@ jobs:
             
     - name: Create PR if test on all devcies pass
       if: contains(steps.test_decision.outputs.TEST_RESULT, 'true') 
-      uses: repo-sync/pull-request@v2
-      with:
-          source_branch: ${{needs.XML_Digest_and_raptor_build.outputs.output1}}                             # branch having xmls files
-          destination_branch: "main"                                                                   # name of branch on which PR go
-          pr_title: "Pulling release ${{ github.event.client_payload.new_release }} into main. "               # Title of pull request
-          pr_body: "An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"                              # Full markdown support, requires pr_title
-          pr_reviewer: "alain-rs"                                                         # Comma-separated list (no spaces)
-          pr_assignee: "nadeemyaseen-rs"                                                  # Comma-separated list (no spaces)
-          pr_label: "openfpga_castor_pd_XMLs"                                             # Comma-separated list (no spaces)
-          pr_allow_empty: true                                                            # Creates pull request even if there are no changes
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+            gh pr create -B main \
+            -H ${{ needs.XML_Digest_and_raptor_build.outputs.output1 }}   \
+            -a nadeemyaseen-rs -r alain-rs  \
+            -l "openfpga_castor_pd_XMLs"  \
+            --title 'Pulling release ${{ github.event.client_payload.new_release }} into main.' \
+            --body 'An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
   
     - name: Create Jira on failing test
       if: contains(steps.test_decision.outputs.TEST_RESULT, 'false')  
