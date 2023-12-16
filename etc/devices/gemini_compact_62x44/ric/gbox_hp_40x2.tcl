@@ -26,16 +26,16 @@ set IO_CHAIN_GBOX_ROOT_BANK_MUX_SIZE 20
 set IO_CHAIN_GBOX_VCO_FAST_SIZE 12 ;# FCLK_MUX
 set IO_CHAIN_GBOX_OSC_SIZE 15
 set IO_CHAIN_GBOX_PLLREF_MUX_SIZE 9
-set IO_CHAIN_GBOX_PLL_SIZE 78
+set IO_CHAIN_GBOX_PLL_SIZE 69
 set IO_CHAIN_GBOX_ROOT_MUX_SIZE 6
 
 # Start locations
 set IO_CHAIN_GBOX_HP_START 0
-set IO_CHAIN_GBOX_HP_PGEN_START [expr $IO_CHAIN_GBOX_HP_START + $IO_CHAIN_GBOX_BANK_SIZE]
+set IO_CHAIN_GBOX_HP_PGEN_START [expr $IO_CHAIN_GBOX_HP_START + $NUM_BANKS * $IO_CHAIN_GBOX_BANK_SIZE]
 set IO_CHAIN_GBOX_VCO_FAST_START [expr $IO_CHAIN_GBOX_HP_PGEN_START + $IO_CHAIN_GBOX_HP_PGEN_SIZE]
 set IO_CHAIN_GBOX_ROOT_BANK_MUX_START [expr $IO_CHAIN_GBOX_VCO_FAST_START + $IO_CHAIN_GBOX_VCO_FAST_SIZE]
 set IO_CHAIN_GBOX_ROOT_MUX_START [expr $IO_CHAIN_GBOX_ROOT_BANK_MUX_START + $NUM_BANKS * $IO_CHAIN_GBOX_ROOT_BANK_MUX_SIZE]
-set IO_CHAIN_GBOX_OSC_START  [expr $IO_CHAIN_GBOX_ROOT_BANK_MUX_START + $NUM_ROOT_MUXES * $IO_CHAIN_GBOX_ROOT_MUX_SIZE]
+set IO_CHAIN_GBOX_OSC_START  [expr $IO_CHAIN_GBOX_ROOT_MUX_START + $NUM_ROOT_MUXES * $IO_CHAIN_GBOX_ROOT_MUX_SIZE]
 set IO_CHAIN_GBOX_PLL0_START [expr $IO_CHAIN_GBOX_OSC_START + $IO_CHAIN_GBOX_OSC_SIZE]
 set IO_CHAIN_GBOX_PLLREF_MUX0_START [expr $IO_CHAIN_GBOX_PLL0_START + $IO_CHAIN_GBOX_PLL_SIZE]
 set IO_CHAIN_GBOX_PLL1_START [expr $IO_CHAIN_GBOX_PLLREF_MUX0_START + $IO_CHAIN_GBOX_PLLREF_MUX_SIZE]
@@ -74,7 +74,7 @@ create_instance -block RC_OSC_50MHZ -name u_bank_osc -logic_address $IO_CHAIN_GB
 # ROOT MUXES (12 bits total)
 ################################################################
 for {set run_idx 0} {$run_idx <= 15} {incr run_idx} { 
-    create_instance -block ROOT_MUX -name u_gbox_clkmux_52x1_left_${run_idx} -logic_address [expr ${IO_CHAIN_GBOX_ROOT_MUX_START} + 40 + 6*${run_idx}] -parent GBOX_HP_40X2
+    create_instance -block ROOT_MUX -name u_gbox_clkmux_52x1_left_${run_idx} -logic_address [expr ${IO_CHAIN_GBOX_ROOT_MUX_START} + ${IO_CHAIN_GBOX_ROOT_MUX_SIZE}*${run_idx}] -parent GBOX_HP_40X2
 }
 
 ###############################################################################

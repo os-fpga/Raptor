@@ -1,3 +1,5 @@
+device_name VIRGOTC_BANK
+
 ####################################
 # Gearbox block definition 
 ####################################
@@ -35,9 +37,9 @@ puts "IO_CHAIN_VIRGOTC_BANK_SIZE = $IO_CHAIN_VIRGOTC_BANK_SIZE"
 ####################################
 # bank description
 ####################################
-create_instance -block GBOX_HV_40X2_VL -name u_GBOX_HV_40X2_VL  -logic_address [expr ${IO_CHAIN_GBOX_VL_START}]
-create_instance -block GBOX_HP_40X2    -name u_GBOX_HP_40X2     -logic_address [expr ${IO_CHAIN_GBOX_HP_START}]
-create_instance -block GBOX_HV_40X2_VR -name u_GBOX_HV_40X2_VR  -logic_address [expr ${IO_CHAIN_GBOX_VR_START}]
+create_instance -block GBOX_HV_40X2_VL -name u_GBOX_HV_40X2_VL  -logic_address [expr ${IO_CHAIN_GBOX_VL_START}] -parent VIRGOTC_BANK
+create_instance -block GBOX_HP_40X2    -name u_GBOX_HP_40X2     -logic_address [expr ${IO_CHAIN_GBOX_HP_START}] -parent VIRGOTC_BANK
+create_instance -block GBOX_HV_40X2_VR -name u_GBOX_HV_40X2_VR  -logic_address [expr ${IO_CHAIN_GBOX_VR_START}] -parent VIRGOTC_BANK
 ###############################################################################
 
 # Mapping between RIC instance and PinTable
@@ -244,7 +246,7 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     #puts "$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
-    set model_name u_GBOX_HP_40X2.u_HV_GBOX_BK0_B_$i
+    set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK0_B_$i
     set bank_name BANK_H_1_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
     #puts "$model_name, $bank_name, $cust_name"
@@ -260,7 +262,7 @@ for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
     #puts "$model_name, $bank_name, $cust_name"
     map_model_user_names -model_name $model_name -user_name $cust_name
     incr BANK_INDEX
-    set model_name u_GBOX_HP_40X2.u_HV_GBOX_BK1_B_$i
+    set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK1_B_$i
     set bank_name BANK_H_2_${BANK_INDEX}
     set cust_name [get_ball_name $bank_name]
     #puts "$model_name, $bank_name, $cust_name"
