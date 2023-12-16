@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest  # job is matrix based so cannot run this job on self-hosted as it requires more runner 
     outputs:
       output1: ${{ steps.branch_name.outputs.b_name }}
+      RUN_XML_TEST: ${{ steps.run_tests.outputs.run_xml_test }}
     defaults:
       run:
         shell: bash
@@ -178,8 +179,10 @@ jobs:
           make release CPU_CORES=2
 
     - name: Extract device name
+      id: run_tests
       if:  ${{ matrix.updates == 'xml' &&  steps.is_change.outputs.has_changed == 'true'}}
       run: |
+         echo "run_xml_test=true" >> "$GITHUB_OUTPUT" 
          changes_in=`grep -o 'etc/devices/[^[:space:]]*' MANIFEST.TXT | cut -d/ -f3 | sort | uniq`
          echo ""
          echo "Change folder are $changes_in"
@@ -243,6 +246,7 @@ jobs:
           
   test_xmls:
     needs: XML_Digest_and_raptor_build
+    if:  contains(needs.XML_Digest_and_raptor_build.outputs.RUN_XML_TEST, 'true')
     runs-on: digest_release 
     container:
       image: ubuntu:22.04
@@ -251,7 +255,7 @@ jobs:
         shell: bash
     
     steps:
-    - name: Iinstall pre-requisit
+    - name: Install pre-requisit
       run: |
             apt update && apt upgrade -y && apt install sudo git openssh-client software-properties-common wget dialog apt-utils -y 
              
@@ -291,7 +295,7 @@ jobs:
             git config --global --add safe.directory /__w/Raptor/Raptor
             git branch -a
             git pull
-            BRANCH=${{needs.XML_Digest_and_raptor_build.outputs.output1}}
+            BRANCH=${{ needs.XML_Digest_and_raptor_build.outputs.output1 }}
             set +e
             git ls-remote --exit-code --heads origin $BRANCH >/dev/null 2>&1
             EXIT_CODE=$?
@@ -419,6 +423,7 @@ jobs:
         fetch-depth: 0
 
     - name: switch to branch
+      if: contains(needs.XML_Digest_and_raptor_build.outputs.RUN_XML_TEST, 'true')
       run: |
             git branch -a 
             git pull
@@ -435,11 +440,13 @@ jobs:
             git branch
 
     - name: Download Decision
+      if:  contains(needs.XML_Digest_and_raptor_build.outputs.RUN_XML_TEST, 'true')
       uses: actions/download-artifact@v3
       with:
           name: decision
       
     - name: Get the result
+      if:  contains(needs.XML_Digest_and_raptor_build.outputs.RUN_XML_TEST, 'true')
       id: test_decision
       run: |
             tar -xvzf decision.tar.gz
