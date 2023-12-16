@@ -1,7 +1,7 @@
 name: 'Fetch and Test XML changes'
 
 on:
-  push:
+  #push:
   repository_dispatch:
     types: [digest_latest_Release]
 
@@ -232,17 +232,17 @@ jobs:
             JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
-   # - name: create pull request for RIC
-   #   if: ${{ matrix.updates == 'ric' &&  steps.is_change.outputs.has_changed == 'true'}}
-   #   run: |
-   #         gh pr create -B main \
-   #         -H ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}  \
-   #         -a nadeemyaseen-rs -r alain-rs  \
-   #         -l "openfpga_castor_pd_XMLs"  \
-   #         --title 'Pulling release ${{ github.event.client_payload.new_release }} into main.' \
-   #         --body 'An automated PR to check in New RIC TCL files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'         
-   #   env:
-   #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: create pull request for RIC
+      if: ${{ matrix.updates == 'ric' &&  steps.is_change.outputs.has_changed == 'true'}}
+      run: |
+            gh pr create -B main \
+            -H ${{ matrix.updates }}_${{ github.event.client_payload.new_release }}  \
+            -a nadeemyaseen-rs -r alain-rs  \
+            -l "openfpga_castor_pd_XMLs"  \
+            --title 'Pulling release ${{ github.event.client_payload.new_release }} into main.' \
+            --body 'An automated PR to check in New RIC TCL files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'         
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   test_xmls:
     needs: XML_Digest_and_raptor_build
@@ -255,7 +255,7 @@ jobs:
         shell: bash
     
     steps:
-    - name: Iinstall pre-requisit
+    - name: Install pre-requisit
       run: |
             apt update && apt upgrade -y && apt install sudo git openssh-client software-properties-common wget dialog apt-utils -y 
              
@@ -460,15 +460,14 @@ jobs:
     - name: Create PR if test on all devcies pass
       if: contains(steps.test_decision.outputs.TEST_RESULT, 'true') 
       run: |
-            echo "Nadeem"
- #           gh pr create -B main \
- #           -H ${{ needs.XML_Digest_and_raptor_build.outputs.output1 }}   \
- #           -a nadeemyaseen-rs -r alain-rs  \
- #           -l "openfpga_castor_pd_XMLs"  \
- #           --title 'Pulling release ${{ github.event.client_payload.new_release }} into main.' \
- #           --body 'An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
- #     env:
- #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+            gh pr create -B main \
+            -H ${{ needs.XML_Digest_and_raptor_build.outputs.output1 }}   \
+            -a nadeemyaseen-rs -r alain-rs  \
+            -l "openfpga_castor_pd_XMLs"  \
+            --title 'Pulling release ${{ github.event.client_payload.new_release }} into main.' \
+            --body 'An automated PR to check in New XML/CSV files from Release. Click on the link to see tests/batch results ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
   
     - name: Create Jira on failing test
       if: contains(steps.test_decision.outputs.TEST_RESULT, 'false')  
@@ -478,8 +477,8 @@ jobs:
           issuetype: "Bug"
           summary: "Smoke test fail on XML/CSV from release ${{ github.event.client_payload.new_release }}."
           description: "In an attempt to merge the release ${{ github.event.client_payload.new_release }} in Raptor, the smoke test fails. The link to the failed job is ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          #extraFields: '{"assignee": { "id": "712020:63820c3b-2ac9-4f39-b263-9d19c1e5ebcd"}}'
-          extraFields: '{"assignee": { "id": "6239bc27a95758006959b14d"}}'
+          extraFields: '{"assignee": { "id": "712020:63820c3b-2ac9-4f39-b263-9d19c1e5ebcd"}}'
+          #extraFields: '{"assignee": { "id": "6239bc27a95758006959b14d"}}'
       env:
             JIRA_BASE_URL: https://rapidsilicon.atlassian.net
             JIRA_USER_EMAIL: nadeem.yaseen@rapidsilicon.com
