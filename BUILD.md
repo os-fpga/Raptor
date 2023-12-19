@@ -195,7 +195,7 @@ If you would like to record (commit) an update of the submodule then the procedu
 
   6. Now in the Raptor root directory, update the Raptor git to record the new pointer of the submodule. 
 
-> [!IMPORTANT]
+> [!CAUTION]
 > Always add/committing files/submodules explicitly. Do not use `git commit . -m "MESSAGE"` or `git add .` commands.
 
   For example:
