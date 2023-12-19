@@ -1,34 +1,38 @@
 # Raptor
 
-## How to build Raptor from source code
+## How to Build Raptor from Source Code
 
-3 ways to build Raptor from sources:
+There are three ways to build Raptor from sources:
 
-### 1) BUILD LOCALLY ON YOUR MACHINE:
+### 1) Build Locally on Your Machine:
 
-Once you local machine is ready, please take into acocunt the dependcies in the files listed below. If you are unsure of package installation status, go to Raptor repository on GitHub by clicking [here](https://github.com/RapidSilicon/Raptor/) and install the Raptor build dependencies by running the appropriate script:
+Once your local machine is ready, please take into account the dependencies listed below. If you are unsure about the package installation status, go to the Raptor repository on GitHub by clicking [here](https://github.com/RapidSilicon/Raptor/) and install the Raptor build dependencies by running the appropriate script:
 
-  * [`Ubuntu dependencies`](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/install_ubuntu_dependencies_build.sh)
-  * [`Centos dependencies`](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/install_centos_dependencies_build.sh)
-  * [`MacOS dependencies`](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/install_macos_dependencies_build.sh)
-  * [`Windows Msys2 dependencies`](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/main.yml)
-  * [`Windows MSVC dependencies`](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/main.yml)
+- [Ubuntu dependencies](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/install_ubuntu_dependencies_build.sh)
+- [Centos dependencies](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/install_centos_dependencies_build.sh)
+- [MacOS dependencies](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/install_macos_dependencies_build.sh)
+- [Windows Msys2 dependencies](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/main.yml)
+- [Windows MSVC dependencies](https://github.com/RapidSilicon/Raptor/blob/main/.github/workflows/main.yml)
 
 > [!TIP]
-> Copy the script content and paste it in the file created on your local machine then execute that file as bash script.
+> Copy the script content and paste it into a file created on your local machine, then execute that file as a bash script.
 
 <h4 id="step-to-build-raptor">
 Steps to clone and build Raptor
 </h4>
 
-1. Enable GitHub SSH keys: ***Needed to do only once***:
+1. Enable GitHub SSH keys: 
 
-Create a SSH key pair with the command like below
+> [!IMPORTANT]
+> Needed to do only once
+
+   Create an SSH key pair with the command below:
+
+```bash
+   ssh-keygen -t rsa -b 4096 -C "email@example.com"
 ```
-    ssh-keygen -t rsa -b 4096 -C "email@example.com"
-```
-This command will generate key pair in `$HOME/.ssh` directory. Copy the value of the public SSH key (file with extension .pub) to the clipboard.
-Login to GitHub and navigate to your account settings. Click on the SSH and GPG tab on left side of setting page. Click Add Key to register the public SSH key with your account. Name the key and paste the copied value into the text field. Save your changes.
+This command will generate a key pair in `$HOME/.ssh` directory. Copy the value of the public SSH key (file with extension .pub) to the clipboard.
+Log in to GitHub, navigate to your account settings, click on the SSH and GPG tab on the left side of the setting page, click Add Key to register the public SSH key with your account. Name the key and paste the copied value into the text field. Save your changes.
 
 2. Clone the Raptor repository.
 
@@ -47,8 +51,7 @@ To check build is successful, run the below command:
 ```
 make test/rs_gui
 ```
-
-If above command execute successfully then Raptor is build and ready to use. 
+If the above command executes successfully, then Raptor is built and ready to use. 
 
 **For Developers only**
 
@@ -58,10 +61,10 @@ If above command execute successfully then Raptor is build and ready to use.
   make debug
 ```
 
-* After build, if you want to install it to create a production build or need only binaries then
+* After the build, if you want to install it to create a production build or need only binaries, then
 
 > [!NOTE]
-> This will install Raptor in `/usr/local` so you may need to add sudo. Location can be changed by passing `PREFIX=<any other location as install directory>`.
+>     This will install Raptor in `/usr/local`, so you may need to add sudo. The location can be changed by passing `PREFIX=<any other location as install directory>`.
 
 ```
   make install 
@@ -69,30 +72,30 @@ If above command execute successfully then Raptor is build and ready to use.
 ```
 
 > [!NOTE]
-> During the build all required submodules would be checkout by CMake so no need to run `git submodule update --init --recurisve` explicitly.
+> During the build, all required submodules would be checked out by CMake, so no need to run `git submodule update --init --recursive` explicitly.
 
 > [!NOTE]
 > The Raptor_Tools submodule would be left uninitialized in all Raptor submodules.
 
 ### 2) ON COMPANY SERVER:
 
-The instructions detail how to build Raptor from source code on company IT-managed Linux host. Make sure you get the server credentials and able to login to server.
+The instructions detail how to build Raptor from source code on company IT-managed Linux host. Make sure you get the server credentials and are able to log in to the server.
 
 * SSH with X forwarding to compute server:
 ```
 ssh -X <server name>
 ```
-Possible servers name at writing of this guide are:
+Possible server names at the time of writing this guide are:
 
 * sw01
 * sw02
 * sw03
 
-**Note:** Please consult with IT-manager guy to get the name of server and working space name on which you are allowed to build Raptor.
+**Note:** Please consult with the IT manager to get the server name and working space name on which you are allowed to build Raptor.
 
 * Load the module for the dependencies 
 > [!IMPORTANT]
-> Do this everytime when you open a new terminal.
+> Do this every time you open a new terminal.
 
 ```
 module load fpga_tools/raptor/build_env
@@ -105,7 +108,7 @@ Now follow instructions described in [Steps to clone and build Raptor](#step-to-
 
 The company build server automatically produces nightly builds of Raptor that can be used quickly for testing.  The instructions below detail how to connect to the automated build server and run Raptor in that environment.
 
-* Log in to server as per instruction from IT-manager.
+* Log in to the server as per the instructions from the IT manager.
 
 * SSH with X forwarding to compute server:
 ```
@@ -183,14 +186,14 @@ If you would like to record (commit) an update of the submodule then the procedu
   ```
   make run-cmake-release
   ```
-  4. Once all the submodule are checkout, then change directory to submodule which you want to bump like Raptor_Tools or Backend and put its git pointer to latest commit. For example, to update Backend:
+  4. Once all the submodules are checked out, then change the directory to the submodule you want to bump like Raptor_Tools or Backend and put its git pointer to the latest commit. For example, to update Backend:
 
   ```
   cd Backend && git checkout main && git pull origin && cd ..
   ```
   5. Use `git status` command to check your working tree status: what is added for commit, what is modified, what is untracked.
 
-  6. Now in Raptor root directory, update the Raptor git to record the new pointer of submodule. 
+  6. Now in the Raptor root directory, update the Raptor git to record the new pointer of the submodule. 
 
 > [!IMPORTANT]
 > Always add/committing files/submodules explicitly. Do not use `git commit . -m "MESSAGE"` or `git add .` commands.
@@ -201,14 +204,14 @@ If you would like to record (commit) an update of the submodule then the procedu
   git add Backend
   git commit -m "Bump Backed or any message"
   ```
-  7. Good idea is to do the build before pushing.
+  7. It's a good idea to do the build before pushing.
 
-  8. Once you are sure then push your changes:
+  8. Once you are sure, push your changes:
 
   ```
   git push origin --set-upstream <your branch name like EDA-968>
   ```
 
-  9. After the last command you should be able to create Pull Request in Raptor repository.
+  9. After the last command, you should be able to create a Pull Request in the Raptor repository.
 
 
