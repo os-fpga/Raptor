@@ -57,6 +57,7 @@ yum install -y gtk3-devel
 yum install -y openssl-devel hwloc-devel
 yum install -y libusbx-devel libusb-devel
 yum install -y pkgconfig
+yum install -y perl-IPC-Cmd
 
 ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/ctest /usr/bin/ctest
 
