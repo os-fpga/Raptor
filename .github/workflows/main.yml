@@ -285,7 +285,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        yum install -y perl-IPC-Cmd
+        sudo dnf -y install perl-IPC-Cmd
 
     - name: Log in to the Container registry
       uses: docker/login-action@v3.0.0
