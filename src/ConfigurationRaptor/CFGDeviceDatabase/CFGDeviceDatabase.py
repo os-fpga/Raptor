@@ -81,7 +81,7 @@ def main() :
         assert "type" in child.attrib
         if child.attrib["type"] == "openfpga_arch" :
           assert "file" in child.attrib
-          file = "%s/devices/%s" % (sys.argv[1], child.attrib["file"])
+          file = "%s/%s" % (sys.argv[1], child.attrib["file"])
           assert os.path.exists(file), "File %s does not exist" % file
           (dev.protocol, dev.blwl) = get_device_config_protocol(file)
           break
