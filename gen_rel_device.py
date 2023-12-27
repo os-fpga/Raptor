@@ -15,7 +15,7 @@ def update_xml_file (xml_filepath, rel_devices):
                 if internal.attrib.get('type') == 'vpr_arch':
                     value = internal.get('file')
                     if value is not None:
-                        safe_dirs.append(value[:value.index('/')])
+                        safe_dirs.append(value.split('/')[1])
         else:
             root.remove(device)
 

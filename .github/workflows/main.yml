@@ -291,7 +291,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}          
 
     - name: pull the CentOS image
-      run: docker pull ghcr.io/rapidsilicon/raptor:qt6_ci_fixes    
+      run: docker pull ghcr.io/rapidsilicon/raptor:centos7latest    
 
     - name: Checkout code
       uses: actions/checkout@v3       
@@ -316,7 +316,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:qt6_ci_fixes
+        image: ghcr.io/rapidsilicon/raptor:centos7latest
         run: |
           source /opt/rh/devtoolset-11/enable
           cmake --version
@@ -328,7 +328,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:qt6_ci_fixes
+        image: ghcr.io/rapidsilicon/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
             source /opt/rh/devtoolset-11/enable  
@@ -340,7 +340,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:qt6_ci_fixes
+        image: ghcr.io/rapidsilicon/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work 
         run: |
             source /opt/rh/devtoolset-11/enable        
@@ -354,7 +354,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:qt6_ci_fixes
+        image: ghcr.io/rapidsilicon/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
             cd work && make clean
