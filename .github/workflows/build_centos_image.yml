@@ -39,5 +39,5 @@ jobs:
           context: .
           file: .github/workflows/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:centos7latest
           labels: ${{ steps.meta.outputs.labels }}
