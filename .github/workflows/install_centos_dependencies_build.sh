@@ -4,9 +4,9 @@ yum install -y https://repo.ius.io/ius-release-el7.rpm
 yum update -y
 yum group install -y "Development Tools" 
 yum install -y epel-release 
-curl -C - -O https://cmake.org/files/v3.20/cmake-3.20.0-linux-x86_64.tar.gz
-tar xzf cmake-3.20.0-linux-x86_64.tar.gz
-ln -s $PWD/cmake-3.20.0-linux-x86_64/bin/cmake /usr/bin/cmake
+curl -C - -O https://cmake.org/files/v3.28/cmake-3.28.0-linux-x86_64.tar.gz
+tar xzf cmake-3.28.0-linux-x86_64.tar.gz
+ln -s $PWD/cmake-3.28.0-linux-x86_64/bin/cmake /usr/bin/cmake
 yum install -y openssh-server openssh-clients
 yum install -y centos-release-scl-rh
 yum install -y devtoolset-11
@@ -57,8 +57,9 @@ yum install -y gtk3-devel
 yum install -y openssl-devel hwloc-devel
 yum install -y libusbx-devel libusb-devel
 yum install -y pkgconfig
+yum install -y perl-IPC-Cmd
 
-ln -s $PWD/cmake-3.16.9-Linux-x86_64/bin/ctest /usr/bin/ctest
+ln -s $PWD/cmake-3.28.0-linux-x86_64/bin/ctest /usr/bin/ctest
 
 echo "Downloading QT..."
 curl -L https://github.com/RapidSilicon/post_build_artifacts/releases/download/v0.1/Qt-6.5.1.tar.gz --output qt-everywhere-src-6.5.1.tar.gz

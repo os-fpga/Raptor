@@ -4,9 +4,10 @@ on:
         paths:
           - .github/workflows/install_centos_dependencies_build.sh
           - .github/workflows/Dockerfile
+          - .github/workflows/build_centos_image.yml
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: rapidsilicon/raptor
 
 jobs:
   build-and-push-image:
@@ -39,5 +40,5 @@ jobs:
           context: .
           file: .github/workflows/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:centos7latest
           labels: ${{ steps.meta.outputs.labels }}
