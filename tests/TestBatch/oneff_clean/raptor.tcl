@@ -16,6 +16,8 @@ target_device GEMINI_COMPACT_10x8
 # Compilation/Simulation
 analyze
 
+# clean default flags for wrapper
+simulation_options verilator compilation rtl ""
 # RTL Simulation
 simulate rtl verilator syn_tb_rtl.fst
 set projName oneff_gemini_clean
@@ -28,6 +30,8 @@ if {$exists != 1} { puts "syn_tb_rtl.fst does not exists"; exit 1 }
 # Synthesis
 synthesize delay
 
+# clean default flags for wrapper
+simulation_options verilator compilation gate ""
 # Post-Synthesis gate-level Simulation
 simulate gate verilator syn_tb_gate.fst
 set simGatePath $basePath/synth_1_1/simulate_gate
@@ -39,6 +43,8 @@ packing
 place
 route
 
+# clean default flags for wrapper
+simulation_options verilator compilation pnr ""
 # Post-Route Simulation
 simulate pnr verilator syn_tb_pnr.fst
 set simPnrPath $basePath/synth_1_1/impl_1_1_1/simulate_pnr

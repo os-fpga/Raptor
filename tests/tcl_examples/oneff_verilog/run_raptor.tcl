@@ -16,12 +16,16 @@ target_device 1GE100-ES1
 # Compilation/Simulation
 analyze
 
+# clean default flags for wrapper
+simulation_options verilator compilation rtl ""
 # RTL Simulation
 simulate rtl verilator syn_tb_rtl.fst
 
 # Synthesis
 synthesize delay
 
+# clean default flags for wrapper
+simulation_options verilator compilation gate ""
 # Post-Synthesis gate-level Simulation
 simulate gate verilator syn_tb_gate.fst
 
@@ -30,6 +34,8 @@ packing
 place
 route
 
+# clean default flags for wrapper
+simulation_options verilator compilation pnr ""
 # Post-Route Simulation
 simulate pnr verilator syn_tb_pnr.fst
 

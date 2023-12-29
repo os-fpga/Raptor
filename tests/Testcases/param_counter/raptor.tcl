@@ -13,12 +13,16 @@ set_top_testbench param_up_counter
 # Device target
 target_device GEMINI_10x8
 
+# clean default flags for wrapper
+simulation_options verilator compilation rtl ""
 # RTL Simulation
 simulate rtl verilator counter_rtl.fst
 
 # Synthesis
 synthesize delay
 
+# clean default flags for wrapper
+simulation_options verilator compilation gate ""
 # Post-Synthesis gate-level Simulation
 simulate gate verilator counter_gate.fst
 
@@ -27,6 +31,8 @@ packing
 place
 route
 
+# clean default flags for wrapper
+simulation_options verilator compilation pnr ""
 # Post-Route Simulation
 simulate pnr verilator counter_pnr.fst
 
