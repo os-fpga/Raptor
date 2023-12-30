@@ -139,6 +139,8 @@ get_filename_component(READ_EDIF_SRC_DIR "Raptor_Tools/gatelevel_readers/read_ed
 REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
 add_subdirectory(${READ_EDIF_SRC_DIR})
 
+add_subdirectory(Raptor_Tools/gatelevel_readers/reconstruct_verilog)
+
 if (ENABLE_OPENSTA)
   add_subdirectory("Raptor_Tools/psta-rel")
 endif()
