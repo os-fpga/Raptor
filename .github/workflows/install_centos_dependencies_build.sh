@@ -62,9 +62,9 @@ yum install -y perl-IPC-Cmd
 ln -s $PWD/cmake-3.28.0-linux-x86_64/bin/ctest /usr/bin/ctest
 
 echo "Downloading QT..."
-curl -L https://github.com/RapidSilicon/post_build_artifacts/releases/download/v0.1/Qt-6.5.1.tar.gz --output qt-everywhere-src-6.5.1.tar.gz
-tar -xzf qt-everywhere-src-6.5.1.tar.gz
-mv Qt-6.5.1 /usr/local/
+curl -L https://github.com/RapidSilicon/post_build_artifacts/releases/download/v0.2/qt6.2.4_withopenssl.tar.gz --output qt-for-centos7.tar.gz
+tar -xzf qt-for-centos7.tar.gz
+mv Qt6.2.4 /usr/local/
 yum clean all
-rm -rf qt-everywhere-src-6.5.1.tar.gz
+rm -rf qt-for-centos7.tar.gz
 
