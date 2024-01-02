@@ -75,21 +75,15 @@ def main() :
       assert dev.series in ["Gemini", "Virgo"], "Series %s is not supported by family %s" % (dev.series, dev.family)
     else :
       assert False, "Family %s is not supported" % dev.family
-      '''
+    '''
     for child in device :
       if child.tag == "internal" :
         assert "type" in child.attrib
         if child.attrib["type"] == "openfpga_arch" :
           assert "file" in child.attrib
-          file = "%s/devices/%s" % (sys.argv[1], child.attrib["file"])
-          if os.path.exists(file) :
-            assert os.path.exists(file), "File %s does not exist" % file
-            (dev.protocol, dev.blwl) = get_device_config_protocol(file)
-          else :
-            print("************* Warning **********************")
-            print(" Device: %s openfpga_arch path %s does not exist" % (dev.name, file))
-            print("********************************************")
-            (dev.protocol, dev.blwl) = ["ql_memory_bank", "flatten"]
+          file = "%s/%s" % (sys.argv[1], child.attrib["file"])
+          assert os.path.exists(file), "File %s does not exist" % file
+          (dev.protocol, dev.blwl) = get_device_config_protocol(file)
           break
     assert dev.protocol != None
     devices[dev.name] = dev
