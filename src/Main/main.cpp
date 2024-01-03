@@ -77,6 +77,7 @@ int main(int argc, char** argv) {
     std::filesystem::path analyzePath = binpath / "analyze";
     std::filesystem::path yosysPath = binpath / "yosys";
     std::filesystem::path vprPath = binpath / "vpr";
+    std::filesystem::path finalizePath = binpath / "finalize";
     std::filesystem::path openFpgaPath = binpath / "openfpga";
     std::filesystem::path pinConvPath = binpath / "pin_c";
     std::filesystem::path staPath = binpath / "sta";
@@ -95,6 +96,7 @@ int main(int argc, char** argv) {
     opcompiler->AnalyzeExecPath(analyzePath);
     opcompiler->YosysExecPath(yosysPath);
     opcompiler->VprExecPath(vprPath);
+    opcompiler->ReConstructVExecPath(finalizePath);
     opcompiler->StaExecPath(staPath);
     opcompiler->StarsExecPath(starsPath);
     opcompiler->TclExecPath(tclPath);
