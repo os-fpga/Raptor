@@ -190,7 +190,7 @@ jobs:
          for c in $changes_in
          do
 
-                xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
+                xmlstarlet sel -t -m "//device[internal[@type='vpr_arch']/@file='devices/$c/gemini_vpr.xml']" -v "@name" -n etc/device.xml | while read -r d; do
                 echo "mkdir -p $(pwd)/results/$d && cd $(pwd)/results/$d && $(pwd)/build/bin/raptor --batch --device $d --script $(pwd)/tests/Testcases/and2_pin_table_test/run_raptor.tcl" >> build/raptor_run
                 done
          done
