@@ -4,42 +4,39 @@
 define_block -name GBOX_TOP
 
 ####################################
-define_attr -block "GBOX_TOP" -name "RATE"	        -addr 0  -width 4 -enum {Three 3} {Four 4} {Five 5} {Six 6} {Seven 7} {Eight 8} {Night 9} {Ten 10} -enumname GBOX_ATT_0
-define_attr -block "GBOX_TOP" -name "MASTER_SLAVE"	-addr 4  -width 1 -enum {Slave 0 } {Master 1} -enumname GBOX_ATT_1
-define_attr -block "GBOX_TOP" -name "PEER_IS_ON"	-addr 5  -width 1 -enum {PEER_off 0 } {PEER_ON 1} -enumname GBOX_ATT_2
-define_attr -block "GBOX_TOP" -name "TX_CLOCK_IO"	-addr 6  -width 1 -enum {TX_normal_IO 0} {TX_clock_IO 1}  -enumname GBOX_ATT_3
-define_attr -block "GBOX_TOP" -name "TX_DDR_MODE"	-addr 7  -width 2 -enum {TX_direct 0} {TX_ddr 1} {TX_sdr 2} -enumname GBOX_ATT_4
-define_attr -block "GBOX_TOP" -name "TX_BYPASS"  	-addr 9  -width 1 -enum {TX_gear_on 0} {TX_bypass 1}  -enumname GBOX_ATT_5
-define_attr -block "GBOX_TOP" -name "TX_CLK_PHASE"	-addr 10 -width 2 -enum {TX_phase_0 0} {TX_phase_90 1} {TX_phase_180 2} {TX_phase_270 3} -enumname GBOX_ATT_6
-define_param -block GBOX_TOP -name TX_DLY -addr 12 -width 6 -type int
-### define_attr -block "GBOX_TOP" -name "TX_DLY"	-addr 12  -width 6 -enum {TX_dly0 0} {TX_dly1 1}  -enumname GBOX_ATT_7
-define_attr -block "GBOX_TOP" -name "RX_DDR_MODE"	-addr 18  -width 2 -enum {RX_direct 0} {RX_ddr 1} {RX_sdr 2} -enumname GBOX_ATT_8
-define_attr -block "GBOX_TOP" -name "RX_BYPASS"  	-addr 20  -width 1 -enum {RX_gear_on 0} {RX_bypass 1}  -enumname GBOX_ATT_9
-define_param -block GBOX_TOP -name RX_DLY -addr 21 -width 6 -type int
-### define_attr -block "GBOX_TOP" -name "RX_DLY"	-addr 21  -width 6 -enum {RX_dly0 0} {RX_dly1 1}  -enumname GBOX_ATT_10
-define_attr -block "GBOX_TOP" -name "RX_DPA_MODE"	-addr 27  -width 2 -enum {RX_dpa_off 0} {RX_resv 1} {RX_dpa 2} {RX_cdr 3} -enumname GBOX_ATT_11
-define_attr -block "GBOX_TOP" -name "RX_MIPI_MODE"	-addr 29  -width 1 -enum {RX_mipi_off 0} {RX_mipi_on 1}  -enumname GBOX_ATT_12
-define_attr -block "GBOX_TOP" -name "TX_MODE"		-addr 30  -width 1 -enum {TX_disable 0} {TX_enable 1}  -enumname GBOX_ATT_13
-define_attr -block "GBOX_TOP" -name "RX_MODE"		-addr 31  -width 1 -enum {RX_disable 0} {RX_enable 1}  -enumname GBOX_ATT_14
-define_attr -block "GBOX_TOP" -name "RX_CLOCK_IO"	-addr 32 -width 1 -enum {RX_normal_IO 0} {RX_clock_IO 1}  -enumname GBOX_ATT_15
-define_attr -block "GBOX_TOP" -name "DFEN"			-addr 33  -width 1 -enum {SingleEnded 0} {Differential 1 }  -enumname GBOX_ATT_16
-define_attr -block "GBOX_TOP" -name "SR"			-addr 34  -width 1 -enum {SR_disable 0} {SR_enable 1 }  -enumname GBOX_ATT_17
-define_attr -block "GBOX_TOP" -name "PE"			-addr 35  -width 1 -enum {PE_disable 0} {PE_enable 1 }  -enumname GBOX_ATT_18
-define_attr -block "GBOX_TOP" -name "PUD"			-addr 36  -width 1 -enum {PUD_disable 0} {PUD_enable 1 }  -enumname GBOX_ATT_19
-define_attr -block "GBOX_TOP" -name "DFODTEN"		-addr 37  -width 1 -enum {DF_odt_disable 0} {DF_odt_enable 1 }  -enumname GBOX_ATT_20
-###define_attr -block "GBOX_TOP" -name "MC"			-addr 38  -width 4 -enum {IO_mode_0 0} {IO_mode_0 1 }  -enumname GBOX_ATT_21
-define_param -block GBOX_TOP -name MC -addr 38 -width 4 -type int
+define_attr -block GBOX_TOP -name RATE         -addr 0  -width 4 -enumname GBOX_ATT_0  -enum {Three 3} {Four 4} {Five 5} {Six 6} {Seven 7} {Eight 8} {Night 9} {Ten 10}
+define_attr -block GBOX_TOP -name MASTER_SLAVE -addr 4  -width 1 -enumname GBOX_ATT_1  -enum {Slave 0} {Master 1}
+define_attr -block GBOX_TOP -name PEER_IS_ON   -addr 5  -width 1 -enumname GBOX_ATT_2  -enum {PEER_off 0} {PEER_ON 1}
+define_attr -block GBOX_TOP -name TX_CLOCK_IO  -addr 6  -width 1 -enumname GBOX_ATT_3  -enum {TX_normal_IO 0} {TX_clock_IO 1}
+define_attr -block GBOX_TOP -name TX_DDR_MODE  -addr 7  -width 2 -enumname GBOX_ATT_4  -enum {TX_direct 0} {TX_ddr 1} {TX_sdr 2}
+define_attr -block GBOX_TOP -name TX_BYPASS    -addr 9  -width 1 -enumname GBOX_ATT_5  -enum {TX_gear_on 0} {TX_bypass 1}
+define_attr -block GBOX_TOP -name TX_CLK_PHASE -addr 10 -width 2 -enumname GBOX_ATT_6  -enum {TX_phase_0 0} {TX_phase_90 1} {TX_phase_180 2} {TX_phase_270 3}
+define_attr -block GBOX_TOP -name TX_DLY       -addr 12 -width 6
+define_attr -block GBOX_TOP -name RX_DDR_MODE  -addr 18 -width 2 -enumname GBOX_ATT_8  -enum {RX_direct 0} {RX_ddr 1} {RX_sdr 2}
+define_attr -block GBOX_TOP -name RX_BYPASS    -addr 20 -width 1 -enumname GBOX_ATT_9  -enum {RX_gear_on 0} {RX_bypass 1}
+define_attr -block GBOX_TOP -name RX_DLY       -addr 21 -width 6
+define_attr -block GBOX_TOP -name RX_DPA_MODE  -addr 27 -width 2 -enumname GBOX_ATT_11 -enum {RX_dpa_off 0} {RX_resv 1} {RX_dpa 2} {RX_cdr 3}
+define_attr -block GBOX_TOP -name RX_MIPI_MODE -addr 29 -width 1 -enumname GBOX_ATT_12 -enum {RX_mipi_off 0} {RX_mipi_on 1}
+define_attr -block GBOX_TOP -name TX_MODE      -addr 30 -width 1 -enumname GBOX_ATT_13 -enum {TX_disable 0} {TX_enable 1}
+define_attr -block GBOX_TOP -name RX_MODE      -addr 31 -width 1 -enumname GBOX_ATT_14 -enum {RX_disable 0} {RX_enable 1}
+define_attr -block GBOX_TOP -name RX_CLOCK_IO  -addr 32 -width 1 -enumname GBOX_ATT_15 -enum {RX_normal_IO 0} {RX_clock_IO 1}
+define_attr -block GBOX_TOP -name DFEN         -addr 33 -width 1 -enumname GBOX_ATT_16 -enum {SingleEnded 0} {Differential 1}
+define_attr -block GBOX_TOP -name SR           -addr 34 -width 1 -enumname GBOX_ATT_17 -enum {SR_disable 0} {SR_enable 1}
+define_attr -block GBOX_TOP -name PE           -addr 35 -width 1 -enumname GBOX_ATT_18 -enum {PE_disable 0} {PE_enable 1}
+define_attr -block GBOX_TOP -name PUD          -addr 36 -width 1 -enumname GBOX_ATT_19 -enum {PUD_disable 0} {PUD_enable 1}
+define_attr -block GBOX_TOP -name DFODTEN      -addr 37 -width 1 -enumname GBOX_ATT_20 -enum {DF_odt_disable 0} {DF_odt_enable 1}
+define_attr -block GBOX_TOP -name MC           -addr 38 -width 4
 ####################################
 # Constraints within block attributes 
 ####################################
 
-define_constraint -block GBOX_TOP -constraint {(DFEN == SingleEnded) 			-> {RATE inside {[Three:Ten]}} }
-define_constraint -block GBOX_TOP -constraint {(DFEN == Differential) 			-> {RATE inside {[Three:Ten]}} }
-define_constraint -block GBOX_TOP -constraint {(DFEN == Differential)			-> (PEER_IS_ON == PEER_off)	}
-define_constraint -block GBOX_TOP -constraint {(PEER_IS_ON == PEER_ON) 			-> {RATE inside {[Three:Five]}} }
-define_constraint -block GBOX_TOP -constraint {(RX_MIPI_MODE == RX_mipi_on) 	-> (DFEN == Differential)} 
-define_constraint -block GBOX_TOP -constraint {(TX_DDR_MODE == TX_direct) 		-> (TX_BYPASS == TX_bypass)} 
-define_constraint -block GBOX_TOP -constraint {(RX_DDR_MODE == RX_direct) 		-> (RX_BYPASS == RX_bypass)} 
+define_constraint -block GBOX_TOP -constraint {(DFEN == SingleEnded)        -> {RATE inside {[Three:Ten]}}}
+define_constraint -block GBOX_TOP -constraint {(DFEN == Differential)       -> {RATE inside {[Three:Ten]}}}
+define_constraint -block GBOX_TOP -constraint {(DFEN == Differential)       -> (PEER_IS_ON == PEER_off)}
+define_constraint -block GBOX_TOP -constraint {(PEER_IS_ON == PEER_ON)      -> {RATE inside {[Three:Five]}}}
+define_constraint -block GBOX_TOP -constraint {(RX_MIPI_MODE == RX_mipi_on) -> (DFEN == Differential)}
+define_constraint -block GBOX_TOP -constraint {(TX_DDR_MODE == TX_direct)   -> (TX_BYPASS == TX_bypass)}
+define_constraint -block GBOX_TOP -constraint {(RX_DDR_MODE == RX_direct)   -> (RX_BYPASS == RX_bypass)}
 
 ######################################
 ### define_ports -block GBOX_TOP -in a1 b1 c1 -out aa1 bb1 cc1

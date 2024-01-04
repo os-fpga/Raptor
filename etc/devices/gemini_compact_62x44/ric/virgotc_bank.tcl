@@ -38,7 +38,7 @@ puts "IO_CHAIN_VIRGOTC_BANK_SIZE = $IO_CHAIN_VIRGOTC_BANK_SIZE"
 # bank description
 ####################################
 create_instance -block GBOX_HV_40X2_VL -name u_GBOX_HV_40X2_VL  -logic_address [expr ${IO_CHAIN_GBOX_VL_START}] -parent VIRGOTC_BANK
-create_instance -block GBOX_HP_40X2    -name u_GBOX_HP_40X2     -logic_address [expr ${IO_CHAIN_GBOX_HP_START}] -parent VIRGOTC_BANK
+create_instance -block GBOX_HP_40X2  -name u_GBOX_HP_40X2   -logic_address [expr ${IO_CHAIN_GBOX_HP_START}] -parent VIRGOTC_BANK
 create_instance -block GBOX_HV_40X2_VR -name u_GBOX_HV_40X2_VR  -logic_address [expr ${IO_CHAIN_GBOX_VR_START}] -parent VIRGOTC_BANK
 ###############################################################################
 
@@ -105,167 +105,166 @@ create_instance -block GBOX_HV_40X2_VR -name u_GBOX_HV_40X2_VR  -logic_address [
 ################################################################
 proc get_ball_name {bump_name} {
 
-    # bump_names follow the following fields
-    #     BANK_[inst]_[side]_[i]
-    # where 
-    #     inst_side = VR, H, or VL
-    #     bank = 1, 2
-    #     i = 1 .. 40
+  # bump_names follow the following fields
+  #   BANK_[inst]_[side]_[i]
+  # where 
+  #   inst_side = VR, H, or VL
+  #   bank = 1, 2
+  #   i = 1 .. 40
 
-    # Ball names are broken up into the following fields
-    # [type_bank]_[group]_[j][PN]
+  # Ball names are broken up into the following fields
+  # [type_bank]_[group]_[j][PN]
 
-    #    type_bank = 
-    #        HP_1 if inst_side == H_1
-    #        HP_2 if inst_side == H_2
-    #        HR_1 if inst_side == VL_1
-    #        HR_2 if inst_side == VL_2
-    #        HR_4 if inst_side == VR_1
-    #        HR_5 if inst_side == VR_2
-    #
-    #    group = i - 1
-    #
-    #    j = int[(i + 1)/2] -1
-    #    PN = P if i is odd, N if i is even
-    #
-    # Clock Pin Exceptions:
-    #
-    #   Bank_H_1_30 => HP_1_CC_29_14N
-    #   Bank_H_1_29 => HP_1_CC_28_14P
-    #   Bank_H_1_12 => HP_1_CC_11_5N
-    #   Bank_H_1_11 => HP_1_CC_10_5P
-    #
-    # (We insert _CC after group if i = {11, 10, 30, 29})
+  #  type_bank = 
+  #    HP_1 if inst_side == H_1
+  #    HP_2 if inst_side == H_2
+  #    HR_1 if inst_side == VL_1
+  #    HR_2 if inst_side == VL_2
+  #    HR_4 if inst_side == VR_1
+  #    HR_5 if inst_side == VR_2
+  #
+  #  group = i - 1
+  #
+  #  j = int[(i + 1)/2] -1
+  #  PN = P if i is odd, N if i is even
+  #
+  # Clock Pin Exceptions:
+  #
+  #   Bank_H_1_30 => HP_1_CC_29_14N
+  #   Bank_H_1_29 => HP_1_CC_28_14P
+  #   Bank_H_1_12 => HP_1_CC_11_5N
+  #   Bank_H_1_11 => HP_1_CC_10_5P
+  #
+  # (We insert _CC after group if i = {11, 10, 30, 29})
 
 
-    set tokens [split $bump_name "_"]
-    set inst_side [lindex $tokens 1]_[lindex $tokens 2]
-    set i [lindex $tokens 3]
+  set tokens [split $bump_name "_"]
+  set inst_side [lindex $tokens 1]_[lindex $tokens 2]
+  set i [lindex $tokens 3]
 
-    switch $inst_side {
-	"H_1" { set type_bank HP_1 }
-	"H_2" { set type_bank HP_2 }
-	"VL_1" { set type_bank HR_1 }
-	"VL_2" { set type_bank HR_2 }
-	"VR_1" { set type_bank HR_4 }
-	"VR_2" { set type_bank HR_5 }
-	default { error "ERROR:  Cannot compute customer name with bump name $bump_name" 1}
-    }
+  switch $inst_side {
+    "H_1" { set type_bank HP_1 }
+    "H_2" { set type_bank HP_2 }
+    "VL_1" { set type_bank HR_1 }
+    "VL_2" { set type_bank HR_2 }
+    "VR_1" { set type_bank HR_4 }
+    "VR_2" { set type_bank HR_5 }
+    default { error "ERROR:  Cannot compute customer name with bump name $bump_name" 1}
+  }
 
-    # add clock capable pin, if index is 11, 12, 29, 30
-    if {($i == "11") || ($i == "12") || ($i == "29") || ($i == "30")} {
-	set type_bank "${type_bank}_CC"
-    }
+  # add clock capable pin, if index is 11, 12, 29, 30
+  if {($i == "11") || ($i == "12") || ($i == "29") || ($i == "30")} {
+    set type_bank "${type_bank}_CC"
+  }
 
-    set group [expr $i - 1]
+  set group [expr $i - 1]
 
-    set j [expr int(($i + 1)/2) - 1]
+  set j [expr int(($i + 1)/2) - 1]
 
-    if {[expr $i % 2]} {
-	set suffix P
-    } else {
-	set suffix N
-    }
-    
-    # put it all together
-    set retval "${type_bank}_${group}_$j${suffix}"
+  if {[expr $i % 2]} {
+    set suffix P
+  } else {
+    set suffix N
+  }
+  
+  # put it all together
+  set retval "${type_bank}_${group}_$j${suffix}"
 
-    return $retval
+  return $retval
 }
 ################################################################
 #
 # BANK_VL_1_*
 for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
-    set BANK_INDEX [expr 2*$i +1]
-    set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK0_A_$i
-    set bank_name BANK_VL_1_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
-    incr BANK_INDEX
-    set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK0_B_$i
-    set bank_name BANK_VL_1_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
+  set BANK_INDEX [expr 2*$i +1]
+  set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK0_A_$i
+  set bank_name BANK_VL_1_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
+  incr BANK_INDEX
+  set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK0_B_$i
+  set bank_name BANK_VL_1_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
 }
 # BANK_VL_2_*
 for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
-    set BANK_INDEX [expr 2*$i +1]
-    set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK1_A_$i
-    set bank_name BANK_VL_2_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
-    incr BANK_INDEX
-    set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK1_B_$i
-    set bank_name BANK_VL_2_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
+  set BANK_INDEX [expr 2*$i +1]
+  set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK1_A_$i
+  set bank_name BANK_VL_2_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
+  incr BANK_INDEX
+  set model_name u_GBOX_HV_40X2_VL.u_HV_GBOX_BK1_B_$i
+  set bank_name BANK_VL_2_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
 }
 
 #
 # BANK_VR_1_*
 for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
-    set BANK_INDEX [expr 2*$i +1]
-    set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK0_A_$i
-    set bank_name BANK_VR_1_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
-    incr BANK_INDEX
-    set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK0_B_$i
-    set bank_name BANK_VR_1_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
+  set BANK_INDEX [expr 2*$i +1]
+  set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK0_A_$i
+  set bank_name BANK_VR_1_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
+  incr BANK_INDEX
+  set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK0_B_$i
+  set bank_name BANK_VR_1_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
 }
 # BANK_VR_2_*
 for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
-    set BANK_INDEX [expr 2*$i +1]
-    set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK1_A_$i
-    set bank_name BANK_VR_2_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
-    incr BANK_INDEX
-    set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK1_B_$i
-    set bank_name BANK_VR_2_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
+  set BANK_INDEX [expr 2*$i +1]
+  set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK1_A_$i
+  set bank_name BANK_VR_2_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
+  incr BANK_INDEX
+  set model_name u_GBOX_HV_40X2_VR.u_HV_GBOX_BK1_B_$i
+  set bank_name BANK_VR_2_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
 }
 
 # BANK_H_1_*
 for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
-    set BANK_INDEX [expr 2*$i +1]
-    set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK0_A_$i
-    set bank_name BANK_H_1_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
-    incr BANK_INDEX
-    set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK0_B_$i
-    set bank_name BANK_H_1_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
+  set BANK_INDEX [expr 2*$i +1]
+  set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK0_A_$i
+  set bank_name BANK_H_1_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
+  incr BANK_INDEX
+  set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK0_B_$i
+  set bank_name BANK_H_1_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
 }
 
 # BANK_H_2_*
 for {set i 0} {$i < [expr $PAR_IO_NUM /2]} {incr i} {
-    set BANK_INDEX [expr 2*$i +1]
-    set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK1_A_$i
-    set bank_name BANK_H_2_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
-    incr BANK_INDEX
-    set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK1_B_$i
-    set bank_name BANK_H_2_${BANK_INDEX}
-    set cust_name [get_ball_name $bank_name]
-    #puts "$model_name, $bank_name, $cust_name"
-    map_model_user_names -model_name $model_name -user_name $cust_name
+  set BANK_INDEX [expr 2*$i +1]
+  set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK1_A_$i
+  set bank_name BANK_H_2_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
+  incr BANK_INDEX
+  set model_name u_GBOX_HP_40X2.u_HP_GBOX_BK1_B_$i
+  set bank_name BANK_H_2_${BANK_INDEX}
+  set cust_name [get_ball_name $bank_name]
+  #puts "$model_name, $bank_name, $cust_name"
+  map_model_user_names -model_name $model_name -user_name $cust_name
 }
-
