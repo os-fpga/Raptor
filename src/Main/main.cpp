@@ -117,6 +117,8 @@ int main(int argc, char** argv) {
     opcompiler->GetSimulator()->SetSimulatorPath(
         FOEDAG::Simulator::SimulatorType::Icarus,
         (binpath / "HDL_simulator" / "iverilog" / "bin").string());
+    std::filesystem::path configFileSearchDir = datapath / "configuration";
+    opcompiler->SetConfigFileSearchDirectory(configFileSearchDir);
   }
   return foedag->init(guiType);
 }
