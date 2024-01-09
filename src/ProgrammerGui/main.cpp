@@ -62,5 +62,7 @@ int main(int argc, char* argv[]) {
   std::filesystem::path openOcdPath = binpath / "openocd";
   std::filesystem::path datapath = foedag->Context()->DataPath();
   compiler->ProgrammerToolExecPath(openOcdPath);
+  std::filesystem::path configFileSearchDir = datapath / "configuration";
+  compiler->SetConfigFileSearchDirectory(configFileSearchDir);
   return foedag->init(guiType);
 }
