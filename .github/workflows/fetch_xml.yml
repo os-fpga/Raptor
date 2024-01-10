@@ -103,7 +103,7 @@ jobs:
                 echo "updates are from ${{ matrix.updates }}"
                 extension=tcl
                 echo "EXTENSION=$extension" >> $GITHUB_ENV
-                echo "path_to_commit=etc/**/**/*.tcl" >> $GITHUB_ENV
+                echo "path_to_commit=etc/**/**/*.tcl etc/**/**/*/*.json" >> $GITHUB_ENV
                 ;;
             "xml")
                 echo "updates are from ${{ matrix.updates }}"
@@ -120,7 +120,7 @@ jobs:
     - name: Check changes are related
       id: is_change
       run: |
-        any_diff=`git status --porcelain '*.${{ env.EXTENSION }}'`
+        any_diff=`git status --porcelain 'etc/*'`
         echo $any_diff
         if [ ! -z "$any_diff" ]
         then
