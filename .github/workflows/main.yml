@@ -274,11 +274,11 @@ jobs:
 
     - name: install minimum dependencies
       run: |
-          sudo apt install -y qt6-base-dev qt6-webengine-dev qt6-webengine* libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev libhwloc-dev libusb-1.0-0-dev
+          sudo apt update && sudo apt upgrade -y && sudo apt install -y qt6-base-dev qt6-webengine-dev qt6-webengine* libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev libhwloc-dev libusb-1.0-0-dev
           wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
           sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list http://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
           sudo apt update
-          sudo apt install vulkan-sdk
+          sudo apt install -y vulkan-sdk
           sudo apt-get autoremove -y >/dev/null 2>&1
           sudo apt-get autoclean -y >/dev/null 2>&1
           df -h
