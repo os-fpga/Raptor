@@ -117,6 +117,11 @@
                 "widgetType": "checkbox",
                 "arg": "no_flatten"
             },
+            "keep_tribuf": {
+                "label": "Keep Tribuf",
+                "widgetType": "checkbox",
+                "arg": "keep_tribuf"
+            },
             "_META_": {
                 "hidden": false,
                 "isSetting": true,
