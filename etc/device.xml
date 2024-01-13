@@ -216,6 +216,18 @@
         <resource type="bram" num="56" label="36K BRAMs"/>
         <resource type="dsp" num="56" label="DSPs"/>
         <resource type="carry_length" num="336"/>
+        <resource type="clocks" num="16"/>
+        <resource type="plls" num="2"/>
+        <resource type="hr_io" num="160"/>
+        <resource type="hp_io" num="80"/>
+        <resource type="soc_io" num="16"/>
+        <resource type="usb" num="0"/>
+        <resource type="gbe" num="0"/>
+        <resource type="ddr" num="0"/>
+        <resource type="i2c" num="2"/>
+        <resource type="uart" num="4"/>
+        <resource type="jtag" num="5"/>
+        <resource type="pwm" num="4"/>
         <internal type="tag_version" name="v1.6.232"/>
         <internal type="vpr_arch" file="devices/gemini_compact_62x44/gemini_vpr.xml"/>
         <internal type="device_size" name="castor62x44_heterogeneous"/>
@@ -610,4 +622,3 @@
         <internal type="vpr_opts" name="--allow_dangling_combinational_nodes on --place_delta_delay_matrix_calculation_method dijkstra"/>
     </device>  
  </device_list>
- 
