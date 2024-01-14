@@ -150,7 +150,7 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch  --script tests/Testcases/and2_verilog/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
-# Needs https://github.com/chipsalliance/systemverilog-plugin/issues/1892	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
