@@ -1,0 +1,62 @@
+# Periphery Primitives Parameters and Properties (P4)
+#
+# This file contains the list of Verilog parameters and SDC properties that are
+# allowed for periphery primitives.
+#
+# See https://rapidsilicon.atlassian.net/wiki/spaces/RS/pages/214368265/Periphery+Primitive+Parameters+and+Properties+Definitions+P4DEF for more details
+#
+# The name needs to match the filename root
+# name: <primitive name>
+# desc: <optional description>
+#
+# ports:
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#
+# # set as Verilog parameter
+# parameters:
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>  
+#
+# # set in SDC or by synthesis attribute
+# properties:
+#    <property_name>:
+#        desc: <description>
+#        values: 
+#          - <enum_name>
+#          - <enum_name>
+#    <property_name>:
+#        desc: <description>
+#          - <enum_name>
+#          - <enum_name>
+#
+# primitive name should match the filename root.
+name: SOC_FPGA_INTF_IRQ
+desc: SOC Interupt connection
+category: periphery
+
+ports:
+   IRQ_SRC:
+     dir: input
+     desc: Interupt source
+   IRQ_SET:
+     dir: output
+     desc: Interupt set
+   IRQ_CLK:
+     dir: input
+     desc: interupt clock
+   IRQ_RST_N:
+     dir: input
+     desc: Interupt reset

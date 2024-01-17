@@ -1,0 +1,10 @@
+<repack_design_constraints>
+  <pin_constraint pb_type="clb" pin="clk[0]" net="clock0"/>
+  <pin_constraint pb_type="clb" pin="clk[1]" net="clock1"/>
+  <pin_constraint pb_type="clb" pin="clk[2]" net="clock2"/>
+  <pin_constraint pb_type="clb" pin="clk[3]" net="clock3"/>
+  <pin_constraint pb_type="io" pin="clk[0]" net="clock0"/>
+  <pin_constraint pb_type="io" pin="clk[1]" net="clock1"/>
+  <pin_constraint pb_type="io" pin="clk[2]" net="clock2"/>
+  <pin_constraint pb_type="io" pin="clk[3]" net="clock3"/>
+</repack_design_constraints>

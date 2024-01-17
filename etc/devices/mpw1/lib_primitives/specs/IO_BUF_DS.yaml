@@ -1,0 +1,109 @@
+# Periphery Primitives Parameters and Properties (P4)
+#
+# This file contains the list of Verilog parameters and SDC properties that are
+# allowed for periphery primitives.
+#
+# See https://rapidsilicon.atlassian.net/wiki/spaces/RS/pages/214368265/Periphery+Primitive+Parameters+and+Properties+Definitions+P4DEF for more details
+#
+# The name needs to match the filename root
+# name: <primitive name>
+# desc: <optional description>
+#
+# ports:
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#
+# # set as Verilog parameter
+# parameters:
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>  
+#
+# # set in SDC or by synthesis attribute
+# properties:
+#    <property_name>:
+#        desc: <description>
+#        values: 
+#          - <enum_name>
+#          - <enum_name>
+#    <property_name>:
+#        desc: <description>
+#          - <enum_name>
+#          - <enum_name>
+#
+# primitive name should match the filename root.
+name: IO_BUF_DS
+desc: IO differential buffer
+category: periphery
+
+ports:
+   I:
+     dir: input
+     desc: Data input (connect to top-level port)
+   T:
+     dir: input
+     desc: 
+   IOP:
+     dir: inout
+     desc: 
+   ION:
+     dir: inout
+     desc: 
+   O:
+     dir: output
+     desc: Data output
+  
+
+# set as Verilog parameter in netlist    
+#parameters:
+#    WEAK_KEEPER:
+#      desc: Specify Pull-up/Pull-down on input (NONE/PULLUP/PULLDOWN)
+#      default: NONE
+#      values:
+#        - NONE
+#        - PULLUP
+#        - PULLDOWN
+#
+## set in SDC or by synthesis attribute      
+#properties:
+#    IOSTANDARD:
+#      desc: IO Standard
+#      default: DEFAULT
+#      values:
+#          - DEFAULT
+#          - LVCMOS_12
+#          - LVCMOS_15
+#          - LVCMOS_18_HP
+#          - LVCMOS_18_HR
+#          - LVCMOS_25
+#          - LVCMOS_33
+#          - LVTTL
+#          - HSTL_I_12
+#          - HSTL_II_12
+#          - HSTL_I_15
+#          - HSTL_II_15
+#          - HSUL_12
+#          - PCI66
+#          - PCIX133
+#          - POD_12
+#          - SSTL_I_15
+#          - SSTL_II_15
+#          - SSTL_I_18_HP
+#          - SSTL_II_18_HP
+#          - SSTL_I_18_HR
+#          - SSTL_II_18_HR
+#          - SSTL_I_25
+#          - SSTL_II_25
+#          - SSTL_I_33
+#          - SSTL_II_33
