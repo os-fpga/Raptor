@@ -10,7 +10,7 @@
 	url = git@github.com:RapidSilicon/Jira_Testcase.git
 [submodule "Raptor_Tools"]
 	path = Raptor_Tools
-	url = git@github.com:RapidSilicon/Raptor_Tools.git
+	url = https://github.com/os-fpga/Raptor_Tools.git
 [submodule "IP_Catalog"]
 	path = IP_Catalog
 	url = git@github.com:RapidSilicon/IP_Catalog.git
@@ -26,6 +26,4 @@
 [submodule "zephyr-rapidsi-dev"]
 	path = zephyr-rapidsi-dev
 	url = git@github.com:RapidSilicon/zephyr-rapidsi-dev.git
-[submodule "u-boot-rapidsi-dev"]
-	path = u-boot-rapidsi-dev
-	url = git@github.com:RapidSilicon/u-boot-rapidsi-dev.git
+
