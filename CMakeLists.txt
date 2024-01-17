@@ -41,6 +41,7 @@ set(RAPTOR ON)
 # Augment VPR with a Verilog reader (Verific based)
 set(ADD_READ_VERILOG_TO_VPR 1)
 
+#TODO Embedded common and uboot
 list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   tests/Jira_Testcase
   litex_reference_designs
