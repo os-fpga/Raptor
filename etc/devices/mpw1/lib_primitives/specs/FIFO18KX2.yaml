@@ -1,0 +1,181 @@
+# Periphery Primitives Parameters and Properties (P4)
+#
+# This file contains the list of Verilog parameters and SDC properties that are
+# allowed for periphery primitives.
+#
+# See https://rapidsilicon.atlassian.net/wiki/spaces/RS/pages/214368265/Periphery+Primitive+Parameters+and+Properties+Definitions+P4DEF for more details
+#
+# The name needs to match the filename root
+# name: <primitive name>
+# desc: <optional description>
+#
+# ports:
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#   <portname>:
+#       dir: <input, output, inout>
+#       desc: <optional description>
+#
+# # set as Verilog parameter
+# parameters:
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>
+#    <parameter_name>:
+#        desc: <description>
+#        values:
+#          - <enum_name>
+#          - <enum_name>  
+#
+# # set in SDC or by synthesis attribute
+# properties:
+#    <property_name>:
+#        desc: <description>
+#        values: 
+#          - <enum_name>
+#          - <enum_name>
+#    <property_name>:
+#        desc: <description>
+#          - <enum_name>
+#          - <enum_name>
+#
+# primitive name should match the filename root.
+name: FIFO18KX2
+desc: Dual 18Kb FIFO
+category: core_fabric
+
+ports:
+   RESET1:
+     dir: input
+     desc: Asynchrnous FIFO reset, FIFO 1
+   WR_CLK1:
+     dir: input
+     desc: Write clock, FIFO 1
+   RD_CLK1:
+     dir: input
+     desc: Read clock, FIFO 1
+   WR_EN1:
+     dir: input
+     desc: Write enable, FIFO 1
+   RD_EN1:
+     dir: input
+     desc: Read enable, FIFO 1
+   WR_DATA1:
+     dir: input
+     desc: Write data, FIFO 1
+   RD_DATA1:
+     dir: output
+     desc: Read data, FIFO 1
+   EMPTY1:
+     dir: output
+     desc: FIFO empty flag, FIFO 1
+   FULL1:
+     dir: output
+     desc: FIFO full flag, FIFO 1
+   ALMOST_EMPTY1:
+     dir: output
+     desc: FIFO almost empty flag, FIFO 1
+   ALMOST_FULL1:
+     dir: output
+     desc: FIFO almost full flag, FIFO 1
+   PROG_EMPTY1:
+     dir: output
+     desc: FIFO programmable empty flag, FIFO 1
+   PROG_FULL1:
+     dir: output
+     desc: FIFO programmable full flag, FIFO 1
+   OVERFLOW1:
+     dir: output
+     desc: FIFO overflow error flag, FIFO 1
+   UNDERFLOW1:
+     dir: output
+     desc: FIFO underflow error flag, FIFO 1
+   RESET2:
+     dir: input
+     desc: Asynchrnous FIFO reset, FIFO 2
+   WR_CLK2:
+     dir: input
+     desc: Write clock, FIFO 2
+   RD_CLK2:
+     dir: input
+     desc: Read clock, FIFO 2
+   WR_EN2:
+     dir: input
+     desc: Write enable, FIFO 2
+   RD_EN2:
+     dir: input
+     desc: Read enable, FIFO 2
+   WR_DATA2:
+     dir: input
+     desc: Write data, FIFO 2
+   RD_DATA2:
+     dir: output
+     desc: Read data, FIFO 2
+   EMPTY2:
+     dir: output
+     desc: FIFO empty flag, FIFO 2
+   FULL2:
+     dir: output
+     desc: FIFO full flag, FIFO 2
+   ALMOST_EMPTY2:
+     dir: output
+     desc: FIFO almost empty flag, FIFO 2
+   ALMOST_FULL2:
+     dir: output
+     desc: FIFO almost full flag, FIFO 2
+   PROG_EMPTY2:
+     dir: output
+     desc: FIFO programmable empty flag, FIFO 2
+   PROG_FULL2:
+     dir: output
+     desc: FIFO programmable full flag, FIFO 2
+   OVERFLOW2:
+     dir: output
+     desc: FIFO overflow error flag, FIFO 2
+   UNDERFLOW2:
+     dir: output
+     desc: FIFO underflow error flag, FIFO 2
+
+parameters:
+    DATA_WIDTH1:
+      desc: FIFO data width, FIFO 1
+      type: integer
+      default: 18
+      range: 1 .. 18
+    FIFO_TYPE1:
+      desc: Synchronous or Asynchronous data transfer, FIFO 1 (SYNCHRONOUS/ASYNCHRONOUS)
+      default: SYNCHRONOUS
+      values:
+        - SYNCHRONOUS
+        - ASYNCHRONOUS
+    PROG_EMPTY_THRESH1:
+      desc: 11-bit Programmable empty depth, FIFO 1
+      default: 11'h004
+      vector: 11
+    PROG_FULL_THRESH1:
+      desc: 11-bit Programmable full depth, FIFO 1
+      default: 11'h7fa
+      vector: 11
+    DATA_WIDTH2:
+      desc: FIFO data width, FIFO 2 (1-18)
+      type: integer
+      default: 18
+      range: 1 .. 18
+    FIFO_TYPE2:
+      desc: Synchronous or Asynchronous data transfer, FIFO 2 (SYNCHRONOUS/ASYNCHRONOUS)
+      default: SYNCHRONOUS
+      values:
+        - SYNCHRONOUS
+        - ASYNCHRONOUS
+    PROG_EMPTY_THRESH2:
+      desc: 11-bit Programmable empty depth, FIFO 2
+      default: 11'h004
+      vector: 11
+    PROG_FULL_THRESH2:
+      desc: 11-bit Programmable full depth, FIFO 2
+      default: 11'h7fa
+      vector: 11
+
