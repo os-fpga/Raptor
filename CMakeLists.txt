@@ -44,7 +44,6 @@ set(ADD_READ_VERILOG_TO_VPR 1)
 list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   tests/Jira_Testcase
   litex_reference_designs
-  EmbeddedCommon-dev
   zephyr-rapidsi-dev
   Raptor_Tools
   )
