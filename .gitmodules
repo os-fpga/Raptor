@@ -1,31 +1,27 @@
 [submodule "yosys_verific_rs"]
 	path = yosys_verific_rs
-	url = git@github.com:RapidSilicon/yosys_verific_rs.git
-
+	url = https://github.com/os-fpga/yosys_verific_rs.git
 [submodule "FOEDAG_rs"]
 	path = FOEDAG_rs
-	url = git@github.com:RapidSilicon/FOEDAG_rs.git
+	url = https://github.com/os-fpga/FOEDAG_rs.git
 [submodule "tests/Jira_Testcase"]
 	path = tests/Jira_Testcase
-	url = git@github.com:RapidSilicon/Jira_Testcase.git
-[submodule "Raptor_Tools"]
-	path = Raptor_Tools
-	url = git@github.com:RapidSilicon/Raptor_Tools.git
-[submodule "IP_Catalog"]
-	path = IP_Catalog
-	url = git@github.com:RapidSilicon/IP_Catalog.git
+	url = https://github.com/os-fpga/Jira_Testcase.git
 [submodule "Backend"]
 	path = Backend
-	url = git@github.com:RapidSilicon/Backend.git
+	url = https://github.com/os-fpga/Backend.git
 [submodule "litex_reference_designs"]
 	path = litex_reference_designs
-	url = git@github.com:RapidSilicon/litex_reference_designs.git
-[submodule "EmbeddedCommon-dev"]
-	path = EmbeddedCommon-dev
-	url = git@github.com:RapidSilicon/EmbeddedCommon-dev.git
+	url = https://github.com/os-fpga/litex_reference_designs.git
+[submodule "IP_Catalog"]
+	path = IP_Catalog
+	url = https://github.com/os-fpga/IP_Catalog
 [submodule "zephyr-rapidsi-dev"]
 	path = zephyr-rapidsi-dev
-	url = git@github.com:RapidSilicon/zephyr-rapidsi-dev.git
-[submodule "u-boot-rapidsi-dev"]
-	path = u-boot-rapidsi-dev
-	url = git@github.com:RapidSilicon/u-boot-rapidsi-dev.git
+	url = https://github.com/os-fpga/zephyr-rapidsi-dev
+[submodule "EmbeddedCommon-dev"]
+	path = EmbeddedCommon-dev
+	url = git@github.com:neulink-semi/EmbeddedCommon-dev.git
+[submodule "Raptor_Tools"]
+	path = Raptor_Tools
+	url = https://github.com/os-fpga/Raptor_Tools.git

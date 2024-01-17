@@ -41,11 +41,10 @@ set(RAPTOR ON)
 # Augment VPR with a Verilog reader (Verific based)
 set(ADD_READ_VERILOG_TO_VPR 1)
 
+#TODO Embedded common and uboot
 list(APPEND RAPTOR_RECURSIVE_SUBSYTEMS
   tests/Jira_Testcase
   litex_reference_designs
-  EmbeddedCommon-dev
-  u-boot-rapidsi-dev
   zephyr-rapidsi-dev
   Raptor_Tools
   )
@@ -715,16 +714,16 @@ install(
       GROUP_READ GROUP_EXECUTE
       WORLD_READ WORLD_EXECUTE
       )
-install(
-      FILES Raptor_Tools/Flex_LM/x64_lsb/lmutil
-      Raptor_Tools/Flex_LM/x64_lsb/lmgrd
-      Raptor_Tools/Flex_LM/x64_lsb/rapidsil
-      DESTINATION  ${CMAKE_INSTALL_BINDIR}/Flex_LM
-      PERMISSIONS
-      OWNER_READ OWNER_EXECUTE OWNER_WRITE
-      GROUP_READ GROUP_EXECUTE
-      WORLD_READ WORLD_EXECUTE
-      )
+#install(
+#      FILES Raptor_Tools/Flex_LM/
+#      Raptor_Tools/Flex_LM/
+#      Raptor_Tools/Flex_LM/
+#      DESTINATION  ${CMAKE_INSTALL_BINDIR}/Flex_LM
+#      PERMISSIONS
+#      OWNER_READ OWNER_EXECUTE OWNER_WRITE
+#      GROUP_READ GROUP_EXECUTE
+#      WORLD_READ WORLD_EXECUTE
+#      )
 
 install(
   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
@@ -808,15 +807,15 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/tcl_examples/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmutil
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/lmgrd
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/x64_lsb/rapidsil
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+#      COMMAND ${CMAKE_COMMAND} -E copy
+#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
+#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+#      COMMAND ${CMAKE_COMMAND} -E copy
+#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
+#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
+#      COMMAND ${CMAKE_COMMAND} -E copy
+#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
+#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
    #Genesis Sim Model
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
