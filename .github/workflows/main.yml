@@ -16,6 +16,10 @@ on:
 env:
     PRODUCTION_DEVICES: "1GE75,1GVTC"  # comma separated devices name
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   linux-gcc:
     name: ubuntu-${{ matrix.mode }}
@@ -42,18 +46,13 @@ jobs:
 
     steps:
 
-    - name: Cancel previous
-      uses: styfle/cancel-workflow-action@0.11.0
-      with:
-        access_token: ${{ github.token }}
-
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 #          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}          
 #          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
 #          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
 #          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
@@ -227,18 +226,14 @@ jobs:
 
     steps:
 
-    - name: Cancel previous
-      uses: styfle/cancel-workflow-action@0.11.0
-      with:
-        access_token: ${{ github.token }}
 
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 #          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
 #          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 #          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
 #          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
 #          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
@@ -292,7 +287,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}          
 
     - name: pull the CentOS image
-      run: docker pull ghcr.io/rapidsilicon/raptor:centos7latest    
+      run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest    
 
     - name: Checkout code
       uses: actions/checkout@v3       
@@ -317,7 +312,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:centos7latest
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         run: |
           source /opt/rh/devtoolset-11/enable
           cmake --version
@@ -329,7 +324,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:centos7latest
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
             source /opt/rh/devtoolset-11/enable  
@@ -341,7 +336,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:centos7latest
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work 
         run: |
             source /opt/rh/devtoolset-11/enable        
@@ -355,7 +350,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
-        image: ghcr.io/rapidsilicon/raptor:centos7latest
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
             cd work && make clean
