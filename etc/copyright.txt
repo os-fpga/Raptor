@@ -14,5 +14,4 @@ The recipient of this source code is NOT permitted to publicly disclose,
 re-use, archive beyond the period of the license agreement, transfer to a
 sub-licensee, or re-implement any portion of the content covered by the license
 and non-disclosure agreement without the prior written consent of the licensor.
-
 *********************************************************************************/
