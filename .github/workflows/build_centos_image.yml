@@ -7,7 +7,7 @@ on:
           - .github/workflows/build_centos_image.yml
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: rapidsilicon/raptor
+  IMAGE_NAME: os-fpga/raptor
 
 jobs:
   build-and-push-image:
