@@ -16,6 +16,10 @@ on:
 env:
     PRODUCTION_DEVICES: "1GE75,1GVTC"  # comma separated devices name
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   linux-gcc:
     name: ubuntu-${{ matrix.mode }}
@@ -41,11 +45,6 @@ jobs:
       MODE: ${{ matrix.mode }}
 
     steps:
-
-    - name: Cancel previous
-      uses: styfle/cancel-workflow-action@0.11.0
-      with:
-        access_token: ${{ github.token }}
 
 #    - name: ssh-agent
 #      uses: webfactory/ssh-agent@v0.7.0
@@ -227,10 +226,6 @@ jobs:
 
     steps:
 
-    - name: Cancel previous
-      uses: styfle/cancel-workflow-action@0.11.0
-      with:
-        access_token: ${{ github.token }}
 
 #    - name: ssh-agent
 #      uses: webfactory/ssh-agent@v0.7.0
