@@ -138,37 +138,37 @@ jobs:
     - name: Test Release
       if: matrix.mode == 'test'
       run: |
-        make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+        make release CPU_CORES=2 RAPTOR_PUB=1 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
 
     - name: test/batch Release
       if: matrix.mode == 'test/batch'
       run: |
-        make release CPU_CORES=2 test/batch 
+        make release CPU_CORES=2 RAPTOR_PUB=1 test/batch 
 
     - name: test/batch_gen2 Release
       if: matrix.mode == 'test/batch_gen2'
       run: |
-        make release CPU_CORES=2 test/batch_gen2
+        make release CPU_CORES=2 RAPTOR_PUB=1 test/batch_gen2
 
     - name: test/solver
       if: matrix.mode == 'solver'
       run: |
-        make CPU_CORES=2 solver/tests 
+        make CPU_CORES=2 RAPTOR_PUB=1 solver/tests 
 
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
-        make regression CPU_CORES=2
+        make regression RAPTOR_PUB=1 CPU_CORES=2
 
     - name: Coverage
       if: matrix.mode == 'coverage'
       run: |
-        make debug CPU_CORES=2 coverage-build/raptor_gui.coverage
+        make debug CPU_CORES=2 RAPTOR_PUB=1 coverage-build/raptor_gui.coverage
 
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release CPU_CORES=2 PRODUCTION_BUILD=0 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
+        make release CPU_CORES=2 RAPTOR_PUB=1 PRODUCTION_BUILD=0 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
         ./build/bin/raptor --version
         #TODO enable it again to restore license
         #./build/bin/Flex_LM/lmutil lmhostid
@@ -179,18 +179,18 @@ jobs:
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
       run: |
-        make debug CPU_CORES=2 
-        make debug test/unittest-d
-        make debug test/gui
-        make debug test/valgrind
+        make debug CPU_CORES=2 RAPTOR_PUB=1 
+        make debug test/unittest-d RAPTOR_PUB=1 
+        make debug test/gui RAPTOR_PUB=1 
+        make debug test/valgrind RAPTOR_PUB=1 
 
     - name: Install Test
       if: matrix.mode == 'install'
       run: |
-        make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
-        make install
-        make clean   # make sure we only see installation artifacts
-        make test_install
+        make release CPU_CORES=2 RAPTOR_PUB=1 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make install RAPTOR_PUB=1 
+        make clean  RAPTOR_PUB=1  # make sure we only see installation artifacts
+        make test_install RAPTOR_PUB=1 
 
     - name: Archive regression artifacts
       if: matrix.mode == 'test/batch_gen2' && always()
@@ -330,7 +330,7 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable  
             cd work && make clean
-            make release test/batch CPU_CORES=2 
+            make release test/batch CPU_CORES=2 RAPTOR_PUB=1 
 
     - name: Regression
       if: matrix.mode == 'regression'
@@ -342,8 +342,8 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
-            make regression CPU_CORES=2 
-            make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
+            make regression CPU_CORES=2 RAPTOR_PUB=1 
+            make release CPU_CORES=2 RAPTOR_PUB=1 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
                         
 
     - name: Production Build
@@ -362,7 +362,7 @@ jobs:
             echo "$r_d"
             d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
-            make install CPU_CORES=2 PRODUCTION_BUILD=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            make install CPU_CORES=2 RAPTOR_PUB=1 PRODUCTION_BUILD=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
             ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
@@ -646,9 +646,9 @@ jobs:
         where python && python --version
         where ninja && ninja --version
 
-        make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make release CPU_CORES=2 RAPTOR_PUB=1 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
         if %errorlevel% neq 0 exit /b %errorlevel%
-        make install
+        make install RAPTOR_PUB=1 
         if %errorlevel% neq 0 exit /b %errorlevel%
         make test/unittest
         if %errorlevel% neq 0 exit /b %errorlevel%

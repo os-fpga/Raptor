@@ -126,6 +126,8 @@ endif
 
 test/gui:
 ifeq ($(RAPTOR_PUB),1)
+	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
+	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
 else
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
