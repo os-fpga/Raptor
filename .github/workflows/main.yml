@@ -14,7 +14,7 @@ on:
         default: ""
         type: string
 env:
-    PRODUCTION_DEVICES: "1GE75,1GVTC"  # comma separated devices name
+    PRODUCTION_DEVICES: "MPW1"  # comma separated devices name
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
