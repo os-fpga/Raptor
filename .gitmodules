@@ -19,9 +19,6 @@
 [submodule "zephyr-rapidsi-dev"]
 	path = zephyr-rapidsi-dev
 	url = https://github.com/os-fpga/zephyr-rapidsi-dev
-[submodule "EmbeddedCommon-dev"]
-	path = EmbeddedCommon-dev
-	url = git@github.com:neulink-semi/EmbeddedCommon-dev.git
 [submodule "Raptor_Tools"]
 	path = Raptor_Tools
 	url = https://github.com/os-fpga/Raptor_Tools.git
