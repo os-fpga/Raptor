@@ -1,5 +1,6 @@
 name: Create and publish a CentOS 7 Docker image
 on:
+    workflow_dispatch:
     push:
         paths:
           - .github/workflows/install_centos_dependencies_build.sh
@@ -7,7 +8,7 @@ on:
           - .github/workflows/build_centos_image.yml
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: os-fpga/raptor
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-image:
