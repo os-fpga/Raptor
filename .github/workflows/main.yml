@@ -170,8 +170,9 @@ jobs:
       run: |
         make release CPU_CORES=2 PRODUCTION_BUILD=0 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
         ./build/bin/raptor --version
-        ./build/bin/Flex_LM/lmutil lmhostid
-        export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
+        #TODO enable it again to restore license
+        #./build/bin/Flex_LM/lmutil lmhostid
+        #export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         d_test=$(echo "${{ env.p_devices }}" | cut -d ',' -f 1)
         ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
 
