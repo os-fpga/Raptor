@@ -46,13 +46,13 @@ jobs:
 
     steps:
 
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 #          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
+#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}          
 #          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
 #          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
 #          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
@@ -227,13 +227,13 @@ jobs:
     steps:
 
 
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
+    - name: ssh-agent
+      uses: webfactory/ssh-agent@v0.7.0
+      with: 
+        ssh-private-key: |
+           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 #          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
 #          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 #          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
 #          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
 #          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
