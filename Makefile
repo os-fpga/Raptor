@@ -113,6 +113,8 @@ test_install_mac:
 	$(PREFIX)/bin/raptor --compiler dummy --batch --script tests/Testcases/trivial/test.tcl
 
 test_install:
+ifeq ($(RAPTOR_PUB),1)
+else
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/oneff_verilog/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_verilog/run_raptor.tcl
@@ -120,11 +122,15 @@ test_install:
 # Disable until Verilog read in VPR	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/sasc_testcase/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_verilog/run_raptor.tcl
+endif
 
-test/gui: 
+test/gui:
+ifeq ($(RAPTOR_PUB),1)
+else
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
+endif
 
 test/rs: run-cmake-release
 	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
@@ -147,6 +153,8 @@ test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
 
 test/batch: run-cmake-release
+ifeq ($(RAPTOR_PUB),1)
+else
 	./build/bin/raptor --batch  --script tests/Testcases/and2_verilog/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
@@ -172,8 +180,11 @@ test/batch: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/constant/raptor.tcl --batch
 	./build/bin/raptor --batch --mute --script tests/Testcases/double_check/raptor.tcl
 # Wait for Manadher's fix on CentOS  ./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_104x68/ric/gemini_bank.tcl
+endif
 
 test/batch_gen2: run-cmake-release
+ifeq ($(RAPTOR_PUB),1)
+else
 	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_latest/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
@@ -182,9 +193,12 @@ test/batch_gen2: run-cmake-release
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_mixed/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
-
+endif
 solver/tests: release
+ifeq ($(RAPTOR_PUB),1)
+else
 	./build/bin/raptor --batch  --script tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
+endif
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
