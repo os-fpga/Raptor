@@ -2,9 +2,7 @@
 
 ## How to Build Raptor from Source Code
 
-There are three ways to build Raptor from sources:
-
-### 1) Build Locally on Your Machine:
+Build Locally on Your Machine:
 
 Once your local machine is ready, please take into account the dependencies listed below. If you are unsure about the package installation status, go to the Raptor repository on GitHub by clicking [here](https://github.com/os-fpga/Raptor) and install the Raptor build dependencies by running the appropriate script:
 
