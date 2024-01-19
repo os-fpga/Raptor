@@ -186,12 +186,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    power ?clean?              : Statistical Power Analysis
      clean                    : Deletes files generated from this task
 
-------------------------------
---- Power Analysis -----------
-------------------------------
-   power ?clean?              : Statistical Power Analysis
-     clean                    : Deletes files generated from this task
-
 -----------------
 --- Bitstream ---
 -----------------
