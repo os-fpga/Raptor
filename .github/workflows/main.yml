@@ -226,9 +226,12 @@ jobs:
                 echo 'FTP_STATUS="ON"' >> $GITHUB_ENV
             fi
 
+    - name: print FTP status
+      run: echo   ${{env.FTP_STATUS }}      
+
     - name: Check FTP server status
       # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'production' &&  env.FTP_STATUS  == 'ON' }} "
+      if: ${{ matrix.mode == 'production' }} &&  ${{env.FTP_STATUS }}  == 'ON'
       run: echo "i am done" 
 
 
