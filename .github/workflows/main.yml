@@ -210,7 +210,7 @@ jobs:
 
     env:
       MODE: ${{ matrix.mode }}
-      FORK_REPO: ${{ secrets.FORKED_NAME }}
+      FORK_REPO: ${{ secrets.FORK_STATUS }}
 
     steps:
 
