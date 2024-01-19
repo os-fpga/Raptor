@@ -220,24 +220,6 @@ jobs:
         ssh-private-key: |
            ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 
-#    - name: set the FTP on/off
-#      run: |
-#            if [[ -n ${{ env.FORK_REPO }} ]]
-#            then
-#                echo 'FTP_STATUS=ON' >> $GITHUB_ENV
-#            else
-#                echo 'FTP_STATUS=OFF' >> $GITHUB_ENV
-#            fi
-#
-#    - name: print FTP status
-#      run: echo   ${{env.FTP_STATUS }}      
-
-    - name: Check FTP server status
-      # Change ref head to deploy using a different branch.
-      if: ${{ matrix.mode == 'production' && env.FORK_REPO  == 'ON' }}
-      run: echo "i am done" 
-
-
     - name: free disk space
       run: |
         df -h
@@ -369,31 +351,31 @@ jobs:
       if: success() || failure()
       run: df -h
           
-## The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
-#    - name: Check FTP server status
-#      # Change ref head to deploy using a different branch.
-#      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main'  &&  github.repository_owner == secrets.orgname }}"
-#      #if: "${{ matrix.mode == 'production' }}"
-#      uses: appleboy/ssh-action@master
-#      with:
-#        host: ${{ secrets.FTP_IP }}
-#        username: ${{ secrets.FTP_USER }}
-#        key: ${{ secrets.FTP_KEY }}
-#        port: ${{ secrets.FTP_PORT }}
-#        script: whoami
-#
-#    - name: Deploy
-#      # Change ref head to deploy using a different branch.
-#      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main'}}"
-#      #if: "${{ matrix.mode == 'production'}}"
-#      uses: appleboy/scp-action@master
-#      with:
-#         host: ${{ secrets.FTP_IP }}
-#         username: ${{ secrets.FTP_USER }}
-#         key: ${{ secrets.FTP_KEY }}
-#         port: ${{ secrets.FTP_PORT }}
-#         source: "./Raptor_Tools/upload/*"
-#         target: "/home/rsbuilder/Raptor"
+# The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
+    - name: Check FTP server status
+      # Change ref head to deploy using a different branch.
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' && env.FORK_REPO  == 'ON' }}"
+      #if: "${{ matrix.mode == 'production' }}"
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.FTP_IP }}
+        username: ${{ secrets.FTP_USER }}
+        key: ${{ secrets.FTP_KEY }}
+        port: ${{ secrets.FTP_PORT }}
+        script: whoami
+
+    - name: Deploy
+      # Change ref head to deploy using a different branch.
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' && env.FORK_REPO  == 'ON' }}"
+      #if: "${{ matrix.mode == 'production'}}"
+      uses: appleboy/scp-action@master
+      with:
+         host: ${{ secrets.FTP_IP }}
+         username: ${{ secrets.FTP_USER }}
+         key: ${{ secrets.FTP_KEY }}
+         port: ${{ secrets.FTP_PORT }}
+         source: "./Raptor_Tools/upload/*"
+         target: "/home/rsbuilder/Raptor"
        
 
 # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
