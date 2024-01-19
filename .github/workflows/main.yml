@@ -9,12 +9,12 @@ on:
         description: 'Release date of Raptor in format YYYY.MM'
         default: ""
         type: string
-      Production_Devices:
+      DEFAULT_DEVICES:
         description: 'Name of production devices separated by comma'
         default: ""
         type: string
 env:
-    PRODUCTION_DEVICES: "MPW1"  # comma separated devices name
+    DEFAULT_DEVICES: ${{ secrets.DefaultDevice }}  # comma separated devices name in GitHub Repo secrets, default is MPW1
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -51,26 +51,6 @@ jobs:
       with: 
         ssh-private-key: |
            ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}          
-#          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
-#          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
-#          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Checkout code
       uses: actions/checkout@v3
@@ -104,9 +84,15 @@ jobs:
         event_type=`echo ${{ github.event_name }}`
         if [ $event_type == 'workflow_dispatch' ]
         then
-              echo 'p_devices="${{ inputs.Production_Devices }}"' >> $GITHUB_ENV
+              echo 'p_devices="${{ inputs.DEFAULT_DEVICES }}"' >> $GITHUB_ENV
         else
-              echo 'p_devices="$PRODUCTION_DEVICES"' >> $GITHUB_ENV
+              echo 'p_devices="$DEFAULT_DEVICES"' >> $GITHUB_ENV
+        fi
+        if [ ${{ github.repository_owner }} == 'os-fpga' ]
+        then
+              echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+        else
+              echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
         fi
 
     - name: Show shell configuration
@@ -138,59 +124,59 @@ jobs:
     - name: Test Release
       if: matrix.mode == 'test'
       run: |
-        make release CPU_CORES=2 RAPTOR_PUB=1 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+        make release CPU_CORES=2 ${{ env.run_tests }} ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
 
     - name: test/batch Release
       if: matrix.mode == 'test/batch'
       run: |
-        make release CPU_CORES=2 RAPTOR_PUB=1 test/batch 
+        make release CPU_CORES=2 ${{ env.run_tests }} test/batch 
 
     - name: test/batch_gen2 Release
       if: matrix.mode == 'test/batch_gen2'
       run: |
-        make release CPU_CORES=2 RAPTOR_PUB=1 test/batch_gen2
+        make release CPU_CORES=2 ${{ env.run_tests }} test/batch_gen2
 
     - name: test/solver
       if: matrix.mode == 'solver'
       run: |
-        make CPU_CORES=2 RAPTOR_PUB=1 solver/tests 
+        make CPU_CORES=2 ${{ env.run_tests }} solver/tests 
 
     - name: Regression
       if: matrix.mode == 'regression'
       run: |
-        make regression RAPTOR_PUB=1 CPU_CORES=2
+        make regression ${{ env.run_tests }} CPU_CORES=2
 
     - name: Coverage
       if: matrix.mode == 'coverage'
       run: |
-        make debug CPU_CORES=2 RAPTOR_PUB=1 coverage-build/raptor_gui.coverage
+        make debug CPU_CORES=2 ${{ env.run_tests }} coverage-build/raptor_gui.coverage
 
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release CPU_CORES=2 RAPTOR_PUB=1 PRODUCTION_BUILD=0 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
+        make release CPU_CORES=2 ${{ env.run_tests }} PRODUCTION_BUILD=0 DEFAULT_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
         ./build/bin/raptor --version
         #TODO enable it again to restore license
         #./build/bin/Flex_LM/lmutil lmhostid
         #export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         d_test=$(echo "${{ env.p_devices }}" | cut -d ',' -f 1)
-        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
+        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
       run: |
-        make debug CPU_CORES=2 RAPTOR_PUB=1 
-        make debug test/unittest-d RAPTOR_PUB=1 
-        make debug test/gui RAPTOR_PUB=1 
-        make debug test/valgrind RAPTOR_PUB=1 
+        make debug CPU_CORES=2 ${{ env.run_tests }} 
+        make debug test/unittest-d ${{ env.run_tests }} 
+        make debug test/gui ${{ env.run_tests }} 
+        make debug test/valgrind ${{ env.run_tests }} 
 
     - name: Install Test
       if: matrix.mode == 'install'
       run: |
-        make release CPU_CORES=2 RAPTOR_PUB=1 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
-        make install RAPTOR_PUB=1 
-        make clean  RAPTOR_PUB=1  # make sure we only see installation artifacts
-        make test_install RAPTOR_PUB=1 
+        make release CPU_CORES=2 ${{ env.run_tests }} ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+        make install ${{ env.run_tests }} 
+        make clean  ${{ env.run_tests }}  # make sure we only see installation artifacts
+        make test_install ${{ env.run_tests }} 
 
     - name: Archive regression artifacts
       if: matrix.mode == 'test/batch_gen2' && always()
@@ -224,35 +210,15 @@ jobs:
 
     env:
       MODE: ${{ matrix.mode }}
+      FORK_REPO: ${{ secrets.FORK_STATUS }}
 
     steps:
-
 
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
            ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
-#          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
-#          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: free disk space
       run: |
@@ -293,20 +259,27 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3       
 
-    - name: Configure shell
+    - name: Set Device name and Test on/off
       run: |
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
-                echo 'p_devices="${{ inputs.Production_Devices }}"' >> $GITHUB_ENV
+                echo 'p_devices="${{ inputs.DEFAULT_DEVICES }}"' >> $GITHUB_ENV
           else
-                echo 'p_devices="$PRODUCTION_DEVICES"' >> $GITHUB_ENV
+                echo 'p_devices="$DEFAULT_DEVICES"' >> $GITHUB_ENV
+          fi
+          if [ ${{ github.repository_owner }} == 'os-fpga' ]
+          then
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+          else
+                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
           fi    
       
     - name: Checkout Subsystem
       run: |
         make run-cmake-release CPU_CORES=2 
-        echo "${{ env.p_devices }}" > production_devices
+        echo "${{ env.p_devices }}" > DEFAULT_DEVICES
+        echo "${{ env.run_tests }}" > TEST_ON
         echo ${{ inputs.Release_Date }} > input_release_date
 
     - name: Show shell configuration
@@ -330,7 +303,8 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable  
             cd work && make clean
-            make release test/batch CPU_CORES=2 RAPTOR_PUB=1 
+            run_test=`cat TEST_ON`
+            make release test/batch CPU_CORES=2 $run_test 
 
     - name: Regression
       if: matrix.mode == 'regression'
@@ -342,8 +316,9 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
-            make regression CPU_CORES=2 RAPTOR_PUB=1 
-            make release CPU_CORES=2 RAPTOR_PUB=1 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
+            run_test=`cat TEST_ON`
+            make regression CPU_CORES=2 $run_test 
+            make release CPU_CORES=2 $run_test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
                         
 
     - name: Production Build
@@ -356,51 +331,51 @@ jobs:
         run: |
             cd work && make clean
             source /opt/rh/devtoolset-11/enable
-            p_device=`cat production_devices`
+            p_device=`cat DEFAULT_DEVICES`
+            run_test=`cat TEST_ON`
             r_d=`cat input_release_date`
             echo $p_device
             echo "$r_d"
             d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
-            make install CPU_CORES=2 RAPTOR_PUB=1 PRODUCTION_BUILD=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=0 PREFIX=/opt/instl_dir DEFAULT_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
-            ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
+            ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
             cat /opt/instl_dir/share/raptor/etc/device.xml
             ls -l /opt/instl_dir/share/raptor/etc/devices/*
             ls -l /opt/instl_dir/bin
 
-#TODO enable them
-#    - name: Print server resource
-#      if: success() || failure()
-#      run: |
-#        df -h  
-#
-#    - name: Check FTP server status
-#      # Change ref head to deploy using a different branch.
-#      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' }}"
-#      #if: "${{ matrix.mode == 'production' }}"
-#      uses: appleboy/ssh-action@master
-#      with:
-#        host: ${{ secrets.FTP_IP }}
-#        username: ${{ secrets.FTP_USER }}
-#        key: ${{ secrets.FTP_KEY }}
-#        port: ${{ secrets.FTP_PORT }}
-#        script: whoami
-#
-#    - name: Deploy
-#      # Change ref head to deploy using a different branch.
-#      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main'}}"
-#      #if: "${{ matrix.mode == 'production'}}"
-#      uses: appleboy/scp-action@master
-#      with:
-#         host: ${{ secrets.FTP_IP }}
-#         username: ${{ secrets.FTP_USER }}
-#         key: ${{ secrets.FTP_KEY }}
-#         port: ${{ secrets.FTP_PORT }}
-#         source: "./Raptor_Tools/upload/*"
-#         target: "/home/rsbuilder/Raptor"
+    - name: Print server resource
+      if: success() || failure()
+      run: df -h
+          
+# The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
+    - name: Check FTP server status
+      # Change ref head to deploy using a different branch.
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' && env.FORK_REPO  == 'ON' }}"
+      #if: "${{ matrix.mode == 'production' }}"
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.FTP_IP }}
+        username: ${{ secrets.FTP_USER }}
+        key: ${{ secrets.FTP_KEY }}
+        port: ${{ secrets.FTP_PORT }}
+        script: whoami
+
+    - name: Deploy
+      # Change ref head to deploy using a different branch.
+      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' && env.FORK_REPO  == 'ON' }}"
+      #if: "${{ matrix.mode == 'production'}}"
+      uses: appleboy/scp-action@master
+      with:
+         host: ${{ secrets.FTP_IP }}
+         username: ${{ secrets.FTP_USER }}
+         key: ${{ secrets.FTP_KEY }}
+         port: ${{ secrets.FTP_PORT }}
+         source: "./Raptor_Tools/upload/*"
+         target: "/home/rsbuilder/Raptor"
        
 
 # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
