@@ -210,6 +210,7 @@ jobs:
 
     env:
       MODE: ${{ matrix.mode }}
+      FORK_REPO: ${{ secrets.FORKED_NAME }}
 
     steps:
 
@@ -219,19 +220,21 @@ jobs:
         ssh-private-key: |
            ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 
-    - name: set the FTP on/off
-      run: |
-            if [ ${{ github.repository_owner }} == ${{ secrets.orgname }} ]
-            then
-                echo 'FTP_STATUS="ON"' >> $GITHUB_ENV
-            fi
-
-    - name: print FTP status
-      run: echo   ${{env.FTP_STATUS }}      
+#    - name: set the FTP on/off
+#      run: |
+#            if [[ -n ${{ env.FORK_REPO }} ]]
+#            then
+#                echo 'FTP_STATUS=ON' >> $GITHUB_ENV
+#            else
+#                echo 'FTP_STATUS=OFF' >> $GITHUB_ENV
+#            fi
+#
+#    - name: print FTP status
+#      run: echo   ${{env.FTP_STATUS }}      
 
     - name: Check FTP server status
       # Change ref head to deploy using a different branch.
-      if: ${{ matrix.mode == 'production' }} &&  ${{env.FTP_STATUS }}  == 'ON'
+      if: ${{ matrix.mode == 'production' && env.FORK_REPO  == 'ON' }}
       run: echo "i am done" 
 
 
