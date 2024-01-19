@@ -222,7 +222,7 @@ jobs:
 
     - name: Check FTP server status
       # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'production' &&  github.repository_owner == secrets.orgname }}"
+      if: "${{ matrix.mode == 'production' }} &&  ${{ github.repository_owner }} == ${{ secrets.orgname }}"
       run: echo "i am done" 
 
 
