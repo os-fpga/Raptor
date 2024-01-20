@@ -7,12 +7,11 @@ It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
 ## INSTALLATION
 
-See the Raptor Quick Start Guide
+See the Raptor Quick Start Guide.
 
 ## LICENSING
 
-Raptor uses the FlexLM License manager, please setup the license file:
-```setenv LM_LICENSE_FILE <path to license file or lmgrd IP address>```
+Please refer the LICENSE for details.
 
 ## RAPTOR OPTIONS
 
