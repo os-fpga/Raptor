@@ -58,11 +58,12 @@ yum install -y openssl-devel hwloc-devel
 yum install -y libusbx-devel libusb-devel
 yum install -y pkgconfig
 yum install -y perl-IPC-Cmd
+yum install -y alsa-lib
 
 ln -s $PWD/cmake-3.28.0-linux-x86_64/bin/ctest /usr/bin/ctest
 
 echo "Downloading QT..."
-curl -L https://github.com/RapidSilicon/post_build_artifacts/releases/download/v0.2/qt6.2.4_withopenssl.tar.gz --output qt-for-centos7.tar.gz
+curl -L https://github.com/os-fpga/post_build_artifacts/releases/download/v0.2/qt6.2.4_withopensslWebEngine.tar.gz --output qt-for-centos7.tar.gz
 tar -xzf qt-for-centos7.tar.gz
 mv Qt6.2.4 /usr/local/
 yum clean all

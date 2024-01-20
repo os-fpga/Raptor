@@ -565,6 +565,7 @@ jobs:
       uses: jurplel/install-qt-action@v3.0.0
       with:
           version: '6.2.4'
+          modules: 'qtwebengine qtwebchannel qtpositioning'
 
     - run: git config --global core.autocrlf input
       shell: bash
@@ -701,6 +702,7 @@ jobs:
       with:
         setup-python: false
         version: '6.2.4'
+        modules: 'qtwebengine qtwebchannel qtpositioning'
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.3
@@ -772,6 +774,7 @@ jobs:
       with:
         setup-python: false
         version: '6.2.4'
+        modules: 'qtwebengine qtwebchannel qtpositioning'
         
 #    - name: ssh-agent
 #      uses: webfactory/ssh-agent@v0.7.0
