@@ -356,6 +356,7 @@
   </connection_block>
   <switch_block>
     <switch name="L1_mux" circuit_model_name="mux_tree_tapbuf"/>
+    <switch name="L2_mux" circuit_model_name="mux_tree_tapbuf"/>
     <switch name="L4_mux" circuit_model_name="mux_tree_tapbuf"/>
   </switch_block>
   <routing_segment>
