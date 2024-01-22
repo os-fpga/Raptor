@@ -18,6 +18,14 @@ else()
   set (PRODUCTION_DEVICES "")
 endif(PRODUCTION_BUILD)
 
+if (MONACO_EDITOR)
+  message("Using Monaco Editor")
+  set(USE_MONACO_EDITOR ON CACHE BOOL "" FORCE)
+else(MONACO_EDITOR)
+  message("Using QScintilla Editor")
+  set(USE_MONACO_EDITOR OFF CACHE BOOL "" FORCE)
+endif(MONACO_EDITOR)
+
 # Detect build type, fallback to release and throw a warning if use didn't
 # specify any
 if(NOT CMAKE_BUILD_TYPE)
@@ -585,6 +593,23 @@ install (
   FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${ZLIB_STATIC_LIB}
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)
 
+if (USE_MONACO_EDITOR)
+install(
+    DIRECTORY
+      ${PROJECT_SOURCE_DIR}/third_party/monaco-editor/monaco-editor
+    DESTINATION
+      ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/monaco-editor/
+)
+
+install(
+    FILES
+      ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/monaco-editor/monaco-editor.html
+      ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/monaco-editor/qwebchannel.js
+    DESTINATION
+        ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/monaco-editor/
+    PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+)
+endif()
 
 if (WIN32 AND $<CONFIG:Debug>)
   if (RAPTOR_WITH_PYTHON)
@@ -945,4 +970,22 @@ else ()
           ${CMAKE_CURRENT_BINARY_DIR}/bin/sta
         )
   endif()
+endif()
+
+if (USE_MONACO_EDITOR)
+add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/monaco-editor/
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PROJECT_SOURCE_DIR}/third_party/monaco-editor/monaco-editor
+        ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/monaco-editor/monaco-editor)
+
+add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/monaco-editor/monaco-editor.html
+        ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/monaco-editor)
+
+add_custom_command(TARGET raptor-bin POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/FOEDAG_rs/FOEDAG/third_party/monaco-editor/qwebchannel.js
+        ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/etc/monaco-editor)
 endif()
