@@ -893,7 +893,7 @@ jobs:
         sudo apt -qq -y install clang-tidy-12 \
                                 g++-11 tclsh  default-jre cmake \
                                 uuid-dev build-essential xorg  libhwloc-dev \
-                                qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev xvfb \
+                                qt6-base-dev qt6-webengine-dev qt6-webengine* libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev xvfb \
                                 libusb-1.0-0-dev pkg-config
 
     - name: Use ccache

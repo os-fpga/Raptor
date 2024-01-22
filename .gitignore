@@ -33,3 +33,4 @@
 
 #Raptor subfolders
 etc/devices/*
+etc/monaco-editor/
