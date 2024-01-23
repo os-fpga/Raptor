@@ -23,5 +23,5 @@ jobs:
       with:
         token: ${{ secrets.NEW_COMMIT_PUSHED }}
         repository: ${{ secrets.Alert }}
-        event-type: update_submodule
+        event-type: raptor_pub_update
         client-payload: '{"commitSHA": "${{ env.LATEST_SHA }}"}'
