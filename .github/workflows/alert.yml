@@ -1,10 +1,11 @@
 name: 'Alert'
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
 jobs:
-  alert_dv:
+  alert:
     if: ${{ github.repository == 'os-fpga/Raptor' }}
     runs-on: ubuntu-latest
     steps:
@@ -24,5 +25,5 @@ jobs:
       with:
         token: ${{ secrets.NEW_COMMIT_PUSHED }}
         repository: ${{ secrets.Alert }}
-        event-type: raptor_pub_update
+        event-type: raptor_public_update
         client-payload: '{"commitSHA": "${{ env.LATEST_SHA }}"}'
