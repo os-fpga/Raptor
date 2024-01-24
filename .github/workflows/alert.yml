@@ -16,12 +16,12 @@ jobs:
 
     - name: Get Latest Commit ID
       run: |
-          recent_sha=`git log -1 --pretty=format:"%H"`
+          recent_sha=`git log -1 --pretty=format:"%h"`
           echo $recent_sha
           echo "LATEST_SHA=$recent_sha" >> $GITHUB_ENV
 
     - name: Alert
-      uses: peter-evans/repository-dispatch@v2.1.1
+      uses: peter-evans/repository-dispatch@v2.1.2
       with:
         token: ${{ secrets.NEW_COMMIT_PUSHED }}
         repository: ${{ secrets.Alert }}
