@@ -676,21 +676,7 @@ if (NOT PRODUCTION_BUILD)
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
   install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/cell_sim_blackbox.v
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
-      
-  # Genesis2 Simulation models
-  install(
-      DIRECTORY ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
-  install(
-      FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
-  install(
-      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
-  install(
-      FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/cell_sim_blackbox.v
-      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis2/)
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)    
 endif()
 
 
@@ -829,19 +815,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/cell_sim_blackbox.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis    
-   #Genesis2 Sim Model
-      COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis2/cell_sim_blackbox.v
-          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis2/
    #Genesis3 Sim Model
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis3/
