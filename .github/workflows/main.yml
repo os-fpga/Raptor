@@ -84,9 +84,9 @@ jobs:
         event_type=`echo ${{ github.event_name }}`
         if [ $event_type == 'workflow_dispatch' ]
         then
-              echo 'p_devices="${{ inputs.DEFAULT_DEVICES }}"' >> $GITHUB_ENV
+              echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
         else
-              echo 'p_devices="$DEFAULT_DEVICES"' >> $GITHUB_ENV
+              echo 'p_devices=$DEFAULT_DEVICES' >> $GITHUB_ENV
         fi
         if [ ${{ github.repository_owner }} == 'os-fpga' ]
         then
@@ -154,7 +154,7 @@ jobs:
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release CPU_CORES=2 ${{ env.run_tests }} PRODUCTION_BUILD=0 DEFAULT_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
+        make release CPU_CORES=2 ${{ env.run_tests }} PRODUCTION_BUILD=0 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
         ./build/bin/raptor --version
         #TODO enable it again to restore license
         #./build/bin/Flex_LM/lmutil lmhostid
@@ -237,11 +237,13 @@ jobs:
 
     - name: install minimum dependencies
       run: |
-          sudo apt install -y qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev libhwloc-dev libusb-1.0-0-dev
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install -y qt6-base-dev qt6-webengine-dev qt6-webengine* libqt6webenginecore6* && sudo apt clean all 
+          sudo apt install -y libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev libhwloc-dev libusb-1.0-0-dev && sudo apt clean all
           wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
           sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list http://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
           sudo apt update
-          sudo apt install vulkan-sdk
+          sudo apt install -y vulkan-sdk
           sudo apt-get autoremove -y >/dev/null 2>&1
           sudo apt-get autoclean -y >/dev/null 2>&1
           df -h
@@ -264,9 +266,9 @@ jobs:
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
-                echo 'p_devices="${{ inputs.DEFAULT_DEVICES }}"' >> $GITHUB_ENV
+                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
           else
-                echo 'p_devices="$DEFAULT_DEVICES"' >> $GITHUB_ENV
+                echo 'p_devices=$DEFAULT_DEVICES' >> $GITHUB_ENV
           fi
           if [ ${{ github.repository_owner }} == 'os-fpga' ]
           then
@@ -338,7 +340,7 @@ jobs:
             echo "$r_d"
             d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
-            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=0 PREFIX=/opt/instl_dir DEFAULT_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=0 MONACO_EDITOR=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
             ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
@@ -893,7 +895,7 @@ jobs:
         sudo apt -qq -y install clang-tidy-12 \
                                 g++-11 tclsh  default-jre cmake \
                                 uuid-dev build-essential xorg  libhwloc-dev \
-                                qt6-base-dev libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev xvfb \
+                                qt6-base-dev qt6-webengine-dev qt6-webengine* libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev xvfb \
                                 libusb-1.0-0-dev pkg-config
 
     - name: Use ccache
