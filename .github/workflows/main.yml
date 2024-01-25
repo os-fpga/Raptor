@@ -84,9 +84,9 @@ jobs:
         event_type=`echo ${{ github.event_name }}`
         if [ $event_type == 'workflow_dispatch' ]
         then
-              echo 'p_devices="${{ inputs.DEFAULT_DEVICES }}"' >> $GITHUB_ENV
+              echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
         else
-              echo 'p_devices="$DEFAULT_DEVICES"' >> $GITHUB_ENV
+              echo 'p_devices=$DEFAULT_DEVICES' >> $GITHUB_ENV
         fi
         if [ ${{ github.repository_owner }} == 'os-fpga' ]
         then
@@ -266,9 +266,9 @@ jobs:
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
-                echo 'p_devices="${{ inputs.DEFAULT_DEVICES }}"' >> $GITHUB_ENV
+                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
           else
-                echo 'p_devices="$DEFAULT_DEVICES"' >> $GITHUB_ENV
+                echo 'p_devices=$DEFAULT_DEVICES' >> $GITHUB_ENV
           fi
           if [ ${{ github.repository_owner }} == 'os-fpga' ]
           then
@@ -340,7 +340,7 @@ jobs:
             echo "$r_d"
             d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
-            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=0 MONACO_EDITOR=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
             ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
