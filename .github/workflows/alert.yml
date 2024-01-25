@@ -1,0 +1,29 @@
+name: 'Alert'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  alert:
+    if: ${{ github.repository == 'os-fpga/Raptor' }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.sha }}
+        fetch-depth: '0'
+
+    - name: Get Latest Commit ID
+      run: |
+          recent_sha=`git log -1 --pretty=format:"%h"`
+          echo $recent_sha
+          echo "LATEST_SHA=$recent_sha" >> $GITHUB_ENV
+
+    - name: Alert
+      uses: peter-evans/repository-dispatch@v2.1.2
+      with:
+        token: ${{ secrets.NEW_COMMIT_PUSHED }}
+        repository: ${{ secrets.Alert }}
+        event-type: raptor_public_update
+        client-payload: '{"commitSHA": "${{ env.LATEST_SHA }}"}'

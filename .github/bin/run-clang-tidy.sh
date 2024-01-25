@@ -21,7 +21,7 @@ hash ${CLANG_TIDY} || exit 2  # make sure it is installed.
 
 if [ ! -r compile_commands.json ]; then
     echo "To get compile_commands.json, run in root of project and "
-    echo "  make run-cmake-release"
+    echo "  make MONACO_EDITOR=1 run-cmake-release"
     exit 1
 fi
 

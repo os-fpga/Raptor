@@ -20,8 +20,8 @@
 puts "GUI START" ; flush stdout ; gui_start
 puts "GUI STOP"  ; flush stdout ; gui_stop
 puts "GUI START" ; flush stdout ; gui_start
-puts "TEXT EDITOR GUI OPENFILE"  ; flush stdout ; openfile tests/TestGui/test.v
-puts "TEXT EDITOR GUI OPENFILE"  ; flush stdout ; openfile tests/TestGui/test.v
+#puts "TEXT EDITOR GUI OPENFILE"  ; flush stdout ; openfile tests/TestGui/test.v
+#puts "TEXT EDITOR GUI OPENFILE"  ; flush stdout ; openfile tests/TestGui/test.v
 
 puts "NEW PROJECT START" ; flush stdout ; newproject_gui_open
 puts "NEXT" ; flush stdout ; next
