@@ -6,7 +6,7 @@ add_constraint_file constraints.sdc
 add_constraint_file pin_mapping.pin
 
 # Device target
-target_device GEMINI
+target_device GEMINI_COMPACT_10x8
 
 # Compilation
 analyze

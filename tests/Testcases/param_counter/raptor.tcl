@@ -11,7 +11,7 @@ add_simulation_file sim_main.cpp
 set_top_testbench param_up_counter
 
 # Device target
-target_device GEMINI_10x8
+target_device GEMINI_COMPACT_10x8
 
 # clean default flags for wrapper
 simulation_options verilator compilation rtl ""
