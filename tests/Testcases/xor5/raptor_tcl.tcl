@@ -1,5 +1,5 @@
 create_design xor5
-target_device GEMINI
+target_device GEMINI_COMPACT_10x8
 add_design_file rtl/xor5.v
 file copy -force rtl/private_key.pem xor5/private_key.pem
 set_top_module xor5

@@ -5,7 +5,6 @@ add_design_file -V_2001 counter16.v
 set_top_module counter16
 add_constraint_file pin_mapping.pin
 
-#target_device GEMINI_10x8
 target_device GEMINI_COMPACT_10x8
 
 analyze

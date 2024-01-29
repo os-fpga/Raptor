@@ -5,7 +5,7 @@ set projName incr_comp
 set tempFile $projName/tmp.v
 
 create_design $projName
-target_device GEMINI
+target_device GEMINI_COMPACT_10x8
 
 file copy -force $script_path/and2.v $tempFile
 

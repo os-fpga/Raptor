@@ -5,7 +5,7 @@ set_top_module top
 add_constraint_file constraints.sdc
 
 # Device target
-target_device GEMINI
+target_device GEMINI_COMPACT_10x8
 
 # Compilation
 synthesize 
