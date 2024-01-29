@@ -893,6 +893,7 @@ jobs:
         access_token: ${{ github.token }}
 
     - name: ssh-agent
+      if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
       uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
