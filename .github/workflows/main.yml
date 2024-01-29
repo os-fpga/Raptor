@@ -48,6 +48,7 @@ jobs:
 
     - name: ssh-agent
       uses: webfactory/ssh-agent@v0.7.0
+      if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
       with: 
         ssh-private-key: |
            ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
@@ -86,7 +87,12 @@ jobs:
         then
               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
         else
-              echo 'p_devices=$DEFAULT_DEVICES' >> $GITHUB_ENV
+              if [ ${{ github.event.pull_request.head.repo.full_name }}  == ${{ github.repository }} ]
+              then
+                   echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
+              else
+                   echo 'p_devices=MPW1' >> $GITHUB_ENV
+              fi
         fi
         if [ ${{ github.repository_owner }} == 'os-fpga' ]
         then
@@ -215,6 +221,7 @@ jobs:
     steps:
 
     - name: ssh-agent
+      if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
       uses: webfactory/ssh-agent@v0.7.0
       with: 
         ssh-private-key: |
@@ -266,9 +273,14 @@ jobs:
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
-                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
+               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
           else
-                echo 'p_devices=$DEFAULT_DEVICES' >> $GITHUB_ENV
+               if [ ${{ github.event.pull_request.head.repo.full_name }}  == ${{ github.repository }} ]
+               then
+                    echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
+               else
+                    echo 'p_devices=MPW1' >> $GITHUB_ENV
+               fi
           fi
           if [ ${{ github.repository_owner }} == 'os-fpga' ]
           then
