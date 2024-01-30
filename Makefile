@@ -183,7 +183,7 @@ else
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/constant/raptor.tcl --batch
 	./build/bin/raptor --batch --mute --script tests/Testcases/double_check/raptor.tcl
-# Wait for Manadher's fix on CentOS  ./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_104x68/ric/gemini_bank.tcl
+	./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_62x44/ric/virgotc_bank.tcl
 endif
 
 test/batch_gen2: run-cmake-release
