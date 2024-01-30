@@ -13,8 +13,6 @@ on:
         description: 'Name of production devices separated by comma'
         default: ""
         type: string
-env:
-    DEFAULT_DEVICES: ${{ secrets.DefaultDevice }}  # comma separated devices name in GitHub Repo secrets, default is MPW1
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -83,22 +81,17 @@ jobs:
         echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
         echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
         event_type=`echo ${{ github.event_name }}`
-        if [ $event_type == 'workflow_dispatch' ]
-        then
-              echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-        else
-              if [ ${{ github.event.pull_request.head.repo.full_name }}  == ${{ github.repository }} ]
-              then
-                   echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
-              else
-                   echo 'p_devices=MPW1' >> $GITHUB_ENV
-              fi
-        fi
         if [ ${{ github.repository_owner }} == 'os-fpga' ]
         then
-              echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+                echo 'p_devices=MPW1' >> $GITHUB_ENV
         else
-              echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+                echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
+        fi
+        if [ $event_type == 'workflow_dispatch' ]
+        then
+               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
         fi
 
     - name: Show shell configuration
@@ -160,12 +153,13 @@ jobs:
     - name: Production
       if: matrix.mode == 'production'
       run: |
-        make release CPU_CORES=2 ${{ env.run_tests }} PRODUCTION_BUILD=0 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
+        make release CPU_CORES=2 ${{ env.run_tests }} PRODUCTION_BUILD=1 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
         ./build/bin/raptor --version
         #TODO enable it again to restore license
         #./build/bin/Flex_LM/lmutil lmhostid
         #export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         d_test=$(echo "${{ env.p_devices }}" | cut -d ',' -f 1)
+        echo "the device is $d_test"
         ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
 
     - name: Valgrind & Debug
@@ -270,24 +264,20 @@ jobs:
 
     - name: Set Device name and Test on/off
       run: |
+          if [ ${{ github.repository_owner }} == 'os-fpga' ]
+          then
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+                echo 'p_devices=MPW1' >> $GITHUB_ENV
+          else
+                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+                echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
+          fi
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-          else
-               if [ ${{ github.event.pull_request.head.repo.full_name }}  == ${{ github.repository }} ]
-               then
-                    echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
-               else
-                    echo 'p_devices=MPW1' >> $GITHUB_ENV
-               fi
           fi
-          if [ ${{ github.repository_owner }} == 'os-fpga' ]
-          then
-                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
-          else
-                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
-          fi    
+          
       
     - name: Checkout Subsystem
       run: |
@@ -352,8 +342,9 @@ jobs:
             echo "$r_d"
             d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
-            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=0 MONACO_EDITOR=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=1 MONACO_EDITOR=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
+            echo "the device is $d_test"
             ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
