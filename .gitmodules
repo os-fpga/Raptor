@@ -13,12 +13,12 @@
 [submodule "litex_reference_designs"]
 	path = litex_reference_designs
 	url = https://github.com/os-fpga/litex_reference_designs.git
-[submodule "IP_Catalog"]
-	path = IP_Catalog
-	url = https://github.com/os-fpga/IP_Catalog
 [submodule "zephyr-rapidsi-dev"]
 	path = zephyr-rapidsi-dev
 	url = https://github.com/os-fpga/zephyr-rapidsi-dev
 [submodule "Raptor_Tools"]
 	path = Raptor_Tools
 	url = https://github.com/os-fpga/Raptor_Tools.git
+[submodule "IP_Catalog"]
+	path = IP_Catalog
+	url = https://github.com/os-fpga/IP_Catalog.git
