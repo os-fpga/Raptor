@@ -2,6 +2,8 @@ create_design axi2axilite_bridge_prj
 
 target_device 1GE100-ES1
 
+#set path here
+
 set IP_PATH ./axi2axilite_bridge_prj/run_1/IPs/
 
 #Configuring axi2axilite_bridge_v1_0 IP 
