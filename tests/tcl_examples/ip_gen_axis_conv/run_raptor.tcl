@@ -10,7 +10,7 @@ set project_name ip_test
 
 puts "Creating $project_name..."
 create_design $project_name
-target_device 1GE100-ES1
+target_device 1GE75
 add_design_file Src/use_ip.v
 add_constraint_file constraints.sdc
 set_top_module use_ip
