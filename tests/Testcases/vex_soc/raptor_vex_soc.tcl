@@ -1,5 +1,5 @@
 create_design vex_soc
-target_device GEMINI
+target_device 1GVTC
 add_include_path ./
 add_library_path rtl/
 add_library_ext .v .sv

@@ -9,7 +9,7 @@ add_simulation_file testbench.sv
 set_top_testbench tb_and2
 
 # Device target
-target_device GEMINI_4x4
+target_device GEMINI_COMPACT_10x8
 
 # Compilation/Simulation
 analyze

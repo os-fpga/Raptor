@@ -6,7 +6,7 @@ add_constraint_file pin_mapping.pin
 add_constraint_file constraints.sdc
 
 # Device target
-target_device GEMINI_LEGACY
+target_device MPW1
 # Compilation
 analyze
 synthesize delay

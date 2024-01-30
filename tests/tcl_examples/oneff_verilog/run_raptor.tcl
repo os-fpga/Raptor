@@ -11,7 +11,7 @@ add_simulation_file sim_main.cpp
 set_top_testbench syn_tb
 
 # Device target
-target_device 1GE100-ES1
+target_device 1GE75
 
 # Compilation/Simulation
 analyze

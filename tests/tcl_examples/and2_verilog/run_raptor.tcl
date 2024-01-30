@@ -18,7 +18,7 @@ add_constraint_file constraints.sdc
 add_simulation_file ./Src/testbench_and2.v
 set_top_testbench testbench_and2
 # Device target
-target_device 1GE100-ES1
+target_device 1GE75
 
 # RTL Simulation
 simulate rtl icarus

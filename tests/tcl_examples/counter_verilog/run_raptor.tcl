@@ -15,7 +15,7 @@ add_design_file Src/counter.v
 set_top_module counter
 add_constraint_file constraints.sdc
 # Device target
-target_device 1GE100-ES1
+target_device 1GE75
 
 # Compilation
 puts "Compiling $project_name..."

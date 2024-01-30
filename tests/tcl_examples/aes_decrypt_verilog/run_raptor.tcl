@@ -10,7 +10,7 @@ set project_name AES_DECRYPT_VERILOG
 
 puts "Creating $project_name..."
 create_design $project_name
-target_device 1GE100-ES1
+target_device 1GE75
 add_design_file Src/aes_decrypt128.sv Src/aes_decrypt256.sv  Src/gfmul.sv Src/InvMixCol_slice.sv Src/InvSbox.sv Src/InvSubBytes.sv Src/KeyExpand192.sv  Src/KschBuffer.sv  Src/Sbox.sv Src/aes_decrypt192.sv  Src/decrypt.sv Src/InvAddRoundKey.sv Src/InvMixColumns.sv  Src/InvShiftRows.sv Src/KeyExpand128.sv Src/KeyExpand256.sv Src/RotWord.sv  Src/SubWord.sv  -SV_2012
 add_design_file Src/MUXF7.v Src/MUXF8.v Src/decrypt_top.v
 add_constraint_file constraints.sdc

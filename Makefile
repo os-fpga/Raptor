@@ -190,7 +190,6 @@ test/batch_gen2: run-cmake-release
 ifeq ($(RAPTOR_PUB),1)
 else
 	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_latest/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter/counter.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl

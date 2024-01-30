@@ -12,7 +12,7 @@ puts "Creating $project_name..."
 # Create Project
 create_design $project_name
 # Device setup
-target_device 1GE100-ES1
+target_device 1GE75
 # Design setup
 add_design_file ./Src/timescale.v ./Src/sasc_brg.v ./Src/sasc_fifo4.v ./Src/sasc.v
 add_constraint_file constraints.sdc

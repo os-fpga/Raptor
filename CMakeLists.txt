@@ -158,6 +158,10 @@ endif()
 if (NOT APPLE)
     # Disable yosys_verific_rs till EDA-799 is resolved.
     add_subdirectory(yosys_verific_rs)
+    if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/de/CMakeLists.txt)
+    	add_subdirectory(src/de) 
+    	add_dependencies(de_actual de)
+    endif()
 endif()
 
 add_subdirectory("Raptor_Tools/parser_plugins")
@@ -180,7 +184,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 9)
-set(VERSION_PATCH 28)
+set(VERSION_PATCH 29)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -838,9 +842,6 @@ else ()
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/abc
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/${YOSYS_BUILD_PATH}/bin/de
           ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${CMAKE_CURRENT_BINARY_DIR}/Raptor_Tools/gatelevel_readers/verify_synth_ports/verify_synth_ports
