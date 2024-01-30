@@ -81,23 +81,17 @@ jobs:
         echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
         echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
         event_type=`echo ${{ github.event_name }}`
-        if [ $event_type == 'workflow_dispatch' ]
-        then
-              echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-        else
-              repoPRname=`echo ${{ github.event.pull_request.head.repo.full_name }}`
-              if [ $repoPRname  == ${{ github.repository }} ]
-              then
-                   echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
-              else
-                   echo 'p_devices=MPW1' >> $GITHUB_ENV
-              fi
-        fi
         if [ ${{ github.repository_owner }} == 'os-fpga' ]
         then
-              echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+                echo 'p_devices=MPW1' >> $GITHUB_ENV
         else
-              echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+                echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
+        fi
+        if [ $event_type == 'workflow_dispatch' ]
+        then
+               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
         fi
 
     - name: Show shell configuration
@@ -270,26 +264,20 @@ jobs:
 
     - name: Set Device name and Test on/off
       run: |
+          if [ ${{ github.repository_owner }} == 'os-fpga' ]
+          then
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
+                echo 'p_devices=MPW1' >> $GITHUB_ENV
+          else
+                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+                echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
+          fi
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-          else
-               repoPRname=`echo ${{ github.event.pull_request.head.repo.full_name }}`
-               echo "the name is pR event is $repoPRname"
-               if [ $repoPRname  == ${{ github.repository }} ]
-               then
-                    echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
-               else
-                    echo 'p_devices=MPW1' >> $GITHUB_ENV
-               fi
           fi
-          if [ ${{ github.repository_owner }} == 'os-fpga' ]
-          then
-                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
-          else
-                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
-          fi    
+          
       
     - name: Checkout Subsystem
       run: |
