@@ -13,8 +13,6 @@ on:
         description: 'Name of production devices separated by comma'
         default: ""
         type: string
-env:
-    DEFAULT_DEVICES: ${{ secrets.DefaultDevice }}  # comma separated devices name in GitHub Repo secrets, default is MPW1
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -87,7 +85,8 @@ jobs:
         then
               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
         else
-              if [ ${{ github.event.pull_request.head.repo.full_name }}  == ${{ github.repository }} ]
+              repoPRname=`echo ${{ github.event.pull_request.head.repo.full_name }}`
+              if [ $repoPRname  == ${{ github.repository }} ]
               then
                    echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
               else
@@ -166,6 +165,7 @@ jobs:
         #./build/bin/Flex_LM/lmutil lmhostid
         #export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         d_test=$(echo "${{ env.p_devices }}" | cut -d ',' -f 1)
+        echo "the device is $d_test"
         ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
 
     - name: Valgrind & Debug
@@ -275,7 +275,9 @@ jobs:
           then
                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
           else
-               if [ ${{ github.event.pull_request.head.repo.full_name }}  == ${{ github.repository }} ]
+               repoPRname=`echo ${{ github.event.pull_request.head.repo.full_name }}`
+               echo "the name is pR event is $repoPRname"
+               if [ $repoPRname  == ${{ github.repository }} ]
                then
                     echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
                else
@@ -354,6 +356,7 @@ jobs:
             mkdir /opt/instl_dir
             make install CPU_CORES=2 $run_test PRODUCTION_BUILD=0 MONACO_EDITOR=0 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
+            echo "the device is $d_test"
             ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
