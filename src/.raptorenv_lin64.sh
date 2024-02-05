@@ -9,9 +9,9 @@ SCRIPT_PATH=`dirname $BASH_SOURCE`
 RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
 
 if [ -n "${LD_LIBRARY_PATH}" ]; then
-	export LD_LIBRARY_PATH=$RAPTOR_PATH/lib64/raptor/lib:$RAPTOR_PATH/lib64/tbb:$RAPTOR_PATH/lib/tbb:$RAPTOR_PATH/lib64:$RAPTOR_PATH/lib:$RAPTOR_PATH/lib/raptor/lib:$RAPTOR_PATH/bin/gtkwave/lib:$RAPTOR_PATH/external_libs/qt/lib:$RAPTOR_PATH/external_libs/lib:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=$RAPTOR_PATH/lib64/raptor/lib:$RAPTOR_PATH/lib64/tbb:$RAPTOR_PATH/lib/tbb:$RAPTOR_PATH/lib64/openssl:$RAPTOR_PATH/lib/openssl:$RAPTOR_PATH/lib64:$RAPTOR_PATH/lib:$RAPTOR_PATH/lib/raptor/lib:$RAPTOR_PATH/bin/gtkwave/lib:$RAPTOR_PATH/external_libs/qt/lib:$RAPTOR_PATH/external_libs/lib:$LD_LIBRARY_PATH
 else
-	export LD_LIBRARY_PATH=$RAPTOR_PATH/lib64/raptor/lib:$RAPTOR_PATH/lib64/tbb:$RAPTOR_PATH/lib/tbb:$RAPTOR_PATH/lib64:$RAPTOR_PATH/lib:$RAPTOR_PATH/lib/raptor/lib:$RAPTOR_PATH/bin/gtkwave/lib:$RAPTOR_PATH/external_libs/qt/lib:$RAPTOR_PATH/external_libs/lib
+	export LD_LIBRARY_PATH=$RAPTOR_PATH/lib64/raptor/lib:$RAPTOR_PATH/lib64/tbb:$RAPTOR_PATH/lib/tbb:$RAPTOR_PATH/lib64/openssl:$RAPTOR_PATH/lib/openssl:$RAPTOR_PATH/lib64:$RAPTOR_PATH/lib:$RAPTOR_PATH/lib/raptor/lib:$RAPTOR_PATH/bin/gtkwave/lib:$RAPTOR_PATH/external_libs/qt/lib:$RAPTOR_PATH/external_libs/lib
 fi
 
 if [ -n "${TCL_LIBRARY}" ]; then
