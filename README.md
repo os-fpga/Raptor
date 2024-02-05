@@ -2,16 +2,20 @@
 
 Rapid Silicon Raptor Design Suite
 
+![Raptor Design Suite Logo](etc/Welcome_Page/WelcomeLogo.png)
+
 Raptor is a classic RTL (User design + IPs) 2 Bitstream FPGA compiler.
 It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
+![Raptor Features Screenshot](docs/raptor-features-screenshot.png)
+
+## BUILD
+
+Please refer [BUILD.md](BUILD.md).
+
 ## INSTALLATION
 
-See the Raptor Quick Start Guide.
-
-## LICENSING
-
-Please refer the LICENSE for details.
+Please see [INSTALL.md](INSTALL.md).
 
 ## RAPTOR OPTIONS
 

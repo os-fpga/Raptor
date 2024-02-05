@@ -8,9 +8,9 @@ Once your local machine is ready, please take into account the dependencies list
 
 - [Ubuntu dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_ubuntu_dependencies_build.sh)
 - [Centos dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_centos_dependencies_build.sh)
-- Not fully supported yet [MacOS dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_macos_dependencies_build.sh)
+- Not fully supported [MacOS dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_macos_dependencies_build.sh)
 - Not fully supported [Windows Msys2 dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/main.yml)
-- Not fully supported yet [Windows MSVC dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/main.yml)
+- Not fully supported [Windows MSVC dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/main.yml)
 
 > [!TIP]
 > Copy the script content and paste it into a file created on your local machine, then execute that file as a bash script.
