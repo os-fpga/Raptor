@@ -35,7 +35,7 @@ Log in to GitHub, navigate to your account settings, click on the SSH and GPG ta
 2. Clone the Raptor repository.
 
 ```
- git clone git@github.com:RapidSilicon/Raptor.git
+ git clone git@github.com:os-fpga/Raptor.git
 ```
 
 3. Build the Raptor
