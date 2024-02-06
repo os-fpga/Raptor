@@ -797,15 +797,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/tcl_examples/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/
-#      COMMAND ${CMAKE_COMMAND} -E copy
-#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
-#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-#      COMMAND ${CMAKE_COMMAND} -E copy
-#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
-#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-#      COMMAND ${CMAKE_COMMAND} -E copy
-#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
-#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
    #Genesis Sim Model
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
