@@ -718,6 +718,12 @@ install(
 #      GROUP_READ GROUP_EXECUTE
 #      WORLD_READ WORLD_EXECUTE
 #      )
+#install OpenLM  customer end
+install(
+    PROGRAMS
+        ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/OpenLM/licensecc/install/bin/Raptor/lccinspector
+    DESTINATION ${CMAKE_INSTALL_BINDIR}/OpenLM
+)
 
 install(
   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
