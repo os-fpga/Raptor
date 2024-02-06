@@ -102,9 +102,12 @@ checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "
 checkout_subsystems(RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} ON)
 
 if (PRODUCTION_BUILD)
-  get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
-        REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-  add_subdirectory("Raptor_Tools/Flex_LM")
+  #get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
+  #      REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+  #add_subdirectory("Raptor_Tools/Flex_LM")
+  get_filename_component(OPENLM_DIR "Raptor_Tools/OpenLM"
+         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+  add_subdirectory(${OPENLM_DIR} OPENLM_DIR)       
 endif()
 
 if(ENABLE_VERIFIC)
@@ -329,7 +332,8 @@ endif()
 set_target_properties(raptor-bin PROPERTIES OUTPUT_NAME raptor)
 if (PRODUCTION_BUILD)
   add_dependencies(raptor-bin rs_licenseManager)
-  target_include_directories(raptor-bin PUBLIC ${FLEX_LM_SRC_DIR})
+  #target_include_directories(raptor-bin PUBLIC ${FLEX_LM_SRC_DIR})
+  target_include_directories(raptor-bin PUBLIC ${OPENLM_DIR})
   target_link_libraries(raptor-bin PUBLIC rs_licenseManager)
 endif()
 
