@@ -9,6 +9,10 @@ It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
 ![Raptor Features Screenshot](docs/raptor-features-screenshot.png)
 
+## USER GUIDE
+
+Please refer [User Guide](docs/Raptor%20User%20Guide%20Version%200.6.8.pdf)
+
 ## BUILD
 
 Please refer [BUILD.md](BUILD.md).
