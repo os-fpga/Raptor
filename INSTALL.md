@@ -13,6 +13,7 @@ Raptor is the Rapid Silicon complete FPGA EDA design environment.  The primary u
 | VPR              | Place & Route        | https://github.com/verilog-to-routing   |
 | OpenFPGA         | Bitstream Generation | https://github.com/lnis-uofu/OpenFPGA   |
 | Verilator        | Simulation           | https://github.com/verilator/verilator  |
+| OpenOCD          | Device Programmer    | https://github.com/openocd-org/openocd  |
 
 ----
 ## SYSTEM REQUIREMENTS
