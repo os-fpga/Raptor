@@ -101,15 +101,6 @@ checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--re
 checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} OFF)
 checkout_subsystems(RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} ON)
 
-if (PRODUCTION_BUILD)
-  #get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
-  #      REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-  #add_subdirectory("Raptor_Tools/Flex_LM")
-  get_filename_component(OPENLM_DIR "Raptor_Tools/OpenLM"
-         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-  add_subdirectory(${OPENLM_DIR} OPENLM_DIR)       
-endif()
-
 if(ENABLE_VERIFIC)
   get_filename_component(VERIFIC_HOME "Raptor_Tools/verific_rs"
       REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}" CACHE)
@@ -168,6 +159,15 @@ if (NOT APPLE)
 endif()
 
 add_subdirectory("Raptor_Tools/parser_plugins")
+
+if (PRODUCTION_BUILD)
+  #get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
+  #      REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+  #add_subdirectory("Raptor_Tools/Flex_LM")
+  get_filename_component(OPENLM_DIR "Raptor_Tools/OpenLM"
+         REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+  add_subdirectory(${OPENLM_DIR} OPENLM_DIR)       
+endif()
 
 include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/libs/external/boost)
 
@@ -719,11 +719,13 @@ install(
 #      WORLD_READ WORLD_EXECUTE
 #      )
 #install OpenLM  customer end
-install(
-    PROGRAMS
-        ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/OpenLM/licensecc/install/bin/Raptor/lccinspector
-    DESTINATION ${CMAKE_INSTALL_BINDIR}/OpenLM
-)
+if (PRODUCTION_BUILD)
+  install(
+      PROGRAMS
+          ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/OpenLM/licensecc/install/bin/Raptor/lccinspector
+      DESTINATION ${CMAKE_INSTALL_BINDIR}/OpenLM
+  )
+endif()
 
 install(
   DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/gtkwave DESTINATION ${CMAKE_INSTALL_BINDIR} USE_SOURCE_PERMISSIONS)
