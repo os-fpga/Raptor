@@ -338,7 +338,7 @@ if (PRODUCTION_BUILD)
   #target_include_directories(raptor-bin PUBLIC ${FLEX_LM_SRC_DIR})
   target_include_directories(raptor-bin PUBLIC ${OPENLM_DIR})
   target_link_libraries(raptor-bin PUBLIC rs_licenseManager)
-  target_link_libraries(raptor rs_licenseManager)
+  link_libraries(raptor rs_licenseManager)
 endif()
 
 add_subdirectory(src/ProgrammerGui)
