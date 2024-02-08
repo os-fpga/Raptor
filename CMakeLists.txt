@@ -1,6 +1,6 @@
 # -*- mode:cmake -*-
 
-# Copyright 2021-2023 The RapidSilicon team
+# Copyright 2021-2024 The Rapid Silicon team
 
 cmake_minimum_required(VERSION 3.15)
 
@@ -195,7 +195,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 9)
-set(VERSION_PATCH 33)
+set(VERSION_PATCH 35)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -815,15 +815,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/tests/tcl_examples/
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/tcl_examples/
-#      COMMAND ${CMAKE_COMMAND} -E copy
-#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
-#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-#      COMMAND ${CMAKE_COMMAND} -E copy
-#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
-#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
-#      COMMAND ${CMAKE_COMMAND} -E copy
-#          ${PROJECT_SOURCE_DIR}/Raptor_Tools/Flex_LM/
-#          ${CMAKE_CURRENT_BINARY_DIR}/bin/Flex_LM
    #Genesis Sim Model
       COMMAND ${CMAKE_COMMAND} -E copy_directory
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/
