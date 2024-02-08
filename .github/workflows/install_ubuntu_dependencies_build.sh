@@ -40,6 +40,9 @@ sudo apt install -y \
   libssl-dev \
   libusb-1.0-0-dev \
   pkg-config \
+  libboost-program-options-dev \
+  libboost-date-time-dev \
+  libboost-test-dev  \
   lsb-core
 
 # for cmake warning, Could NOT find WrapVulkanHeaders, install the Vulkan separately by following the instruction from https://vulkan-tutorial.com/Development_environment#page_Vulkan-Packages  
