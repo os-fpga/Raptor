@@ -1,4 +1,4 @@
-`timescale 1ps/1ps
+`timescale 1ns/1ps
 //Overivew
 //========
 //This file contains the verilog primitives produced by VPR's
