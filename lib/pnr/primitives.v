@@ -359,63 +359,6 @@ module single_port_ram #(
    
 endmodule // single_port_RAM
 
-//dual_port_ram module
-(* keep_hierarchy *)
-module dual_port_ram #(
-    parameter ADDR_WIDTH = 1,
-    parameter DATA_WIDTH = 1
-) (
-    input clk,
-
-    input [ADDR_WIDTH-1:0] addr1,
-    input [ADDR_WIDTH-1:0] addr2,
-    input [DATA_WIDTH-1:0] data1,
-    input [DATA_WIDTH-1:0] data2,
-    input we1,
-    input we2,
-    output reg [DATA_WIDTH-1:0] out1,
-    output reg [DATA_WIDTH-1:0] out2
-);
-
-    localparam MEM_DEPTH = 2 ** ADDR_WIDTH;
-
-    reg [DATA_WIDTH-1:0] Mem[MEM_DEPTH-1:0];
-
-`ifndef IVERILOG   
-    specify
-        (clk*>out1)="";
-        (clk*>out2)="";
-        $setup(addr1, posedge clk, "");
-        $setup(addr2, posedge clk, "");
-        $setup(data1, posedge clk, "");
-        $setup(data2, posedge clk, "");
-        $setup(we1, posedge clk, "");
-        $setup(we2, posedge clk, "");
-        $hold(posedge clk, addr1, "");
-        $hold(posedge clk, addr2, "");
-        $hold(posedge clk, data1, "");
-        $hold(posedge clk, data2, "");
-        $hold(posedge clk, we1, "");
-        $hold(posedge clk, we2, "");
-    endspecify
-`endif
-   
-    always@(posedge clk) begin //Port 1
-        if(we1) begin
-            Mem[addr1] = data1;
-        end
-        out1 = Mem[addr1]; //New data read-during write behaviour (blocking assignments)
-    end
-
-    always@(posedge clk) begin //Port 2
-        if(we2) begin
-            Mem[addr2] = data2;
-        end
-        out2 = Mem[addr2]; //New data read-during write behaviour (blocking assignments)
-    end
-   
-endmodule // dual_port_ram
-
 module DFFSRE(
     output reg Q,
     input D,

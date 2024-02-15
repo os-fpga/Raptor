@@ -83,7 +83,6 @@ int main(int argc, char** argv) {
     std::filesystem::path staPath = binpath / "sta";
     std::filesystem::path starsPath = binpath / "stars";
     std::filesystem::path tclPath = binpath / "tclsh8.6";
-    std::filesystem::path powerPath = binpath / "get_power_data.tcl";
     std::filesystem::path raptorPath = binpath / ExecutableName;
     std::filesystem::path bitstreamSettingPath =
         datapath / "etc" / "devices" / "gemini" / "bitstream_annotation.xml";
@@ -100,7 +99,6 @@ int main(int argc, char** argv) {
     opcompiler->StaExecPath(staPath);
     opcompiler->StarsExecPath(starsPath);
     opcompiler->TclExecPath(tclPath);
-    opcompiler->PowerExecPath(powerPath);
     opcompiler->RaptorExecPath(raptorPath);
     opcompiler->OpenFpgaExecPath(openFpgaPath);
     opcompiler->OpenFpgaBitstreamSettingFile(bitstreamSettingPath);

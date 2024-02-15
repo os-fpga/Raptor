@@ -195,7 +195,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 9)
-set(VERSION_PATCH 36)
+set(VERSION_PATCH 38)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -661,9 +661,6 @@ install(
     WORLD_READ WORLD_EXECUTE)
 
 install(
-      FILES FOEDAG_rs/src/Compiler/get_power_data.tcl DESTINATION ${CMAKE_INSTALL_BINDIR})
-
-install(
       FILES  ${CMAKE_CURRENT_BINARY_DIR}/bin/programmer_gui DESTINATION ${CMAKE_INSTALL_BINDIR}
       PERMISSIONS
     OWNER_READ OWNER_EXECUTE OWNER_WRITE
@@ -838,8 +835,6 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
-      COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/FOEDAG_rs/src/Compiler/get_power_data.tcl ${CMAKE_CURRENT_BINARY_DIR}/bin
-
 )
 
 if (WIN OR APPLE)
