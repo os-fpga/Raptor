@@ -180,14 +180,14 @@ jobs:
         make clean  ${{ env.run_tests }}  # make sure we only see installation artifacts
         make test_install ${{ env.run_tests }} 
 
-    - name: Archive regression artifacts
-      if: matrix.mode == 'test/batch_gen2' && always()
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: raptor_gui-linux-gcc-regression
-        path: |
-          ${{ github.workspace }}/build/share/raptor
-          ${{ github.workspace }}/tests/
+#    - name: Archive regression artifacts
+#      if: matrix.mode == 'test/batch_gen2' && always()
+#      uses: actions/upload-artifact@v3.1.0
+#      with:
+#        name: raptor_gui-linux-gcc-regression
+#        path: |
+#          ${{ github.workspace }}/build/share/raptor
+#          ${{ github.workspace }}/tests/
 
     - name: Print server resource
       if: success() || failure()
