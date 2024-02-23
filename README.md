@@ -11,7 +11,7 @@ It can be ran in batch mode or GUI mode with complete Tcl scripting capability.
 
 ## USER GUIDE
 
-Please refer [User Guide](docs/Raptor%20User%20Guide%20Version%200.6.8.pdf)
+Please refer [User Guide](docs/Raptor_User_Guide.pdf)
 
 ## BUILD
 
