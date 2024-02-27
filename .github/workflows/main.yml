@@ -52,7 +52,7 @@ jobs:
            ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
@@ -262,7 +262,7 @@ jobs:
       run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest    
 
     - name: Checkout code
-      uses: actions/checkout@v3       
+      uses: actions/checkout@v4       
 
     - name: Set Device name and Test on/off
       run: |
@@ -439,7 +439,7 @@ jobs:
 #          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Git pull
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install core dependencies
       run: choco install -y swig --side-by-side --version=3.0.12
@@ -605,7 +605,7 @@ jobs:
 #          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
 #          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Build & Test
       run: |
@@ -704,7 +704,7 @@ jobs:
 #          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
 #          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Install dependencies
       uses: jurplel/install-qt-action@v3.0.0
@@ -811,7 +811,7 @@ jobs:
 #          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
 #          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.3
@@ -864,7 +864,7 @@ jobs:
     steps:
 
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -895,7 +895,7 @@ jobs:
           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
 
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: |
