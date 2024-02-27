@@ -65,7 +65,7 @@ jobs:
         pip3 install psutil
 
     - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.3
+      uses: hendrikmuhs/ccache-action@v1.2.12
       with:
         key: linux-${{ matrix.mode }}
 
@@ -714,7 +714,7 @@ jobs:
         modules: 'qtwebengine qtwebchannel qtpositioning'
 
     - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.3
+      uses: hendrikmuhs/ccache-action@v1.2.12
       with:
         key: macos-gcc
 
@@ -814,7 +814,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.3
+      uses: hendrikmuhs/ccache-action@v1.2.12
       with:
         key: macos-clang
 
@@ -907,7 +907,7 @@ jobs:
                                 libusb-1.0-0-dev pkg-config
 
     - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.3
+      uses: hendrikmuhs/ccache-action@v1.2.12
       with:
         key: clang-tidy-codegen
 
