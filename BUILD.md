@@ -47,7 +47,10 @@ Log in to GitHub, navigate to your account settings, click on the SSH and GPG ta
 To check build is successful, run the below command:
 
 ```
-make test/rs_gui
+make test/raptor_gui
+or
+make test/raptor_batch
+
 ```
 If the above command executes successfully, then Raptor is built and ready to use. 
 

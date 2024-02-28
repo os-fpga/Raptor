@@ -136,11 +136,11 @@ else
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
 endif
 
-test/rs: run-cmake-release
-	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+test/raptor_batch: run-cmake-release
+	./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
 
-test/rs_gui: run-cmake-release
-	./build/bin/raptor --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+test/raptor_gui: run-cmake-release
+	./build/bin/raptor --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
 
 test/openfpga: run-cmake-release
 	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
