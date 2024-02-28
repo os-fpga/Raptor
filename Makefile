@@ -1,4 +1,4 @@
-#Copyright (c) 2021-2022 RapiSilicon
+#Copyright (c) 2021-2024 Rapid Silicon
 
 # Use bash as the default shell
 SHELL := /bin/bash
