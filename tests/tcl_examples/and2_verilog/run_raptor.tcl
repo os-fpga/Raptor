@@ -49,6 +49,7 @@ route
 simulate pnr icarus
 
 sta 
-# bitstream 
+power 
+bitstream 
 
 puts "Completed $project_name...\n"
