@@ -160,6 +160,8 @@ test/batch: run-cmake-release
 ifeq ($(RAPTOR_PUB),1)
 else
 	./build/bin/raptor --batch  --script tests/Testcases/and2_verilog/run_raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/and2_wio/run_raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/oneff_wio/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
 # Needs https://github.com/chipsalliance/systemverilog-plugin/issues/1892	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
