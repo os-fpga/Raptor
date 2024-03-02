@@ -36,6 +36,7 @@ simulate rtl icarus
 # Compilation
 puts "Compiling $project_name..."
 analyze
+
 synthesize delay
 
 # Gate Simulation

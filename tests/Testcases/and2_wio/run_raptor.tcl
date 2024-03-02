@@ -14,6 +14,7 @@ add_design_file -V_2001 ./Src/and2.v
 # Top-module can automatically be indentified or implicitly specified here
 set_top_module and2
 add_constraint_file constraints.sdc
+add_constraint_file pin_mapping.pin
 # Simulation
 add_simulation_file ./Src/testbench_and2.v
 set_top_testbench testbench_and2
