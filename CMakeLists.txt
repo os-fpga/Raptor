@@ -115,6 +115,11 @@ if (PRODUCTION_BUILD)
          REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
   add_subdirectory(${OPENLM_DIR} OPENLM_DIR)
   message(STATUS "OPENLM_DIR: "  ${OPENLM_DIR})
+  #dump openlm license file env variable default value
+  file(READ "${CMAKE_CURRENT_SOURCE_DIR}/etc/config.json" JSON_DATA)
+  string(JSON prefixPath GET ${JSON_DATA} general license-path)
+  file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path" "default_path=${prefixPath}\n")
+  file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path" "export LICENSE_LOCATION=$default_path\\;$LICENSE_LOCATION")
 endif()
 
 
