@@ -9,7 +9,7 @@ SCRIPT_PATH=`dirname $BASH_SOURCE`
 RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
 
 [ -f $RAPTOR_PATH/../.raptorenv_lin64.sh ] && source $RAPTOR_PATH/../.raptorenv_lin64.sh
-[ -f $RAPTOR_PATH/default_lic_path ] && source $RAPTOR_PATH/default_lic_path
+[ -f $RAPTOR_PATH/bin/default_lic_path ] && source $RAPTOR_PATH/bin/default_lic_path
 
 if [[ "$RAPTOR_EXE_DEBUG" == "1"   ]]; then
     $RAPTOR_PATH/bin/raptor.exe "$@"
