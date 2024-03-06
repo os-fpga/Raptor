@@ -63,7 +63,7 @@ add_executable(
 target_link_libraries(${subsystem_exe} cfgcommon)
 target_link_libraries(${subsystem_exe} cfgcommonrs)
 target_link_libraries(${subsystem_exe} cfgobject)
-add_dependencies(${subsystem_exe} nlohmann_json)
+add_dependencies(${subsystem_exe} foedag_nlohmann_json)
 target_include_directories(${subsystem_exe} PUBLIC
     ${CFG_PROJECT_ROOT_DIR}
     ${CFG_PROJECT_ROOT_DIR}/FOEDAG_rs/FOEDAG/src/Configuration
