@@ -121,7 +121,7 @@ else
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_verilog/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_verilog/run_raptor.tcl
-# Disable until Verilog read in VPR	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/run_raptor.tcl
+	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/sasc_testcase/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_verilog/run_raptor.tcl
 endif
@@ -164,7 +164,6 @@ else
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff_wio/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
-# Needs https://github.com/chipsalliance/systemverilog-plugin/issues/1892	./build/bin/raptor --batch --mute --script tests/Testcases/vex_soc/raptor_vex_no_carry.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
@@ -185,7 +184,7 @@ else
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/constant/raptor.tcl --batch
 	./build/bin/raptor --batch --mute --script tests/Testcases/double_check/raptor.tcl
-	./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_62x44/ric/virgotc_bank.tcl
+	./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_62x44/ric/periphery.tcl
 endif
 
 test/batch_gen2: run-cmake-release
