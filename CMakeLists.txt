@@ -180,7 +180,9 @@ if (NOT APPLE)
     endif()
 endif()
 
+set(WITH_LIBCXX OFF)
 add_subdirectory("Raptor_Tools/parser_plugins")
+set(WITH_LIBCXX ON)
 
 include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/libs/external/boost)
 
@@ -460,7 +462,7 @@ endif()
 # Make sure openocd_cmake build is done before raptor
 add_dependencies(raptor rs_openocd_extract_config_and_openocd)
 
-add_dependencies(synlig_build yosys)
+add_dependencies(synlig yosys)
 
 if (APPLE)
   # In macOS, it is necessary to add the correct @rpath to the executable for
