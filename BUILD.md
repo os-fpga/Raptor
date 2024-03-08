@@ -22,15 +22,15 @@ Steps to clone and build Raptor
 1. Enable GitHub SSH keys: 
 
 > [!IMPORTANT]
-> Needed to do only once
+> Needed to do only once. You can skip it if you have no intention of contributing back. 
 
    Create an SSH key pair with the command below:
 
 ```bash
    ssh-keygen -t rsa -b 4096 -C "email@example.com"
 ```
-This command will generate a key pair in `$HOME/.ssh` directory. Copy the value of the public SSH key (file with extension .pub) to the clipboard.
-Log in to GitHub, navigate to your account settings, click on the SSH and GPG tab on the left side of the setting page, click Add Key to register the public SSH key with your account. Name the key and paste the copied value into the text field. Save your changes.
+This command will generate a key pair in the `$HOME/.ssh` directory. Copy the value of the public SSH key (file with extension .pub) to the clipboard.
+Log in to GitHub, navigate to your account settings, click on the SSH and GPG tab on the left side of the settings page, and click Add Key to register the public SSH key with your account. Name the key and paste the copied value into the text field. Save your changes.
 
 2. Clone the Raptor repository.
 
@@ -38,7 +38,13 @@ Log in to GitHub, navigate to your account settings, click on the SSH and GPG ta
  git clone git@github.com:os-fpga/Raptor.git
 ```
 
+> [!CAUTION]
+> Raptor has many submodules. Raptor uses CMake to control the checkout of submodules so avoid running `git submodule update --init --recursive` directly to checkout the submodule as it will waste time and may result in unresolved complications. The Raptor_Tools submodule would be left uninitialized in all Raptor submodules.
+
 3. Build the Raptor
+
+> [!TIP]
+> If you are doing Raptor build in WSL or Docker environment then turn off Monaco Editor by adding the flag `MONACO_EDITOR=0` as it is not supported in these environments.
 
 ```
   cd Raptor
@@ -54,6 +60,16 @@ make test/raptor_batch
 ```
 If the above command executes successfully, then Raptor is built and ready to use. 
 
+4. [Optional] After the build, if you want to install it then
+
+> [!NOTE]
+> This will install Raptor in `/usr/local`, so you may need to add sudo. The location can be changed by passing `PREFIX=<any other location as install directory>`.
+
+```
+  make install 
+  make test_install
+```
+
 **For Developers only**
 
 * For debugging c/c++ code, build in Debug mode:
@@ -62,47 +78,36 @@ If the above command executes successfully, then Raptor is built and ready to us
   make debug
 ```
 
-* After the build, if you want to install it to create a production build or need only binaries, then
+## Contributing to Raptor
 
-> [!NOTE]
->     This will install Raptor in `/usr/local`, so you may need to add sudo. The location can be changed by passing `PREFIX=<any other location as install directory>`.
-
-```
-  make install 
-  make test_install
-```
-
-> [!NOTE]
-> During the build, all required submodules would be checked out by CMake, so no need to run `git submodule update --init --recursive` explicitly.
-
-> [!NOTE]
-> The Raptor_Tools submodule would be left uninitialized in all Raptor submodules.
-
-> [!CAUTION]
-> Raptor use CMake to control the checkout of submodules so avoid running `git submodule update --init --recurisve` directly to checkout the submodule as it will waste time and may result in unresolved complications.
-
-  1. Clone the Raptor
-  2. Switch to new branch:
+  1. Fork Raptor
+  2. Clone the Raptor
+  3. Switch to a new branch:
 
   ```
   git checkout -b <branch-name>
   ```
-  3. Checkout submodules:
+  4. Do your changes, do the build as mentioned above, test your changes, push back to your fork, and create a PR
 
+### Updating Submodule at Raptor level
+
+  1. Clone Raptor
+  2. Checkout submodule using the below command:
+      
   ```
   make run-cmake-release
   ```
-  4. Once all the submodules are checked out, then change the directory to the submodule you want to bump like Raptor_Tools or Backend and put its git pointer to the latest commit. For example, to update Backend:
+  3. Once all the submodules are checked out, then change the directory to the submodule you want to bump like Raptor_Tools or Backend, and put its git pointer to the latest commit. For example, to update Backend:
 
   ```
   cd Backend && git checkout main && git pull origin && cd ..
   ```
-  5. Use `git status` command to check your working tree status: what is added for commit, what is modified, what is untracked.
+  4. Use the `git status` command to check your working tree status. What is added for commit, what is modified, and what is untracked?
 
-  6. Now in the Raptor root directory, update the Raptor git to record the new pointer of the submodule. 
+  5. Now in the Raptor root directory, update the Raptor git to record the new pointer of the submodule. 
 
 > [!CAUTION]
-> Always add/committing files/submodules explicitly. Do not use `git commit . -m "MESSAGE"` or `git add .` commands.
+> Always add/commit files/submodules explicitly. Do not use `git commit. -m "MESSAGE"` or `git add .` commands.
 
   For example:
 
@@ -110,14 +115,14 @@ If the above command executes successfully, then Raptor is built and ready to us
   git add Backend
   git commit -m "Bump Backend or any message"
   ```
-  7. It's a good idea to do the build before pushing.
+  6. It's a good idea to do the build before pushing.
 
-  8. Once you are sure, push your changes:
+  7. Once you are sure, push your changes:
 
   ```
-  git push origin --set-upstream <your branch name like EDA-968>
+  git push origin --set-upstream <your branch name>
   ```
 
-  9. After the last command, you should be able to create a Pull Request in the Raptor repository.
+  8. After push, you should be able to create a Pull Request in the Raptor repository.
 
 
