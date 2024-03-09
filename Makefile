@@ -182,7 +182,7 @@ else
 	./build/bin/raptor --batch --mute --script tests/TestIP/axil_gpio/v1_0/axil_gpio.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/reset_release/v1_0/reset_release.tcl
 	./build/bin/raptor --batch --mute --script tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/constant/raptor.tcl --batch
+	./build/bin/raptor --batch --mute --script tests/Testcases/constant/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/double_check/raptor.tcl
 	./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_62x44/ric/periphery.tcl
 endif
@@ -198,6 +198,7 @@ else
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_mixed/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
+	cd tests/Testcases/and_bitstream; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
 solver/tests: release
 ifeq ($(RAPTOR_PUB),1)
