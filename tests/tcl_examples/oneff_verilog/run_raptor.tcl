@@ -11,7 +11,7 @@ add_simulation_file sim_main.cpp
 set_top_testbench syn_tb
 
 # Device target
-target_device 1GE75
+target_device 1VG28
 
 # Compilation/Simulation
 analyze
@@ -22,6 +22,7 @@ simulation_options verilator compilation rtl ""
 simulate rtl verilator syn_tb_rtl.fst
 
 # Synthesis
+synth_options -inferred_io
 synthesize delay
 
 # clean default flags for wrapper

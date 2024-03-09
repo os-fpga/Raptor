@@ -10,7 +10,7 @@ add_simulation_file -VHDL_1993 testbench.vhd
 set_top_testbench tb_counters
 
 # Device target
-target_device 1GE100-ES1
+target_device GEMINI_COMPACT_10x8
 
 # Compilation/Simulation
 analyze

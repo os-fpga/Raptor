@@ -160,6 +160,7 @@ test/batch: run-cmake-release
 ifeq ($(RAPTOR_PUB),1)
 else
 	./build/bin/raptor --batch  --script tests/Testcases/and2_verilog/run_raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/and2_2clks/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_wio/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff_wio/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
@@ -167,7 +168,7 @@ else
 	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
 	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
 	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
-	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl --device 1GE75
+	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl --device 1VG28
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_mt.tcl
 	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_batch.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
@@ -198,13 +199,22 @@ else
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_mixed/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
+endif
+
+# Too large for Github Action
+test/batch_gen3: run-cmake-release
+ifeq ($(RAPTOR_PUB),1)
+else
 	cd tests/Testcases/and2_bitstream; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
+
 solver/tests: release
 ifeq ($(RAPTOR_PUB),1)
 else
-	./build/bin/raptor --batch  --script tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
 endif
+
+test/batch_all: test/batch test/batch_gen2 solver/tests test/batch_gen3
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
