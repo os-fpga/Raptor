@@ -1,6 +1,6 @@
 create_design axi2axilite_bridge_prj
 
-target_device 1GE100-ES1
+target_device 1VG28
 
 #set path here
 

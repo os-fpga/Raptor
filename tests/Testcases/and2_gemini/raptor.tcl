@@ -6,7 +6,7 @@ add_constraint_file pin_mapping.pin
 add_constraint_file constraints.sdc
 
 # Device target
-target_device 1GE100-ES1
+target_device 1VG28
 #bitstream_config_files -bitstream ""
 # Compilation
 analyze
