@@ -198,7 +198,7 @@ else
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter_mixed/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
-	cd tests/Testcases/and_bitstream; ../../../build/bin/raptor --batch --mute --script raptor.tcl
+	cd tests/Testcases/and2_bitstream; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
 solver/tests: release
 ifeq ($(RAPTOR_PUB),1)
