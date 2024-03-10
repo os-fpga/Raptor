@@ -119,7 +119,8 @@ if (PRODUCTION_BUILD)
   file(READ "${CMAKE_CURRENT_SOURCE_DIR}/etc/config.json" JSON_DATA)
   string(JSON prefixPath GET ${JSON_DATA} general license-path)
   file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path" "default_path=${prefixPath}\n")
-  file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path" "export LICENSE_LOCATION=$default_path\\;$LICENSE_LOCATION")
+  file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path" "export LICENSE_LOCATION=$default_path\\;$LICENSE_LOCATION\n")
+  file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path" "RAPTOR_EXE_DEBUG=0\n")
 endif()
 
 

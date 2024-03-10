@@ -7,6 +7,7 @@
 RETURN_PATH=`pwd`
 SCRIPT_PATH=`dirname $BASH_SOURCE`
 RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
+RAPTOR_EXE_DEBUG=1
 
 [ -f $RAPTOR_PATH/../.raptorenv_lin64.sh ] && source $RAPTOR_PATH/../.raptorenv_lin64.sh
 [ -f $RAPTOR_PATH/bin/default_lic_path ] && source $RAPTOR_PATH/bin/default_lic_path
