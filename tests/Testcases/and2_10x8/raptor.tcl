@@ -33,4 +33,4 @@ simulate pnr icarus
 
 sta
 power
-bitstream 
+bitstream write_xml
