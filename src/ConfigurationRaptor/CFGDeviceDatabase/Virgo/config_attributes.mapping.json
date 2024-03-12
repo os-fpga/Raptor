@@ -1,0 +1,55 @@
+{
+  "parameters" : {
+    "I_BUF.WEAK_KEEPER" : {
+      "rules" : {
+        "WEAK_KEEPER" : "__arg0__"
+      },
+      "results" : {
+        "I_BUF" : "WEAK_KEEPER==__arg0__"
+      },
+      "neg_results" : {
+        "I_BUF" : "WEAK_KEEPER==DEFAULT"
+      }
+    },
+    "I_DELAY.DELAY" : {
+      "rules" : {
+        "DELAY" : "__arg0__"
+      },
+      "results" : {
+        "RX_DLY" : "__arg0__"
+      }
+    },
+    "O_DELAY.DELAY" : {
+      "rules" : {
+        "DELAY" : "__arg0__"
+      },
+      "results" : {
+        "TX_DLY" : "__arg0__"
+      }
+    }
+  },
+  "properties" : {
+    "I_BUF.IOSTANDARD" : {
+      "rules" : {
+        "IOSTANDARD" : "__arg0__"
+      },
+      "results" : {
+        "I_BUF" : "IOSTANDARD==__arg0__"
+      },
+      "neg_results" : {
+        "I_BUF" : "IOSTANDARD==LVCMOS_18_HP"
+      }
+    },
+    "O_BUF.IOSTANDARD" : {
+      "rules" : {
+        "IOSTANDARD" : "__arg0__"
+      },
+      "results" : {
+        "O_BUF" : "IOSTANDARD==__arg0__"
+      },
+      "neg_results" : {
+        "O_BUF" : "IOSTANDARD==LVCMOS_18_HP"
+      }
+    }
+  }
+}
