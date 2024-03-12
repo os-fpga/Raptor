@@ -22,7 +22,8 @@
 cmake_minimum_required(VERSION 3.15)
 set(subsystem cfgdevicedatabase)
 set(subsystem_exe cfg_device_database)
-set(subsystem_file ${CFG_BUILD_ROOT_DIR}/share/raptor/configuration/devices.ddb)
+set(configuration_folder ${CFG_BUILD_ROOT_DIR}/share/raptor/configuration)
+set(subsystem_file ${configuration_folder}/devices.ddb)
 project(${subsystem} LANGUAGES CXX)
 add_custom_target(${subsystem}
 	COMMAND echo "***********************"
@@ -91,8 +92,14 @@ add_custom_target(subsystem_file ALL
   COMMAND ${subsystem_exe} ${CMAKE_CURRENT_BINARY_DIR}/configuration.json ${subsystem_file}
 )
 
+add_custom_target(series_folder ALL
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/Virgo ${configuration_folder}/Virgo
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/Gemini ${configuration_folder}/Gemini
+)
+
 add_dependencies(${subsystem} ${subsystem_exe})
 add_dependencies(${subsystem} subsystem_file)
+add_dependencies(${subsystem} series_folder)
 
 ###################
 #
