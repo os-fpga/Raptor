@@ -201,7 +201,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
-set(VERSION_PATCH 12)
+set(VERSION_PATCH 13)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
