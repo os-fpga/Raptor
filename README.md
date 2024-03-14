@@ -56,7 +56,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      clean                    : If project folder already exists, remove recursively folder content
    open_project <file>        : Opens a project
    run_project <file>         : Opens and immediately runs the project
-   target_device <name>       : Targets a device with <name>
+   target_device <name> ?-device_spec <spec file>? : Targets a device with <name>
+       -device_spec <spec file> : Allow specify file with device custom layout
    device_file <file>         : Set file <file> with supported devices which replaces default file (device.xml)
    add_design_file <file list> ?type?   ?-work <libName>?   ?-L <libName>? 
        <type>                 : -VHDL_1987, -VHDL_1993, -VHDL_2000, -VHDL_2008, -VHDL_2019, -V_1995, -V_2001, -SV_2005, -SV_2009, -SV_2012, -SV_2017, default auto-detect 
