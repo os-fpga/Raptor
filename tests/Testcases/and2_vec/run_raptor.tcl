@@ -6,7 +6,7 @@
 #####################################
 
 # Project name
-set project_name and2_wio
+set project_name and2_vec
 
 puts "Creating $project_name..."
 create_design $project_name
