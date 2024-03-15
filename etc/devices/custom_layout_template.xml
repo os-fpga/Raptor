@@ -1,11 +1,8 @@
 <fixed_layout name="${NAME}" width="${WIDTH}" height="${HEIGHT}">
-      <!--Default perimeter to 'io' blocks (then add 'EMPTY' blocks at corners)-->
       <row type="io_top" starty="H-2" priority="90"/>
       <row type="io_bottom" starty="1" priority="91"/>
       <col type="io_right" startx="W-2" priority="92"/>
       <col type="io_left" startx="1" priority="93"/>
-      <!-- <single type="io_right_top" x="82" y="68" priority="94"/> -->
-      <!-- <single type="io_right_bottom" x="82" y="1" priority="95"/> -->
       <corners type="EMPTY" priority="100"/>
       <row type="EMPTY" starty="H-1" priority="101"/>
       <col type="EMPTY" startx="W-1" priority="102"/>
