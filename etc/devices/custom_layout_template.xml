@@ -1,0 +1,17 @@
+<fixed_layout name="${NAME}" width="${WIDTH}" height="${HEIGHT}">
+      <row type="io_top" starty="H-2" priority="90"/>
+      <row type="io_bottom" starty="1" priority="91"/>
+      <col type="io_right" startx="W-2" priority="92"/>
+      <col type="io_left" startx="1" priority="93"/>
+      <corners type="EMPTY" priority="100"/>
+      <row type="EMPTY" starty="H-1" priority="101"/>
+      <col type="EMPTY" startx="W-1" priority="102"/>
+      <row type="EMPTY" starty="0" priority="103"/>
+      <col type="EMPTY" startx="0" priority="104"/>
+      <!--Default to clb-->
+      <fill type="clb" priority="10"/>
+      <!--Insert DSP column(s)-->
+      <!--template_dsp:      <col type="dsp" startx="${STARTX}" starty="2" priority="20"/>-->
+      <!--Insert BRAM column(s)-->
+      <!--template_bram:      <col type="bram" startx="${STARTX}" starty="2" priority="20"/>-->
+</fixed_layout>
