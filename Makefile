@@ -162,6 +162,7 @@ else
 	./build/bin/raptor --batch  --script tests/Testcases/and2_verilog/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_2clks/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_wio/run_raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/and2_vec/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/oneff_wio/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
