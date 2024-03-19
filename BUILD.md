@@ -44,7 +44,7 @@ Log in to GitHub, navigate to your account settings, click on the SSH and GPG ta
 3. Build the Raptor
 
 > [!TIP]
-> If you are doing Raptor build in WSL or Docker environment then turn off Monaco Editor by adding the flag `MONACO_EDITOR=0` as it is not supported in these environments.
+> If you are doing Raptor build in WSL, Docker environment, or using [Remmina remote desktop client](https://github.com/FreeRDP/Remmina) for CentOS 7 GUI then turn off Monaco Editor by adding the flag `MONACO_EDITOR=0` as it is not supported in these environments.
 
 ```
   cd Raptor
