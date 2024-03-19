@@ -73,10 +73,10 @@ proc routability_flow { {number_of_molecules_in_partition 200} {congestion "medi
     analyze
     synthesize delay
     set options ""
+    append options "--use_partitioning_in_pack on --number_of_molecules_in_partition $number_of_molecules_in_partition "
     if [file exists $vpr_constraints_file] {
         append options "--read_vpr_constraints $vpr_constraints_file "
     }
-    append options "--use_partitioning_in_pack on --number_of_molecules_in_partition $number_of_molecules_in_partition "
     if {$congestion == "high"} { 
         append options "--target_ext_pin_util clb:0.6 dsp:1.0,1.0 bram:1.0,1.0 0.8 "
     }
