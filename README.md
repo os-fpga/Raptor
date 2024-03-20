@@ -206,10 +206,11 @@ timing_flow <"default" | "analytic"> : Timing driven compilation flow. This proc
   "analytic"                   : Use timing-driven analytic placement as initial placement. The result is then passed through the simulated annealing (SA) placer.
   "default"                    : Uses VPR's default initial placer (default)
 
-routability_flow <number_of_molecules_in_partition, hmetisPath> : Routability driven compilation flow. This proc accepts two optional arguments:
-  number_of_molecules_in_partition <int>: Average number of molecules in each cluster (default is 200).
-  hmetisPath <file>            : The path to the hmetis executable (default is "~/bin/hmetis")
-  
+routability_flow <number_of_molecules_in_partition "200"> <congestion "medium | high"> <vpr_constraints_file ""> : Routability driven compilation flow. This proc accepts three optional arguments: 
+  - number_of_molecules_in_partition: Average number of molecules in each cluster (default is 200).
+  - congestion: medium, high
+  - initial VPR placement constraints file
+
 congestion_flow <congestion_type> : Congestion driven compilation flow
   "uniform"                    : For uniformely congested high utilization designs
   "hotspot"                    : For hotspots of congestion in moderately utilized designs
