@@ -3,7 +3,8 @@
 	url = https://github.com/os-fpga/yosys_verific_rs.git
 [submodule "FOEDAG_rs"]
 	path = FOEDAG_rs
-	url = https://github.com/os-fpga/FOEDAG_rs.git
+	#url = https://github.com/os-fpga/FOEDAG_rs.git
+	url = https://github.com/w0lek/FOEDAG_rs.git
 [submodule "tests/Jira_Testcase"]
 	path = tests/Jira_Testcase
 	url = https://github.com/os-fpga/Jira_Testcase.git
