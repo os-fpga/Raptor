@@ -310,7 +310,7 @@ jobs:
             source /opt/rh/devtoolset-11/enable  
             cd work && make clean
             run_test=`cat TEST_ON`
-            make release test/batch CPU_CORES=2 $run_test 
+            make release test/batch CPU_CORES=2 $run_test MONACO_EDITOR=0
 
     - name: Regression
       if: matrix.mode == 'regression'
@@ -323,8 +323,8 @@ jobs:
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
             run_test=`cat TEST_ON`
-            make regression CPU_CORES=2 $run_test 
-            make release CPU_CORES=2 $run_test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
+            make regression CPU_CORES=2 $run_test MONACO_EDITOR=0
+            make release CPU_CORES=2 $run_test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch MONACO_EDITOR=0
                         
 
     - name: Production Build
