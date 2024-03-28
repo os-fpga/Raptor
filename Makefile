@@ -24,7 +24,7 @@ ADDITIONAL_CMAKE_OPTIONS ?=
 # make MONACO_EDITOR=0 enables the QScintilla based Editor in place of the WebEngine based Monaco Editor
 MONACO_EDITOR ?= 1
 
-IPA ?= 1
+IPA ?= 0
 
 # If 'on', then the progress messages are printed. If 'off', makes it easier
 # to detect actual warnings and errors  in the build output.
