@@ -8,11 +8,13 @@
 # ------------------------------------------
 # Area driven compilation flow
 proc area_flow { } {
+    analyze
     synthesize area
     packing
     place
     route
     sta
+    power
 }
 
 # ------------------------------------------
@@ -20,6 +22,7 @@ proc area_flow { } {
 # Two options: "uniform" for uniformely congested high utilization designs 
 #              "hotspot" for hotspots of congestion in moderately utilized designs
 proc congestion_flow { {congestion_type "uniform"} } {
+    analyze
     synthesize delay
     packing_options -clb_packing timing_driven
     if {$congestion_type == "uniform"} {
@@ -35,6 +38,7 @@ proc congestion_flow { {congestion_type "uniform"} } {
     place
     route
     sta
+    power
 }
 
 # ------------------------------------------
@@ -47,6 +51,7 @@ proc congestion_flow { {congestion_type "uniform"} } {
 #                     The result is then passed through the simulated annealing (SA) placer.
 #       - 'default': Use VPR's default initial placer (default).
 proc timing_flow { {initial_placer_type "default"} } {
+    analyze
     synthesize delay 
     packing_options -clb_packing timing_driven
     if {$initial_placer_type == "analytic"} {
@@ -56,22 +61,29 @@ proc timing_flow { {initial_placer_type "default"} } {
     place
     route
     sta
+    power
 }
 
-# ------------------------------------------
-# Routability driven compilation flow. This proc accepts two optional arguments: 
+
+# Routability driven compilation flow. This proc accepts three optional arguments: 
 #   - number_of_molecules_in_partition: Average number of molecules in each cluster (default is 200).
-#   - hmetisPath: The path to the hmetis executable (default is "~/bin/hmetis").
-proc routability_flow { {number_of_molecules_in_partition 200} {hmetisPath "~/bin/hmetis"} } {  
-    if {![file exists $hmetisPath]} {
-        puts "The 'hmetis' binary file does not exist at: $hmetisPath"
-        exit 1
-    }
+#   - congestion: medium, high
+#   - initial VPR placement constraints file
+proc routability_flow { {number_of_molecules_in_partition 200} {congestion "medium"} {vpr_constraints_file ""} }  {
+    analyze
     synthesize delay
-    pnr_options --use_partitioning_in_pack on --number_of_molecules_in_partition $number_of_molecules_in_partition  
-    pnr_options --hmetis_path $hmetisPath --target_ext_pin_util clb:0.6 dsp:1.0,1.0 bram:1.0,1.0 0.8
+    set options ""
+    append options "--use_partitioning_in_pack on --number_of_molecules_in_partition $number_of_molecules_in_partition "
+    if [file exists $vpr_constraints_file] {
+        append options "--read_vpr_constraints $vpr_constraints_file "
+    }
+    if {$congestion == "high"} { 
+        append options "--target_ext_pin_util clb:0.6 dsp:1.0,1.0 bram:1.0,1.0 0.8 "
+    }
+    pnr_options $options
     packing
     place
     route
     sta
+    power
 }

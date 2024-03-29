@@ -2,7 +2,6 @@
 
 # Copyright 2021-2024 The Rapid Silicon team
 
-
 cmake_minimum_required(VERSION 3.15)
 
 option(ENABLE_VERIFIC "Enable Verific frontend" OFF)
@@ -202,7 +201,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
-set(VERSION_PATCH 16)
+set(VERSION_PATCH 23)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -627,14 +626,23 @@ install(
         ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/include/tclPlatDecls.h
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raptor/include)
 
-install(
+if(MONACO_EDITOR)  
+  install(
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exeMonacoEmbed
+    DESTINATION ${CMAKE_INSTALL_BINDIR}
+    PERMISSIONS
+    OWNER_READ OWNER_EXECUTE OWNER_WRITE
+    GROUP_READ GROUP_EXECUTE
+    WORLD_READ WORLD_EXECUTE)
+else()
+  install(
     FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exe
     DESTINATION ${CMAKE_INSTALL_BINDIR}
     PERMISSIONS
     OWNER_READ OWNER_EXECUTE OWNER_WRITE
     GROUP_READ GROUP_EXECUTE
     WORLD_READ WORLD_EXECUTE)
-
+endif()
 install(
     DIRECTORY etc/ DESTINATION  ${CMAKE_INSTALL_DATAROOTDIR}/raptor/etc/)
 install(
@@ -890,11 +898,19 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars
         ${CMAKE_CURRENT_BINARY_DIR}/bin/)
-  add_custom_command(TARGET raptor-bin POST_BUILD
-        COMMAND echo "rename raptor binary as raptor.exe"
-        COMMAND ${CMAKE_COMMAND} -E rename
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
-          ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exe)
+  if(MONACO_EDITOR)      
+    add_custom_command(TARGET raptor-bin POST_BUILD
+          COMMAND echo "rename raptor binary as raptor.exeMonacoEmbed"
+          COMMAND ${CMAKE_COMMAND} -E rename
+            ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
+            ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exeMonacoEmbed)
+  else()
+    add_custom_command(TARGET raptor-bin POST_BUILD
+    COMMAND echo "rename raptor binary as raptor.exe"
+    COMMAND ${CMAKE_COMMAND} -E rename
+      ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
+      ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exe)
+  endif()
   add_custom_command(TARGET raptor-bin POST_BUILD
         COMMAND echo "copy to_be_raptor_lnx as raptor"
         COMMAND ${CMAKE_COMMAND} -E copy

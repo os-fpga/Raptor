@@ -310,7 +310,7 @@ jobs:
             source /opt/rh/devtoolset-11/enable  
             cd work && make clean
             run_test=`cat TEST_ON`
-            make release test/batch CPU_CORES=2 $run_test 
+            make release test/batch CPU_CORES=2 $run_test MONACO_EDITOR=0
 
     - name: Regression
       if: matrix.mode == 'regression'
@@ -323,8 +323,8 @@ jobs:
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
             run_test=`cat TEST_ON`
-            make regression CPU_CORES=2 $run_test 
-            make release CPU_CORES=2 $run_test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch
+            make regression CPU_CORES=2 $run_test MONACO_EDITOR=0
+            make release CPU_CORES=2 $run_test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch MONACO_EDITOR=0
                         
 
     - name: Production Build
@@ -345,6 +345,7 @@ jobs:
             d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
             make install CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            make install MONACO_EDITOR=0 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             #export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
             ./Raptor_Tools/OpenLM/licensecc/install/bin/lccgen license issue -p projects/Raptor -f Raptor,$d_test,DE -o build/bin/raptor.lic
             cat build/bin/raptor.lic
