@@ -37,7 +37,7 @@
         "I_BUF" : "IOSTANDARD==__arg0__"
       },
       "neg_results" : {
-        "I_BUF" : "IOSTANDARD==LVCMOS_18_HP"
+        "I_BUF" : "IOSTANDARD==DEFAULT"
       }
     },
     "O_BUF.IOSTANDARD" : {
@@ -48,8 +48,75 @@
         "O_BUF" : "IOSTANDARD==__arg0__"
       },
       "neg_results" : {
-        "O_BUF" : "IOSTANDARD==LVCMOS_18_HP"
+        "O_BUF" : "IOSTANDARD==DEFAULT"
       }
+    }
+  },
+  "__location_validation__" : {
+    "__once__" : {
+      "__args__" : [],
+      "__equation__" : [
+        "hp_banks = ['HP_%d' % i for i in [1, 2]]",
+        "hr_banks = ['HR_%d' % i for i in [1, 2, 3, 5]]",
+        "all_banks = hp_banks + hr_banks",
+        "pin_list = ['%d_%d%c' % (i, i//2, 'N' if i%2 else 'P') for i in range(40)]",
+        "cc_pin_list = ['%d_%d%c' % (i, i//2, 'N' if i%2 else 'P') for i in [10, 11, 28, 29]]",
+        "all_pins = ['%s_%s%s' % (i, 'CC_' if j in cc_pin_list else '', j) for i in all_banks for j in pin_list]",
+        "all_clock_pins = ['%s_CC_%s' % (i, j) for i in all_banks for j in cc_pin_list]"
+      ]
+    },
+    "__seqeunce__" : [
+      "__pin_is_valid__", 
+      "__clock_pin_is_valid__", 
+      "__pin_is_differential__"
+    ],
+    "__pin_is_valid__" : {
+      "__module__" : ["__all__"],
+      "__equation__" : [
+        "pin_result = '__location0__' in all_pins"
+      ]
+    },
+    "__clock_pin_is_valid__" : {
+      "__module__" : ["CLK_BUF"],
+      "__equation__" : [
+        "pin_result = '__location0__' in all_clock_pins"
+      ]
+    },
+    "__pin_is_differential__" : {
+      "__module__" : ["I_BUF_DS", "O_BUF_DS"],
+      "__equation__" : [
+        "import re",
+        "pin_result = '__location0__' in all_pins",
+        "pin_result = pin_result and '__location1__' in all_pins",
+        "m0 = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location0__')",
+        "m1 = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location1__')",
+        "pin_result = pin_result and m0 != None",
+        "pin_result = pin_result and m1 != None",
+        "pin_result = pin_result and len(m0.groups()) == 6",
+        "pin_result = pin_result and len(m1.groups()) == 6",
+        "pin_result = pin_result and m0.group(1) == m1.group(1)",
+        "pin_result = pin_result and m0.group(2) == m1.group(2)",
+        "pin_result = pin_result and m0.group(3) == m1.group(3)",
+        "pin_result = pin_result and m0.group(4) != m1.group(4)",
+        "pin_result = pin_result and m0.group(5) == m1.group(5)",
+        "pin_result = pin_result and m0.group(6) != m1.group(6)"
+      ]
+    }
+  },
+  "__define__" : {
+    "parse_location" : {
+      "__args__" : ["__clkable__", "__type__", "__stype__", "__side__", "__pll_refmux_index__", "__bank__"],
+      "__equation__" : [
+        "import re",
+        "assert '__location__' in all_pins",
+        "m = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location__')",
+        "__clkable__ = '1' if m.group(3) == '_CC' else '0'",
+        "__type__ = 'HP' if m.group(1) == 'P' else 'HV'",
+        "__stype__ = __type__.lower()",
+        "__side__ = 'B' if m.group(1) == 'P' else ('L' if m.group(2) in ['1', '2'] else 'R')",
+        "__pll_refmux_index__ = '0' if __side__ == 'L' else '1'",
+        "__bank__ = '0' if m.group(1) in ['0', '4'] else '1'"
+      ]
     }
   }
 }
