@@ -14,12 +14,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 --- General ---
 ---------------
    help                       : Help
-   chatgpt <command> "<message>" ?-c <path>?: Send message to ChatGPT
-       send                   : Command to send message
-       reset                  : Command to reset history
-       -c <path>              : Specify ini file path with API key. The key needs to be set only once for a session
-                                [OpenAI]
-                                API_KEY: <api key>
 
 ---------------
 --- Project ---
