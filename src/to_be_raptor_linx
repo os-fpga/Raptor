@@ -1,13 +1,12 @@
 #!/bin/bash
 # Raptor environment setup script - 64-bit Linux
-# Copyright(c) 2022 Rapid Silicon
+# Copyright(c) 2021-2024 Rapid Silicon
 # All licenses available in $RAPTOR_PATH/share/raptor/licenses
 # Version 1.0
 
 RETURN_PATH=`pwd`
 SCRIPT_PATH=`dirname $BASH_SOURCE`
 RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
-RAPTOR_EXE_DEBUG=1
 
 [ -f $RAPTOR_PATH/../.raptorenv_lin64.sh ] && source $RAPTOR_PATH/../.raptorenv_lin64.sh
 [ -f $RAPTOR_PATH/bin/default_lic_path ] && source $RAPTOR_PATH/bin/default_lic_path
@@ -33,14 +32,6 @@ else
         RAPTOR_EXE=raptor.exe
 fi
 
-# Uncomment below in case if above condition are not working as expected
-#RAPTOR_EXE=raptor.exe
-
-if [[ "$RAPTOR_EXE_DEBUG" == "1"   ]]; then
-    $RAPTOR_PATH/bin/$RAPTOR_EXE "$@"
-else
-    $RAPTOR_PATH/bin/$RAPTOR_EXE "$@" 2>/dev/null
-fi
-
+$RAPTOR_PATH/bin/$RAPTOR_EXE "$@"
 
 
