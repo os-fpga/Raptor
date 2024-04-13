@@ -61,7 +61,7 @@ yum install -y perl-IPC-Cmd
 yum install -y alsa-lib
 yum install -y boost boost-devel boost-static openssl-static
 yum install -y zlib-static
-yum install -y python3-devel
+yum install -y python3-devel bzip2-devel libffi-devel
 
 ln -s $PWD/cmake-3.28.0-linux-x86_64/bin/ctest /usr/bin/ctest
 
