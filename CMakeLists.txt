@@ -740,11 +740,6 @@ install(
 if (PRODUCTION_BUILD)
   install(
       PROGRAMS
-          ${CMAKE_BINARY_DIR}/OPENLM_DIR/licensecc/src/inspector/lccinspector
-      DESTINATION ${CMAKE_INSTALL_BINDIR}/OpenLM
-  )
-  install(
-      PROGRAMS
           ${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path
       DESTINATION ${CMAKE_INSTALL_BINDIR}
   )
