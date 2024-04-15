@@ -740,11 +740,6 @@ install(
 if (PRODUCTION_BUILD)
   install(
       PROGRAMS
-          ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/OpenLM/licensecc/install/bin/Raptor/lccinspector
-      DESTINATION ${CMAKE_INSTALL_BINDIR}/OpenLM
-  )
-  install(
-      PROGRAMS
           ${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path
       DESTINATION ${CMAKE_INSTALL_BINDIR}
   )
