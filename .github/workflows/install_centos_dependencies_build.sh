@@ -75,6 +75,8 @@ wget https://github.com/os-fpga/post_build_artifacts/releases/download/v0.1/pyth
 tar -xzf python.tar.gz
 mv python3.8 /opt
 rm /opt/python3.8/bin/python3 && ln -sf /opt/python3.8/bin/python3.8 /opt/python3.8/bin/python3
+/opt/python3.8/bin/python3 -m pip install orderedmultidict
+/opt/python3.8/bin/python3 -m pip install psutil
 
 rm -rf qt-for-centos7.tar.gz
 
