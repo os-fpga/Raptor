@@ -61,7 +61,7 @@ yum install -y perl-IPC-Cmd
 yum install -y alsa-lib
 yum install -y boost boost-devel boost-static openssl-static
 yum install -y zlib-static
-yum install -y python3-devel
+yum install -y python3-devel bzip2-devel libffi-devel
 
 ln -s $PWD/cmake-3.28.0-linux-x86_64/bin/ctest /usr/bin/ctest
 
@@ -70,5 +70,13 @@ curl -L https://github.com/os-fpga/post_build_artifacts/releases/download/v0.2/q
 tar -xzf qt-for-centos7.tar.gz
 mv Qt6.2.4 /usr/local/
 yum clean all
+
+wget https://github.com/os-fpga/post_build_artifacts/releases/download/v0.1/python3.8_static_zlib_8march_2023.tar.gz -O python.tar.gz
+tar -xzf python.tar.gz
+mv python3.8 /opt
+rm /opt/python3.8/bin/python3 && ln -sf /opt/python3.8/bin/python3.8 /opt/python3.8/bin/python3
+/opt/python3.8/bin/python3 -m pip install orderedmultidict
+/opt/python3.8/bin/python3 -m pip install psutil
+
 rm -rf qt-for-centos7.tar.gz
 
