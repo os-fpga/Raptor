@@ -11,7 +11,7 @@
         "I_BUF" : "WEAK_KEEPER==DEFAULT"
       }
     },
-    "I_DELAY.DELAY" : {
+    "I_DELAY" : {
       "rules" : {
         "DELAY" : "__arg0__"
       },
@@ -19,12 +19,28 @@
         "RX_DLY" : "__arg0__"
       }
     },
-    "O_DELAY.DELAY" : {
+    "O_DELAY" : {
       "rules" : {
         "DELAY" : "__arg0__"
       },
       "results" : {
         "TX_DLY" : "__arg0__"
+      }
+    },
+    "I_DDR" : {
+      "rules" : {
+        "__location__" : "__arg0__"
+      },
+      "results" : {
+        "I_DDR" : "MODE==DDR"
+      }
+    },
+    "O_DDR" : {
+      "rules" : {
+        "__location__" : "__arg0__"
+      },
+      "results" : {
+        "O_DDR" : "MODE==DDR"
       }
     },
     "PLL.PLLREF_MUX" : {
@@ -140,6 +156,17 @@
         "I_BUF" : "IOSTANDARD==DEFAULT"
       }
     },
+    "I_BUF_DS.IOSTANDARD" : {
+      "rules" : {
+        "IOSTANDARD" : "__arg0__"
+      },
+      "results" : {
+        "I_BUF_DS" : "IOSTANDARD==__arg0__"
+      },
+      "neg_results" : {
+        "I_BUF_DS" : "IOSTANDARD==DEFAULT"
+      }
+    },
     "O_BUF.IOSTANDARD" : {
       "rules" : {
         "IOSTANDARD" : "__arg0__"
@@ -151,6 +178,17 @@
         "O_BUF" : "IOSTANDARD==DEFAULT"
       }
     },
+    "O_BUF_DS.IOSTANDARD" : {
+      "rules" : {
+        "IOSTANDARD" : "__arg0__"
+      },
+      "results" : {
+        "O_BUF_DS" : "IOSTANDARD==__arg0__"
+      },
+      "neg_results" : {
+        "O_BUF_DS" : "IOSTANDARD==DEFAULT"
+      }
+    },
     "O_BUFT.IOSTANDARD" : {
       "rules" : {
         "IOSTANDARD" : "__arg0__"
@@ -160,6 +198,17 @@
       },
       "neg_results" : {
         "O_BUFT" : "IOSTANDARD==DEFAULT"
+      }
+    },
+    "O_BUFT_DS.IOSTANDARD" : {
+      "rules" : {
+        "IOSTANDARD" : "__arg0__"
+      },
+      "results" : {
+        "O_BUFT_DS" : "IOSTANDARD==__arg0__"
+      },
+      "neg_results" : {
+        "O_BUFT_DS" : "IOSTANDARD==DEFAULT"
       }
     },
     "CLK_BUF.FCLK_MUX" : {
