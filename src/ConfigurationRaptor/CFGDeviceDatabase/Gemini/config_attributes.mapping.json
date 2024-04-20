@@ -28,6 +28,7 @@
       }
     },
     "I_DDR" : {
+      "__ready__" : false,
       "rules" : {
         "__location__" : "__arg0__"
       },
@@ -36,6 +37,7 @@
       }
     },
     "O_DDR" : {
+      "__ready__" : false,
       "rules" : {
         "__location__" : "__arg0__"
       },
@@ -44,6 +46,7 @@
       }
     },
     "PLL.PLLREF_MUX" : {
+      "__ready__" : false,
       "rules" : {
         "__location__" : "__arg0__"
       },
@@ -59,6 +62,7 @@
       }
     },
     "PLL.PLL" : {
+      "__ready__" : false,
       "rules" : {
         "PLL_DIV" : "__arg0__",
         "PLL_MULT" : "__arg1__",
@@ -80,6 +84,7 @@
       }
     },
     "PLL.ROOT_MUX0" : {
+      "__ready__" : false,
       "rules" : {
         "__connectivity__" : "CLK_OUT",
         "OUT0_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
@@ -96,6 +101,7 @@
       }
     },
     "PLL.ROOT_MUX1" : {
+      "__ready__" : false,
       "rules" : {
         "__connectivity__" : "CLK_OUT_DIV2",
         "OUT1_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
@@ -112,6 +118,7 @@
       }
     },
     "PLL.ROOT_MUX2" : {
+      "__ready__" : false,
       "rules" : {
         "__connectivity__" : "CLK_OUT_DIV3",
         "OUT2_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
@@ -128,6 +135,7 @@
       }
     },
     "PLL.ROOT_MUX3" : {
+      "__ready__" : false,
       "rules" : {
         "__connectivity__" : "CLK_OUT_DIV4",
         "OUT3_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
@@ -157,6 +165,7 @@
       }
     },
     "I_BUF_DS.IOSTANDARD" : {
+      "__ready__" : false,
       "rules" : {
         "IOSTANDARD" : "__arg0__"
       },
@@ -179,6 +188,7 @@
       }
     },
     "O_BUF_DS.IOSTANDARD" : {
+      "__ready__" : false,
       "rules" : {
         "IOSTANDARD" : "__arg0__"
       },
@@ -190,6 +200,7 @@
       }
     },
     "O_BUFT.IOSTANDARD" : {
+      "__ready__" : false,
       "rules" : {
         "IOSTANDARD" : "__arg0__"
       },
@@ -201,6 +212,7 @@
       }
     },
     "O_BUFT_DS.IOSTANDARD" : {
+      "__ready__" : false,
       "rules" : {
         "IOSTANDARD" : "__arg0__"
       },
@@ -212,6 +224,7 @@
       }
     },
     "CLK_BUF.FCLK_MUX" : {
+      "__ready__" : false,
       "rules" : {
         "__location__" : "__arg0__"
       },
@@ -227,6 +240,7 @@
       }
     },
     "CLK_BUF.GBOX_TOP" : {
+      "__ready__" : false,
       "rules" : {
         "__location__" : "__arg0__"
       },
@@ -235,6 +249,7 @@
       }
     },
     "CLK_BUF.ROOT_BANK_CLKMUX" : {
+      "__ready__" : false,
       "rules" : {
         "__location__" : "__arg0__"
       },
@@ -250,6 +265,7 @@
       }
     },
     "CLK_BUF.ROOT_MUX" : {
+      "__ready__" : false,
       "rules" : {
         "__location__" : "__arg0__",
         "ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
@@ -277,13 +293,13 @@
       "pin_list = ['%d_%d%c' % (i, i//2, 'N' if i%2 else 'P') for i in range(40)]",
       "cc_pin_list = ['%d_%d%c' % (i, i//2, 'N' if i%2 else 'P') for i in [10, 11, 28, 29]]",
       "cc_p_pin_list = [pin for pin in cc_pin_list if pin[-1] == 'P']",
-      "all_pins = ['%s_%s%s' % (i, 'CC_' if j in cc_pin_list else '', j) for i in all_banks for j in pin_list]",
-      "all_clock_pins = ['%s_CC_%s' % (i, j) for i in all_banks for j in cc_p_pin_list]",
-      "all_pll_clock_pins = [pin for pin in all_clock_pins if pin.find('HP_') == 0]",
-      "pin_resource = []",
-      "fabric_clock_resource = 0",
-      "pll_resource = []",
-      "pll_resource_mapping = {}"
+      "g_all_pins = ['%s_%s%s' % (i, 'CC_' if j in cc_pin_list else '', j) for i in all_banks for j in pin_list]",
+      "g_all_clock_pins = ['%s_CC_%s' % (i, j) for i in all_banks for j in cc_p_pin_list]",
+      "g_all_pll_clock_pins = [pin for pin in g_all_clock_pins if pin.find('HP_') == 0]",
+      "g_pin_resources = []",
+      "g_fabric_clock_resources = 0",
+      "g_pll_resources = []",
+      "g_pll_resource_mapping = {}"
     ]
   },
   "__location_validation__" : {
@@ -303,30 +319,30 @@
     "__pin_is_valid__" : {
       "__module__" : ["I_BUF", "O_BUF", "O_BUFT"],
       "__equation__" : [
-        "pin_result = '__location0__' in all_pins"
+        "pin_result = '__location0__' in g_all_pins"
       ]
     },
     "__check_pin_resource__" : {
       "__module__" : ["I_BUF", "O_BUF", "O_BUFT"],
       "__equation__" : [
-        "pin_result = '__location0__' not in pin_resource",
-        "pin_resource.append('__location0__' if pin_result else '')",
-        "pin_resource = [pin for pin in pin_resource if pin != '']" 
+        "pin_result = '__location0__' not in g_pin_resources",
+        "g_pin_resources.append('__location0__' if pin_result else '')",
+        "g_pin_resources = [pin for pin in g_pin_resources if pin != '']" 
       ]
     },
     "__ds_pin_is_valid__" : {
       "__module__" : ["I_BUF_DS", "O_BUF_DS", "O_BUFT_DS"],
       "__equation__" : [
-        "pin_result = '__location0__' in all_pins",
-        "pin_result = pin_result and '__location1__' in all_pins"
+        "pin_result = '__location0__' in g_all_pins",
+        "pin_result = pin_result and '__location1__' in g_all_pins"
       ]
     },
     "__pin_is_differential__" : {
       "__module__" : ["I_BUF_DS", "O_BUF_DS", "O_BUFT_DS"],
       "__equation__" : [
         "import re",
-        "pin_result = '__location0__' in all_pins",
-        "pin_result = pin_result and '__location1__' in all_pins",
+        "pin_result = '__location0__' in g_all_pins",
+        "pin_result = pin_result and '__location1__' in g_all_pins",
         "m0 = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location0__')",
         "m1 = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location1__')",
         "pin_result = pin_result and m0 != None",
@@ -344,46 +360,46 @@
     "__check_ds_pin_resource__" : {
       "__module__" : ["I_BUF_DS", "O_BUF_DS", "O_BUFT_DS"],
       "__equation__" : [
-        "pin_result = '__location0__' not in pin_resource",
-        "pin_result = pin_result and '__location1__' not in pin_resource",
-        "pin_resource.append('__location0__' if pin_result else '')",
-        "pin_resource.append('__location1__' if pin_result else '')",
-        "pin_resource = [pin for pin in pin_resource if pin != '']"
+        "pin_result = '__location0__' not in g_pin_resources",
+        "pin_result = pin_result and '__location1__' not in g_pin_resources",
+        "g_pin_resources.append('__location0__' if pin_result else '')",
+        "g_pin_resources.append('__location1__' if pin_result else '')",
+        "g_pin_resources = [pin for pin in g_pin_resources if pin != '']"
       ]
     },
     "__clock_pin_is_valid__" : {
       "__module__" : ["CLK_BUF"],
       "__equation__" : [
-        "pin_result = '__location0__' in all_clock_pins"
+        "pin_result = '__location0__' in g_all_clock_pins"
       ]
     },
     "__pll_clock_pin_is_valid__" : {
       "__module__" : ["PLL"],
       "__equation__" : [
-        "pin_result = '__location0__' in all_pll_clock_pins"
+        "pin_result = '__location0__' in g_all_pll_clock_pins"
       ]
     },
     "__check_fabric_clock_resource__" : {
       "__module__" : ["CLK_BUF", "PLL"],
       "__connectivity__" : ["O", "CLK_OUT", "CLK_OUT_DIV2", "CLK_OUT_DIV3", "CLK_OUT_DIV4"],
       "__equation__" : [
-        "pin_result = (__connectivity_count__ + fabric_clock_resource) <= MAX_FABRIC_CLOCK_RESOURCE"
+        "pin_result = (__connectivity_count__ + g_fabric_clock_resources) <= MAX_FABRIC_CLOCK_RESOURCE"
       ]
     },
     "__check_pll_clock_pin_resource__" : {
       "__module__" : ["PLL"],
       "__equation__" : [
-        "pin_result = '__location0__' not in pll_resource",
-        "pin_result = pin_result and len(pll_resource) < MAX_PLL_RESOURCE",
-        "pll_resource.append('__location0__' if pin_result else '')",
-        "pll_resource = [pin for pin in pll_resource if pin != '']" 
+        "pin_result = '__location0__' not in g_pll_resources",
+        "pin_result = pin_result and len(g_pll_resources) < MAX_PLL_RESOURCE",
+        "g_pll_resources.append('__location0__' if pin_result else '')",
+        "g_pll_resources = [pin for pin in g_pll_resources if pin != '']" 
       ]
     },
     "__allocate_pll_clock_pin_resource__" : {
       "__module__" : ["PLL"],
       "__resource__" : true,
       "__equation__" : [
-        "assert '__location0__' in all_pll_clock_pins",
+        "assert '__location0__' in g_all_pll_clock_pins",
         "import re",
         "m = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location0__')",
         "__type__ = 'HP' if m.group(1) == 'P' else 'HV'",
@@ -395,19 +411,19 @@
         "__total_resource__ = MAX_PLL_RESOURCE"
       ],
       "__if_resource_pass__" : [
-        "pll_resource_mapping = __updated_resource__"
+        "g_pll_resource_mapping = __updated_resource__"
       ],
       "__if_resource_fail__" : [
-        "assert len(pll_resource)",
-        "del pll_resource[-1]"
+        "assert len(g_pll_resources)",
+        "del g_pll_resources[-1]"
       ]
     },
     "__update_fabric_clock_resource__" : {
       "__module__" : ["CLK_BUF", "PLL"],
       "__connectivity__" : ["O", "CLK_OUT", "CLK_OUT_DIV2", "CLK_OUT_DIV3", "CLK_OUT_DIV4"],
       "__equation__" : [
-        "assert ((__connectivity_count__ + fabric_clock_resource) <= MAX_FABRIC_CLOCK_RESOURCE)",
-        "fabric_clock_resource += __connectivity_count__"
+        "assert ((__connectivity_count__ + g_fabric_clock_resources) <= MAX_FABRIC_CLOCK_RESOURCE)",
+        "g_fabric_clock_resources += __connectivity_count__"
       ]
     }
   },
@@ -416,7 +432,7 @@
       "__args__" : ["__type__", "__stype__", "__bank__"],
       "__equation__" : [
         "import re",
-        "assert '__location__' in all_pins",
+        "assert '__location__' in g_all_pins",
         "m = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location__')",
         "__type__ = 'HP' if m.group(1) == 'P' else 'HV'",
         "__stype__ = __type__.lower()",
@@ -426,39 +442,39 @@
     "parse_pll_resource" : {
       "__args__" : ["__pll_resource__"],
       "__equation__" : [
-        "assert '__location__' in pll_resource_mapping",
-        "__pll_resource__ = '%d' % pll_resource_mapping['__location__']"
+        "assert '__location__' in g_pll_resource_mapping",
+        "__pll_resource__ = '%d' % g_pll_resource_mapping['__location__']"
       ]    
     },
     "parse_pll_root_mux0" : {
       "__args__" : ["__pll_root_mux_sel__"],
       "__equation__" : [
-        "assert '__location__' in pll_resource_mapping",
-        "__pll_root_mux_sel__ = 32 + (pll_resource_mapping['__location__'] * 4) + 0",
+        "assert '__location__' in g_pll_resource_mapping",
+        "__pll_root_mux_sel__ = 32 + (g_pll_resource_mapping['__location__'] * 4) + 0",
         "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
       ] 
     },
     "parse_pll_root_mux1" : {
       "__args__" : ["__pll_root_mux_sel__"],
       "__equation__" : [
-        "assert '__location__' in pll_resource_mapping",
-        "__pll_root_mux_sel__ = 32 + (pll_resource_mapping['__location__'] * 4) + 1",
+        "assert '__location__' in g_pll_resource_mapping",
+        "__pll_root_mux_sel__ = 32 + (g_pll_resource_mapping['__location__'] * 4) + 1",
         "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
       ] 
     },
     "parse_pll_root_mux2" : {
       "__args__" : ["__pll_root_mux_sel__"],
       "__equation__" : [
-        "assert '__location__' in pll_resource_mapping",
-        "__pll_root_mux_sel__ = 32 + (pll_resource_mapping['__location__'] * 4) + 2",
+        "assert '__location__' in g_pll_resource_mapping",
+        "__pll_root_mux_sel__ = 32 + (g_pll_resource_mapping['__location__'] * 4) + 2",
         "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
       ] 
     },
     "parse_pll_root_mux3" : {
       "__args__" : ["__pll_root_mux_sel__"],
       "__equation__" : [
-        "assert '__location__' in pll_resource_mapping",
-        "__pll_root_mux_sel__ = 32 + (pll_resource_mapping['__location__'] * 4) + 3",
+        "assert '__location__' in g_pll_resource_mapping",
+        "__pll_root_mux_sel__ = 32 + (g_pll_resource_mapping['__location__'] * 4) + 3",
         "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
       ] 
     }
