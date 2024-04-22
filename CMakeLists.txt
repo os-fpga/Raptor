@@ -201,7 +201,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
-set(VERSION_PATCH 32)
+set(VERSION_PATCH 39)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -738,11 +738,6 @@ install(
 #      )
 #install OpenLM  customer end
 if (PRODUCTION_BUILD)
-  install(
-      PROGRAMS
-          ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/OpenLM/licensecc/install/bin/Raptor/lccinspector
-      DESTINATION ${CMAKE_INSTALL_BINDIR}/OpenLM
-  )
   install(
       PROGRAMS
           ${CMAKE_CURRENT_BINARY_DIR}/bin/default_lic_path
