@@ -1,11 +1,22 @@
 <device_list>
     <device name="MPW1" series="Gemini" family="Internal-Gemini" package="SBG484" pin_count="44" speedgrade="1" core_voltage="0.8V">
-        <resource type="io" num="44"/>
+        <resource type="io" num="320"/>
         <resource type="lut" num="160"/>
         <resource type="ff" num="320"/>
         <resource type="bram" num="0"/>
         <resource type="dsp" num="0"/>
         <resource type="carry_length" num="32"/>
+        <resource type="clock" num="4"/>
+        <resource type="pll" num="1"/>
+        <resource type="hr_io" num="80"/>
+        <resource type="hp_io" num="0"/>
+        <resource type="soc_io" num="0"/>
+        <resource type="usb" num="0"/>
+        <resource type="ddr" num="0"/>
+        <resource type="i2c" num="0"/>
+        <resource type="uart" num="0"/>
+        <resource type="jtag" num="0"/>
+        <resource type="pwm" num="0"/>
         <internal type="vpr_arch" file="devices/mpw1/TSMC22nm_vpr.xml"/>
         <internal type="device_size" name="16x16"/>
         <internal type="openfpga_arch" file="devices/mpw1/TSMC22nm_openfpga.xml"/>
