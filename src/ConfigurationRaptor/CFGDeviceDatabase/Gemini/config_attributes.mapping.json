@@ -275,7 +275,6 @@
       "all_banks = hp_banks + hr_banks",
       "pin_list = ['%d_%d%c' % (i, i//2, 'N' if i%2 else 'P') for i in range(40)]",
       "cc_pin_list = ['%d_%d%c' % (i, i//2, 'N' if i%2 else 'P') for i in [10, 11, 28, 29]]",
-      "print(cc_pin_list)",
       "cc_p_pin_list = [pin for pin in cc_pin_list if pin[-1] == 'P']",
       "g_all_pins = ['%s_%s%s' % (i, 'CC_' if j in cc_pin_list else '', j) for i in all_banks for j in pin_list]",
       "g_all_clock_pins = ['%s_CC_%s' % (i, j) for i in all_banks for j in cc_p_pin_list]",
