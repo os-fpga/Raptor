@@ -1,6 +1,6 @@
 
-set_property mode Mode_BP_SDR_A_RX HP_1_CC_28_14P
-set_pin_loc a HP_1_CC_28_14P
+set_property mode Mode_BP_SDR_A_RX HR_1_CC_18_9P
+set_pin_loc a HR_1_CC_18_9P
 
 set_property mode Mode_BP_SDR_A_RX HP_1_26_13P
 set_pin_loc b HP_1_26_13P
