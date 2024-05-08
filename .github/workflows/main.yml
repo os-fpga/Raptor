@@ -83,16 +83,15 @@ jobs:
         event_type=`echo ${{ github.event_name }}`
         if [ ${{ github.repository_owner }} == 'os-fpga' ]
         then
-                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
-                #echo 'p_devices=MPW1' >> $GITHUB_ENV
-                echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
         else
                 echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
-                echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
         fi
         if [ $event_type == 'workflow_dispatch' ]
         then
                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
+        else
+              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
         fi
 
     - name: Show shell configuration
