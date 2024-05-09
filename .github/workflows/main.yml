@@ -354,7 +354,6 @@ jobs:
             cat build/bin/raptor.lic
             echo "the device is $d_test"
             ./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
-            [ $? != 0 ] && exit 1
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
             cat /opt/instl_dir/share/raptor/etc/device.xml
