@@ -162,7 +162,7 @@ jobs:
         ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen license issue -p projects/Raptor -f Raptor,$d_test,DE -o build/bin/raptor.lic
         cat build/bin/raptor.lic
         echo "the device is $d_test"
-        ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
+        ./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
 
     - name: Valgrind & Debug
       if: matrix.mode == 'valgrind'
@@ -269,17 +269,16 @@ jobs:
           if [ ${{ github.repository_owner }} == 'os-fpga' ]
           then
                 echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
-                echo 'p_devices=MPW1' >> $GITHUB_ENV
           else
                 echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
-                echo 'p_devices=${{ secrets.DefaultDevice }}' >> $GITHUB_ENV
           fi
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-          fi
-          
+          else
+              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+          fi          
       
     - name: Checkout Subsystem
       run: |
@@ -345,14 +344,17 @@ jobs:
             d_test=$(echo "$p_device" | cut -d ',' -f 1)
             mkdir /opt/instl_dir
             make install CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            [ $? != 0 ] && exit 1
             echo "2nd compilation"
             rm -rvf build/FOEDAG_rs
             make install MONACO_EDITOR=0 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            [ $? != 0 ] && exit 1
             #export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
             ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen license issue -p projects/Raptor -f Raptor,$d_test,DE -o build/bin/raptor.lic
             cat build/bin/raptor.lic
             echo "the device is $d_test"
-            ./build/bin/raptor --batch --mute --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
+            ./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
+            [ $? != 0 ] && exit 1
             export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
             cat /opt/instl_dir/share/raptor/etc/device.xml
