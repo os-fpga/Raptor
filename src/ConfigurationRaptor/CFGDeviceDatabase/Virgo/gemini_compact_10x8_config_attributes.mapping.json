@@ -11,6 +11,17 @@
         "I_BUF" : "WEAK_KEEPER==DEFAULT"
       }
     },
+    "I_BUF_DS.DIFFERENTIAL_TERMINATION" : {
+      "rules" : {
+        "DIFFERENTIAL_TERMINATION" : ["FALSE", "OFF", "0"]
+      },
+      "results" : {
+        "DFODTEN" : "DF_odt_disable"
+      },
+      "neg_results" : {
+        "DFODTEN" : "DF_odt_enable"
+      }
+    },
     "I_DELAY" : {
       "rules" : {
         "DELAY" : "__arg0__"
@@ -41,6 +52,39 @@
       },
       "results" : {
         "O_DDR" : "MODE==DDR"
+      }
+    },
+    "I_SERDES.DDR_MODE" : {
+      "rules" : {
+        "DATA_RATE" : "__arg0__"
+      },
+      "results" : {
+        "I_SERDES" : "DDR_MODE==__arg0__"
+      },
+      "neg_results" : {
+        "I_SERDES" : "DDR_MODE==SDR"
+      }
+    },
+    "I_SERDES.DPA_MODE" : {
+      "rules" : {
+        "DPA_MODE" : "__arg0__"
+      },
+      "results" : {
+        "I_SERDES" : "DPA_MODE==__arg0__"
+      },
+      "neg_results" : {
+        "I_SERDES" : "DPA_MODE==NONE"
+      }
+    },
+    "O_SERDES.DDR_MODE" : {
+      "rules" : {
+        "DATA_RATE" : "__arg0__"
+      },
+      "results" : {
+        "O_SERDES" : "DDR_MODE==__arg0__"
+      },
+      "neg_results" : {
+        "O_SERDES" : "DDR_MODE==SDR"
       }
     },
     "BOOT_CLOCK" : {
@@ -99,13 +143,14 @@
     "PLL.ROOT_MUX0" : {
       "rules" : {
         "__connectivity__" : "CLK_OUT",
-        "OUT0_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
+        "__index__" : "__argIndex{default:0}__",
+        "OUT0_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
         "__other__" : [
           {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg1__",
-            "__define__" : "parse_pll_root_mux0",
+            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+            "__define__" : "parse_pll_root_mux",
             "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
           }
         ]
@@ -114,13 +159,14 @@
     "PLL.ROOT_MUX1" : {
       "rules" : {
         "__connectivity__" : "CLK_OUT_DIV2",
-        "OUT1_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
+        "__index__" : "__argIndex{default:1}__",
+        "OUT1_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
         "__other__" : [
           {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg1__",
-            "__define__" : "parse_pll_root_mux1",
+            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+            "__define__" : "parse_pll_root_mux",
             "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
           }
         ]
@@ -129,13 +175,14 @@
     "PLL.ROOT_MUX2" : {
       "rules" : {
         "__connectivity__" : "CLK_OUT_DIV3",
-        "OUT2_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
+        "__index__" : "__argIndex{default:2}__",
+        "OUT2_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
         "__other__" : [
           {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg1__",
-            "__define__" : "parse_pll_root_mux2",
+            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+            "__define__" : "parse_pll_root_mux",
             "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
           }
         ]
@@ -144,13 +191,14 @@
     "PLL.ROOT_MUX3" : {
       "rules" : {
         "__connectivity__" : "CLK_OUT_DIV4",
-        "OUT3_ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
+        "__index__" : "__argIndex{default:3}__",
+        "OUT3_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
         "__other__" : [
           {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg1__",
-            "__define__" : "parse_pll_root_mux3",
+            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+            "__define__" : "parse_pll_root_mux",
             "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
           }
         ]
@@ -234,7 +282,8 @@
     },
     "CLK_BUF.ROOT_BANK_CLKMUX" : {
       "rules" : {
-        "__location__" : "__arg0__"
+        "__location__" : "__arg0__",
+        "ROUTE_TO_FABRIC_CLK" : "__arg1__"
       },
       "results" : {
         "__other__" : [
@@ -252,7 +301,7 @@
     "CLK_BUF.ROOT_MUX" : {
       "rules" : {
         "__location__" : "__arg0__",
-        "ROUTE_TO_FABRIC_CLK" : "__arg1{default:0}__"
+        "ROUTE_TO_FABRIC_CLK" : "__arg1__"
       },
       "results" : {
         "__other__" : [
@@ -436,31 +485,10 @@
         "__postdiv2__ = str((int('__argPOST_DIV__', 0)) & 0x7)"
       ]
     },
-    "parse_pll_root_mux0" : {
+    "parse_pll_root_mux" : {
       "__args__" : ["__pll_root_mux_sel__"],
       "__equation__" : [
-        "__pll_root_mux_sel__ = 32 + (int('__pll_resource__') * 4) + 0",
-        "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
-      ] 
-    },
-    "parse_pll_root_mux1" : {
-      "__args__" : ["__pll_root_mux_sel__"],
-      "__equation__" : [
-        "__pll_root_mux_sel__ = 32 + (int('__pll_resource__') * 4) + 1",
-        "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
-      ] 
-    },
-    "parse_pll_root_mux2" : {
-      "__args__" : ["__pll_root_mux_sel__"],
-      "__equation__" : [
-        "__pll_root_mux_sel__ = 32 + (int('__pll_resource__') * 4) + 2",
-        "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
-      ] 
-    },
-    "parse_pll_root_mux3" : {
-      "__args__" : ["__pll_root_mux_sel__"],
-      "__equation__" : [
-        "__pll_root_mux_sel__ = 32 + (int('__pll_resource__') * 4) + 3",
+        "__pll_root_mux_sel__ = 32 + (int('__pll_resource__') * 4) + __argIndex__",
         "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
       ] 
     }
