@@ -160,7 +160,8 @@ jobs:
         #export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
         d_test=$(echo "${{ env.p_devices }}" | cut -d ',' -f 1)
         ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen license issue -p projects/Raptor -f Raptor,$d_test,DE -o build/bin/raptor.lic
-        cat build/bin/raptor.lic
+        export LICENSE_LOCATION=$(pwd)/build/bin/raptor.lic
+        cat $LICENSE_LOCATION
         echo "the device is $d_test"
         ./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
 
