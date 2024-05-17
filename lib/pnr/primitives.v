@@ -120,8 +120,6 @@
 //  vsim -t 1ps -L rtl_work -L work -voptargs="+acc" +sdf_verbose +bitblast tb
 
 
-
-
 //K-input Look-Up Table
 module LUT_K #(
     //The Look-up Table size (number of inputs)
@@ -147,8 +145,60 @@ module LUT_K #(
         (in *> out) = (T1, T2);
     endspecify
 `endif
-   
-    assign out = LUT_MASK[in];
+
+    generate
+        if (K == 1) begin
+            LUT1 #(
+                    .INIT_VALUE(LUT_MASK)
+                )lut_1 (
+                .A(in),
+                .Y(out)
+            );
+        end
+        else if (K == 2) begin
+            LUT2 #(
+                    .INIT_VALUE(LUT_MASK)
+                )lut_2 (
+                .A(in),
+                .Y(out)
+            );
+        end
+        else if (K == 3) begin
+            LUT3 #(
+                    .INIT_VALUE(LUT_MASK)
+                )lut_3 (
+                .A(in),
+                .Y(out)
+            );
+        end
+        else if (K == 4) begin
+            LUT4 #(
+                    .INIT_VALUE(LUT_MASK)
+                )lut_4 (
+                .A(in),
+                .Y(out)
+            );
+        end
+        else if (K == 5) begin
+            LUT5 #(
+                    .INIT_VALUE(LUT_MASK)
+                )lut_5 (
+                .A(in),
+                .Y(out)
+            );
+        end
+        else if (K == 6) begin
+            LUT6 #(
+                    .INIT_VALUE(LUT_MASK)
+                )lut_6 (
+                .A(in),
+                .Y(out)
+            );
+        end
+        else  begin
+            assign out = LUT_MASK[in];
+        end
+    endgenerate
 
 endmodule
 
