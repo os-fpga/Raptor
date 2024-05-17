@@ -196,7 +196,7 @@ module LUT_K #(
             );
         end
         else  begin
-            assign out = LUT_MASK[in];
+            $error("Error in LUT_K: Parameter K is out of bounds. Valid range: 1 to 6.");
         end
     endgenerate
 
