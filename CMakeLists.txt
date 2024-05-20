@@ -454,7 +454,6 @@ else ()
   add_dependencies(raptor-bin libopenfpga)
   add_dependencies(raptor-bin openfpga)
   add_dependencies(raptor-bin vpr)
-  add_dependencies(raptor-bin pin_c)
   add_dependencies(raptor-bin stars)
 endif()
 
@@ -886,9 +885,6 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-        ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars
