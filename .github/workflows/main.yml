@@ -90,7 +90,10 @@ jobs:
         if [ $event_type == 'workflow_dispatch' ]
         then
                echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-        else
+        elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
+        then
+              echo 'p_devices=MPW1' >> $GITHUB_ENV
+        else     
               echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
         fi
 
@@ -276,9 +279,12 @@ jobs:
           event_type=`echo ${{ github.event_name }}`
           if [ $event_type == 'workflow_dispatch' ]
           then
-               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-          else
-              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+                 echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
+          elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
+          then
+                echo 'p_devices=MPW1' >> $GITHUB_ENV
+          else     
+                echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
           fi          
       
     - name: Checkout Subsystem
