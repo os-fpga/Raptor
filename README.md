@@ -132,7 +132,8 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        late                   : Perform late extraction
      -fast                    : Perform the fastest synthesis. QoR can be impacted.
      -no_flatten              : Do not flatten design.
-     -no_simplify             : Do not run special simplification algorithms in synthesis. 
+     -no_simplify             : Do not run special simplification algorithms in synthesis.
+     -keep_tribuf             : Keeps I/O tristate buffers 
    set_limits <type> <int>    : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
        dsp                    : Maximum number of usable DSPs
        bram                   : Maximum number of usable BRAMs
