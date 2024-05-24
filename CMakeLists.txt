@@ -201,7 +201,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
-set(VERSION_PATCH 43)
+set(VERSION_PATCH 64)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -454,7 +454,6 @@ else ()
   add_dependencies(raptor-bin libopenfpga)
   add_dependencies(raptor-bin openfpga)
   add_dependencies(raptor-bin vpr)
-  add_dependencies(raptor-bin pin_c)
   add_dependencies(raptor-bin stars)
 endif()
 
@@ -886,9 +885,6 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/openfpga/openfpga
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-        ${PROJECT_SOURCE_DIR}/Backend/pin_c/pin_c
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/stars/stars

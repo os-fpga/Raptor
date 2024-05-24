@@ -6,8 +6,8 @@ Build Locally on Your Machine:
 
 Once your local machine is ready, please take into account the dependencies listed below. If you are unsure about the package installation status, go to the Raptor repository on GitHub by clicking [here](https://github.com/os-fpga/Raptor) and install the Raptor build dependencies by running the appropriate script:
 
-- [Ubuntu dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_ubuntu_dependencies_build.sh)
-- [Centos dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_centos_dependencies_build.sh)
+- Ubuntu 22.04 or later : [Ubuntu dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_ubuntu_dependencies_build.sh)
+- CentOS 7 : [Centos dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_centos_dependencies_build.sh)
 - Not fully supported [MacOS dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/install_macos_dependencies_build.sh)
 - Not fully supported [Windows Msys2 dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/main.yml)
 - Not fully supported [Windows MSVC dependencies](https://github.com/os-fpga/Raptor/blob/main/.github/workflows/main.yml)

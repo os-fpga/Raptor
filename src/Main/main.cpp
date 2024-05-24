@@ -79,7 +79,7 @@ int main(int argc, char** argv) {
     std::filesystem::path vprPath = binpath / "vpr";
     std::filesystem::path finalizePath = binpath / "finalize";
     std::filesystem::path openFpgaPath = binpath / "openfpga";
-    std::filesystem::path pinConvPath = binpath / "pin_c";
+    std::filesystem::path pinConvPath = binpath / "stars";
     std::filesystem::path staPath = binpath / "sta";
     std::filesystem::path starsPath = binpath / "stars";
     std::filesystem::path tclPath = binpath / "tclsh8.6";
