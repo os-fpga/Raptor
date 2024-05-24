@@ -697,7 +697,7 @@ if (NOT PRODUCTION_BUILD)
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
   install(
-      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
+      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/genesis/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis/)
   install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/cell_sim_blackbox.v
@@ -713,7 +713,7 @@ install(
       FILES ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
 install(
-      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
+      FILES ${PROJECT_SOURCE_DIR}/lib/pnr/genesis3/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
 
 install(
@@ -834,7 +834,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis/
       COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
+          ${PROJECT_SOURCE_DIR}/lib/pnr/genesis/primitives.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis/
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys-rs-plugin/genesis/cell_sim_blackbox.v
@@ -847,7 +847,7 @@ add_custom_command(TARGET raptor-bin POST_BUILD
           ${PROJECT_SOURCE_DIR}/yosys_verific_rs/yosys/share/simlib.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
       COMMAND ${CMAKE_COMMAND} -E copy
-          ${PROJECT_SOURCE_DIR}/lib/pnr/primitives.v
+          ${PROJECT_SOURCE_DIR}/lib/pnr/genesis3/primitives.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
 )
 
