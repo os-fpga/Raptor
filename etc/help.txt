@@ -265,39 +265,71 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
 --- OCLA Debugger ---
 ---------------------
    debugger <command>
-     list_cable ?-v?            : List all connected USB cables
-       -v                       : Verbose mode. Display additional information of list_cable output
-     list_device ?-b <cable name/index>? ?-v?: List all available devices or specified cable devices
-       -b <cable_name/index>    : Specify the cable name or index
-       -v                       : Verbose mode. Display additional information of list_device output
-     info -b <cable name/index> : Examine all OCLA instances characteristic and current configuration on a specified cable
-       -b <cable_name/index>    : Specify the cable name or index
-     load -f <filepath>         : Start a debugging session with user design specified in a .bitasm file
+     list_cable ?-v?            : To display all the connected/detected cables.
+       -v                       : Display additional information of list_cable output
+     list_device ?-v?           : To display list of connected devices to each connected/detected cable.
+       -v                       : Display additional information of list_device output
+     info ?-b <cable name/index>? ?-d <device index>? : Command to display all probe information in the user design parsed from the .bitasm file. And the current OCLA global and trigger configuration.
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     load -f <filepath>         : Start a debugging session with user design specified in a .bitasm file.
        -f                       : Specify user design .bitasm file to start debugging
-     unload                     : Stop the debugging session and clear the loaded OCLA information
-     config -b <cable_name/index> -i <n> ?--m <mode>? ?-t <bool>? ?-s <size>?: Configure the trigger mode and behaviors of a specified OCLA instance
-       -b <cable_name/index>    : Specify the cable name or index
-       -i <n>                   : Specify the index of the OCLA instance to configure
-       -m <mode>                : Configure the trigger mode of the OCLA instance
-       -s <size>                : Configure the number of samples data to acquire
-       -t <bool>                : Configure the global trigger Boolean condition
-     config_channel -b <cable_name/index> -i <n> -c <m> ?-t <type>? ?-e <event>? -p <signal name> ?-v value?: Configure a trigger channel type, event and probe signal to monitor in a specified OCLA instance
-       -b <cable_name/index>    : Specify the cable name or index
-       -i <n>                   : Specify the index of the OCLA instance to configure
-       -c <m>                   : Specify the channel to configure
-       -t <type>                : Configure the trigger type
-       -e <event>               : Configure the trigger event
-       -v <signal name>         : Compare value (Only required for value_compare trigger type)
-       -p <value>               : Configure a probe / signal to monitor
-     start -b <cable_name/index> -i <n> ?-t <seconds>? ?-o <output filepath>?: Start OCLA and show signal waveform in GTKWave when trigger hit
-       -b <cable_name/index>    : Specify the cable name or index
-       -i <n>                   : Specify the index of the OCLA instance to configure
-       -t <seconds>             : Specify command timeout in second
-       -o <output filepath>     : Specify the ouput filepath to write the FST waveform output
-     status -b <cable_name/index> -i <n>: Show current data available status of the IP 
-       -b <cable_name/index>    : Specify the cable name or index
-       -i <n>                   : Specify the index of the OCLA instance to configure
-     show_waveform ?-i <input filepath>?: Show signal waveform in a specified FST file in GTKWave 
-       -i <input filepath>      : Specific the input filepath to open in GTKWave
+     unload                     : Stop the debugging session and clear the loaded OCLA information.
+     config -n <clock domain id> ?-m <trigger mode>? ?-s <sample size>? ?-t <boolean condition>? ?-b <cable name/index>? ?-d <device index>? : To configure the global operation modes of a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -m <trigger mode>        : Trigger mode
+       -s <sample size>         : Sample size to acquire (set to 0 to use memory depth as sample size)
+       -t <boolean condition>   : Multiple trigger Boolean condition
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     add_trigger -n <clock domain id> -p <probe id> -s <signal name> ?-t <trigger type>? ?-e <trigger event>? ?-v <value>? ?-w <compare width>? ?-b <cable name/index>? ?-d <device index>? : To add a trigger configuration into a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -p <probe id>            : Probe ID
+       -s <signal name>         : Signal name or index
+       -t <trigger type>        : Trigger type
+       -e <trigger event>       : Trigger event associated with the trigger type
+       -v <value>               : Compare value
+       -w <compare width>       : Compare value width (no. of bits)
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     edit_trigger -n <clock domain id> -i <index> -p <probe id> -s <signal name> ?-t <trigger type>? ?-e <trigger event>? ?-v <value>? ?-w <compare width>? ?-b <cable name/index>? ?-d <device index>? : To edit an existing trigger configuration of a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -i <index>               : Trigger entry index to modify
+       -p <probe id>            : Probe ID
+       -s <signal name>         : Signal name or index
+       -t <trigger type>        : Trigger type
+       -e <trigger event>       : Trigger event associated with the trigger type
+       -v <value>               : Compare value
+       -w <compare width>       : Compare value width (no. of bits)
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     remove_trigger -n <clock domain id> -i <index> ?-b <cable name/index>? ?-d <device index>? : To remove an existing trigger configuration from a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -i <index>               : Trigger entry index to remove
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     start -n <clock domain id> ?-b <cable name/index>? ?-d <device index>? ?-t <seconds>? ?-o <filepath>? : To start the OCLA debug subsystem of a clock domain to capture signal samples.
+       -n <clock domain id>     : Clock domain ID
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       -t <seconds>             : Command timeout in seconds (default 60)
+       -o <filepath>            : Output waveform filepath
+     status -n <clock domain id> ?-b <cable name/index>? ?-d <device index>? : To query the clock domain sampling status.
+       -n <clock domain id>     : Clock domain ID
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     show_waveform -n <clock domain id> ?-b <cable name/index>? ?-d <device index>? ?-o <filepath>? : To generate waveform file and display the signal waveform of a clock domain in GtkWave UI app.
+       -n <clock domain id>     : Clock domain ID
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       -o <filepath>            : Output waveform filepath
+     set_io ?-b <cable name/index>? ?-d <device index>? <signal1=value1> <signal2=value2> : To configure the state/value of an IO signal.
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       sig1=val1...sigN=valN    : List of signal names or indexes and values to set
+     get_io ?-b <cable name/index>? ?-d <device index>? ?-l <times>? ?-t <milliseconds>? <signal1> <signal2> : To read the state/value of an IO signal.
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       sig1...sigN              : List of signal names or indexes to read
 
 -----------------------------------------------
