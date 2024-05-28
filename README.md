@@ -134,7 +134,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      -no_flatten              : Do not flatten design.
      -no_simplify             : Do not run special simplification algorithms in synthesis.
      -no_tribuf               : Do not preserve I/O tristate buffers
-     -no_inferred_io          : No automatic I/O inference
+     -no_adder                : Do not infer adders
+     -inferred_io             : Automatic I/O inference (Default false for eFPGA)
+     -no_inferred_io          : No automatic I/O inference (Default true for FPGA)     
    set_limits <type> <int>    : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
        dsp                    : Maximum number of usable DSPs
        bram                   : Maximum number of usable BRAMs
