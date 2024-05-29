@@ -122,7 +122,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      -no_flatten              : Do not flatten design
      -no_simplify             : Do not run special simplification algorithms in synthesis
      -no_tribuf               : Do not preserve I/O tristates
-     -no_inferred_io          : No automatic I/O inference
+     -no_adder                : Do not infer adders
+     -inferred_io             : Automatic I/O inference (Default false for eFPGA)
+     -no_inferred_io          : No automatic I/O inference (Default true for FPGA)
 <engineering>
      -clke_strategy <strategy>: Clock enable extraction strategy for FFs:
        early                  : Perform early extraction
@@ -184,12 +186,6 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    sta ?clean? ?opensta?      : Statistical Timing Analysis
      clean                    : Deletes files generated from this task
      opensta                  : Use OpenSTA tool for timing analysis
-
-------------------------------
---- Power Analysis -----------
-------------------------------
-   power ?clean?              : Statistical Power Analysis
-     clean                    : Deletes files generated from this task
      
 ------------------------------
 --- Power Analysis -----------
