@@ -83,6 +83,19 @@
                 "default": "Verilog",
                 "arg": "netlist_lang"
             },
+            "inferred_io": {
+            	"label": "Inferred IO",
+                "widgetType": "dropdown",
+                "options": [
+                    "Auto",
+                    "None"
+                ],
+                "optionsLookup": [
+                    "auto",
+                    "none"
+                ],
+                "arg": "inferred_io"
+            },
             "dsp_spinbox_ex": {
                 "label": "DSP limit",
                 "widgetType": "spinbox",
