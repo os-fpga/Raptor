@@ -40,7 +40,6 @@
     },
     "I_DDR" : {
       "rules" : {
-        "__location__" : "__arg0__"
       },
       "results" : {
         "I_DDR" : "MODE==DDR"
@@ -48,10 +47,16 @@
     },
     "O_DDR" : {
       "rules" : {
-        "__location__" : "__arg0__"
       },
       "results" : {
         "O_DDR" : "MODE==DDR"
+      }
+    },
+    "I_SERDES.BYPASS" : {
+      "rules" : {
+      },
+      "results" : {
+        "RX_BYPASS" : "RX_gear_on"
       }
     },
     "I_SERDES.DDR_MODE" : {
@@ -76,6 +81,13 @@
         "I_SERDES" : "DPA_MODE==NONE"
       }
     },
+    "O_SERDES.BYPASS" : {
+      "rules" : {
+      },
+      "results" : {
+        "TX_BYPASS" : "TX_gear_on"
+      }
+    },
     "O_SERDES.DDR_MODE" : {
       "rules" : {
         "DATA_RATE" : "__arg0__"
@@ -85,6 +97,30 @@
       },
       "neg_results" : {
         "O_SERDES" : "DDR_MODE==SDR"
+      }
+    },
+    "O_SERDES_CLK.CLK_PHASE" : {
+      "rules" : {
+        "CLOCK_PHASE" : "__argCLOCK_PHASE__"
+      },
+      "results" : {
+        "__other__" : [
+          {
+            "__define__" : "parse_o_serdes_clk_phase_parameter",
+            "TX_CLK_PHASE" : "__clock_phase__"
+          }
+        ]
+      }
+    },
+    "O_SERDES_CLK.DDR_MODE" : {
+      "rules" : {
+        "DATA_RATE" : "__arg0__"
+      },
+      "results" : {
+        "O_SERDES_CLK" : "DDR_MODE==__arg0__"
+      },
+      "neg_results" : {
+        "O_SERDES_CLK" : "DDR_MODE==SDR"
       }
     },
     "BOOT_CLOCK" : {
@@ -102,7 +138,6 @@
     },
     "PLL.PLLREF_MUX" : {
       "rules" : {
-        "__location__" : "__arg0__"
       },
       "results" : {
         "__other__" : [
@@ -135,7 +170,7 @@
             "pll_FBDIV" : "__fbdiv__",
             "pll_POSTDIV1" : "__postdiv1__",
             "pll_POSTDIV2" : "__postdiv2__",
-            "pll_PLLEN" : "PLLEN_0"
+            "pll_PLLEN" : "__pll_enable__"
           }
         ]
       }
@@ -274,7 +309,6 @@
     },
     "CLK_BUF.GBOX_TOP" : {
       "rules" : {
-        "__location__" : "__arg0__"
       },
       "results" : {
         "CLK_BUF" : "GBOX_TOP_SRC==DEFAULT"
@@ -282,8 +316,7 @@
     },
     "CLK_BUF.ROOT_BANK_CLKMUX" : {
       "rules" : {
-        "__location__" : "__arg0__",
-        "ROUTE_TO_FABRIC_CLK" : "__arg1__"
+        "ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
         "__other__" : [
@@ -300,13 +333,12 @@
     },
     "CLK_BUF.ROOT_MUX" : {
       "rules" : {
-        "__location__" : "__arg0__",
-        "ROUTE_TO_FABRIC_CLK" : "__arg1__"
+        "ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
         "__other__" : [
           {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg1__",
+            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
             "ROOT_MUX_SEL" : "__ROOT_MUX_SEL__"
           }
         ]
@@ -420,6 +452,9 @@
   "__secondary_validation__" : {
     "__seqeunce__" : [
       "__check_fabric_clock_resource__",
+      "__check_data_rate_parameter__",
+      "__check_dpa_mode_parameter__",
+      "__check_clock_phase_parameter__",
       "__check_pll_parameter__",
       "__check_pll_clock_pin_resource__",
       "__update_fabric_clock_resource__"
@@ -429,6 +464,27 @@
       "__connectivity__" : ["O", "CLK_OUT", "CLK_OUT_DIV2", "CLK_OUT_DIV3", "CLK_OUT_DIV4"],
       "__equation__" : [
         "pin_result = (__connectivity_count__ + g_fabric_clock_resources) <= MAX_FABRIC_CLOCK_RESOURCE"
+      ]
+    },
+    "__check_data_rate_parameter__" : {
+      "__module__" : ["I_SERDES", "O_SERDES", "O_SERDES_CLK"],
+      "__parameter__" : ["DATA_RATE"],
+      "__equation__" : [
+        "pin_result = 'DATA_RATE' in ['SDR', 'DDR']"
+      ]
+    },
+    "__check_dpa_mode_parameter__" : {
+      "__module__" : ["I_SERDES"],
+      "__parameter__" : ["DPA_MODE"],
+      "__equation__" : [
+        "pin_result = 'DPA_MODE' in ['NONE', 'DPA', 'CDR']"
+      ]
+    },
+    "__check_clock_phase_parameter__" : {
+      "__module__" : ["O_SERDES_CLK"],
+      "__parameter__" : ["CLOCK_PHASE"],
+      "__equation__" : [
+        "pin_result = 'CLOCK_PHASE' in ['0', '90', '180', '270']"
       ]
     },
     "__check_pll_parameter__" : {
@@ -474,6 +530,12 @@
         "m = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location__')",
         "__type__ = 'HP' if m.group(1) == 'P' else 'HV'",
         "__bank__ = '0' if m.group(2) in ['1', '3'] else '1'"
+      ]
+    },
+    "parse_o_serdes_clk_phase_parameter" : {
+      "__args__" : ["__clock_phase__"],
+      "__equation__" : [
+        "__clock_phase__ = 'TX_phase_%d' % __argCLOCK_PHASE__"
       ]
     },
     "parse_pll_parameter" : {
