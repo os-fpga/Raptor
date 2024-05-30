@@ -208,8 +208,8 @@ endif
 test/batch_gen3: run-cmake-release
 ifeq ($(RAPTOR_PUB),1)
 else
-	cd tests/Testcases/and2_bitstream; ../../../build/bin/raptor --batch --mute --script raptor.tcl
-	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; ../../../build/bin/raptor --batch --mute --script raptor.tcl
+	cd tests/Testcases/and2_bitstream; rm -rf and2; ../../../build/bin/raptor --batch --mute --script raptor.tcl
+	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; rm -rf up5bit_counter_dual_clock; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
 
 solver/tests: release
