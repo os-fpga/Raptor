@@ -143,13 +143,7 @@
         "__other__" : [
           {
             "__location__" : "u_GBOX_HP_40X2.u_gbox_pll_refmux___pll_resource__",
-            "cfg_pllref_hv_rx_io_sel" : "__cfg_pllref_hv_rx_io_sel__",
-            "cfg_pllref_hv_bank_rx_io_sel" : "__cfg_pllref_hv_bank_rx_io_sel__",
-            "cfg_pllref_hp_rx_io_sel" : "__cfg_pllref_hp_rx_io_sel__",
-            "cfg_pllref_hp_bank_rx_io_sel" : "__cfg_pllref_hp_bank_rx_io_sel__",
-            "cfg_pllref_use_hv" : "__cfg_pllref_use_hv__",
-            "cfg_pllref_use_rosc" : "__cfg_pllref_use_rosc__",
-            "cfg_pllref_use_div" : "__cfg_pllref_use_div__"
+            "PLL" : "PLLREF_SRC==__SRC__ --#PIN=__PIN__ --#BANK=__BANK__ --#DIV=__DIV__"
           }
         ]
       }
@@ -323,10 +317,7 @@
           {
             "__name__" : "__parent__.__name__",
             "__mapped_name__" : "__parent__.u_gbox_root_bank_clkmux___bank__",
-            "CDR_CLK_ROOT_SEL_B" : "__CDR_CLK_ROOT_SEL_B__",
-            "CDR_CLK_ROOT_SEL_A" : "__CDR_CLK_ROOT_SEL_A__",
-            "CORE_CLK_ROOT_SEL_B" : "__CORE_CLK_ROOT_SEL_B__",
-            "CORE_CLK_ROOT_SEL_A" : "__CORE_CLK_ROOT_SEL_A__"
+            "CLK_BUF" : "ROOT_BANK_SRC==__AB__ --#MUX=__ROOT_BANK_MUX__"
           }
         ]
       }
@@ -339,7 +330,7 @@
         "__other__" : [
           {
             "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "ROOT_MUX_SEL" : "__ROOT_MUX_SEL__"
+            "ROOT_MUX_SEL" : "__ROOT_MUX__"
           }
         ]
       }
