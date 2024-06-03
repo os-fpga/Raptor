@@ -133,7 +133,8 @@
             "keep_tribuf": {
                 "label": "Keep Tribuf",
                 "widgetType": "checkbox",
-                "arg": "keep_tribuf"
+                "arg": "keep_tribuf",
+                "default": "checked"
             },
             "_META_": {
                 "hidden": false,
