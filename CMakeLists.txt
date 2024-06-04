@@ -908,6 +908,9 @@ else ()
           ${PROJECT_SOURCE_DIR}/src/to_be_raptor_linx
           ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
         COMMAND ${CMAKE_COMMAND} -E copy
+          ${PROJECT_SOURCE_DIR}/src/to_be_raptor_checker
+          ${CMAKE_CURRENT_BINARY_DIR}/bin/checker  
+        COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/src/.raptorenv_lin64.sh
           ${CMAKE_CURRENT_BINARY_DIR})
   add_custom_command(TARGET raptor-bin POST_BUILD

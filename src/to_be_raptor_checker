@@ -1,0 +1,16 @@
+#!/bin/bash
+# Raptor checker environment setup script - 64-bit Linux
+# Copyright(c) 2021-2024 Rapid Silicon
+# All licenses available in $RAPTOR_PATH/share/raptor/licenses
+# Version 1.0
+
+RETURN_PATH=`pwd`
+SCRIPT_PATH=`dirname $BASH_SOURCE`
+RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
+
+[ -f $RAPTOR_PATH/../.raptorenv_lin64.sh ] && source $RAPTOR_PATH/../.raptorenv_lin64.sh
+[ -f $RAPTOR_PATH/bin/default_lic_path ] && source $RAPTOR_PATH/bin/default_lic_path
+
+CHECKER_EXE=stars
+
+$RAPTOR_PATH/bin/$CHECKER_EXE "$@"
