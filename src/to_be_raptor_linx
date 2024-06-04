@@ -11,11 +11,25 @@ RAPTOR_PATH=`( cd "$SCRIPT_PATH" && pwd )`
 [ -f $RAPTOR_PATH/../.raptorenv_lin64.sh ] && source $RAPTOR_PATH/../.raptorenv_lin64.sh
 [ -f $RAPTOR_PATH/bin/default_lic_path ] && source $RAPTOR_PATH/bin/default_lic_path
 
+
+iswsl() {
+    if [[ -s /etc/wsl.conf ]] || \
+       grep -qi "wsl2" /proc/version || \
+       uname -r | grep -qi "wsl2" || \
+       [ -n "$WSL_DISTRO_NAME" ] || \
+       which powershell.exe &> /dev/null; then
+        echo "WSL"
+    else
+        echo ""
+    fi
+}
+
 # Function to detect the environment
 detect_environment() {
     # Check if running inside WSL
-    if grep -q Microsoft /proc/version; then
-        echo "WSL"
+    result=$(iswsl)
+    if [ "$result" == "WSL" ]; then
+    echo "WSL"
     # Check if running inside Docker
     elif [ -f "/.dockerenv" ]; then
         echo "Docker"
