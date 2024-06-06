@@ -50,9 +50,6 @@ release: run-cmake-release
 	cmake --build build -j $(CPU_CORES)
 endif
 
-check_monaco_editor:
-	@echo "MONACO_EDITOR is set to $(MONACO_EDITOR)"
-
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
 
