@@ -22,7 +22,19 @@ endif
 PREFIX ?= /usr/local
 ADDITIONAL_CMAKE_OPTIONS ?=
 # make MONACO_EDITOR=0 enables the QScintilla based Editor in place of the WebEngine based Monaco Editor
-MONACO_EDITOR ?= 1
+IS_WSL_OR_DOCKER := $(shell \
+    if [[ -s /etc/wsl.conf ]] || \
+       grep -qi "wsl2" /proc/version || \
+       uname -r | grep -qi "wsl2" || \
+       [ -n "$$WSL_DISTRO_NAME" ] || \
+       which powershell.exe &> /dev/null || \
+       [ -f "/.dockerenv" ]; then \
+        echo 0; \
+    else \
+        echo 1; \
+    fi \
+)
+MONACO_EDITOR ?= $(IS_WSL_OR_DOCKER)
 
 IPA ?= 0
 
