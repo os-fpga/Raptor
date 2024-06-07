@@ -336,12 +336,36 @@
       }
     }
   },
+  "__resources__" : {
+    "pll" : [
+      { "name" : "pll_0", "ric_name" : "u_GBOX_HP_40X2.u_gbox_PLLTS16FFCFRACF_0", "type" : "HP", "subtype" : "hp", "bank" : 0 },
+      { "name" : "pll_1", "ric_name" : "u_GBOX_HP_40X2.u_gbox_PLLTS16FFCFRACF_1", "type" : "HP", "subtype" : "hp", "bank" : 1 }
+    ],
+    "fclk" : [
+      { "name" : "hp_fclk_0_A",  "ric_name" : "u_GBOX_HP_40X2.u_gbox_fclk_mux_all",    "type" : "HP", "subtype" : "hp",  "bank" : 0 },
+      { "name" : "hp_fclk_0_B",  "ric_name" : "u_GBOX_HP_40X2.u_gbox_fclk_mux_all",    "type" : "HP", "subtype" : "hp",  "bank" : 0 },
+      { "name" : "hp_fclk_1_A",  "ric_name" : "u_GBOX_HP_40X2.u_gbox_fclk_mux_all",    "type" : "HP", "subtype" : "hp",  "bank" : 1 },
+      { "name" : "hp_fclk_1_B",  "ric_name" : "u_GBOX_HP_40X2.u_gbox_fclk_mux_all",    "type" : "HP", "subtype" : "hp",  "bank" : 1 },
+      { "name" : "hvl_fclk_0_A", "ric_name" : "u_GBOX_HV_40X2_VL.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvl", "bank" : 0 },
+      { "name" : "hvl_fclk_0_B", "ric_name" : "u_GBOX_HV_40X2_VL.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvl", "bank" : 0 },
+      { "name" : "hvl_fclk_1_A", "ric_name" : "u_GBOX_HV_40X2_VL.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvl", "bank" : 1 },
+      { "name" : "hvl_fclk_1_B", "ric_name" : "u_GBOX_HV_40X2_VL.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvl", "bank" : 1 },
+      { "name" : "hvr_fclk_0_A", "ric_name" : "u_GBOX_HV_40X2_VR.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvr", "bank" : 0 },
+      { "name" : "hvr_fclk_0_B", "ric_name" : "u_GBOX_HV_40X2_VR.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvr", "bank" : 0 },
+      { "name" : "hvr_fclk_1_A", "ric_name" : "u_GBOX_HV_40X2_VR.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvr", "bank" : 1 },
+      { "name" : "hvr_fclk_1_B", "ric_name" : "u_GBOX_HV_40X2_VR.u_gbox_fclk_mux_all", "type" : "HV", "subtype" : "hvr", "bank" : 1 }
+    ]
+  },
   "__init__" : {
     "__args__" : [],
     "__equation__" : [
+      "import json",
+      "G_RESOURCES = json.loads('__resources_string__')",
+      "assert 'pll' in G_RESOURCES",
+      "assert 'fclk' in G_RESOURCES",
       "MAX_BOOT_CLOCK_RESOURCE = 1",
       "MAX_FABRIC_CLOCK_RESOURCE = 16",
-      "MAX_PLL_RESOURCE = 2",
+      "MAX_PLL_RESOURCE = len(G_RESOURCES['pll'])",
       "hp_banks = ['HP_%d' % i for i in [1, 2]]",
       "hr_banks = ['HR_%d' % i for i in [1, 2, 3, 5]]",
       "all_banks = hp_banks + hr_banks",
