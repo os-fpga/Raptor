@@ -16,7 +16,7 @@
 
 #You should have received a copy of the GNU General Public License
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+create_design test
 synthesize
 after 3000 {puts "STOP"; flush stdout ; stop} 
 after 5000 {synthesize}
