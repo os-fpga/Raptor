@@ -79,9 +79,8 @@ int main(int argc, char** argv) {
     std::filesystem::path vprPath = binpath / "vpr";
     std::filesystem::path finalizePath = binpath / "finalize";
     std::filesystem::path openFpgaPath = binpath / "openfpga";
-    std::filesystem::path pinConvPath = binpath / "stars";
+    std::filesystem::path planningPath = binpath / "planning";
     std::filesystem::path staPath = binpath / "sta";
-    std::filesystem::path starsPath = binpath / "stars";
     std::filesystem::path tclPath = binpath / "tclsh8.6";
     std::filesystem::path raptorPath = binpath / ExecutableName;
     std::filesystem::path bitstreamSettingPath =
@@ -97,14 +96,14 @@ int main(int argc, char** argv) {
     opcompiler->VprExecPath(vprPath);
     opcompiler->ReConstructVExecPath(finalizePath);
     opcompiler->StaExecPath(staPath);
-    opcompiler->StarsExecPath(starsPath);
+    opcompiler->StarsExecPath(planningPath);
     opcompiler->TclExecPath(tclPath);
     opcompiler->RaptorExecPath(raptorPath);
     opcompiler->OpenFpgaExecPath(openFpgaPath);
     opcompiler->OpenFpgaBitstreamSettingFile(bitstreamSettingPath);
     opcompiler->OpenFpgaSimSettingFile(simSettingPath);
     opcompiler->OpenFpgaRepackConstraintsFile(repackConstraintPath);
-    opcompiler->PinConvExecPath(pinConvPath);
+    opcompiler->PinConvExecPath(planningPath);
     opcompiler->ProgrammerToolExecPath(openOcdPath);
     opcompiler->GetSimulator()->SetSimulatorPath(
         FOEDAG::Simulator::SimulatorType::Verilator,
