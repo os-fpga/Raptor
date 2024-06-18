@@ -888,10 +888,7 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/planning
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/planning
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/stars)
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/)
   if(MONACO_EDITOR)      
     add_custom_command(TARGET raptor-bin POST_BUILD
           COMMAND echo "rename raptor binary as raptor.exeMonacoEmbed"
