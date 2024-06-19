@@ -201,7 +201,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 8)
+set(VERSION_PATCH 11)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -888,10 +888,7 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/planning
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ${CMAKE_COMMAND} -E copy
-        ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/planning
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/stars)
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/)
   if(MONACO_EDITOR)      
     add_custom_command(TARGET raptor-bin POST_BUILD
           COMMAND echo "rename raptor binary as raptor.exeMonacoEmbed"
