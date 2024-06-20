@@ -49,7 +49,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    custom_openfpga_script <file> : Uses a custom OpenFPGA templatized script
    architecture <vpr_file.xml> ?<openfpga_file.xml>?
                               : Uses the architecture file and optional openfpga arch file (For bitstream generation)
-   verific_parser <on/off>    : Turns on/off Verific Parser
+   routing_graph <routing_graph.xml> : Optional Routing Graph file
+   flat_routing true/false    : Turns on/off Flat Routing (Default off)
+   verific_parser <on/off>    : Turns on/off Verific Parser -- Currently unavailable (No-op)
 </engineering>
 
 --------------------
