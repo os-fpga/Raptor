@@ -232,6 +232,21 @@
           }
         ]
       }
+    },
+    "FCLK_BUF" : {
+      "rules" : {
+        "ROUTE_TO_FABRIC_CLK" : "__arg0__",
+        "ROUTE_FROM_FABRIC_CLK" : "__arg1__"
+      },
+      "results" : {
+        "__other__" : [
+          {
+            "__define__" : "parse_fabric_clock_buffer_root_mux",
+            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+            "ROOT_MUX_SEL" : "__fclk_buf_root_mux_sel__"
+          }
+        ]
+      }
     }
   },
   "properties" : {
@@ -604,6 +619,14 @@
         "__pll_root_mux_sel__ = 32 + (int('__pll_resource__') * 4) + __argIndex__",
         "__pll_root_mux_sel__ = '%d' % __pll_root_mux_sel__"
       ] 
+    },
+    "parse_fabric_clock_buffer_root_mux" : {
+      "__args__" : ["__fclk_buf_root_mux_sel__"],
+      "__equation__" : [
+        "fabric_clock_buffer_slot = int('__arg1__')",
+        "__fclk_buf_root_mux_sel__ = (40 + fabric_clock_buffer_slot - 4) if (fabric_clock_buffer_slot >= 4) else (44 + fabric_clock_buffer_slot)",
+        "__fclk_buf_root_mux_sel__ = '%d' % __fclk_buf_root_mux_sel__"
+      ]
     }
   }
 }

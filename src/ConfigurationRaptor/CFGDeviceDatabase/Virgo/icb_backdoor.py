@@ -27,14 +27,14 @@ RTL_MAPPING = {
 
 # Add gbox top mapping
 for i in range(20) :
-  RTL_MAPPING["u_HP_GBOX_BK0_A_%d" % i] = "u_gbox_hp_40_NS_0.u_gbox_io_cfg_A[%d]" % i
-  RTL_MAPPING["u_HP_GBOX_BK0_B_%d" % i] = "u_gbox_hp_40_NS_0.u_gbox_io_cfg_B[%d]" % i
-  RTL_MAPPING["u_HP_GBOX_BK1_A_%d" % i] = "u_gbox_hp_40_NS_1.u_gbox_io_cfg_A[%d]" % i
-  RTL_MAPPING["u_HP_GBOX_BK1_B_%d" % i] = "u_gbox_hp_40_NS_1.u_gbox_io_cfg_B[%d]" % i
-  RTL_MAPPING["u_HV_GBOX_BK0_A_%d" % i] = "u_gbox_hv_40_EW_0.u_gbox_io_cfg_A[%d]" % i
-  RTL_MAPPING["u_HV_GBOX_BK0_B_%d" % i] = "u_gbox_hv_40_EW_0.u_gbox_io_cfg_B[%d]" % i
-  RTL_MAPPING["u_HV_GBOX_BK1_A_%d" % i] = "u_gbox_hv_40_EW_1.u_gbox_io_cfg_A[%d]" % i
-  RTL_MAPPING["u_HV_GBOX_BK1_B_%d" % i] = "u_gbox_hv_40_EW_1.u_gbox_io_cfg_B[%d]" % i
+  RTL_MAPPING["u_HP_GBOX_BK0_A_%d" % i] = "u_gbox_hp_40_NS_0.genblk1[%d].u_gbox_io_cfg_A" % i
+  RTL_MAPPING["u_HP_GBOX_BK0_B_%d" % i] = "u_gbox_hp_40_NS_0.genblk1[%d].u_gbox_io_cfg_B" % i
+  RTL_MAPPING["u_HP_GBOX_BK1_A_%d" % i] = "u_gbox_hp_40_NS_1.genblk1[%d].u_gbox_io_cfg_A" % i
+  RTL_MAPPING["u_HP_GBOX_BK1_B_%d" % i] = "u_gbox_hp_40_NS_1.genblk1[%d].u_gbox_io_cfg_B" % i
+  RTL_MAPPING["u_HV_GBOX_BK0_A_%d" % i] = "u_gbox_hv_40_EW_0.genblk1[%d].u_gbox_io_cfg_A" % i
+  RTL_MAPPING["u_HV_GBOX_BK0_B_%d" % i] = "u_gbox_hv_40_EW_0.genblk1[%d].u_gbox_io_cfg_B" % i
+  RTL_MAPPING["u_HV_GBOX_BK1_A_%d" % i] = "u_gbox_hv_40_EW_1.genblk1[%d].u_gbox_io_cfg_A" % i
+  RTL_MAPPING["u_HV_GBOX_BK1_B_%d" % i] = "u_gbox_hv_40_EW_1.genblk1[%d].u_gbox_io_cfg_B" % i
 
 class ATTRIBUTE :
   def __init__(self, line) :
