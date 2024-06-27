@@ -628,7 +628,7 @@ install(
 
 if(MONACO_EDITOR)  
   install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exeMonacoEmbed
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/raptorm.exe
     DESTINATION ${CMAKE_INSTALL_BINDIR}
     PERMISSIONS
     OWNER_READ OWNER_EXECUTE OWNER_WRITE
@@ -901,10 +901,10 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/)
   if(MONACO_EDITOR)      
     add_custom_command(TARGET raptor-bin POST_BUILD
-          COMMAND echo "rename raptor binary as raptor.exeMonacoEmbed"
+          COMMAND echo "rename raptor binary as raptorm.exe"
           COMMAND ${CMAKE_COMMAND} -E rename
             ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
-            ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exeMonacoEmbed)
+            ${CMAKE_CURRENT_BINARY_DIR}/bin/raptorm.exe)
   else()
     add_custom_command(TARGET raptor-bin POST_BUILD
     COMMAND echo "rename raptor binary as raptor.exe"
