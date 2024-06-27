@@ -2,6 +2,7 @@
 
 # Copyright 2021-2024 The Rapid Silicon team
 
+
 cmake_minimum_required(VERSION 3.15)
 
 option(ENABLE_VERIFIC "Enable Verific frontend" OFF)
