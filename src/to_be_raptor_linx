@@ -41,7 +41,7 @@ detect_environment() {
 
 environment=$(detect_environment)
 if [ "$environment" == "Native" ]; then
-        RAPTOR_EXE=raptorm.exe
+        RAPTOR_EXE=raptor.exeMonacoEmbed
 else
         RAPTOR_EXE=raptor.exe
 fi
