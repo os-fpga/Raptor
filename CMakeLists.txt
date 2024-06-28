@@ -2,6 +2,7 @@
 
 # Copyright 2021-2024 The Rapid Silicon team
 
+
 cmake_minimum_required(VERSION 3.15)
 
 option(ENABLE_VERIFIC "Enable Verific frontend" OFF)
@@ -201,7 +202,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 15)
+set(VERSION_PATCH 17)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -627,7 +628,7 @@ install(
 
 if(MONACO_EDITOR)  
   install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exeMonacoEmbed
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.mexe
     DESTINATION ${CMAKE_INSTALL_BINDIR}
     PERMISSIONS
     OWNER_READ OWNER_EXECUTE OWNER_WRITE
@@ -900,10 +901,10 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/)
   if(MONACO_EDITOR)      
     add_custom_command(TARGET raptor-bin POST_BUILD
-          COMMAND echo "rename raptor binary as raptor.exeMonacoEmbed"
+          COMMAND echo "rename raptor binary as raptor.mexe"
           COMMAND ${CMAKE_COMMAND} -E rename
             ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor
-            ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.exeMonacoEmbed)
+            ${CMAKE_CURRENT_BINARY_DIR}/bin/raptor.mexe)
   else()
     add_custom_command(TARGET raptor-bin POST_BUILD
     COMMAND echo "rename raptor binary as raptor.exe"
