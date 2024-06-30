@@ -9,7 +9,7 @@ add_simulation_file ./rtl/testbench_and2.v
 set_top_testbench testbench_and2
 
 # Device target
-target_device GEMINI_COMPACT_10x8
+target_device GEMINI_COMPACT_22x4
 
 # RTL Simulation
 simulate rtl icarus
