@@ -1,5 +1,5 @@
 create_design vex_soc_no_carry
-target_device GEMINI_COMPACT_62x44
+target_device 1VG28
 add_library_path rtl/
 add_library_ext .v .sv
 add_design_file rtl/vex_soc.v

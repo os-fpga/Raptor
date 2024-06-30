@@ -22,6 +22,7 @@ simulate "rtl" "ghdl" syn_tb_rtl.fst
 # Synthesis
 parser_type ghdl
 pnr_netlist_lang vhdl
+synth_options -inferred_io
 synthesize delay
 
 # Post-Synthesis gate-level Simulation

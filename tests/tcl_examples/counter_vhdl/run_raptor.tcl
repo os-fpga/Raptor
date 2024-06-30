@@ -13,6 +13,7 @@ create_design $project_name
 add_design_file -VHDL_1993 Src/UP_COUNTER.vhd
 set_top_module UP_COUNTER
 add_constraint_file constraints.sdc
+add_constraint_file pin_mapping.pin
 # Testbench
 add_simulation_file -VHDL_1993 Src/testbench.vhd
 set_top_testbench tb_counters

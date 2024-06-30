@@ -14,6 +14,7 @@ add_design_file Src/counter.v
 # optional to specify top-level as it can be automatically detected
 set_top_module counter
 add_constraint_file constraints.sdc
+add_constraint_file pin_mapping.pin
 # Device target
 target_device 1VG28
 
@@ -25,6 +26,6 @@ packing
 place
 route
 sta
-# bitstream 
+bitstream 
 
 puts "Completed $project_name...\n"
