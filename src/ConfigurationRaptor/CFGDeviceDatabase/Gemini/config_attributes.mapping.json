@@ -54,8 +54,19 @@
     },
     "I_SERDES.BYPASS" : {
       "rules" : {
+        "WIDTH" : "__arg0__"
       },
       "results" : {
+        "__other__" : [
+          {
+            "__define__" : "parse_serdes_width",
+            "RATE" : "__arg0__",
+            "PEER_IS_ON" : "__peer_is_on__",
+            "RX_BYPASS" : "RX_gear_on"
+          }
+        ]
+      },
+      "neg_results" : {
         "RX_BYPASS" : "RX_gear_on"
       }
     },
@@ -83,8 +94,19 @@
     },
     "O_SERDES.BYPASS" : {
       "rules" : {
+        "WIDTH" : "__arg0__"
       },
       "results" : {
+        "__other__" : [
+          {
+            "__define__" : "parse_serdes_width",
+            "RATE" : "__arg0__",
+            "PEER_IS_ON" : "__peer_is_on__",
+            "TX_BYPASS" : "TX_gear_on"
+          }
+        ]
+      },
+      "neg_results" : {
         "TX_BYPASS" : "TX_gear_on"
       }
     },
@@ -626,6 +648,13 @@
         "fabric_clock_buffer_slot = int('__arg1__')",
         "__fclk_buf_root_mux_sel__ = (40 + fabric_clock_buffer_slot - 4) if (fabric_clock_buffer_slot >= 4) else (44 + fabric_clock_buffer_slot)",
         "__fclk_buf_root_mux_sel__ = '%d' % __fclk_buf_root_mux_sel__"
+      ]
+    },
+    "parse_serdes_width" : {
+      "__args__" : ["__peer_is_on__"],
+      "__equation__" : [
+        "width = int('__arg0__')",
+        "__peer_is_on__ = 'PEER_on' if width <= 5 else 'PEER_off'"
       ]
     }
   }
