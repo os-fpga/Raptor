@@ -174,6 +174,7 @@ test/batch: run-cmake-release
 ifeq ($(RAPTOR_PUB),1)
 else
 	./build/bin/raptor --batch  --script tests/Testcases/and2_verilog/run_raptor.tcl
+	./build/bin/raptor --batch --mute --script tests/Testcases/gen_clk/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_2clks/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_wio/run_raptor.tcl
 	./build/bin/raptor --batch --mute --script tests/Testcases/and2_vec/run_raptor.tcl
