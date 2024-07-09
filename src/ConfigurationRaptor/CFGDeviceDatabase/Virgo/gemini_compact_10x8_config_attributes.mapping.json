@@ -57,14 +57,10 @@
         "WIDTH" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__define__" : "parse_serdes_width",
-            "RATE" : "__arg0__",
-            "PEER_IS_ON" : "__peer_is_on__",
-            "RX_BYPASS" : "RX_gear_on"
-          }
-        ]
+        "__define__" : "parse_serdes_width",
+        "RATE" : "__arg0__",
+        "PEER_IS_ON" : "__peer_is_on__",
+        "RX_BYPASS" : "RX_gear_on"
       },
       "neg_results" : {
         "RX_BYPASS" : "RX_gear_on"
@@ -97,14 +93,10 @@
         "WIDTH" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__define__" : "parse_serdes_width",
-            "RATE" : "__arg0__",
-            "PEER_IS_ON" : "__peer_is_on__",
-            "TX_BYPASS" : "TX_gear_on"
-          }
-        ]
+        "__define__" : "parse_serdes_width",
+        "RATE" : "__arg0__",
+        "PEER_IS_ON" : "__peer_is_on__",
+        "TX_BYPASS" : "TX_gear_on"
       },
       "neg_results" : {
         "TX_BYPASS" : "TX_gear_on"
@@ -126,12 +118,8 @@
         "CLOCK_PHASE" : "__argCLOCK_PHASE__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__define__" : "parse_o_serdes_clk_phase_parameter",
-            "TX_CLK_PHASE" : "__clock_phase__"
-          }
-        ]
+        "__define__" : "parse_o_serdes_clk_phase_parameter",
+        "TX_CLK_PHASE" : "__clock_phase__"
       }
     },
     "O_SERDES_CLK.DDR_MODE" : {
@@ -149,25 +137,19 @@
       "rules" : {
         "ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
-      "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "ROOT_MUX_SEL" : "48"
-          }
-        ]
-      }
+      "results" : [
+        {
+          "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+          "ROOT_MUX_SEL" : "48"
+        }
+      ]
     },
     "PLL.PLLREF_MUX" : {
       "rules" : {
       },
       "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_pll_refmux___pll_resource__",
-            "PLL" : "PLLREF_SRC==__SRC__ --#PIN=__PIN__ --#BANK=__BANK__ --#DIV=__DIV__"
-          }
-        ]
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_pll_refmux___pll_resource__",
+        "PLL" : "PLLREF_SRC==__SRC__ --#PIN=__PIN__ --#BANK=__BANK__ --#DIV=__DIV__"
       }
     },
     "PLL.PLL" : {
@@ -177,18 +159,14 @@
         "PLL_POST_DIV" : "__argPOST_DIV__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_PLLTS16FFCFRACF___pll_resource__",
-            "__define__" : "parse_pll_parameter",
-            "PLL" : "PLL_SRC==DEFAULT",
-            "pll_REFDIV" : "__refdiv__",
-            "pll_FBDIV" : "__fbdiv__",
-            "pll_POSTDIV1" : "__postdiv1__",
-            "pll_POSTDIV2" : "__postdiv2__",
-            "pll_PLLEN" : "__pll_enable__"
-          }
-        ]
+        "__define__" : "parse_pll_parameter",
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_PLLTS16FFCFRACF___pll_resource__",
+        "PLL" : "PLL_SRC==DEFAULT",
+        "pll_REFDIV" : "__refdiv__",
+        "pll_FBDIV" : "__fbdiv__",
+        "pll_POSTDIV1" : "__postdiv1__",
+        "pll_POSTDIV2" : "__postdiv2__",
+        "pll_PLLEN" : "__pll_enable__"
       }
     },
     "PLL.ROOT_MUX0" : {
@@ -198,13 +176,9 @@
         "OUT0_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "__define__" : "parse_pll_root_mux",
-            "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
-          }
-        ]
+        "__define__" : "parse_pll_root_mux",
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+        "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
       }
     },
     "PLL.ROOT_MUX1" : {
@@ -214,13 +188,9 @@
         "OUT1_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "__define__" : "parse_pll_root_mux",
-            "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
-          }
-        ]
+        "__define__" : "parse_pll_root_mux",
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+        "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
       }
     },
     "PLL.ROOT_MUX2" : {
@@ -230,13 +200,9 @@
         "OUT2_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "__define__" : "parse_pll_root_mux",
-            "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
-          }
-        ]
+        "__define__" : "parse_pll_root_mux",
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+        "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
       }
     },
     "PLL.ROOT_MUX3" : {
@@ -246,13 +212,9 @@
         "OUT3_ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "__define__" : "parse_pll_root_mux",
-            "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
-          }
-        ]
+        "__define__" : "parse_pll_root_mux",
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+        "ROOT_MUX_SEL" : "__pll_root_mux_sel__"
       }
     },
     "FCLK_BUF" : {
@@ -261,13 +223,9 @@
         "ROUTE_FROM_FABRIC_CLK" : "__arg1__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__define__" : "parse_fabric_clock_buffer_root_mux",
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "ROOT_MUX_SEL" : "__fclk_buf_root_mux_sel__"
-          }
-        ]
+        "__define__" : "parse_fabric_clock_buffer_root_mux",
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+        "ROOT_MUX_SEL" : "__fclk_buf_root_mux_sel__"
       }
     }
   },
@@ -350,13 +308,8 @@
         "ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__name__" : "__parent__.__name__",
-            "__mapped_name__" : "__parent__.u_gbox_root_bank_clkmux___bank__",
-            "CLK_BUF" : "ROOT_BANK_SRC==__AB__ --#MUX=__ROOT_BANK_MUX__"
-          }
-        ]
+        "__location__" : "__{[0]}__.u_gbox_root_bank_clkmux___bank__",
+        "CLK_BUF" : "ROOT_BANK_SRC==__AB__ --#MUX=__ROOT_BANK_MUX__"
       }
     },
     "CLK_BUF.ROOT_MUX" : {
@@ -364,12 +317,8 @@
         "ROUTE_TO_FABRIC_CLK" : "__arg0__"
       },
       "results" : {
-        "__other__" : [
-          {
-            "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
-            "ROOT_MUX_SEL" : "__ROOT_MUX__"
-          }
-        ]
+        "__location__" : "u_GBOX_HP_40X2.u_gbox_clkmux_52x1_left___arg0__",
+        "ROOT_MUX_SEL" : "__ROOT_MUX__"
       }
     }
   },
