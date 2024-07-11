@@ -5,6 +5,7 @@ add_library_path ./rtl
 add_library_ext .v .sv
 add_design_file add__a_to_output.v
 set_top_module add__a_to_output
+synth_options -no_iobuf_map
 synthesize delay
 
 
@@ -17,5 +18,7 @@ packing
 global_placement
 place
 route
-
+power
 simulate pnr icarus syn_tb_pnr.fst
+
+bitstream
