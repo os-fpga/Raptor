@@ -2,7 +2,6 @@
 
 # Copyright 2021-2024 The Rapid Silicon team
 
-
 cmake_minimum_required(VERSION 3.15)
 
 option(ENABLE_VERIFIC "Enable Verific frontend" OFF)
@@ -203,7 +202,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 1)
-set(VERSION_PATCH 33)
+set(VERSION_PATCH 40)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
