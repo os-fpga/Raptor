@@ -395,7 +395,8 @@
       "g_all_clock_pins = ['%s_CC_%s' % (i, j) for i in all_banks for j in cc_p_pin_list]",
       "g_all_pll_clock_pins = [pin for pin in g_all_clock_pins]",
       "g_boot_clock_resources = 0",
-      "g_pin_resources = []",
+      "g_input_pin_resources = []",
+      "g_output_pin_resources = []",
       "g_fabric_clock_resources = 0",
       "g_pll_resources = []"
     ]
@@ -403,10 +404,12 @@
   "__primary_validation__" : {
     "__seqeunce__" : [
       "__pin_is_valid__",
-      "__check_pin_resource__",
+      "__check_input_pin_resource__",
+      "__check_output_pin_resource__",
       "__ds_pin_is_valid__",
       "__pin_is_differential__",
-      "__check_ds_pin_resource__",
+      "__check_ds_input_pin_resource__",
+      "__check_ds_output_pin_resource__",
       "__clock_pin_is_valid__",
       "__check_boot_clock_resource__",
       "__pll_clock_pin_is_valid__"
@@ -417,12 +420,20 @@
         "pin_result = '__location0__' in g_all_pins"
       ]
     },
-    "__check_pin_resource__" : {
-      "__module__" : ["I_BUF", "O_BUF", "O_BUFT"],
+    "__check_input_pin_resource__" : {
+      "__module__" : ["I_BUF"],
       "__equation__" : [
-        "pin_result = '__location0__' not in g_pin_resources",
-        "g_pin_resources.append('__location0__' if pin_result else '')",
-        "g_pin_resources = [pin for pin in g_pin_resources if pin != '']" 
+        "pin_result = '__location0__' not in g_input_pin_resources",
+        "g_input_pin_resources.append('__location0__' if pin_result else '')",
+        "g_input_pin_resources = [pin for pin in g_input_pin_resources if pin != '']" 
+      ]
+    },
+    "__check_output_pin_resource__" : {
+      "__module__" : ["O_BUF", "O_BUFT"],
+      "__equation__" : [
+        "pin_result = '__location0__' not in g_output_pin_resources",
+        "g_output_pin_resources.append('__location0__' if pin_result else '')",
+        "g_output_pin_resources = [pin for pin in g_output_pin_resources if pin != '']" 
       ]
     },
     "__ds_pin_is_valid__" : {
@@ -452,14 +463,24 @@
         "pin_result = pin_result and m0.group(6) != m1.group(6)"
       ]
     },
-    "__check_ds_pin_resource__" : {
-      "__module__" : ["I_BUF_DS", "O_BUF_DS", "O_BUFT_DS"],
+    "__check_ds_input_pin_resource__" : {
+      "__module__" : ["I_BUF_DS"],
       "__equation__" : [
-        "pin_result = '__location0__' not in g_pin_resources",
-        "pin_result = pin_result and '__location1__' not in g_pin_resources",
-        "g_pin_resources.append('__location0__' if pin_result else '')",
-        "g_pin_resources.append('__location1__' if pin_result else '')",
-        "g_pin_resources = [pin for pin in g_pin_resources if pin != '']"
+        "pin_result = '__location0__' not in g_input_pin_resources",
+        "pin_result = pin_result and '__location1__' not in g_input_pin_resources",
+        "g_input_pin_resources.append('__location0__' if pin_result else '')",
+        "g_input_pin_resources.append('__location1__' if pin_result else '')",
+        "g_input_pin_resources = [pin for pin in g_input_pin_resources if pin != '']"
+      ]
+    },
+    "__check_ds_output_pin_resource__" : {
+      "__module__" : ["O_BUF_DS", "O_BUFT_DS"],
+      "__equation__" : [
+        "pin_result = '__location0__' not in g_output_pin_resources",
+        "pin_result = pin_result and '__location1__' not in g_output_pin_resources",
+        "g_output_pin_resources.append('__location0__' if pin_result else '')",
+        "g_output_pin_resources.append('__location1__' if pin_result else '')",
+        "g_output_pin_resources = [pin for pin in g_output_pin_resources if pin != '']"
       ]
     },
     "__clock_pin_is_valid__" : {
