@@ -36,6 +36,10 @@ The Raptor EDA environment requires a Linux-based server or workstation environm
 ## RAPTOR DEVICE SUPPORT
 This EA version of Raptor does not support device bitstream generation.
 
+---- 
+## BUILDING RAPTOR FROM SOURCE (INCLUDES THE BUILD OF ALL THE COMPONENTS ABOVE)
+https://github.com/os-fpga/Raptor/blob/main/BUILD.md
+
 ----
 ## KNOWN ISSUES
 For a complete list of the known issues in this release, please see the accompanying [release-specific documentation](https://github.com/os-fpga/Raptor/releases).
