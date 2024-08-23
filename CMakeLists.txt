@@ -726,6 +726,11 @@ install(
       FILES ${PROJECT_SOURCE_DIR}/lib/pnr/genesis3/primitives.v
       DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/sim_models/rapidsilicon/genesis3/)
 
+# Python scripts
+install(
+      DIRECTORY ${PROJECT_SOURCE_DIR}/lib/python3/
+      DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/raptor/python3/)
+
 install(
       FILES src/raptorenv_lin64.sh
       src/.raptorenv_lin64.sh
@@ -859,6 +864,10 @@ add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy
           ${PROJECT_SOURCE_DIR}/lib/pnr/genesis3/primitives.v
           ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/sim_models/rapidsilicon/genesis3/
+  #Python scripts
+      COMMAND ${CMAKE_COMMAND} -E copy_directory
+          ${PROJECT_SOURCE_DIR}/lib/python3/
+          ${CMAKE_CURRENT_BINARY_DIR}/share/raptor/python3/
 )
 
 if (WIN OR APPLE)
