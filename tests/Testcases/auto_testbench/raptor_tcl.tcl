@@ -7,8 +7,7 @@ synthesize delay
 
 #################### Get the current working directory ####################
 set current_dir [pwd]
-#################### run auto-testbench script ####################
-#exec python3 tb_generator.py GJC1 $current_dir
+#################### auto-testbench generation ####################
 auto_testbench
 
 #################### add simulation files ####################
