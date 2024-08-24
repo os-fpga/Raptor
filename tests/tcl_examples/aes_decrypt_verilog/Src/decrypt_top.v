@@ -31,7 +31,7 @@ module decrypt_top (
   wire [0:127] pt_wire;
   reg   [6:0]  pt_count = {7{1'b0}};
   wire         pt_vld_decrypt;
-
+  wire         ct_ready;
   reg  ct_vld_decrypt = 1'b0;
 
   always @(posedge clk)
