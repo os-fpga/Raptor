@@ -279,7 +279,7 @@ def create_folders_and_file():
             for line in stimulus_lines:
               file.write('\t' + line + '\n')
             file.write('\tcompare();\n\t#10;\n\tif(mismatch == 0)\n\t\t$display("**** All Comparison Matched *** \\n\t\tSimulation Passed\\n");\n\telse\n\t\t')
-            file.write('$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t#200;\n\t$finish;\nend\n\n') 
+            file.write('begin\n\t\t$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t\t$fatal(1);\n\t\tend\n\t#200;\n\t$finish;\nend\n\n') 
         else:
             print ("FOUND SEQUENTIAL DESIGN")
             for clk in clk_port:
@@ -349,7 +349,7 @@ def create_folders_and_file():
                     for line in stimulus_lines:
                         file.write('\t' + line + '\n')
                     file.write('\trepeat (2) @ (negedge ' + clk + ');\n\tcompare();\n\tif(mismatch == 0)\n\t\t$display("**** All Comparison Matched *** \\n\t\tSimulation Passed\\n");\n\telse\n\t\t')
-                    file.write('$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t#200;\n\t$finish;\nend\n\n')  
+                    file.write('begin\n\t\t$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t\t$fatal(1);\n\t\tend\n\t#200;\n\t$finish;\nend\n\n')  
             else:
                 print("Found Reset Signal:")
                 # Check sync_reset value and write stimulus generation accordingly
@@ -420,7 +420,7 @@ def create_folders_and_file():
                 for line in stimulus_lines:
                     file.write('\t' + line + '\n')
                 file.write('\tcompare();\n\n\tif(mismatch == 0)\n\t\t$display("**** All Comparison Matched *** \\n\t\tSimulation Passed\\n");\n\telse\n\t\t')
-                file.write('$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\trepeat(200) @(posedge ' + clk + ');\n\t$finish;\nend\n\n')
+                file.write('begin\n\t\t$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t\t$fatal(1);\n\t\tend\n\trepeat(200) @(posedge ' + clk + ');\n\t$finish;\nend\n\n')
                       
         # compare task
         dec = len(out_instances)
