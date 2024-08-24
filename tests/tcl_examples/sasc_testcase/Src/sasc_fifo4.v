@@ -90,21 +90,21 @@ reg		gb;
 //
 
 always @(posedge clk or negedge rst)
-        if(!rst)	wp <= #1 2'h0;
+        if(!rst)	wp <=  2'h0;
         else
-        if(clr)		wp <= #1 2'h0;
+        if(clr)		wp <=  2'h0;
         else
-        if(we)		wp <= #1 wp_p1;
+        if(we)		wp <=  wp_p1;
 
 assign wp_p1 = wp + 2'h1;
 assign wp_p2 = wp + 2'h2;
 
 always @(posedge clk or negedge rst)
-        if(!rst)	rp <= #1 2'h0;
+        if(!rst)	rp <=  2'h0;
         else
-        if(clr)		rp <= #1 2'h0;
+        if(clr)		rp <=  2'h0;
         else
-        if(re)		rp <= #1 rp_p1;
+        if(re)		rp <=  rp_p1;
 
 assign rp_p1 = rp + 2'h1;
 
@@ -113,7 +113,7 @@ assign  dout = mem[ rp ];
 
 // Fifo Input 
 always @(posedge clk)
-        if(we)     mem[ wp ] <= #1 din;
+        if(we)     mem[ wp ] <=  din;
 
 // Status
 assign empty = (wp == rp) & !gb;
@@ -121,13 +121,13 @@ assign full  = (wp == rp) &  gb;
 
 // Guard Bit ...
 always @(posedge clk)
-	if(!rst)			gb <= #1 1'b0;
+	if(!rst)			gb <=  1'b0;
 	else
-	if(clr)				gb <= #1 1'b0;
+	if(clr)				gb <=  1'b0;
 	else
-	if((wp_p1 == rp) & we)		gb <= #1 1'b1;
+	if((wp_p1 == rp) & we)		gb <=  1'b1;
 	else
-	if(re)				gb <= #1 1'b0;
+	if(re)				gb <=  1'b0;
 
 endmodule
 

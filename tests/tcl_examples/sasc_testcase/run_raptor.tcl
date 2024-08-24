@@ -24,19 +24,19 @@ puts "Compiling $project_name..."
 analyze
 synthesize
 
-#setup_lec_sim
+setup_lec_sim
 
 # Simulate RTL vs gate
-#simulation_options compilation verilator gate
-#simulate gate verilator
+simulation_options compilation verilator gate
+simulate gate verilator
 
 packing
 place
 route
 
 # Simulate RTL vs post-pnr
-#simulation_options compilation verilator pnr
-#simulate pnr verilator
+simulation_options compilation verilator pnr
+simulate pnr verilator
 
 sta
 power
