@@ -30,3 +30,29 @@ proc rename_module_in_netlist { {stage "post_synth"} } {
     close $output_file
     puts "Modification completed."
 }
+
+# LEC Simulation setup
+# Setup simulation with auto-testbench "RTL vs gate" and "RTL vs pnr"
+# To be invoked after Synthesis
+proc setup_lec_sim { } {
+    # auto-testbench generation
+    auto_testbench
+
+    # Add simulation files
+    #  1) Generated testbench:
+    add_simulation_file ./sim/co_sim_tb/co_sim_[get_top_module].v
+    #  2) RTL design:
+    foreach file [get_design_files] {
+        add_simulation_file $file
+    }
+
+    # Set top testbench name to auto-generated name
+    set_top_testbench co_sim_[get_top_module]
+
+    # Edit post-synth netlist to run co-simulation RTL vs post-synth netlist 
+    rename_module_in_netlist post_synth
+
+    # Edit PnR wrapper netlist to run co-simulation RTL vs post-pnr netlist 
+    rename_module_in_netlist post_pnr    
+}
+
