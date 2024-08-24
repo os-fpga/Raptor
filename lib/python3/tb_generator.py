@@ -83,7 +83,14 @@ def create_folders_and_file():
 
     # Read the JSON file
     with open(port_info_path) as json_file:
-        data = json.load(json_file)
+        # Read the content of the file
+        content = json_file.read()
+
+        # Replace all occurrences of backslash with double backslashes
+        content = content.replace("\\", "\\\\")
+
+        # Parse the corrected JSON content
+        data = json.loads(content)
 
     # Extract topModule
     top_module = data['top']
