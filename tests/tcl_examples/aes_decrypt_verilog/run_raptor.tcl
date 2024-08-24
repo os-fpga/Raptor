@@ -22,14 +22,17 @@ puts "Compiling $project_name..."
 
 # Synthesize with high effort 
 synth_options -effort high
+
 analyze
-# message_severity VERI-1209 IGNORE
 # Synthesize optimizing for delay
 synthesize delay
+
 packing
 place
 route
+
 sta 
-# bitstream
+power
+bitstream
 
 puts "Completed $project_name...\n"
