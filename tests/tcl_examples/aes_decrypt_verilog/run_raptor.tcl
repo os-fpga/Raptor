@@ -27,9 +27,19 @@ analyze
 # Synthesize optimizing for delay
 synthesize delay
 
+setup_lec_sim
+
+# Simulate RTL vs gate
+simulation_options compilation verilator gate
+simulate gate verilator
+
 packing
 place
 route
+
+# Simulate RTL vs post-pnr
+simulation_options compilation verilator pnr
+simulate pnr verilator
 
 sta 
 power
