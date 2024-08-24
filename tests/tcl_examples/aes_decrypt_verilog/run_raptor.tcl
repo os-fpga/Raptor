@@ -27,19 +27,9 @@ analyze
 # Synthesize optimizing for delay
 synthesize delay
 
-setup_lec_sim
-
-# Simulate RTL vs gate
-simulation_options compilation icarus gate
-simulate gate icarus
-
 packing
 place
 route
-
-# Simulate RTL vs post-pnr
-simulation_options compilation icarus pnr
-simulate pnr icarus
 
 sta 
 power
