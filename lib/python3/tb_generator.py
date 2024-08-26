@@ -234,9 +234,8 @@ def create_folders_and_file():
                     file.write("    wire \t\t" + p_name_with_netlist)
         
         file.write(";\n\tinteger\t\tmismatch\t=\t0;\n\n")
-        file.write(top_module + "\t" + rtl_inst + "\n\n`ifdef PNR\n")
-        file.write("\t" + top_module + '_post_route route_net (.*, {} );\n'.format(', '.join(wire_instances)) + '`else\n' )
-        file.write("\t" + top_module + '_post_synth synth_net (.*, {} );\n'.format(', '.join(wire_instances)) + "`endif\n\n" )
+        file.write(top_module + "\t" + rtl_inst + "\n")
+        file.write(top_module + '_post_synth synth_net (.*, {} );\n'.format(', '.join(wire_instances)) + "\n" )
         
         if inout_ports:
             for inout in inout_ports:
