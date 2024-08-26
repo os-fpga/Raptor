@@ -1,37 +1,44 @@
-create_design GJC1
-target_device 1VG28
+create_design GJC1_design
+
+target_device GEMINI_COMPACT_22x4
+
 add_design_file GJC1.v
 set_top_module GJC1
+
 analyze
+
 synthesize delay
 
-#################### Get the current working directory ####################
-set current_dir [pwd]
-#################### auto-testbench generation ####################
+# auto-testbench generation
 auto_testbench
 
-#################### add simulation files ####################
-add_simulation_file ./sim/co_sim_tb/co_sim_GJC1.v GJC1.v
-set_top_testbench co_sim_GJC1
+# Add simulation files
+#  1) Generated testbench:
+add_simulation_file ./sim/co_sim_tb/co_sim_[get_top_module].v
+#  2) RTL design:
+add_simulation_file GJC1.v 
 
-#################### edit post-synth netlist to run co-simulation RTL vs post-synth netlist ####################
+# Set top testbench name to auto-generated name
+set_top_testbench co_sim_[get_top_module]
 
-# Open the input file in read mode
-set input_file [open "GJC1/run_1/synth_1_1/synthesis/GJC1\_post_synth.v" r]
-# Read the file content
-set file_content [read $input_file]
-# Close the input file after reading
-close $input_file
-set modified_content [string map {"GJC1(" "GJC1_post_synth("} $file_content]
-# Open the file again, this time in write mode to overwrite the old content
-set output_file [open "GJC1/run_1/synth_1_1/synthesis/GJC1\_post_synth.v" w]
-# Write the modified content back to the file
-puts $output_file $modified_content
-# Close the file
-close $output_file
-puts "Modification completed."
+# Edit post-synth netlist to run co-simulation RTL vs post-synth netlist 
+rename_module_in_netlist post_synth
 
-#################################################################################################################
-
+# Simulate RTL vs gate
 simulation_options compilation icarus gate
 simulate gate icarus
+
+packing
+place
+route
+
+# Edit PnR wrapper netlist to run co-simulation RTL vs post-pnr netlist 
+rename_module_in_netlist post_pnr
+
+# Simulate RTL vs post-pnr
+simulation_options compilation icarus pnr
+simulate pnr icarus
+
+sta
+power
+bitstream

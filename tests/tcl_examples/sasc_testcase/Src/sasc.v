@@ -160,44 +160,44 @@ sasc_fifo4 rx_fifo(	.clk(		clk		),
 // Transmit Logic
 //
 always @(posedge clk)
-	if(!rst)	txf_empty_r <= #1 1'b1;
+	if(!rst)	txf_empty_r <=  1'b1;
 	else
-	if(sio_ce)	txf_empty_r <= #1 txf_empty;
+	if(sio_ce)	txf_empty_r <=  txf_empty;
 
 always @(posedge clk)
-	load <= #1 !txf_empty_r & !shift_en & !cts_i;
+	load <=  !txf_empty_r & !shift_en & !cts_i;
 
 always @(posedge clk)
-	load_r <= #1 load;
+	load_r <=  load;
 
 assign load_e = load & sio_ce;
 
 always @(posedge clk)
-	if(load_e)		hold_reg <= #1 {STOP_BIT, txd_p, START_BIT};
+	if(load_e)		hold_reg <=  {STOP_BIT, txd_p, START_BIT};
 	else
-	if(shift_en & sio_ce)	hold_reg <= #1 {IDLE_BIT, hold_reg[9:1]};
+	if(shift_en & sio_ce)	hold_reg <=  {IDLE_BIT, hold_reg[9:1]};
 
 always @(posedge clk)
-	if(!rst)				txd_o <= #1 IDLE_BIT;
+	if(!rst)				txd_o <=  IDLE_BIT;
 	else
 	if(sio_ce)
-		if(shift_en | shift_en_r)	txd_o <= #1 hold_reg[0];
-		else				txd_o <= #1 IDLE_BIT;
+		if(shift_en | shift_en_r)	txd_o <=  hold_reg[0];
+		else				txd_o <=  IDLE_BIT;
 
 always @(posedge clk)
-        if(!rst)		tx_bit_cnt <= #1 4'h9;
+        if(!rst)		tx_bit_cnt <=  4'h9;
 	else
-	if(load_e)		tx_bit_cnt <= #1 4'h0;
+	if(load_e)		tx_bit_cnt <=  4'h0;
 	else
-	if(shift_en & sio_ce)	tx_bit_cnt <= #1 tx_bit_cnt + 4'h1;
+	if(shift_en & sio_ce)	tx_bit_cnt <=  tx_bit_cnt + 4'h1;
 
 always @(posedge clk)
-	shift_en <= #1 (tx_bit_cnt != 4'h9);
+	shift_en <=  (tx_bit_cnt != 4'h9);
 
 always @(posedge clk)
-	if(!rst)	shift_en_r <= #1 1'b0;
+	if(!rst)	shift_en_r <=  1'b0;
 	else
-	if(sio_ce)	shift_en_r <= #1 shift_en;
+	if(sio_ce)	shift_en_r <=  shift_en;
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -205,28 +205,28 @@ always @(posedge clk)
 //
 
 always @(posedge clk)
-	rxd_s <= #1 rxd_i;
+	rxd_s <=  rxd_i;
 
 always @(posedge clk)
-	rxd_r <= #1 rxd_s;
+	rxd_r <=  rxd_s;
 
 assign start = (rxd_r == IDLE_BIT) & (rxd_s == START_BIT);
 
 always @(posedge clk)
-        if(!rst)		rx_bit_cnt <= #1 4'ha;
+        if(!rst)		rx_bit_cnt <=  4'ha;
 	else
-	if(!rx_go & start)	rx_bit_cnt <= #1 4'h0;
+	if(!rx_go & start)	rx_bit_cnt <=  4'h0;
 	else
-	if(rx_go & rx_sio_ce)	rx_bit_cnt <= #1 rx_bit_cnt + 4'h1;
+	if(rx_go & rx_sio_ce)	rx_bit_cnt <=  rx_bit_cnt + 4'h1;
 
 always @(posedge clk)
-	rx_go <= #1 (rx_bit_cnt != 4'ha);
+	rx_go <=  (rx_bit_cnt != 4'ha);
 
 always @(posedge clk)
-	rx_valid <= #1 (rx_bit_cnt == 4'h9);
+	rx_valid <=  (rx_bit_cnt == 4'h9);
 
 always @(posedge clk)
-	rx_valid_r <= #1 rx_valid;
+	rx_valid_r <=  rx_valid;
 
 assign rx_we = !rx_valid_r & rx_valid & !rxf_full;
 
@@ -234,7 +234,7 @@ always @(posedge clk)
 	if(rx_go & rx_sio_ce)	rxr <= {rxd_s, rxr[9:1]};
 
 always @(posedge clk)
-	rts_o <= #1 rxf_full;
+	rts_o <=  rxf_full;
 
 ///////////////////////////////////////////////////////////////////
 //
@@ -245,23 +245,23 @@ always @(posedge clk)
 
 // Edge detector
 always @(posedge clk)
-	if(sio_ce_x4)	rxd_r1 <= #1 rxd_s;
+	if(sio_ce_x4)	rxd_r1 <=  rxd_s;
 
 always @(posedge clk)
-	if(sio_ce_x4)	rxd_r2 <= #1 rxd_r1;
+	if(sio_ce_x4)	rxd_r2 <=  rxd_r1;
 
 always @(posedge clk)
-	if(!rst)		change <= #1 1'b0;
+	if(!rst)		change <=  1'b0;
 	else
-	if(rxd_r != rxd_s)	change <= #1 1'b1;
+	if(rxd_r != rxd_s)	change <=  1'b1;
 	else
-	if(sio_ce_x4)		change <= #1 1'b0;
+	if(sio_ce_x4)		change <=  1'b0;
 
 // DPLL FSM
 always @(posedge clk or negedge rst)
-	if(!rst)	dpll_state <= #1 2'h1;
+	if(!rst)	dpll_state <=  2'h1;
 	else
-	if(sio_ce_x4)	dpll_state <= #1 dpll_next_state;
+	if(sio_ce_x4)	dpll_state <=  dpll_next_state;
 
 always @(dpll_state or change)
    begin
@@ -287,13 +287,13 @@ always @(dpll_state or change)
 // Compensate for sync registers at the input - allign sio 
 // clock enable to be in the middle between two bit changes ...
 always @(posedge clk)
-	rx_sio_ce_r1 <= #1 rx_sio_ce_d;
+	rx_sio_ce_r1 <=  rx_sio_ce_d;
 
 always @(posedge clk)
-	rx_sio_ce_r2 <= #1 rx_sio_ce_r1;
+	rx_sio_ce_r2 <=  rx_sio_ce_r1;
 
 always @(posedge clk)
-	rx_sio_ce <= #1 rx_sio_ce_r1 & !rx_sio_ce_r2;
+	rx_sio_ce <=  rx_sio_ce_r1 & !rx_sio_ce_r2;
 
 endmodule
 

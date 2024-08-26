@@ -83,7 +83,14 @@ def create_folders_and_file():
 
     # Read the JSON file
     with open(port_info_path) as json_file:
-        data = json.load(json_file)
+        # Read the content of the file
+        content = json_file.read()
+
+        # Replace all occurrences of backslash with double backslashes
+        content = content.replace("\\", "\\\\")
+
+        # Parse the corrected JSON content
+        data = json.loads(content)
 
     # Extract topModule
     top_module = data['top']
@@ -227,9 +234,8 @@ def create_folders_and_file():
                     file.write("    wire \t\t" + p_name_with_netlist)
         
         file.write(";\n\tinteger\t\tmismatch\t=\t0;\n\n")
-        file.write(top_module + "\t" + rtl_inst + "\n\n`ifdef PNR\n")
-        file.write("\t" + top_module + '_post_route route_net (.*, {} );\n'.format(', '.join(wire_instances)) + '`else\n' )
-        file.write("\t" + top_module + '_post_synth synth_net (.*, {} );\n'.format(', '.join(wire_instances)) + "`endif\n\n" )
+        file.write(top_module + "\t" + rtl_inst + "\n")
+        file.write(top_module + '_post_synth netlist_inst (.*, {} );\n'.format(', '.join(wire_instances)) + "\n" )
         
         if inout_ports:
             for inout in inout_ports:
@@ -272,7 +278,7 @@ def create_folders_and_file():
             for line in stimulus_lines:
               file.write('\t' + line + '\n')
             file.write('\tcompare();\n\t#10;\n\tif(mismatch == 0)\n\t\t$display("**** All Comparison Matched *** \\n\t\tSimulation Passed\\n");\n\telse\n\t\t')
-            file.write('$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t#200;\n\t$finish;\nend\n\n') 
+            file.write('begin\n\t\t$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t\t$fatal(1);\n\t\tend\n\t#200;\n\t$finish;\nend\n\n') 
         else:
             print ("FOUND SEQUENTIAL DESIGN")
             for clk in clk_port:
@@ -342,7 +348,7 @@ def create_folders_and_file():
                     for line in stimulus_lines:
                         file.write('\t' + line + '\n')
                     file.write('\trepeat (2) @ (negedge ' + clk + ');\n\tcompare();\n\tif(mismatch == 0)\n\t\t$display("**** All Comparison Matched *** \\n\t\tSimulation Passed\\n");\n\telse\n\t\t')
-                    file.write('$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t#200;\n\t$finish;\nend\n\n')  
+                    file.write('begin\n\t\t$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t\t$fatal(1);\n\t\tend\n\t#200;\n\t$finish;\nend\n\n')  
             else:
                 print("Found Reset Signal:")
                 # Check sync_reset value and write stimulus generation accordingly
@@ -413,7 +419,7 @@ def create_folders_and_file():
                 for line in stimulus_lines:
                     file.write('\t' + line + '\n')
                 file.write('\tcompare();\n\n\tif(mismatch == 0)\n\t\t$display("**** All Comparison Matched *** \\n\t\tSimulation Passed\\n");\n\telse\n\t\t')
-                file.write('$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\trepeat(200) @(posedge ' + clk + ');\n\t$finish;\nend\n\n')
+                file.write('begin\n\t\t$display("%0d comparison(s) mismatched\\nERROR: SIM: Simulation Failed", mismatch);\n\t\t$fatal(1);\n\t\tend\n\trepeat(200) @(posedge ' + clk + ');\n\t$finish;\nend\n\n')
                       
         # compare task
         dec = len(out_instances)

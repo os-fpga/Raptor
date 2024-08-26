@@ -113,47 +113,47 @@ reg		sio_ce_x4_t;
 // -----------------------------------------------------
 // Prescaler
 always @(posedge clk)
-	if(!rst)	ps <= #1 8'h0;
+	if(!rst)	ps <=  8'h0;
 	else
-	if(ps_clr)	ps <= #1 8'h0;
-	else		ps <= #1 ps + 8'h1;
+	if(ps_clr)	ps <=  8'h0;
+	else		ps <=  ps + 8'h1;
 
 always @(posedge clk)
-	ps_clr <= #1 (ps == div0);	// Desired number of cycles less 2
+	ps_clr <=  (ps == div0);	// Desired number of cycles less 2
 
 // -----------------------------------------------------
 // Oversampled Boud Rate (x4)
 always @(posedge clk)
-	if(!rst)	br_cnt <= #1 8'h0;
+	if(!rst)	br_cnt <=  8'h0;
 	else
-	if(br_clr)	br_cnt <= #1 8'h0;
+	if(br_clr)	br_cnt <=  8'h0;
 	else
-	if(ps_clr)	br_cnt <= #1 br_cnt + 8'h1;
+	if(ps_clr)	br_cnt <=  br_cnt + 8'h1;
 
 always @(posedge clk)
-	br_clr <= #1 (br_cnt == div1); // Prciese number of PS cycles
+	br_clr <=  (br_cnt == div1); // Prciese number of PS cycles
 
 always @(posedge clk)
-	sio_ce_x4_r <= #1 br_clr;
+	sio_ce_x4_r <=  br_clr;
 
 always @(posedge clk)
-	sio_ce_x4_t <= #1 !sio_ce_x4_r & br_clr;
+	sio_ce_x4_t <=  !sio_ce_x4_r & br_clr;
 
 always @(posedge clk)
-	sio_ce_x4 <= #1 sio_ce_x4_t;
+	sio_ce_x4 <=  sio_ce_x4_t;
 
 // -----------------------------------------------------
 // Actual Boud rate
 always @(posedge clk)
-	if(!rst)			cnt <= #1 2'h0;
+	if(!rst)			cnt <=  2'h0;
 	else
-	if(!sio_ce_x4_r & br_clr)	cnt <= #1 cnt + 2'h1;
+	if(!sio_ce_x4_r & br_clr)	cnt <=  cnt + 2'h1;
 
 always @(posedge clk)
-	sio_ce_r <= #1 (cnt == 2'h0);
+	sio_ce_r <=  (cnt == 2'h0);
 
 always @(posedge clk)
-	sio_ce <= #1 !sio_ce_r & (cnt == 2'h0);
+	sio_ce <=  !sio_ce_r & (cnt == 2'h0);
 
 endmodule
 
