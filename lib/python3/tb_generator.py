@@ -235,7 +235,7 @@ def create_folders_and_file():
         
         file.write(";\n\tinteger\t\tmismatch\t=\t0;\n\n")
         file.write(top_module + "\t" + rtl_inst + "\n")
-        file.write(top_module + '_post_synth synth_net (.*, {} );\n'.format(', '.join(wire_instances)) + "\n" )
+        file.write(top_module + '_post_synth netlist_inst (.*, {} );\n'.format(', '.join(wire_instances)) + "\n" )
         
         if inout_ports:
             for inout in inout_ports:
