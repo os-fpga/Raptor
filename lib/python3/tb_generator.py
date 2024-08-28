@@ -32,6 +32,7 @@ def create_folders_and_file():
     default_iteration   = 100
     design              = sys.argv[1]
     design_path         = sys.argv[2]
+    clk_period = 5.0
     if len(sys.argv) >= 4:
         try:
             iteration_val = sys.argv[3]
@@ -40,7 +41,13 @@ def create_folders_and_file():
             iteration_val = default_iteration
     else:
         iteration_val = default_iteration
-
+    if len(sys.argv) >= 5:
+        try:
+            clk_period = sys.argv[4]
+        except ValueError:
+            print("Invalid value provided for clk_period. Using default value.")
+            clk_period  = 5.0
+            
     # Construct the path to port_info.json using *
     port_info_path = os.path.join(
         design_path,
@@ -234,8 +241,17 @@ def create_folders_and_file():
                     file.write("    wire \t\t" + p_name_with_netlist)
         
         file.write(";\n\tinteger\t\tmismatch\t=\t0;\n\n")
-        file.write(top_module + "\t" + rtl_inst + "\n")
-        file.write(top_module + '_post_synth netlist_inst (.*, {} );\n'.format(', '.join(wire_instances)) + "\n" )
+        file.write(top_module + "\t" + rtl_inst + "\n\n`ifdef PNR_SIM\n")
+        file.write("\t" + top_module + '_post_route route_net (.*, {} );\n'.format(', '.join(wire_instances)) + '`else\n' )
+        file.write("\t" + top_module + '_post_synth synth_net (.*, {} );\n'.format(', '.join(wire_instances)) + "`endif\n\n" )
+
+        file.write("`ifdef TIMED_SIM\n") 
+        file.write("\tinitial begin\n")  
+        file.write("\t\t$sdf_annotate(\"../routing/fabric_" + top_module + "_post_route.sdf\", co_sim_" + top_module + ".route_net." + "fabric_dut_inst" + ");\n") 
+        file.write("\tend\n") 
+        file.write("`endif\n\n") 
+   
+
         
         if inout_ports:
             for inout in inout_ports:
@@ -285,7 +301,7 @@ def create_folders_and_file():
                 file.write('// clock initialization for ' + clk + '\n')
                 file.write('initial begin\n')
                 file.write('\t' + clk + " = 1'b0;\n")
-                file.write('\tforever #1 ' + clk + ' = ~' + clk + ';\n')
+                file.write('\tforever #' + clk_period + ' ' + clk + ' = ~' + clk + ';\n')
                 file.write('end\n')      
             
             # check for reset signal 

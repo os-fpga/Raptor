@@ -21,7 +21,14 @@ proc rename_module_in_netlist { {stage "post_synth"} } {
         set file_content [read $input_file]
     # Close the input file after reading
     close $input_file
-    set modified_content [string map [list "[get_top_module](" "[get_top_module]_post_synth("] $file_content]
+    if {$stage == "post_synth"} {
+        set modified_content [string map [list "[get_top_module](" "[get_top_module]_post_synth("] $file_content]
+    } else {
+        set modified_content [string map [list "[get_top_module](" "[get_top_module]_post_route("] $file_content]
+    }
+    if {$stage == "post_pnr"} {
+        regsub {fabric_dut [a-zA-Z0-9_\$\\]+ } $modified_content "fabric_dut fabric_dut_inst " modified_content
+    }
     # Open the file again, this time in write mode to overwrite the old content
     set output_file [open $fileToEdit w]
     # Write the modified content back to the file
@@ -34,12 +41,18 @@ proc rename_module_in_netlist { {stage "post_synth"} } {
 # LEC Simulation setup
 # Setup simulation with auto-testbench "RTL vs gate" and "RTL vs pnr"
 # To be invoked after Synthesis
-proc setup_lec_sim { } {
+proc setup_lec_sim { {clock_period "5.0"} } {
+    puts "Setting up the LEC Simulation"
+    flush stdout
     # auto-testbench generation
-    auto_testbench
-
+    auto_testbench -clock_period $clock_period
+    # Install callback to re-execute this function whenever the synthesize command is executed
+    if {[trace info execution synthesize] == ""} {
+        trace add execution synthesize leave "_callback_setup_lec_sim $clock_period"
+    }
     # Add simulation files
     #  1) Generated testbench:
+    clear_simulation_files
     add_simulation_file ./sim/co_sim_tb/co_sim_[get_top_module].v
     #  2) RTL design:
     foreach file [get_design_files] {
@@ -56,3 +69,6 @@ proc setup_lec_sim { } {
     rename_module_in_netlist post_pnr    
 }
 
+proc _callback_setup_lec_sim { args } {  
+    setup_lec_sim [lindex $args 0]
+}
