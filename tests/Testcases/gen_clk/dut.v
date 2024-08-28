@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module dut (
     input   wire data_i,
     input   wire clk,
@@ -24,7 +25,7 @@ module dut (
     O_BUF data_half_o_buffer (.I(data_half_o_design), .O(data_half_o));
     CLK_BUF clock_buffer (.I(clk_buf), .O(clk_pll_in));
 
-    PLL #(.PLL_MULT(100), .PLL_DIV(32), .PLL_POST_DIV(2)) clk_pll_gen (
+    PLL #(.PLL_MULT(40), .PLL_DIV(1), .PLL_POST_DIV(17)) clk_pll_gen (
         .PLL_EN(const1), // PLL Enable
         .CLK_IN(clk_pll_in), // Clock input
         .CLK_OUT_DIV4(clk_design)

@@ -18,13 +18,24 @@ add_constraint_file constraints.sdc
 target_device GEMINI_COMPACT_22x4
 
 puts "Compiling $project_name..."
+
 analyze
 synthesize delay
-power
+
+setup_lec_sim 10
+
+# Simulate RTL vs gate
+simulate gate icarus
+
 packing
 place
 route
+
+# Simulate RTL vs post-pnr
+simulate pnr icarus
+
 sta
+power
 bitstream 
 
 puts "Completed $project_name...\n"
