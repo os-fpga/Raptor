@@ -281,6 +281,7 @@ def create_folders_and_file():
             
             # generate corner case stimulus 
             file.write("\t// ----------- Corner Case stimulus generation -----------\n")
+            file.write('\t#10;\n')
             max_values = []
             for bit_width in bit_width_list:
                 if bit_width is None:
@@ -351,6 +352,7 @@ def create_folders_and_file():
                     
                     # generate corner case stimulus 
                     file.write("\t// ----------- Corner Case stimulus generation -----------\n")
+                    file.write('\trepeat (2) @(negedge ' + clk + ');\n')
                     max_values = []
                     for bit_width in bit_width_list:
                         if bit_width is None:
@@ -388,28 +390,28 @@ def create_folders_and_file():
                         file.write("\tend\n\n")
                 for clk in clk_port:
                     for rst in reset_port:
+                        file.write('\t$display ("***Reset Test is applied***");\n')
                         if not input_ports:
                             if sync_reset_value == "active_high":
-                                file.write("\t" + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n' )               
+                                file.write("\t" + rst + ' <= 1;\n\trepeat (2) @(negedge ' + clk + ');\n' )               
                                 file.write('\t' + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n')
                             else:
-                                file.write("\t" + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n\t' )          
+                                file.write("\t" + rst + ' <= 0;\n\trepeat (2) @(negedge ' + clk + ');\n\t' )          
                                 file.write('\t' + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n')                        
                         else:
                             if sync_reset_value == "active_high":
-                                file.write("\t" + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n\t{' )
+                                file.write("\t" + rst + ' <= 1;\n\t{' )
                                 input_port_str = ', '.join(input_ports)
                                 input_port_str += " } <= 'd0;"
                                 print(input_port_str, file=file)                
-                                file.write('\t' + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n')
+                                file.write('\trepeat (2) @(negedge ' + clk + ');\n\t' + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n')
                             else:
-                                file.write("\t" + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n\t{' )
+                                file.write("\t" + rst + ' <= 0;\n\t{' )
                                 input_port_str = ', '.join(input_ports)
                                 input_port_str += " } <= 'd0;"
                                 print(input_port_str, file=file)                
-                                file.write('\t' + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n')
-                file.write('\t$display ("***Reset Test is applied***");\n\t@(negedge ' + 
-                              clk + ');\n\t@(negedge ' + clk + ');\n\tcompare();\n\t$display ("***Reset Test is ended***");\n')
+                                file.write('\trepeat (2) @(negedge ' + clk + ');\n\t' + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n')
+                file.write('\tcompare();\n\t$display ("***Reset Test is ended***");\n')
                 # Generate random stimulus values for each input port
                 file.write('\t//Random stimulus generation\n\trepeat(' + str(iteration) + ') @ (negedge ' + clk + ') begin\n')
                 random_stimulus_lines = []
@@ -420,7 +422,7 @@ def create_folders_and_file():
                 file.write('\t\tcompare();\nend\n\n')
 
                 file.write("\t// ----------- Corner Case stimulus generation -----------\n")
-                
+                file.write('\trepeat (2) @(negedge ' + clk + ');\n')
                 # Generate Corner Case stimulus for remaining INPUTS
                 max_values = []
                 for bit_width in bit_width_list:
