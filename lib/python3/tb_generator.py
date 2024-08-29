@@ -281,6 +281,7 @@ def create_folders_and_file():
             
             # generate corner case stimulus 
             file.write("\t// ----------- Corner Case stimulus generation -----------\n")
+            file.write('\t#10;\n')
             max_values = []
             for bit_width in bit_width_list:
                 if bit_width is None:
@@ -301,7 +302,7 @@ def create_folders_and_file():
                 file.write('// clock initialization for ' + clk + '\n')
                 file.write('initial begin\n')
                 file.write('\t' + clk + " = 1'b0;\n")
-                file.write('\tforever #' + clk_period + ' ' + clk + ' = ~' + clk + ';\n')
+                file.write('\tforever #' + str(clk_period) + ' ' + clk + ' = ~' + clk + ';\n')
                 file.write('end\n')      
             
             # check for reset signal 
@@ -327,7 +328,7 @@ def create_folders_and_file():
                             file.write(f"\tfor (integer i = 0; i < {memory_depth}; i++)  begin\n")
                             file.write(f"\t\tgolden.{memory_name}[i] = 'b0;\n")
                             file.write("\tend\n\n")
-                    file.write('repeat (2) @ (negedge ' + clk + ');\n')
+                    # file.write('repeat (2) @ (negedge ' + clk + ');\n')
                     if len(input_ports) > 1:
                         file.write("\t{")
                         input_port_str = ', '.join(input_ports)
@@ -351,6 +352,7 @@ def create_folders_and_file():
                     
                     # generate corner case stimulus 
                     file.write("\t// ----------- Corner Case stimulus generation -----------\n")
+                    file.write('\trepeat (2) @(negedge ' + clk + ');\n')
                     max_values = []
                     for bit_width in bit_width_list:
                         if bit_width is None:
@@ -388,28 +390,28 @@ def create_folders_and_file():
                         file.write("\tend\n\n")
                 for clk in clk_port:
                     for rst in reset_port:
+                        file.write('\t$display ("***Reset Test is applied***");\n')
                         if not input_ports:
                             if sync_reset_value == "active_high":
-                                file.write("\t" + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n' )               
+                                file.write("\t" + rst + ' <= 1;\n\trepeat (2) @(negedge ' + clk + ');\n' )               
                                 file.write('\t' + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n')
                             else:
-                                file.write("\t" + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n\t' )          
+                                file.write("\t" + rst + ' <= 0;\n\trepeat (2) @(negedge ' + clk + ');\n\t' )          
                                 file.write('\t' + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n')                        
                         else:
                             if sync_reset_value == "active_high":
-                                file.write("\t" + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n\t{' )
+                                file.write("\t" + rst + ' <= 1;\n\t{' )
                                 input_port_str = ', '.join(input_ports)
                                 input_port_str += " } <= 'd0;"
                                 print(input_port_str, file=file)                
-                                file.write('\t' + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n')
+                                file.write('\trepeat (2) @(negedge ' + clk + ');\n\t' + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n')
                             else:
-                                file.write("\t" + rst + ' <= 0;\n\t@(negedge ' + clk + ');\n\t{' )
+                                file.write("\t" + rst + ' <= 0;\n\t{' )
                                 input_port_str = ', '.join(input_ports)
                                 input_port_str += " } <= 'd0;"
                                 print(input_port_str, file=file)                
-                                file.write('\t' + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n')
-                file.write('\t$display ("***Reset Test is applied***");\n\t@(negedge ' + 
-                              clk + ');\n\t@(negedge ' + clk + ');\n\tcompare();\n\t$display ("***Reset Test is ended***");\n')
+                                file.write('\trepeat (2) @(negedge ' + clk + ');\n\t' + rst + ' <= 1;\n\t@(negedge ' + clk + ');\n')
+                file.write('\tcompare();\n\t$display ("***Reset Test is ended***");\n')
                 # Generate random stimulus values for each input port
                 file.write('\t//Random stimulus generation\n\trepeat(' + str(iteration) + ') @ (negedge ' + clk + ') begin\n')
                 random_stimulus_lines = []
@@ -420,7 +422,7 @@ def create_folders_and_file():
                 file.write('\t\tcompare();\nend\n\n')
 
                 file.write("\t// ----------- Corner Case stimulus generation -----------\n")
-                
+                file.write('\trepeat (2) @(negedge ' + clk + ');\n')
                 # Generate Corner Case stimulus for remaining INPUTS
                 max_values = []
                 for bit_width in bit_width_list:
