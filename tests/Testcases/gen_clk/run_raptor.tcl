@@ -32,7 +32,7 @@ place
 route
 
 # Simulate RTL vs post-pnr
-simulate pnr icarus
+simulate timed_pnr icarus
 
 sta
 power
