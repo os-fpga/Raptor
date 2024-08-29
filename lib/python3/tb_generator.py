@@ -301,7 +301,7 @@ def create_folders_and_file():
                 file.write('// clock initialization for ' + clk + '\n')
                 file.write('initial begin\n')
                 file.write('\t' + clk + " = 1'b0;\n")
-                file.write('\tforever #' + clk_period + ' ' + clk + ' = ~' + clk + ';\n')
+                file.write('\tforever #' + str(clk_period) + ' ' + clk + ' = ~' + clk + ';\n')
                 file.write('end\n')      
             
             # check for reset signal 
@@ -327,7 +327,7 @@ def create_folders_and_file():
                             file.write(f"\tfor (integer i = 0; i < {memory_depth}; i++)  begin\n")
                             file.write(f"\t\tgolden.{memory_name}[i] = 'b0;\n")
                             file.write("\tend\n\n")
-                    file.write('repeat (2) @ (negedge ' + clk + ');\n')
+                    # file.write('repeat (2) @ (negedge ' + clk + ');\n')
                     if len(input_ports) > 1:
                         file.write("\t{")
                         input_port_str = ', '.join(input_ports)
