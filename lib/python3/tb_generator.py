@@ -47,6 +47,7 @@ def create_folders_and_file():
         except ValueError:
             print("Invalid value provided for clk_period. Using default value.")
             clk_period  = 5.0
+
     # Construct the path to port_info.json using *
     port_info_path = os.path.join(
         design_path,
