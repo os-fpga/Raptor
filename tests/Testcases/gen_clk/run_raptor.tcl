@@ -8,7 +8,7 @@
 # Project name
 set project_name gen_clk
 
-puts "Creating $project_name..."
+message "Creating $project_name..."
 create_design $project_name
 add_design_file -V_2001 dut.v
 set_top_module dut
@@ -17,7 +17,7 @@ add_constraint_file constraints.sdc
 
 target_device GEMINI_COMPACT_22x4
 
-puts "Compiling $project_name..."
+message "Compiling $project_name..."
 
 analyze
 synthesize delay
@@ -38,4 +38,4 @@ sta
 power
 bitstream 
 
-puts "Completed $project_name...\n"
+message "Completed $project_name...\n"

@@ -14,7 +14,7 @@ proc rename_module_in_netlist { {stage "post_synth"} } {
     } else {
         error "ERROR in rename_module_in_netlist, unknown stage: $stage"
     }
-    puts "Modifying $fileToEdit"
+    message "Modifying $fileToEdit"
     # Open the input file in read mode
     set input_file [open $fileToEdit r]
     # Read the file content
@@ -35,17 +35,16 @@ proc rename_module_in_netlist { {stage "post_synth"} } {
     puts $output_file $modified_content
     # Close the file
     close $output_file
-    puts "Modification completed."
+    message "Modification completed."
 }
 
 # LEC Simulation setup
 # Setup simulation with auto-testbench "RTL vs gate" and "RTL vs pnr"
 # To be invoked after Synthesis
-proc setup_lec_sim { {clock_period "5.0"} } {
-    puts "Setting up the LEC Simulation"
-    flush stdout
+proc setup_lec_sim { {clock_period "5.0"} { nb_iterations "100"} } {
+    message "Setting up the LEC Simulation"
     # auto-testbench generation
-    auto_testbench -clock_period $clock_period
+    auto_testbench $clock_period $nb_iterations
     # Install callback to re-execute this function whenever the synthesize command is executed
     if {[trace info execution synthesize] == ""} {
         trace add execution synthesize leave "_callback_setup_lec_sim $clock_period"
@@ -67,6 +66,11 @@ proc setup_lec_sim { {clock_period "5.0"} } {
 
     # Edit PnR wrapper netlist to run co-simulation RTL vs post-pnr netlist 
     rename_module_in_netlist post_pnr    
+}
+
+
+proc auto_testbench { {clock_period "5.0"} { nb_iterations "100"} } {
+    exec [get_python3_path] [file join [get_data_path] python3 tb_generator.py] [get_design_name] [pwd] $nb_iterations $clock_period
 }
 
 proc _callback_setup_lec_sim { args } {  
