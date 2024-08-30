@@ -111,8 +111,9 @@ Tcl commands (Available in GUI or Batch console or Batch script):
    wave_refresh               : Reloads the current active wave file
    wave_show <signal>         : Add the given signal to the GTKWave window and highlight it.
    wave_time <time>           : Set the primary marker to <time>. Time units can be specified, without a space. Ex: wave_time 100ps.
-   setup_lec_sim ?<clock_period>? : Generates a "RTL vs gate-level" and "RTL vs post-pnr" automatic testbench (Invoke after Synthesis)
-   
+   setup_lec_sim ?<clock_period>? ?<iteration_level>?: Generates a "RTL vs gate-level" and "RTL vs post-pnr" automatic testbench (Invoke after Synthesis)
+                <clock_period>: Clock period in ns
+             <iteration_level>: Simulation clock cycles, level 0 - 100, level 1 - 1000, level 2 - 2000
 -----------------
 --- Synthesis ---
 -----------------

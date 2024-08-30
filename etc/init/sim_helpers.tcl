@@ -41,13 +41,18 @@ proc rename_module_in_netlist { {stage "post_synth"} } {
 # LEC Simulation setup
 # Setup simulation with auto-testbench "RTL vs gate" and "RTL vs pnr"
 # To be invoked after Synthesis
-proc setup_lec_sim { {clock_period "5.0"} { nb_iterations "100"} } {
+# clock_period : Clock period in ns
+# iteration_level :
+#            0 : 100 iterations,
+#            1 : 1000 iterations,
+#            2 : 2000 iterations
+proc setup_lec_sim { {clock_period "5.0"} { iteration_level "0"} } {
     message "Setting up the LEC Simulation"
     # auto-testbench generation
-    auto_testbench $clock_period $nb_iterations
+    auto_testbench $clock_period $iteration_level
     # Install callback to re-execute this function whenever the synthesize command is executed
     if {[trace info execution synthesize] == ""} {
-        trace add execution synthesize leave "_callback_setup_lec_sim $clock_period"
+        trace add execution synthesize leave "_callback_setup_lec_sim $clock_period $iteration_level"
     }
     # Add simulation files
     #  1) Generated testbench:
@@ -69,10 +74,10 @@ proc setup_lec_sim { {clock_period "5.0"} { nb_iterations "100"} } {
 }
 
 
-proc auto_testbench { {clock_period "5.0"} { nb_iterations "100"} } {
-    exec [get_python3_path] [file join [get_data_path] python3 tb_generator.py] [get_design_name] [pwd] $nb_iterations $clock_period
+proc auto_testbench { {clock_period "5.0"} { iteration_level "0"} } {
+    exec [get_python3_path] [file join [get_data_path] python3 tb_generator.py] [get_design_name] [pwd] $iteration_level $clock_period
 }
 
 proc _callback_setup_lec_sim { args } {  
-    setup_lec_sim [lindex $args 0]
+    setup_lec_sim [lindex $args 0] [lindex $args 1]
 }
