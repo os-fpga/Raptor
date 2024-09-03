@@ -139,11 +139,11 @@ module LUT_K #(
         (in *> out) = "";
     endspecify
 `else
-    specparam T1 = 3,
-            T2 = 2;
-    specify
+   specparam T1 = 1;
+    specparam         T2 = 1;
+   specify
         (in *> out) = (T1, T2);
-    endspecify
+   endspecify
 `endif
 
     generate
@@ -200,6 +200,147 @@ module LUT_K #(
         end
     endgenerate
 
+endmodule
+
+// Bit blasted LUT_K with K == 1 for IVerilog SDF annotated simulation
+module LUT_K1 #(
+    parameter K = 1, 
+    parameter LUT_MASK={2**K{1'b0}} 
+) (
+    input  in0,
+    output out
+);
+   specparam T1 = 1;
+   specparam         T2 = 1;
+   specify
+        (in *> out) = (T1, T2);
+   endspecify
+   LUT1 #(
+     .INIT_VALUE(LUT_MASK)
+        ) lut_1 (
+          .A({in0}),
+          .Y(out)
+        );
+endmodule
+
+// Bit blasted LUT_K with K == 2 for IVerilog SDF annotated simulation
+module LUT_K2 #(
+    parameter K = 1, 
+    parameter LUT_MASK={2**K{1'b0}} 
+) (
+    input  in0,
+    input  in1,
+    output out
+);
+   specparam T1 = 1;
+   specparam         T2 = 1;
+   specify
+        (in *> out) = (T1, T2);
+   endspecify
+   LUT2 #(
+     .INIT_VALUE(LUT_MASK)
+        ) lut_2 (
+          .A({in0, in1}),
+          .Y(out)
+        );
+endmodule
+
+// Bit blasted LUT_K with K == 3 for IVerilog SDF annotated simulation
+module LUT_K3 #(
+    parameter K = 1, 
+    parameter LUT_MASK={2**K{1'b0}} 
+) (
+    input  in0,
+    input  in1,
+    input  in2,
+    output out
+);
+   specparam T1 = 1;
+   specparam         T2 = 1;
+   specify
+        (in *> out) = (T1, T2);
+   endspecify
+   LUT3 #(
+     .INIT_VALUE(LUT_MASK)
+        ) lut_3 (
+          .A({in0, in1, in2}),
+          .Y(out)
+        );
+endmodule
+
+// Bit blasted LUT_K with K == 4 for IVerilog SDF annotated simulation
+module LUT_K4 #(
+    parameter K = 1, 
+    parameter LUT_MASK={2**K{1'b0}} 
+) (
+    input  in0,
+    input  in1,
+    input  in2,
+    input  in3,
+    output out
+);
+   specparam T1 = 1;
+   specparam         T2 = 1;
+   specify
+        (in *> out) = (T1, T2);
+   endspecify
+   LUT4 #(
+     .INIT_VALUE(LUT_MASK)
+        ) lut_4 (
+          .A({in0, in1, in2, in3}),
+          .Y(out)
+        );
+endmodule
+
+// Bit blasted LUT_K with K == 5 for IVerilog SDF annotated simulation
+module LUT_K5 #(
+    parameter K = 1, 
+    parameter LUT_MASK={2**K{1'b0}} 
+) (
+    input  in0,
+    input  in1,
+    input  in2,
+    input  in3,
+    input  in4,
+    output out
+);
+   specparam T1 = 1;
+   specparam         T2 = 1;
+   specify
+        (in *> out) = (T1, T2);
+   endspecify
+   LUT5 #(
+     .INIT_VALUE(LUT_MASK)
+        )lut_5(
+          .A({in0, in1, in2, in3, in4}),
+          .Y(out)
+        );
+endmodule
+
+// Bit blasted LUT_K with K == 6 for IVerilog SDF annotated simulation
+module LUT_K6 #(
+    parameter K = 1, 
+    parameter LUT_MASK={2**K{1'b0}} 
+) (
+    input  in0,
+    input  in1,
+    input  in2,
+    input  in3,
+    input  in4,
+    input  in5,
+    output out
+);
+   specparam T1 = 1;
+   specparam         T2 = 1;
+   specify
+        (in *> out) = (T1, T2);
+   endspecify
+   LUT6 #(
+     .INIT_VALUE(LUT_MASK)
+        )lut_6(
+          .A({in0, in1, in2, in3, in4, in5}),
+          .Y(out)
+        );
 endmodule
 
 //------------------------------------------------------------------------------
