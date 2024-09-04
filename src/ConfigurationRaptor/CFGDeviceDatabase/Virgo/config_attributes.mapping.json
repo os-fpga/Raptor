@@ -511,7 +511,8 @@
     "__clock_pin_is_valid__" : {
       "__module__" : ["CLK_BUF"],
       "__equation__" : [
-        "pin_result = '__location0__' in g_all_clock_pins"
+        "temp = '__primitive_flags__'.split(',')",
+        "pin_result = '__location0__' in g_all_clock_pins or 'PIN_CLOCK_CORE_ONLY' in temp"
       ]
     },
     "__check_boot_clock_resource__" : {
