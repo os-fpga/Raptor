@@ -184,6 +184,9 @@ endif()
 
 add_subdirectory("Raptor_Tools/parser_plugins")
 
+add_subdirectory("Raptor_Tools/netlist_bitblast")
+add_dependencies(bitblast-bin synlig_build)
+
 include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/libs/external/boost)
 
 if (NOT APPLE) # Currently OpenFPGA doesn't build on MacOS
