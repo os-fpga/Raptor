@@ -104,9 +104,63 @@ function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE PARTIAL)
   endforeach()
 endfunction(checkout_subsystems)
 
+# CMake needs to know the location of these libs at configuration time for the bitblast executable
+# But they are created at compile time, so creating a placeholder
+function(create_placehoder_libs)
+    message("###########################")
+    message("Creating placeholder libs")
+    message("###########################")
+    execute_process(
+        COMMAND mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/lib
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+     execute_process(
+        COMMAND mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/lib/
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+     execute_process(
+        COMMAND mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/capnp/
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+     execute_process(
+        COMMAND mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/kj/
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+     execute_process(
+        COMMAND mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/antlr4/runtime/Cpp/runtime/
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+     execute_process(
+        COMMAND touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/lib/libsurelog.a
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+     execute_process(
+        COMMAND touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/lib/libuhdm.a
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        ) 
+     execute_process(
+        COMMAND touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/capnp/libcapnp.a
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+      execute_process(
+        COMMAND touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/kj/libkj.a
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )
+      execute_process(
+        COMMAND touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/antlr4/runtime/Cpp/runtime/libantlr4-runtime.a
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+        )  
+    if (NOT CREATE_PLACEHOLDERS EQUAL "0")
+        message(FATAL_ERROR "Cannot create placeholder libs")
+    endif()
+endfunction(create_placehoder_libs)
+
+
 checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES} OFF)
 checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} OFF)
 checkout_subsystems(RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} ON)
+
+create_placehoder_libs()
 
 if (PRODUCTION_BUILD)
   #get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"

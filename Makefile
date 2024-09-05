@@ -56,16 +56,16 @@ release_no_tcmalloc: run-cmake-release_no_tcmalloc
 debug: run-cmake-debug
 	cmake --build dbuild -j $(CPU_CORES)
 
-run-cmake-release: placeholder_libs
+run-cmake-release:
 	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCPU_CORES=$(CPU_CORES) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DPRODUCTION_DEVICES=${PRODUCTION_DEVICES} -DSTICK_RELEASE_VERSION=$(STICK_RELEASE_VERSION) -DUSE_DE_SRC=$(USE_DE_SRC)  $(ADDITIONAL_CMAKE_OPTIONS) -DMONACO_EDITOR=$(MONACO_EDITOR) -DIPA=$(IPA) -S . -B build
 
-run-cmake-release_no_tcmalloc: placeholder_libs
+run-cmake-release_no_tcmalloc:
 	cmake -DNO_TCMALLOC=On -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCPU_CORES=$(CPU_CORES) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DSTICK_RELEASE_VERSION=$(STICK_RELEASE_VERSION)  $(ADDITIONAL_CMAKE_OPTIONS) -DMONACO_EDITOR=$(MONACO_EDITOR) -DIPA=$(IPA) -S . -B build
 
-run-cmake-debug: placeholder_libs
+run-cmake-debug:
 	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCPU_CORES=$(CPU_CORES) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DPRODUCTION_BUILD=$(PRODUCTION_BUILD) -DNO_TCMALLOC=On -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DSTICK_RELEASE_VERSION=$(STICK_RELEASE_VERSION)  $(ADDITIONAL_CMAKE_OPTIONS) -DMONACO_EDITOR=$(MONACO_EDITOR) -DIPA=$(IPA) -S . -B dbuild
 
-run-cmake-coverage: placeholder_libs
+run-cmake-coverage:
 	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCPU_CORES=$(CPU_CORES) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DMY_CXX_WARNING_FLAGS="--coverage" -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DSTICK_RELEASE_VERSION=$(STICK_RELEASE_VERSION)  $(ADDITIONAL_CMAKE_OPTIONS) -DMONACO_EDITOR=$(MONACO_EDITOR) -DIPA=$(IPA) -S . -B coverage-build
 
 test/unittest: release
@@ -99,20 +99,6 @@ test: test/unittest test/regression
 test-parallel: release test/unittest
 
 regression: release
-
-# CMake needs to know the location of these libs at configuration time for the bitblast executable
-# But they are created at compile time, so creating a placeholder
-placeholder_libs:
-	mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/lib
-	mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/lib/
-	mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/capnp/
-	mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/kj/
-	mkdir -p Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/antlr4/runtime/Cpp/runtime/
-	touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/lib/libsurelog.a
-	touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/lib/libuhdm.a
-	touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/capnp/libcapnp.a
-	touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/UHDM/third_party/capnproto/c++/src/kj/libkj.a
-	touch Raptor_Tools/parser_plugins/synlig/build/third_party/surelog/third_party/antlr4/runtime/Cpp/runtime/libantlr4-runtime.a
 
 clean:
 	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build Raptor_Tools/parser_plugins/synlig/out/
