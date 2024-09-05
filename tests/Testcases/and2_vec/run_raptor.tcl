@@ -38,7 +38,6 @@ simulate rtl icarus
 puts "Compiling $project_name..."
 analyze
 
-synth_options -inferred_io
 synthesize delay
 
 # Gate Simulation
@@ -49,7 +48,7 @@ place
 route
 
 # Post PnR Simulation
-simulate pnr icarus
+simulate timed_pnr icarus
 
 sta 
 power 
