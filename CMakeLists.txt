@@ -185,7 +185,7 @@ endif()
 add_subdirectory("Raptor_Tools/parser_plugins")
 
 add_subdirectory("Raptor_Tools/netlist_bitblast")
-add_dependencies(bitblast-bin synlig_build)
+add_dependencies(bitblast-bin dummy_parser_plugins_lib)
 
 include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/Raptor_Tools/libs/external/boost)
 
