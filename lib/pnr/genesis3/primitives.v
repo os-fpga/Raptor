@@ -213,7 +213,7 @@ module LUT_K1 #(
    specparam T1 = 1;
    specparam         T2 = 1;
    specify
-        (in *> out) = (T1, T2);
+        (in0 => out) = (T1, T2);
    endspecify
    LUT1 #(
      .INIT_VALUE(LUT_MASK)
@@ -235,7 +235,8 @@ module LUT_K2 #(
    specparam T1 = 1;
    specparam         T2 = 1;
    specify
-        (in *> out) = (T1, T2);
+        (in0 => out) = (T1, T2);
+        (in1 => out) = (T1, T2);
    endspecify
    LUT2 #(
      .INIT_VALUE(LUT_MASK)
@@ -258,7 +259,9 @@ module LUT_K3 #(
    specparam T1 = 1;
    specparam         T2 = 1;
    specify
-        (in *> out) = (T1, T2);
+        (in0 => out) = (T1, T2);
+        (in1 => out) = (T1, T2);
+        (in2 => out) = (T1, T2);
    endspecify
    LUT3 #(
      .INIT_VALUE(LUT_MASK)
@@ -282,7 +285,10 @@ module LUT_K4 #(
    specparam T1 = 1;
    specparam         T2 = 1;
    specify
-        (in *> out) = (T1, T2);
+        (in0 => out) = (T1, T2);
+        (in1 => out) = (T1, T2);
+        (in2 => out) = (T1, T2);
+        (in3 => out) = (T1, T2);
    endspecify
    LUT4 #(
      .INIT_VALUE(LUT_MASK)
@@ -307,7 +313,11 @@ module LUT_K5 #(
    specparam T1 = 1;
    specparam         T2 = 1;
    specify
-        (in *> out) = (T1, T2);
+        (in0 => out) = (T1, T2);
+        (in1 => out) = (T1, T2);
+        (in2 => out) = (T1, T2);
+        (in3 => out) = (T1, T2);
+        (in4 => out) = (T1, T2);
    endspecify
    LUT5 #(
      .INIT_VALUE(LUT_MASK)
@@ -333,7 +343,12 @@ module LUT_K6 #(
    specparam T1 = 1;
    specparam         T2 = 1;
    specify
-        (in *> out) = (T1, T2);
+        (in0 => out) = (T1, T2);
+        (in1 => out) = (T1, T2);
+        (in2 => out) = (T1, T2);
+        (in3 => out) = (T1, T2);
+        (in4 => out) = (T1, T2);
+        (in5 => out) = (T1, T2);
    endspecify
    LUT6 #(
      .INIT_VALUE(LUT_MASK)

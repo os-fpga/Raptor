@@ -100,9 +100,8 @@ test-parallel: release test/unittest
 
 regression: release
 
-
 clean:
-	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build
+	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build Raptor_Tools/parser_plugins/synlig/out/
 
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
