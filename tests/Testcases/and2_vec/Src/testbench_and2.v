@@ -37,6 +37,13 @@ module testbench_and2;
   always
     #period clk = ~clk;
 
+  `ifdef TIMED_SIM
+     initial begin
+       $sdf_annotate("../routing/fabric_and2_post_route.sdf", DUT.\$auto_596 );
+     end
+  `endif
+
+
   // Stimulus
   initial begin
     // Assert reset for 100 ns
