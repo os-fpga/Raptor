@@ -7,7 +7,6 @@ add_constraint_file constraints.sdc
 
 # Device target
 target_device 1VG28
-#bitstream_config_files -bitstream ""
 # Compilation
 analyze
 synthesize delay

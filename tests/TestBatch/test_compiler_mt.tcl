@@ -18,10 +18,10 @@
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.
 create_design test
 synthesize
-after 3000 {puts "STOP"; flush stdout ; stop} 
+after 3000 {puts "Interrupted the command successfully: synthesize"; flush stdout ; stop} 
 after 5000 {synthesize}
 after 16000 {packing}
-after 17000 {global_placement}
+after 17000 {place}
 after 28000 {set CONT 0}
 set CONT 1 
 while {$CONT} {
@@ -29,4 +29,4 @@ while {$CONT} {
   after 100 set a 1
   vwait a
 }
-exit
+puts "PASSED"
