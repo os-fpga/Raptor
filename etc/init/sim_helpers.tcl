@@ -26,9 +26,6 @@ proc rename_module_in_netlist { {stage "post_synth"} } {
     } else {
         set modified_content [string map [list "[get_top_module](" "[get_top_module]_post_route("] $file_content]
     }
-    if {$stage == "post_pnr"} {
-        regsub {fabric_[a-zA-Z0-9_\$\\]+ [a-zA-Z0-9_\$\\]+ } $modified_content "fabric_[get_top_module] fabric_[get_top_module]_inst " modified_content
-    }
     # Open the file again, this time in write mode to overwrite the old content
     set output_file [open $fileToEdit w]
     # Write the modified content back to the file

@@ -39,7 +39,7 @@ module testbench_and2;
 
   `ifdef TIMED_SIM
      initial begin
-       $sdf_annotate("../routing/fabric_and2_post_route.sdf", DUT.\$auto_596 );
+       $sdf_annotate("../routing/fabric_and2_post_route.sdf", DUT.fabric_instance );
      end
   `endif
 
