@@ -8,7 +8,7 @@
 
 set project_name counter
 
-puts "Creating $project_name..."
+message "Creating $project_name..."
 create_design $project_name
 add_design_file Src/counter.v
 # optional to specify top-level as it can be automatically detected
@@ -19,7 +19,7 @@ add_constraint_file pin_mapping.pin
 target_device 1VG28
 
 # Compilation
-puts "Compiling $project_name..."
+message "Compiling $project_name..."
 analyze
 # Synthesize optimizing for delay
 synthesize delay
@@ -43,4 +43,4 @@ sta
 power
 bitstream 
 
-puts "Completed $project_name...\n"
+message "Completed $project_name...\n"
