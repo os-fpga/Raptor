@@ -26,7 +26,7 @@ Verilog RTL Designs:
   aes_decrypt_verilog - 128-bit AES decrption code from opencores.org
   and2_verilog - A simple registered 2-input AND-gate
   counter_verilog - A simple paramatizable Verilog counter design
-  ip_gen_axis_conv - A simple design using the axis_width_converter_v1_0 generated IP within Raptor
+  axi2axilite_bridge  - A simple design using the axi2axilite_bridge generated IP within Raptor
   sasc_testcase - Simple Asynchronous Serial Comm. Device from opencores.org
 
 VHDL RTL Designs:
@@ -36,6 +36,6 @@ Gate-level Designs:
   aes_decrypt_gate - Design using gate-level BLIF file produced from aes_decrypt_verilog using Raptor synthesis
 
 Designs containing IP:
-  ip_gen_axis_conv - A simple design using the axis_width_converter_v1_0 generated IP within Raptor
+  axi2axilite_bridge - A simple design using the axi2axilite_bridge generated IP within Raptor
 
 
