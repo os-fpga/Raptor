@@ -11,7 +11,7 @@ set xml_content {<vpr_constraints tool_name="vpr">
 </vpr_constraints>}
 
 # Write the XML content to the file
-message $fileId $xml_content
+puts $fileId $xml_content
 
 # Close the file
 close $fileId
@@ -19,7 +19,7 @@ close $fileId
 # Project name
 set project_name AES_DECRYPT_partitioner
 
-puts "Creating $project_name..."
+message "Creating $project_name..."
 create_design $project_name
 target_device 1VG28
 add_design_file Src/aes_decrypt128.sv Src/aes_decrypt256.sv  Src/gfmul.sv Src/InvMixCol_slice.sv Src/InvSbox.sv Src/InvSubBytes.sv Src/KeyExpand192.sv  Src/KschBuffer.sv  Src/Sbox.sv Src/aes_decrypt192.sv  Src/decrypt.sv Src/InvAddRoundKey.sv Src/InvMixColumns.sv  Src/InvShiftRows.sv Src/KeyExpand128.sv Src/KeyExpand256.sv Src/RotWord.sv  Src/SubWord.sv  -SV_2012
