@@ -134,18 +134,22 @@ module LUT_K #(
     output out
 );
 
-`ifndef IVERILOG   
-    specify
+`ifndef SYNTHESIS  
+  `ifdef TIMED_SIM
+   `ifndef IVERILOG   
+      specify
         (in *> out) = "";
-    endspecify
-`else
-   specparam T1 = 1;
-    specparam         T2 = 1;
-   specify
+      endspecify
+    `else
+      specparam T1 = 0;
+      specparam T2 = 0;
+      specify
         (in *> out) = (T1, T2);
-   endspecify
+      endspecify
+   `endif
+ `endif
 `endif
-
+   
     generate
         if (K == 1) begin
             LUT1 #(
@@ -210,11 +214,16 @@ module LUT_K1 #(
     input  in0,
     output out
 );
-   specparam T1 = 1;
-   specparam         T2 = 1;
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM
+   specparam T1 = 0;
+   specparam T2 = 0;
    specify
         (in0 => out) = (T1, T2);
    endspecify
+ `endif
+`endif
+   
    LUT1 #(
      .INIT_VALUE(LUT_MASK)
         ) lut_1 (
@@ -232,12 +241,18 @@ module LUT_K2 #(
     input  in1,
     output out
 );
-   specparam T1 = 1;
-   specparam         T2 = 1;
+   
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM   
+   specparam T1 = 0;
+   specparam T2 = 0;
    specify
         (in0 => out) = (T1, T2);
         (in1 => out) = (T1, T2);
    endspecify
+ `endif
+`endif
+   
    LUT2 #(
      .INIT_VALUE(LUT_MASK)
         ) lut_2 (
@@ -256,13 +271,19 @@ module LUT_K3 #(
     input  in2,
     output out
 );
-   specparam T1 = 1;
-   specparam         T2 = 1;
+
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM      
+   specparam T1 = 0;
+   specparam T2 = 0;
    specify
         (in0 => out) = (T1, T2);
         (in1 => out) = (T1, T2);
         (in2 => out) = (T1, T2);
    endspecify
+ `endif
+`endif
+   
    LUT3 #(
      .INIT_VALUE(LUT_MASK)
         ) lut_3 (
@@ -282,14 +303,20 @@ module LUT_K4 #(
     input  in3,
     output out
 );
-   specparam T1 = 1;
-   specparam         T2 = 1;
+
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM   
+   specparam T1 = 0;
+   specparam T2 = 0;
    specify
         (in0 => out) = (T1, T2);
         (in1 => out) = (T1, T2);
         (in2 => out) = (T1, T2);
         (in3 => out) = (T1, T2);
    endspecify
+ `endif
+`endif
+   
    LUT4 #(
      .INIT_VALUE(LUT_MASK)
         ) lut_4 (
@@ -310,8 +337,11 @@ module LUT_K5 #(
     input  in4,
     output out
 );
-   specparam T1 = 1;
-   specparam         T2 = 1;
+
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM   
+   specparam T1 = 0;
+   specparam T2 = 0;
    specify
         (in0 => out) = (T1, T2);
         (in1 => out) = (T1, T2);
@@ -319,6 +349,9 @@ module LUT_K5 #(
         (in3 => out) = (T1, T2);
         (in4 => out) = (T1, T2);
    endspecify
+ `endif
+`endif
+   
    LUT5 #(
      .INIT_VALUE(LUT_MASK)
         )lut_5(
@@ -340,8 +373,11 @@ module LUT_K6 #(
     input  in5,
     output out
 );
-   specparam T1 = 1;
-   specparam         T2 = 1;
+
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM     
+   specparam T1 = 0;
+   specparam T2 = 0;
    specify
         (in0 => out) = (T1, T2);
         (in1 => out) = (T1, T2);
@@ -350,6 +386,9 @@ module LUT_K6 #(
         (in4 => out) = (T1, T2);
         (in5 => out) = (T1, T2);
    endspecify
+ `endif
+`endif
+   
    LUT6 #(
      .INIT_VALUE(LUT_MASK)
         )lut_6(
@@ -419,22 +458,26 @@ module DFF #(
     output reg Q
 );
 
-`ifndef IVERILOG   
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM      
+  `ifndef IVERILOG   
     specify
         (clk => Q) = "";
         $setup(D, posedge clk, "");
         $hold(posedge clk, D, "");
     endspecify
-`else
+  `else
    specparam T1 = 3,
-            T2 = 2;
+             T2 = 2;
    specparam tSetup = 1;
    specparam tHold = 1;
    specify
         (clk => Q) = (T1, T2);
         $setup(D, posedge clk,  tSetup);
         $hold(posedge clk, D, tHold);
-    endspecify
+   endspecify
+    `endif
+  `endif 
 `endif
 
     initial begin
@@ -452,16 +495,20 @@ module fpga_interconnect(
     output dataout
 );
 
-`ifndef IVERILOG   
+`ifndef SYNTHESIS  
+ `ifdef TIMED_SIM       
+  `ifndef IVERILOG   
     specify
        (datain=>dataout)="";
     endspecify
-`else
-   specparam T1 = 3,
-            T2 = 2;
+  `else
+   specparam T1 = 0,
+             T2 = 0;
     specify
        (datain=>dataout) = (T1, T2);
     endspecify
+  `endif
+  `endif 
 `endif
 
     assign dataout = datain;
