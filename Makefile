@@ -170,7 +170,7 @@ test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
 
 # This target can be invoked directly
-test/batch:
+test/batch: release
 	mkdir -p run_tests
 	$(MAKE) -C run_tests -f ../Makefile test/int_batch
 
@@ -211,12 +211,12 @@ else
 endif
 
 # This target can be invoked directly
-test/batch_gen2:
+test/batch_gen2: release
 	mkdir -p run_tests
 	$(MAKE) -C run_tests -f ../Makefile test/int_batch_gen2
 
 # Do not invoke
-test/int_batch_gen2:
+test/int_batch_gen2: 
 ifeq ($(RAPTOR_PUB),1)
 else
 	../build/bin/raptor --batch --mute --script ../tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
@@ -230,7 +230,7 @@ else
 endif
 
 # Too large for Github Action
-test/batch_gen3:
+test/batch_gen3: release
 ifeq ($(RAPTOR_PUB),1)
 else
 	cd tests/Testcases/and2_bitstream; rm -rf and2; ../../../build/bin/raptor --batch --mute --script raptor.tcl
@@ -238,7 +238,7 @@ else
 endif
 
 # This target can be invoked directly
-solver/tests:
+solver/tests: release
 	mkdir -p run_tests
 	$(MAKE) -C run_tests -f ../Makefile solver/int_tests
 
