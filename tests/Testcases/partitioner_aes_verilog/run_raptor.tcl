@@ -11,7 +11,7 @@ set xml_content {<vpr_constraints tool_name="vpr">
 </vpr_constraints>}
 
 # Write the XML content to the file
-puts $fileId $xml_content
+message $fileId $xml_content
 
 # Close the file
 close $fileId
@@ -30,7 +30,7 @@ add_constraint_file constraints.sdc
 set_top_module decrypt_top
 
 #Compile
-puts "Compiling $project_name..."
+message "Compiling $project_name..."
 
 # Synthesize with high effort
 synth_options -effort high
@@ -48,5 +48,5 @@ route
 sta
 # bitstream
 
-puts "Completed $project_name...\n"
+message "Completed $project_name...\n"
 

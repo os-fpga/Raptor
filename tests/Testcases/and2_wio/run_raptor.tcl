@@ -8,7 +8,7 @@
 # Project name
 set project_name and2_wio
 
-puts "Creating $project_name..."
+message "Creating $project_name..."
 create_design $project_name
 add_design_file -V_2001 ./Src/and2.v
 # Top-module can automatically be indentified or implicitly specified here
@@ -35,7 +35,7 @@ simulate rtl icarus
 #wave_cmd gtkwave::/Time/Zoom/Zoom_Full
 
 # Compilation
-puts "Compiling $project_name..."
+message "Compiling $project_name..."
 analyze
 
 synth_options -inferred_io
@@ -55,4 +55,4 @@ sta
 power 
 bitstream 
 
-puts "Completed $project_name...\n"
+message "Completed $project_name...\n"

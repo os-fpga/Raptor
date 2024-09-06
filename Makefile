@@ -169,69 +169,94 @@ test/gui_mac: run-cmake-debug
 #	$(XVFB) ./dbuild/bin/texteditor --replay tests/TestGui/gui_text_editor.tcl
 #	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
 
-test/batch: run-cmake-release
+# This target can be invoked directly
+test/batch:
+	mkdir -p run_tests
+	$(MAKE) -C run_tests -f ../Makefile test/int_batch
+
+# Do not invoke
+test/int_batch:
 ifeq ($(RAPTOR_PUB),1)
 else
-	./build/bin/raptor --batch  --script tests/Testcases/and2_verilog/run_raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/auto_testbench/raptor_lec.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/gen_clk/run_raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_2clks/run_raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_wio/run_raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_vec/run_raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/oneff_wio/run_raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_compact/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/counter16/counter16.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/keep_test/raptor.tcl 
-	./build/bin/raptor --batch --mute --script tests/Testcases/trivial/test.tcl
-	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_96/build.tcl
-	./build/bin/raptor --batch --mute --script tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl --device 1VG28
-	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_mt.tcl
-	./build/bin/raptor --batch --compiler dummy --mute --script tests/TestBatch/test_compiler_batch.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini/raptor.tcl 
-	./build/bin/raptor --batch --mute --script tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
-	./build/bin/raptor --batch --mute --script tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
-	./build/bin/raptor --batch --mute --script tests/Testcases/incr_comp/raptor.tcl 
-	./build/bin/raptor --batch --mute --script tests/TestIP/axi_ram/v1_0/axi_ram.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axi_register/v1_0/axi_register.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axi_cdma/v1_0/axi_cdma.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axil_gpio/v1_0/axil_gpio.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/reset_release/v1_0/reset_release.tcl
-	./build/bin/raptor --batch --mute --script tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/constant/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/double_check/raptor.tcl
-	./build/bin/raptor --batch --mute --script etc/devices/gemini_compact_62x44/ric/periphery.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_verilog/run_raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/auto_testbench/raptor_lec.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/gen_clk/run_raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_2clks/run_raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_wio/run_raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_vec/run_raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/oneff_wio/run_raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_compact/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter16/counter16.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/keep_test/raptor.tcl 
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/trivial/test.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Jira_Testcase/GEMINIEDA_96/build.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl --device 1VG28
+	../build/bin/raptor --batch --compiler dummy --mute --script ../tests/TestBatch/test_compiler_mt.tcl
+	../build/bin/raptor --batch --compiler dummy --mute --script ../tests/TestBatch/test_compiler_batch.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_gemini/raptor.tcl 
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/incr_comp/raptor.tcl 
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_ram/v1_0/axi_ram.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_register/v1_0/axi_register.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_cdma/v1_0/axi_cdma.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/axil_gpio/v1_0/axil_gpio.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/reset_release/v1_0/reset_release.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/constant/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/double_check/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../etc/devices/gemini_compact_62x44/ric/periphery.tcl
 endif
 
-test/batch_gen2: run-cmake-release
+# This target can be invoked directly
+test/batch_gen2:
+	mkdir -p run_tests
+	$(MAKE) -C run_tests -f ../Makefile test/int_batch_gen2
+
+# Do not invoke
+test/int_batch_gen2:
 ifeq ($(RAPTOR_PUB),1)
 else
-	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/aes_decrypt_gate/aes_decrypt_gate.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/oneff/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/counter/counter.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/counter_vhdl/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/counter_mixed/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/TestBatch/oneff_clean/raptor.tcl
-	./build/bin/raptor --batch --mute --script tests/Testcases/rom/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/aes_decrypt_gate/aes_decrypt_gate.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/oneff/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter/counter.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter_vhdl/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter_mixed/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/TestBatch/oneff_clean/raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/rom/raptor.tcl
 endif
 
 # Too large for Github Action
-test/batch_gen3: run-cmake-release
+test/batch_gen3:
 ifeq ($(RAPTOR_PUB),1)
 else
 	cd tests/Testcases/and2_bitstream; rm -rf and2; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; rm -rf up5bit_counter_dual_clock; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
 
-solver/tests: release
+# This target can be invoked directly
+solver/tests:
+	mkdir -p run_tests
+	$(MAKE) -C run_tests -f ../Makefile solver/int_tests
+
+# Do not invoke
+solver/int_tests:
 ifeq ($(RAPTOR_PUB),1)
 else
-	./build/bin/raptor --batch --mute --script tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
+	../build/bin/raptor --batch --mute --script ../tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
 endif
 
-test/batch_all: test/batch test/batch_gen2 solver/tests test/batch_gen3
+test/batch_all:
+	echo "############################# Raptor checkin tests, all tests must pass! #############################"
+	mkdir -p run_tests
+	$(MAKE) -C run_tests -f ../Makefile test/int_batch
+	$(MAKE) -C run_tests -f ../Makefile test/int_batch_gen2
+	$(MAKE) -C run_tests -f ../Makefile solver/int_tests
+	$(MAKE) -f Makefile test/batch_gen3
+	echo "############################# Success, all tests passed! #############################"
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)

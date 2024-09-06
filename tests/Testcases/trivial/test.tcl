@@ -11,6 +11,6 @@ route
 sta
 power
 #bitstream
-puts "done!"
+message "done!"
 
 
