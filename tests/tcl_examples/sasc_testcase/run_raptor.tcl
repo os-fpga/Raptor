@@ -8,7 +8,7 @@
 # Project name
 set project_name sasc
 
-puts "Creating $project_name..."
+message "Creating $project_name..."
 # Create Project
 create_design $project_name
 # Device setup
@@ -19,7 +19,7 @@ add_constraint_file constraints.sdc
 set_top_module sasc
 
 # Compilation
-puts "Compiling $project_name..."
+message "Compiling $project_name..."
 
 analyze
 synthesize
@@ -42,4 +42,4 @@ sta
 power
 bitstream
 
-puts "Completed $project_name...\n"
+message "Completed $project_name...\n"

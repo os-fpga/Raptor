@@ -8,7 +8,7 @@
 # Project name
 set project_name counter
 
-puts "Creating $project_name..."
+message "Creating $project_name..."
 create_design $project_name
 add_design_file -VHDL_1993 Src/UP_COUNTER.vhd
 set_top_module UP_COUNTER
@@ -21,7 +21,7 @@ set_top_testbench tb_counters
 target_device 1VG28
 
 # Compilation/Simulation
-puts "Compiling $project_name..."
+message "Compiling $project_name..."
 analyze
 
 # RTL Simulation
@@ -50,4 +50,4 @@ sta
 # Bitstream Generation
 # bitstream 
 
-puts "Completed $project_name...\n"
+message "Completed $project_name...\n"
