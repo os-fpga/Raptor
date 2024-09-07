@@ -287,7 +287,7 @@ def create_folders_and_file():
             for bit_width in bit_width_list:
                 if bit_width is None:
                     bit_width = 1  # Consider None as 1 for the port
-                max_value = 2**bit_width - 1
+                max_value = str(bit_width) + "'d" + str(2**bit_width - 1)
                 max_values.append(max_value)
             # Create stimulus assignments for each input port
             stimulus_lines = []
@@ -358,7 +358,7 @@ def create_folders_and_file():
                     for bit_width in bit_width_list:
                         if bit_width is None:
                             bit_width = 1  # Consider None as 1 for the port
-                        max_value = 2**bit_width - 1
+                        max_value = str(bit_width) + "'d" + str(2**bit_width - 1)
                         max_values.append(max_value)
                     # Create stimulus assignments for each input port
                     stimulus_lines = []
@@ -429,7 +429,7 @@ def create_folders_and_file():
                 for bit_width in bit_width_list:
                     if bit_width is None:
                         bit_width = 1  # Consider None as 1 for the port
-                    max_value = 2**bit_width - 1
+                    max_value = str(bit_width) + "'d" + str(2**bit_width - 1)
                     max_values.append(max_value)
                 # Create stimulus assignments for each input port
                 stimulus_lines = []
