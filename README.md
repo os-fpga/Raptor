@@ -215,15 +215,122 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
   "uniform"                    : For uniformely congested high utilization designs
   "hotspot"                    : For hotspots of congestion in moderately utilized designs
 
----------------
---- Program ---
----------------
-  program_device <-b> "<bitstream_file>" <-c> "<config_file>" <-n> "<index>" : Program the device via JTAG
-    -b <bitstream>            : Target bitstream file for loading
-    -c <config_file>          : Configuration file
-    -n <index>                : Index of device in JTAG chain
-    
+------------------
+--- Programmer ---
+------------------
+   programmer <command>           : A programmer tool allows you to program and configure FPGA devices via JTAG 
+     command                      : fpga_config, flash, fpga_status, list_device, list_cable, otp
+     fpga_config -c <cable name/index> ?-d <device_index>? <bitstream_file> : Program the FPGA device via JTAG
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+       <bitstream_file>         : Bitstream file to program
+     flash -c <cable name/index> ?-d <device_index>? ?-o <operations>? <bitstream_file> : Program the Flash via JTAG
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+       -o <operations>          : Specify the operations to perform on the flash (Valid operations: program)
+       <bitstream_file>         : Bitstream file to program
+     fpga_status -c <cable name/index> -d <device_index> ?-v? : Query FPGA Configuration Done and Configuration IsError status for a specified device
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+       -v                       : Verbose mode. Display additional information of fpga_status output
+     list_device ?-c <cable name/index>? ?-v?: List all available devices or specified cable devices
+       -c <cable_name/index>    : Specify the cable name or index
+       -v                       : Verbose mode. Display additional information of list_device output
+     list_cable ?-v?            : List all connected USB programmer cables
+       -v                       : Verbose mode. Display additional information of list_cable output
+     otp -c <cable name/index> -d <device_index> ?-y? <bitstream_file> : Program the device OTP via JTAG. WARNING: OTP programming is not reversible once programmed successfully.
+       -c <cable_name/index>    : Specify the cable name or index
+       -d <device_index>        : Specify the device index
+       -y                       : Indicate the consesus of the user to proceed with OTP programming.
+       <bitstream_file>         : Bitstream file to program
+
+---------------------
+--- OCLA Debugger ---
+---------------------
+   debugger <command>
+     list_cable ?-v?            : To display all the connected/detected cables.
+       -v                       : Display additional information of list_cable output
+     list_device ?-v?           : To display list of connected devices to each connected/detected cable.
+       -v                       : Display additional information of list_device output
+     info ?-b <cable name/index>? ?-d <device index>? : Command to display all probe information in the user design parsed from the .bitasm file. And the current OCLA global and trigger configuration.
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     load -f <filepath>         : Start a debugging session with user design specified in a .bitasm file.
+       -f                       : Specify user design .bitasm file to start debugging
+     unload                     : Stop the debugging session and clear the loaded OCLA information.
+     config -n <clock domain id> ?-m <trigger mode>? ?-s <sample size>? ?-t <boolean condition>? ?-b <cable name/index>? ?-d <device index>? : To configure the global operation modes of a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -m <trigger mode>        : Trigger mode
+       -s <sample size>         : Sample size to acquire (set to 0 to use memory depth as sample size)
+       -t <boolean condition>   : Multiple trigger Boolean condition
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     add_trigger -n <clock domain id> -p <probe id> -s <signal name> ?-t <trigger type>? ?-e <trigger event>? ?-v <value>? ?-w <compare width>? ?-b <cable name/index>? ?-d <device index>? : To add a trigger configuration into a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -p <probe id>            : Probe ID
+       -s <signal name>         : Signal name or index
+       -t <trigger type>        : Trigger type
+       -e <trigger event>       : Trigger event associated with the trigger type
+       -v <value>               : Compare value
+       -w <compare width>       : Compare value width (no. of bits)
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     edit_trigger -n <clock domain id> -i <index> -p <probe id> -s <signal name> ?-t <trigger type>? ?-e <trigger event>? ?-v <value>? ?-w <compare width>? ?-b <cable name/index>? ?-d <device index>? : To edit an existing trigger configuration of a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -i <index>               : Trigger entry index to modify
+       -p <probe id>            : Probe ID
+       -s <signal name>         : Signal name or index
+       -t <trigger type>        : Trigger type
+       -e <trigger event>       : Trigger event associated with the trigger type
+       -v <value>               : Compare value
+       -w <compare width>       : Compare value width (no. of bits)
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     remove_trigger -n <clock domain id> -i <index> ?-b <cable name/index>? ?-d <device index>? : To remove an existing trigger configuration from a clock domain.
+       -n <clock domain id>     : Clock domain ID
+       -i <index>               : Trigger entry index to remove
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     start -n <clock domain id> ?-b <cable name/index>? ?-d <device index>? ?-t <seconds>? ?-o <filepath>? : To start the OCLA debug subsystem of a clock domain to capture signal samples.
+       -n <clock domain id>     : Clock domain ID
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       -t <seconds>             : Command timeout in seconds (default 60)
+       -o <filepath>            : Output waveform filepath
+     status -n <clock domain id> ?-b <cable name/index>? ?-d <device index>? : To query the clock domain sampling status.
+       -n <clock domain id>     : Clock domain ID
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+     show_waveform -n <clock domain id> ?-b <cable name/index>? ?-d <device index>? ?-o <filepath>? : To generate waveform file and display the signal waveform of a clock domain in GtkWave UI app.
+       -n <clock domain id>     : Clock domain ID
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       -o <filepath>            : Output waveform filepath
+     set_io ?-b <cable name/index>? ?-d <device index>? <signal1=value1> <signal2=value2> : To configure the state/value of an IO signal.
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       sig1=val1...sigN=valN    : List of signal names or indexes and values to set
+     get_io ?-b <cable name/index>? ?-d <device index>? ?-l <times>? ?-t <milliseconds>? <signal1> <signal2> : To read the state/value of an IO signal.
+       -b <cable name/index>    : Cable name or index
+       -d <device index>        : Device index
+       sig1...sigN              : List of signal names or indexes to read
+
+--------------------
+- Helper functions -
+--------------------
+   get_design_name              : Returns the design name 
+   get_top_module               : Returns the top module name
+   get_top_simulation_module    : Returns the top simulation module name
+   get_design_files             : Returns a list of all the design files
+   get_simulation_files         : Returns a list of all the simulation files
+   get_bin_path                 : Returns the path to all Raptor binary executables
+   get_data_path                : Returns the path to Raptor installed shared directory
+   get_python3_path             : Returns the path to the Python 3 Raptor installed executable
+   message <message>            : Prints a message
+   error_message <message>      : Prints an error message and stops Tcl execution
+
 -----------------------------------------------
+
 ```
 
 ## RAPTOR EXAMPLE DESIGNS

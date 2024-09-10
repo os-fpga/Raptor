@@ -333,4 +333,18 @@ congestion_flow <congestion_type> : Congestion driven compilation flow
        -d <device index>        : Device index
        sig1...sigN              : List of signal names or indexes to read
 
+--------------------
+- Helper functions -
+--------------------
+   get_design_name              : Returns the design name 
+   get_top_module               : Returns the top module name
+   get_top_simulation_module    : Returns the top simulation module name
+   get_design_files             : Returns a list of all the design files
+   get_simulation_files         : Returns a list of all the simulation files
+   get_bin_path                 : Returns the path to all Raptor binary executables
+   get_data_path                : Returns the path to Raptor installed shared directory
+   get_python3_path             : Returns the path to the Python 3 Raptor installed executable
+   message <message>            : Prints a message
+   error_message <message>      : Prints an error message and stops Tcl execution
+
 -----------------------------------------------
