@@ -66,6 +66,16 @@
         "RX_BYPASS" : "RX_gear_on"
       }
     },
+    "I_SERDES.BYPASS_PEER" : {
+      "rules" : {
+        "WIDTH" : "__arg0__"
+      },
+      "results" : {
+        "__define__" : "parse_serdes_width_peer",
+        "__location__": "__peer_location__",
+        "PEER_IS_ON" : "__peer_is_on__"
+      }
+    },
     "I_SERDES.DDR_MODE" : {
       "rules" : {
         "DATA_RATE" : "__arg0__"
@@ -119,6 +129,16 @@
       },
       "neg_results" : {
         "TX_BYPASS" : "TX_gear_on"
+      }
+    },
+    "O_SERDES.BYPASS_PEER" : {
+      "rules" : {
+        "WIDTH" : "__arg0__"
+      },
+      "results" : {
+        "__define__" : "parse_serdes_width_peer",
+        "__location__": "__peer_location__",
+        "PEER_IS_ON" : "__peer_is_on__"
       }
     },
     "O_SERDES.DDR_MODE" : {
@@ -437,7 +457,8 @@
       "g_boot_clock_resources = 0",
       "g_pin_resources = {}",
       "g_fabric_clock_resources = 0",
-      "g_pll_resources = []"
+      "g_pll_resources = []",
+      "g_gearbox_width = {}"
     ]
   },
   "__primary_validation__" : {
@@ -532,6 +553,7 @@
   "__secondary_validation__" : {
     "__seqeunce__" : [
       "__check_fabric_clock_resource__",
+      "__check_data_width_parameter__",
       "__check_data_rate_parameter__",
       "__check_dpa_mode_parameter__",
       "__check_clock_phase_parameter__",
@@ -543,6 +565,25 @@
       "__connectivity__" : ["O", "CLK_OUT", "CLK_OUT_DIV2", "CLK_OUT_DIV3", "CLK_OUT_DIV4"],
       "__equation__" : [
         "pin_result = (__connectivity_count__ + g_fabric_clock_resources) <= MAX_FABRIC_CLOCK_RESOURCE"
+      ]
+    },
+    "__check_data_width_parameter__" : {
+      "__module__" : ["I_SERDES", "O_SERDES"],
+      "__parameter__" : ["WIDTH"],
+      "__equation__" : [
+        "import re",
+        "assert '__location__' in g_all_pins",
+        "m = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location__')",
+        "assert m != None",
+        "pn = 'P' if m.group(6) == 'N' else 'N'",
+        "index = int(m.group(4)) & ~1",
+        "index += (1 if pn == 'N' else 0)",
+        "peer_location = 'H%s_%s%s_%d_%s%s' % (m.group(1), m.group(2), m.group(3), index, m.group(5), pn)",
+        "width = int('WIDTH')",
+        "pin_result = width >= 3 and width <= (10 if m.group(6) == 'P' else 5)",
+        "pin_result = pin_result and ((peer_location not in g_gearbox_width) or (g_gearbox_width[peer_location] <= 5 and width <=5))",
+        "g_gearbox_width['__location__' if pin_result else ''] = width",
+        "g_gearbox_width.pop('', None)"
       ]
     },
     "__check_data_rate_parameter__" : {
@@ -644,6 +685,21 @@
     "parse_serdes_width" : {
       "__args__" : ["__peer_is_on__"],
       "__equation__" : [
+        "width = int('__arg0__')",
+        "__peer_is_on__ = 'PEER_on' if width <= 5 else 'PEER_off'"
+      ]
+    },
+    "parse_serdes_width_peer": {
+      "__args__" : ["__peer_is_on__", "__peer_location__"],
+      "__equation__" : [
+        "import re",
+        "assert '__location__' in g_all_pins",
+        "m = re.search(r'H(P|R?)_(\\d?)(|_CC?)_(\\d+?)_(\\d\\d?)(P|N?)', '__location__')",
+        "assert m != None",
+        "pn = 'P' if m.group(6) == 'N' else 'N'",
+        "index = int(m.group(4)) & ~1",
+        "index += (1 if pn == 'N' else 0)",
+        "__peer_location__ = 'H%s_%s%s_%d_%s%s' % (m.group(1), m.group(2), m.group(3), index, m.group(5), pn)",
         "width = int('__arg0__')",
         "__peer_is_on__ = 'PEER_on' if width <= 5 else 'PEER_off'"
       ]
