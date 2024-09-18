@@ -43,14 +43,6 @@ jobs:
       MODE: ${{ matrix.mode }}
 
     steps:
-
-    - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.7.0
-      if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-      with: 
-        ssh-private-key: |
-           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-
     - name: Checkout code
       uses: actions/checkout@v4
 
@@ -941,3 +933,135 @@ jobs:
     - name: Run clang tidy
       run: |
         ./.github/bin/run-clang-tidy.sh
+
+
+  build:
+    if: ${{ matrix.should-run }}
+    name: ${{ matrix.name }}
+
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {name: "ubuntu-build",    should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {name: "centos7.9-build", should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+    env:
+      Name:       ${{ matrix.name }}
+      SHOULD_RUN: ${{ matrix.should-run }}
+
+    steps:
+    - name: free disk space
+      run: |
+        du -sch *
+        df -h
+        sudo swapoff -a
+        sudo rm -f /swapfile
+        sudo apt clean
+        docker rmi $(docker image ls -aq)
+        sudo apt-get autoremove -y >/dev/null 2>&1
+        sudo apt-get autoclean -y >/dev/null 2>&1
+        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
+        df -h
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+          if [ ${{ matrix.name }} == "centos7.9-build" ]
+          then
+              ${{ matrix.dependencies }} minimum
+          else
+              ${{ matrix.dependencies }}
+          fi
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: linux-${{ matrix.name }}
+
+    - name: Configure shell
+      run: |
+        echo 'CC=gcc-11' >> $GITHUB_ENV
+        echo 'CXX=g++-11' >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
+        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+        event_type=`echo ${{ github.event_name }}`
+        if [ ${{ github.repository_owner }} == 'os-fpga' ]
+        then
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
+        else
+                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+        fi
+        if [ $event_type == 'workflow_dispatch' ]
+        then
+               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
+        elif [ $event_type == 'push' ]
+        then
+               echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+        elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
+        then
+              echo 'p_devices=MPW1' >> $GITHUB_ENV
+        else     
+              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+        fi      
+
+    - name: Show shell configuration
+      run: |
+        env
+        which cmake && cmake --version
+        which make && make --version
+        which swig && swig -version
+        which python && python --version
+        which ninja && ninja --version
+        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+        which $CC && $CC --version
+        which $CXX && $CXX --version
+        echo -e "Production devices are\n\t${{ env.p_devices }}"
+        echo "${{ env.p_devices }}" > DEFAULT_DEVICES
+        echo "${{ env.run_tests }}" > TEST_ON
+        echo ${{ inputs.Release_Date }} > input_release_date
+
+    
+    - name: Checkout Subsystem
+      run: |
+           make run-cmake-release CPU_CORES=2 
+
+    - name: ${{ matrix.name }}
+      if: matrix.name == 'ubuntu-build'
+      run: |
+           make release ${{ env.run_tests }} CPU_CORES=2
+      
+    - name: Log in to the Container registry
+      if: matrix.name == 'centos7.9-build'  
+      uses: docker/login-action@v3.0.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}          
+     
+    - name: pull the CentOS image
+      if: matrix.name == 'centos7.9-build'    
+      run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest 
+
+    - name: ${{ matrix.name }}
+      if: matrix.name == 'centos7.9-build' 
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work
+        run: |
+            source /opt/rh/devtoolset-11/enable  
+            cd work && make clean
+            run_test=`cat TEST_ON`
+            make release CPU_CORES=2 $run_test MONACO_EDITOR=0      
