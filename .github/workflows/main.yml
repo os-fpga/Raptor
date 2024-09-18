@@ -936,7 +936,7 @@ jobs:
 
 
   build:
-    if: ${{ matrix.should-run }}
+#    if: ${{ matrix.should-run }}
     name: ${{ matrix.name }}
 
     runs-on: ubuntu-latest
