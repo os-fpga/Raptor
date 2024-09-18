@@ -954,6 +954,9 @@ jobs:
       SHOULD_RUN: ${{ matrix.should-run }}
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: free disk space
       run: |
         du -sch *
@@ -966,9 +969,6 @@ jobs:
         sudo apt-get autoclean -y >/dev/null 2>&1
         sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
         df -h
-
-    - name: Checkout code
-      uses: actions/checkout@v4
 
     - name: Install dependencies
       run: |
