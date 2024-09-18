@@ -936,7 +936,6 @@ jobs:
 
 
   build:
-#    if: ${{ matrix.should-run }}
     name: ${{ matrix.name }}
 
     runs-on: ubuntu-latest
@@ -951,7 +950,6 @@ jobs:
           - {name: "centos7.9-build", should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
     env:
       Name:       ${{ matrix.name }}
-      SHOULD_RUN: ${{ matrix.should-run }}
 
     steps:
     - name: Checkout code
@@ -978,6 +976,17 @@ jobs:
           else
               ${{ matrix.dependencies }}
           fi
+
+    - name: Log in to the Container registry
+      uses: docker/login-action@v3.0.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}          
+     
+    - name: pull the CentOS image  
+      run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
@@ -1036,24 +1045,12 @@ jobs:
       run: |
            make run-cmake-release CPU_CORES=2 
 
-    - name: ${{ matrix.name }}
+    - name: Ubuntu Build
       if: matrix.name == 'ubuntu-build'
       run: |
            make release ${{ env.run_tests }} CPU_CORES=2
-      
-    - name: Log in to the Container registry
-      if: matrix.name == 'centos7.9-build'  
-      uses: docker/login-action@v3.0.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}          
-     
-    - name: pull the CentOS image
-      if: matrix.name == 'centos7.9-build'    
-      run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest 
 
-    - name: ${{ matrix.name }}
+    - name: CentOS 7 build
       if: matrix.name == 'centos7.9-build' 
       uses: addnab/docker-run-action@v3
       with:
