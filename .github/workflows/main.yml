@@ -1040,6 +1040,7 @@ jobs:
         echo "${{ env.p_devices }}" > DEFAULT_DEVICES
         echo "${{ env.run_tests }}" > TEST_ON
         echo ${{ inputs.Release_Date }} > input_release_date
+        docker images
 
     
     - name: Checkout Subsystem
