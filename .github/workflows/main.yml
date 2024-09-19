@@ -937,7 +937,6 @@ jobs:
 
   build:
     name: ${{ matrix.name }}-${{ matrix.build-type }}
-
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -1060,10 +1059,91 @@ jobs:
             echo $p_device
             echo "$r_d"
             make ${{ matrix.build-type }} CPU_CORES=2 $run_test MONACO_EDITOR=0 PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            if [ ${{ matrix.build-type }} == "debug"]
+            then
+                mv dbuild build
+            fi 
 
-    # - name: Upload build
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: ${{ matrix.name }}
-    #     path: build
-    #     retention-days: 1
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.name }}_${{ matrix.build-type }}
+        path: build
+        retention-days: 1
+     
+  test:
+    needs: build
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: release, test-type: test/raptor_batch,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: free disk space
+      run: |
+        df -h && sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean
+        docker image ls
+        before=$(docker image ls -q) && echo $before && echo " "
+        after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d') && echo $after
+        docker rmi $after
+        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1 && sudo apt-get autoremove -y >/dev/null 2>&1
+        sudo apt-get autoclean -y >/dev/null 2>&1 && df -h
+
+    - name: Install dependencies
+      run: |
+           ${{ matrix.dependencies }} minimum 
+
+    - name: Log in to the Container registry
+      uses: docker/login-action@v3.0.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}          
+     
+    - name: pull the CentOS image  
+      run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+
+    - name: Configure
+      run: |
+        event_type=`echo ${{ github.event_name }}`
+        if [ ${{ github.repository_owner }} == 'os-fpga' ]
+        then
+                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
+        else
+                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+        fi
+        if [ $event_type == 'workflow_dispatch' ]
+        then
+               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
+        elif [ $event_type == 'push' ]
+        then
+               echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+        elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
+        then
+              echo 'p_devices=MPW1' >> $GITHUB_ENV
+        else     
+              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+        fi 
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.name }}_${{ matrix.build-type }}
+
+    - name: Ubuntu Build
+      if: matrix.name == 'ubuntu'
+      run: |
+           ls -l
+           make ${{ matrix.build-type }} ${{ env.run_tests }} CPU_CORES=2      
