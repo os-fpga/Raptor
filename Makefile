@@ -149,7 +149,7 @@ else
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
 endif
 
-test/raptor_batch: run-cmake-release
+test/raptor_batch:
 	./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
 
 test/raptor_gui: run-cmake-release
