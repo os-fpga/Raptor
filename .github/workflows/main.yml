@@ -936,7 +936,7 @@ jobs:
 
 
   build:
-    name: ${{ matrix.name }}
+    name: ${{ matrix.name }}-${{ matrix.build-type }}
 
     runs-on: ${{ matrix.os }}
     defaults:
@@ -946,8 +946,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {name: "ubuntu-build",    os: ubuntu-latest,  dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {name: "centos7.9-build", os: ubuntu-latest,  dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: release,            name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: debug,              name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: PRODUCTION_BUILD=1, name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: release,            name: "centos7.9", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: PRODUCTION_BUILD=1, name: "centos7.9", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
     env:
       Name:       ${{ matrix.name }}
       OS:         ${{ matrix.os }}
@@ -958,31 +961,17 @@ jobs:
 
     - name: free disk space
       run: |
-        df -h
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
+        df -h && sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean
         docker image ls
-        before=$(docker image ls -q)
-        echo $before
-        echo " "
-        after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d')
-        echo $after
+        before=$(docker image ls -q) && echo $before && echo " "
+        after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d') && echo $after
         docker rmi $after
-        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
-        sudo apt-get autoremove -y >/dev/null 2>&1
-        sudo apt-get autoclean -y >/dev/null 2>&1
-        df -h
-
+        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1 && sudo apt-get autoremove -y >/dev/null 2>&1
+        sudo apt-get autoclean -y >/dev/null 2>&1 && df -h
 
     - name: Install dependencies
       run: |
-          if [ ${{ matrix.name }} == "centos7.9-build" ]
-          then
-              ${{ matrix.dependencies }} minimum
-          else
-              ${{ matrix.dependencies }}
-          fi
+           [[ ${{ matrix.name }} == "centos7.9" ]] && ${{ matrix.dependencies }} minimum || ${{ matrix.dependencies }}  
 
     - name: Log in to the Container registry
       uses: docker/login-action@v3.0.0
@@ -994,11 +983,10 @@ jobs:
     - name: pull the CentOS image  
       run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
 
-
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
       with:
-        key: linux-${{ matrix.name }}
+        key: linux-${{ matrix.name }}-${{ matrix.build-type }}
 
     - name: Configure shell
       run: |
@@ -1046,20 +1034,18 @@ jobs:
         echo "${{ env.p_devices }}" > DEFAULT_DEVICES
         echo "${{ env.run_tests }}" > TEST_ON
         echo ${{ inputs.Release_Date }} > input_release_date
-        docker images
-
-    
+ 
     - name: Checkout Subsystem
       run: |
            make run-cmake-release CPU_CORES=2 
 
     - name: Ubuntu Build
-      if: matrix.name == 'ubuntu-build'
+      if: matrix.name == 'ubuntu'
       run: |
-           make release ${{ env.run_tests }} CPU_CORES=2
+           make ${{ matrix.build-type }} ${{ env.run_tests }} CPU_CORES=2 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=${{ inputs.Release_Date }}
 
     - name: CentOS 7 build
-      if: matrix.name == 'centos7.9-build' 
+      if: matrix.name == 'centos7.9' 
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
@@ -1068,5 +1054,16 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable  
             cd work && make clean
+            p_device=`cat DEFAULT_DEVICES`
             run_test=`cat TEST_ON`
-            make release CPU_CORES=2 $run_test MONACO_EDITOR=0      
+            r_d=`cat input_release_date`
+            echo $p_device
+            echo "$r_d"
+            make ${{ matrix.build-type }} CPU_CORES=2 $run_test MONACO_EDITOR=0 PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+
+    # - name: Upload build
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: ${{ matrix.name }}
+    #     path: build
+    #     retention-days: 1
