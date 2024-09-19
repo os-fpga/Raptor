@@ -938,7 +938,7 @@ jobs:
   build:
     name: ${{ matrix.name }}
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     defaults:
       run:
         shell: bash
@@ -946,10 +946,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {name: "ubuntu-build",    should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {name: "centos7.9-build", should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {name: "ubuntu-build",    os: ubuntu-latest, should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {name: "centos7.9-build", os: ubuntu-22.04,  should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
     env:
       Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
 
     steps:
     - name: Checkout code

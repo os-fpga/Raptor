@@ -1,5 +1,6 @@
 set -e
-sudo apt update --qq && sudo apt upgrade -y
+sudo apt-get update --qq
+sudo apt upgrade -y
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt-get update -qq
 
