@@ -1,5 +1,5 @@
 set -e
-sudo apt-get update --qq
+sudo apt-get update -qq
 sudo apt upgrade -y
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt-get update -qq
