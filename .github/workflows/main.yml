@@ -946,8 +946,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {name: "ubuntu-build",    os: ubuntu-latest, should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {name: "centos7.9-build", os: ubuntu-22.04,  should-run: true, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {name: "ubuntu-build",    os: ubuntu-latest,  dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {name: "centos7.9-build", os: ubuntu-latest,  dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
     env:
       Name:       ${{ matrix.name }}
       OS:         ${{ matrix.os }}
@@ -958,16 +958,22 @@ jobs:
 
     - name: free disk space
       run: |
-        du -sch *
         df -h
         sudo swapoff -a
         sudo rm -f /swapfile
         sudo apt clean
-        docker rmi $(docker image ls -aq)
+        docker image ls
+        before=$(docker image ls -q)
+        echo $before
+        echo " "
+        after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d')
+        echo $after
+        docker rmi $after
+        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
         sudo apt-get autoremove -y >/dev/null 2>&1
         sudo apt-get autoclean -y >/dev/null 2>&1
-        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
         df -h
+
 
     - name: Install dependencies
       run: |
