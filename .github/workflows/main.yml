@@ -1188,6 +1188,7 @@ jobs:
         DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
         minimum-dependencies: minimum
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
@@ -1231,12 +1232,59 @@ jobs:
             ls -l /opt/instl_dir/share/raptor/etc/devices/*
             ls -l /opt/instl_dir/bin
 
+    # - name: Upload build
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: Ubuntu-Release
+    #     path: build
+    #     retention-days: 1
 
+  build-CentOS-R:
+    name: CentOS-Release
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
 
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
 
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: CentOS-Production
+  
+    - name: Checkout Subsystem
+      run: |
+        make run-cmake-release CPU_CORES=2 
 
+    - name: Build
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work 
+        run: |
+            source /opt/rh/devtoolset-11/enable        
+            cd work && make clean
+            run_test=`cat TEST_ON`
+            make release CPU_CORES=2 $run_test MONACO_EDITOR=0
 
-
+    # - name: Upload build
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: Ubuntu-Release
+    #     path: build
+    #     retention-days: 1        
 
 
 
