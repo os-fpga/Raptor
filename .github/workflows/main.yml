@@ -935,88 +935,163 @@ jobs:
         ./.github/bin/run-clang-tidy.sh
 
 
-  build:
-    name: ${{ matrix.name }}-${{ matrix.build-type }}
-    runs-on: ${{ matrix.os }}
+  # build:
+  #   name: Ubuntu-Release
+  #   runs-on: ${{ matrix.os }}
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #         - {build-type: release,            name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+  #         - {build-type: debug,              name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+  #         - {build-type: PRODUCTION_BUILD=1, name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+  #         - {build-type: release,            name: "centos7.9", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+  #         - {build-type: PRODUCTION_BUILD=1, name: "centos7.9", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+  #   env:
+  #     Name:       ${{ matrix.name }}
+  #     OS:         ${{ matrix.os }}
+
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v4
+
+  #   - name: free disk space
+  #     run: |
+  #       df -h && sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean
+  #       docker image ls
+  #       before=$(docker image ls -q) && echo $before && echo " "
+  #       after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d') && echo $after
+  #       docker rmi $after
+  #       sudo rm -rf /usr/local/lib/android >/dev/null 2>&1 && sudo apt-get autoremove -y >/dev/null 2>&1
+  #       sudo apt-get autoclean -y >/dev/null 2>&1 && df -h
+
+  #   - name: Install dependencies
+  #     run: |
+  #          [[ ${{ matrix.name }} == "centos7.9" ]] && ${{ matrix.dependencies }} minimum || ${{ matrix.dependencies }}  
+
+  #   - name: Log in to the Container registry
+  #     uses: docker/login-action@v3.0.0
+  #     with:
+  #       registry: ghcr.io
+  #       username: ${{ github.actor }}
+  #       password: ${{ secrets.GITHUB_TOKEN }}          
+     
+  #   - name: pull the CentOS image  
+  #     run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+
+  #   - name: Use ccache
+  #     uses: hendrikmuhs/ccache-action@v1.2.12
+  #     with:
+  #       key: linux-${{ matrix.name }}-${{ matrix.build-type }}
+
+  #   - name: Configure shell
+  #     run: |
+  #       echo 'CC=gcc-11' >> $GITHUB_ENV
+  #       echo 'CXX=g++-11' >> $GITHUB_ENV
+  #       echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+  #       echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+  #       echo "$PREFIX" >> $GITHUB_PATH
+  #       echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+  #       echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+  #       echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
+  #       echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+  #       event_type=`echo ${{ github.event_name }}`
+  #       if [ ${{ github.repository_owner }} == 'os-fpga' ]
+  #       then
+  #               echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
+  #       else
+  #               echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+  #       fi
+  #       if [ $event_type == 'workflow_dispatch' ]
+  #       then
+  #              echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
+  #       elif [ $event_type == 'push' ]
+  #       then
+  #              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+  #       elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
+  #       then
+  #             echo 'p_devices=MPW1' >> $GITHUB_ENV
+  #       else     
+  #             echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
+  #       fi      
+
+  #   - name: Show shell configuration
+  #     run: |
+  #       env
+  #       which cmake && cmake --version
+  #       which make && make --version
+  #       which swig && swig -version
+  #       which python && python --version
+  #       which ninja && ninja --version
+  #       which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+  #       which $CC && $CC --version
+  #       which $CXX && $CXX --version
+  #       echo -e "Production devices are\n\t${{ env.p_devices }}"
+  #       echo "${{ env.p_devices }}" > DEFAULT_DEVICES
+  #       echo "${{ env.run_tests }}" > TEST_ON
+  #       echo ${{ inputs.Release_Date }} > input_release_date
+ 
+  #   - name: Checkout Subsystem
+  #     run: |
+  #          make run-cmake-release CPU_CORES=2 
+
+  #   - name: Ubuntu Build
+  #     if: matrix.name == 'ubuntu'
+  #     run: |
+  #          make ${{ matrix.build-type }} ${{ env.run_tests }} CPU_CORES=2 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=${{ inputs.Release_Date }}
+
+  #   - name: CentOS 7 build
+  #     if: matrix.name == 'centos7.9' 
+  #     uses: addnab/docker-run-action@v3
+  #     with:
+  #       shell: bash
+  #       image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+  #       options: -v ${{ github.workspace }}:/work
+  #       run: |
+  #           source /opt/rh/devtoolset-11/enable  
+  #           cd work && make clean
+  #           p_device=`cat DEFAULT_DEVICES`
+  #           run_test=`cat TEST_ON`
+  #           r_d=`cat input_release_date`
+  #           echo $p_device
+  #           echo "$r_d"
+  #           make ${{ matrix.build-type }} CPU_CORES=2 $run_test MONACO_EDITOR=0 PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+  #           if [ ${{ matrix.build-type }} == "debug"]
+  #           then
+  #               mv dbuild build
+  #           fi 
+
+  #   - name: Upload build
+  #     uses: actions/upload-artifact@v4
+  #     with:
+  #       name: ${{ matrix.name }}_${{ matrix.build-type }}
+  #       path: build
+  #       retention-days: 1
+ 
+
+  build-Ubuntu:
+    name: Ubuntu-Release
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - {build-type: release,            name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: debug,              name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: PRODUCTION_BUILD=1, name: "ubuntu",    os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: release,            name: "centos7.9", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: PRODUCTION_BUILD=1, name: "centos7.9", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-    env:
-      Name:       ${{ matrix.name }}
-      OS:         ${{ matrix.os }}
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: free disk space
-      run: |
-        df -h && sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean
-        docker image ls
-        before=$(docker image ls -q) && echo $before && echo " "
-        after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d') && echo $after
-        docker rmi $after
-        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1 && sudo apt-get autoremove -y >/dev/null 2>&1
-        sudo apt-get autoclean -y >/dev/null 2>&1 && df -h
-
-    - name: Install dependencies
-      run: |
-           [[ ${{ matrix.name }} == "centos7.9" ]] && ${{ matrix.dependencies }} minimum || ${{ matrix.dependencies }}  
-
-    - name: Log in to the Container registry
-      uses: docker/login-action@v3.0.0
+    - name: Install dependenices
+      uses: .github/actions/action.yml@remap_ci
       with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}          
-     
-    - name: pull the CentOS image  
-      run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
       with:
-        key: linux-${{ matrix.name }}-${{ matrix.build-type }}
-
-    - name: Configure shell
-      run: |
-        echo 'CC=gcc-11' >> $GITHUB_ENV
-        echo 'CXX=g++-11' >> $GITHUB_ENV
-        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
-        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
-        echo "$PREFIX" >> $GITHUB_PATH
-        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
-        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
-        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
-        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
-        event_type=`echo ${{ github.event_name }}`
-        if [ ${{ github.repository_owner }} == 'os-fpga' ]
-        then
-                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
-        else
-                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
-        fi
-        if [ $event_type == 'workflow_dispatch' ]
-        then
-               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-        elif [ $event_type == 'push' ]
-        then
-               echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
-        elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
-        then
-              echo 'p_devices=MPW1' >> $GITHUB_ENV
-        else     
-              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
-        fi      
+        key: Ubuntu-Release
 
     - name: Show shell configuration
       run: |
@@ -1033,44 +1108,36 @@ jobs:
         echo "${{ env.p_devices }}" > DEFAULT_DEVICES
         echo "${{ env.run_tests }}" > TEST_ON
         echo ${{ inputs.Release_Date }} > input_release_date
- 
+  
     - name: Checkout Subsystem
       run: |
-           make run-cmake-release CPU_CORES=2 
+           cat DEFAULT_DEVICES
+           make release CPU_CORES=2 
 
-    - name: Ubuntu Build
-      if: matrix.name == 'ubuntu'
-      run: |
-           make ${{ matrix.build-type }} ${{ env.run_tests }} CPU_CORES=2 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=${{ inputs.Release_Date }}
+    # - name: Upload build
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: Ubuntu-Release
+    #     path: build
+    #     retention-days: 1        
 
-    - name: CentOS 7 build
-      if: matrix.name == 'centos7.9' 
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-        options: -v ${{ github.workspace }}:/work
-        run: |
-            source /opt/rh/devtoolset-11/enable  
-            cd work && make clean
-            p_device=`cat DEFAULT_DEVICES`
-            run_test=`cat TEST_ON`
-            r_d=`cat input_release_date`
-            echo $p_device
-            echo "$r_d"
-            make ${{ matrix.build-type }} CPU_CORES=2 $run_test MONACO_EDITOR=0 PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
-            if [ ${{ matrix.build-type }} == "debug"]
-            then
-                mv dbuild build
-            fi 
 
-    - name: Upload build
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ matrix.name }}_${{ matrix.build-type }}
-        path: build
-        retention-days: 1
-     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   test:
     needs: build
     name: ${{ matrix.name }}-${{ matrix.test-type }}
