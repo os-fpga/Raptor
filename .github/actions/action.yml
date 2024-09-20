@@ -81,6 +81,7 @@ runs:
         DEVICES_VARS: ${{ inputs.DEVICES_NAME_FROM_VARS }}
 
     - name: Show shell configuration
+      shell: bash
       run: |
             env
             which cmake && cmake --version
