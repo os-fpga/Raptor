@@ -513,6 +513,7 @@ else ()
   add_dependencies(raptor-bin openfpga)
   add_dependencies(raptor-bin vpr)
   add_dependencies(raptor-bin planning)
+  add_dependencies(raptor-bin build_vpr_latest)
 endif()
 
 # Make sure openocd_cmake build is done before raptor
