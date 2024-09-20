@@ -1083,7 +1083,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install dependenices
-      uses: .github/actions/action.yml@remap_ci
+      uses: ./.github/actions/action.yml@remap_ci
       with:
         DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
         DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
