@@ -15,7 +15,9 @@ inputs:
   TOKEN:
     description: 'Token to login'
     default: ''
-
+  PULL_DOCKER_IMAGE:
+    description: 'Pull Docker Image or not'
+    default: False
 
 runs:
   using: "composite"
@@ -97,15 +99,15 @@ runs:
             echo "${{ env.run_tests }}" > TEST_ON
             echo ${{ inputs.Release_Date }} > input_release_date
 
-    - name: Log in to the Container registry
-      run: echo $LOGIN_PASS | docker login ghcr.io -u $USERNAME --password-stdin
+    - name: Log in to the Container registry & pull centos7 image
+      if: ${{ PULL }}
+      run: |
+           echo $LOGIN_PASS | docker login ghcr.io -u $USERNAME --password-stdin
+           docker pull ghcr.io/$REPOSITORY_OWNER/raptor:centos7latest
       shell: bash
       env:
           LOGIN_PASS: ${{ inputs.TOKEN }}
           USERNAME: ${{ github.actor }}
+          PULL: ${{ inputs. PULL_DOCKER_IMAGE}}
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
 
-    - name: pull the CentOS image
-      run: docker pull ghcr.io/$REPOSITORY_OWNER/raptor:centos7latest
-      shell: bash
-      env:
-        REPOSITORY_OWNER: ${{ github.repository_owner }}
