@@ -1088,7 +1088,7 @@ jobs:
            ls -l ./.github/actions/action.yml 
 
     - name: Install dependenices
-      uses: ./.github/actions/action.yml
+      uses: ./.github/actions/action.yml@37fb471ebff318529087ea76cdd5acee1d325844
       with:
         DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
         DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
