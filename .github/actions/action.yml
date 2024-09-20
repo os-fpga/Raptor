@@ -12,7 +12,9 @@ inputs:
     description: 'Name of Devices, comma separated'
     required: true
     default: 'MPWI'
-
+  TOKEN:
+    description: 'Token to login'
+    default: ''
 
 
 runs:
@@ -60,7 +62,7 @@ runs:
             if [ $EVENT == 'workflow_dispatch' ]
             then
                    echo 'p_devices=$DEVICES_IN' >> $GITHUB_ENV
-            elif [ $event_type == 'push' ]
+            elif [ $EVENT == 'push' ]
             then
                    echo 'p_devices=$DEVICES_VARS' >> $GITHUB_ENV
             elif [ "$PR_HEAD" != "$REPOSITORY" ]
@@ -68,7 +70,8 @@ runs:
                   echo 'p_devices=MPW1' >> $GITHUB_ENV
             else     
                   echo 'p_devices=$DEVICES_VARS' >> $GITHUB_ENV
-            fi   
+            fi
+
       shell: bash
       env:
         REPOSITORY: ${{ github.repository }}
@@ -77,4 +80,33 @@ runs:
         DEVICES_IN: ${{ inputs.DEVICES_NAME_FROM_INPUTS }}
         DEVICES_VARS: ${{ inputs.DEVICES_NAME_FROM_VARS }}
 
+    - name: Show shell configuration
+      run: |
+            env
+            which cmake && cmake --version
+            which make && make --version
+            which swig && swig -version
+            which python && python --version
+            which ninja && ninja --version
+            which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+            which $CC && $CC --version
+            which $CXX && $CXX --version
+            echo -e "Production devices are\n\t${{ env.p_devices }}"
+            echo "${{ env.p_devices }}" > DEFAULT_DEVICES
+            echo "${{ env.run_tests }}" > TEST_ON
+            echo ${{ inputs.Release_Date }} > input_release_date
 
+    - name: Log in to the Container registry
+      uses: docker/login-action@v3.0.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: $LOGIN_PASS
+      env:
+          LOGIN_PASS: ${{ inputs.TOKEN }}
+
+    - name: pull the CentOS image
+      run: docker pull ghcr.io/$REPOSITORY_OWNER/raptor:centos7latest
+      shell: bash
+      env:
+        REPOSITORY_OWNER: ${{ github.repository_owner }}
