@@ -247,8 +247,8 @@ def create_folders_and_file():
 
         file.write("`ifdef TIMED_SIM\n") 
         file.write("\tinitial begin\n")
-        file.write("\t\t$display(\"SDF ANNOTATION: ../routing/fabric_" + top_module + "_post_route.sdf\");\n");
-        file.write("\t\t$sdf_annotate(\"../routing/fabric_" + top_module + "_post_route.sdf\", co_sim_" + top_module + ".route_net." + "fabric_instance" + ");\n") 
+        file.write("\t\t$display(\"SDF ANNOTATION: ../routing/fabric_" + top_module + "_post_route_blasted.sdf\");\n");
+        file.write("\t\t$sdf_annotate(\"../routing/fabric_" + top_module + "_post_route_blasted.sdf\", co_sim_" + top_module + ".route_net." + "fabric_instance" + ");\n") 
         file.write("\tend\n") 
         file.write("`endif\n\n") 
    
