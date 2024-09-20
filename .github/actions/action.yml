@@ -1,0 +1,80 @@
+name: 'Common CI Steps' 
+description: 'All the common steps'
+inputs:
+  minimum-dependencies:
+    description: 'Install only minimum dependencies'
+    default: ''
+  DEVICES_NAME_FROM_INPUTS:
+    description: 'Name of Devices, comma separated'
+    required: true
+    default: 'MPWI'
+  DEVICES_NAME_FROM_VARS:
+    description: 'Name of Devices, comma separated'
+    required: true
+    default: 'MPWI'
+
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: free disk space
+      run: |
+          df -h && sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean
+          docker image ls
+          before=$(docker image ls -q) && echo $before && echo " "
+          after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d') && echo $after
+          docker rmi $after
+          sudo rm -rf /usr/local/lib/android >/dev/null 2>&1 && sudo apt-get autoremove -y >/dev/null 2>&1
+          sudo apt-get autoclean -y >/dev/null 2>&1 && df -h
+      shell: bash
+
+    - name: Install dependencies
+      run: bash .github/workflows/install_ubuntu_dependencies_build.sh $DO_MINIMUM
+      shell: bash
+      env:
+        DO_MINIMUM: ${{ inputs.minimum-dependencies }}
+
+    - name: Configure shell
+      shell: bash
+      run: |
+        echo 'CC=gcc-11' >> $GITHUB_ENV
+        echo 'CXX=g++-11' >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
+        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+
+    - name: Set Device
+      run: |
+            echo $EVENT
+            if [ $REPOSITORY == 'os-fpga' ]
+            then
+                    echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
+            else
+                    echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+            fi
+            if [ $EVENT == 'workflow_dispatch' ]
+            then
+                   echo 'p_devices=$DEVICES_IN' >> $GITHUB_ENV
+            elif [ $event_type == 'push' ]
+            then
+                   echo 'p_devices=$DEVICES_VARS' >> $GITHUB_ENV
+            elif [ "$PR_HEAD" != "$REPOSITORY" ]
+            then
+                  echo 'p_devices=MPW1' >> $GITHUB_ENV
+            else     
+                  echo 'p_devices=$DEVICES_VARS' >> $GITHUB_ENV
+            fi   
+      shell: bash
+      env:
+        REPOSITORY: ${{ github.repository }}
+        EVENT: ${{ github.event_name }}
+        PR_HEAD: ${{ github.event.pull_request.head.repo.full_name }}
+        DEVICES_IN: ${{ inputs.DEVICES_NAME_FROM_INPUTS }}
+        DEVICES_VARS: ${{ inputs.DEVICES_NAME_FROM_VARS }}
+
+
