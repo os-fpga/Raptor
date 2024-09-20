@@ -97,13 +97,10 @@ runs:
             echo ${{ inputs.Release_Date }} > input_release_date
 
     - name: Log in to the Container registry
-      uses: docker/login-action@v3.0.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: $LOGIN_PASS
+      run: echo $LOGIN_PASS | docker login ghcr.io -u $USERNAME --password-stdin
       env:
           LOGIN_PASS: ${{ inputs.TOKEN }}
+          USERNAME: ${{ github.actor }}
 
     - name: pull the CentOS image
       run: docker pull ghcr.io/$REPOSITORY_OWNER/raptor:centos7latest
