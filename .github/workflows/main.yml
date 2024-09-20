@@ -1082,6 +1082,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Show shell configuration
+      run: |
+           ls -l
+           ls -l ./.github/actions/action.yml 
+
     - name: Install dependenices
       uses: ./.github/actions/action.yml
       with:
