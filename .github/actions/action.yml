@@ -98,6 +98,7 @@ runs:
 
     - name: Log in to the Container registry
       run: echo $LOGIN_PASS | docker login ghcr.io -u $USERNAME --password-stdin
+      shell: bash
       env:
           LOGIN_PASS: ${{ inputs.TOKEN }}
           USERNAME: ${{ github.actor }}
