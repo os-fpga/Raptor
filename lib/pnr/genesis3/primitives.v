@@ -237,8 +237,8 @@ module LUT_K2 #(
     parameter K = 1, 
     parameter LUT_MASK={2**K{1'b0}} 
 ) (
-    input  in0,
     input  in1,
+    input  in0,
     output out
 );
    
@@ -256,7 +256,7 @@ module LUT_K2 #(
    LUT2 #(
      .INIT_VALUE(LUT_MASK)
         ) lut_2 (
-          .A({in0, in1}),
+          .A({in1, in0}),
           .Y(out)
         );
 endmodule
@@ -266,9 +266,9 @@ module LUT_K3 #(
     parameter K = 1, 
     parameter LUT_MASK={2**K{1'b0}} 
 ) (
-    input  in0,
-    input  in1,
     input  in2,
+    input  in1,
+    input  in0,
     output out
 );
 
@@ -287,7 +287,7 @@ module LUT_K3 #(
    LUT3 #(
      .INIT_VALUE(LUT_MASK)
         ) lut_3 (
-          .A({in0, in1, in2}),
+          .A({in2, in1, in0}),
           .Y(out)
         );
 endmodule
@@ -297,10 +297,10 @@ module LUT_K4 #(
     parameter K = 1, 
     parameter LUT_MASK={2**K{1'b0}} 
 ) (
-    input  in0,
-    input  in1,
-    input  in2,
     input  in3,
+    input  in2,
+    input  in1,
+    input  in0,
     output out
 );
 
@@ -320,7 +320,7 @@ module LUT_K4 #(
    LUT4 #(
      .INIT_VALUE(LUT_MASK)
         ) lut_4 (
-          .A({in0, in1, in2, in3}),
+          .A({in3, in2, in1, in0}),
           .Y(out)
         );
 endmodule
@@ -330,11 +330,11 @@ module LUT_K5 #(
     parameter K = 1, 
     parameter LUT_MASK={2**K{1'b0}} 
 ) (
-    input  in0,
-    input  in1,
-    input  in2,
-    input  in3,
     input  in4,
+    input  in3,
+    input  in2,
+    input  in1,
+    input  in0,
     output out
 );
 
@@ -355,7 +355,7 @@ module LUT_K5 #(
    LUT5 #(
      .INIT_VALUE(LUT_MASK)
         )lut_5(
-          .A({in0, in1, in2, in3, in4}),
+          .A({in4, in3, in2, in1, in0}),
           .Y(out)
         );
 endmodule
@@ -365,12 +365,12 @@ module LUT_K6 #(
     parameter K = 1, 
     parameter LUT_MASK={2**K{1'b0}} 
 ) (
-    input  in0,
-    input  in1,
-    input  in2,
-    input  in3,
-    input  in4,
     input  in5,
+    input  in4,
+    input  in3,
+    input  in2,
+    input  in1,
+    input  in0,
     output out
 );
 
@@ -392,7 +392,7 @@ module LUT_K6 #(
    LUT6 #(
      .INIT_VALUE(LUT_MASK)
         )lut_6(
-          .A({in0, in1, in2, in3, in4, in5}),
+          .A({in5, in4, in3, in2, in1, in0}),
           .Y(out)
         );
 endmodule
