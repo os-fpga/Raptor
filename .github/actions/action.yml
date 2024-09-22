@@ -55,6 +55,7 @@ runs:
     - name: Set Device
       run: |
             echo $EVENT
+            echo "received device name is $DEVICES_VARS"
             if [ $REPOSITORY == 'os-fpga' ]
             then
                     echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
@@ -67,6 +68,7 @@ runs:
             elif [ $EVENT == 'push' ]
             then
                    echo 'p_devices="$DEVICES_VARS"' >> $GITHUB_ENV
+                   echo "$DEVICES_VARS" > DEFAULT_DEVICES
             elif [ "$PR_HEAD" != "$REPOSITORY" ]
             then
                   echo 'p_devices=MPW1' >> $GITHUB_ENV
@@ -94,8 +96,8 @@ runs:
             which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
             which $CC && $CC --version
             which $CXX && $CXX --version
-            echo -e "Production devices are\n\t${{ env.p_devices }}"
-            echo "${{ env.p_devices }}" > DEFAULT_DEVICES
+            echo -e "Production devices are\n\t`cat DEFAULT_DEVICES`"
+            #echo "${{ env.p_devices }}" > DEFAULT_DEVICES
             echo "${{ env.run_tests }}" > TEST_ON
             echo ${{ inputs.Release_Date }} > input_release_date
 
