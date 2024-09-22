@@ -42,13 +42,8 @@ IPA ?= 1
 # to detect actual warnings and errors  in the build output.
 RULE_MESSAGES ?= on
 
-ifeq ($(PRODUCTION_BUILD),1)
 release: run-cmake-release
 	cmake --build build -j $(CPU_CORES)
-else
-release: run-cmake-release
-	cmake --build build -j $(CPU_CORES)
-endif
 
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
@@ -91,12 +86,9 @@ test/valgrind: run-cmake-debug
 	$(XVFB) valgrind --tool=memcheck --log-file=valgrind.log ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	grep "ERROR SUMMARY: 0" valgrind.log
 
-
 test: test/unittest
 
 test-parallel: release test/unittest
-
-regression: release
 
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
