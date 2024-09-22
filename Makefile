@@ -87,8 +87,6 @@ coverage-build/html: raptor_gui-build/raptor_gui.coverage
 	genhtml --output-directory coverage-build/html $^
 	realpath coverage-build/html/index.html
 
-test/regression: run-cmake-release
-
 test/valgrind: run-cmake-debug
 	$(XVFB) valgrind --tool=memcheck --log-file=valgrind.log ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	grep "ERROR SUMMARY: 0" valgrind.log
