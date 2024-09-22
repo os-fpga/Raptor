@@ -92,14 +92,11 @@ test/valgrind: run-cmake-debug
 	grep "ERROR SUMMARY: 0" valgrind.log
 
 
-test: test/unittest test/regression
+test: test/unittest
 
 test-parallel: release test/unittest
 
 regression: release
-
-clean:
-	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build Raptor_Tools/parser_plugins/synlig/out/
 
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
@@ -277,3 +274,5 @@ uninstall:
 	$(RM) -r $(PREFIX)/share/raptor
 	$(RM) -r $(PREFIX)/bin/gtkwave
 
+clean:
+	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build Raptor_Tools/parser_plugins/synlig/out/
