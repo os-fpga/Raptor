@@ -44,7 +44,7 @@ runs:
       run: |
         echo 'CC=gcc-11' >> $GITHUB_ENV
         echo 'CXX=g++-11' >> $GITHUB_ENV
-        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:/usr/local/opt/ccache/libexec:'"$PATH" >> $GITHUB_ENV
         echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
         echo "$PREFIX" >> $GITHUB_PATH
         echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
@@ -63,15 +63,15 @@ runs:
             fi
             if [ $EVENT == 'workflow_dispatch' ]
             then
-                   echo 'p_devices=$DEVICES_IN' >> $GITHUB_ENV
+                   echo 'p_devices="$DEVICES_IN"' >> $GITHUB_ENV
             elif [ $EVENT == 'push' ]
             then
-                   echo 'p_devices=$DEVICES_VARS' >> $GITHUB_ENV
+                   echo 'p_devices="$DEVICES_VARS"' >> $GITHUB_ENV
             elif [ "$PR_HEAD" != "$REPOSITORY" ]
             then
                   echo 'p_devices=MPW1' >> $GITHUB_ENV
             else     
-                  echo 'p_devices=$DEVICES_VARS' >> $GITHUB_ENV
+                  echo 'p_devices="$DEVICES_VARS"' >> $GITHUB_ENV
             fi
 
       shell: bash
