@@ -1084,9 +1084,6 @@ jobs:
 
     - name: Install dependenices
       uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
@@ -1117,10 +1114,7 @@ jobs:
 
     - name: Install dependenices
       uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-
+      
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
       with:
@@ -1148,7 +1142,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install dependenices
+    - name: Install dependenices & configure device
       uses: ./.github/actions/
       with:
         DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
@@ -1161,8 +1155,7 @@ jobs:
   
     - name: Production Build
       run: |
-          echo ${{ env.p_devices }}
-          make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=`cat input_release_date`
+           make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=`cat DEFAULT_DEVICES` STICK_RELEASE_VERSION=`cat input_release_date`
 
     # - name: Upload build
     #   uses: actions/upload-artifact@v4
@@ -1181,7 +1174,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install dependenices
+    - name: Install dependenices & configure device
       uses: ./.github/actions/
       with:
         DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
@@ -1189,6 +1182,7 @@ jobs:
         minimum-dependencies: minimum
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PULL_DOCKER_IMAGE: 'yes'
+        RELEASE_DATE: ${{ inputs.Release_Date }}
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12

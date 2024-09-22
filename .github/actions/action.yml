@@ -6,11 +6,9 @@ inputs:
     default: ''
   DEVICES_NAME_FROM_INPUTS:
     description: 'Name of Devices, comma separated'
-    required: true
     default: 'MPWI'
   DEVICES_NAME_FROM_VARS:
     description: 'Name of Devices, comma separated'
-    required: true
     default: 'MPWI'
   TOKEN:
     description: 'Token to login'
@@ -18,6 +16,9 @@ inputs:
   PULL_DOCKER_IMAGE:
     description: 'Pull Docker Image yes or no'
     default: 'no'
+  RELEASE_DATE:
+    description: 'Custom release date'
+    default: ''
 
 runs:
   using: "composite"
@@ -54,26 +55,23 @@ runs:
 
     - name: Set Device
       run: |
-            echo $EVENT
-            echo "received device name is $DEVICES_VARS"
             if [ $REPOSITORY == 'os-fpga' ]
             then
-                    echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
+                    echo 'RAPTOR_PUB=1' > TEST_ON         
             else
-                    echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
+                    echo 'RAPTOR_PUB=0' > TEST_ON
             fi
             if [ $EVENT == 'workflow_dispatch' ]
             then
-                   echo 'p_devices="$DEVICES_IN"' >> $GITHUB_ENV
+                   echo "$DEVICES_IN"  > DEFAULT_DEVICES
             elif [ $EVENT == 'push' ]
             then
-                   echo 'p_devices="$DEVICES_VARS"' >> $GITHUB_ENV
                    echo "$DEVICES_VARS" > DEFAULT_DEVICES
             elif [ "$PR_HEAD" != "$REPOSITORY" ]
             then
-                  echo 'p_devices=MPW1' >> $GITHUB_ENV
+                  echo 'MPW1' > DEFAULT_DEVICES
             else     
-                  echo 'p_devices="$DEVICES_VARS"' >> $GITHUB_ENV
+                  echo "$DEVICES_VARS" > DEFAULT_DEVICES
             fi
 
       shell: bash
@@ -97,9 +95,10 @@ runs:
             which $CC && $CC --version
             which $CXX && $CXX --version
             echo -e "Production devices are\n\t`cat DEFAULT_DEVICES`"
-            #echo "${{ env.p_devices }}" > DEFAULT_DEVICES
-            echo "${{ env.run_tests }}" > TEST_ON
-            echo ${{ inputs.Release_Date }} > input_release_date
+            echo "should run tust `cat TEST_ON`"
+            echo $RD > input_release_date
+      env:
+        RD: ${{ inputs.RELEASE_DATE }}
 
     - name: Log in to the Container registry & pull centos7 image
       run: |
