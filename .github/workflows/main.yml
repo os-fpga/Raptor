@@ -1158,7 +1158,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: build-Ubuntu-R, test-type: test/int_batch,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, test-type: test/int_batch,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
     env:
       Name:       ${{ matrix.name }}
       OS:         ${{ matrix.os }}
