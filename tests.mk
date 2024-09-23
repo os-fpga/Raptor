@@ -63,7 +63,7 @@ test/int_gui_mac:
 # Do not invoke
 test/int_batch:
 	mkdir -p run_tests
-	pushd run_tests
+	cd run_tests
 ifeq ($(RAPTOR_PUB),1)
 	../build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
 else
@@ -98,12 +98,12 @@ else
 	../build/bin/raptor --batch --mute --script ../tests/Testcases/double_check/raptor.tcl
 	../build/bin/raptor --batch --mute --script ../etc/devices/gemini_compact_62x44/ric/periphery.tcl
 endif
-	popd
+	cd -
 
 
 test/int_batch_gen2:
 	mkdir -p run_tests
-	pushd run_tests
+	cd run_tests
 ifeq ($(RAPTOR_PUB),1)
 else
 	../build/bin/raptor --batch --mute --script ../tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
@@ -115,17 +115,17 @@ else
 	../build/bin/raptor --batch --mute --script ../tests/TestBatch/oneff_clean/raptor.tcl
 	../build/bin/raptor --batch --mute --script ../tests/Testcases/rom/raptor.tcl
 endif
-	popd
+	cd -
 
 test/int_batch_gen3:
 	mkdir -p run_tests
-	pushd run_tests
+	cd run_tests
 ifeq ($(RAPTOR_PUB),1)
 else
 	cd tests/Testcases/and2_bitstream; rm -rf and2; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; rm -rf up5bit_counter_dual_clock; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
-	popd
+	cd -
 
 test/int_solver:
 ifeq ($(RAPTOR_PUB),1)
