@@ -956,12 +956,13 @@ jobs:
     - name: Release Build
       run: |
            make release CPU_CORES=2 
+           mkdir upload && mv build upload 
 
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
         name: Ubuntu-Release
-        path: build
+        path: upload
         retention-days: 1        
 
 
