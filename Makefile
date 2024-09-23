@@ -98,7 +98,7 @@ test/unittest-d: run-cmake-debug test/int_unittest-d
 test/unittest-coverage: run-cmake-coverage test/int_unittest-coverage
 
 coverage-build/raptor_gui.coverage: test/unittest-coverage
-	lcov --no-external --exclude "*_test.cpp" --capture --directory coverage-build/CMakeFiles/raptor_gui.dir --base-directory src --output-file coverage-build/raptor_gui.coverage
+	lcov --no-external --exclude  "*_test.cpp" --capture --directory coverage-build/CMakeFiles/raptor_gui.dir --base-directory src --output-file coverage-build/raptor_gui.coverage
 
 coverage-build/html: raptor_gui-build/raptor_gui.coverage
 	genhtml --output-directory coverage-build/html $^
@@ -136,7 +136,7 @@ test/batch_gen2: release test/int_batch_gen2
 test/batch_gen3: release test/int_batch_gen3
 
 # This target can be invoked directly
-solver/tests: release solver/int_tests
+solver/tests: release test/int_solver
 
 test/batch_all:
 	echo "############################# Raptor checkin tests, all tests must pass! #############################"
