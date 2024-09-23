@@ -91,7 +91,7 @@ lib-only: run-cmake-release
 
 include tests.mk
 
-test/unittest: release test/init_unittest:
+test/unittest: release test/init_unittest
 
 test/unittest-d: run-cmake-debug test/int_unittest-d
 
