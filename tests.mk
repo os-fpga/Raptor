@@ -5,6 +5,7 @@
 
 PRIVATE_TARGETS := $(shell grep -E '^test/[a-zA-Z0-9_-]+:' $(MAKEFILE_LIST) | sed 's/:.*//')
 .ONESHELL:
+.SILENT:
 
 test/int_unittest:
 	cmake --build build --target unittest -j $(CPU_CORES)
