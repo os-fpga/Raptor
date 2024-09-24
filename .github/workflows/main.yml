@@ -1187,4 +1187,5 @@ jobs:
            ls -l
            run_test=`cat TEST_ON`
            export CI=true
+           echo $run_test
            make ${{ matrix.test-type }} $run_test CPU_CORES=2      
