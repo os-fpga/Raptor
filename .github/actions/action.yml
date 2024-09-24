@@ -55,7 +55,7 @@ runs:
 
     - name: Set Device
       run: |
-            if [ $REPOSITORY == 'os-fpga' ]
+            if [ $REPOSITORY_OWNER == 'os-fpga' ]
             then
                     echo 'RAPTOR_PUB=1' > TEST_ON         
             else
@@ -76,6 +76,7 @@ runs:
 
       shell: bash
       env:
+        REPOSITORY_OWNER: ${{ github.repository_owner }}
         REPOSITORY: ${{ github.repository }}
         EVENT: ${{ github.event_name }}
         PR_HEAD: ${{ github.event.pull_request.head.repo.full_name }}
