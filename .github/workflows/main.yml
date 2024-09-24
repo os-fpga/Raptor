@@ -1159,7 +1159,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: Ubuntu-Release, test-type: test/int_batch,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          # - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          # - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          # - {build-type: Ubuntu-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: test,                 name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          # - {build-type: Ubuntu-Release, extra-opts: clean,                                             test-type: test_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
     env:
       Name:       ${{ matrix.name }}
       OS:         ${{ matrix.os }}
@@ -1184,7 +1189,11 @@ jobs:
 
     - name: Execute test
       run: |
-           ls -l
+           ls -la
+           ls -l build
+           ls -l build/bin
+           source build/bin/raptor
+           ldd build/bin/raptor.mexe
            run_test=`cat TEST_ON`
            export CI=true
            echo $run_test
