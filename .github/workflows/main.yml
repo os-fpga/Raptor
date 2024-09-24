@@ -956,13 +956,13 @@ jobs:
     - name: Release Build
       run: |
            make release CPU_CORES=2 
-           mkdir upload && mv build upload 
+           tar -cvzf build.tar.gz build 
 
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
         name: Ubuntu-Release
-        path: upload
+        path: build.tar.gz
         retention-days: 1        
 
 
@@ -986,13 +986,14 @@ jobs:
   
     - name: Debug Build
       run: |
-           make debug CPU_CORES=2 
+           make debug CPU_CORES=2
+           tar -cvzf build.tar.gz dbuild
 
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
         name: Ubuntu-Debug
-        path: build
+        path: build.tar.gz
         retention-days: 1  
 
 
@@ -1020,12 +1021,13 @@ jobs:
     - name: Production Build
       run: |
            make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=`cat DEFAULT_DEVICES` STICK_RELEASE_VERSION=`cat input_release_date`
+           tar -cvzf build.tar.gz build
 
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
         name: Ubuntu-Production
-        path: build
+        path: build.tar.gz
         retention-days: 1  
 
   build-CentOS-P:
@@ -1089,12 +1091,13 @@ jobs:
             cat /opt/instl_dir/share/raptor/etc/device.xml
             ls -l /opt/instl_dir/share/raptor/etc/devices/*
             ls -l /opt/instl_dir/bin
+            tar -cvzf build.tar.gz build 
 
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
         name: CentOS-Production
-        path: build
+        path: build.tar.gz
         retention-days: 1
 
   build-CentOS-R:
@@ -1136,19 +1139,16 @@ jobs:
             cd work && make clean
             run_test=`cat TEST_ON`
             make release CPU_CORES=2 $run_test MONACO_EDITOR=0
+            tar -cvzf build.tar.gz build
 
     - name: Upload build
       uses: actions/upload-artifact@v4
       with:
         name: CentOS-Release
-        path: build
-        retention-days: 1        
+        path: build.tar.gz
+        retention-days: 1
 
-
-
-
-
-  test:
+  test-ubuntu-R:
     needs: build-Ubuntu-R
     name: ${{ matrix.name }}-${{ matrix.test-type }}
     runs-on: ${{ matrix.os }}
@@ -1190,11 +1190,60 @@ jobs:
     - name: Execute test
       run: |
            ls -la
-           ls -l build
+           tar -xvzf build.tar.gz && rm build.tar.gz 
+           ls -la
+           ls -la build
            ls -l build/bin
-           source build/bin/raptor
+           source build/.raptorenv_lin64.sh
            ldd build/bin/raptor.mexe
            run_test=`cat TEST_ON`
            export CI=true
            echo $run_test
-           make ${{ matrix.test-type }} $run_test CPU_CORES=2      
+           make ${{ matrix.test-type }} $run_test CPU_CORES=2
+
+  # test-ubuntu-P:
+  #   needs: build-Ubuntu-P
+  #   name: ${{ matrix.name }}-${{ matrix.test-type }}
+  #   runs-on: ${{ matrix.os }}
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #         - {build-type: Ubuntu-Production, extra-opts: "", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+  #   env:
+  #     Name:       ${{ matrix.name }}
+  #     OS:         ${{ matrix.os }}
+
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v4
+
+  #   - name: Install dependenices
+  #     uses: ./.github/actions/
+  #     with:
+  #       DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+  #       DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+  #       minimum-dependencies: minimum
+  #       TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       PULL_DOCKER_IMAGE: 'yes'
+
+  #   - name: Download build
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: ${{ matrix.build-type }}
+
+  #   - name: Execute test
+  #     run: |
+  #          ls -la
+  #          ls -l build
+  #          ls -l build/bin
+  #          source build/bin/raptor
+  #          ldd build/bin/raptor.mexe
+  #          run_test=`cat TEST_ON`
+  #          export CI=true
+  #          echo $run_test
+  #          make ${{ matrix.test-type }} $run_test CPU_CORES=2
