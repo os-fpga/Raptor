@@ -139,15 +139,11 @@ test/int_install_mac:
 	$(PREFIX)/bin/raptor --compiler dummy --batch --script tests/Testcases/trivial/test.tcl
 
 test/int_production:
-ifneq ($(strip $(PRODUCTION_DEVICES)),)
 	d_test=`echo $(PRODUCTION_DEVICES) | cut -d ',' -f 1` && \
 	echo "Production device is $$d_test" && \
 	./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen license issue -p projects/Raptor -f Raptor,$$d_test,DE -o build/bin/raptor.lic && \
 	export LICENSE_LOCATION=$$PWD/build/bin/raptor.lic && \
 	./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $$d_test
-else
-$(error Need Name of Device)
-endif
 
 ifneq ($(filter $(MAKECMDGOALS), $(PRIVATE_TARGETS)),)
 ifneq ($(CI),true)
