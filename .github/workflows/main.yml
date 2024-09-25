@@ -1195,7 +1195,14 @@ jobs:
            ls -la build
            ls -l build/bin
            source build/.raptorenv_lin64.sh
+           echo ""
            ldd build/bin/raptor.mexe
+           echo ""
+           ldd build/bin/yosys
+           echo ""
+           ldd build/bin/openfpga
+           echo ""
+           ldd build/bin/vpr
            run_test=`cat TEST_ON`
            export CI=true
            echo $run_test
