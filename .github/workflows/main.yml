@@ -959,7 +959,7 @@ jobs:
            source build/.raptorenv_lin64.sh
            echo ""
            ldd build/bin/raptor.mexe
-           tar -cvzf build.tar.gz build 
+           tar -czf build.tar.gz build 
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -990,7 +990,7 @@ jobs:
     - name: Debug Build
       run: |
            make debug CPU_CORES=2
-           tar -cvzf build.tar.gz dbuild
+           tar -czf build.tar.gz dbuild
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -1024,7 +1024,7 @@ jobs:
     - name: Production Build
       run: |
            make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=`cat DEFAULT_DEVICES` STICK_RELEASE_VERSION=`cat input_release_date`
-           tar -cvzf build.tar.gz build
+           tar -czf build.tar.gz build
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -1094,7 +1094,7 @@ jobs:
             cat /opt/instl_dir/share/raptor/etc/device.xml
             ls -l /opt/instl_dir/share/raptor/etc/devices/*
             ls -l /opt/instl_dir/bin
-            tar -cvzf build.tar.gz build 
+            tar -czf build.tar.gz build 
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -1142,7 +1142,7 @@ jobs:
             cd work && make clean
             run_test=`cat TEST_ON`
             make release CPU_CORES=2 $run_test MONACO_EDITOR=0
-            tar -cvzf build.tar.gz build
+            tar -czf build.tar.gz build
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -1192,6 +1192,7 @@ jobs:
 
     - name: Execute test
       run: |
+           sudo apt install -y locate
            ls -la
            tar -xvzf build.tar.gz && rm build.tar.gz 
            ls -la
@@ -1199,6 +1200,9 @@ jobs:
            ls -l build/bin
            source build/.raptorenv_lin64.sh
            echo ""
+           locate libtcmalloc.so.4
+           echo ""
+           locate libtcmalloc.so
            ldd build/bin/raptor.mexe
            echo ""
            ldd build/bin/yosys
