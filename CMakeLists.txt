@@ -683,6 +683,13 @@ install (
   FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${ZLIB_STATIC_LIB}
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)
 
+install (
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/vpr_latest
+  DESTINATION ${CMAKE_INSTALL_BINDIR}
+  PERMISSIONS
+  OWNER_READ OWNER_EXECUTE OWNER_WRITE
+  GROUP_READ GROUP_EXECUTE
+  WORLD_READ WORLD_EXECUTE)
 
 if (WIN32 AND $<CONFIG:Debug>)
   if (RAPTOR_WITH_PYTHON)
@@ -905,6 +912,13 @@ if (ENABLE_OPENSTA)
 endif()
 
 add_custom_command(TARGET raptor-bin POST_BUILD
+    COMMAND echo "Copy VPR_LATEST"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/Backend/vpr_latest/vpr_latest
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+    )
+
+add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir"
       COMMAND echo "Create bin/Flex_LM dirs in share dir"
       COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -993,7 +1007,10 @@ else ()
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/planning
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
-      COMMAND ls -1 ${CMAKE_CURRENT_SOURCE_DIR}/Backend/vpr_latest/vpr_latest && cp -v ${CMAKE_CURRENT_SOURCE_DIR}/Backend/vpr_latest/vpr_latest
+      COMMAND cp -v ${CMAKE_CURRENT_SOURCE_DIR}/Backend/vpr_latest/vpr_latest
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/vpr_latest
+      COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/vpr_latest
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
     )
   if (MONACO_EDITOR)
