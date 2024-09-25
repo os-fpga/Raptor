@@ -956,6 +956,9 @@ jobs:
     - name: Release Build
       run: |
            make release CPU_CORES=2
+           source build/.raptorenv_lin64.sh
+           echo ""
+           ldd build/bin/raptor.mexe
            tar -cvzf build.tar.gz build 
 
     - name: Upload build
@@ -987,9 +990,6 @@ jobs:
     - name: Debug Build
       run: |
            make debug CPU_CORES=2
-           source build/.raptorenv_lin64.sh
-           echo ""
-           ldd build/bin/raptor.mexe
            tar -cvzf build.tar.gz dbuild
 
     - name: Upload build
