@@ -6,7 +6,7 @@ IF LICENSEE DOES NOT AGREE TO ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT,
 
 1. DEFINITIONS
 
-       1.1. "Authorization Codes" means any FLEXlm license key, license file, license manager, dongle or other key, code or information issued by (or on behalf of) Rapid Silicon that is necessary to download, install, operate and/or regulate User access to the Software.
+       1.1. "Authorization Codes" means any OpenLM license key, license file, license manager, dongle or other key, code or information issued by (or on behalf of) Rapid Silicon that is necessary to download, install, operate and/or regulate User access to the Software.
 
        1.2. "Bitstream" means a machine-executable, binary form of a core used to program a Programmable Device.
 
@@ -34,9 +34,9 @@ IF LICENSEE DOES NOT AGREE TO ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT,
 
        3.1. Rapid Silicon Licenses. Subject to the terms and conditions of this Agreement, Rapid Silicon hereby grants to Licensee the following personal, non-exclusive, non-transferable, non-sublicensable licenses (under Rapid Silicon’s intellectual property rights as embodied in the Software):
 
-             3.1.1. Node-Locked (per-User) Seat. If Rapid Silicon has issued to Licensee a (FLEXlm) node-locked Seat, then Licensee may allow the Software to be (a) installed on and accessed from only the specific machine(s) allowed by the applicable Authorization Codes, (b) used by only one User (at a time) for each one Seat for such Software that has been issued to Licensee by Rapid Silicon, and (c) used for the sole purposes of developing, synthesizing, testing and verifying designs only for Programmable Devices.
+             3.1.1. Node-Locked (per-User) Seat. If Rapid Silicon has issued to Licensee a (OpenLM) node-locked Seat, then Licensee may allow the Software to be (a) installed on and accessed from only the specific machine(s) allowed by the applicable Authorization Codes, (b) used by only one User (at a time) for each one Seat for such Software that has been issued to Licensee by Rapid Silicon, and (c) used for the sole purposes of developing, synthesizing, testing and verifying designs only for Programmable Devices.
 
-             3.1.2. Floating (concurrent-User) Seat. If Rapid Silicon has issued to Licensee a (FLEXlm) floating Seat, then Licensee may allow the Software to be (a) installed on and accessed from any number of machines, (b) used by up to the number of concurrent Users that is equal to the number of Seats for such Software that have been issued to Licensee by Rapid Silicon as determined by the applicable Authorization Codes, and (c) used for the sole purposes of developing, synthesizing, testing and verifying designs only for Programmable Devices.
+             3.1.2. Floating (concurrent-User) Seat. If Rapid Silicon has issued to Licensee a (OpenLM) floating Seat, then Licensee may allow the Software to be (a) installed on and accessed from any number of machines, (b) used by up to the number of concurrent Users that is equal to the number of Seats for such Software that have been issued to Licensee by Rapid Silicon as determined by the applicable Authorization Codes, and (c) used for the sole purposes of developing, synthesizing, testing and verifying designs only for Programmable Devices.
 
              3.1.3. Distributable Components License.
 
