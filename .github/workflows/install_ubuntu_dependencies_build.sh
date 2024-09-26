@@ -61,7 +61,8 @@ else
     libboost-date-time-dev \
     libboost-test-dev  \
     lsb-core \
-    python3-dev 
+    python3-dev \
+    libunwind-dev
   only_minimum
   sudo apt install -y --no-install-recommends libgoogle-perftools-dev
   sudo ln -sf /usr/bin/g++-11 /usr/bin/g++
