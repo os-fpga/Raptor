@@ -181,6 +181,12 @@ checkout_vpr_latest(${CMAKE_CURRENT_SOURCE_DIR})
 
 create_placehoder_libs()
 
+if(NOT DEFINED ENV{CI})
+    include(${CMAKE_CURRENT_LIST_DIR}/asset_fetcher.cmake)
+else()
+    message(STATUS "Skipping inclusion of asset_fetcher.cmake because CI is set.")
+endif()
+
 if (PRODUCTION_BUILD)
   #get_filename_component(FLEX_LM_SRC_DIR "Raptor_Tools/Flex_LM"
   #      REALPATH BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
