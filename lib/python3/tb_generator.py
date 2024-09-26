@@ -102,12 +102,18 @@ def create_folders_and_file():
     # Extract topModule
     top_module = data['top']
     
-    # memory info 
+    # Check for memory info
     if "memories" in data:
         for port in data["memories"]:
-            # Check if the "name" field contains "$" or ":" characters
-            if "$" not in port["name"] and ":" not in port["name"]:
+            # Check if the "name" field contains "$" or ":" characters and if type is not "rom" or "dissolved"
+            if (
+                "$" not in port["name"] and
+                ":" not in port["name"] and
+                port.get("type") not in ["rom", "dissolved"]
+            ):
                 filtered_mem.append(port)
+        
+        # Store the filtered memory list
         rtl_mem = filtered_mem
     else:
         rtl_mem = []
