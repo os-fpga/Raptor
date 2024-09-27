@@ -988,7 +988,7 @@ jobs:
     - name: Debug Build
       run: |
            make debug CPU_CORES=2
-           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
+           cp -rf yosys_verific_rs/yosys/install/share/yosys dbuild/share
            tar -czf build.tar.gz dbuild
 
     - name: Upload build
@@ -1193,78 +1193,14 @@ jobs:
 
     - name: Execute test
       run: |
-           sudo apt install -y locate && sudo updatedb
-           ls -la
-           tar -xvzf build.tar.gz && rm build.tar.gz 
-           ls -la
-           ls -la build
-           ls -l build/bin
-           source build/.raptorenv_lin64.sh
-           echo ""
-           locate libtcmalloc.so.4
-           echo ""
-           locate libtcmalloc.so
-           ldd build/bin/raptor.mexe
-           echo ""
-           ldd build/bin/yosys
-           echo ""
-           ldd build/bin/openfpga
-           echo ""
-           ldd build/bin/vpr
+           tar -xzf build.tar.gz && rm build.tar.gz 
            run_test=`cat TEST_ON`
            export CI=true
            echo $run_test
            make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
 
-  # test-ubuntu-P:
-  #   needs: build-Ubuntu-P
-  #   name: ${{ matrix.name }}-${{ matrix.test-type }}
-  #   runs-on: ${{ matrix.os }}
-  #   defaults:
-  #     run:
-  #       shell: bash
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       include:
-  #         - {build-type: Ubuntu-Production, extra-opts: "", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-
-  #   env:
-  #     Name:       ${{ matrix.name }}
-  #     OS:         ${{ matrix.os }}
-
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v4
-
-  #   - name: Install dependenices
-  #     uses: ./.github/actions/
-  #     with:
-  #       DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-  #       DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-  #       minimum-dependencies: minimum
-  #       TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       PULL_DOCKER_IMAGE: 'yes'
-
-  #   - name: Download build
-  #     uses: actions/download-artifact@v4
-  #     with:
-  #       name: ${{ matrix.build-type }}
-
-  #   - name: Execute test
-  #     run: |
-  #          ls -la
-  #          ls -l build
-  #          ls -l build/bin
-  #          source build/bin/raptor
-  #          ldd build/bin/raptor.mexe
-  #          run_test=`cat TEST_ON`
-  #          export CI=true
-  #          echo $run_test
-  #          make ${{ matrix.test-type }} $run_test CPU_CORES=2
-
-  test-centos-R:
-    needs: build-CentOS-R
+  test-ubuntu-P:
+    needs: build-Ubuntu-P
     name: ${{ matrix.name }}-${{ matrix.test-type }}
     runs-on: ${{ matrix.os }}
     defaults:
@@ -1274,8 +1210,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: CentOS-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: CentOS-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: testest/int_unittestt,                 name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Production, extra-opts: "", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
@@ -1299,30 +1234,49 @@ jobs:
       with:
         name: ${{ matrix.build-type }}
 
-    # - name: Execute test
-    #   run: |
-    #        sudo apt install -y locate
-    #        ls -la
-    #        tar -xvzf build.tar.gz && rm build.tar.gz 
-    #        ls -la
-    #        ls -la build
-    #        ls -l build/bin
-    #        source build/.raptorenv_lin64.sh
-    #        echo ""
-    #        locate libtcmalloc.so.4
-    #        echo ""
-    #        locate libtcmalloc.so
-    #        ldd build/bin/raptor.mexe
-    #        echo ""
-    #        ldd build/bin/yosys
-    #        echo ""
-    #        ldd build/bin/openfpga
-    #        echo ""
-    #        ldd build/bin/vpr
-    #        run_test=`cat TEST_ON`
-    #        export CI=true
-    #        echo $run_test
-    #        make ${{ matrix.test-type }} $run_test CPU_CORES=2
+    - name: Execute test
+      run: |
+           tar -xzf build.tar.gz && rm build.tar.gz 
+           run_test=`cat TEST_ON`
+           export CI=true
+           echo $run_test
+           make ${{ matrix.test-type }} $run_test CPU_CORES=2
+
+  test-centos-R:
+    needs: build-CentOS-R
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: CentOS-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: CentOS-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: test/int_unittestt,                 name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
 
     - name: Test
       uses: addnab/docker-run-action@v3
@@ -1335,5 +1289,4 @@ jobs:
             cd work && tar -xvzf build.tar.gz && rm build.tar.gz
             run_test=`cat TEST_ON`
             export CI=true
-            ls -l
             make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
