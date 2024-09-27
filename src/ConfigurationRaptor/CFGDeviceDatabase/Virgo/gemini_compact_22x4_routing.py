@@ -27,13 +27,13 @@ for type_bank in [["P", 1, 0]] :
     if i in [16, 17, 36, 37]:
       continue
     top_location = function_library.get_location(type_bank[0], type_bank[1], i)
-    add_connection(source=top_location,                     destinations=["%s->%s[%d]" % (instance, bank_pin_name, i)])
+    add_connection(source=top_location,                 destinations=["%s->%s[%d]" % (instance, bank_pin_name, i)])
 # hp instance fabric clk --> fabric clk
 for i in range(16) :
-  add_connection(source="hp_40x1->fabric_clk[%d]" % i,      destinations=["fabric_clk[%d]" % i])
+  add_connection(source="hp_40x1->fabric_clk[%d]" % i,  destinations=["fabric_clk[%d]" % i])
 # fclk buf --> instance fclk buf
 for i in range(8) :
-  add_connection(source="fclk_buf[%d]" % i,                 destinations=["hp_40x1->fclk_buf[%d]" % i])
+  add_connection(source="fclk_buf[%d]" % i,             destinations=["hp_40x1->fclk_buf[%d]" % i])
   
 # Mapping to TCL model
 for type_bank in [["P", 1, 0]] :

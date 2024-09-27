@@ -2,9 +2,9 @@
 create_block(name="PLL")
 
 # Ports
-add_port(name="fref",         dir=DIR_IN)
-add_port(name="fout",         dir=DIR_OUT, bit=4)
-add_port(name="foutvco",      dir=DIR_OUT, bit=1)
+add_port(name="fref",     dir=DIR_IN)
+add_port(name="fout",     dir=DIR_OUT, bit=4)
+add_port(name="foutvco",  dir=DIR_OUT, bit=1)
 
 # Connections
 add_connection(source="fref", destinations=["fout[0]", "fout[1]", "fout[2]", "fout[3]", "foutvco"])

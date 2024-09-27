@@ -2,10 +2,10 @@
 create_block(name="gbox_root_bank_clkmux")
 
 # Ports
-add_port(name="core_clk_in",  dir=DIR_IN, bit=40)
-add_port(name="cdr_clk_in",   dir=DIR_IN, bit=40)
-add_port(name="core_clk",     dir=DIR_OUT, bit=2)
-add_port(name="cdr_clk",      dir=DIR_OUT, bit=2)
+add_port(name="core_clk_in",  dir=DIR_IN,   bit=40)
+add_port(name="cdr_clk_in",   dir=DIR_IN,   bit=40)
+add_port(name="core_clk",     dir=DIR_OUT,  bit=2)
+add_port(name="cdr_clk",      dir=DIR_OUT,  bit=2)
 
 # Config
 core_clk_selection_A = {}

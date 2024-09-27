@@ -14,7 +14,7 @@ add_port(name="fabric_clk", dir=DIR_OUT,  bit=16)
 add_port(name="fclk_buf",   dir=DIR_IN,   bit=8)
 
 # Instances
-add_instance(name="hp_40x2", block="gbox_hp_40x2")
+add_instance(name="hp_40x2",  block="gbox_hp_40x2")
 add_instance(name="hvl_40x2", block="gbox_hv_40x2")
 add_instance(name="hvr_40x2", block="gbox_hv_40x2")
 
@@ -27,43 +27,43 @@ for type_bank in [["P", 1, 0], ["P", 2, 1], ["R", 1, 0], ["R", 2, 1], ["R", 3, 0
   bank_pin_name = "bank%d_rx_in" % bank
   for i in range(40) :
     top_location = function_library.get_location(type_bank[0], type_bank[1], i)
-    add_connection(source=top_location,                     destinations=["%s->%s[%d]" % (instance, bank_pin_name, i)])
+    add_connection(source=top_location,                   destinations=["%s->%s[%d]" % (instance, bank_pin_name, i)])
 # hvl/hvr clk pin --> hp clk pin
 for bank in range(2) :
   for pin in range(2) :
     source_pin = "bank%d_rx_io_clk[%d]" % (bank, pin)
-    add_connection(source="hvl_40x2->%s" % (source_pin),    destinations=["hp_40x2->hvl_bank%d_rx_io_clk[%d]" % (bank, pin)])
-    add_connection(source="hvr_40x2->%s" % (source_pin),    destinations=["hp_40x2->hvr_bank%d_rx_io_clk[%d]" % (bank, pin)])
+    add_connection(source="hvl_40x2->%s" % (source_pin),  destinations=["hp_40x2->hvl_bank%d_rx_io_clk[%d]" % (bank, pin)])
+    add_connection(source="hvr_40x2->%s" % (source_pin),  destinations=["hp_40x2->hvr_bank%d_rx_io_clk[%d]" % (bank, pin)])
 # hp pll --> hvl pll
-add_connection(source="hp_40x2->pll_foutvco[0]",            destinations=["hvl_40x2->pll_foutvco"])
-add_connection(source="hp_40x2->pll_fout[0]",               destinations=["hvl_40x2->pll_fout"])
+add_connection(source="hp_40x2->pll_foutvco[0]",          destinations=["hvl_40x2->pll_foutvco"])
+add_connection(source="hp_40x2->pll_fout[0]",             destinations=["hvl_40x2->pll_fout"])
 # hp pll --> hvr pll
-add_connection(source="hp_40x2->pll_foutvco[1]",            destinations=["hvr_40x2->pll_foutvco"])
-add_connection(source="hp_40x2->pll_fout[1]",               destinations=["hvr_40x2->pll_fout"])
+add_connection(source="hp_40x2->pll_foutvco[1]",          destinations=["hvr_40x2->pll_foutvco"])
+add_connection(source="hp_40x2->pll_fout[1]",             destinations=["hvr_40x2->pll_fout"])
 # hvl core clk + cdr clk --> HP core clk + cdr clk
-add_connection(source="hvl_40x2->bank0_root_core_clk[0]",   destinations=["hp_40x2->hvl_bank0_root_core_clk[0]"])
-add_connection(source="hvl_40x2->bank0_root_core_clk[1]",   destinations=["hp_40x2->hvl_bank0_root_core_clk[1]"])
-add_connection(source="hvl_40x2->bank0_root_cdr_clk[0]",    destinations=["hp_40x2->hvl_bank0_root_cdr_clk[0]"])
-add_connection(source="hvl_40x2->bank0_root_cdr_clk[1]",    destinations=["hp_40x2->hvl_bank0_root_cdr_clk[1]"])
-add_connection(source="hvl_40x2->bank1_root_core_clk[0]",   destinations=["hp_40x2->hvl_bank1_root_core_clk[0]"])
-add_connection(source="hvl_40x2->bank1_root_core_clk[1]",   destinations=["hp_40x2->hvl_bank1_root_core_clk[1]"])
-add_connection(source="hvl_40x2->bank1_root_cdr_clk[0]",    destinations=["hp_40x2->hvl_bank1_root_cdr_clk[0]"])
-add_connection(source="hvl_40x2->bank1_root_cdr_clk[1]",    destinations=["hp_40x2->hvl_bank1_root_cdr_clk[1]"])
+add_connection(source="hvl_40x2->bank0_root_core_clk[0]", destinations=["hp_40x2->hvl_bank0_root_core_clk[0]"])
+add_connection(source="hvl_40x2->bank0_root_core_clk[1]", destinations=["hp_40x2->hvl_bank0_root_core_clk[1]"])
+add_connection(source="hvl_40x2->bank0_root_cdr_clk[0]",  destinations=["hp_40x2->hvl_bank0_root_cdr_clk[0]"])
+add_connection(source="hvl_40x2->bank0_root_cdr_clk[1]",  destinations=["hp_40x2->hvl_bank0_root_cdr_clk[1]"])
+add_connection(source="hvl_40x2->bank1_root_core_clk[0]", destinations=["hp_40x2->hvl_bank1_root_core_clk[0]"])
+add_connection(source="hvl_40x2->bank1_root_core_clk[1]", destinations=["hp_40x2->hvl_bank1_root_core_clk[1]"])
+add_connection(source="hvl_40x2->bank1_root_cdr_clk[0]",  destinations=["hp_40x2->hvl_bank1_root_cdr_clk[0]"])
+add_connection(source="hvl_40x2->bank1_root_cdr_clk[1]",  destinations=["hp_40x2->hvl_bank1_root_cdr_clk[1]"])
 # hvr core clk + cdr clk --> HP core clk + cdr clk
-add_connection(source="hvr_40x2->bank0_root_core_clk[0]",   destinations=["hp_40x2->hvr_bank0_root_core_clk[0]"])
-add_connection(source="hvr_40x2->bank0_root_core_clk[1]",   destinations=["hp_40x2->hvr_bank0_root_core_clk[1]"])
-add_connection(source="hvr_40x2->bank0_root_cdr_clk[0]",    destinations=["hp_40x2->hvr_bank0_root_cdr_clk[0]"])
-add_connection(source="hvr_40x2->bank0_root_cdr_clk[1]",    destinations=["hp_40x2->hvr_bank0_root_cdr_clk[1]"])
-add_connection(source="hvr_40x2->bank1_root_core_clk[0]",   destinations=["hp_40x2->hvr_bank1_root_core_clk[0]"])
-add_connection(source="hvr_40x2->bank1_root_core_clk[1]",   destinations=["hp_40x2->hvr_bank1_root_core_clk[1]"])
-add_connection(source="hvr_40x2->bank1_root_cdr_clk[0]",    destinations=["hp_40x2->hvr_bank1_root_cdr_clk[0]"])
-add_connection(source="hvr_40x2->bank1_root_cdr_clk[1]",    destinations=["hp_40x2->hvr_bank1_root_cdr_clk[1]"])
+add_connection(source="hvr_40x2->bank0_root_core_clk[0]", destinations=["hp_40x2->hvr_bank0_root_core_clk[0]"])
+add_connection(source="hvr_40x2->bank0_root_core_clk[1]", destinations=["hp_40x2->hvr_bank0_root_core_clk[1]"])
+add_connection(source="hvr_40x2->bank0_root_cdr_clk[0]",  destinations=["hp_40x2->hvr_bank0_root_cdr_clk[0]"])
+add_connection(source="hvr_40x2->bank0_root_cdr_clk[1]",  destinations=["hp_40x2->hvr_bank0_root_cdr_clk[1]"])
+add_connection(source="hvr_40x2->bank1_root_core_clk[0]", destinations=["hp_40x2->hvr_bank1_root_core_clk[0]"])
+add_connection(source="hvr_40x2->bank1_root_core_clk[1]", destinations=["hp_40x2->hvr_bank1_root_core_clk[1]"])
+add_connection(source="hvr_40x2->bank1_root_cdr_clk[0]",  destinations=["hp_40x2->hvr_bank1_root_cdr_clk[0]"])
+add_connection(source="hvr_40x2->bank1_root_cdr_clk[1]",  destinations=["hp_40x2->hvr_bank1_root_cdr_clk[1]"])
 # hp instance fabric clk --> fabric clk
 for i in range(16) :
-  add_connection(source="hp_40x2->fabric_clk[%d]" % i,      destinations=["fabric_clk[%d]" % i])
+  add_connection(source="hp_40x2->fabric_clk[%d]" % i,    destinations=["fabric_clk[%d]" % i])
 # fclk buf --> instance fclk buf
 for i in range(8) :
-  add_connection(source="fclk_buf[%d]" % i,                 destinations=["hp_40x2->fclk_buf[%d]" % i])
+  add_connection(source="fclk_buf[%d]" % i,               destinations=["hp_40x2->fclk_buf[%d]" % i])
   
 # Mapping to TCL model
 for type_bank in [["P", 1, 0], ["P", 2, 1], ["R", 1, 0], ["R", 2, 1], ["R", 3, 0], ["R", 5, 1]] :
