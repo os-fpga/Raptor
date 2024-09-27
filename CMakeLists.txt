@@ -3,7 +3,6 @@
 # Copyright 2021-2024 The Rapid Silicon team
 
 cmake_minimum_required(VERSION 3.15)
-
 option(ENABLE_VERIFIC "Enable Verific frontend" OFF)
 option(ENABLE_OPENSTA "Enable OpenSTA" OFF)
 
@@ -104,6 +103,25 @@ function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE PARTIAL)
   endforeach()
 endfunction(checkout_subsystems)
 
+function(checkout_vpr_latest WORK_DIR)
+    set(ORGNL_RECEV ${WORK_DIR})
+    message("###########################")
+    message("## checkout_vpr_latest() ##")
+    message("###########################")
+    set(SUBMODULE "Backend/vpr_latest/vtr")
+    if (NOT EXISTS ${WORK_DIR}/${SUBMODULE}/Makefile)
+      message("Updating ${SUBMODULE} submodule...")
+      execute_process(
+        COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive vpr_latest/vtr
+        WORKING_DIRECTORY ${WORK_DIR}/Backend
+        RESULT_VARIABLE GIT_SUBMOD_RESULT
+        )
+      if (NOT GIT_SUBMOD_RESULT EQUAL "0")
+        message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init --recursive ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}")
+      endif()
+    endif()
+endfunction(checkout_vpr_latest)
+
 # CMake needs to know the location of these libs at configuration time for the bitblast executable
 # But they are created at compile time, so creating a placeholder
 function(create_placehoder_libs)
@@ -159,6 +177,7 @@ endfunction(create_placehoder_libs)
 checkout_subsystems(RAPTOR_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "--recursive" ${UPDATE_SUBMODULES} OFF)
 checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} OFF)
 checkout_subsystems(RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} ON)
+checkout_vpr_latest(${CMAKE_CURRENT_SOURCE_DIR})
 
 create_placehoder_libs()
 
@@ -259,7 +278,7 @@ add_subdirectory(IP_Catalog)
 # Raptor version
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 2)
-set(VERSION_PATCH 0)
+set(VERSION_PATCH 9)
 
 execute_process(COMMAND git config --global --add safe.directory ${CMAKE_CURRENT_SOURCE_DIR}
   COMMAND git rev-parse --short HEAD
@@ -513,6 +532,7 @@ else ()
   add_dependencies(raptor-bin openfpga)
   add_dependencies(raptor-bin vpr)
   add_dependencies(raptor-bin planning)
+  add_dependencies(raptor-bin build_vpr_latest)
 endif()
 
 # Make sure openocd_cmake build is done before raptor
@@ -662,6 +682,13 @@ install (
   FILES ${CMAKE_CURRENT_BINARY_DIR}/FOEDAG_rs/FOEDAG/lib/${ZLIB_STATIC_LIB}
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/raptor/lib)
 
+install (
+  FILES ${CMAKE_CURRENT_BINARY_DIR}/bin/vpr_latest
+  DESTINATION ${CMAKE_INSTALL_BINDIR}
+  PERMISSIONS
+  OWNER_READ OWNER_EXECUTE OWNER_WRITE
+  GROUP_READ GROUP_EXECUTE
+  WORLD_READ WORLD_EXECUTE)
 
 if (WIN32 AND $<CONFIG:Debug>)
   if (RAPTOR_WITH_PYTHON)
@@ -750,6 +777,13 @@ install(
 
 install(
       FILES  ${CMAKE_CURRENT_BINARY_DIR}/bin/finalize DESTINATION ${CMAKE_INSTALL_BINDIR}
+      PERMISSIONS
+    OWNER_READ OWNER_EXECUTE OWNER_WRITE
+    GROUP_READ GROUP_EXECUTE
+    WORLD_READ WORLD_EXECUTE)
+
+install(
+      FILES  ${CMAKE_CURRENT_BINARY_DIR}/bin/bitblast DESTINATION ${CMAKE_INSTALL_BINDIR}
       PERMISSIONS
     OWNER_READ OWNER_EXECUTE OWNER_WRITE
     GROUP_READ GROUP_EXECUTE
@@ -877,6 +911,13 @@ if (ENABLE_OPENSTA)
 endif()
 
 add_custom_command(TARGET raptor-bin POST_BUILD
+    COMMAND echo "Copy VPR_LATEST"
+    COMMAND ${CMAKE_COMMAND} -E copy
+        ${PROJECT_SOURCE_DIR}/Backend/vpr_latest/vpr_latest
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+    )
+
+add_custom_command(TARGET raptor-bin POST_BUILD
       COMMAND echo "Create dirs in share dir"
       COMMAND echo "Create bin/Flex_LM dirs in share dir"
       COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -955,7 +996,7 @@ else ()
   
 
   add_custom_command(TARGET raptor-bin POST_BUILD
-      COMMAND echo "Copying VPR and OpenFPGA in bin dir"
+      COMMAND echo "Copying VPR, OpenFPGA, planning to bin dir"
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/OpenFPGA/vtr-verilog-to-routing/vpr/vpr
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
@@ -964,8 +1005,14 @@ else ()
         ${CMAKE_CURRENT_BINARY_DIR}/bin/
       COMMAND ${CMAKE_COMMAND} -E copy
         ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/planning
-        ${CMAKE_CURRENT_BINARY_DIR}/bin/)
-  if(MONACO_EDITOR)      
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND cp -v ${CMAKE_CURRENT_SOURCE_DIR}/Backend/vpr_latest/vpr_latest
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/vpr_latest
+      COMMAND ${CMAKE_COMMAND} -E copy
+        ${CMAKE_CURRENT_BINARY_DIR}/Backend/planning/vpr_latest
+        ${CMAKE_CURRENT_BINARY_DIR}/bin/
+    )
+  if (MONACO_EDITOR)
     add_custom_command(TARGET raptor-bin POST_BUILD
           COMMAND echo "rename raptor binary as raptor.mexe"
           COMMAND ${CMAKE_COMMAND} -E rename
