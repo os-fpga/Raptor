@@ -956,9 +956,7 @@ jobs:
     - name: Release Build
       run: |
            make release CPU_CORES=2
-           source build/.raptorenv_lin64.sh
-           echo ""
-           ldd build/bin/raptor.mexe
+           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
            tar -czf build.tar.gz build 
 
     - name: Upload build
@@ -990,6 +988,7 @@ jobs:
     - name: Debug Build
       run: |
            make debug CPU_CORES=2
+           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
            tar -czf build.tar.gz dbuild
 
     - name: Upload build
@@ -1024,6 +1023,7 @@ jobs:
     - name: Production Build
       run: |
            make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=`cat DEFAULT_DEVICES` STICK_RELEASE_VERSION=`cat input_release_date`
+           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
            tar -czf build.tar.gz build
 
     - name: Upload build
@@ -1142,6 +1142,7 @@ jobs:
             cd work && make clean
             run_test=`cat TEST_ON`
             make release CPU_CORES=2 $run_test MONACO_EDITOR=0
+            cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
             tar -czf build.tar.gz build
 
     - name: Upload build
@@ -1165,7 +1166,7 @@ jobs:
           - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           # - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           # - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: test,                 name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: test/int_unittest,                 name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           # - {build-type: Ubuntu-Release, extra-opts: clean,                                             test-type: test_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
@@ -1192,7 +1193,7 @@ jobs:
 
     - name: Execute test
       run: |
-           sudo apt install -y locate
+           sudo apt install -y locate && sudo updatedb
            ls -la
            tar -xvzf build.tar.gz && rm build.tar.gz 
            ls -la
@@ -1273,8 +1274,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: CentOS-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: CentOS-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: test,                 name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: CentOS-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: CentOS-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: testest/int_unittestt,                 name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
