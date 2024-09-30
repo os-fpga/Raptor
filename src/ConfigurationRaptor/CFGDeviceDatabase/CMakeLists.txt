@@ -89,12 +89,14 @@ target_include_directories(${subsystem_exe} PUBLIC
 add_custom_target(subsystem_file ALL
   DEPENDS ${CFG_PROJECT_ROOT_DIR}/etc/devices ${subsystem_exe}
   COMMAND python3 ${PROJECT_SOURCE_DIR}/CFGDeviceDatabase.py ${CFG_PROJECT_ROOT_DIR}/etc ${CMAKE_CURRENT_BINARY_DIR}/configuration.json
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/configuration.json ${configuration_folder}/configuration.json
   COMMAND ${subsystem_exe} ${CMAKE_CURRENT_BINARY_DIR}/configuration.json ${subsystem_file}
 )
 
 add_custom_target(series_folder ALL
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/Virgo ${configuration_folder}/Virgo
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/Gemini ${configuration_folder}/Gemini
+  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/routing_configurator.py ${configuration_folder}/routing_configurator.py
 )
 
 add_dependencies(${subsystem} ${subsystem_exe})
