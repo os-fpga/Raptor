@@ -89,6 +89,9 @@ install_mac:
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
 
+install_only:
+	cmake --install build
+
 include tests.mk
 
 test/unittest: release test/int_unittest
