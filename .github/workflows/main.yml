@@ -955,9 +955,15 @@ jobs:
   
     - name: Release Build
       run: |
+           du -sch *
+           df -h
            make release CPU_CORES=2
            cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
            tar -czf build.tar.gz build 
+
+    - name: Unit C test 
+      run: |
+           make test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -987,6 +993,8 @@ jobs:
   
     - name: Debug Build
       run: |
+           du -sch *
+           df -h
            make debug CPU_CORES=2
            cp -rf yosys_verific_rs/yosys/install/share/yosys dbuild/share
            tar -czf build.tar.gz dbuild
@@ -998,6 +1006,11 @@ jobs:
         path: build.tar.gz
         retention-days: 1  
 
+    - name: Print server resource
+      if: success() || failure()
+      run: |
+        df -h
+        du -sch *
 
   build-Ubuntu-P:
     name: Ubuntu-Production
@@ -1069,6 +1082,8 @@ jobs:
         image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
+            du -sch *
+            df -h
             cd work && make clean
             source /opt/rh/devtoolset-11/enable
             p_device=`cat DEFAULT_DEVICES`
@@ -1102,6 +1117,13 @@ jobs:
         name: CentOS-Production
         path: build.tar.gz
         retention-days: 1
+
+    - name: Print server resource
+      if: success() || failure()
+      run: |
+        df -h
+        du -sch *
+
 
   build-CentOS-R:
     name: CentOS-Release
@@ -1140,10 +1162,20 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
-            run_test=`cat TEST_ON`
             make release CPU_CORES=2 $run_test MONACO_EDITOR=0
             cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
             tar -czf build.tar.gz build
+
+    - name: Unit C test
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work 
+        run: |
+            source /opt/rh/devtoolset-11/enable        
+            cd work && make clean
+            make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test MONACO_EDITOR=0
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -1166,7 +1198,6 @@ jobs:
           - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           # - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           # - {build-type: Ubuntu-Release, extra-opts: "",                                                test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: test/int_unittest,                 name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           # - {build-type: Ubuntu-Release, extra-opts: clean,                                             test-type: test_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
@@ -1254,7 +1285,6 @@ jobs:
       matrix:
         include:
           - {build-type: CentOS-Release, extra-opts: "",                                                test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: CentOS-Release, extra-opts: ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON, test-type: test/int_unittestt,                 name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
