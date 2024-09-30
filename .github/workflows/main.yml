@@ -19,7 +19,450 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-# Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
+  build-Ubuntu-R:
+    name: Ubuntu-Release
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: Ubuntu-Release
+  
+    - name: Release Build
+      run: |
+           make release CPU_CORES=2
+           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
+           tar -czf build.tar.gz build 
+
+    - name: Unit C test 
+      run: |
+           make test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
+
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ubuntu-Release
+        path: build.tar.gz
+        retention-days: 1        
+
+
+  build-Ubuntu-D:
+    name: Ubuntu-Debug
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: Ubuntu-Debug
+  
+    - name: Debug Build
+      run: |
+           make run-cmake-debug && rm -rf tests/Jira_Testcase/* zephyr-rapidsi-dev/*
+           df -h
+           make debug CPU_CORES=2
+           cp -rf yosys_verific_rs/yosys/install/share/yosys dbuild/share
+           tar -czf build.tar.gz dbuild
+
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ubuntu-Debug
+        path: build.tar.gz
+        retention-days: 1  
+
+    - name: Print server resource
+      if: success() || failure()
+      run: |
+        df -h
+        du -sch *
+
+  build-Ubuntu-P:
+    name: Ubuntu-Production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices & configure device
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: Ubuntu-Production
+  
+    - name: Production Build
+      run: |
+           make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=`cat DEFAULT_DEVICES` STICK_RELEASE_VERSION=`cat input_release_date`
+           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
+           tar -czf build.tar.gz build projects
+
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ubuntu-Production
+        path: build.tar.gz
+        retention-days: 1  
+
+  build-CentOS-P:
+    name: CentOS-Production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices & configure device
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+        RELEASE_DATE: ${{ inputs.Release_Date }}
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: CentOS-Production
+  
+    - name: Checkout Subsystem
+      run: |
+        make run-cmake-release CPU_CORES=2 
+
+    - name: Production Build
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work
+        run: |
+            source /opt/rh/devtoolset-11/enable
+            wget https://boostorg.jfrog.io/artifactory/main/release/1.74.0/source/boost_1_74_0.tar.gz #Licenescc_WAR
+            tar -xzf boost_1_* && ls -l   #Licensecc_WAR
+            cd boost_1_* && ./bootstrap.sh --prefix=/usr &&  ./b2 install --prefix=/usr --with=all    #Licensecc_WAR
+            cd /work && tar -czf boost_1_74_0_build.tar.gz /boost_1_*
+            cd /work && make clean
+            p_device=`cat DEFAULT_DEVICES` && echo $p_device
+            r_d=`cat input_release_date` &&  echo "$r_d"
+            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            [ $? != 0 ] && exit 1
+            echo "2nd compilation" && rm -rvf build/FOEDAG_rs
+            make install MONACO_EDITOR=1 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            [ $? != 0 ] && exit 1
+            tar -czf build.tar.gz ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen /work/Raptor_Tools/Create_Raptor_Artifact /work/Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
+
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: CentOS-Production
+        path: build.tar.gz
+        retention-days: 1
+
+    - name: Print server resource
+      if: success() || failure()
+      run: |
+        df -h
+        du -sch *
+
+
+  build-CentOS-R:
+    name: CentOS-Release
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: CentOS-Production
+  
+    - name: Checkout Subsystem
+      run: |
+        make run-cmake-release CPU_CORES=2 
+
+    - name: Build
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work 
+        run: |
+            source /opt/rh/devtoolset-11/enable        
+            cd work && make clean
+            make release CPU_CORES=2 $run_test MONACO_EDITOR=0
+            cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
+            tar -czf build.tar.gz build
+
+        # disable as they are failing in yosys_verific_rs 
+    # - name: Unit C test
+    #   uses: addnab/docker-run-action@v3
+    #   with:
+    #     shell: bash
+    #     image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+    #     options: -v ${{ github.workspace }}:/work 
+    #     run: |
+    #         source /opt/rh/devtoolset-11/enable        
+    #         cd work && make clean
+    #         make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test MONACO_EDITOR=0
+
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: CentOS-Release
+        path: build.tar.gz
+        retention-days: 1
+
+  test-ubuntu-R:
+    needs: build-Ubuntu-R
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: clean,test-type: test_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Execute test
+      run: |
+           tar -xzf build.tar.gz && rm build.tar.gz 
+           run_test=`cat TEST_ON`
+           export CI=true
+           echo $run_test
+           make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
+
+  test-ubuntu-P:
+    needs: build-Ubuntu-P
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: Ubuntu-Production, extra-opts: "PRODUCTION_DEVICES=`cat DEFAULT_DEVICES`", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Execute test
+      run: |
+           tar -xzf build.tar.gz && rm build.tar.gz 
+           run_test=`cat TEST_ON`
+           export CI=true
+           echo $run_test
+           make ${{ matrix.test-type }} ${{ matrix.extra-opts }} $run_test CPU_CORES=2
+
+  test-centos-R:
+    needs: build-CentOS-R
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: CentOS-Release, extra-opts: "",   test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Test
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work
+        run: |
+            source /opt/rh/devtoolset-11/enable  
+            cd work && tar -xvzf build.tar.gz && rm build.tar.gz
+            run_test=`cat TEST_ON`
+            export CI=true
+            make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
+
+  
+  Deployment:
+    if: ${{ github.ref == 'refs/heads/main'  }}
+    needs: build-CentOS-P
+    name: deploy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      FORK_REPO: ${{ secrets.FORK_STATUS }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: CentOS-Production
+
+    - name: Test
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work
+        run: |
+            source /opt/rh/devtoolset-11/enable  
+            cd work && tar -xvzf build.tar.gz && rm build.tar.gz && ls -la && ls -l build 
+            run_test=`cat TEST_ON`
+            p_device=`cat DEFAULT_DEVICES`
+            echo $p_device && echo "$r_d"
+            ln -s opt/instl_dir/bin build/bin
+            export CI=true
+            make test/int_production PRODUCTION_DEVICES=$p_device $run_test CPU_CORES=2
+            cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
+
+    # The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
+    - name: Check FTP server status
+      if: "${{ env.FORK_REPO  == 'ON' }}"
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.FTP_IP }}
+        username: ${{ secrets.FTP_USER }}
+        key: ${{ secrets.FTP_KEY }}
+        port: ${{ secrets.FTP_PORT }}
+        script: whoami
+    
+    - name: Deploy
+      if: "${{ env.FORK_REPO  == 'ON' }}"
+      uses: appleboy/scp-action@master
+      with:
+         host: ${{ secrets.FTP_IP }}
+         username: ${{ secrets.FTP_USER }}
+         key: ${{ secrets.FTP_KEY }}
+         port: ${{ secrets.FTP_PORT }}
+         source: "./Raptor_Tools/upload/*"
+         target: "/home/rsbuilder/Raptor"
+
+
+
+
+  # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
     if: ${{ false }}  # disable for now
     runs-on: windows-2022
@@ -34,7 +477,7 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
-# Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
+  # Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.13.0
       with:
@@ -65,8 +508,8 @@ jobs:
         release: false
       env:
         MSYS2_PATH_TYPE: inherit
-    
-# Install Qt
+      
+  # Install Qt
     - shell: msys2 {0}
       run: |
         pacman --noconfirm -S zlib
@@ -79,7 +522,7 @@ jobs:
         find /mingw64 -name Qt6Config.cmake
         find C:/msys64/ -name qt6-config.cmake
         find C:/msys64/ -name Qt6Config.cmake
-        
+
     - name: Configure shell environment variables
       run: |
         export SWIG_DIR=/c/ProgramData/chocolatey/lib/swig/tools/install/swigwin-3.0.12
@@ -120,10 +563,10 @@ jobs:
         export Qt6_DIR=$Qt6_Dir
         export PATH=$Qt6_DIR:$PATH
         make lib-only
-# There are Qt linkage issues, so build only the libs for now        
-#        make VERBOSE=1 release
-#        make debug 
-#        make install
+  # There are Qt linkage issues, so build only the libs for now        
+  #        make VERBOSE=1 release
+  #        make debug 
+  #        make install
 
     - name: Test
       run: |
@@ -132,10 +575,10 @@ jobs:
         # export Qt6_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
         export Qt6_DIR=$Qt6_Dir
         export PATH=$Qt6_DIR:$PATH
-# There Qt are linkage issues, so build only the libs for now        
-#        make test_install
-#        make test/unittest
-#        make regression
+  # There Qt are linkage issues, so build only the libs for now        
+  #        make test_install
+  #        make test/unittest
+  #        make regression
 
   windows-msvc:
     if: ${{ false }}  # disable for now
@@ -152,7 +595,7 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
-# Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
+  # Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.13.0
       with:
@@ -430,448 +873,3 @@ jobs:
     - name: Run clang tidy
       run: |
         ./.github/bin/run-clang-tidy.sh
- 
-
-  build-Ubuntu-R:
-    name: Ubuntu-Release
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices
-      uses: ./.github/actions/
-
-    - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.12
-      with:
-        key: Ubuntu-Release
-  
-    - name: Release Build
-      run: |
-           du -sch *
-           df -h
-           make release CPU_CORES=2
-           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
-           tar -czf build.tar.gz build 
-
-    - name: Unit C test 
-      run: |
-           make test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
-
-    - name: Upload build
-      uses: actions/upload-artifact@v4
-      with:
-        name: Ubuntu-Release
-        path: build.tar.gz
-        retention-days: 1        
-
-
-  build-Ubuntu-D:
-    name: Ubuntu-Debug
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices
-      uses: ./.github/actions/
-
-    - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.12
-      with:
-        key: Ubuntu-Debug
-  
-    - name: Debug Build
-      run: |
-           du -sch *
-           df -h
-           make run-cmake-debug && rm -rf tests/Jira_Testcase zephyr-rapidsi-dev
-           df -h
-           make debug CPU_CORES=2
-           cp -rf yosys_verific_rs/yosys/install/share/yosys dbuild/share
-           tar -czf build.tar.gz dbuild
-
-    - name: Upload build
-      uses: actions/upload-artifact@v4
-      with:
-        name: Ubuntu-Debug
-        path: build.tar.gz
-        retention-days: 1  
-
-    - name: Print server resource
-      if: success() || failure()
-      run: |
-        df -h
-        du -sch *
-
-  build-Ubuntu-P:
-    name: Ubuntu-Production
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices & configure device
-      uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-
-    - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.12
-      with:
-        key: Ubuntu-Production
-  
-    - name: Production Build
-      run: |
-           make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=`cat DEFAULT_DEVICES` STICK_RELEASE_VERSION=`cat input_release_date`
-           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
-           tar -czf build.tar.gz build projects
-
-    - name: Upload build
-      uses: actions/upload-artifact@v4
-      with:
-        name: Ubuntu-Production
-        path: build.tar.gz
-        retention-days: 1  
-
-  build-CentOS-P:
-    name: CentOS-Production
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices & configure device
-      uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-        minimum-dependencies: minimum
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_DOCKER_IMAGE: 'yes'
-        RELEASE_DATE: ${{ inputs.Release_Date }}
-
-    - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.12
-      with:
-        key: CentOS-Production
-  
-    - name: Checkout Subsystem
-      run: |
-        make run-cmake-release CPU_CORES=2 
-
-    - name: Production Build
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-        options: -v ${{ github.workspace }}:/work
-        run: |
-            source /opt/rh/devtoolset-11/enable
-            wget https://boostorg.jfrog.io/artifactory/main/release/1.74.0/source/boost_1_74_0.tar.gz #Licenescc_WAR
-            tar -xzf boost_1_* && ls -l   #Licensecc_WAR
-            cd boost_1_* && ./bootstrap.sh --prefix=/usr &&  ./b2 install --prefix=/usr --with=all    #Licensecc_WAR
-            cd /work && tar -czf boost_1_74_0_build.tar.gz /boost_1_*
-            cd /work && make clean
-            p_device=`cat DEFAULT_DEVICES` && echo $p_device
-            r_d=`cat input_release_date` &&  echo "$r_d"
-            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
-            [ $? != 0 ] && exit 1
-            echo "2nd compilation" && rm -rvf build/FOEDAG_rs
-            make install MONACO_EDITOR=1 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
-            [ $? != 0 ] && exit 1
-            tar -czf build.tar.gz ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen /work/Raptor_Tools/Create_Raptor_Artifact /work/Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
-
-    - name: Upload build
-      uses: actions/upload-artifact@v4
-      with:
-        name: CentOS-Production
-        path: build.tar.gz
-        retention-days: 1
-
-    - name: Print server resource
-      if: success() || failure()
-      run: |
-        df -h
-        du -sch *
-
-
-  build-CentOS-R:
-    name: CentOS-Release
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices
-      uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-        minimum-dependencies: minimum
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_DOCKER_IMAGE: 'yes'
-
-    - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.2.12
-      with:
-        key: CentOS-Production
-  
-    - name: Checkout Subsystem
-      run: |
-        make run-cmake-release CPU_CORES=2 
-
-    - name: Build
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-        options: -v ${{ github.workspace }}:/work 
-        run: |
-            source /opt/rh/devtoolset-11/enable        
-            cd work && make clean
-            make release CPU_CORES=2 $run_test MONACO_EDITOR=0
-            cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
-            tar -czf build.tar.gz build
-
-        # disable as they are failing in yosys_verific_rs 
-    # - name: Unit C test
-    #   uses: addnab/docker-run-action@v3
-    #   with:
-    #     shell: bash
-    #     image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-    #     options: -v ${{ github.workspace }}:/work 
-    #     run: |
-    #         source /opt/rh/devtoolset-11/enable        
-    #         cd work && make clean
-    #         make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test MONACO_EDITOR=0
-
-    - name: Upload build
-      uses: actions/upload-artifact@v4
-      with:
-        name: CentOS-Release
-        path: build.tar.gz
-        retention-days: 1
-
-  test-ubuntu-R:
-    needs: build-Ubuntu-R
-    name: ${{ matrix.name }}-${{ matrix.test-type }}
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: clean,test-type: test_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-
-    env:
-      Name:       ${{ matrix.name }}
-      OS:         ${{ matrix.os }}
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices
-      uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-        minimum-dependencies: minimum
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_DOCKER_IMAGE: 'yes'
-
-    - name: Download build
-      uses: actions/download-artifact@v4
-      with:
-        name: ${{ matrix.build-type }}
-
-    - name: Execute test
-      run: |
-           tar -xzf build.tar.gz && rm build.tar.gz 
-           run_test=`cat TEST_ON`
-           export CI=true
-           echo $run_test
-           make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
-
-  test-ubuntu-P:
-    needs: build-Ubuntu-P
-    name: ${{ matrix.name }}-${{ matrix.test-type }}
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - {build-type: Ubuntu-Production, extra-opts: "", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-
-    env:
-      Name:       ${{ matrix.name }}
-      OS:         ${{ matrix.os }}
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices
-      uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-        minimum-dependencies: minimum
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_DOCKER_IMAGE: 'yes'
-
-    - name: Download build
-      uses: actions/download-artifact@v4
-      with:
-        name: ${{ matrix.build-type }}
-
-    - name: Execute test
-      run: |
-           tar -xzf build.tar.gz && rm build.tar.gz 
-           run_test=`cat TEST_ON`
-           export CI=true
-           echo $run_test
-           make ${{ matrix.test-type }} $run_test CPU_CORES=2
-
-  test-centos-R:
-    needs: build-CentOS-R
-    name: ${{ matrix.name }}-${{ matrix.test-type }}
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - {build-type: CentOS-Release, extra-opts: "",   test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-
-    env:
-      Name:       ${{ matrix.name }}
-      OS:         ${{ matrix.os }}
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices
-      uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-        minimum-dependencies: minimum
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_DOCKER_IMAGE: 'yes'
-
-    - name: Download build
-      uses: actions/download-artifact@v4
-      with:
-        name: ${{ matrix.build-type }}
-
-    - name: Test
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-        options: -v ${{ github.workspace }}:/work
-        run: |
-            source /opt/rh/devtoolset-11/enable  
-            cd work && tar -xvzf build.tar.gz && rm build.tar.gz
-            run_test=`cat TEST_ON`
-            export CI=true
-            make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
-
-  
-  Deployment:
-    if: ${{ github.ref == 'refs/heads/main'  }}
-    needs: build-CentOS-P
-    name: deploy
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    env:
-      FORK_REPO: ${{ secrets.FORK_STATUS }}
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Install dependenices
-      uses: ./.github/actions/
-      with:
-        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
-        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
-        minimum-dependencies: minimum
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_DOCKER_IMAGE: 'yes'
-
-    - name: Download build
-      uses: actions/download-artifact@v4
-      with:
-        name: CentOS-Production
-
-    - name: Test
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-        options: -v ${{ github.workspace }}:/work
-        run: |
-            source /opt/rh/devtoolset-11/enable  
-            cd work && tar -xvzf build.tar.gz && rm build.tar.gz && ls -la && ls -l build 
-            run_test=`cat TEST_ON`
-            p_device=`cat DEFAULT_DEVICES`
-            echo $p_device && echo "$r_d"
-            ln -s opt/instl_dir/bin build/bin
-            export CI=true
-            make test/int_production PRODUCTION_DEVICES=$p_device $run_test CPU_CORES=2
-            cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
-
-    # The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
-    - name: Check FTP server status
-      if: "${{ env.FORK_REPO  == 'ON' }}"
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.FTP_IP }}
-        username: ${{ secrets.FTP_USER }}
-        key: ${{ secrets.FTP_KEY }}
-        port: ${{ secrets.FTP_PORT }}
-        script: whoami
-    
-    - name: Deploy
-      if: "${{ env.FORK_REPO  == 'ON' }}"
-      uses: appleboy/scp-action@master
-      with:
-         host: ${{ secrets.FTP_IP }}
-         username: ${{ secrets.FTP_USER }}
-         key: ${{ secrets.FTP_KEY }}
-         port: ${{ secrets.FTP_PORT }}
-         source: "./Raptor_Tools/upload/*"
-         target: "/home/rsbuilder/Raptor"
