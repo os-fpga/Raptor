@@ -267,7 +267,7 @@ jobs:
           - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: clean,test-type: test_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "clean install_only", test-type: test/int_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
@@ -392,7 +392,7 @@ jobs:
 
   
   Deployment:
-    if: ${{ github.ref == 'refs/heads/main'  }}
+    #if: ${{ github.ref == 'refs/heads/main'  }}
     needs: build-CentOS-P
     name: deploy
     runs-on: ubuntu-latest
@@ -849,7 +849,7 @@ jobs:
 
   ClangTidy:
     runs-on: ubuntu-latest
-    if: ${{github.event_name == 'pull_request'}}
+    #if: ${{github.event_name == 'pull_request'}}
 
     steps:
     - name: Checkout code
