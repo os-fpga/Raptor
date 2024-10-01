@@ -42,7 +42,7 @@ jobs:
            make install CPU_CORES=2
            ls -l build
            cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
-           tar -czf build.tar.gz build 
+           tar -czf build.tar.gz build ${{ env.PREFIX }}
 
     - name: Unit C test 
       run: |
@@ -79,15 +79,15 @@ jobs:
            while true; do [ $(df / | awk 'NR==2 {print $5}' | sed 's/%//') -ge 99 ] && echo "Disk at 99%, killing make..." && pkill -f make && df -h / && exit 1; sleep 5; done &
            make run-cmake-debug && rm -rf tests/Jira_Testcase/* zephyr-rapidsi-dev/*
            df -h
-           make debug CPU_CORES=2
+           make debug test/unittest-d CPU_CORES=2
            cp -rf yosys_verific_rs/yosys/install/share/yosys dbuild/share
            tar -czf build.tar.gz dbuild
 
     - name: Print server resource
       if: success() || failure()
       run: |
-        df -h
-        du -sch *
+           df -h
+           du -sch *
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -179,7 +179,9 @@ jobs:
             echo "2nd compilation" && rm -rvf build/FOEDAG_rs
             make install MONACO_EDITOR=1 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             [ $? != 0 ] && exit 1
-            tar -czf build.tar.gz projects ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen /work/Raptor_Tools/Create_Raptor_Artifact /work/Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
+            tar -czf build.tar.gz projects  \
+            ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen \
+            Raptor_Tools/Create_Raptor_Artifact /work/Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -269,7 +271,52 @@ jobs:
           - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: "clean install_only", test-type: test/int_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "clean", test-type: test/int_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Execute test
+      run: |
+           tar -xzf build.tar.gz && rm build.tar.gz && mv tmp/raptor_gui-install /tmp
+           run_test=`cat TEST_ON`
+           export CI=true
+           echo $run_test
+           make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
+           ls -l /tmp
+
+  test-ubuntu-D:
+    needs: build-Ubuntu-D
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_gui,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_valgrind, name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
@@ -299,8 +346,7 @@ jobs:
            run_test=`cat TEST_ON`
            export CI=true
            echo $run_test
-           ls -l build
-           make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
+           make ${{ matrix.test-type }} ${{ matrix.extra-opts }} $run_test CPU_CORES=2
 
   test-ubuntu-P:
     needs: build-Ubuntu-P
@@ -435,8 +481,10 @@ jobs:
             run_test=`cat TEST_ON`
             p_device=`cat DEFAULT_DEVICES`
             echo $p_device && echo "$r_d"
-            ln -s opt/instl_dir/bin build/bin
+            ln -vs opt/instl_dir/bin build/bin
             export CI=true
+            ls -l 
+            ls -l build
             make test/int_production PRODUCTION_DEVICES=$p_device $run_test CPU_CORES=2
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
 
