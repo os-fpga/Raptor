@@ -39,7 +39,7 @@ jobs:
   
     - name: Release Build
       run: |
-           make release CPU_CORES=2
+           make install CPU_CORES=2
            ls -l build
            cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
            tar -czf build.tar.gz build 
@@ -76,7 +76,8 @@ jobs:
   
     - name: Debug Build
       run: |
-           make run-cmake-debug && rm -rf tests/Jira_Testcase/* zephyr-rapidsi-dev/* FOEDAG_rs/FOEDAG/third_party/gtkwave/*
+           while true; do [ $(df / | awk 'NR==2 {print $5}' | sed 's/%//') -ge 99 ] && echo "Disk at 99%, killing make..." && pkill -f make && df -h / && exit 1; sleep 5; done &
+           make run-cmake-debug && rm -rf tests/Jira_Testcase/* zephyr-rapidsi-dev/*
            df -h
            make debug CPU_CORES=2
            cp -rf yosys_verific_rs/yosys/install/share/yosys dbuild/share
@@ -851,7 +852,7 @@ jobs:
 
   ClangTidy:
     runs-on: ubuntu-latest
-    #if: ${{github.event_name == 'pull_request'}}
+    if: ${{github.event_name == 'pull_request'}}
 
     steps:
     - name: Checkout code
