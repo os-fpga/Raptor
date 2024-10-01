@@ -92,7 +92,7 @@ function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE PARTIAL)
     if (NOT EXISTS "${README}" OR ${UPDATE})
       message("Updating ${SUBMODULE} submodule...")
       execute_process(
-        COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
+        COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE} -j ${CPU_CORES}
         WORKING_DIRECTORY ${WORK_DIR}
         RESULT_VARIABLE GIT_SUBMOD_RESULT
         )
