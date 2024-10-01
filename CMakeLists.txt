@@ -92,7 +92,7 @@ function(checkout_subsystems SUBSYSTEM_LIST WORK_DIR RECURSIVE UPDATE PARTIAL)
     if (NOT EXISTS "${README}" OR ${UPDATE})
       message("Updating ${SUBMODULE} submodule...")
       execute_process(
-        COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} -j ${CPU_CORES} ${SUBMODULE}
+        COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
         WORKING_DIRECTORY ${WORK_DIR}
         RESULT_VARIABLE GIT_SUBMOD_RESULT
         )
@@ -112,7 +112,7 @@ function(checkout_vpr_latest WORK_DIR)
     if (NOT EXISTS ${WORK_DIR}/${SUBMODULE}/Makefile)
       message("Updating ${SUBMODULE} submodule...")
       execute_process(
-        COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive -j ${CPU_CORES} vpr_latest/vtr
+        COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive vpr_latest/vtr
         WORKING_DIRECTORY ${WORK_DIR}/Backend
         RESULT_VARIABLE GIT_SUBMOD_RESULT
         )
