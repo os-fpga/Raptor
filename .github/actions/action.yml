@@ -19,20 +19,43 @@ inputs:
   RELEASE_DATE:
     description: 'Custom release date'
     default: ''
+  FREE_STORAGE:
+    description: 'Remove not need package to free the space'
+    default: 'yes'
+
 
 runs:
   using: "composite"
   steps:
     - name: free disk space
       run: |
+          if [ $FREE_STORAGE == 'yes' ]
+          then
           df -h && sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean
           docker image ls
           before=$(docker image ls -q) && echo $before && echo " "
           after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d') && echo $after
           docker rmi $after
           sudo rm -rf /usr/local/lib/android >/dev/null 2>&1 && sudo apt-get autoremove -y >/dev/null 2>&1
+          sudo rm -rf \
+          /usr/share/dotnet \
+          /opt/google/chrome \
+          /opt/microsoft/msedge \
+          /opt/microsoft/powershell \
+          /opt/pipx \
+          /usr/lib/mono \
+          /usr/local/julia* \
+          /usr/local/lib/android \
+          /usr/local/lib/node_modules \
+          /usr/local/share/chromium \
+          /usr/local/share/powershell \
+          /usr/share/dotnet \
+          /usr/share/swift
           sudo apt-get autoclean -y >/dev/null 2>&1 && df -h
+          fi
       shell: bash
+      env:
+        FREE_STORAGE: ${{ inputs.FREE_STORAGE }}
 
     - name: Install dependencies
       run: bash .github/workflows/install_ubuntu_dependencies_build.sh $DO_MINIMUM
