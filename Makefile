@@ -114,7 +114,7 @@ test/install_mac:  install_mac test/int_install_mac
 
 test_install: install test/int_install
 
-test/gui: release test/int_gui
+test/gui: release test/int_dgui
 
 test/raptor_batch: test/int_batch
 
