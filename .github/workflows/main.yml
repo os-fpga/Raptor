@@ -485,10 +485,11 @@ jobs:
             export CI=true
             ls -l build
             ls -l build/bin/raptor
-            export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
+            export LD_LIBRARY_PATH=/work/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
             ./build/bin/raptor --version
             make test/int_production PRODUCTION_DEVICES=$p_device $run_test CPU_CORES=2
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
+            ls -l /work/Raptor_Tools/upload/*
 
     # The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
     - name: Check FTP server status
