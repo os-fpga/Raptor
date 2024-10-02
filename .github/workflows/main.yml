@@ -481,10 +481,12 @@ jobs:
             run_test=`cat TEST_ON`
             p_device=`cat DEFAULT_DEVICES`
             echo $p_device && echo "$r_d"
-            ln -vs opt/instl_dir/bin build/bin
+            cd /work/build && ln -vs ../opt/instl_dir/bin . && cd -
             export CI=true
-            ls -l 
             ls -l build
+            ls -l build/bin/raptor
+            export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
+            ./build/bin/raptor --version
             make test/int_production PRODUCTION_DEVICES=$p_device $run_test CPU_CORES=2
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
 
