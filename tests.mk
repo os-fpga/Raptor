@@ -25,7 +25,7 @@ test/int_valgrind:
 
 test/int_install:
 ifeq ($(RAPTOR_PUB),1)
-	$(PREFIX)/bin/raptor --batch --script ../tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
+	$(PREFIX)/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
 else
 	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/tcl_examples/oneff_verilog/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/run_raptor.tcl
