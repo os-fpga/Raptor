@@ -438,7 +438,7 @@ jobs:
         options: -v ${{ github.workspace }}:/work
         run: |
             source /opt/rh/devtoolset-11/enable  
-            cd work && tar -xvzf build.tar.gz && rm build.tar.gz
+            cd work && tar -xzf build.tar.gz && rm build.tar.gz
             run_test=`cat TEST_ON`
             export CI=true
             make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
@@ -481,7 +481,7 @@ jobs:
         options: -v ${{ github.workspace }}:/work
         run: |
             source /opt/rh/devtoolset-11/enable  
-            cd work && tar -xvzf build.tar.gz && rm build.tar.gz && ls -la && ls -l build 
+            cd work && tar -xzf build.tar.gz && rm build.tar.gz && ls -la && ls -l build 
             run_test=`cat TEST_ON`
             p_device=`cat DEFAULT_DEVICES`
             echo $p_device && echo "$r_d"
