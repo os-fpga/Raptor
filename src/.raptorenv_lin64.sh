@@ -29,7 +29,7 @@ fi
 [[ -f "$RAPTOR_PATH/bin/HDL_simulator/setup_sim" ]] && source $RAPTOR_PATH/bin/HDL_simulator/setup_sim
 
 # uncomment to open the debug
-echo $LD_LIBRARY_PATH
+#echo $LD_LIBRARY_PATH
 #export QT_DEBUG_PLUGINS=1
 #export QT_QPA_PLATFORM=xcb
 #export QT_QPA_PLATFORM_PLUGIN_PATH=$RAPTOR_PATH/external_libs/qt/plugins

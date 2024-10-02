@@ -183,7 +183,7 @@ jobs:
             [ $? != 0 ] && exit 1
             tar -czf build.tar.gz projects  \
             ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen \
-            Raptor_Tools/Create_Raptor_Artifact /work/Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
+            Raptor_Tools/Create_Raptor_Artifact Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
 
     - name: Upload build
       uses: actions/upload-artifact@v4
@@ -486,9 +486,6 @@ jobs:
             p_device=`cat DEFAULT_DEVICES`
             echo $p_device && echo "$r_d"
             cd /work/build && ln -vs ../opt/instl_dir/bin . && cd -
-            export CI=true
-            ls -l build
-            ls -l build/bin/raptor
             export LD_LIBRARY_PATH=/work/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
             source /work/opt/instl_dir/.raptorenv_lin64.sh
             ./build/bin/raptor --version
