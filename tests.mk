@@ -25,8 +25,9 @@ test/int_valgrind:
 
 test/int_install:
 ifeq ($(RAPTOR_PUB),1)
+	$(PREFIX)/bin/raptor --batch --script ../tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
 else
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/oneff_verilog/run_raptor.tcl
+	$(PREFIX)/bin/raptor --batch --script $(PREFIX)/share/raptor/tcl_examples/oneff_verilog/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_verilog/run_raptor.tcl
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_verilog/run_raptor.tcl
@@ -35,14 +36,25 @@ else
 	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_verilog/run_raptor.tcl
 endif
 
-test/int_gui:
+test/int_dgui:
 ifeq ($(RAPTOR_PUB),1)
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
 else
+	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
+endif
+
+test/int_dgui2:
+ifeq ($(RAPTOR_PUB),1)
 	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
 	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
-	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
+else
+endif
+
+test/int_dgui3:
+ifeq ($(RAPTOR_PUB),1)
+	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_and2_mpw1_project.tcl
+else
 endif
 
 test/int_raptor_gui:
