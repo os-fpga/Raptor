@@ -57,6 +57,8 @@ jobs:
 
 
   build-Ubuntu-D:
+    # takes too much time so run it on os-fpga Raptor only
+    if: ${{ github.repository == 'os-fpga/Raptor'}} 
     name: Ubuntu-Debug
     runs-on: ubuntu-latest
     defaults:
@@ -315,7 +317,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_gui,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui2,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui3,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_valgrind, name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
@@ -512,9 +516,6 @@ jobs:
          port: ${{ secrets.FTP_PORT }}
          source: "./Raptor_Tools/upload/*"
          target: "/home/rsbuilder/Raptor"
-
-
-
 
   # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
