@@ -319,7 +319,6 @@ jobs:
         include:
           - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui2,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-         # - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui3,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
           - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_valgrind, name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:

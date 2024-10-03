@@ -51,12 +51,6 @@ ifeq ($(RAPTOR_PUB),1)
 else
 endif
 
-test/int_dgui3:
-ifeq ($(RAPTOR_PUB),1)
-	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_and2_mpw1_project.tcl
-else
-endif
-
 test/int_raptor_gui:
 	./build/bin/raptor --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
 

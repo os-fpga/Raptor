@@ -49,8 +49,8 @@
         <Run Name="imple_1" Type="Implementation" SrcSet="sources_1" ConstrsSet="constrs_1" State="current" SynthRun="synth_1"/>
         <Run Name="synth_1" Type="Synthesis" SrcSet="sources_1" ConstrsSet="constrs_1" State="current" SynthRun="">
             <Option Name="Compilation Flow" Val="Classic Flow"/>
-            <Option Name="Device" Val="MPW1"/>
-            <Option Name="Family" Val="Internal-Gemini"/>
+            <Option Name="Device" Val="1VG28"/>
+            <Option Name="Family" Val="Virgo"/>
             <Option Name="LanguageVersion" Val="SYSTEMVERILOG_2005"/>
             <Option Name="Package" Val="F484A"/>
             <Option Name="Series" Val="Virgo"/>
