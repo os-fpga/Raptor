@@ -19,182 +19,178 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  linux-gcc:
-    name: ubuntu-${{ matrix.mode }}
-
+  build-Ubuntu-R:
+    name: Ubuntu-Release
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        mode:
-        - test
-        - test/batch
-        - test/batch_gen2
-        - regression
-#        - coverage
-        - install
-        - valgrind
-        - production
-        - solver
-    env:
-      MODE: ${{ matrix.mode }}
-
     steps:
-
-    - name: ssh-agent
-      uses: webfactory/ssh-agent@v0.7.0
-      if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-      with: 
-        ssh-private-key: |
-           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: |
-        bash .github/workflows/install_ubuntu_dependencies_build.sh
-#        bash .github/workflows/install_litex_ubuntu.sh
-
-    - name: Setup Python Packages
-      run: |
-        pip3 install orderedmultidict
-        pip3 install psutil
+    - name: Install dependenices
+      uses: ./.github/actions/
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
       with:
-        key: linux-${{ matrix.mode }}
-
-    - name: Configure shell
+        key: Ubuntu-Release
+  
+    - name: Release Build
       run: |
-        echo 'CC=gcc-11' >> $GITHUB_ENV
-        echo 'CXX=g++-11' >> $GITHUB_ENV
-        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
-        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
-        echo "$PREFIX" >> $GITHUB_PATH
-        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
-        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
-        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
-        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
-        event_type=`echo ${{ github.event_name }}`
-        if [ ${{ github.repository_owner }} == 'os-fpga' ]
-        then
-                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV          
-        else
-                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
-        fi
-        if [ $event_type == 'workflow_dispatch' ]
-        then
-               echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-        elif [ $event_type == 'push' ]
-        then
-               echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
-        elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
-        then
-              echo 'p_devices=MPW1' >> $GITHUB_ENV
-        else     
-              echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
-        fi
+           make install CPU_CORES=2
+           ls -l build
+           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
+           tar -czf build.tar.gz build ${{ env.PREFIX }}
 
-    - name: Show shell configuration
+    - name: Unit C test 
       run: |
-        env
-        which cmake && cmake --version
-        which make && make --version
-        which swig && swig -version
-        which python && python --version
-        which ninja && ninja --version
-        which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
-        which $CC && $CC --version
-        which $CXX && $CXX --version
-        echo -e "Production devices are\n\t${{ env.p_devices }}"
+           make test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
 
-    - name: free disk space
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ubuntu-Release
+        path: build.tar.gz
+        retention-days: 1        
+
+
+  build-Ubuntu-D:
+    # takes too much time so run it on os-fpga Raptor only
+    if: ${{ github.repository == 'os-fpga/Raptor'}} 
+    name: Ubuntu-Debug
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: Ubuntu-Debug
+  
+    - name: Debug Build
       run: |
-        du -sch *
-        df -h
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker rmi $(docker image ls -aq)
-        sudo apt-get autoremove -y >/dev/null 2>&1
-        sudo apt-get autoclean -y >/dev/null 2>&1
-        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
-        df -h
+           while true; do [ $(df / | awk 'NR==2 {print $5}' | sed 's/%//') -ge 99 ] && echo "Disk at 99%, killing make..." && pkill -f make && df -h / && exit 1; sleep 5; done &
+           make run-cmake-debug && rm -rf tests/Jira_Testcase/* zephyr-rapidsi-dev/*
+           df -h
+           make debug test/unittest-d CPU_CORES=2
+           cp -rf yosys_verific_rs/yosys/install/share/yosys dbuild/share
+           tar -czf build.tar.gz dbuild
 
-    - name: Test Release
-      if: matrix.mode == 'test'
+    - name: Print server resource
+      if: success() || failure()
       run: |
-        make release CPU_CORES=2 ${{ env.run_tests }} ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test
+           df -h
+           du -sch *
 
-    - name: test/batch Release
-      if: matrix.mode == 'test/batch'
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ubuntu-Debug
+        path: build.tar.gz
+        retention-days: 1
+
+  build-Ubuntu-P:
+    name: Ubuntu-Production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices & configure device
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: Ubuntu-Production
+  
+    - name: Production Build
       run: |
-        make release CPU_CORES=2 ${{ env.run_tests }} test/batch 
+           make CPU_CORES=2 PRODUCTION_BUILD=1 PRODUCTION_DEVICES=`cat DEFAULT_DEVICES` STICK_RELEASE_VERSION=`cat input_release_date`
+           cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
+           tar -czf build.tar.gz build projects
 
-    - name: test/batch_gen2 Release
-      if: matrix.mode == 'test/batch_gen2'
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: Ubuntu-Production
+        path: build.tar.gz
+        retention-days: 1  
+
+  build-CentOS-P:
+    name: CentOS-Production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices & configure device
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+        RELEASE_DATE: ${{ inputs.Release_Date }}
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: CentOS-Production
+  
+    - name: Checkout Subsystem
       run: |
-        make release CPU_CORES=2 ${{ env.run_tests }} test/batch_gen2
+        make run-cmake-release CPU_CORES=2 
 
-    - name: test/solver
-      if: matrix.mode == 'solver'
-      run: |
-        make CPU_CORES=2 ${{ env.run_tests }} solver/tests 
+    - name: Production Build
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work
+        run: |
+            source /opt/rh/devtoolset-11/enable
+            wget https://boostorg.jfrog.io/artifactory/main/release/1.74.0/source/boost_1_74_0.tar.gz #Licenescc_WAR
+            tar -xzf boost_1_* && ls -l   #Licensecc_WAR
+            cd boost_1_* && ./bootstrap.sh --prefix=/usr &&  ./b2 install --prefix=/usr --with=all    #Licensecc_WAR
+            cd /work && tar -czf boost_1_74_0_build.tar.gz /boost_1_*
+            cd /work && make clean
+            p_device=`cat DEFAULT_DEVICES` && echo $p_device
+            r_d=`cat input_release_date` &&  echo "$r_d"
+            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            [ $? != 0 ] && exit 1
+            echo "2nd compilation" && rm -rvf build/FOEDAG_rs
+            make install MONACO_EDITOR=1 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
+            [ $? != 0 ] && exit 1
+            tar -czf build.tar.gz projects  \
+            ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen \
+            Raptor_Tools/Create_Raptor_Artifact Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
 
-    - name: Regression
-      if: matrix.mode == 'regression'
-      run: |
-        make regression ${{ env.run_tests }} CPU_CORES=2
-
-    - name: Coverage
-      if: matrix.mode == 'coverage'
-      run: |
-        make debug CPU_CORES=2 ${{ env.run_tests }} coverage-build/raptor_gui.coverage
-
-    - name: Production
-      if: matrix.mode == 'production'
-      run: |
-        make release CPU_CORES=2 ${{ env.run_tests }} PRODUCTION_BUILD=1 PRODUCTION_DEVICES=${{ env.p_devices }} STICK_RELEASE_VERSION=$r_d
-        ./build/bin/raptor --version
-        #TODO enable it again to restore license
-        #./build/bin/Flex_LM/lmutil lmhostid
-        #export LM_LICENSE_FILE=${GITHUB_WORKSPACE}/.github/bin/.raptor.lic
-        d_test=$(echo "${{ env.p_devices }}" | cut -d ',' -f 1)
-        ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen license issue -p projects/Raptor -f Raptor,$d_test,DE -o build/bin/raptor.lic
-        export LICENSE_LOCATION=$(pwd)/build/bin/raptor.lic
-        cat $LICENSE_LOCATION
-        echo "the device is $d_test"
-        ./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
-
-    - name: Valgrind & Debug
-      if: matrix.mode == 'valgrind'
-      run: |
-        make debug CPU_CORES=2 ${{ env.run_tests }} 
-        make debug test/unittest-d ${{ env.run_tests }} 
-        make debug test/gui ${{ env.run_tests }} 
-        make debug test/valgrind ${{ env.run_tests }} 
-
-    - name: Install Test
-      if: matrix.mode == 'install'
-      run: |
-        make release CPU_CORES=2 ${{ env.run_tests }} ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON
-        make install ${{ env.run_tests }} 
-        make clean  ${{ env.run_tests }}  # make sure we only see installation artifacts
-        make test_install ${{ env.run_tests }} 
-
-#    - name: Archive regression artifacts
-#      if: matrix.mode == 'test/batch_gen2' && always()
-#      uses: actions/upload-artifact@v3.1.0
-#      with:
-#        name: raptor_gui-linux-gcc-regression
-#        path: |
-#          ${{ github.workspace }}/build/share/raptor
-#          ${{ github.workspace }}/tests/
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: CentOS-Production
+        path: build.tar.gz
+        retention-days: 1
 
     - name: Print server resource
       if: success() || failure()
@@ -202,130 +198,36 @@ jobs:
         df -h
         du -sch *
 
-# Reference: https://github.com/OPM/ResInsight/blob/dev/.github/workflows/centos7.yml
-  centos7-gcc:
-    name:  centos7-${{ matrix.mode }}
+
+  build-CentOS-R:
+    name: CentOS-Release
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    strategy:
-      fail-fast: false
-      matrix:
-        mode:
-        - test
-        - regression
-        - production
-
-    env:
-      MODE: ${{ matrix.mode }}
-      FORK_REPO: ${{ secrets.FORK_STATUS }}
-
     steps:
-
-    - name: ssh-agent
-      if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-      uses: webfactory/ssh-agent@v0.7.0
-      with: 
-        ssh-private-key: |
-           ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-
-    - name: free disk space
-      run: |
-        df -h
-        sudo swapoff -a
-        sudo rm -f /swapfile
-        sudo apt clean
-        docker image ls
-        before=$(docker image ls -q)
-        echo $before
-        echo " "
-        after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d')
-        echo $after
-        docker rmi $after
-        sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
-
-    - name: install minimum dependencies
-      run: |
-          sudo apt update && sudo apt upgrade -y
-          sudo apt install -y qt6-base-dev qt6-webengine-dev qt6-webengine* libqt6webenginecore6* && sudo apt clean all 
-          sudo apt install -y libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev libhwloc-dev libusb-1.0-0-dev && sudo apt clean all
-          wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
-          sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list http://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
-          sudo apt update
-          sudo apt install -y vulkan-sdk
-          sudo apt-get autoremove -y >/dev/null 2>&1
-          sudo apt-get autoclean -y >/dev/null 2>&1
-          df -h
-
-    - name: Log in to the Container registry
-      uses: docker/login-action@v3.0.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}          
-
-    - name: pull the CentOS image
-      run: docker pull ghcr.io/${{ github.repository_owner }}/raptor:centos7latest    
-
     - name: Checkout code
-      uses: actions/checkout@v4       
+      uses: actions/checkout@v4
 
-    - name: Set Device name and Test on/off
-      run: |
-          if [ ${{ github.repository_owner }} == 'os-fpga' ]
-          then
-                echo 'run_tests="RAPTOR_PUB=1"' >> $GITHUB_ENV
-          else
-                echo 'run_tests="RAPTOR_PUB=0"' >> $GITHUB_ENV
-          fi
-          event_type=`echo ${{ github.event_name }}`
-          if [ $event_type == 'workflow_dispatch' ]
-          then
-                 echo 'p_devices=${{ inputs.DEFAULT_DEVICES }}' >> $GITHUB_ENV
-          elif [ $event_type == 'push' ]
-          then
-                 echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV       
-          elif [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]
-          then
-                echo 'p_devices=MPW1' >> $GITHUB_ENV
-          else     
-                echo 'p_devices=${{ vars.PRODUCTION_DEVICES }}' >> $GITHUB_ENV
-          fi          
-      
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Use ccache
+      uses: hendrikmuhs/ccache-action@v1.2.12
+      with:
+        key: CentOS-Production
+  
     - name: Checkout Subsystem
       run: |
         make run-cmake-release CPU_CORES=2 
-        echo "${{ env.p_devices }}" > DEFAULT_DEVICES
-        echo "${{ env.run_tests }}" > TEST_ON
-        echo ${{ inputs.Release_Date }} > input_release_date
 
-    - name: Show shell configuration
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-        run: |
-          source /opt/rh/devtoolset-11/enable
-          cmake --version
-          gcc --version
-          ls -l /usr/local
-
-    - name: Test
-      if: matrix.mode == 'test'
-      uses: addnab/docker-run-action@v3
-      with:
-        shell: bash
-        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
-        options: -v ${{ github.workspace }}:/work
-        run: |
-            source /opt/rh/devtoolset-11/enable  
-            cd work && make clean
-            run_test=`cat TEST_ON`
-            make release test/batch CPU_CORES=2 $run_test MONACO_EDITOR=0
-
-    - name: Regression
-      if: matrix.mode == 'regression'
+    - name: Build
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
@@ -334,54 +236,265 @@ jobs:
         run: |
             source /opt/rh/devtoolset-11/enable        
             cd work && make clean
-            run_test=`cat TEST_ON`
-            make regression CPU_CORES=2 $run_test MONACO_EDITOR=0
-            make release CPU_CORES=2 $run_test ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test/batch MONACO_EDITOR=0
-                        
+            make release CPU_CORES=2 $run_test MONACO_EDITOR=0
+            cp -rf yosys_verific_rs/yosys/install/share/yosys build/share
+            tar -czf build.tar.gz build
 
-    - name: Production Build
-      if: "${{ matrix.mode == 'production' }}"
+        # disable as they are failing in yosys_verific_rs 
+    # - name: Unit C test
+    #   uses: addnab/docker-run-action@v3
+    #   with:
+    #     shell: bash
+    #     image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+    #     options: -v ${{ github.workspace }}:/work 
+    #     run: |
+    #         source /opt/rh/devtoolset-11/enable        
+    #         cd work && make clean
+    #         make release CPU_CORES=2 ADDITIONAL_CMAKE_OPTIONS=-DBUILD_YOSYS_PLUGINS=ON test MONACO_EDITOR=0
+
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: CentOS-Release
+        path: build.tar.gz
+        retention-days: 1
+
+  test-ubuntu-R:
+    needs: build-Ubuntu-R
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "clean", test-type: test/int_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Execute test
+      run: |
+           tar -xzf build.tar.gz && rm build.tar.gz && mv tmp/raptor_gui-install /tmp
+           run_test=`cat TEST_ON`
+           export CI=true
+           echo $run_test
+           make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
+           ls -l /tmp
+
+  test-ubuntu-D:
+    needs: build-Ubuntu-D
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui2,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_valgrind, name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Execute test
+      run: |
+           tar -xzf build.tar.gz && rm build.tar.gz 
+           run_test=`cat TEST_ON`
+           export CI=true
+           echo $run_test
+           make ${{ matrix.test-type }} ${{ matrix.extra-opts }} $run_test CPU_CORES=2
+
+  test-ubuntu-P:
+    needs: build-Ubuntu-P
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: Ubuntu-Production, extra-opts: "PRODUCTION_DEVICES=`cat DEFAULT_DEVICES`", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Execute test
+      run: |
+           tar -xzf build.tar.gz && rm build.tar.gz 
+           run_test=`cat TEST_ON`
+           export CI=true
+           echo $run_test
+           make ${{ matrix.test-type }} ${{ matrix.extra-opts }} $run_test CPU_CORES=2
+
+  test-centos-R:
+    needs: build-CentOS-R
+    name: ${{ matrix.name }}-${{ matrix.test-type }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {build-type: CentOS-Release, extra-opts: "",   test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+
+    env:
+      Name:       ${{ matrix.name }}
+      OS:         ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ matrix.build-type }}
+
+    - name: Test
       uses: addnab/docker-run-action@v3
       with:
         shell: bash
         image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
-            cd work && make clean
-            source /opt/rh/devtoolset-11/enable
-            p_device=`cat DEFAULT_DEVICES`
+            source /opt/rh/devtoolset-11/enable  
+            cd work && tar -xzf build.tar.gz && rm build.tar.gz
             run_test=`cat TEST_ON`
-            r_d=`cat input_release_date`
-            echo $p_device
-            echo "$r_d"
-            d_test=$(echo "$p_device" | cut -d ',' -f 1)
-            mkdir /opt/instl_dir
-            make install CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
-            [ $? != 0 ] && exit 1
-            echo "2nd compilation"
-            rm -rvf build/FOEDAG_rs
-            make install MONACO_EDITOR=1 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
-            [ $? != 0 ] && exit 1
-            #export LM_LICENSE_FILE=/work/.github/bin/.raptor.lic
-            ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen license issue -p projects/Raptor -f Raptor,$d_test,DE -o build/bin/raptor.lic
-            cat build/bin/raptor.lic
-            echo "the device is $d_test"
-            ./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $d_test
-            export LD_LIBRARY_PATH=/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
-            cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /opt/instl_dir
-            cat /opt/instl_dir/share/raptor/etc/device.xml
-            ls -l /opt/instl_dir/share/raptor/etc/devices/*
-            ls -l /opt/instl_dir/bin
+            export CI=true
+            make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
 
-    - name: Print server resource
-      if: success() || failure()
-      run: df -h
-          
-# The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
+  
+  Deployment:
+    #if: ${{ github.ref == 'refs/heads/main'  }}
+    needs: build-CentOS-P
+    name: deploy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    env:
+      FORK_REPO: ${{ secrets.FORK_STATUS }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        DEVICES_NAME_FROM_INPUTS: ${{ inputs.DEFAULT_DEVICES }}
+        DEVICES_NAME_FROM_VARS: ${{ vars.PRODUCTION_DEVICES }}
+        minimum-dependencies: minimum
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_DOCKER_IMAGE: 'yes'
+
+    - name: Download build
+      uses: actions/download-artifact@v4
+      with:
+        name: CentOS-Production
+
+    - name: Test
+      uses: addnab/docker-run-action@v3
+      with:
+        shell: bash
+        image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
+        options: -v ${{ github.workspace }}:/work
+        run: |
+            source /opt/rh/devtoolset-11/enable  
+            cd work && tar -xzf build.tar.gz && rm build.tar.gz && ls -la && ls -l build 
+            run_test=`cat TEST_ON`
+            p_device=`cat DEFAULT_DEVICES`
+            echo $p_device && echo "$r_d"
+            cd /work/build && ln -vs ../opt/instl_dir/bin . && cd -
+            export LD_LIBRARY_PATH=/work/opt/instl_dir/lib64/raptor/lib:/usr/local/Qt6.2.4/lib:$LD_LIBRARY_PATH
+            source /work/opt/instl_dir/.raptorenv_lin64.sh
+            ./build/bin/raptor --version
+            make test/int_production PRODUCTION_DEVICES=$p_device $run_test CPU_CORES=2
+            cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
+            ls -l /work/Raptor_Tools/upload/*
+
+    # The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
     - name: Check FTP server status
-      # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' && env.FORK_REPO  == 'ON' }}"
-      #if: "${{ matrix.mode == 'production' }}"
+      if: "${{ env.FORK_REPO  == 'ON' }}"
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.FTP_IP }}
@@ -389,11 +502,9 @@ jobs:
         key: ${{ secrets.FTP_KEY }}
         port: ${{ secrets.FTP_PORT }}
         script: whoami
-
+    
     - name: Deploy
-      # Change ref head to deploy using a different branch.
-      if: "${{ matrix.mode == 'production' && github.ref == 'refs/heads/main' && env.FORK_REPO  == 'ON' }}"
-      #if: "${{ matrix.mode == 'production'}}"
+      if: "${{ env.FORK_REPO  == 'ON' }}"
       uses: appleboy/scp-action@master
       with:
          host: ${{ secrets.FTP_IP }}
@@ -402,9 +513,8 @@ jobs:
          port: ${{ secrets.FTP_PORT }}
          source: "./Raptor_Tools/upload/*"
          target: "/home/rsbuilder/Raptor"
-       
 
-# Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
+  # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
     if: ${{ false }}  # disable for now
     runs-on: windows-2022
@@ -419,7 +529,7 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
-# Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
+  # Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.13.0
       with:
@@ -428,32 +538,6 @@ jobs:
     - name: Configure Git
       run: git config --global core.autocrlf input
       shell: bash
-
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
-#          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
-#          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
-#          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - name: Git pull
       uses: actions/checkout@v4
@@ -476,8 +560,8 @@ jobs:
         release: false
       env:
         MSYS2_PATH_TYPE: inherit
-    
-# Install Qt
+      
+  # Install Qt
     - shell: msys2 {0}
       run: |
         pacman --noconfirm -S zlib
@@ -490,7 +574,7 @@ jobs:
         find /mingw64 -name Qt6Config.cmake
         find C:/msys64/ -name qt6-config.cmake
         find C:/msys64/ -name Qt6Config.cmake
-        
+
     - name: Configure shell environment variables
       run: |
         export SWIG_DIR=/c/ProgramData/chocolatey/lib/swig/tools/install/swigwin-3.0.12
@@ -531,10 +615,10 @@ jobs:
         export Qt6_DIR=$Qt6_Dir
         export PATH=$Qt6_DIR:$PATH
         make lib-only
-# There are Qt linkage issues, so build only the libs for now        
-#        make VERBOSE=1 release
-#        make debug 
-#        make install
+  # There are Qt linkage issues, so build only the libs for now        
+  #        make VERBOSE=1 release
+  #        make debug 
+  #        make install
 
     - name: Test
       run: |
@@ -543,10 +627,10 @@ jobs:
         # export Qt6_Dir=/mingw64/qt5-static/lib/cmake/Qt5/
         export Qt6_DIR=$Qt6_Dir
         export PATH=$Qt6_DIR:$PATH
-# There Qt are linkage issues, so build only the libs for now        
-#        make test_install
-#        make test/unittest
-#        make regression
+  # There Qt are linkage issues, so build only the libs for now        
+  #        make test_install
+  #        make test/unittest
+  #        make regression
 
   windows-msvc:
     if: ${{ false }}  # disable for now
@@ -563,7 +647,7 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
-# Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
+  # Fix Cmake version, 3.21.4 has a bug that prevents Tcl to build
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.13.0
       with:
@@ -595,32 +679,6 @@ jobs:
 
     - run: git config --global core.autocrlf input
       shell: bash
-
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
-#          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
-#          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
-#          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - uses: actions/checkout@v4
 
@@ -694,32 +752,6 @@ jobs:
       run: |
         pip3 install orderedmultidict
         pip3 install psutil
-
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
-#          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
-#          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
-#          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - uses: actions/checkout@v4
 
@@ -801,32 +833,6 @@ jobs:
         setup-python: false
         version: '6.2.4'
         modules: 'qtwebengine qtwebchannel qtpositioning'
-        
-#    - name: ssh-agent
-#      uses: webfactory/ssh-agent@v0.7.0
-#      with: 
-#        ssh-private-key: |
-#          ${{ secrets.SSH_PRIVATE_KEY_VERIFIC_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA }}
-#          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TCL }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_VERIFIC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RTL_BENCH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_YOSYS_PLUGINS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ABC }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LOGIC_SYNTH }}
-#          ${{ secrets.SSH_PRIVATE_KEY_JIRA_TESTCASE }}
-#          ${{ secrets.SSH_PRIVATE_KEY_LITEX_RS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_RAPTOR_TOOLS }}
-#          ${{ secrets.SSH_PRIVATE_KEY_IP_CATALOG }}
-#          ${{ secrets.SSH_PRIVATE_KEY_BACKEND }}
-#          ${{ secrets.SSH_PRIVATE_KEY_EMBEDDED_COMMON_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_U_BOOT_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_ZEPHYR_DEV }}
-#          ${{ secrets.SSH_PRIVATE_KEY_OPENFPGA_PD_CASTOR_RS }}
-#          ${{ secrets.SSH_RS_FPGA_PRIMITIVES }}
 
     - uses: actions/checkout@v4
 
@@ -898,40 +904,19 @@ jobs:
     if: ${{github.event_name == 'pull_request'}}
 
     steps:
-
-    - name: Cancel previous
-      uses: styfle/cancel-workflow-action@0.11.0
-      with:
-        access_token: ${{ github.token }}
-
-    - name: ssh-agent
-      if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-      uses: webfactory/ssh-agent@v0.7.0
-      with: 
-        ssh-private-key: |
-          ${{ secrets.SSH_PRIVATE_KEY_FOEDAG }}
-
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install Dependencies
-      run: |
-        sudo apt-get update -qq && sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-        sudo apt -qq -y install clang-tidy-12 \
-                                g++-11 tclsh  default-jre cmake \
-                                uuid-dev build-essential xorg  libhwloc-dev \
-                                qt6-base-dev qt6-webengine-dev qt6-webengine* libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev xvfb \
-                                libusb-1.0-0-dev pkg-config
+    - name: Install dependenices
+      uses: ./.github/actions/
+      with:
+        minimum-dependencies: minimum
+        FREE_STORAGE: 'no'
 
     - name: Use ccache
       uses: hendrikmuhs/ccache-action@v1.2.12
       with:
         key: clang-tidy-codegen
-
-    - name: Configure shell
-      run: |
-        echo 'PATH=/usr/lib/ccache:'"$PATH" >> $GITHUB_ENV
-        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
 
     - name: Prepare source
       run: |
