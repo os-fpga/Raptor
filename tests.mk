@@ -136,10 +136,13 @@ endif
 	popd
 
 test/int_solver:
+	mkdir -p run_tests
+	pushd run_tests
 ifeq ($(RAPTOR_PUB),1)
 else
 	../build/bin/raptor --batch --mute --script ../tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
 endif
+	popd
 
 test/int_install_mac:
 	$(PREFIX)/bin/raptor --compiler dummy --batch --script tests/Testcases/trivial/test.tcl
