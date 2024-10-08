@@ -31,7 +31,7 @@ def validate_json_keys (json_data, nested_keys):
 
 def run_command(cmd, cwd=None):
     """
-    Runs a shell command and returns True if it succeeds, False otherwise.
+    Runs a shell command and returns result if it succeeds, exit otherwise.
 
     Args:
         cmd (list or str): The command to run.
@@ -43,6 +43,7 @@ def run_command(cmd, cwd=None):
         print(f"Error during command\n{cmd}\n {e.stderr}")
         print("Please contact maintainer.")
         os._exit(0)
+    return result
 
 def bringing_commercial_devices(repo):
     """
@@ -71,55 +72,48 @@ def bringing_commercial_devices(repo):
             os._exit(0)
         
         token = data.get("GITHUB", {}).get("TOKEN", None)
-        repo_src = data.get("REPO", {}).get("REPO_SRC", None)
-        repo_dest = data.get("REPO", {}).get("REPO_DEST", None)
-        path_src = data.get("REPO", {}).get("PATH_SRC", None)
-        path_dest = data.get("REPO", {}).get("PATH_DEST", None)
+        repo_src = data['REPO']['REPO_SRC']
+        repo_dest = data['REPO']['REPO_DEST']
+        path_src = data['REPO']['PATH_SRC']
+        path_dest = data['REPO']['PATH_DEST']
+        iterations = len(path_src)
+        for i in range(iterations):
+            src_repo = repo_src[i]
+            dest_repo = repo_dest[i]
+            paths_src = path_src[i]
+            paths_dest = path_dest[i]
 
-        if repo == 'Raptor':
-            repo_src = repo_src [0]
-            repo_dest = repo_dest[0]
-            path_src = path_src[0]
-            path_dest = path_dest[0]
-        if repo == 'rapid_power_estimator':
-            repo_src = repo_src [1]
-            repo_dest = repo_dest[1]
-            path_src = path_src[1]
-            path_dest = path_dest[1]
-        #print(f'the toke is\n\t{token}\nand repos src is\n\t{repo_src}, {repo_dest}, {path_src}, {path_dest}')
-        for srcpath in path_src:
-            print(f'Currently doing for {srcpath}')  
-            # Define the devices directory path
-            devices_dir = os.path.join(root_dir, srcpath)
-            # Check if the devices directory exists and rename it
-            if os.path.exists(devices_dir):
-                new_devices_dir = os.path.join(root_dir, srcpath +'_osfpga')
-                shutil.move(devices_dir, new_devices_dir)
-                print(f"Renamed previous devices directory to {new_devices_dir}")
-            else:
-                raise FileNotFoundError(f"Devices directory not found or failed to renamed: {devices_dir}")
-            # Fetch assets from the repository
-            print(f"Fetching Assets from {repo_src}")
+            if dest_repo == repo:
+                print(f"Processing Repo Source: {src_repo}")
+                print(f"Processing Repo Destination: {dest_repo}")
+                print(f"Paths Source: {paths_src}")
+                print(f"Paths Destination: {paths_dest}")
 
-            git_clone_cmd = [ 'git', 'clone', '--filter=blob:none', '--no-checkout',
-                f'https://{token}@github.com/{repo_src}.git', srcpath
-            ]
-            run_command(git_clone_cmd,root_dir)
-            # Perform sparse checkout
-            sparse_checkout_cmd = ['git', 'sparse-checkout', 'set', srcpath]
-            run_command(sparse_checkout_cmd, cwd=os.path.join(root_dir, srcpath))
-            files_to_move = os.path.join(root_dir, srcpath, srcpath)
-            dest_item = os.path.join(root_dir, srcpath)
-            if os.path.exists(files_to_move):
-                for file_name in os.listdir(files_to_move):
-                    file_path = os.path.join(files_to_move, file_name)
-                    try:
-                        shutil.move(file_path, dest_item)
-                        print(f"Moved {file_path} to {dest_item}")
-                    except Exception as e:
-                        print(f"Failed to move {file_path}: {e}")
-            else:
-                print("No files found to setup")
+                git_clone_cmd = ['git', 'clone', '--filter=blob:none', '--no-checkout',
+                f'https://{token}@github.com/{src_repo}.git', 'fetch_temp'
+                ]
+                run_command(git_clone_cmd,root_dir)
+                # Iterate over the PATH_SRC and PATH_DEST arrays
+                for j, src_path in enumerate(paths_src):
+                    dest_path = paths_dest[j] if j < len(paths_dest) else ''
+                    if len(dest_path) < 1:
+                      dest_path = src_path
+                    sparse_checkout_cmd = ['git', 'sparse-checkout', 'set', src_path]
+                    run_command(sparse_checkout_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))
+                    files_to_move = os.path.join(root_dir, 'fetch_temp', src_path)
+                    dest_item = os.path.join(root_dir, dest_path)
+                    if os.path.exists(files_to_move):
+                        for file_name in os.listdir(files_to_move):
+                            file_path = os.path.join(files_to_move, file_name)
+                            try:
+                                shutil.move(file_path, dest_item)
+                                print(f"Moved {file_path} to {dest_item}")
+                            except Exception as e:
+                                print(f"Failed to move {file_path}: {e}")
+                    else:
+                        print("No files found to setup")
+                    sparse_checkout_stash_cmd = ['git', 'stash', '--include-untracked']
+                    run_command(sparse_checkout_stash_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))    
     except json.JSONDecodeError:
         print(f"Error: Failed to decode JSON from file {json_file_path}")
         os._exit(0)
@@ -131,35 +125,29 @@ def should_fetch():
     """
     Check
     - Type of Repo (Raptor, RPE, ..)
-    - Make sure assests/work is not done before and it is first time
+    - Make sure assests/work is not done before
     - Confirm the presence of Json file
 
     Returns:
-    - bool: should fetch assest or not
+    - repo type: destination repo name in which assets will be fetched
     """
 
     if not os.path.exists(json_file_path):
         print(f"No such file as\n\t{json_file_path}")
         os._exit(0)
+    if os.path.exists(os.path.join(root_dir, 'fetch_temp')):
+        print('Assests are already present')
+        os._exit(0)
 
-    git_cmd = [
-        'git', 'remote', 'get-url', '--push', 'origin'
-    ]
-    
-    try:
-        repo_type = subprocess.run(git_cmd, cwd=root_dir, 
-                                      capture_output=True, text=True, check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"Error during detecting Repo type: {e.stderr}")
+    detect_repo_cmd = ['git', 'remote', 'get-url', '--push', 'origin']
+    repo_type = run_command(detect_repo_cmd, root_dir)
     
     if 'Raptor' in repo_type.stdout:
-        if os.path.exists(os.path.join(root_dir, 'etc/devices/etc/devices')):
-            print('Assests are already present')
-            os._exit(0)
-        else:
-            return 'Raptor'
+        return 'os-fpga/Raptor'
+    elif 'rapid_power_estimator' in repo_type.stdout:
+        return 'os-fpga/rapid_power_estimator'
     else:
-        print("Not recognisable repo, if it is a mistake, disable the call of function 'should_fetch'.")
+        print("Not recognisable repo, if it is a mistake, disable the call of function 'should_fetch' and contact maintainer")
         os._exit(0)
     
 if __name__ == "__main__":
