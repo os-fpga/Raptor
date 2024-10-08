@@ -179,6 +179,15 @@ checkout_subsystems(RAPTOR_NON_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "
 checkout_subsystems(RAPTOR_PARTIAL_RECURSIVE_SUBSYTEMS ${CMAKE_CURRENT_SOURCE_DIR} "" ${UPDATE_SUBMODULES} ON)
 checkout_vpr_latest(${CMAKE_CURRENT_SOURCE_DIR})
 
+if(NOT DEFINED ENV{CI})
+    execute_process(
+        COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/asset_fetch.py
+        RESULT_VARIABLE CREATE_PLACEHOLDERS
+    ) 
+else()
+    message(STATUS "Skipping inclusion of asset_fetch.py because of CI.")
+endif()
+
 create_placehoder_libs()
 
 if (PRODUCTION_BUILD)

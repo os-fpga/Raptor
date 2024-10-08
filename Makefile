@@ -153,6 +153,9 @@ doc:
 	cd docs && make html
 	cd -
 
+fetch_assets:
+	python3 asset_fetch.py
+
 uninstall:
 	$(RM) -r $(PREFIX)/bin/raptor
 	$(RM) -r $(PREFIX)/bin/raptor.exe
