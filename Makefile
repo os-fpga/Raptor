@@ -42,13 +42,8 @@ IPA ?= 1
 # to detect actual warnings and errors  in the build output.
 RULE_MESSAGES ?= on
 
-ifeq ($(PRODUCTION_BUILD),1)
 release: run-cmake-release
 	cmake --build build -j $(CPU_CORES)
-else
-release: run-cmake-release
-	cmake --build build -j $(CPU_CORES)
-endif
 
 release_no_tcmalloc: run-cmake-release_no_tcmalloc
 	cmake --build build -j $(CPU_CORES)
@@ -68,41 +63,6 @@ run-cmake-debug:
 run-cmake-coverage:
 	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCPU_CORES=$(CPU_CORES) -DCMAKE_RULE_MESSAGES=$(RULE_MESSAGES) -DMY_CXX_WARNING_FLAGS="--coverage" -DUPDATE_SUBMODULES=$(UPDATE_SUBMODULES) -DSTICK_RELEASE_VERSION=$(STICK_RELEASE_VERSION)  $(ADDITIONAL_CMAKE_OPTIONS) -DMONACO_EDITOR=$(MONACO_EDITOR) -DIPA=$(IPA) -S . -B coverage-build
 
-test/unittest: release
-	cmake --build build --target unittest -j $(CPU_CORES)
-	pushd build && ctest --output-on-failure && popd
-
-test/unittest-d: run-cmake-debug
-	cmake --build dbuild --target unittest -j $(CPU_CORES)
-	pushd dbuild && ctest --output-on-failure && popd
-
-test/unittest-coverage: run-cmake-coverage
-	cmake --build coverage-build --target unittest -j $(CPU_CORES)
-	pushd coverage-build && ctest --output-on-failure && popd
-
-coverage-build/raptor_gui.coverage: test/unittest-coverage
-	lcov --no-external --exclude "*_test.cpp" --capture --directory coverage-build/CMakeFiles/raptor_gui.dir --base-directory src --output-file coverage-build/raptor_gui.coverage
-
-coverage-build/html: raptor_gui-build/raptor_gui.coverage
-	genhtml --output-directory coverage-build/html $^
-	realpath coverage-build/html/index.html
-
-test/regression: run-cmake-release
-
-test/valgrind: run-cmake-debug
-	$(XVFB) valgrind --tool=memcheck --log-file=valgrind.log ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
-	grep "ERROR SUMMARY: 0" valgrind.log
-
-
-test: test/unittest test/regression
-
-test-parallel: release test/unittest
-
-regression: release
-
-clean:
-	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build Raptor_Tools/parser_plugins/synlig/out/
-
 ifeq ($(PRODUCTION_BUILD),1)
 install: release
 	cmake --install build
@@ -114,7 +74,7 @@ install: release
 	cmake --install build
 endif
 
-test_install_mac:
+install_mac:
 	find /Users/runner/work/Raptor/ -name "*QtWidgets*" -print
 	otool -L $(PREFIX)/bin/raptor
 	install_name_tool -change @rpath/QtWidgets.framework/Versions/5/QtWidgets /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtWidgets.framework/QtWidgets $(PREFIX)/bin/raptor
@@ -125,141 +85,63 @@ test_install_mac:
 	install_name_tool -change @rpath/QtQmlModels.framework/Versions/5/QtQmlModels /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtQmlModels.framework/QtQmlModels $(PREFIX)/bin/raptor
 	install_name_tool -change @rpath/QtQml.framework/Versions/5/QtQml /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtQml.framework/QtQml $(PREFIX)/bin/raptor
 	install_name_tool -change @rpath/QtNetwork.framework/Versions/5/QtNetwork /Users/runner/work/Raptor/Qt/5.15.2/clang_64/lib/QtNetwork.framework/QtNetwork $(PREFIX)/bin/raptor
-	$(PREFIX)/bin/raptor --compiler dummy --batch --script tests/Testcases/trivial/test.tcl
-
-test_install:
-ifeq ($(RAPTOR_PUB),1)
-else
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/oneff_verilog/run_raptor.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_vhdl/run_raptor.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/counter_verilog/run_raptor.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_verilog/run_raptor.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/aes_decrypt_gate/run_raptor.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/sasc_testcase/run_raptor.tcl
-	$(PREFIX)/bin/raptor --batch --mute --script $(PREFIX)/share/raptor/tcl_examples/and2_verilog/run_raptor.tcl
-endif
-
-test/gui:
-ifeq ($(RAPTOR_PUB),1)
-	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
-	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
-else
-	$(XVFB) ./dbuild/bin/raptor --compiler dummy --replay tests/TestGui/gui_foedag.tcl
-	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gtkwave_cmds.tcl || (cat raptor.log; exit 1)
-	$(XVFB) ./dbuild/bin/raptor --script tests/TestGui/gui_run_incr_comp_project.tcl
-endif
-
-test/raptor_batch: run-cmake-release
-	./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
-
-test/raptor_gui: run-cmake-release
-	./build/bin/raptor --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device MPW1
-
-test/openfpga: run-cmake-release
-	./build/bin/raptor --batch --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
-
-test/openfpga_gui: run-cmake-release
-	./build/bin/raptor --script tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
-
-test/gui_mac: run-cmake-debug
-#	$(XVFB) ./dbuild/bin/raptor --replay tests/TestGui/gui_start_stop.tcl
-# Tests hanging on mac
-#	$(XVFB) ./dbuild/bin/newproject --replay tests/TestGui/gui_new_project.tcl
-#	$(XVFB) ./dbuild/bin/projnavigator --replay tests/TestGui/gui_project_navigator.tcl
-#	$(XVFB) ./dbuild/bin/texteditor --replay tests/TestGui/gui_text_editor.tcl
-#	$(XVFB) ./dbuild/bin/newfile --replay tests/TestGui/gui_new_file.tcl
-
-# This target can be invoked directly
-test/batch: release
-	mkdir -p run_tests
-	$(MAKE) -C run_tests -f ../Makefile test/int_batch
-
-# Do not invoke
-test/int_batch:
-ifeq ($(RAPTOR_PUB),1)
-else
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_verilog/run_raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/auto_testbench/raptor_lec.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/gen_clk/run_raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_2clks/run_raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_wio/run_raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_vec/run_raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/oneff_wio/run_raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_compact/raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter16/counter16.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/keep_test/raptor.tcl 
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/trivial/test.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Jira_Testcase/GEMINIEDA_96/build.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Jira_Testcase/GEMINIEDA_107/dsp_mul_unsigned_reg/raptor.tcl --device 1VG28
-	../build/bin/raptor --batch --compiler dummy --mute --script ../tests/TestBatch/test_compiler_mt.tcl
-	../build/bin/raptor --batch --compiler dummy --mute --script ../tests/TestBatch/test_compiler_batch.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_gemini/raptor.tcl 
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/and2_gemini_no_pcf/raptor.tcl 
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/device_size_negative/raptor.tcl && exit 1 || (echo "PASSED: Caught negative test")
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/incr_comp/raptor.tcl 
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_ram/v1_0/axi_ram.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_register/v1_0/axi_register.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/axis_adapter/v1_0/axis_adapter.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_cdma/v1_0/axi_cdma.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi_interconnect/v1_0/axi_interconnect.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/axil_gpio/v1_0/axil_gpio.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/reset_release/v1_0/reset_release.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestIP/axi2axilite_bridge/v1_0/axi2axilite_bridge.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/constant/raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/double_check/raptor.tcl
-	../build/bin/raptor --batch --mute --script ../etc/devices/gemini_compact_62x44/ric/periphery.tcl
-endif
-
-# This target can be invoked directly
-test/batch_gen2: release
-	mkdir -p run_tests
-	$(MAKE) -C run_tests -f ../Makefile test/int_batch_gen2
-
-# Do not invoke
-test/int_batch_gen2: 
-ifeq ($(RAPTOR_PUB),1)
-else
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/aes_decrypt_fpga/aes_decrypt.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/aes_decrypt_gate/aes_decrypt_gate.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/oneff/raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter/counter.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter_vhdl/raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/counter_mixed/raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/TestBatch/oneff_clean/raptor.tcl
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/rom/raptor.tcl
-endif
-
-# Too large for Github Action
-test/batch_gen3: release
-ifeq ($(RAPTOR_PUB),1)
-else
-	cd tests/Testcases/and2_bitstream; rm -rf and2; ../../../build/bin/raptor --batch --mute --script raptor.tcl
-	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; rm -rf up5bit_counter_dual_clock; ../../../build/bin/raptor --batch --mute --script raptor.tcl
-endif
-
-# This target can be invoked directly
-solver/tests: release
-	mkdir -p run_tests
-	$(MAKE) -C run_tests -f ../Makefile solver/int_tests
-
-# Do not invoke
-solver/int_tests:
-ifeq ($(RAPTOR_PUB),1)
-else
-	../build/bin/raptor --batch --mute --script ../tests/Testcases/partitioner_aes_verilog/run_raptor.tcl
-endif
-
-test/batch_all:
-	echo "############################# Raptor checkin tests, all tests must pass! #############################"
-	mkdir -p run_tests
-	$(MAKE) -C run_tests -f ../Makefile test/int_batch
-	$(MAKE) -C run_tests -f ../Makefile test/int_batch_gen2
-	$(MAKE) -C run_tests -f ../Makefile solver/int_tests
-	$(MAKE) -f Makefile test/batch_gen3
-	echo "############################# Success, all tests passed! #############################"
 
 lib-only: run-cmake-release
 	cmake --build build --target raptor_gui -j $(CPU_CORES)
+
+include tests.mk
+
+test/unittest: release test/int_unittest
+
+test/unittest-d: run-cmake-debug test/int_unittest-d
+
+test/unittest-coverage: run-cmake-coverage test/int_unittest-coverage
+
+coverage-build/raptor_gui.coverage: test/unittest-coverage
+	lcov --no-external --exclude  "*_test.cpp" --capture --directory coverage-build/CMakeFiles/raptor_gui.dir --base-directory src --output-file coverage-build/raptor_gui.coverage
+
+coverage-build/html: raptor_gui-build/raptor_gui.coverage
+	genhtml --output-directory coverage-build/html $^
+	realpath coverage-build/html/index.html
+
+test/valgrind: run-cmake-debug test/int_valgrind
+
+test: test/unittest
+
+test-parallel: release test/unittest
+
+test/install_mac:  install_mac test/int_install_mac
+
+test_install: install test/int_install
+
+test/gui: release test/int_dgui
+
+test/raptor_batch: test/int_batch
+
+test/raptor_gui: run-cmake-release test/int_raptor_gui
+
+test/openfpga: run-cmake-release test/int_openfpga
+
+test/openfpga_gui: run-cmake-release test/int_openfpga_gui
+
+test/gui_mac: run-cmake-debug test/int_gui_mac
+
+# This target can be invoked directly
+test/batch: release test/int_batch
+
+# This target can be invoked directly
+test/batch_gen2: release test/int_batch_gen2
+
+# Too large for Github Action
+test/batch_gen3: release test/int_batch_gen3
+
+# This target can be invoked directly
+solver/tests: release test/int_solver
+
+test/batch_all:
+	echo "############################# Raptor checkin tests, all tests must pass! #############################"
+	export CI=true && $(MAKE) test/int_batch test/int_batch_gen2 solver/int_tests test/batch_gen3
+	echo "############################# Success, all tests passed! #############################################"
 
 format:
 	.github/bin/run-clang-format.sh
@@ -279,3 +161,5 @@ uninstall:
 	$(RM) -r $(PREFIX)/share/raptor
 	$(RM) -r $(PREFIX)/bin/gtkwave
 
+clean:
+	$(RM) -r build dbuild coverage-build dist tests/TestInstall/build Raptor_Tools/parser_plugins/synlig/out/

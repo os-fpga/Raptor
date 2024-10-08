@@ -1,0 +1,140 @@
+name: 'Common CI Steps' 
+description: 'All the common steps'
+inputs:
+  minimum-dependencies:
+    description: 'Install only minimum dependencies'
+    default: ''
+  DEVICES_NAME_FROM_INPUTS:
+    description: 'Name of Devices, comma separated'
+    default: 'MPWI'
+  DEVICES_NAME_FROM_VARS:
+    description: 'Name of Devices, comma separated'
+    default: 'MPWI'
+  TOKEN:
+    description: 'Token to login'
+    default: ''
+  PULL_DOCKER_IMAGE:
+    description: 'Pull Docker Image yes or no'
+    default: 'no'
+  RELEASE_DATE:
+    description: 'Custom release date'
+    default: ''
+  FREE_STORAGE:
+    description: 'Remove not need package to free the space'
+    default: 'yes'
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: free disk space
+      run: |
+          if [ $FREE_STORAGE == 'yes' ]
+          then
+          df -h && sudo swapoff -a && sudo rm -f /swapfile && sudo apt clean
+          docker image ls
+          before=$(docker image ls -q) && echo $before && echo " "
+          after=$(docker image ls -q |  sed '1d' |  sed '1d' |  sed '1d') && echo $after
+          docker rmi $after
+          sudo rm -rf /usr/local/lib/android >/dev/null 2>&1 && sudo apt-get autoremove -y >/dev/null 2>&1
+          sudo rm -rf \
+          /usr/share/dotnet \
+          /opt/google/chrome \
+          /opt/microsoft/msedge \
+          /opt/microsoft/powershell \
+          /opt/pipx \
+          /usr/lib/mono \
+          /usr/local/julia* \
+          /usr/local/lib/android \
+          /usr/local/lib/node_modules \
+          /usr/local/share/chromium \
+          /usr/local/share/powershell \
+          /usr/share/dotnet \
+          /usr/share/swift
+          sudo apt-get autoclean -y >/dev/null 2>&1 && df -h
+          fi
+      shell: bash
+      env:
+        FREE_STORAGE: ${{ inputs.FREE_STORAGE }}
+
+    - name: Install dependencies
+      run: bash .github/workflows/install_ubuntu_dependencies_build.sh $DO_MINIMUM
+      shell: bash
+      env:
+        DO_MINIMUM: ${{ inputs.minimum-dependencies }}
+
+    - name: Configure shell
+      shell: bash
+      run: |
+        echo 'CC=gcc-11' >> $GITHUB_ENV
+        echo 'CXX=g++-11' >> $GITHUB_ENV
+        echo 'PATH=/usr/lib/ccache:/usr/local/opt/ccache/libexec:'"$PATH" >> $GITHUB_ENV
+        echo 'PREFIX=/tmp/raptor_gui-install' >> $GITHUB_ENV
+        echo "$PREFIX" >> $GITHUB_PATH
+        echo "ADDITIONAL_CMAKE_OPTIONS='-DMY_CXX_WARNING_FLAGS="-W -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable -Werror -UNDEBUG"'" >> $GITHUB_ENV
+        echo 'RULE_MESSAGES=off' >> $GITHUB_ENV
+        echo 'LC_ALL=en_US.utf-8' >> $GITHUB_ENV
+        echo 'LANG=en_US.utf-8' >> $GITHUB_ENV
+
+    - name: Set Device
+      run: |
+            if [ $REPOSITORY_OWNER == 'os-fpga' ]
+            then
+                    echo 'RAPTOR_PUB=1' > TEST_ON         
+            else
+                    echo 'RAPTOR_PUB=0' > TEST_ON
+            fi
+            if [ $EVENT == 'workflow_dispatch' ]
+            then
+                   echo "$DEVICES_IN"  > DEFAULT_DEVICES
+            elif [ $EVENT == 'push' ]
+            then
+                   echo "$DEVICES_VARS" > DEFAULT_DEVICES
+            elif [ "$PR_HEAD" != "$REPOSITORY" ]
+            then
+                  echo 'MPW1' > DEFAULT_DEVICES
+            else     
+                  echo "$DEVICES_VARS" > DEFAULT_DEVICES
+            fi
+
+      shell: bash
+      env:
+        REPOSITORY_OWNER: ${{ github.repository_owner }}
+        REPOSITORY: ${{ github.repository }}
+        EVENT: ${{ github.event_name }}
+        PR_HEAD: ${{ github.event.pull_request.head.repo.full_name }}
+        DEVICES_IN: ${{ inputs.DEVICES_NAME_FROM_INPUTS }}
+        DEVICES_VARS: ${{ inputs.DEVICES_NAME_FROM_VARS }}
+
+    - name: Show shell configuration
+      shell: bash
+      run: |
+            env
+            which cmake && cmake --version
+            which make && make --version
+            which swig && swig -version
+            which python && python --version
+            which ninja && ninja --version
+            which tclsh && echo 'puts [info patchlevel];exit 0' | tclsh
+            which $CC && $CC --version
+            which $CXX && $CXX --version
+            echo -e "Production devices are\n\t`cat DEFAULT_DEVICES`"
+            echo "should run tust `cat TEST_ON`"
+            echo $RD > input_release_date
+      env:
+        RD: ${{ inputs.RELEASE_DATE }}
+
+    - name: Log in to the Container registry & pull centos7 image
+      run: |
+           if [ $PULL == 'yes' ]
+           then
+           echo $LOGIN_PASS | docker login ghcr.io -u $USERNAME --password-stdin
+           docker pull ghcr.io/$REPOSITORY_OWNER/raptor:centos7latest
+           fi
+      shell: bash
+      env:
+          LOGIN_PASS: ${{ inputs.TOKEN }}
+          USERNAME: ${{ github.actor }}
+          PULL: ${{ inputs.PULL_DOCKER_IMAGE}}
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
+
