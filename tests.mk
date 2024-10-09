@@ -126,14 +126,11 @@ endif
 	popd
 
 test/int_batch_gen3:
-	mkdir -p run_tests
-	pushd run_tests
 ifeq ($(RAPTOR_PUB),1)
 else
-	cd tests/Testcases/and2_bitstream; rm -rf and2; ../../../build/bin/raptor --batch --mute --script raptor.tcl
+	cd tests/Testcases/and2_bitstream; rm -rf and2; ../../../build/bin/raptor --batch --mute --script raptor.tcl; cd -
 	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; rm -rf up5bit_counter_dual_clock; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
-	popd
 
 test/int_solver:
 	mkdir -p run_tests
