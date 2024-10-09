@@ -181,9 +181,12 @@ checkout_vpr_latest(${CMAKE_CURRENT_SOURCE_DIR})
 
 if(NOT DEFINED ENV{CI})
     execute_process(
-        COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/asset_fetch.py
-        RESULT_VARIABLE CREATE_PLACEHOLDERS
-    ) 
+        COMMAND python3 -u ${CMAKE_CURRENT_SOURCE_DIR}/asset_fetch.py
+        RESULT_VARIABLE FETCHER_STATUS
+        OUTPUT_VARIABLE SCRIPT_OUTPUT
+        ERROR_VARIABLE SCRIPT_OUTPUT
+    )
+    message(STATUS "Fetch asset: ${SCRIPT_OUTPUT}") 
 else()
     message(STATUS "Skipping inclusion of asset_fetch.py because of CI.")
 endif()
