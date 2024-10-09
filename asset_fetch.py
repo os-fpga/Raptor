@@ -104,16 +104,24 @@ def bringing_commercial_devices(repo):
                     dest_item = os.path.join(root_dir, dest_path)
                     if os.path.exists(files_to_move):
                         for file_name in os.listdir(files_to_move):
-                            file_path = os.path.join(files_to_move, file_name)
+                            src_file_path = os.path.join(files_to_move, file_name)
+                            dest_file_path = os.path.join(dest_item, file_name)
                             try:
-                                shutil.move(file_path, dest_item)
-                                print(f"Moved {file_path} to {dest_item}")
+                                if os.path.isdir(src_file_path):
+                                    if os.path.exists(dest_file_path):
+                                        shutil.rmtree(dest_file_path)
+                                    shutil.copytree(src_file_path, dest_file_path)                               
+                                else:
+                                    shutil.copy2(src_file_path, dest_item)
+                                print(f"Moved {src_file_path} to {dest_item}")
+                            except FileNotFoundError:
+                                print(f"Error: The device '{file_path}' was not found.")
                             except Exception as e:
                                 print(f"Failed to move {file_path}: {e}")
                     else:
-                        print("No files found to setup")
-                    sparse_checkout_stash_cmd = ['git', 'stash', '--include-untracked']
-                    run_command(sparse_checkout_stash_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))    
+                        print("No files found in asset fetch folder")
+                    # sparse_checkout_stash_cmd = ['git', 'stash', '--include-untracked']
+                    # run_command(sparse_checkout_stash_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))    
     except json.JSONDecodeError:
         print(f"Error: Failed to decode JSON from file {json_file_path}")
         os._exit(0)
@@ -136,8 +144,8 @@ def should_fetch():
         print(f"No such file as\n\t{json_file_path}")
         os._exit(0)
     if os.path.exists(os.path.join(root_dir, 'fetch_temp')):
-        print('Assests are already present')
-        os._exit(0)
+        print('Assests are already present so removing')
+        shutil.rmtree(os.path.join(root_dir, 'fetch_temp'))
 
     detect_repo_cmd = ['git', 'remote', 'get-url', '--push', 'origin']
     repo_type = run_command(detect_repo_cmd, root_dir)
