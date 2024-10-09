@@ -115,13 +115,11 @@ def bringing_commercial_devices(repo):
                                     shutil.copy2(src_file_path, dest_item)
                                 print(f"Moved {src_file_path} to {dest_item}")
                             except FileNotFoundError:
-                                print(f"Error: The device '{file_path}' was not found.")
+                                print(f"Error: The device '{src_file_path}' was not found.")
                             except Exception as e:
-                                print(f"Failed to move {file_path}: {e}")
+                                print(f"Failed to move {src_file_path}: {e}")
                     else:
-                        print("No files found in asset fetch folder")
-                    # sparse_checkout_stash_cmd = ['git', 'stash', '--include-untracked']
-                    # run_command(sparse_checkout_stash_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))    
+                        print("No files found in asset fetch folder")   
     except json.JSONDecodeError:
         print(f"Error: Failed to decode JSON from file {json_file_path}")
         os._exit(0)
