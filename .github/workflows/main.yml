@@ -21,7 +21,7 @@ concurrency:
 jobs:
   build-Ubuntu-R:
     name: Ubuntu-Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
@@ -60,7 +60,7 @@ jobs:
     # takes too much time so run it on os-fpga Raptor only
     if: ${{ github.repository == 'os-fpga/Raptor'}} 
     name: Ubuntu-Debug
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
@@ -100,7 +100,7 @@ jobs:
 
   build-Ubuntu-P:
     name: Ubuntu-Production
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
@@ -134,7 +134,7 @@ jobs:
 
   build-CentOS-P:
     name: CentOS-Production
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
@@ -201,7 +201,7 @@ jobs:
 
   build-CentOS-R:
     name: CentOS-Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
@@ -270,10 +270,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Release, extra-opts: "clean", test-type: test/int_install,         name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch,       name: "ubuntu",   os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_batch_gen2,  name: "ubuntu",   os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "",   test-type: test/int_solver,      name: "ubuntu",   os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Release, extra-opts: "clean", test-type: test/int_install,         name: "ubuntu",   os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
@@ -317,9 +317,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui2,      name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
-          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_valgrind, name: "ubuntu", os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui,      name: "ubuntu", os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_dgui2,      name: "ubuntu", os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Debug, extra-opts: "", test-type: test/int_valgrind, name: "ubuntu", os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
@@ -362,7 +362,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: Ubuntu-Production, extra-opts: "PRODUCTION_DEVICES=`cat DEFAULT_DEVICES`", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: Ubuntu-Production, extra-opts: "PRODUCTION_DEVICES=`cat DEFAULT_DEVICES`", test-type: test/int_production,       name: "ubuntu",   os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
@@ -405,7 +405,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {build-type: CentOS-Release, extra-opts: "",   test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-latest, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
+          - {build-type: CentOS-Release, extra-opts: "",   test-type: test/int_batch,       name: "centos7.9",   os: ubuntu-22.04, dependencies: "bash .github/workflows/install_ubuntu_dependencies_build.sh"}
 
     env:
       Name:       ${{ matrix.name }}
@@ -447,7 +447,7 @@ jobs:
     #if: ${{ github.ref == 'refs/heads/main'  }}
     needs: build-CentOS-P
     name: deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
@@ -882,7 +882,7 @@ jobs:
         make regression CPU_CORES=2 
 
   CodeFormatting:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
 
@@ -900,7 +900,7 @@ jobs:
       run: ./.github/bin/run-clang-format.sh
 
   ClangTidy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{github.event_name == 'pull_request'}}
 
     steps:
