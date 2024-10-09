@@ -140,7 +140,7 @@ solver/tests: release test/int_solver
 
 test/batch_all:
 	echo "############################# Raptor checkin tests, all tests must pass! #############################"
-	export CI=true && $(MAKE) test/int_batch test/int_batch_gen2 solver/int_tests test/batch_gen3
+	export CI=true && $(MAKE) test/int_batch test/int_batch_gen2 test/int_solver test/int_batch_gen3
 	echo "############################# Success, all tests passed! #############################################"
 
 format:
