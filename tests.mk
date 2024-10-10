@@ -132,6 +132,15 @@ else
 	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; rm -rf up5bit_counter_dual_clock; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
 
+
+test/int_gjc_tests:
+ifeq ($(RAPTOR_PUB),1)
+else
+	cd tests/Testcases && rm -rf Validation && git clone --filter=blob:none --no-checkout https://github.com/os-fpga/Validation.git && cd Validation && \
+	git sparse-checkout set RTL_testcases/GJC-IO-Testcases && git checkout @ && cd RTL_testcases/GJC-IO-Testcases && \
+	./RunGJC.tcl raptor_path=$$PWD/../../../../../build/bin/raptor && cd -
+endif
+
 test/int_solver:
 	mkdir -p run_tests
 	pushd run_tests
