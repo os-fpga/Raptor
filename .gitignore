@@ -34,3 +34,4 @@
 #Raptor subfolders
 etc/devices/*
 etc/monaco-editor/
+fetch_temp
