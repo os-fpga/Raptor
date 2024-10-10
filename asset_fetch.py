@@ -100,6 +100,8 @@ def bringing_commercial_devices(repo):
                       dest_path = src_path
                     sparse_checkout_cmd = ['git', 'sparse-checkout', 'set', src_path]
                     run_command(sparse_checkout_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))
+                    sparse_bringin_cmd = ['git', 'checkout', '@']
+                    run_command(sparse_bringin_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))
                     files_to_move = os.path.join(root_dir, 'fetch_temp', src_path)
                     dest_item = os.path.join(root_dir, dest_path)
                     if os.path.exists(files_to_move):
