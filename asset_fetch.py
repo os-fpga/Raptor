@@ -45,6 +45,27 @@ def run_command(cmd, cwd=None):
         os._exit(0)
     return result
 
+def move_item(src_path, dest_path):
+    """Move a file or directory from src_path to dest_path."""
+    #print(f'source\n\t{src_path}\ndestination\n\t{dest_path}')
+    try:
+        if os.path.isdir(src_path):
+            if os.path.exists(dest_path):
+                shutil.rmtree(dest_path)
+            shutil.copytree(src_path, dest_path)  # Copy the directory
+        else:
+            if os.path.exists(dest_path):
+                os.remove(dest_path)
+            shutil.copy(src_path, dest_path)  # Copy the file
+
+        print(f"Moved {src_path} to {dest_path}")
+
+    except FileNotFoundError:
+        print(f"Error: '{src_path}' was not found.")
+
+    except Exception as e:
+        print(f"Failed to move {src_path}: {e}")
+
 def bringing_commercial_devices(repo):
     """
     Download and populate the commercial devices
@@ -98,28 +119,21 @@ def bringing_commercial_devices(repo):
                     dest_path = paths_dest[j] if j < len(paths_dest) else ''
                     if len(dest_path) < 1:
                       dest_path = src_path
-                    sparse_checkout_cmd = ['git', 'sparse-checkout', 'set', src_path]
-                    run_command(sparse_checkout_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))
-                    sparse_bringin_cmd = ['git', 'checkout', '@']
-                    run_command(sparse_bringin_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))
+                    if not os.path.exists(os.path.join(root_dir,'fetch_temp',src_path)):
+                        sparse_checkout_cmd = ['git', 'sparse-checkout', 'set', src_path]
+                        run_command(sparse_checkout_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))
+                        sparse_bringin_cmd = ['git', 'checkout', '@']
+                        run_command(sparse_bringin_cmd, cwd=os.path.join(root_dir, 'fetch_temp'))
                     files_to_move = os.path.join(root_dir, 'fetch_temp', src_path)
                     dest_item = os.path.join(root_dir, dest_path)
                     if os.path.exists(files_to_move):
-                        for file_name in os.listdir(files_to_move):
-                            src_file_path = os.path.join(files_to_move, file_name)
-                            dest_file_path = os.path.join(dest_item, file_name)
-                            try:
-                                if os.path.isdir(src_file_path):
-                                    if os.path.exists(dest_file_path):
-                                        shutil.rmtree(dest_file_path)
-                                    shutil.copytree(src_file_path, dest_file_path)                               
-                                else:
-                                    shutil.copy2(src_file_path, dest_item)
-                                print(f"Moved {src_file_path} to {dest_item}")
-                            except FileNotFoundError:
-                                print(f"Error: The device '{src_file_path}' was not found.")
-                            except Exception as e:
-                                print(f"Failed to move {src_file_path}: {e}")
+                        if os.path.isdir(files_to_move):
+                            for file_name in os.listdir(files_to_move):
+                                src_file_path = os.path.join(files_to_move, file_name)
+                                dest_file_path = os.path.join(dest_item, file_name)
+                                move_item(src_file_path, dest_file_path)
+                        else:
+                            move_item(files_to_move, dest_item)
                     else:
                         print("No files found in asset fetch folder")   
     except json.JSONDecodeError:

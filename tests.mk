@@ -136,9 +136,22 @@ endif
 test/int_gjc_tests:
 ifeq ($(RAPTOR_PUB),1)
 else
+	export PATH=$$PWD/build/bin:$$PATH && abspath=$$PWD && \
 	cd tests/Testcases && rm -rf Validation && git clone --filter=blob:none --no-checkout https://github.com/os-fpga/Validation.git && cd Validation && \
 	git sparse-checkout set RTL_testcases/GJC-IO-Testcases && git checkout @ && cd RTL_testcases/GJC-IO-Testcases && \
-	./RunGJC.tcl raptor_path=$$PWD/../../../../../build/bin/raptor && cd -
+	for d in GJC*/; do \
+		cd $$abspath/tests/Testcases/Validation/RTL_testcases/GJC-IO-Testcases/$$d; \
+		if [[ -f "disabled.txt" ]]; then \
+			echo "Skipping testcase: $$d"; \
+		else \
+			echo "Running testcase: $$d"; \
+			./raptor_run.sh > /dev/null; \
+			if grep -q '"status": "Fail"' results_dir/CGA_Result.json; then \
+				echo "Test failed in $$d, exiting..."; \
+				exit 1; \
+			fi; \
+		fi; \
+	done
 endif
 
 test/int_solver:
