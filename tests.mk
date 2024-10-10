@@ -3,7 +3,7 @@
 # All these are internal test target. They can't be invoked directly
 # When creating new target here, please respect the pattern that test/int_something
 
-PRIVATE_TARGETS := $(shell grep -E '^test/[a-zA-Z0-9_-]+:' $(MAKEFILE_LIST) | sed 's/:.*//')
+PRIVATE_TARGETS := $(shell cat $(MAKEFILE_LIST) | grep -E '^test/int_[a-zA-Z0-9_-]+:' | sed 's/:.*//')
 .ONESHELL:
 .SILENT:
 
@@ -173,8 +173,11 @@ test/int_production:
 	export LICENSE_LOCATION=$$PWD/build/bin/raptor.lic && \
 	./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $$d_test
 
-ifneq ($(filter $(MAKECMDGOALS), $(PRIVATE_TARGETS)),)
-ifneq ($(CI),true)
-$(error You cannot invoke '$(MAKECMDGOALS)' directly. Please see Makefile for proper test target)
+ifneq ($(MAKECMDGOALS), test/batch_all)
+  ifneq ($(filter $(MAKECMDGOALS), $(PRIVATE_TARGETS)),)
+    ifneq ($(CI), true)
+      $(error You cannot invoke '$(MAKECMDGOALS)' directly. Please see Makefile for proper test target)
+    endif
+  endif
 endif
-endif
+
