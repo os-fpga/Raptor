@@ -139,9 +139,11 @@ test/batch_gen3: release test/int_batch_gen3
 solver/tests: release test/int_solver
 
 test/batch_all:
-	echo "############################# Raptor checkin tests, all tests must pass! #############################"
-	export CI=true && $(MAKE) test/int_batch test/int_batch_gen2 test/int_solver test/int_batch_gen3
-	echo "############################# Success, all tests passed! #############################################"
+	echo "############################# Raptor checkin tests, all tests must pass #############################"
+	export CI=true && $(MAKE) test/int_batch && $(MAKE) test/int_batch_gen2 && $(MAKE) test/int_solver \
+	&& $(MAKE) test/int_batch_gen3 && $(MAKE) test/int_gjc_tests\
+	&& echo "############################# Success, all tests passed #############################################" \
+	|| echo "############################# Failure, all tests failed #############################################"
 
 format:
 	.github/bin/run-clang-format.sh

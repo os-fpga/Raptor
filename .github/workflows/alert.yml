@@ -1,9 +1,9 @@
 name: 'Alert'
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 jobs:
   alert:
     if: ${{ github.repository == 'os-fpga/Raptor' }}

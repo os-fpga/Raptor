@@ -3,7 +3,7 @@
 # All these are internal test target. They can't be invoked directly
 # When creating new target here, please respect the pattern that test/int_something
 
-PRIVATE_TARGETS := $(shell grep -E '^test/[a-zA-Z0-9_-]+:' $(MAKEFILE_LIST) | sed 's/:.*//')
+PRIVATE_TARGETS := $(shell cat $(MAKEFILE_LIST) | grep -E '^test/int_[a-zA-Z0-9_-]+:' | sed 's/:.*//')
 .ONESHELL:
 .SILENT:
 
@@ -132,6 +132,28 @@ else
 	cd tests/Testcases/up5bit_counter_dual_clock_bitstream; rm -rf up5bit_counter_dual_clock; ../../../build/bin/raptor --batch --mute --script raptor.tcl
 endif
 
+
+test/int_gjc_tests:
+ifeq ($(RAPTOR_PUB),1)
+else
+	export PATH=$$PWD/build/bin:$$PATH && abspath=$$PWD && \
+	cd tests/Testcases && rm -rf Validation && git clone --filter=blob:none --no-checkout https://github.com/os-fpga/Validation.git && cd Validation && \
+	git sparse-checkout set RTL_testcases/GJC-IO-Testcases && git checkout @ && cd RTL_testcases/GJC-IO-Testcases && \
+	for d in GJC*/; do \
+		cd $$abspath/tests/Testcases/Validation/RTL_testcases/GJC-IO-Testcases/$$d; \
+		if [[ -f "disabled.txt" ]]; then \
+			echo "Skipping testcase: $$d"; \
+		else \
+			echo "Running testcase: $$d"; \
+			./raptor_run.sh > /dev/null; \
+			if grep -q '"status": "Fail"' results_dir/CGA_Result.json; then \
+				echo "Test failed in $$d, exiting..."; \
+				exit 1; \
+			fi; \
+		fi; \
+	done
+endif
+
 test/int_solver:
 	mkdir -p run_tests
 	pushd run_tests
@@ -151,8 +173,11 @@ test/int_production:
 	export LICENSE_LOCATION=$$PWD/build/bin/raptor.lic && \
 	./build/bin/raptor --batch --script tests/tcl_examples/and2_verilog/run_raptor.tcl --device $$d_test
 
-ifneq ($(filter $(MAKECMDGOALS), $(PRIVATE_TARGETS)),)
-ifneq ($(CI),true)
-$(error You cannot invoke '$(MAKECMDGOALS)' directly. Please see Makefile for proper test target)
+ifneq ($(MAKECMDGOALS), test/batch_all)
+  ifneq ($(filter $(MAKECMDGOALS), $(PRIVATE_TARGETS)),)
+    ifneq ($(CI), true)
+      $(error You cannot invoke '$(MAKECMDGOALS)' directly. Please see Makefile for proper test target)
+    endif
+  endif
 endif
-endif
+
