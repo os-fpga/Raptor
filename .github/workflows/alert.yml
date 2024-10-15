@@ -1,6 +1,8 @@
 name: 'Alert'
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [raptor_public_update]
   # push:
   #   branches:
   #     - main
