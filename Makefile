@@ -156,7 +156,7 @@ doc:
 	cd -
 
 fetch_assets:
-	python3 asset_fetch.py
+	python3 fetch_assets.py
 
 uninstall:
 	$(RM) -r $(PREFIX)/bin/raptor
