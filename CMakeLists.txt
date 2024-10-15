@@ -181,7 +181,7 @@ checkout_vpr_latest(${CMAKE_CURRENT_SOURCE_DIR})
 
 if(NOT DEFINED ENV{CI})
     execute_process(
-        COMMAND python3 -u ${CMAKE_CURRENT_SOURCE_DIR}/asset_fetch.py
+        COMMAND python3 -u ${CMAKE_CURRENT_SOURCE_DIR}/fetch_assets.py
         RESULT_VARIABLE FETCHER_STATUS
         OUTPUT_VARIABLE SCRIPT_OUTPUT
         ERROR_VARIABLE SCRIPT_OUTPUT
