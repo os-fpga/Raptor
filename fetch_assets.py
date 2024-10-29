@@ -163,13 +163,14 @@ def should_fetch():
 
     detect_repo_cmd = ['git', 'remote', 'get-url', '--push', 'origin']
     repo_type = run_command(detect_repo_cmd, root_dir)
-    
-    if 'Raptor' in repo_type.stdout:
+
+    # Should be in destination Repo to consume JSON.
+    if 'os-fpga/Raptor' in repo_type.stdout:
         return 'os-fpga/Raptor'
-    elif 'rapid_power_estimator' in repo_type.stdout:
+    elif 'os-fpga/rapid_power_estimator' in repo_type.stdout:
         return 'os-fpga/rapid_power_estimator'
     else:
-        print("Not recognisable repo, if it is a mistake, disable the call of function 'should_fetch' and contact maintainer")
+        print("Not in right repo, if it is a mistake, contact maintainer")
         os._exit(0)
     
 if __name__ == "__main__":
