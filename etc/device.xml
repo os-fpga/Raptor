@@ -24,7 +24,6 @@
         <internal type="sim_settings" file="devices/mpw1/fixed_sim_openfpga.xml"/>
         <internal type="repack_settings" file="devices/mpw1/repack_design_constraint.xml"/>
         <internal type="pinmap_xml" file="devices/mpw1/pinmap_qlf_k6n10_tsmc22.xml"/>
-        <internal type="power_data" file="devices/mpw1/power/power_data.json"/>
         <internal type="pinmap_csv" file=""/>
         <internal type="plugin_lib" name="synth-rs"/>
         <internal type="plugin_func" name="synth_rs"/>
