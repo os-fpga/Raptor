@@ -1,0 +1,18 @@
+{
+    "type": "regulator",
+    "coeffs": [
+        { "name": "VCC_CORE"    , "value": 0.8            },
+        { "name": "VCC_AUX"     , "value": 1.8            },
+        { "name": "VCC_BOOT_IO" , "value": 1.8            },
+        { "name": "VCC_DDR_IO"  , "value": 0.8            },
+        { "name": "VCC_SOC_IO"  , "value": 1.8            },
+        { "name": "VCC_GBE_IO"  , "value": 0.8            },
+        { "name": "VCC_USB_IO"  , "value": 0.8            },
+        { "name": "VCC_BOOT_AUX", "value": 1.8            },
+        { "name": "VCC_SOC_AUX" , "value": 1.8            },
+        { "name": "VCC_GBE_AUX" , "value": 1.8            },
+        { "name": "VCC_USB_AUX" , "value": 1.8            },
+        { "name": "VCC_PUF"     , "value": 1.8            },
+        { "name": "VCC_RC_OSC"  , "value": 1.8            }
+    ]
+}

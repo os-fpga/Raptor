@@ -1,0 +1,8 @@
+{
+    "type": "spi",
+    "coeffs": [
+        { "name": "QSPI_CLK_FACTOR"      , "value": 0.0000154995864661654 },
+        { "name": "QSPI_SWITCHING_FACTOR", "value": 0.00156512937507589   },
+        { "name": "QSPI_IO_FACTOR"       , "value": 0.0001270766          }
+    ]
+}

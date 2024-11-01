@@ -1,0 +1,20 @@
+{
+    "type": "fabric_le",
+    "coeffs": [
+        { "name": "LUT_CAP"    , "value": 0.0000003            },
+        { "name": "FF_CAP"     , "value": 0.00000035           },
+        { "name": "FF_CLK_CAP" , "value": 2.91375291375291E-09 },
+        { "name": "LUT_INT_CAP", "value": 0.00000002           },
+        { "name": "FF_INT_CAP" , "value": 0.00000004           }
+    ],
+    "static_power": [
+        {
+            "rail_type": "Vcc_core (CLB)",
+            "domain": "Core",
+            "scenarios": [
+                { "type": "worse", "coeffs": [0.000000000000002, -0.0000000000001, 0.00000000001, 0.0000000008, 0.00000006, 0.000002], "factor": 1.0 },
+                { "type": "typical", "coeffs": [0.0000000000003, -0.00000000001, 0.0000000001, 0.00000006, 0.0000007], "factor": 1.0 }
+            ]
+        }
+    ]
+}

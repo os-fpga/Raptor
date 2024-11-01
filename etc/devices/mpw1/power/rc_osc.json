@@ -1,0 +1,13 @@
+{
+    "type": "rc_osc",
+    "static_power": [
+        {
+            "rail_type": "VCC_RC_OSC",
+            "domain": "SOC",
+            "scenarios": [
+                { "type": "worse", "coeffs": [0.0005], "factor": 0.555555555555556 },
+                { "type": "typical", "coeffs": [0.0001], "factor": 0.555555555555556 }
+            ]
+        }
+    ]
+}

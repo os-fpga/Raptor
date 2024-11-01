@@ -1,0 +1,21 @@
+{
+    "type": "clocking",
+    "coeffs": [
+        { "name": "CLK_CAP"    , "value": 0.00001    },
+        { "name": "CLK_INT_CAP", "value": 0.00000003 },
+        { "name": "PLL_INT"    , "value": 0.0009     },
+        { "name": "PLL_AUX"    , "value": 0.01       }
+    ],
+    "static_power": [
+        {
+            "rail_type": "Vcc_aux",
+            "domain": "SOC",
+            "scenarios": [
+                { "type": "worse", "coeffs": [0.00000001, -0.0000003, 0.00004, 0.0332], "factor": 0.555555555555556 },
+                { "type": "worse", "coeffs": [0.000000002, 0.0000004, 0.00002, 0.0133], "factor": 0.555555555555556 },
+                { "type": "typical", "coeffs": [0.000000003, 0.0000002, 0.00004, 0.0224], "factor": 0.555555555555556 },
+                { "type": "typical", "coeffs": [0.0000000004, 0.0000001, 0.000005, 0.0033], "factor": 0.555555555555556 }
+            ]
+        }
+    ]
+}
