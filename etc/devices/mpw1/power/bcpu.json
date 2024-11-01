@@ -1,0 +1,19 @@
+{
+    "type": "bcpu",
+    "coeffs": [
+        { "name": "BCPU_CLK_FACTOR"        , "value": 0.0000321306659727    },
+        { "name": "BCPU_LOW_LOAD_FACTOR"   , "value": 6.22030740524698E-06  },
+        { "name": "BCPU_MEDIUM_LOAD_FACTOR", "value": 7.03786731129023E-06  },
+        { "name": "BCPU_HIGH_LOAD_FACTOR"  , "value": 0.0000105978995482262 }
+    ],
+    "static_power": [
+        {
+            "rail_type": "Vcc_core (Config)",
+            "domain": "SOC",
+            "scenarios": [
+                { "type": "worse", "coeffs": [0.0000000001, -0.000000002, 0.000000004, 0.00002, 0.0007], "factor": 1.0 },
+                { "type": "typical", "coeffs": [0.0000000000005, -0.00000000002, 0.000000003, 0.0000002, 0.00001, 0.0013], "factor": 1.0 }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "type": "sram",
+    "coeffs": [
+        { "name": "SRAM_ACLK_FACTOR" , "value": 0.0000688892039916618 },
+        { "name": "SRAM_WRITE_FACTOR", "value": 0.000142810846268152  },
+        { "name": "SRAM_READ_FACTOR" , "value": 0.000140428615087023  }
+    ]
+}

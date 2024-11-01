@@ -1,0 +1,14 @@
+{
+    "components": [
+        { "$ref": "bcpu.json" },
+        { "$ref": "clocking.json" },
+        { "$ref": "fabric_le.json" },
+        { "$ref": "io.json" },
+        { "$ref": "noc.json" },
+        { "$ref": "puffcc.json" },
+        { "$ref": "qspi.json" },
+        { "$ref": "rc_osc.json" },
+        { "$ref": "regulator.json" },
+        { "$ref": "sram.json" }
+    ]
+}
