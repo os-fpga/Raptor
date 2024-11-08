@@ -33,5 +33,6 @@
         <internal type="bitstream_enabled" num="false"/>
         <internal type="pin_constraint_enabled" num="false"/>
         <internal type="synth_opts" name=""/>
+        <internal type="power_data" file="devices/mpw1/power/power_data.json"/>
     </device>
 </device_list>
