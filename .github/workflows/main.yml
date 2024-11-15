@@ -304,6 +304,7 @@ jobs:
            export CI=true
            echo $run_test
            make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
+           [[ $? != 0 ]] && exit 1
            ls -l /tmp
 
   test-ubuntu-D:
@@ -350,6 +351,7 @@ jobs:
            export CI=true
            echo $run_test
            make ${{ matrix.test-type }} ${{ matrix.extra-opts }} $run_test CPU_CORES=2
+           [[ $? != 0 ]] && exit 1
 
   test-ubuntu-P:
     needs: build-Ubuntu-P
@@ -393,6 +395,7 @@ jobs:
            export CI=true
            echo $run_test
            make ${{ matrix.test-type }} ${{ matrix.extra-opts }} $run_test CPU_CORES=2
+           [[ $? != 0 ]] && exit 1
 
   test-centos-R:
     needs: build-CentOS-R
@@ -441,6 +444,7 @@ jobs:
             run_test=`cat TEST_ON`
             export CI=true
             make ${{ matrix.extra-opts}} ${{ matrix.test-type }} $run_test CPU_CORES=2
+            [[ $? != 0 ]] && exit 1
 
   
   Deployment:
