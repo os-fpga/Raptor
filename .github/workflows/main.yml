@@ -283,6 +283,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Checkout Jirs testcase
+      run: git submodule update --init tests/Jira_Testcase
+
     - name: Install dependenices
       uses: ./.github/actions/
       with:
@@ -395,6 +398,7 @@ jobs:
            export CI=true
            echo $run_test
            make ${{ matrix.test-type }} ${{ matrix.extra-opts }} $run_test CPU_CORES=2
+           echo $?
            [[ $? != 0 ]] && exit 1
 
   test-centos-R:
@@ -417,6 +421,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Checkout Jirs testcase
+      run: git submodule update --init tests/Jira_Testcase
 
     - name: Install dependenices
       uses: ./.github/actions/
