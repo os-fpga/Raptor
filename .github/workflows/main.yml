@@ -310,6 +310,8 @@ jobs:
            ls -l /tmp
 
   test-ubuntu-D:
+    # takes too much time so run it on os-fpga Raptor only
+    if: ${{ github.repository == 'os-fpga/Raptor'}} 
     needs: build-Ubuntu-D
     name: ${{ matrix.name }}-${{ matrix.test-type }}
     runs-on: ${{ matrix.os }}
