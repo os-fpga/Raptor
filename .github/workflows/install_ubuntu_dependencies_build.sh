@@ -8,6 +8,8 @@ sudo apt-get update -qq
 only_minimum () {
     sudo apt install -y qt6-base-dev qt6-webengine-dev qt6-webengine* libqt6webenginecore6* libegl1-mesa-dev libx11-xcb-dev libxkbcommon-dev 
     sudo apt install -y libhwloc-dev libusb-1.0-0-dev google-perftools clang-tidy-12 valgrind
+    curl -LO http://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi6_3.2.1-8_amd64.deb
+    sudo dpkg -i libffi6_3.2.1-8_amd64.deb
     # for cmake warning, Could NOT find WrapVulkanHeaders, install the Vulkan separately by following the instruction from https://vulkan-tutorial.com/Development_environment#page_Vulkan-Packages
     wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
     sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list http://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
@@ -67,8 +69,6 @@ else
   sudo ln -sf /usr/bin/g++-11 /usr/bin/g++
   sudo ln -sf /usr/bin/gcc-11 /usr/bin/gcc
   sudo ln -sf /usr/bin/gcov-11 /usr/bin/gcov
-  curl -LO http://archive.ubuntu.com/ubuntu/pool/main/libf/libffi/libffi6_3.2.1-8_amd64.deb
-  sudo dpkg -i libffi6_3.2.1-8_amd64.deb
   
   # install Python Packages
   pip3 install orderedmultidict
