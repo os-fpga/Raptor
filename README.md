@@ -143,6 +143,18 @@ Tcl commands (Available in GUI or Batch console or Batch script):
        0                        : Initialize register by '0' (default)
        1                        : Initialize register by '1'
        2                        : Leave register unintialized
+   set_limits <type> <int>    : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
+       dsp                    : Maximum number of usable DSPs
+       bram                   : Maximum number of usable BRAMs
+       carry_length           : Maximum carry length
+   analyze ?clean?            : Analyzes the RTL design, generates top-level, pin and hierarchy information
+     clean                    : Deletes files generated from this task
+   synthesize <optimization>  ?clean? : RTL Synthesis, optional opt. (area, delay, mixed)
+     <optimization>           : area, delay, mixed
+       area                   : Optimize for reduce resource area 
+       delay                  : Optimize for performance
+       mixed                  : Optimize for area and performance (default)
+     clean                    : Deletes files generated from this task
 ---------------
 --- Packing ---
 ---------------
