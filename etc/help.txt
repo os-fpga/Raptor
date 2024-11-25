@@ -109,27 +109,31 @@ Tcl commands (Available in GUI or Batch console or Batch script):
 --- Synthesis ---
 -----------------
    synth_options <option list>:
-     -effort <level>          : Optimization effort level (high, medium, low)
-       high                   : Most compute, generally impacting runtime (default)
-       medium                 : Balanced compute
-       low                    : least compute, least runtime
-     -fsm_encoding <encoding> : FSM encoding (binary, onehot)
-       binary                 : Compact encoding - using minimum of registers to cover the N states
-       onehot                 : One hot encoding - using N registers for N states (default)
-     -carry <mode>            : Carry logic inference mode (all, auto, none)
-       all                    : Infer as much as possible
-       auto                   : Infer carries based on internal heuristics (default)
-       none                   : Do not infer carries
-     -clke_strategy <strategy>: Clock enable extraction strategy for FFs (early, late)
-       early                  : Perform early extraction (default)
-       late                   : Perform late extraction
-     -fast                    : Perform the fastest synthesis. QoR can be impacted
-     -no_flatten              : Do not flatten design
-     -no_simplify             : Do not run special simplification algorithms in synthesis
-     -no_tribuf               : Do not preserve I/O tristates
-     -no_adder                : Do not infer adders
-     -inferred_io             : Automatic I/O inference (Default false for eFPGA)
-     -no_inferred_io          : No automatic I/O inference (Default true for FPGA)
+     -effort <level>            : Optimization effort level (high, medium, low)
+       high                     : Most compute, generally impacting runtime (default)
+       medium                   : Balanced compute
+       low                      : least compute, least runtime
+     -fsm_encoding <encoding>   : FSM encoding (binary, onehot)
+       binary                   : Compact encoding - using minimum of registers to cover the N states
+       onehot                   : One hot encoding - using N registers for N states (default)
+     -carry <mode>              : Carry logic inference mode (all, auto, none)
+       all                      : Infer as much as possible
+       auto                     : Infer carries based on internal heuristics (default)
+       none                     : Do not infer carries
+     -clke_strategy <strategy>  : Clock enable extraction strategy for FFs (early, late)
+       early                    : Perform early extraction (default)
+       late                     : Perform late extraction
+     -fast                      : Perform the fastest synthesis. QoR can be impacted
+     -no_flatten                : Do not flatten design
+     -no_simplify               : Do not run special simplification algorithms in synthesis
+     -no_tribuf                 : Do not preserve I/O tristates
+     -no_adder                  : Do not infer adders
+     -inferred_io               : Automatic I/O inference (Default false for eFPGA)
+     -no_inferred_io            : No automatic I/O inference (Default true for FPGA)
+     -read_init_registers <int> : Force initialization to uninitialized registers (0, 1, 2)
+       0                        : Initialize register by '0' (default)
+       1                        : Initialize register by '1'
+       2                        : Leave register unintialized
 <engineering>
      -clke_strategy <strategy>: Clock enable extraction strategy for FFs:
        early                  : Perform early extraction
