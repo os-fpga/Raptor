@@ -120,6 +120,11 @@
                 "stepVal": 1,
                 "arg": "carry_chain_limit"
             },
+            "no_sat_checkbox": {
+                "label": "No Sat",
+                "widgetType": "checkbox",
+                "arg": "no_sat"
+            },
             "fast_checkbox": {
                 "label": "Fast Synthesis",
                 "widgetType": "checkbox",
