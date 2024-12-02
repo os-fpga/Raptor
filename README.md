@@ -139,11 +139,12 @@ Tcl commands (Available in GUI or Batch console or Batch script):
      -no_adder                  : Do not infer adders
      -inferred_io               : Automatic I/O inference (Default false for eFPGA)
      -no_inferred_io            : No automatic I/O inference (Default true for FPGA)
-     -read_init_registers <int> : Force initialization to uninitialized registers (0, 1, 2)
-       0                        : Initialize register by '0' (default)
-       1                        : Initialize register by '1'
-       2                        : Leave register unintialized
-   set_limits <type> <int>    : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
+     -no_sat                  : Disable SAT solver
+     -init_registers <int>    : Force initialization of uninitialized registers
+       0                      : '0' value means initialize with '0' (Default '0' is used)
+       1                      : '1' value means initialize with '1'
+       2                      : '2' value means leave it uninitialized
+  set_limits <type> <int>     : Sets a user limit on object of type (dsp, bram), specify 0 to disable block inferrence
        dsp                    : Maximum number of usable DSPs
        bram                   : Maximum number of usable BRAMs
        carry_length           : Maximum carry length
