@@ -487,6 +487,7 @@ jobs:
         image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
+            export CI=true
             source /opt/rh/devtoolset-11/enable  
             cd work && tar -xzf build.tar.gz && rm build.tar.gz && ls -la && ls -l build 
             run_test=`cat TEST_ON`
