@@ -500,27 +500,25 @@ jobs:
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
             ls -l /work/Raptor_Tools/upload/*
 
-    # The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
-    - name: Check FTP server status
+    # The below section upload Raptor Production binaries to release area. Make sure to provide your credentials.
+    - name: Stage the release area
       if: "${{ env.FORK_REPO  == 'ON' }}"
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.FTP_IP }}
-        username: ${{ secrets.FTP_USER }}
-        key: ${{ secrets.FTP_KEY }}
-        port: ${{ secrets.FTP_PORT }}
-        script: whoami
+      run: |
+            cd .github/bin
+            bash productionBuild_deploy.sh  "$STAGE_REPO"
+            tag=`cat pass_tag`
+            echo "TAG=$tag" >>  $GITHUB_ENV
+      env:
+          STAGE_REPO: ${{ secrets.StageRepo }}
     
-    - name: Deploy
+    - name: Append Release
       if: "${{ env.FORK_REPO  == 'ON' }}"
-      uses: appleboy/scp-action@master
+      uses: softprops/action-gh-release@v2
       with:
-         host: ${{ secrets.FTP_IP }}
-         username: ${{ secrets.FTP_USER }}
-         key: ${{ secrets.FTP_KEY }}
-         port: ${{ secrets.FTP_PORT }}
-         source: "./Raptor_Tools/upload/*"
-         target: "/home/rsbuilder/Raptor"
+          repository: os-fpga/RaptorProBuilds
+          token: ${{ secrets.StageRepo }}
+          tag_name: ${{ env.TAG }}
+          files: "./Raptor_Tools/upload/*/*"      
 
   # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
