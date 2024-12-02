@@ -120,6 +120,14 @@
                 "stepVal": 1,
                 "arg": "carry_chain_limit"
             },
+            "init_registers_spinbox_ex": {
+                "label": "Init Registers",
+                "widgetType": "spinbox",
+                "minVal": 0,
+                "maxVal": 2,
+                "stepVal": 1,
+                "arg": "init_registers"
+            },
             "no_sat_checkbox": {
                 "label": "No Sat",
                 "widgetType": "checkbox",
