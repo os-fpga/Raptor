@@ -503,7 +503,7 @@ jobs:
 
     # The below section upload Raptor Production binaries to release area. Make sure to provide your credentials.
     - name: Stage the release area
-      if: "${{ env.FORK_REPO  == 'ON' }}"
+      if: "${{ env.FORK_REPO  == 'ON' && github.ref == 'refs/heads/main' }}"
       run: |
             cd .github/bin
             bash productionBuild_deploy.sh  "$STAGE_REPO"
@@ -513,7 +513,7 @@ jobs:
           STAGE_REPO: ${{ secrets.StageRepo }}
     
     - name: Append Release
-      if: "${{ env.FORK_REPO  == 'ON' }}"
+      if: "${{ env.FORK_REPO  == 'ON' && github.ref == 'refs/heads/main' }}"
       uses: softprops/action-gh-release@v2
       with:
           repository: os-fpga/RaptorProBuilds
