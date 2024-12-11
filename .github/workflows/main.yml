@@ -181,7 +181,7 @@ jobs:
             echo "2nd compilation" && rm -rvf build/FOEDAG_rs
             make install MONACO_EDITOR=1 CPU_CORES=2 $run_test PRODUCTION_BUILD=1 PREFIX=/opt/instl_dir PRODUCTION_DEVICES=$p_device STICK_RELEASE_VERSION=$r_d
             [ $? != 0 ] && exit 1
-            tar -czf build.tar.gz projects  \
+            tar -czf build.tar.gz projects build/Backend/OpenFPGA/vtr-verilog-to-routing/libs/libencrypt/encrypt \
             ./build/OPENLM_DIR/licensecc/extern/license-generator/src/license_generator/lccgen \
             Raptor_Tools/Create_Raptor_Artifact Raptor_Tools/Install_Raptor_Artifact /opt/instl_dir 
 
@@ -487,6 +487,7 @@ jobs:
         image: ghcr.io/${{ github.repository_owner }}/raptor:centos7latest
         options: -v ${{ github.workspace }}:/work
         run: |
+            export CI=true
             source /opt/rh/devtoolset-11/enable  
             cd work && tar -xzf build.tar.gz && rm build.tar.gz && ls -la && ls -l build 
             run_test=`cat TEST_ON`
@@ -500,27 +501,25 @@ jobs:
             cd /work/Raptor_Tools/Create_Raptor_Artifact && bash create_release.sh  -C -w  /work/opt/instl_dir
             ls -l /work/Raptor_Tools/upload/*
 
-    # The below section upload Raptor binaries to FTP so to enable it make sure provide your credentials.
-    - name: Check FTP server status
-      if: "${{ env.FORK_REPO  == 'ON' }}"
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.FTP_IP }}
-        username: ${{ secrets.FTP_USER }}
-        key: ${{ secrets.FTP_KEY }}
-        port: ${{ secrets.FTP_PORT }}
-        script: whoami
+    # The below section upload Raptor Production binaries to release area. Make sure to provide your credentials.
+    - name: Stage the release area
+      if: "${{ env.FORK_REPO  == 'ON' && github.ref == 'refs/heads/main' }}"
+      run: |
+            cd .github/bin
+            bash productionBuild_deploy.sh  "$STAGE_REPO"
+            tag=`cat pass_tag`
+            echo "TAG=$tag" >>  $GITHUB_ENV
+      env:
+          STAGE_REPO: ${{ secrets.StageRepo }}
     
-    - name: Deploy
-      if: "${{ env.FORK_REPO  == 'ON' }}"
-      uses: appleboy/scp-action@master
+    - name: Append Release
+      if: "${{ env.FORK_REPO  == 'ON' && github.ref == 'refs/heads/main' }}"
+      uses: softprops/action-gh-release@v2
       with:
-         host: ${{ secrets.FTP_IP }}
-         username: ${{ secrets.FTP_USER }}
-         key: ${{ secrets.FTP_KEY }}
-         port: ${{ secrets.FTP_PORT }}
-         source: "./Raptor_Tools/upload/*"
-         target: "/home/rsbuilder/Raptor"
+          repository: os-fpga/RaptorProBuilds
+          token: ${{ secrets.StageRepo }}
+          tag_name: ${{ env.TAG }}
+          files: "./Raptor_Tools/upload/*/*"      
 
   # Reference: https://github.com/eyllanesc/69108420/blob/main/.github/workflows/test.yml
   msys2-gcc:
